@@ -716,7 +716,308 @@ function markTest(){
 }
 </script>
 <!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_END -->
+<!-- TEAE_EDRICK_ADAPTIVE_500_ENGINE_V2_START -->
+<script>
+/*
+  Adaptive mastery engine:
+  - No fixed paper limit.
+  - Each subject has a question bank.
+  - Correct full-mark questions are removed from future papers.
+  - Wrong / half-correct questions stay in the remaining bank.
+  - Each paper gives 30-50 questions, unless fewer remain.
+  - Final paper contains all remaining questions if remaining <= 50.
+*/
+
+const ADAPTIVE_MIN_QUESTIONS = 30;
+const ADAPTIVE_MAX_QUESTIONS = 50;
+
+function adaptiveKey(subject){
+  return "edrick_adaptive_mastered_" + subject;
+}
+
+function adaptivePaperKey(subject){
+  return "edrick_adaptive_paper_no_" + subject;
+}
+
+function getQuestionId(q){
+  var raw = (q.q || "") + "|" + (q.a || "") + "|" + (q.model || "");
+  try {
+    return btoa(unescape(encodeURIComponent(raw))).replace(/=/g,"");
+  } catch(e) {
+    return raw.replace(/\W/g,"_").slice(0,120);
+  }
+}
+
+function getMastered(subject){
+  try {
+    return JSON.parse(localStorage.getItem(adaptiveKey(subject)) || "[]");
+  } catch(e) {
+    return [];
+  }
+}
+
+function saveMastered(subject, arr){
+  localStorage.setItem(adaptiveKey(subject), JSON.stringify([...new Set(arr)]));
+}
+
+function getPaperNo(subject){
+  return parseInt(localStorage.getItem(adaptivePaperKey(subject)) || "1", 10);
+}
+
+function setPaperNo(subject, n){
+  localStorage.setItem(adaptivePaperKey(subject), String(n));
+}
+
+function getRemaining(subject){
+  var mastered = getMastered(subject);
+  return BANK[subject].filter(function(q){
+    return mastered.indexOf(getQuestionId(q)) === -1;
+  });
+}
+
+function getMasteredCount(subject){
+  return getMastered(subject).length;
+}
+
+function resetSubjectProgress(subject){
+  if(confirm("Wil jy " + subject + " se mastery progress reset?")){
+    localStorage.removeItem(adaptiveKey(subject));
+    localStorage.removeItem(adaptivePaperKey(subject));
+    chooseSubject(subject);
+  }
+}
+
+function resetAllProgress(){
+  if(confirm("Wil jy alle vakke se progress reset?")){
+    Object.keys(BANK).forEach(function(s){
+      localStorage.removeItem(adaptiveKey(s));
+      localStorage.removeItem(adaptivePaperKey(s));
+    });
+    backHome();
+  }
+}
+
+function chooseSubject(s){
+  currentSubject = s;
+
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("exam").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("papers").classList.remove("hidden");
+
+  var total = BANK[s].length;
+  var mastered = getMasteredCount(s);
+  var remaining = getRemaining(s).length;
+  var paperNo = getPaperNo(s);
+
+  document.getElementById("subjectTitle").innerText = s;
+
+  var h = "";
+  h += `<div class="answer">
+    <h3>${s} Mastery Bank</h3>
+    <p><b>Totale vrae in bank:</b> ${total}</p>
+    <p><b>Vrae reeds 100% reg:</b> ${mastered}</p>
+    <p><b>Vrae nog oor:</b> ${remaining}</p>
+    <p><b>Volgende vraestel:</b> ${paperNo}</p>
+    <p class="small">
+      Elke vraag wat hy 100% reg kry, word uit toekomstige vraestelle verwyder.
+      Vrae wat verkeerd of half reg is, bly oor totdat hy dit reg kry.
+    </p>
+  </div>`;
+
+  if(remaining <= 0){
+    h += `<div class="answer correct">
+      <h2>Alles bemeester!</h2>
+      <p>Edrick het al die vrae in <b>${s}</b> 100% reg gekry.</p>
+      <p>Daar is niks oor om weer te oefen nie.</p>
+    </div>`;
+  } else {
+    h += `<button class="green" onclick="startAdaptivePaper()">Begin volgende vraestel</button>`;
+    h += `<div class="answer">
+      <b>Hoe dit werk:</b><br>
+      As daar meer as ${ADAPTIVE_MAX_QUESTIONS} vrae oor is, kry hy random ${ADAPTIVE_MIN_QUESTIONS}-${ADAPTIVE_MAX_QUESTIONS} vrae.
+      As daar ${ADAPTIVE_MAX_QUESTIONS} of minder oor is, kry hy al die oorblywende vrae.
+    </div>`;
+  }
+
+  h += `<button class="red" onclick="resetSubjectProgress('${s.replace(/'/g,"\\'")}')">Reset hierdie vak se progress</button>`;
+  h += `<button class="gray" onclick="backHome()">Terug hoofkieslys</button>`;
+
+  document.getElementById("paperBtns").innerHTML = h;
+}
+
+function startPaper(n){
+  startAdaptivePaper();
+}
+
+function startAdaptivePaper(){
+  var remaining = getRemaining(currentSubject);
+
+  if(remaining.length <= 0){
+    alert("Alles is klaar bemeester vir " + currentSubject);
+    chooseSubject(currentSubject);
+    return;
+  }
+
+  var paperNo = getPaperNo(currentSubject);
+  currentPaper = paperNo;
+
+  var bank = [...remaining];
+  seededShuffle(bank, currentSubject + "-" + paperNo + "-" + Date.now());
+
+  var count;
+  if(bank.length <= ADAPTIVE_MAX_QUESTIONS){
+    count = bank.length;
+  } else {
+    count = ADAPTIVE_MIN_QUESTIONS + Math.floor(Math.random() * (ADAPTIVE_MAX_QUESTIONS - ADAPTIVE_MIN_QUESTIONS + 1));
+  }
+
+  currentQuestions = bank.slice(0, count);
+
+  renderQuestions();
+
+  document.getElementById("papers").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  document.getElementById("result").classList.add("hidden");
+
+  var max = currentQuestions.reduce((a,b)=>a+b.m,0);
+
+  document.getElementById("examTitle").innerText = currentSubject + " - Vraestel " + paperNo;
+  document.getElementById("examInfo").innerText =
+    "Hierdie vraestel kom uit die oorblywende vrae. Regte vrae verdwyn; verkeerde vrae bly oor.";
+  document.getElementById("markBadge").innerText =
+    "Vrae in hierdie vraestel: " + currentQuestions.length +
+    " | Oorblywend voor begin: " + remaining.length +
+    " | Totaal punte: " + max;
+
+  window.scrollTo(0,0);
+}
+
+function markTest(){
+  var total = 0;
+  var max = 0;
+  var mastered = getMastered(currentSubject);
+  var newlyMastered = 0;
+  var stillRemainingFromPaper = 0;
+
+  currentQuestions.forEach((x,i)=>{
+    let s = 0, given = "", ans = "";
+    max += x.m;
+
+    let box = document.getElementById("box"+i);
+    let ab = document.getElementById("ans"+i);
+
+    box.classList.remove("correct","wrong","part");
+
+    if(x.t=="mcq" || x.t=="tf"){
+      given = val("q"+i);
+      s = (given == x.a) ? x.m : 0;
+      ans = x.a;
+    }
+
+    if(x.t=="text"){
+      given = val("q"+i);
+      s = x.a.some(a=>norm(given).includes(norm(a))) ? x.m : 0;
+      ans = x.model;
+    }
+
+    if(x.t=="kw"){
+      given = val("q"+i);
+      s = markKW(x,given);
+      ans = x.model;
+    }
+
+    total += s;
+
+    if(s == x.m){
+      box.classList.add("correct");
+      var id = getQuestionId(x);
+      if(mastered.indexOf(id) === -1){
+        mastered.push(id);
+        newlyMastered++;
+      }
+    } else if(s == 0){
+      box.classList.add("wrong");
+      stillRemainingFromPaper++;
+    } else {
+      box.classList.add("part");
+      stillRemainingFromPaper++;
+    }
+
+    ab.classList.remove("hidden");
+    ab.innerHTML =
+      `<b>Jou antwoord:</b> ${esc(given || "Leeg")}<br>
+       <b>Korrekte/model antwoord:</b><br>${ans}<br>
+       <b>Verduideliking:</b> ${x.model || ans}<br>
+       <b>Punt:</b> ${s}/${x.m}<br>
+       <span class="small">${s == x.m ? "Hierdie vraag is nou bemeester en sal nie weer opkom nie." : "Hierdie vraag bly oor vir ’n volgende vraestel."}</span>`;
+  });
+
+  saveMastered(currentSubject, mastered);
+
+  var paperNo = getPaperNo(currentSubject);
+  setPaperNo(currentSubject, paperNo + 1);
+
+  var percent = Math.round(total / max * 100);
+  var remainingAfter = getRemaining(currentSubject).length;
+  var masteredTotal = getMasteredCount(currentSubject);
+  var bankTotal = BANK[currentSubject].length;
+
+  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("rname").innerText = document.getElementById("name").value.trim() || "Edrick";
+  document.getElementById("rsubject").innerText = currentSubject;
+  document.getElementById("rpaper").innerText = paperNo;
+  document.getElementById("score").innerText = total;
+  document.getElementById("maxscore").innerText = max;
+  document.getElementById("percent").innerText = percent;
+
+  var statusText = percent>=80 ? "Uitstekend" : percent>=70 ? "Goed" : percent>=50 ? "Geslaag" : "Moet nog oefen";
+  document.getElementById("status").innerText = statusText;
+
+  var extra = document.getElementById("masterySummary");
+  if(!extra){
+    extra = document.createElement("div");
+    extra.id = "masterySummary";
+    extra.className = "answer";
+    document.getElementById("result").appendChild(extra);
+  }
+
+  if(remainingAfter <= 0){
+    extra.innerHTML =
+      `<h2>Alles bemeester!</h2>
+       <p>Edrick het nou al die vrae in <b>${currentSubject}</b> 100% reg gekry.</p>
+       <p><b>Mastery:</b> ${masteredTotal}/${bankTotal}</p>`;
+  } else {
+    extra.innerHTML =
+      `<h3>Mastery progress</h3>
+       <p><b>Nuwe vrae reg bemeester in hierdie vraestel:</b> ${newlyMastered}</p>
+       <p><b>Vrae in hierdie vraestel wat nog oorbly:</b> ${stillRemainingFromPaper}</p>
+       <p><b>Totale vrae reeds bemeester:</b> ${masteredTotal}/${bankTotal}</p>
+       <p><b>Totale vrae nog oor:</b> ${remainingAfter}</p>
+       <p>Die volgende vraestel sal moeiliker voel, want die maklike vrae wat hy reg gekry het, val weg.</p>`;
+  }
+
+  window.lastEdrickResult = {
+    name: document.getElementById("name").value.trim() || "Edrick",
+    subject: currentSubject,
+    paper: paperNo,
+    score: total,
+    max: max,
+    percent: percent,
+    status: statusText,
+    masteredNow: newlyMastered,
+    masteredTotal: masteredTotal,
+    remaining: remainingAfter,
+    bankTotal: bankTotal,
+    date: new Date().toLocaleString()
+  };
+
+  window.scrollTo({top:document.getElementById("result").offsetTop, behavior:"smooth"});
+}
+</script>
+<!-- TEAE_EDRICK_ADAPTIVE_500_ENGINE_V2_END -->
 </body>
 </html>
+
 
 
