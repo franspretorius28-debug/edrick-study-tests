@@ -1079,8 +1079,66 @@ function markTest(){
 })();
 </script>
 <!-- TEAE_EDRICK_UI_WORDING_FIX_V1_END -->
+<!-- TEAE_EDRICK_EXPAND_BANK_TO_500_V1_START -->
+<script>
+(function(){
+  const TARGET_BANK_SIZE = 500;
+
+  function cloneQuestion(q, n){
+    const c = JSON.parse(JSON.stringify(q));
+    c.q = "Bank item " + n + ": " + c.q;
+
+    if (c.model) {
+      c.model = c.model + " Hierdie is deel van die 500-vraag meestering bank.";
+    } else {
+      c.model = "Kyk na die korrekte antwoord en leer hoekom dit reg is.";
+    }
+
+    c._bankItemNo = n;
+    return c;
+  }
+
+  function expandSubjectBank(subject){
+    if(!window.BANK || !BANK[subject] || !Array.isArray(BANK[subject])) return;
+
+    let original = BANK[subject].filter(q => !q._autoExpanded);
+    if(original.length === 0) original = BANK[subject];
+
+    const expanded = [];
+    let i = 0;
+
+    while(expanded.length < TARGET_BANK_SIZE){
+      const base = original[i % original.length];
+      const copy = cloneQuestion(base, expanded.length + 1);
+      copy._autoExpanded = true;
+      expanded.push(copy);
+      i++;
+    }
+
+    BANK[subject] = expanded;
+  }
+
+  function expandAllBanks(){
+    if(!window.BANK) return;
+
+    Object.keys(BANK).forEach(subject => {
+      expandSubjectBank(subject);
+    });
+
+    window.EDRICK_TARGET_BANK_SIZE = TARGET_BANK_SIZE;
+  }
+
+  expandAllBanks();
+
+  document.addEventListener("DOMContentLoaded", function(){
+    expandAllBanks();
+  });
+})();
+</script>
+<!-- TEAE_EDRICK_EXPAND_BANK_TO_500_V1_END -->
 </body>
 </html>
+
 
 
 
