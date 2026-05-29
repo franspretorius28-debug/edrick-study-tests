@@ -2527,8 +2527,132 @@ startFreshTest();
 })();
 </script>
 <!-- TEAE_ENRICO_MATH_FORCE_COVER_V3_END -->
+<!-- TEAE_FINAL_MATH_30_50_OVERRIDE_V1_START -->
+<script>
+(function(){
+  function teaePickSessionQuestions(){
+    try{
+      let base = selectedTopic === "Alles"
+        ? [...allQuestions]
+        : allQuestions.filter(q => q.topic === selectedTopic);
+
+      const mastered = Array.from(new Set(masteredKeys || []));
+      const notMastered = base.filter(q => !mastered.includes(qKey(q)));
+
+      if(notMastered.length > 0){
+        base = notMastered;
+      }
+
+      base = shuffle([...base]);
+
+      const size = base.length <= 50 ? base.length : 30 + Math.floor(Math.random() * 21);
+      return base.slice(0, size);
+    } catch(e){
+      console.error("TEAE session pick error", e);
+      return [];
+    }
+  }
+
+  window.teaeForceMathSession = function(){
+    try{
+      const picked = teaePickSessionQuestions();
+
+      if(!picked.length){
+        alert("Geen vrae beskikbaar nie.");
+        return;
+      }
+
+      questions = picked;
+      current = 0;
+      answers = {};
+      wrongQuestions = [];
+
+      const review = document.getElementById("review");
+      if(review) review.innerHTML = "";
+
+      render();
+
+      setTimeout(function(){
+        const meta = document.getElementById("meta");
+        if(meta && questions && questions.length){
+          meta.innerHTML = meta.innerHTML.replace(/van\s+\d+/i, "van " + questions.length);
+        }
+        window.scrollTo(0,0);
+      }, 100);
+
+    } catch(e){
+      alert("Wiskunde sessie fout: " + e.message);
+      console.error(e);
+    }
+  };
+
+  // Override die ou Wiskunde knoppies/funksies finaal.
+  window.startFreshTest = function(){
+    window.teaeForceMathSession();
+  };
+
+  window.resetMasteryRound = function(){
+    window.teaeForceMathSession();
+  };
+
+  window.shuffleCurrent = function(){
+    window.teaeForceMathSession();
+  };
+
+  window.enricoStartNew = function(){
+    window.teaeForceMathSession();
+  };
+
+  window.enricoRandom = function(){
+    window.teaeForceMathSession();
+  };
+
+  // As die ou app reeds 547 vrae gelaai het, sny dit dadelik af na 30-50.
+  function fixAlreadyLoaded547(){
+    try{
+      if(Array.isArray(questions) && questions.length > 50){
+        window.teaeForceMathSession();
+      }
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    let tries = 0;
+    const timer = setInterval(function(){
+      tries++;
+
+      // Her-bind sigbare knoppies sodat hulle nie weer die 547 pad gebruik nie.
+      Array.from(document.querySelectorAll("button,a")).forEach(function(btn){
+        const t = String(btn.innerText || btn.textContent || "").toLowerCase();
+
+        if(
+          t.includes("begin nuwe toets") ||
+          t.includes("begin vars ronde") ||
+          t.includes("begin volgende oefensessie") ||
+          t === "random"
+        ){
+          btn.onclick = function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            window.teaeForceMathSession();
+            return false;
+          };
+        }
+      });
+
+      fixAlreadyLoaded547();
+
+      if(tries > 20){
+        clearInterval(timer);
+      }
+    }, 250);
+  });
+})();
+</script>
+<!-- TEAE_FINAL_MATH_30_50_OVERRIDE_V1_END -->
 </body>
 </html>
+
 
 
 
