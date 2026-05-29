@@ -8546,6 +8546,127 @@ load(); render(); if(state.screen==="exam" && state.examStarted && !state.examFi
 })();
 </script>
 <!-- TEAE_ENRICO_SINGLE_SUBJECT_LOCK_V1_END -->
+<!-- TEAE_ENRICO_FORCE_DIRECT_SUBJECT_V2_START -->
+<style>
+#teaeDirectSubjectBar{
+  position:sticky;
+  top:0;
+  z-index:999999;
+  background:#0f172a;
+  color:white;
+  padding:16px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  font-family:Arial,sans-serif;
+}
+#teaeDirectSubjectBar b{font-size:22px}
+#teaeDirectSubjectBar a{
+  background:#dc2626;
+  color:white;
+  text-decoration:none;
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:900;
+}
+</style>
+
+<script>
+(function(){
+  const TITLE = "RTT / CAT";
+  const KEYWORDS = ["cat","rtt","computer","computers"];
+
+  function norm(x){
+    return String(x || "").toLowerCase().replace(/\\s+/g," ").trim();
+  }
+
+  function addBar(){
+    if(document.getElementById("teaeDirectSubjectBar")) return;
+    const bar = document.createElement("div");
+    bar.id = "teaeDirectSubjectBar";
+    bar.innerHTML = '<b>Enrico - ' + TITLE + '</b><span>Besig om direk die regte vak oop te maak...</span><a href="index.html">Terug hoofkieslys</a>';
+    document.body.insertBefore(bar, document.body.firstChild);
+  }
+
+  function isTargetText(txt){
+    txt = norm(txt);
+    return KEYWORDS.some(k => txt.includes(norm(k)));
+  }
+
+  function clickBestTarget(){
+    const all = Array.from(document.querySelectorAll("button,a,div"));
+    let best = null;
+    let score = 0;
+
+    for(const el of all){
+      const txt = norm(el.innerText || el.textContent || "");
+      const parent = norm((el.closest(".card, section, article, div") || el).innerText || "");
+      let s = 0;
+
+      if(isTargetText(txt)) s += 20;
+      if(isTargetText(parent)) s += 20;
+
+      if(txt.includes("exam")) s += 15;
+      if(txt.includes("open")) s += 12;
+      if(txt.includes("start")) s += 12;
+      if(txt.includes("begin")) s += 12;
+
+      if(s > score){
+        score = s;
+        best = el;
+      }
+    }
+
+    if(best && score >= 25){
+      best.scrollIntoView({behavior:"smooth", block:"center"});
+      setTimeout(() => {
+        try { best.click(); } catch(e){}
+      }, 300);
+      return true;
+    }
+
+    return false;
+  }
+
+  function hideWrongCards(){
+    const cards = Array.from(document.querySelectorAll(".card, section, article"));
+    cards.forEach(card => {
+      const t = norm(card.innerText || card.textContent || "");
+      const hasSubjects = t.includes("k53") || t.includes("cat") || t.includes("rtt") || t.includes("landbou") || t.includes("mathlit") || t.includes("wiskundige");
+      if(hasSubjects && !isTargetText(t)){
+        card.style.display = "none";
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    addBar();
+
+    let tries = 0;
+    const timer = setInterval(function(){
+      tries++;
+      hideWrongCards();
+
+      const body = norm(document.body.innerText || "");
+      const alreadyInExam = body.includes("question") || body.includes("vraag") || body.includes("antwoord") || body.includes("submit");
+
+      if(!alreadyInExam){
+        clickBestTarget();
+      } else {
+        const bar = document.getElementById("teaeDirectSubjectBar");
+        if(bar) bar.querySelector("span").innerText = "Regte vak is oop.";
+        clearInterval(timer);
+      }
+
+      if(tries > 12){
+        clearInterval(timer);
+      }
+    }, 500);
+  });
+})();
+</script>
+<!-- TEAE_ENRICO_FORCE_DIRECT_SUBJECT_V2_END -->
 </body>
 </html>
 
@@ -8618,6 +8739,7 @@ load(); render(); if(state.screen==="exam" && state.examStarted && !state.examFi
 
 
 <!-- DASHBOARD PATCH 2: clean home text and safe header icon -->
+
 
 
 
