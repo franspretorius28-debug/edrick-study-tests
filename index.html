@@ -196,41 +196,15 @@ function showChild(child){
     box.innerHTML = `
       <div class="child-title">Enrico se vakke</div>
       <div class="small">
-        Wiskunde maak direk oop. Die ander drie links maak die ou Enrico app oop waar daai vakke reeds is.
+        Kies die vak. Wiskunde maak direk oop. K53, RTT/CAT en Landbou maak die ou Enrico app oop met die regte vak parameter.
       </div>
 
       <div class="btn-row">
         <a class="btn" href="enrico_math_mastery.html">Wiskunde</a>
+        <a class="btn" href="enrico_legacy_index.html?subject=k53">K53</a>
+        <a class="btn" href="enrico_legacy_index.html?subject=cat">RTT / CAT</a>
+        <a class="btn" href="enrico_legacy_index.html?subject=landbou">Landbou</a>
       </div>
-
-      <div style="margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
-        <a href="enrico_legacy_index.html" style="background:#0f172a;color:white;text-decoration:none;border-radius:18px;padding:24px;min-height:150px;display:block;">
-          <div style="font-size:32px;margin-bottom:14px;">🚗</div>
-          <h3 style="margin:0 0 12px;color:white;">K53 Learner’s Licence</h3>
-          <p style="margin:0;color:#cbd5e1;line-height:1.4;">Road signs, rules, markings, and controls</p>
-          <div style="margin-top:16px;display:inline-block;background:#dcfce7;color:#166534;padding:7px 14px;border-radius:999px;font-weight:bold;">Open</div>
-        </a>
-
-        <a href="enrico_legacy_index.html" style="background:white;color:#111827;text-decoration:none;border-radius:18px;padding:24px;min-height:150px;display:block;border:1px solid #e5e7eb;"><div style="font-size:32px;margin-bottom:14px;">💻</div>
-          <h3 style="margin:0 0 12px;">CAT / Computers</h3>
-          <p style="margin:0;color:#64748b;line-height:1.4;">Graad 10 RTT - Kwartaal 2 eksamenvoorbereiding</p>
-          <div style="margin-top:16px;display:inline-block;background:#dcfce7;color:#166534;padding:7px 14px;border-radius:999px;font-weight:bold;">Open</div>
-        </a>
-
-        <a href="enrico_legacy_index.html" style="background:white;color:#111827;text-decoration:none;border-radius:18px;padding:24px;min-height:150px;display:block;border:1px solid #e5e7eb;"><div style="font-size:32px;margin-bottom:14px;">🌱</div>
-          <h3 style="margin:0 0 12px;">Landbou Wetenskappe</h3>
-          <p style="margin:0;color:#64748b;line-height:1.4;">Graad 10 Landbouwetenskappe - Kwartaal 2</p>
-          <div style="margin-top:16px;display:inline-block;background:#dcfce7;color:#166534;padding:7px 14px;border-radius:999px;font-weight:bold;">Open</div>
-        </a>
-      </div>
-
-      <style>
-        @media(max-width:800px){
-          #subjects div[style*="grid-template-columns:repeat(3"]{
-            grid-template-columns:1fr !important;
-          }
-        }
-      </style>
     `;
   }
 
@@ -260,62 +234,9 @@ function showChild(child){
 
 loadName();
 </script>
-<!-- TEAE_FAMILY_DIRECT_SUBJECT_LINKS_V1_START -->
-<script>
-(function(){
-  function clean(t){
-    return String(t || "").toLowerCase().replace(/\s+/g," ").trim();
-  }
-
-  document.addEventListener("click", function(e){
-    const a = e.target.closest("a,button");
-    if(!a) return;
-
-    const text = clean(a.innerText || a.textContent || "");
-
-    // Edrick direct subjects
-    if(text.includes("kuns en kultuur")){
-      e.preventDefault();
-      window.location.href = "edrick.html?subject=kuns";
-      return;
-    }
-
-    if(text.includes("tegnologie")){
-      e.preventDefault();
-      window.location.href = "edrick.html?subject=tegnologie";
-      return;
-    }
-
-    if(text === "engels" || text.includes("engels")){
-      e.preventDefault();
-      window.location.href = "edrick.html?subject=engels";
-      return;
-    }
-
-    // Enrico direct subjects
-    if(text.includes("k53")){
-      e.preventDefault();
-      window.location.href = "enrico_legacy_index.html?subject=k53";
-      return;
-    }
-
-    if(text.includes("cat") || text.includes("rtt") || text.includes("computers")){
-      e.preventDefault();
-      window.location.href = "enrico_legacy_index.html?subject=cat";
-      return;
-    }
-
-    if(text.includes("landbou")){
-      e.preventDefault();
-      window.location.href = "enrico_legacy_index.html?subject=landbou";
-      return;
-    }
-  }, true);
-})();
-</script>
-<!-- TEAE_FAMILY_DIRECT_SUBJECT_LINKS_V1_END -->
 </body>
 </html>
+
 
 
 
