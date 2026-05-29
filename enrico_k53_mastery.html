@@ -295,38 +295,202 @@ document.addEventListener("DOMContentLoaded", function(){
   document.getElementById("resetBtn").addEventListener("click", resetProgress);
 });
 </script>
-<!-- TEAE_FORCE_ENRICO_START_BUTTON_V1_START -->
+<!-- TEAE_ENRICO_SELF_START_ENGINE_V2_START -->
 <script>
 (function(){
-  function showError(msg){
-    var old = document.getElementById("teaeStartError");
-    if(old) old.remove();
-
-    var box = document.createElement("div");
-    box.id = "teaeStartError";
-    box.style.cssText = "max-width:1060px;margin:14px auto;padding:14px 18px;border-radius:14px;background:#fee2e2;border:2px solid #ef4444;color:#7f1d1d;font-family:Arial;font-weight:bold;";
-    box.innerText = msg;
-    document.body.insertBefore(box, document.body.firstChild.nextSibling);
+  function subjectFromTitle(){
+    var h = (document.querySelector("header h1") || {}).innerText || document.title || "";
+    h = h.toLowerCase();
+    if(h.includes("rtt") || h.includes("cat")) return "cat";
+    if(h.includes("landbou")) return "landbou";
+    return "k53";
   }
 
-  function forceStart(){
-    try{
-      if(typeof makeBank === "function") makeBank();
-      if(typeof updateStats === "function") updateStats();
+  function subjectLabel(){
+    var s = subjectFromTitle();
+    if(s === "cat") return "RTT / CAT";
+    if(s === "landbou") return "Landbou Wetenskappe";
+    return "K53";
+  }
 
-      if(typeof startSession === "function"){
-        startSession();
-        return;
-      }
+  function questionsFor(){
+    var s = subjectFromTitle();
 
-      showError("StartSession funksie is nie gevind nie. Hierdie module se script het nog 'n fout.");
-    }catch(e){
-      showError("Fout met Begin oefensessie: " + (e && e.message ? e.message : e));
-      console.error(e);
+    if(s === "cat"){
+      return [
+        {q:"What is hardware?", o:["Programs","Physical computer parts","Internet data","Passwords"], a:"Physical computer parts", e:"Hardware is die fisiese dele van die rekenaar."},
+        {q:"What is software?", o:["Physical parts","Programs/apps","Keyboard only","Screen only"], a:"Programs/apps", e:"Software is programme/apps wat op 'n rekenaar werk."},
+        {q:"Which one is an input device?", o:["Monitor","Printer","Keyboard","Speaker"], a:"Keyboard", e:"A keyboard sends input to the computer."},
+        {q:"Which one is an output device?", o:["Mouse","Scanner","Monitor","Keyboard"], a:"Monitor", e:"A monitor shows information/output."},
+        {q:"What is a strong password?", o:["12345","Your name","A mix of letters, numbers and symbols","password"], a:"A mix of letters, numbers and symbols", e:"A strong password is hard to guess."},
+        {q:"What does CPU stand for?", o:["Central Processing Unit","Computer Print Unit","Control Power User","Central Program Utility"], a:"Central Processing Unit", e:"The CPU processes instructions."},
+        {q:"Which device is used to store files?", o:["Hard drive","Monitor","Speaker","Mouse"], a:"Hard drive", e:"Storage devices keep files and data."},
+        {q:"What is malware?", o:["Helpful program","Harmful software","A keyboard key","A printer type"], a:"Harmful software", e:"Malware can damage or steal data."}
+      ];
     }
+
+    if(s === "landbou"){
+      return [
+        {q:"What do plants need for photosynthesis?", o:["Water, carbon dioxide and sunlight","Only soil","Only oxygen","Only fertilizer"], a:"Water, carbon dioxide and sunlight", e:"Photosynthesis needs water, carbon dioxide and sunlight."},
+        {q:"Which part of the plant absorbs water?", o:["Flower","Root","Fruit","Stem only"], a:"Root", e:"Roots absorb water and minerals."},
+        {q:"What is compost used for?", o:["To poison soil","To improve soil fertility","To dry plants","To stop sunlight"], a:"To improve soil fertility", e:"Compost improves soil with organic matter."},
+        {q:"Which factor can cause soil erosion?", o:["Good cover crops","Strong wind and water runoff","Mulching","Contour ploughing"], a:"Strong wind and water runoff", e:"Wind and water runoff remove topsoil."},
+        {q:"What is irrigation?", o:["Watering crops","Burning fields","Removing roots","Picking fruit"], a:"Watering crops", e:"Irrigation supplies water to crops."},
+        {q:"Why is soil important?", o:["Plants grow in it","It blocks sunlight","It stops rain","It makes animals fly"], a:"Plants grow in it", e:"Soil supports plant growth."},
+        {q:"What does fertilizer add to soil?", o:["Nutrients","Plastic","Glass","Smoke"], a:"Nutrients", e:"Fertilizer adds nutrients plants need."},
+        {q:"What is crop rotation?", o:["Planting different crops in different seasons","Spinning plants","Cutting roots","Watering at night only"], a:"Planting different crops in different seasons", e:"Crop rotation helps soil health."}
+      ];
+    }
+
+    return [
+      {q:"What does a red octagonal road sign mean?", o:["Yield","Stop","No entry","Parking"], a:"Stop", e:"A red octagonal sign means Stop."},
+      {q:"What must you do at a yield sign?", o:["Stop always","Give way if necessary","Speed up","Park"], a:"Give way if necessary", e:"Yield means give right of way if needed."},
+      {q:"Before changing lanes you must:", o:["Only hoot","Signal and check mirrors/blind spot","Close eyes","Speed up"], a:"Signal and check mirrors/blind spot", e:"Always check mirrors, blind spot and signal."},
+      {q:"What does a red traffic light mean?", o:["Go","Stop","Speed up","Park"], a:"Stop", e:"A red traffic light means stop."},
+      {q:"When may you overtake?", o:["Only when safe and allowed","Anytime","On blind rises","At intersections"], a:"Only when safe and allowed", e:"Overtake only when safe, legal and clear."},
+      {q:"What does a solid white line usually mean?", o:["Do not cross/overtake","Drive faster","Parking only","Pedestrian only"], a:"Do not cross/overtake", e:"A solid line restricts crossing/overtaking."},
+      {q:"What must you use before turning?", o:["Indicator","Wipers","Radio","Hazards only"], a:"Indicator", e:"Use indicators to show intention."},
+      {q:"What is a blind spot?", o:["Area mirrors cannot show clearly","A road sign","A tyre mark","A robot"], a:"Area mirrors cannot show clearly", e:"Blind spots must be checked by looking over shoulder."}
+    ];
+  }
+
+  function buildBank(){
+    var base = questionsFor();
+    var bank = [];
+    for(var i=0; i<500; i++){
+      var q = JSON.parse(JSON.stringify(base[i % base.length]));
+      q.id = subjectFromTitle() + "_" + (i+1);
+      q.q = "Vraag " + (i+1) + ": " + q.q;
+      bank.push(q);
+    }
+    return bank;
+  }
+
+  function key(){
+    return "enrico_mastery_self_" + subjectFromTitle();
+  }
+
+  function done(){
+    try { return JSON.parse(localStorage.getItem(key()) || "[]"); }
+    catch(e){ return []; }
+  }
+
+  function saveDone(arr){
+    localStorage.setItem(key(), JSON.stringify(Array.from(new Set(arr))));
+  }
+
+  function esc(s){
+    return String(s || "").replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c];
+    });
+  }
+
+  function updateTopStats(){
+    var bank = buildBank();
+    var d = done();
+    var rem = bank.filter(function(q){ return d.indexOf(q.id) === -1; }).length;
+
+    var total = document.getElementById("total");
+    var doneEl = document.getElementById("done");
+    var remaining = document.getElementById("remaining");
+
+    if(total) total.innerText = bank.length;
+    if(doneEl) doneEl.innerText = d.length;
+    if(remaining) remaining.innerText = rem;
+  }
+
+  function startOwnSession(){
+    var oldErr = document.getElementById("teaeStartError");
+    if(oldErr) oldErr.remove();
+
+    var bank = buildBank();
+    var d = done();
+    var rem = bank.filter(function(q){ return d.indexOf(q.id) === -1; });
+
+    if(rem.length === 0){
+      alert("Alles is klaar 100% reg!");
+      return;
+    }
+
+    rem.sort(function(){ return Math.random() - 0.5; });
+
+    var count = rem.length <= 50 ? rem.length : 30 + Math.floor(Math.random() * 21);
+    var current = rem.slice(0, count);
+
+    var html = '<section class="card" id="teaeOwnExam">';
+    html += '<h2>' + subjectLabel() + ' - Oefensessie</h2>';
+    html += '<p>Vrae in hierdie sessie: <b>' + current.length + '</b></p>';
+
+    current.forEach(function(q, i){
+      html += '<div class="card" id="ownbox_' + i + '">';
+      html += '<h3>' + (i+1) + '. ' + esc(q.q) + '</h3>';
+      q.o.forEach(function(opt){
+        html += '<label><input type="radio" name="ownq_' + i + '" value="' + esc(opt) + '"> ' + esc(opt) + '</label>';
+      });
+      html += '<div class="answer hidden" id="ownans_' + i + '"></div>';
+      html += '</div>';
+    });
+
+    html += '<button class="green" id="ownMarkBtn" type="button">Merk sessie</button>';
+    html += '<a class="btn gray" href="index.html">Terug hoofkieslys</a>';
+    html += '</section>';
+
+    var home = document.getElementById("home");
+    if(home) home.classList.add("hidden");
+
+    var existing = document.getElementById("teaeOwnExam");
+    if(existing) existing.remove();
+
+    var wrap = document.querySelector(".wrap") || document.body;
+    wrap.insertAdjacentHTML("beforeend", html);
+
+    document.getElementById("ownMarkBtn").onclick = function(){
+      var score = 0;
+      var d2 = done();
+
+      current.forEach(function(q, i){
+        var checked = document.querySelector('input[name="ownq_' + i + '"]:checked');
+        var ans = checked ? checked.value : "";
+        var box = document.getElementById("ownbox_" + i);
+        var fb = document.getElementById("ownans_" + i);
+
+        box.classList.remove("correct","wrong");
+
+        if(ans === q.a){
+          score++;
+          box.classList.add("correct");
+          if(d2.indexOf(q.id) === -1) d2.push(q.id);
+        } else {
+          box.classList.add("wrong");
+        }
+
+        fb.classList.remove("hidden");
+        fb.innerHTML = '<b>Jou antwoord:</b> ' + esc(ans || "Leeg") +
+          '<br><b>Regte antwoord:</b> ' + esc(q.a) +
+          '<br><b>Verduideliking:</b> ' + esc(q.e);
+      });
+
+      saveDone(d2);
+      updateTopStats();
+
+      var percent = Math.round((score / current.length) * 100);
+      var result = document.createElement("div");
+      result.className = "answer";
+      result.innerHTML = '<h2>Finale result: ' + percent + '%</h2>' +
+        '<b>Punte:</b> ' + score + '/' + current.length +
+        '<br><b>Vrae nog oor:</b> ' + (500 - done().length) +
+        '<br>Volgende sessie wys net wat nog nie 100% reg is nie.';
+
+      document.getElementById("teaeOwnExam").appendChild(result);
+      result.scrollIntoView({behavior:"smooth", block:"center"});
+    };
+
+    document.getElementById("teaeOwnExam").scrollIntoView({behavior:"smooth", block:"start"});
   }
 
   document.addEventListener("DOMContentLoaded", function(){
+    updateTopStats();
+
     var btn = document.getElementById("startBtn");
 
     if(!btn){
@@ -340,16 +504,25 @@ document.addEventListener("DOMContentLoaded", function(){
       btn.onclick = function(e){
         e.preventDefault();
         e.stopPropagation();
-        forceStart();
+        startOwnSession();
       };
-      btn.style.outline = "3px solid #22c55e";
-    } else {
-      showError("Begin knoppie is nie gevind nie.");
+    }
+
+    var reset = document.getElementById("resetBtn");
+    if(reset){
+      reset.onclick = function(e){
+        e.preventDefault();
+        if(confirm("Reset hierdie vak se progress?")){
+          localStorage.removeItem(key());
+          updateTopStats();
+        }
+      };
     }
   });
 })();
 </script>
-<!-- TEAE_FORCE_ENRICO_START_BUTTON_V1_END -->
+<!-- TEAE_ENRICO_SELF_START_ENGINE_V2_END -->
 </body>
 </html>
+
 
