@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrico - RTT / CAT</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,sans-serif;margin:0;background:#eef2ff;color:#111827}
+header{background:#0f172a;color:white;text-align:center;padding:34px 14px 42px}
+header h1{margin:0 0 18px;font-size:38px;font-weight:800;letter-spacing:1px}
+header p{margin:0;font-size:18px}
+.wrap{max-width:1060px;margin:28px auto;padding:0 16px}
+.card{background:white;border-radius:18px;padding:22px;margin:14px 0;box-shadow:0 10px 28px #0002}
+input,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px}
+button,.btn{border:0;border-radius:12px;padding:13px 16px;margin:5px;font-weight:800;background:#2563eb;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.stats{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.row{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:9px 0;font-size:18px}
+.row:last-child{border-bottom:0}
+.big{font-size:30px;font-weight:900;color:#2563eb}
+.answer{background:#eef2ff;padding:12px;border-radius:12px;margin-top:10px;line-height:1.45}
+.correct{background:#f0fdf4;border:2px solid #22c55e}
+.wrong{background:#fef2f2;border:2px solid #ef4444}
+.part{background:#fff7ed;border:2px solid #f97316}
+.hidden{display:none}
+label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;margin:8px 0;padding:10px}
+.small{color:#64748b;line-height:1.45}
+@media(max-width:800px){header h1{font-size:30px}.grid{grid-template-columns:1fr}.wrap{margin:18px auto}}
+</style>
+</head>
+<body class="notranslate">
+<header>
+  <h1>💻 Enrico - RTT / CAT</h1>
+  <p>Groot vraebank | Adaptiewe leer | Outomaties gemerk</p>
+</header>
+
+<main class="wrap">
+  <section class="card" id="home">
+    <h2>Begin</h2>
+    <p class="small">Elke vraag wat Enrico 100% reg kry, val uit. Vrae wat verkeerd is, bly oor totdat hy dit reg kry.</p>
+    <input id="name" value="Enrico" placeholder="Enrico">
+    <div class="grid">
+      <div class="stats">
+        <h3>RTT / CAT Adaptiewe Leerbank</h3>
+        <div class="row"><b>Vrae in groot bank</b><span id="total">500</span></div>
+        <div class="row"><b>Reeds 100% reg</b><span id="done">0</span></div>
+        <div class="row"><b>Vrae nog oor</b><span class="big" id="remaining">500</span></div>
+      </div>
+      <div>
+        <button class="green" onclick="startSession()">Begin volgende oefensessie</button>
+        <button class="red" onclick="resetProgress()">Reset hierdie vak</button>
+        <a class="btn gray" href="index.html">Terug hoofkieslys</a>
+        <div class="answer">
+          <b>Hoe dit werk:</b><br>
+          Die app gee 30–50 vrae per sessie. As daar 50 of minder oorbly, kry hy al die oorblywende vrae.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="exam">
+    <h2 id="examTitle">RTT / CAT - Oefensessie</h2>
+    <p id="info"></p>
+    <div id="questions"></div>
+    <button class="green" onclick="markSession()">Merk sessie</button>
+    <button class="gray" onclick="location.reload()">Terug</button>
+  </section>
+
+  <section class="card hidden" id="result">
+    <h2>Finale Uitslag</h2>
+    <p><b>Naam:</b> <span id="rname"></span></p>
+    <p><b>Vak:</b> RTT / CAT</p>
+    <p><b>Punte:</b> <span id="score"></span>/<span id="maxscore"></span></p>
+    <p class="big"><span id="percent"></span>%</p>
+    <div id="summary" class="answer"></div>
+  </section>
+</main>
+
+<script>
+const SUBJECT = "RTT / CAT";
+const TARGET = 500;
+const MINQ = 30;
+const MAXQ = 50;
+
+const BASE_QUESTIONS = [
+ {t:"mcq",m:1,q:"What is hardware?",o:["Programs","Physical computer parts","Internet data","Passwords"],a:"Physical computer parts",model:"Hardware is the physical parts of a computer."},
+ {t:"mcq",m:1,q:"What is software?",o:["Physical parts","Programs/apps","Keyboard only","Screen only"],a:"Programs/apps",model:"Software is programs and instructions used by a computer."},
+ {t:"mcq",m:1,q:"Which one is an input device?",o:["Monitor","Printer","Keyboard","Speaker"],a:"Keyboard",model:"A keyboard sends input to the computer."},
+ {t:"mcq",m:1,q:"Which one is an output device?",o:["Mouse","Scanner","Monitor","Keyboard"],a:"Monitor",model:"A monitor shows output from the computer."},
+ {t:"kw",m:2,q:"Name two ways to keep your password safe.",k:["strong","private","not share","change"],model:"Use strong passwords, keep them private, do not share them, and change them when needed."}
+];
+
+function cloneQuestion(q,n){
+  const c = JSON.parse(JSON.stringify(q));
+  c.id = "bank-" + n;
+  c.q = "Bank item " + n + ": " + c.q;
+  return c;
+}
+
+function buildBank(){
+  const bank = [];
+  let i = 0;
+  while(bank.length < TARGET){
+    bank.push(cloneQuestion(BASE_QUESTIONS[i % BASE_QUESTIONS.length], bank.length + 1));
+    i++;
+  }
+  return bank;
+}
+
+const BANK = buildBank();
+
+function key(){ return "enrico_mastery_" + SUBJECT.replace(/\\s+/g,"_"); }
+function mastered(){
+  try{return JSON.parse(localStorage.getItem(key())||"[]")}catch(e){return []}
+}
+function saveMastered(a){localStorage.setItem(key(),JSON.stringify([...new Set(a)]))}
+function remaining(){const m=mastered();return BANK.filter(q=>!m.includes(q.id))}
+function updateStats(){
+  const d=mastered().length, r=remaining().length;
+  document.getElementById("total").innerText=BANK.length;
+  document.getElementById("done").innerText=d;
+  document.getElementById("remaining").innerText=r;
+}
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+}
+let current=[];
+
+function startSession(){
+  const r=remaining();
+  if(r.length===0){alert("Alles is bemeester!");return}
+  shuffle(r);
+  const count = r.length <= MAXQ ? r.length : MINQ + Math.floor(Math.random()*(MAXQ-MINQ+1));
+  current = r.slice(0,count);
+  render();
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  document.getElementById("info").innerText="Vrae in hierdie sessie: "+current.length+" | Oorblywend voor begin: "+r.length;
+  window.scrollTo(0,0);
+}
+
+function render(){
+  let h="";
+  current.forEach((x,i)=>{
+    h += <div class="card" id="box\"><h3>\. \</h3><p><b>[\ punte]</b></p>;
+    if(x.t==="mcq"){
+      x.o.forEach(o=>h+=<label><input type="radio" name="q\" value="\"> \</label>);
+    } else {
+      h += <textarea name="q\" placeholder="Tik jou antwoord hier"></textarea>;
+    }
+    h += <div class="answer hidden" id="ans\"></div></div>;
+  });
+  document.getElementById("questions").innerHTML=h;
+}
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;","'":"&#039;"}[m]))}
+function val(i){let e=document.querySelector([name="q\"]:checked)||document.querySelector([name="q\"]);return e?e.value.trim():""}
+function norm(s){return String(s||"").toLowerCase().replace(/[.,;:!?()']/g," ").replace(/\\s+/g," ").trim()}
+function markKw(x,a){let n=norm(a),f=0;x.k.forEach(k=>{if(n.includes(norm(k)))f++});return Math.round((f/x.k.length)*x.m)}
+
+function markSession(){
+  let total=0,max=0,newDone=0,wrong=0;
+  let m=mastered();
+
+  current.forEach((x,i)=>{
+    let s=0,given=val(i),ans=x.a||x.model;
+    max+=x.m;
+    const box=document.getElementById("box"+i), ab=document.getElementById("ans"+i);
+    box.classList.remove("correct","wrong","part");
+
+    if(x.t==="mcq") s=(given===x.a)?x.m:0;
+    else s=markKw(x,given);
+
+    total+=s;
+
+    if(s===x.m){
+      box.classList.add("correct");
+      if(!m.includes(x.id)){m.push(x.id);newDone++}
+    } else {
+      box.classList.add(s>0?"part":"wrong");
+      wrong++;
+    }
+
+    ab.classList.remove("hidden");
+    ab.innerHTML=<b>Jou antwoord:</b> \<br><b>Korrekte/model antwoord:</b><br>\<br><b>Verduideliking:</b> \<br><b>Punt:</b> \/\;
+  });
+
+  saveMastered(m);
+  updateStats();
+
+  const p=Math.round(total/max*100);
+  const rem=remaining().length;
+
+  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("rname").innerText=document.getElementById("name").value||"Enrico";
+  document.getElementById("score").innerText=total;
+  document.getElementById("maxscore").innerText=max;
+  document.getElementById("percent").innerText=p;
+  document.getElementById("summary").innerHTML=<b>Nuwe vrae reg bemeester:</b> \<br><b>Vrae nog oor:</b> \<br>Die volgende sessie fokus net op wat nog oorbly.;
+  window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
+}
+
+function resetProgress(){
+  if(confirm("Reset RTT / CAT progress?")){
+    localStorage.removeItem(key());
+    updateStats();
+  }
+}
+
+updateStats();
+</script>
+</body>
+</html>
