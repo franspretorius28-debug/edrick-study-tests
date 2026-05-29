@@ -4,34 +4,33 @@
 <meta charset="UTF-8">
 <meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enrico - RTT / CAT</title>
+<title>RTT / CAT</title>
 <style>
 *{box-sizing:border-box}
-body{font-family:Arial,sans-serif;margin:0;background:#eef2ff;color:#111827}
+body{margin:0;font-family:Arial,sans-serif;background:#eef2ff;color:#111827}
 header{background:#0f172a;color:white;text-align:center;padding:34px 14px 42px}
 header h1{margin:0 0 18px;font-size:38px;font-weight:800;letter-spacing:1px}
 header p{margin:0;font-size:18px}
-.wrap{max-width:1060px;margin:28px auto;padding:0 16px}
-.card{background:white;border-radius:18px;padding:22px;margin:14px 0;box-shadow:0 10px 28px #0002}
-input,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px}
-button,.btn{border:0;border-radius:12px;padding:13px 16px;margin:5px;font-weight:800;background:#2563eb;color:white;cursor:pointer;text-decoration:none;display:inline-block}
-.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}
+.wrap{max-width:1060px;margin:30px auto;padding:0 16px}
+.card{background:white;border-radius:18px;padding:24px;margin:16px 0;box-shadow:0 12px 30px #0002}
 .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
 .stats{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
-.row{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:9px 0;font-size:18px}
+.row{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:10px 0;font-size:18px}
 .row:last-child{border-bottom:0}
-.big{font-size:30px;font-weight:900;color:#2563eb}
+.big{font-size:32px;font-weight:900;color:#2563eb}
+input{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;margin:10px 0}
+button,.btn{border:0;border-radius:12px;padding:14px 18px;margin:6px;font-weight:900;background:#2563eb;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}
+label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;margin:8px 0;padding:11px}
 .answer{background:#eef2ff;padding:12px;border-radius:12px;margin-top:10px;line-height:1.45}
-.correct{background:#f0fdf4;border:2px solid #22c55e}
-.wrong{background:#fef2f2;border:2px solid #ef4444}
-.part{background:#fff7ed;border:2px solid #f97316}
+.correct{background:#f0fdf4!important;border:2px solid #22c55e!important}
+.wrong{background:#fef2f2!important;border:2px solid #ef4444!important}
 .hidden{display:none}
-label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;margin:8px 0;padding:10px}
 .small{color:#64748b;line-height:1.45}
 @media(max-width:800px){header h1{font-size:30px}.grid{grid-template-columns:1fr}.wrap{margin:18px auto}}
 </style>
 </head>
-<body class="notranslate">
+<body>
 <header>
   <h1>💻 Enrico - RTT / CAT</h1>
   <p>Groot vraebank | Adaptiewe leer | Outomaties gemerk</p>
@@ -68,56 +67,35 @@ label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;
     <p id="info"></p>
     <div id="questions"></div>
     <button class="green" id="markBtn" type="button">Merk sessie</button>
-    <button class="gray" type="button" onclick="location.reload()">Terug</button>
+    <a class="btn gray" href="index.html">Terug hoofkieslys</a>
   </section>
 
   <section class="card hidden" id="result">
-    <h2>Finale Uitslag</h2>
-    <p><b>Naam:</b> <span id="rname"></span></p>
-    <p><b>Vak:</b> RTT / CAT</p>
-    <p><b>Punte:</b> <span id="score"></span>/<span id="maxscore"></span></p>
-    <p class="big"><span id="percent"></span>%</p>
-    <div id="summary" class="answer"></div>
+    <h2>Finale Resultaat</h2>
+    <div id="resultText" class="answer"></div>
   </section>
 </main>
 
 <script>
-var SUBJECT = "RTT / CAT";
-var TARGET = 500;
-var MINQ = 30;
-var MAXQ = 50;
-var BASE_QUESTIONS = [
- {"t":"mcq","m":1,"q":"What is hardware?","o":["Programs","Physical computer parts","Internet data","Passwords"],"a":"Physical computer parts","model":"Hardware is the physical parts of a computer."},
- {"t":"mcq","m":1,"q":"What is software?","o":["Physical parts","Programs/apps","Keyboard only","Screen only"],"a":"Programs/apps","model":"Software is programs and instructions used by a computer."},
- {"t":"mcq","m":1,"q":"Which one is an input device?","o":["Monitor","Printer","Keyboard","Speaker"],"a":"Keyboard","model":"A keyboard sends input to the computer."},
- {"t":"mcq","m":1,"q":"Which one is an output device?","o":["Mouse","Scanner","Monitor","Keyboard"],"a":"Monitor","model":"A monitor shows output from the computer."},
- {"t":"kw","m":2,"q":"Name two ways to keep your password safe.","k":["strong","private","not share","change"],"model":"Use strong passwords, keep them private, do not share them, and change them when needed."}
+const SUBJECT = "RTT / CAT";
+const BASE = [
+ {"q":"What is hardware?","o":["Programs","Physical computer parts","Internet data","Passwords"],"a":"Physical computer parts","e":"Hardware is the physical parts of a computer."},
+ {"q":"What is software?","o":["Physical parts","Programs/apps","Keyboard only","Screen only"],"a":"Programs/apps","e":"Software is programs and instructions used by a computer."},
+ {"q":"Which one is an input device?","o":["Monitor","Printer","Keyboard","Speaker"],"a":"Keyboard","e":"A keyboard sends input to the computer."},
+ {"q":"Which one is an output device?","o":["Mouse","Scanner","Monitor","Keyboard"],"a":"Monitor","e":"A monitor shows output."},
+ {"q":"What is malware?","o":["Helpful program","Harmful software","A keyboard key","A printer type"],"a":"Harmful software","e":"Malware can damage or steal data."}
 ];
-var BANK = [];
-var current = [];
+let BANK = [];
+let CURRENT = [];
 
-function safeText(s){
-  return String(s || "").replace(/[&<>"']/g,function(ch){
-    return {"&":"&amp;","<":"&lt;",">":"&gt;",""":"&quot;","'":"&#039;"}[ch] || ch;
+function esc(s){
+  return String(s || "").replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c];
   });
 }
 
-function makeBank(){
-  BANK = [];
-  var n = 1;
-  while(BANK.length < TARGET){
-    for(var i=0; i<BASE_QUESTIONS.length && BANK.length<TARGET; i++){
-      var q = JSON.parse(JSON.stringify(BASE_QUESTIONS[i]));
-      q.id = SUBJECT.replace(/\s+/g,"_") + "_" + n;
-      q.q = "Vraag " + n + ": " + q.q;
-      BANK.push(q);
-      n++;
-    }
-  }
-}
-
 function storageKey(){
-  return "enrico_mastery_" + SUBJECT.replace(/\s+/g,"_");
+  return "enrico_clean_mastery_" + SUBJECT.replace(/\s+/g, "_");
 }
 
 function getDone(){
@@ -125,404 +103,131 @@ function getDone(){
   catch(e){ return []; }
 }
 
-function setDone(arr){
+function saveDone(arr){
   localStorage.setItem(storageKey(), JSON.stringify(Array.from(new Set(arr))));
 }
 
-function getRemaining(){
-  var done = getDone();
-  return BANK.filter(function(q){ return done.indexOf(q.id) === -1; });
+function buildBank(){
+  BANK = [];
+  let n = 1;
+  while(BANK.length < 500){
+    for(let i=0; i<BASE.length && BANK.length<500; i++){
+      let q = JSON.parse(JSON.stringify(BASE[i]));
+      q.id = SUBJECT.replace(/\s+/g, "_") + "_" + n;
+      q.q = "Vraag " + n + ": " + q.q;
+      BANK.push(q);
+      n++;
+    }
+  }
+}
+
+function remainingBank(){
+  const d = getDone();
+  return BANK.filter(q => !d.includes(q.id));
 }
 
 function updateStats(){
-  var done = getDone().length;
-  var rem = getRemaining().length;
+  const d = getDone();
+  const r = remainingBank();
   document.getElementById("total").textContent = BANK.length;
-  document.getElementById("done").textContent = done;
-  document.getElementById("remaining").textContent = rem;
+  document.getElementById("done").textContent = d.length;
+  document.getElementById("remaining").textContent = r.length;
 }
 
-function shuffle(arr){
-  for(var i=arr.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var t=arr[i]; arr[i]=arr[j]; arr[j]=t;
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
   }
 }
 
 function startSession(){
-  var rem = getRemaining();
+  const rem = remainingBank();
   if(rem.length === 0){
     alert("Alles is klaar 100% reg!");
     return;
   }
 
   shuffle(rem);
-  var count = rem.length <= MAXQ ? rem.length : MINQ + Math.floor(Math.random() * (MAXQ - MINQ + 1));
-  current = rem.slice(0, count);
+  const count = rem.length <= 50 ? rem.length : 30 + Math.floor(Math.random() * 21);
+  CURRENT = rem.slice(0, count);
 
-  renderQuestions();
-
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("result").classList.add("hidden");
-  document.getElementById("exam").classList.remove("hidden");
-  document.getElementById("info").textContent = "Vrae in hierdie sessie: " + current.length + " | Oorblywend voor begin: " + rem.length;
-  window.scrollTo(0,0);
-}
-
-function renderQuestions(){
-  var html = "";
-
-  current.forEach(function(q, i){
-    html += '<div class="card" id="box_'+i+'">';
-    html += '<h3>'+(i+1)+'. '+safeText(q.q)+'</h3>';
-    html += '<p><b>['+q.m+' punte]</b></p>';
-
-    if(q.t === "mcq"){
-      q.o.forEach(function(opt){
-        html += '<label><input type="radio" name="q_'+i+'" value="'+safeText(opt)+'"> '+safeText(opt)+'</label>';
-      });
-    } else {
-      html += '<textarea name="q_'+i+'" placeholder="Tik jou antwoord hier"></textarea>';
-    }
-
-    html += '<div class="answer hidden" id="ans_'+i+'"></div>';
-    html += '</div>';
+  let html = "";
+  CURRENT.forEach((q,i) => {
+    html += `<div class="card" id="box_${i}">`;
+    html += `<h3>${i+1}. ${esc(q.q)}</h3>`;
+    q.o.forEach(opt => {
+      html += `<label><input type="radio" name="q_${i}" value="${esc(opt)}"> ${esc(opt)}</label>`;
+    });
+    html += `<div class="answer hidden" id="fb_${i}"></div>`;
+    html += `</div>`;
   });
 
   document.getElementById("questions").innerHTML = html;
-}
-
-function getAnswer(i){
-  var checked = document.querySelector('input[name="q_'+i+'"]:checked');
-  if(checked) return checked.value.trim();
-
-  var txt = document.querySelector('textarea[name="q_'+i+'"]');
-  if(txt) return txt.value.trim();
-
-  return "";
-}
-
-function norm(s){
-  return String(s || "").toLowerCase().replace(/[.,;:!?()']/g," ").replace(/\s+/g," ").trim();
-}
-
-function markKeywords(q, ans){
-  var n = norm(ans);
-  var found = 0;
-
-  q.k.forEach(function(k){
-    if(n.indexOf(norm(k)) >= 0) found++;
-  });
-
-  return Math.round((found / q.k.length) * q.m);
+  document.getElementById("info").innerHTML = "Vrae in hierdie sessie: <b>" + CURRENT.length + "</b>";
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  window.scrollTo(0,0);
 }
 
 function markSession(){
-  var total = 0;
-  var max = 0;
-  var newDone = 0;
-  var done = getDone();
+  let score = 0;
+  let d = getDone();
 
-  current.forEach(function(q, i){
-    var ans = getAnswer(i);
-    var score = 0;
-    max += q.m;
+  CURRENT.forEach((q,i) => {
+    const checked = document.querySelector(`input[name="q_${i}"]:checked`);
+    const ans = checked ? checked.value : "";
+    const box = document.getElementById("box_" + i);
+    const fb = document.getElementById("fb_" + i);
 
-    if(q.t === "mcq"){
-      score = ans === q.a ? q.m : 0;
-    } else {
-      score = markKeywords(q, ans);
-    }
+    box.classList.remove("correct","wrong");
 
-    total += score;
-
-    var box = document.getElementById("box_"+i);
-    var feedback = document.getElementById("ans_"+i);
-
-    box.classList.remove("correct","wrong","part");
-
-    if(score === q.m){
+    if(ans === q.a){
+      score++;
       box.classList.add("correct");
-      if(done.indexOf(q.id) === -1){
-        done.push(q.id);
-        newDone++;
-      }
-    } else if(score > 0){
-      box.classList.add("part");
+      if(!d.includes(q.id)) d.push(q.id);
     } else {
       box.classList.add("wrong");
     }
 
-    feedback.classList.remove("hidden");
-    feedback.innerHTML =
-      "<b>Jou antwoord:</b> " + safeText(ans || "Leeg") +
-      "<br><b>Korrekte/model antwoord:</b><br>" + safeText(q.a || q.model) +
-      "<br><b>Verduideliking:</b> " + safeText(q.model) +
-      "<br><b>Punt:</b> " + score + "/" + q.m;
+    fb.classList.remove("hidden");
+    fb.innerHTML =
+      "<b>Jou antwoord:</b> " + esc(ans || "Leeg") +
+      "<br><b>Regte antwoord:</b> " + esc(q.a) +
+      "<br><b>Verduideliking:</b> " + esc(q.e);
   });
 
-  setDone(done);
+  saveDone(d);
   updateStats();
 
-  var percent = max ? Math.round((total / max) * 100) : 0;
+  const percent = CURRENT.length ? Math.round(score / CURRENT.length * 100) : 0;
+  const left = remainingBank().length;
 
   document.getElementById("result").classList.remove("hidden");
-  document.getElementById("rname").textContent = document.getElementById("name").value || "Enrico";
-  document.getElementById("score").textContent = total;
-  document.getElementById("maxscore").textContent = max;
-  document.getElementById("percent").textContent = percent;
-  document.getElementById("summary").innerHTML =
-    "<b>Nuwe vrae 100% reg:</b> " + newDone +
-    "<br><b>Vrae nog oor:</b> " + getRemaining().length +
-    "<br>Die volgende sessie fokus net op wat nog oorbly.";
+  document.getElementById("resultText").innerHTML =
+    "<h2>" + percent + "%</h2>" +
+    "<b>Punte:</b> " + score + "/" + CURRENT.length +
+    "<br><b>Vrae nog oor:</b> " + left +
+    "<br>Volgende sessie wys net wat nog nie 100% reg is nie.";
 
-  window.scrollTo({top:document.getElementById("result").offsetTop, behavior:"smooth"});
+  document.getElementById("result").scrollIntoView({behavior:"smooth", block:"center"});
 }
 
 function resetProgress(){
-  if(confirm("Reset " + SUBJECT + " progress?")){
+  if(confirm("Reset hierdie vak se progress?")){
     localStorage.removeItem(storageKey());
     updateStats();
   }
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-  makeBank();
+  buildBank();
   updateStats();
-
   document.getElementById("startBtn").addEventListener("click", startSession);
   document.getElementById("markBtn").addEventListener("click", markSession);
   document.getElementById("resetBtn").addEventListener("click", resetProgress);
 });
 </script>
-<!-- TEAE_ENRICO_SELF_START_ENGINE_V2_START -->
-<script>
-(function(){
-  function subjectFromTitle(){
-    var h = (document.querySelector("header h1") || {}).innerText || document.title || "";
-    h = h.toLowerCase();
-    if(h.includes("rtt") || h.includes("cat")) return "cat";
-    if(h.includes("landbou")) return "landbou";
-    return "k53";
-  }
-
-  function subjectLabel(){
-    var s = subjectFromTitle();
-    if(s === "cat") return "RTT / CAT";
-    if(s === "landbou") return "Landbou Wetenskappe";
-    return "K53";
-  }
-
-  function questionsFor(){
-    var s = subjectFromTitle();
-
-    if(s === "cat"){
-      return [
-        {q:"What is hardware?", o:["Programs","Physical computer parts","Internet data","Passwords"], a:"Physical computer parts", e:"Hardware is die fisiese dele van die rekenaar."},
-        {q:"What is software?", o:["Physical parts","Programs/apps","Keyboard only","Screen only"], a:"Programs/apps", e:"Software is programme/apps wat op 'n rekenaar werk."},
-        {q:"Which one is an input device?", o:["Monitor","Printer","Keyboard","Speaker"], a:"Keyboard", e:"A keyboard sends input to the computer."},
-        {q:"Which one is an output device?", o:["Mouse","Scanner","Monitor","Keyboard"], a:"Monitor", e:"A monitor shows information/output."},
-        {q:"What is a strong password?", o:["12345","Your name","A mix of letters, numbers and symbols","password"], a:"A mix of letters, numbers and symbols", e:"A strong password is hard to guess."},
-        {q:"What does CPU stand for?", o:["Central Processing Unit","Computer Print Unit","Control Power User","Central Program Utility"], a:"Central Processing Unit", e:"The CPU processes instructions."},
-        {q:"Which device is used to store files?", o:["Hard drive","Monitor","Speaker","Mouse"], a:"Hard drive", e:"Storage devices keep files and data."},
-        {q:"What is malware?", o:["Helpful program","Harmful software","A keyboard key","A printer type"], a:"Harmful software", e:"Malware can damage or steal data."}
-      ];
-    }
-
-    if(s === "landbou"){
-      return [
-        {q:"What do plants need for photosynthesis?", o:["Water, carbon dioxide and sunlight","Only soil","Only oxygen","Only fertilizer"], a:"Water, carbon dioxide and sunlight", e:"Photosynthesis needs water, carbon dioxide and sunlight."},
-        {q:"Which part of the plant absorbs water?", o:["Flower","Root","Fruit","Stem only"], a:"Root", e:"Roots absorb water and minerals."},
-        {q:"What is compost used for?", o:["To poison soil","To improve soil fertility","To dry plants","To stop sunlight"], a:"To improve soil fertility", e:"Compost improves soil with organic matter."},
-        {q:"Which factor can cause soil erosion?", o:["Good cover crops","Strong wind and water runoff","Mulching","Contour ploughing"], a:"Strong wind and water runoff", e:"Wind and water runoff remove topsoil."},
-        {q:"What is irrigation?", o:["Watering crops","Burning fields","Removing roots","Picking fruit"], a:"Watering crops", e:"Irrigation supplies water to crops."},
-        {q:"Why is soil important?", o:["Plants grow in it","It blocks sunlight","It stops rain","It makes animals fly"], a:"Plants grow in it", e:"Soil supports plant growth."},
-        {q:"What does fertilizer add to soil?", o:["Nutrients","Plastic","Glass","Smoke"], a:"Nutrients", e:"Fertilizer adds nutrients plants need."},
-        {q:"What is crop rotation?", o:["Planting different crops in different seasons","Spinning plants","Cutting roots","Watering at night only"], a:"Planting different crops in different seasons", e:"Crop rotation helps soil health."}
-      ];
-    }
-
-    return [
-      {q:"What does a red octagonal road sign mean?", o:["Yield","Stop","No entry","Parking"], a:"Stop", e:"A red octagonal sign means Stop."},
-      {q:"What must you do at a yield sign?", o:["Stop always","Give way if necessary","Speed up","Park"], a:"Give way if necessary", e:"Yield means give right of way if needed."},
-      {q:"Before changing lanes you must:", o:["Only hoot","Signal and check mirrors/blind spot","Close eyes","Speed up"], a:"Signal and check mirrors/blind spot", e:"Always check mirrors, blind spot and signal."},
-      {q:"What does a red traffic light mean?", o:["Go","Stop","Speed up","Park"], a:"Stop", e:"A red traffic light means stop."},
-      {q:"When may you overtake?", o:["Only when safe and allowed","Anytime","On blind rises","At intersections"], a:"Only when safe and allowed", e:"Overtake only when safe, legal and clear."},
-      {q:"What does a solid white line usually mean?", o:["Do not cross/overtake","Drive faster","Parking only","Pedestrian only"], a:"Do not cross/overtake", e:"A solid line restricts crossing/overtaking."},
-      {q:"What must you use before turning?", o:["Indicator","Wipers","Radio","Hazards only"], a:"Indicator", e:"Use indicators to show intention."},
-      {q:"What is a blind spot?", o:["Area mirrors cannot show clearly","A road sign","A tyre mark","A robot"], a:"Area mirrors cannot show clearly", e:"Blind spots must be checked by looking over shoulder."}
-    ];
-  }
-
-  function buildBank(){
-    var base = questionsFor();
-    var bank = [];
-    for(var i=0; i<500; i++){
-      var q = JSON.parse(JSON.stringify(base[i % base.length]));
-      q.id = subjectFromTitle() + "_" + (i+1);
-      q.q = "Vraag " + (i+1) + ": " + q.q;
-      bank.push(q);
-    }
-    return bank;
-  }
-
-  function key(){
-    return "enrico_mastery_self_" + subjectFromTitle();
-  }
-
-  function done(){
-    try { return JSON.parse(localStorage.getItem(key()) || "[]"); }
-    catch(e){ return []; }
-  }
-
-  function saveDone(arr){
-    localStorage.setItem(key(), JSON.stringify(Array.from(new Set(arr))));
-  }
-
-  function esc(s){
-    return String(s || "").replace(/[&<>"']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c];
-    });
-  }
-
-  function updateTopStats(){
-    var bank = buildBank();
-    var d = done();
-    var rem = bank.filter(function(q){ return d.indexOf(q.id) === -1; }).length;
-
-    var total = document.getElementById("total");
-    var doneEl = document.getElementById("done");
-    var remaining = document.getElementById("remaining");
-
-    if(total) total.innerText = bank.length;
-    if(doneEl) doneEl.innerText = d.length;
-    if(remaining) remaining.innerText = rem;
-  }
-
-  function startOwnSession(){
-    var oldErr = document.getElementById("teaeStartError");
-    if(oldErr) oldErr.remove();
-
-    var bank = buildBank();
-    var d = done();
-    var rem = bank.filter(function(q){ return d.indexOf(q.id) === -1; });
-
-    if(rem.length === 0){
-      alert("Alles is klaar 100% reg!");
-      return;
-    }
-
-    rem.sort(function(){ return Math.random() - 0.5; });
-
-    var count = rem.length <= 50 ? rem.length : 30 + Math.floor(Math.random() * 21);
-    var current = rem.slice(0, count);
-
-    var html = '<section class="card" id="teaeOwnExam">';
-    html += '<h2>' + subjectLabel() + ' - Oefensessie</h2>';
-    html += '<p>Vrae in hierdie sessie: <b>' + current.length + '</b></p>';
-
-    current.forEach(function(q, i){
-      html += '<div class="card" id="ownbox_' + i + '">';
-      html += '<h3>' + (i+1) + '. ' + esc(q.q) + '</h3>';
-      q.o.forEach(function(opt){
-        html += '<label><input type="radio" name="ownq_' + i + '" value="' + esc(opt) + '"> ' + esc(opt) + '</label>';
-      });
-      html += '<div class="answer hidden" id="ownans_' + i + '"></div>';
-      html += '</div>';
-    });
-
-    html += '<button class="green" id="ownMarkBtn" type="button">Merk sessie</button>';
-    html += '<a class="btn gray" href="index.html">Terug hoofkieslys</a>';
-    html += '</section>';
-
-    var home = document.getElementById("home");
-    if(home) home.classList.add("hidden");
-
-    var existing = document.getElementById("teaeOwnExam");
-    if(existing) existing.remove();
-
-    var wrap = document.querySelector(".wrap") || document.body;
-    wrap.insertAdjacentHTML("beforeend", html);
-
-    document.getElementById("ownMarkBtn").onclick = function(){
-      var score = 0;
-      var d2 = done();
-
-      current.forEach(function(q, i){
-        var checked = document.querySelector('input[name="ownq_' + i + '"]:checked');
-        var ans = checked ? checked.value : "";
-        var box = document.getElementById("ownbox_" + i);
-        var fb = document.getElementById("ownans_" + i);
-
-        box.classList.remove("correct","wrong");
-
-        if(ans === q.a){
-          score++;
-          box.classList.add("correct");
-          if(d2.indexOf(q.id) === -1) d2.push(q.id);
-        } else {
-          box.classList.add("wrong");
-        }
-
-        fb.classList.remove("hidden");
-        fb.innerHTML = '<b>Jou antwoord:</b> ' + esc(ans || "Leeg") +
-          '<br><b>Regte antwoord:</b> ' + esc(q.a) +
-          '<br><b>Verduideliking:</b> ' + esc(q.e);
-      });
-
-      saveDone(d2);
-      updateTopStats();
-
-      var percent = Math.round((score / current.length) * 100);
-      var result = document.createElement("div");
-      result.className = "answer";
-      result.innerHTML = '<h2>Finale result: ' + percent + '%</h2>' +
-        '<b>Punte:</b> ' + score + '/' + current.length +
-        '<br><b>Vrae nog oor:</b> ' + (500 - done().length) +
-        '<br>Volgende sessie wys net wat nog nie 100% reg is nie.';
-
-      document.getElementById("teaeOwnExam").appendChild(result);
-      result.scrollIntoView({behavior:"smooth", block:"center"});
-    };
-
-    document.getElementById("teaeOwnExam").scrollIntoView({behavior:"smooth", block:"start"});
-  }
-
-  document.addEventListener("DOMContentLoaded", function(){
-    updateTopStats();
-
-    var btn = document.getElementById("startBtn");
-
-    if(!btn){
-      var buttons = Array.from(document.querySelectorAll("button"));
-      btn = buttons.find(function(b){
-        return (b.innerText || "").toLowerCase().includes("begin volgende");
-      });
-    }
-
-    if(btn){
-      btn.onclick = function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        startOwnSession();
-      };
-    }
-
-    var reset = document.getElementById("resetBtn");
-    if(reset){
-      reset.onclick = function(e){
-        e.preventDefault();
-        if(confirm("Reset hierdie vak se progress?")){
-          localStorage.removeItem(key());
-          updateTopStats();
-        }
-      };
-    }
-  });
-})();
-</script>
-<!-- TEAE_ENRICO_SELF_START_ENGINE_V2_END -->
 </body>
 </html>
-
-
