@@ -29,7 +29,7 @@ textarea,input{width:100%;padding:11px;border:1px solid #bbb;border-radius:10px;
 <body>
 <header>
 <h1>Edrick - Finale Oefen Toetse</h1>
-<p>3 vakke | 5 vraestelle per vak | Moeiliker vrae | Outomaties gemerk</p>
+<p>3 vakke | Groot vraebanke | Adaptiewe leer | Outomaties gemerk</p>
 </header>
 
 <div class="wrap">
@@ -47,7 +47,7 @@ textarea,input{width:100%;padding:11px;border:1px solid #bbb;border-radius:10px;
 
 <div class="card hidden" id="papers">
 <h2 id="subjectTitle"></h2>
-<p>Kies Vraestel 1 tot 5. Hy kan na elke vraestel terugkom en ’n nuwe een begin.</p>
+<p>Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is.</p>
 <div class="grid" id="paperBtns"></div>
 <button class="gray" onclick="backHome()">Terug</button>
 </div>
@@ -814,11 +814,11 @@ function chooseSubject(s){
 
   var h = "";
   h += `<div class="answer">
-    <h3>${s} Mastery Bank</h3>
-    <p><b>Totale vrae in bank:</b> ${total}</p>
+    <h3>${s} Meestering Bank</h3>
+    <p><b>Vrae tans in bank:</b> ${total}</p>
     <p><b>Vrae reeds 100% reg:</b> ${mastered}</p>
     <p><b>Vrae nog oor:</b> ${remaining}</p>
-    <p><b>Volgende vraestel:</b> ${paperNo}</p>
+    <p><b>Adaptiewe modus:</b> ${paperNo}</p>
     <p class="small">
       Elke vraag wat hy 100% reg kry, word uit toekomstige vraestelle verwyder.
       Vrae wat verkeerd of half reg is, bly oor totdat hy dit reg kry.
@@ -832,7 +832,7 @@ function chooseSubject(s){
       <p>Daar is niks oor om weer te oefen nie.</p>
     </div>`;
   } else {
-    h += `<button class="green" onclick="startAdaptivePaper()">Begin volgende vraestel</button>`;
+    h += `<button class="green" onclick="startAdaptivePaper()">Begin volgende sessie</button>`;
     h += `<div class="answer">
       <b>Hoe dit werk:</b><br>
       As daar meer as ${ADAPTIVE_MAX_QUESTIONS} vrae oor is, kry hy random ${ADAPTIVE_MIN_QUESTIONS}-${ADAPTIVE_MAX_QUESTIONS} vrae.
@@ -1016,8 +1016,72 @@ function markTest(){
 }
 </script>
 <!-- TEAE_EDRICK_ADAPTIVE_500_ENGINE_V2_END -->
+<!-- TEAE_EDRICK_UI_WORDING_FIX_V1_START -->
+<script>
+(function () {
+  function replaceTextNodes(root) {
+    const pairs = [
+      ["3 vakke | 5 vraestelle per vak | Moeiliker vrae | Outomaties gemerk", "3 vakke | Groot vraebanke | Adaptiewe leer | Outomaties gemerk"],
+      ["Kies Vraestel 1 tot 5. Hy kan na elke vraestel terugkom en ’n nuwe een begin.", "Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is."],
+      ["Kies Vraestel 1 tot 5. Hy kan na elke vraestel terugkom en 'n nuwe een begin.", "Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is."],
+      ["5 vraestelle per vak", "Groot vraebanke per vak"],
+      ["Volgende vraestel:", "Adaptiewe modus:"],
+      ["Begin volgende vraestel", "Begin volgende sessie"],
+      ["Mastery Bank", "Meestering Bank"],
+      ["Totale vrae in bank:", "Vrae tans in bank:"]
+    );
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      let txt = node.nodeValue;
+      let changed = txt;
+      pairs.forEach(pair => {
+        changed = changed.split(pair[0]).join(pair[1]);
+      });
+      if (changed !== txt) node.nodeValue = changed;
+    }
+  }
+
+  function patchAdaptiveRow() {
+    const all = Array.from(document.querySelectorAll("div, p, span, strong, b, h1, h2, h3, h4, button"));
+    all.forEach(el => {
+      const txt = (el.textContent || "").replace(/\s+/g, " ").trim();
+
+      if (/Volgende vraestel:/i.test(txt)) {
+        el.textContent = txt.replace(/Volgende vraestel:/i, "Adaptiewe modus:");
+      }
+
+      if (/Adaptiewe modus:\s*1$/i.test(txt)) {
+        el.textContent = "Adaptiewe modus: Geen vaste nommers";
+      }
+
+      if (/Volgende vraestel:\s*1$/i.test(txt)) {
+        el.textContent = "Adaptiewe modus: Geen vaste nommers";
+      }
+
+      if (/Kies Vraestel 1 tot 5/i.test(txt)) {
+        el.textContent = "Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is.";
+      }
+    });
+  }
+
+  function runPatch() {
+    replaceTextNodes(document.body);
+    patchAdaptiveRow();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    runPatch();
+    const obs = new MutationObserver(function () { runPatch(); });
+    obs.observe(document.body, { childList: true, subtree: true });
+  });
+})();
+</script>
+<!-- TEAE_EDRICK_UI_WORDING_FIX_V1_END -->
 </body>
 </html>
+
 
 
 
