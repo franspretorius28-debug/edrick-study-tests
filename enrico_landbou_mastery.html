@@ -295,5 +295,61 @@ document.addEventListener("DOMContentLoaded", function(){
   document.getElementById("resetBtn").addEventListener("click", resetProgress);
 });
 </script>
+<!-- TEAE_FORCE_ENRICO_START_BUTTON_V1_START -->
+<script>
+(function(){
+  function showError(msg){
+    var old = document.getElementById("teaeStartError");
+    if(old) old.remove();
+
+    var box = document.createElement("div");
+    box.id = "teaeStartError";
+    box.style.cssText = "max-width:1060px;margin:14px auto;padding:14px 18px;border-radius:14px;background:#fee2e2;border:2px solid #ef4444;color:#7f1d1d;font-family:Arial;font-weight:bold;";
+    box.innerText = msg;
+    document.body.insertBefore(box, document.body.firstChild.nextSibling);
+  }
+
+  function forceStart(){
+    try{
+      if(typeof makeBank === "function") makeBank();
+      if(typeof updateStats === "function") updateStats();
+
+      if(typeof startSession === "function"){
+        startSession();
+        return;
+      }
+
+      showError("StartSession funksie is nie gevind nie. Hierdie module se script het nog 'n fout.");
+    }catch(e){
+      showError("Fout met Begin oefensessie: " + (e && e.message ? e.message : e));
+      console.error(e);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var btn = document.getElementById("startBtn");
+
+    if(!btn){
+      var buttons = Array.from(document.querySelectorAll("button"));
+      btn = buttons.find(function(b){
+        return (b.innerText || "").toLowerCase().includes("begin volgende");
+      });
+    }
+
+    if(btn){
+      btn.onclick = function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        forceStart();
+      };
+      btn.style.outline = "3px solid #22c55e";
+    } else {
+      showError("Begin knoppie is nie gevind nie.");
+    }
+  });
+})();
+</script>
+<!-- TEAE_FORCE_ENRICO_START_BUTTON_V1_END -->
 </body>
 </html>
+
