@@ -8389,6 +8389,192 @@ load(); render(); if(state.screen==="exam" && state.examStarted && !state.examFi
 })();
 </script>
 <!-- TEAE_ENRICO_LEGACY_SUBJECT_ROUTER_V1_END -->
+<!-- TEAE_ENRICO_LEGACY_DIRECT_OPEN_V3_START -->
+<style>
+#teaeDirectTop{
+  position:sticky;
+  top:0;
+  z-index:999999;
+  background:#0f172a;
+  color:white;
+  padding:16px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  font-family:Arial,sans-serif;
+}
+#teaeDirectTop b{font-size:22px}
+#teaeDirectTop a{
+  background:#dc2626;
+  color:white;
+  text-decoration:none;
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:900;
+}
+</style>
+
+<script>
+(function(){
+  const p = new URLSearchParams(window.location.search);
+  const subject = String(p.get("subject") || "").toLowerCase().trim();
+
+  if(!subject) return;
+
+  const map = {
+    k53: {
+      title: "K53",
+      words: ["k53", "learner", "licence", "license", "road signs", "rules", "markings"]
+    },
+    cat: {
+      title: "RTT / CAT",
+      words: ["rtt", "cat", "computer", "computers"]
+    },
+    landbou: {
+      title: "Landbou",
+      words: ["landbou", "landbou wetenskappe", "landbouwetenskappe", "agriculture"]
+    }
+  };
+
+  const cfg = map[subject];
+  if(!cfg) return;
+
+  function norm(x){
+    return String(x || "").toLowerCase().replace(/\s+/g," ").trim();
+  }
+
+  function containsWanted(text){
+    text = norm(text);
+    return cfg.words.some(w => text.includes(norm(w)));
+  }
+
+  function addTop(){
+    if(document.getElementById("teaeDirectTop")) return;
+
+    const top = document.createElement("div");
+    top.id = "teaeDirectTop";
+    top.innerHTML =
+      '<b>Enrico - ' + cfg.title + '</b>' +
+      '<span>Die app maak hierdie vak direk oop.</span>' +
+      '<a href="index.html">Terug hoofkieslys</a>';
+
+    document.body.insertBefore(top, document.body.firstChild);
+  }
+
+  function findTargetCard(){
+    const cards = Array.from(document.querySelectorAll("section,article,.card,div"));
+    let best = null;
+    let bestScore = 0;
+
+    for(const card of cards){
+      const text = norm(card.innerText || card.textContent || "");
+      if(!text) continue;
+
+      let score = 0;
+
+      if(containsWanted(text)) score += 50;
+      if(text.includes("open")) score += 10;
+      if(text.includes("exam")) score += 10;
+      if(text.includes("start")) score += 10;
+
+      // avoid choosing giant whole-page containers
+      const len = text.length;
+      if(len > 1500) score -= 40;
+      if(len > 3000) score -= 80;
+
+      if(score > bestScore){
+        bestScore = score;
+        best = card;
+      }
+    }
+
+    return bestScore >= 40 ? best : null;
+  }
+
+  function clickInsideTarget(card){
+    if(!card) return false;
+
+    const buttons = Array.from(card.querySelectorAll("button,a"));
+    let openBtn =
+      buttons.find(b => norm(b.innerText || b.textContent).includes("open")) ||
+      buttons.find(b => norm(b.innerText || b.textContent).includes("exam")) ||
+      buttons.find(b => norm(b.innerText || b.textContent).includes("start"));
+
+    if(openBtn){
+      openBtn.scrollIntoView({behavior:"smooth", block:"center"});
+      setTimeout(() => {
+        try { openBtn.click(); } catch(e){}
+      }, 250);
+      return true;
+    }
+
+    try{
+      card.click();
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  function hideOtherSubjectCards(targetCard){
+    if(!targetCard) return;
+
+    const subjectWords = ["k53","rtt","cat","computer","computers","landbou","mathlit","wiskundige geletterdheid"];
+    const cards = Array.from(document.querySelectorAll("section,article,.card,div"));
+
+    for(const card of cards){
+      if(card === targetCard || targetCard.contains(card) || card.contains(targetCard)) continue;
+
+      const text = norm(card.innerText || card.textContent || "");
+      const looksSubject = subjectWords.some(w => text.includes(w));
+
+      if(looksSubject && !containsWanted(text) && text.length < 1200){
+        card.style.display = "none";
+      }
+    }
+  }
+
+  function run(){
+    addTop();
+
+    const body = norm(document.body.innerText || "");
+    const alreadyInQuestion =
+      body.includes("question") ||
+      body.includes("vraag") ||
+      body.includes("antwoord") ||
+      body.includes("submit");
+
+    if(alreadyInQuestion){
+      const span = document.querySelector("#teaeDirectTop span");
+      if(span) span.textContent = cfg.title + " is oop.";
+      return true;
+    }
+
+    const target = findTargetCard();
+    if(target){
+      target.style.border = "3px solid #2563eb";
+      target.style.boxShadow = "0 0 0 4px #dbeafe";
+      hideOtherSubjectCards(target);
+      return clickInsideTarget(target);
+    }
+
+    return false;
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    let tries = 0;
+    const timer = setInterval(function(){
+      tries++;
+      const ok = run();
+      if(ok || tries > 16){
+        clearInterval(timer);
+      }
+    }, 350);
+  });
+})();
+</script>
+<!-- TEAE_ENRICO_LEGACY_DIRECT_OPEN_V3_END -->
 </body>
 </html>
 
@@ -8461,6 +8647,7 @@ load(); render(); if(state.screen==="exam" && state.examStarted && !state.examFi
 
 
 <!-- DASHBOARD PATCH 2: clean home text and safe header icon -->
+
 
 
 

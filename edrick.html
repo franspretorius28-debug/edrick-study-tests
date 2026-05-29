@@ -1519,8 +1519,83 @@ function markTest(){
 })();
 </script>
 <!-- TEAE_EDRICK_TRUE_500_CLEAN_UI_V3_END -->
+<!-- TEAE_EDRICK_DIRECT_SUBJECT_OPEN_V1_START -->
+<script>
+(function(){
+  function norm(x){
+    return String(x || "").toLowerCase().replace(/\s+/g," ").trim();
+  }
+
+  function wantedSubjectName(){
+    const p = new URLSearchParams(window.location.search);
+    const s = norm(p.get("subject") || "");
+    if(!s) return "";
+
+    if(s.includes("kuns")) return "kuns";
+    if(s.includes("tegnologie")) return "tegnologie";
+    if(s.includes("engels")) return "engels";
+    return s;
+  }
+
+  function findBankSubject(wanted){
+    if(typeof BANK === "undefined" || !BANK) return null;
+
+    const keys = Object.keys(BANK);
+
+    if(wanted === "kuns"){
+      return keys.find(k => norm(k).includes("kuns")) || keys[0];
+    }
+
+    if(wanted === "tegnologie"){
+      return keys.find(k => norm(k).includes("tegnologie")) || keys.find(k => norm(k).includes("technology"));
+    }
+
+    if(wanted === "engels"){
+      return keys.find(k => norm(k).includes("engels")) || keys.find(k => norm(k).includes("english"));
+    }
+
+    return keys.find(k => norm(k).includes(wanted));
+  }
+
+  function openDirect(){
+    const wanted = wantedSubjectName();
+    if(!wanted) return false;
+
+    const subjectName = findBankSubject(wanted);
+
+    if(subjectName && typeof chooseSubject === "function"){
+      try{
+        chooseSubject(subjectName);
+        return true;
+      }catch(e){}
+    }
+
+    // fallback: click the visible subject button
+    const buttons = Array.from(document.querySelectorAll("button,a"));
+    const btn = buttons.find(b => norm(b.innerText || b.textContent).includes(wanted));
+    if(btn){
+      btn.click();
+      return true;
+    }
+
+    return false;
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    let tries = 0;
+    const timer = setInterval(function(){
+      tries++;
+      if(openDirect() || tries > 12){
+        clearInterval(timer);
+      }
+    }, 300);
+  });
+})();
+</script>
+<!-- TEAE_EDRICK_DIRECT_SUBJECT_OPEN_V1_END -->
 </body>
 </html>
+
 
 
 

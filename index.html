@@ -260,8 +260,63 @@ function showChild(child){
 
 loadName();
 </script>
+<!-- TEAE_FAMILY_DIRECT_SUBJECT_LINKS_V1_START -->
+<script>
+(function(){
+  function clean(t){
+    return String(t || "").toLowerCase().replace(/\s+/g," ").trim();
+  }
+
+  document.addEventListener("click", function(e){
+    const a = e.target.closest("a,button");
+    if(!a) return;
+
+    const text = clean(a.innerText || a.textContent || "");
+
+    // Edrick direct subjects
+    if(text.includes("kuns en kultuur")){
+      e.preventDefault();
+      window.location.href = "edrick.html?subject=kuns";
+      return;
+    }
+
+    if(text.includes("tegnologie")){
+      e.preventDefault();
+      window.location.href = "edrick.html?subject=tegnologie";
+      return;
+    }
+
+    if(text === "engels" || text.includes("engels")){
+      e.preventDefault();
+      window.location.href = "edrick.html?subject=engels";
+      return;
+    }
+
+    // Enrico direct subjects
+    if(text.includes("k53")){
+      e.preventDefault();
+      window.location.href = "enrico_legacy_index.html?subject=k53";
+      return;
+    }
+
+    if(text.includes("cat") || text.includes("rtt") || text.includes("computers")){
+      e.preventDefault();
+      window.location.href = "enrico_legacy_index.html?subject=cat";
+      return;
+    }
+
+    if(text.includes("landbou")){
+      e.preventDefault();
+      window.location.href = "enrico_legacy_index.html?subject=landbou";
+      return;
+    }
+  }, true);
+})();
+</script>
+<!-- TEAE_FAMILY_DIRECT_SUBJECT_LINKS_V1_END -->
 </body>
 </html>
+
 
 
 
