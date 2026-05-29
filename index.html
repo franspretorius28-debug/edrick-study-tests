@@ -1079,65 +1079,449 @@ function markTest(){
 })();
 </script>
 <!-- TEAE_EDRICK_UI_WORDING_FIX_V1_END -->
-<!-- TEAE_EDRICK_EXPAND_BANK_TO_500_V1_START -->
+<!-- TEAE_EDRICK_TRUE_500_CLEAN_UI_V3_START -->
+<style>
+/* TEAE_EDRICK_TRUE_500_CLEAN_UI_V3 */
+#paperBtns{
+  display:block !important;
+}
+.edrick-bank-panel{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:14px;
+  align-items:stretch;
+}
+.edrick-stats{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:16px;
+}
+.edrick-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.edrick-actions button{
+  width:100%;
+  min-height:64px;
+  margin:0;
+  font-size:15px;
+  border-radius:14px;
+}
+.edrick-help{
+  margin-top:14px;
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  border-radius:16px;
+  padding:14px;
+  line-height:1.45;
+}
+.edrick-big{
+  font-size:28px;
+  font-weight:bold;
+  color:#2563eb;
+}
+.edrick-stat-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid #e5e7eb;
+}
+.edrick-stat-row:last-child{
+  border-bottom:0;
+}
+@media(max-width:700px){
+  .edrick-bank-panel{grid-template-columns:1fr}
+  .edrick-actions{grid-template-columns:1fr}
+}
+</style>
+
 <script>
+/* TEAE_EDRICK_TRUE_500_CLEAN_UI_V3 */
 (function(){
   const TARGET_BANK_SIZE = 500;
+  const MIN_PER_SESSION = 30;
+  const MAX_PER_SESSION = 50;
+
+  function bankExists(){
+    return (typeof BANK !== "undefined" && BANK && typeof BANK === "object");
+  }
+
+  function baseQuestionText(q){
+    return String(q.q || "").replace(/^Bank item\s+\d+\s*:\s*/i, "").trim();
+  }
 
   function cloneQuestion(q, n){
     const c = JSON.parse(JSON.stringify(q));
-    c.q = "Bank item " + n + ": " + c.q;
+    const cleanQ = baseQuestionText(c);
+    c.q = "Bank item " + n + ": " + cleanQ;
+    c._bankItemNo = n;
+    c._autoExpanded500 = true;
 
-    if (c.model) {
-      c.model = c.model + " Hierdie is deel van die 500-vraag meestering bank.";
+    if(c.model){
+      c.model = c.model;
     } else {
-      c.model = "Kyk na die korrekte antwoord en leer hoekom dit reg is.";
+      c.model = "Lees die korrekte antwoord en verduideliking mooi deur.";
     }
 
-    c._bankItemNo = n;
     return c;
   }
 
   function expandSubjectBank(subject){
-    if(!window.BANK || !BANK[subject] || !Array.isArray(BANK[subject])) return;
+    if(!bankExists()) return;
+    if(!Array.isArray(BANK[subject])) return;
 
-    let original = BANK[subject].filter(q => !q._autoExpanded);
-    if(original.length === 0) original = BANK[subject];
+    let original = BANK[subject].filter(q => !q._autoExpanded500);
+    if(original.length === 0){
+      original = BANK[subject];
+    }
 
     const expanded = [];
     let i = 0;
 
     while(expanded.length < TARGET_BANK_SIZE){
       const base = original[i % original.length];
-      const copy = cloneQuestion(base, expanded.length + 1);
-      copy._autoExpanded = true;
-      expanded.push(copy);
+      expanded.push(cloneQuestion(base, expanded.length + 1));
       i++;
     }
 
     BANK[subject] = expanded;
   }
 
-  function expandAllBanks(){
-    if(!window.BANK) return;
-
-    Object.keys(BANK).forEach(subject => {
-      expandSubjectBank(subject);
-    });
-
-    window.EDRICK_TARGET_BANK_SIZE = TARGET_BANK_SIZE;
+  function expandAllBanksTo500(){
+    if(!bankExists()) return;
+    Object.keys(BANK).forEach(subject => expandSubjectBank(subject));
   }
 
-  expandAllBanks();
+  function keySafe(subject){
+    return String(subject || "").replace(/\s+/g,"_");
+  }
+
+  window.edrickAdaptiveKey = function(subject){
+    return "edrick_true500_mastered_" + keySafe(subject);
+  };
+
+  window.edrickSessionKey = function(subject){
+    return "edrick_true500_session_" + keySafe(subject);
+  };
+
+  window.getQuestionId = function(q){
+    const no = q._bankItemNo || "";
+    const raw = no + "|" + (q.q || "") + "|" + (q.a || "") + "|" + (q.model || "");
+    try{
+      return btoa(unescape(encodeURIComponent(raw))).replace(/=/g,"");
+    }catch(e){
+      return raw.replace(/\W/g,"_").slice(0,180);
+    }
+  };
+
+  window.getMastered = function(subject){
+    try{
+      return JSON.parse(localStorage.getItem(window.edrickAdaptiveKey(subject)) || "[]");
+    }catch(e){
+      return [];
+    }
+  };
+
+  window.saveMastered = function(subject, arr){
+    localStorage.setItem(window.edrickAdaptiveKey(subject), JSON.stringify([...new Set(arr)]));
+  };
+
+  window.getSessionNo = function(subject){
+    return parseInt(localStorage.getItem(window.edrickSessionKey(subject)) || "1", 10);
+  };
+
+  window.setSessionNo = function(subject, n){
+    localStorage.setItem(window.edrickSessionKey(subject), String(n));
+  };
+
+  window.getRemaining = function(subject){
+    expandAllBanksTo500();
+    const mastered = window.getMastered(subject);
+    return BANK[subject].filter(q => mastered.indexOf(window.getQuestionId(q)) === -1);
+  };
+
+  window.resetSubjectProgress = function(subject){
+    if(confirm("Wil jy " + subject + " se progress reset?")){
+      localStorage.removeItem(window.edrickAdaptiveKey(subject));
+      localStorage.removeItem(window.edrickSessionKey(subject));
+      chooseSubject(subject);
+    }
+  };
+
+  window.resetAllProgress = function(){
+    if(!bankExists()) return;
+    if(confirm("Wil jy ALLE vakke se progress reset?")){
+      Object.keys(BANK).forEach(function(s){
+        localStorage.removeItem(window.edrickAdaptiveKey(s));
+        localStorage.removeItem(window.edrickSessionKey(s));
+      });
+      backHome();
+    }
+  };
+
+  window.chooseSubject = function(s){
+    expandAllBanksTo500();
+
+    currentSubject = s;
+
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("exam").classList.add("hidden");
+    document.getElementById("result").classList.add("hidden");
+    document.getElementById("papers").classList.remove("hidden");
+
+    const total = BANK[s].length;
+    const mastered = window.getMastered(s).length;
+    const remaining = window.getRemaining(s).length;
+    const sessionNo = window.getSessionNo(s);
+
+    document.getElementById("subjectTitle").innerText = s;
+
+    let h = `
+      <div class="edrick-bank-panel">
+        <div class="edrick-stats">
+          <h3>${s} Adaptiewe Leerbank</h3>
+
+          <div class="edrick-stat-row">
+            <b>Vrae in groot bank</b>
+            <span>${total}</span>
+          </div>
+
+          <div class="edrick-stat-row">
+            <b>Reeds 100% reg</b>
+            <span>${mastered}</span>
+          </div>
+
+          <div class="edrick-stat-row">
+            <b>Vrae nog oor</b>
+            <span class="edrick-big">${remaining}</span>
+          </div>
+
+          <div class="edrick-stat-row">
+            <b>Volgende oefensessie</b>
+            <span>${sessionNo}</span>
+          </div>
+
+          <p class="small">
+            Elke vraag wat Edrick 100% reg kry, word uit die bank gehaal.
+            Vrae wat verkeerd of half reg is, bly oor totdat hy dit reg kry.
+          </p>
+        </div>
+
+        <div>
+          <div class="edrick-actions">
+            <button class="green" onclick="startAdaptivePaper()">Begin volgende oefensessie</button>
+            <button class="red" onclick="resetSubjectProgress('${String(s).replace(/'/g,"\\'")}')">Reset hierdie vak</button>
+            <button class="gray" onclick="backHome()">Terug hoofkieslys</button>
+            <button onclick="window.print()">Print / Save</button>
+          </div>
+
+          <div class="edrick-help">
+            <b>Hoe dit werk:</b><br>
+            Die app gee elke keer 30–50 vrae uit die vrae wat nog oor is.
+            As daar 50 of minder oorbly, kry hy al die oorblywende vrae.
+            Hoe verder hy gaan, hoe meer fokus die toets op wat hy nog nie ken nie.
+          </div>
+        </div>
+      </div>
+    `;
+
+    if(remaining <= 0){
+      h = `
+        <div class="answer correct">
+          <h2>Alles bemeester!</h2>
+          <p>Edrick het al ${total} vrae in <b>${s}</b> 100% reg gekry.</p>
+          <button class="red" onclick="resetSubjectProgress('${String(s).replace(/'/g,"\\'")}')">Reset hierdie vak</button>
+          <button class="gray" onclick="backHome()">Terug hoofkieslys</button>
+        </div>
+      `;
+    }
+
+    document.getElementById("paperBtns").innerHTML = h;
+  };
+
+  window.startPaper = function(){
+    startAdaptivePaper();
+  };
+
+  window.startAdaptivePaper = function(){
+    expandAllBanksTo500();
+
+    const remaining = window.getRemaining(currentSubject);
+
+    if(remaining.length <= 0){
+      alert("Alles is klaar bemeester vir " + currentSubject);
+      chooseSubject(currentSubject);
+      return;
+    }
+
+    const sessionNo = window.getSessionNo(currentSubject);
+    currentPaper = sessionNo;
+
+    let bank = [...remaining];
+    seededShuffle(bank, currentSubject + "-session-" + sessionNo + "-" + Date.now());
+
+    let count;
+    if(bank.length <= MAX_PER_SESSION){
+      count = bank.length;
+    } else {
+      count = MIN_PER_SESSION + Math.floor(Math.random() * (MAX_PER_SESSION - MIN_PER_SESSION + 1));
+    }
+
+    currentQuestions = bank.slice(0, count);
+    renderQuestions();
+
+    document.getElementById("papers").classList.add("hidden");
+    document.getElementById("exam").classList.remove("hidden");
+    document.getElementById("result").classList.add("hidden");
+
+    const max = currentQuestions.reduce((a,b)=>a+b.m,0);
+
+    document.getElementById("examTitle").innerText = currentSubject + " - Oefensessie " + sessionNo;
+    document.getElementById("examInfo").innerText =
+      "Hierdie sessie kom uit die vrae wat nog oor is. Regte vrae verdwyn; verkeerde vrae bly oor.";
+    document.getElementById("markBadge").innerText =
+      "Vrae in hierdie sessie: " + currentQuestions.length +
+      " | Oorblywend voor begin: " + remaining.length +
+      " | Totaal punte: " + max;
+
+    window.scrollTo(0,0);
+  };
+
+  window.markTest = function(){
+    let total = 0;
+    let max = 0;
+    let mastered = window.getMastered(currentSubject);
+    let newlyMastered = 0;
+    let stillRemainingFromSession = 0;
+
+    currentQuestions.forEach((x,i)=>{
+      let s = 0, given = "", ans = "";
+      max += x.m;
+
+      let box = document.getElementById("box"+i);
+      let ab = document.getElementById("ans"+i);
+
+      box.classList.remove("correct","wrong","part");
+
+      if(x.t=="mcq" || x.t=="tf"){
+        given = val("q"+i);
+        s = (given == x.a) ? x.m : 0;
+        ans = x.a;
+      }
+
+      if(x.t=="text"){
+        given = val("q"+i);
+        s = x.a.some(a=>norm(given).includes(norm(a))) ? x.m : 0;
+        ans = x.model;
+      }
+
+      if(x.t=="kw"){
+        given = val("q"+i);
+        s = markKW(x,given);
+        ans = x.model;
+      }
+
+      total += s;
+
+      if(s == x.m){
+        box.classList.add("correct");
+        const id = window.getQuestionId(x);
+        if(mastered.indexOf(id) === -1){
+          mastered.push(id);
+          newlyMastered++;
+        }
+      } else if(s == 0){
+        box.classList.add("wrong");
+        stillRemainingFromSession++;
+      } else {
+        box.classList.add("part");
+        stillRemainingFromSession++;
+      }
+
+      ab.classList.remove("hidden");
+      ab.innerHTML =
+        `<b>Jou antwoord:</b> ${esc(given || "Leeg")}<br>
+         <b>Korrekte/model antwoord:</b><br>${ans}<br>
+         <b>Verduideliking:</b> ${x.model || ans}<br>
+         <b>Punt:</b> ${s}/${x.m}<br>
+         <span class="small">${s == x.m ? "Hierdie vraag is nou bemeester en kom nie weer op nie." : "Hierdie vraag bly oor vir ’n volgende oefensessie."}</span>`;
+    });
+
+    window.saveMastered(currentSubject, mastered);
+
+    const sessionNo = window.getSessionNo(currentSubject);
+    window.setSessionNo(currentSubject, sessionNo + 1);
+
+    const percent = Math.round(total / max * 100);
+    const remainingAfter = window.getRemaining(currentSubject).length;
+    const masteredTotal = window.getMastered(currentSubject).length;
+    const bankTotal = BANK[currentSubject].length;
+
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("rname").innerText = document.getElementById("name").value.trim() || "Edrick";
+    document.getElementById("rsubject").innerText = currentSubject;
+    document.getElementById("rpaper").innerText = "Oefensessie " + sessionNo;
+    document.getElementById("score").innerText = total;
+    document.getElementById("maxscore").innerText = max;
+    document.getElementById("percent").innerText = percent;
+
+    const statusText = percent>=80 ? "Uitstekend" : percent>=70 ? "Goed" : percent>=50 ? "Geslaag" : "Moet nog oefen";
+    document.getElementById("status").innerText = statusText;
+
+    let extra = document.getElementById("masterySummary");
+    if(!extra){
+      extra = document.createElement("div");
+      extra.id = "masterySummary";
+      extra.className = "answer";
+      document.getElementById("result").appendChild(extra);
+    }
+
+    if(remainingAfter <= 0){
+      extra.innerHTML =
+        `<h2>Alles bemeester!</h2>
+         <p>Edrick het nou al ${bankTotal} vrae in <b>${currentSubject}</b> 100% reg gekry.</p>`;
+    } else {
+      extra.innerHTML =
+        `<h3>Mastery progress</h3>
+         <p><b>Nuwe vrae reg bemeester in hierdie sessie:</b> ${newlyMastered}</p>
+         <p><b>Vrae in hierdie sessie wat nog oorbly:</b> ${stillRemainingFromSession}</p>
+         <p><b>Totale vrae reeds bemeester:</b> ${masteredTotal}/${bankTotal}</p>
+         <p><b>Totale vrae nog oor:</b> ${remainingAfter}</p>
+         <p>Die volgende sessie sal meer fokus op wat hy nog nie ken nie.</p>`;
+    }
+
+    window.lastEdrickResult = {
+      name: document.getElementById("name").value.trim() || "Edrick",
+      subject: currentSubject,
+      paper: "Oefensessie " + sessionNo,
+      score: total,
+      max: max,
+      percent: percent,
+      status: statusText,
+      masteredNow: newlyMastered,
+      masteredTotal: masteredTotal,
+      remaining: remainingAfter,
+      bankTotal: bankTotal,
+      date: new Date().toLocaleString()
+    };
+
+    window.scrollTo({top:document.getElementById("result").offsetTop, behavior:"smooth"});
+  };
+
+  expandAllBanksTo500();
 
   document.addEventListener("DOMContentLoaded", function(){
-    expandAllBanks();
+    expandAllBanksTo500();
   });
 })();
 </script>
-<!-- TEAE_EDRICK_EXPAND_BANK_TO_500_V1_END -->
+<!-- TEAE_EDRICK_TRUE_500_CLEAN_UI_V3_END -->
 </body>
 </html>
+
 
 
 
