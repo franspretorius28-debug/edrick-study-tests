@@ -258,6 +258,222 @@ function markTest(){
   };
  window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
 }
+/* TEAE_EDRICK_MASTERY_TRACKING_V1 */
+function masteryKey(subject){
+  return "edrick_mastered_" + subject;
+}
+function loadMastered(subject){
+  try{
+    return JSON.parse(localStorage.getItem(masteryKey(subject)) || "[]");
+  }catch(e){
+    return [];
+  }
+}
+function saveMastered(subject, arr){
+  localStorage.setItem(masteryKey(subject), JSON.stringify([...new Set(arr)]));
+}
+function questionId(q){
+  return btoa(unescape(encodeURIComponent(q.q))).replace(/=/g,"");
+}
+function getRemainingQuestions(subject){
+  var mastered = loadMastered(subject);
+  return BANK[subject].filter(function(q){
+    return mastered.indexOf(questionId(q)) === -1;
+  });
+}
+function resetSubjectProgress(subject){
+  if(confirm("Wil jy al die progress vir " + subject + " skoonmaak?")){
+    localStorage.removeItem(masteryKey(subject));
+    chooseSubject(subject);
+  }
+}
+function resetAllProgress(){
+  if(confirm("Wil jy ALLE vakke se progress skoonmaak?")){
+    Object.keys(BANK).forEach(function(s){
+      localStorage.removeItem(masteryKey(s));
+    });
+    backHome();
+  }
+}
+
+/* Override original subject screen */
+function chooseSubject(s){
+ currentSubject=s;
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("exam").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("papers").classList.remove("hidden");
+
+ var total = BANK[s].length;
+ var mastered = loadMastered(s).length;
+ var remaining = Math.max(0, total - mastered);
+
+ document.getElementById("subjectTitle").innerText=s;
+
+ let h="";
+ h += `<div class="answer">
+   <b>Progress:</b> ${mastered}/${total} vrae klaar reg bemeester.<br>
+   <b>Oor:</b> ${remaining} vrae wat nog geoefen moet word.<br>
+   <span class="small">Elke vraag wat reg geantwoord word, kom nie weer in die volgende vraestel op nie. Vraestel 5 wys net wat nog oorbly.</span>
+ </div>`;
+
+ if(remaining === 0){
+   h += `<div class="answer correct">
+     <h3>Alles klaar!</h3>
+     <p>Edrick het al die vrae in ${s} reg gekry. Daar is niks oor om weer te oefen nie.</p>
+   </div>`;
+ } else {
+   for(let i=1;i<=5;i++){
+     let label = i === 5 ? "Vraestel 5 - Finale oorblywende vrae" : "Vraestel " + i;
+     h += `<button onclick="startPaper(${i})">${label}</button>`;
+   }
+ }
+
+ h += `<br><button class="red" onclick="resetSubjectProgress('${s.replace(/'/g,"\\'")}')">Reset ${s} progress</button>`;
+ h += `<button class="gray" onclick="backHome()">Terug</button>`;
+
+ document.getElementById("paperBtns").innerHTML=h;
+}
+
+/* Override original startPaper */
+function startPaper(n){
+ currentPaper=n;
+
+ let remaining = getRemainingQuestions(currentSubject);
+ if(remaining.length === 0){
+   alert("Alles is klaar reg beantwoord vir " + currentSubject + ". Daar is niks oor nie.");
+   chooseSubject(currentSubject);
+   return;
+ }
+
+ let bank=[...remaining];
+ seededShuffle(bank, currentSubject + "-" + n + "-" + Date.now());
+
+ if(n === 5){
+   currentQuestions = bank;
+ } else {
+   currentQuestions = bank.slice(0, Math.min(20, bank.length));
+ }
+
+ renderQuestions();
+
+ document.getElementById("papers").classList.add("hidden");
+ document.getElementById("exam").classList.remove("hidden");
+ document.getElementById("result").classList.add("hidden");
+
+ document.getElementById("examTitle").innerText=currentSubject+" - Vraestel "+n;
+ let max=currentQuestions.reduce((a,b)=>a+b.m,0);
+
+ if(n === 5){
+   document.getElementById("examInfo").innerText="Finale oefening: Hierdie vraestel bevat net vrae wat nog nie reg bemeester is nie.";
+ } else {
+   document.getElementById("examInfo").innerText="Beantwoord al die vrae. Vrae wat reg is, verdwyn uit volgende vraestelle. Verkeerde vrae bly oor.";
+ }
+
+ document.getElementById("markBadge").innerText="Totaal: " + max + " punte | Oorblywende vrae voor hierdie vraestel: " + remaining.length;
+ window.scrollTo(0,0);
+}
+
+/* Override original markTest with mastery saving */
+function markTest(){
+ let total=0,max=0;
+ let mastered = loadMastered(currentSubject);
+ let newlyMastered = 0;
+ let stillWrong = 0;
+
+ currentQuestions.forEach((x,i)=>{
+  let s=0,given="",ans="";
+  max+=x.m;
+  let box=document.getElementById("box"+i), ab=document.getElementById("ans"+i);
+  box.classList.remove("correct","wrong","part");
+
+  if(x.t=="mcq"||x.t=="tf"){
+    given=val("q"+i);
+    s=(given==x.a)?x.m:0;
+    ans=x.a;
+  }
+  if(x.t=="text"){
+    given=val("q"+i);
+    s=x.a.some(a=>norm(given).includes(norm(a)))?x.m:0;
+    ans=x.model;
+  }
+  if(x.t=="kw"){
+    given=val("q"+i);
+    s=markKW(x,given);
+    ans=x.model;
+  }
+
+  total+=s;
+
+  if(s==x.m){
+    box.classList.add("correct");
+    var id = questionId(x);
+    if(mastered.indexOf(id) === -1){
+      mastered.push(id);
+      newlyMastered++;
+    }
+  } else if(s==0){
+    box.classList.add("wrong");
+    stillWrong++;
+  } else {
+    box.classList.add("part");
+    stillWrong++;
+  }
+
+  ab.classList.remove("hidden");
+  ab.innerHTML=`<b>Jou antwoord:</b> ${esc(given||"Leeg")}<br>
+  <b>Korrekte/model antwoord:</b><br>${ans}<br>
+  <b>Verduideliking:</b> ${x.model || ans}<br>
+  <b>Punt:</b> ${s}/${x.m}`;
+ });
+
+ saveMastered(currentSubject, mastered);
+
+ let p=Math.round(total/max*100);
+ let remainingAfter = getRemainingQuestions(currentSubject).length;
+
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("rname").innerText=document.getElementById("name").value.trim()||"Edrick";
+ document.getElementById("rsubject").innerText=currentSubject;
+ document.getElementById("rpaper").innerText=currentPaper;
+ document.getElementById("score").innerText=total;
+ document.getElementById("maxscore").innerText=max;
+ document.getElementById("percent").innerText=p;
+ document.getElementById("status").innerText=p>=80?"Uitstekend":p>=70?"Goed":p>=50?"Geslaag":"Moet nog oefen";
+
+ let extra = document.getElementById("masterySummary");
+ if(!extra){
+   extra = document.createElement("div");
+   extra.id = "masterySummary";
+   extra.className = "answer";
+   document.getElementById("result").appendChild(extra);
+ }
+
+ if(remainingAfter === 0){
+   extra.innerHTML = `<h3>Alles bemeester!</h3>
+   <p>Hy het nou al die vrae in <b>${currentSubject}</b> reg gekry. Daar is niks oor vir hierdie vak nie.</p>`;
+ } else {
+   extra.innerHTML = `<h3>Leer-progress</h3>
+   <p><b>Nuwe vrae reg bemeester:</b> ${newlyMastered}</p>
+   <p><b>Vrae nog oor in ${currentSubject}:</b> ${remainingAfter}</p>
+   <p>Die volgende vraestel sal nie vrae wys wat hy reeds 100% reg gekry het nie. Vraestel 5 wys net wat nog oorbly.</p>`;
+ }
+
+ window.lastEdrickResult = {
+    name: document.getElementById("name").value.trim() || "Edrick",
+    subject: currentSubject,
+    paper: currentPaper,
+    score: total,
+    max: max,
+    percent: p,
+    status: document.getElementById("status").innerText,
+    remaining: remainingAfter,
+    masteredNow: newlyMastered,
+    date: new Date().toLocaleString()
+ };
+
+ window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
+}
 </script>
 
 <!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_START -->
@@ -282,8 +498,225 @@ function sendWhatsAppResult(){
   var url = "https://wa.me/=" + msg;
   window.open(url, "_blank");
 }
+/* TEAE_EDRICK_MASTERY_TRACKING_V1 */
+function masteryKey(subject){
+  return "edrick_mastered_" + subject;
+}
+function loadMastered(subject){
+  try{
+    return JSON.parse(localStorage.getItem(masteryKey(subject)) || "[]");
+  }catch(e){
+    return [];
+  }
+}
+function saveMastered(subject, arr){
+  localStorage.setItem(masteryKey(subject), JSON.stringify([...new Set(arr)]));
+}
+function questionId(q){
+  return btoa(unescape(encodeURIComponent(q.q))).replace(/=/g,"");
+}
+function getRemainingQuestions(subject){
+  var mastered = loadMastered(subject);
+  return BANK[subject].filter(function(q){
+    return mastered.indexOf(questionId(q)) === -1;
+  });
+}
+function resetSubjectProgress(subject){
+  if(confirm("Wil jy al die progress vir " + subject + " skoonmaak?")){
+    localStorage.removeItem(masteryKey(subject));
+    chooseSubject(subject);
+  }
+}
+function resetAllProgress(){
+  if(confirm("Wil jy ALLE vakke se progress skoonmaak?")){
+    Object.keys(BANK).forEach(function(s){
+      localStorage.removeItem(masteryKey(s));
+    });
+    backHome();
+  }
+}
+
+/* Override original subject screen */
+function chooseSubject(s){
+ currentSubject=s;
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("exam").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("papers").classList.remove("hidden");
+
+ var total = BANK[s].length;
+ var mastered = loadMastered(s).length;
+ var remaining = Math.max(0, total - mastered);
+
+ document.getElementById("subjectTitle").innerText=s;
+
+ let h="";
+ h += `<div class="answer">
+   <b>Progress:</b> ${mastered}/${total} vrae klaar reg bemeester.<br>
+   <b>Oor:</b> ${remaining} vrae wat nog geoefen moet word.<br>
+   <span class="small">Elke vraag wat reg geantwoord word, kom nie weer in die volgende vraestel op nie. Vraestel 5 wys net wat nog oorbly.</span>
+ </div>`;
+
+ if(remaining === 0){
+   h += `<div class="answer correct">
+     <h3>Alles klaar!</h3>
+     <p>Edrick het al die vrae in ${s} reg gekry. Daar is niks oor om weer te oefen nie.</p>
+   </div>`;
+ } else {
+   for(let i=1;i<=5;i++){
+     let label = i === 5 ? "Vraestel 5 - Finale oorblywende vrae" : "Vraestel " + i;
+     h += `<button onclick="startPaper(${i})">${label}</button>`;
+   }
+ }
+
+ h += `<br><button class="red" onclick="resetSubjectProgress('${s.replace(/'/g,"\\'")}')">Reset ${s} progress</button>`;
+ h += `<button class="gray" onclick="backHome()">Terug</button>`;
+
+ document.getElementById("paperBtns").innerHTML=h;
+}
+
+/* Override original startPaper */
+function startPaper(n){
+ currentPaper=n;
+
+ let remaining = getRemainingQuestions(currentSubject);
+ if(remaining.length === 0){
+   alert("Alles is klaar reg beantwoord vir " + currentSubject + ". Daar is niks oor nie.");
+   chooseSubject(currentSubject);
+   return;
+ }
+
+ let bank=[...remaining];
+ seededShuffle(bank, currentSubject + "-" + n + "-" + Date.now());
+
+ if(n === 5){
+   currentQuestions = bank;
+ } else {
+   currentQuestions = bank.slice(0, Math.min(20, bank.length));
+ }
+
+ renderQuestions();
+
+ document.getElementById("papers").classList.add("hidden");
+ document.getElementById("exam").classList.remove("hidden");
+ document.getElementById("result").classList.add("hidden");
+
+ document.getElementById("examTitle").innerText=currentSubject+" - Vraestel "+n;
+ let max=currentQuestions.reduce((a,b)=>a+b.m,0);
+
+ if(n === 5){
+   document.getElementById("examInfo").innerText="Finale oefening: Hierdie vraestel bevat net vrae wat nog nie reg bemeester is nie.";
+ } else {
+   document.getElementById("examInfo").innerText="Beantwoord al die vrae. Vrae wat reg is, verdwyn uit volgende vraestelle. Verkeerde vrae bly oor.";
+ }
+
+ document.getElementById("markBadge").innerText="Totaal: " + max + " punte | Oorblywende vrae voor hierdie vraestel: " + remaining.length;
+ window.scrollTo(0,0);
+}
+
+/* Override original markTest with mastery saving */
+function markTest(){
+ let total=0,max=0;
+ let mastered = loadMastered(currentSubject);
+ let newlyMastered = 0;
+ let stillWrong = 0;
+
+ currentQuestions.forEach((x,i)=>{
+  let s=0,given="",ans="";
+  max+=x.m;
+  let box=document.getElementById("box"+i), ab=document.getElementById("ans"+i);
+  box.classList.remove("correct","wrong","part");
+
+  if(x.t=="mcq"||x.t=="tf"){
+    given=val("q"+i);
+    s=(given==x.a)?x.m:0;
+    ans=x.a;
+  }
+  if(x.t=="text"){
+    given=val("q"+i);
+    s=x.a.some(a=>norm(given).includes(norm(a)))?x.m:0;
+    ans=x.model;
+  }
+  if(x.t=="kw"){
+    given=val("q"+i);
+    s=markKW(x,given);
+    ans=x.model;
+  }
+
+  total+=s;
+
+  if(s==x.m){
+    box.classList.add("correct");
+    var id = questionId(x);
+    if(mastered.indexOf(id) === -1){
+      mastered.push(id);
+      newlyMastered++;
+    }
+  } else if(s==0){
+    box.classList.add("wrong");
+    stillWrong++;
+  } else {
+    box.classList.add("part");
+    stillWrong++;
+  }
+
+  ab.classList.remove("hidden");
+  ab.innerHTML=`<b>Jou antwoord:</b> ${esc(given||"Leeg")}<br>
+  <b>Korrekte/model antwoord:</b><br>${ans}<br>
+  <b>Verduideliking:</b> ${x.model || ans}<br>
+  <b>Punt:</b> ${s}/${x.m}`;
+ });
+
+ saveMastered(currentSubject, mastered);
+
+ let p=Math.round(total/max*100);
+ let remainingAfter = getRemainingQuestions(currentSubject).length;
+
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("rname").innerText=document.getElementById("name").value.trim()||"Edrick";
+ document.getElementById("rsubject").innerText=currentSubject;
+ document.getElementById("rpaper").innerText=currentPaper;
+ document.getElementById("score").innerText=total;
+ document.getElementById("maxscore").innerText=max;
+ document.getElementById("percent").innerText=p;
+ document.getElementById("status").innerText=p>=80?"Uitstekend":p>=70?"Goed":p>=50?"Geslaag":"Moet nog oefen";
+
+ let extra = document.getElementById("masterySummary");
+ if(!extra){
+   extra = document.createElement("div");
+   extra.id = "masterySummary";
+   extra.className = "answer";
+   document.getElementById("result").appendChild(extra);
+ }
+
+ if(remainingAfter === 0){
+   extra.innerHTML = `<h3>Alles bemeester!</h3>
+   <p>Hy het nou al die vrae in <b>${currentSubject}</b> reg gekry. Daar is niks oor vir hierdie vak nie.</p>`;
+ } else {
+   extra.innerHTML = `<h3>Leer-progress</h3>
+   <p><b>Nuwe vrae reg bemeester:</b> ${newlyMastered}</p>
+   <p><b>Vrae nog oor in ${currentSubject}:</b> ${remainingAfter}</p>
+   <p>Die volgende vraestel sal nie vrae wys wat hy reeds 100% reg gekry het nie. Vraestel 5 wys net wat nog oorbly.</p>`;
+ }
+
+ window.lastEdrickResult = {
+    name: document.getElementById("name").value.trim() || "Edrick",
+    subject: currentSubject,
+    paper: currentPaper,
+    score: total,
+    max: max,
+    percent: p,
+    status: document.getElementById("status").innerText,
+    remaining: remainingAfter,
+    masteredNow: newlyMastered,
+    date: new Date().toLocaleString()
+ };
+
+ window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
+}
 </script>
 <!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_END -->
 </body>
 </html>
+
 
