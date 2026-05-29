@@ -3,1527 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edrick - Finale Oefen Toetse</title>
+<title>Familie Study App</title>
 <style>
-body{font-family:Arial,sans-serif;margin:0;background:#eef2ff;color:#111827}
-header{background:#111827;color:white;text-align:center;padding:18px}
-.wrap{max-width:980px;margin:16px auto;padding:10px}
-.card{background:white;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 5px 16px #0002}
-button{border:0;border-radius:12px;padding:13px 15px;margin:5px;font-weight:bold;background:#2563eb;color:white;cursor:pointer}
-.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}.orange{background:#f97316}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
-label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;margin:7px 0;padding:10px}
-textarea,input{width:100%;padding:11px;border:1px solid #bbb;border-radius:10px;font-size:15px;box-sizing:border-box}
-.q{border-top:1px solid #ddd;padding-top:12px;margin-top:12px}
-.q:first-child{border-top:0}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef2ff;
+  color:#111827;
+}
+header{
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:34px 14px 42px;
+}
+header h1{
+  margin:0 0 18px;
+  font-size:38px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+header p{
+  margin:0;
+  font-size:18px;
+}
+.wrap{
+  max-width:1060px;
+  margin:48px auto;
+  padding:0 16px;
+}
+.card{
+  background:white;
+  border-radius:18px;
+  padding:26px;
+  box-shadow:0 12px 30px #0002;
+}
+h2{
+  margin:0 0 18px;
+  font-size:30px;
+}
+.intro{
+  margin:0 0 18px;
+  font-size:18px;
+  line-height:1.5;
+}
+input{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  font-size:17px;
+  margin:0 0 22px;
+}
+h3{
+  margin:0 0 16px;
+  font-size:22px;
+}
+.btn-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:14px 16px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:800;
+  text-align:center;
+  border:0;
+  cursor:pointer;
+  font-size:16px;
+}
+.btn:hover{background:#1d4ed8}
+.green{background:#16a34a}
+.green:hover{background:#15803d}
+.red{background:#dc2626}
+.red:hover{background:#b91c1c}
+.dark{background:#475569}
+.dark:hover{background:#334155}
 .hidden{display:none}
-.correct{background:#f0fdf4;border:2px solid #22c55e}
-.wrong{background:#fef2f2;border:2px solid #ef4444}
-.part{background:#fff7ed;border:2px solid #f97316}
-.answer{background:#eef2ff;padding:10px;border-radius:10px;margin-top:8px;line-height:1.45}
-.score{font-size:30px;font-weight:bold;color:#2563eb}
-.small{font-size:13px;color:#6b7280}
-.badge{display:inline-block;background:#e0e7ff;color:#3730a3;border-radius:999px;padding:6px 10px;margin:3px;font-weight:bold}
+.note{
+  margin-top:18px;
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:14px 16px;
+  color:#64748b;
+  line-height:1.45;
+}
+.subject-panel{
+  margin-top:24px;
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:20px;
+}
+.child-title{
+  font-size:26px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.small{
+  color:#64748b;
+  line-height:1.45;
+  margin-bottom:18px;
+}
+@media(max-width:800px){
+  header h1{font-size:30px}
+  .wrap{margin:26px auto}
+  .card{padding:18px}
+  .btn-row{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <header>
-<h1>Edrick - Finale Oefen Toetse</h1>
-<p>3 vakke | Groot vraebanke | Adaptiewe leer | Outomaties gemerk</p>
+  <h1>Familie - Finale Oefen Toetse</h1>
+  <p>Alle kinders | Alle vakke | Groot vraebanke | Adaptiewe leer</p>
 </header>
 
-<div class="wrap">
-<div class="card" id="home">
-<h2>Begin</h2>
-<p>Vul Edrick se naam in en kies ’n vak. Elke vraestel het rondom vrae uit ’n groter vraebank.</p>
-<input id="name" placeholder="Edrick">
-<h3>Kies vak</h3>
-<div class="grid">
-<button onclick="chooseSubject('Kuns en Kultuur')">Kuns en Kultuur</button>
-<button onclick="chooseSubject('Tegnologie')">Tegnologie</button>
-<button onclick="chooseSubject('Engels')">Engels</button>
-</div>
-</div>
-
-<div class="card hidden" id="papers">
-<h2 id="subjectTitle"></h2>
-<p>Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is.</p>
-<div class="grid" id="paperBtns"></div>
-<button class="gray" onclick="backHome()">Terug</button>
-</div>
-
-<div class="card hidden" id="exam">
-<h2 id="examTitle"></h2>
-<p id="examInfo"></p>
-<span class="badge" id="markBadge"></span>
-<div id="questions"></div>
-<button class="green" onclick="markTest()">Merk vraestel</button>
-<button class="orange" onclick="chooseSubject(currentSubject)">Begin nuwe vraestel</button>
-<button class="red" onclick="backHome()">Terug hoofkieslys</button>
-</div>
-
-<div class="card hidden" id="result">
-<h2>Finale Uitslag</h2>
-<p><b>Naam:</b> <span id="rname"></span></p>
-<p><b>Vak:</b> <span id="rsubject"></span></p>
-<p><b>Vraestel:</b> <span id="rpaper"></span></p>
-<p class="score"><span id="score"></span>/<span id="maxscore"></span></p>
-<p class="score"><span id="percent"></span>%</p>
-<p><b>Status:</b> <span id="status"></span></p>
-<button onclick="window.print()">Druk / Save as PDF</button>
-<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_START -->
-<button class="green" onclick="sendWhatsAppResult()">Stuur result na WhatsApp</button>
-<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_END -->
-</div>
-</div>
-
-<script>
-let currentSubject="", currentPaper=1, currentQuestions=[];
-
-const BANK = {
-"Kuns en Kultuur":[
-{t:"mcq",m:1,q:"Watter kunsbeginsel word geskep wanneer lyne, vorms of kleure herhaal word om beweging te skep?",o:["Balans","Ritme","Kontras","Proporsie"],a:"Ritme",model:"Ritme ontstaan deur herhaling. Herhaling laat die oog deur die kunswerk beweeg."},
-{t:"mcq",m:1,q:"Watter kleure word gewoonlik met vuur, warmte en energie verbind?",o:["Koue kleure","Warm kleure","Neutrale kleure","Monochromatiese kleure"],a:"Warm kleure",model:"Warm kleure is rooi, geel en oranje. Dit kan energie, hitte, gevaar of geluk wys."},
-{t:"mcq",m:1,q:"Watter een is ’n tekenmedium?",o:["Klei","Houtskool","Glas","Hout"],a:"Houtskool",model:"Houtskool, potlood, ink en grafiet is tekenmediums."},
-{t:"mcq",m:1,q:"Watter kunsbeweging gebruik opgebreekte geometriese vorms en wys voorwerpe uit verskillende hoeke?",o:["Realisme","Kubisme","Impressionisme","Popkuns"],a:"Kubisme",model:"Kubisme breek vorms op en wys objekte uit verskillende standpunte."},
-{t:"mcq",m:1,q:"Watter tipe balans is dieselfde of amper dieselfde aan albei kante?",o:["Simmetriese balans","Asimmetriese balans","Radiale balans","Informele balans"],a:"Simmetriese balans",model:"Simmetriese balans beteken die twee kante is dieselfde of amper dieselfde."},
-{t:"mcq",m:2,q:"Watter arseringstegniek gebruik baie klein kolletjies?",o:["Kruisarsering","Stippel","Krabbeltegniek","Vermenging"],a:"Stippel",model:"Stippel gebruik kolletjies. Meer kolletjies maak die area donkerder."},
-{t:"mcq",m:2,q:"Watter arseringstegniek gebruik lyne wat oor mekaar kruis?",o:["Gewone arsering","Kruisarsering","Stippel","Smeer"],a:"Kruisarsering",model:"Kruisarsering gebruik lyne in verskillende rigtings wat kruis."},
-{t:"mcq",m:2,q:"Watter arseringstegniek gebruik herhaalde lyne in een rigting?",o:["Gewone arsering","Stippel","Krabbeltegniek","Collage"],a:"Gewone arsering",model:"Gewone arsering gebruik parallelle lyne in dieselfde rigting."},
-{t:"mcq",m:2,q:"Watter arseringstegniek gebruik los oorvleuelende lyne?",o:["Krabbeltegniek","Stippel","Drukwerk","Collage"],a:"Krabbeltegniek",model:"Krabbeltegniek gebruik los, vinnige, oorvleuelende merke."},
-{t:"mcq",m:2,q:"Watter fatsoen is gereeld en wiskundig, soos ’n vierkant of driehoek?",o:["Organies","Geometries","Abstrak","Onvoltooid"],a:"Geometries",model:"Geometriese fatsoene is presies en wiskundig: vierkante, sirkels, driehoeke."},
-{t:"mcq",m:2,q:"Watter fatsoen is natuurlik en onreëlmatig, soos ’n blaar of wolk?",o:["Organies","Geometries","Simmetries","Meganies"],a:"Organies",model:"Organiese fatsoene kom uit die natuur en is dikwels onreëlmatig."},
-{t:"mcq",m:2,q:"Watter tipe fatsoen stel nie duidelik ’n regte voorwerp voor nie?",o:["Geometries","Organies","Abstrak","Geslote"],a:"Abstrak",model:"Abstrakte fatsoene lyk nie noodwendig soos iets realisties nie."},
-{t:"mcq",m:1,q:"Wat is ’n monochromatiese kunswerk?",o:["’n Kunswerk met baie helder kleure","’n Kunswerk met een kleur of skakerings van een kleur","’n Kunswerk met net warm kleure","’n Kunswerk sonder lyne"],a:"’n Kunswerk met een kleur of skakerings van een kleur",model:"Monochromaties beteken een kleur plus sy ligter en donkerder skakerings."},
-{t:"text",m:2,q:"Wie het Starry Night geskilder en in watter jaar?",a:["vincent van gogh 1889","van gogh 1889"],model:"Vincent van Gogh het Starry Night in 1889 geskilder."},
-{t:"kw",m:2,q:"Noem twee materiale vir swart-en-wit kunswerke.",k:["potlood","houtskool","ink","grafiet"],model:"Voorbeelde is potlood, houtskool, ink en grafiet."},
-{t:"kw",m:2,q:"Verduidelik hoe kleur emosie in ’n kunswerk kan wys.",k:["warm","koud","emosie","gevoel"],model:"Warm kleure kan energie, woede of geluk wys. Koue kleure kan kalmte of hartseer wys."},
-{t:"kw",m:2,q:"Verduidelik hoe tekstuur emosie in ’n kunswerk kan wys.",k:["rof","glad","emosie","gevoel"],model:"Rof tekstuur kan harde of gespanne gevoelens wys. Gladde tekstuur kan kalmte wys."},
-{t:"kw",m:2,q:"Bespreek die gebruik van lyn in Starry Night.",k:["draaierig","gekrom","beweging","lug"],model:"Starry Night gebruik draaierige, gekromde lyne in die lug. Dit skep beweging en energie."},
-{t:"kw",m:2,q:"Bespreek die gebruik van kleur in Starry Night.",k:["blou","geel","kontras","nag"],model:"Die donker blou naglug kontrasteer met die helder geel sterre en maan."},
-{t:"kw",m:2,q:"Verduidelik hoe klem in Starry Night geskep word.",k:["sterre","maan","helder","aandag"],model:"Die helder sterre en maan trek die kyker se aandag en skep klem."},
-{t:"kw",m:3,q:"Plaas hierdie kunsbewegings in volgorde in jou antwoord: Realisme, Impressionisme, Ekspressionisme, Kubisme, Surrealisme, Popkuns.",k:["realisme","impressionisme","ekspressionisme","kubisme","surrealisme","popkuns"],model:"Korrek: Realisme, Impressionisme, Ekspressionisme, Kubisme, Surrealisme, Popkuns."},
-{t:"mcq",m:1,q:"Wat is mimiek?",o:["Hard praat op die verhoog","Toneelspel sonder woorde deur beweging en gesigsuitdrukking","Die hoogste spanningspunt","’n Voorwerp op die verhoog"],a:"Toneelspel sonder woorde deur beweging en gesigsuitdrukking",model:"Mimiek gebruik liggaam en gesig sonder woorde."},
-{t:"mcq",m:1,q:"Wat is ’n monoloog?",o:["’n Gesprek tussen twee karakters","’n Toespraak deur een karakter","’n Verhooglig","’n Bevrore prent"],a:"’n Toespraak deur een karakter",model:"’n Monoloog is wanneer een karakter lank alleen praat."},
-{t:"mcq",m:1,q:"Wat is improvisasie?",o:["Toneelspel sonder ’n volledige voorbereide teks","’n Gedig lees","’n Prent verf","Net musiek gebruik"],a:"Toneelspel sonder ’n volledige voorbereide teks",model:"Improvisasie beteken jy skep die toneel op die oomblik."},
-{t:"mcq",m:1,q:"Wat is fonasie?",o:["Die vorming van klank met die stem","Die gebruik van kostuums","Die einde van ’n storie","’n Voorwerp op die verhoog"],a:"Die vorming van klank met die stem",model:"Fonasie is die vorming van klank met die stem."},
-{t:"mcq",m:1,q:"Wat doen ’n regisseur?",o:["Lei die akteurs en beheer die opvoering","Kyk net na die toneelstuk","Verkoop kaartjies","Skryf eksamenpunte"],a:"Lei die akteurs en beheer die opvoering",model:"Die regisseur lei die akteurs en help om die produksie reg te laat werk."},
-{t:"mcq",m:1,q:"Wat is ’n rekwisiet?",o:["’n Voorwerp wat deur ’n akteur op die verhoog gebruik word","’n Soort dans","’n Teatersitplek","’n Gedig"],a:"’n Voorwerp wat deur ’n akteur op die verhoog gebruik word",model:"Rekwisiete is voorwerpe wat akteurs gebruik, soos ’n brief, stoel of beker."},
-{t:"mcq",m:1,q:"Wat is klimaks in drama?",o:["Die begin","Die opwindendste of mees gespanne punt","’n Kostuumverandering","Die lys van akteurs"],a:"Die opwindendste of mees gespanne punt",model:"Klimaks is die hoogste spanningspunt in die storie."},
-{t:"mcq",m:1,q:"Wat is karakterisering?",o:["Om ’n geloofwaardige karakter te skep en uit te beeld","Om ’n agtergrond te verf","Om kaartjies te verkoop","Om die lokaal te verander"],a:"Om ’n geloofwaardige karakter te skep en uit te beeld",model:"Karakterisering is hoe ’n akteur ’n karakter se persoonlikheid wys."},
-{t:"tf",m:1,q:"’n Tableau is ’n bevrore prent wat deur akteurs gemaak word.",a:"Waar",model:"Waar. ’n Tableau is ’n stil/bevrore verhoogbeeld."},
-{t:"tf",m:1,q:"Dialoog is wanneer net een karakter alleen praat.",a:"Vals",model:"Vals. Dialoog is ’n gesprek tussen twee of meer karakters."}
-],
-
-"Tegnologie":[
-{t:"mcq",m:1,q:"Wat is tegnologie?",o:["Net rekenaars","Kennis en vaardighede om probleme op te los","Net fabrieke","Net elektrisiteit"],a:"Kennis en vaardighede om probleme op te los",model:"Tegnologie gaan oor oplossings vir probleme met kennis, ontwerp en materiale."},
-{t:"mcq",m:1,q:"Watter stap kom eerste in die ontwerp-proses?",o:["Maak","Evalueer","Identifiseer die probleem","Adverteer"],a:"Identifiseer die probleem",model:"Jy moet eers weet wat die probleem is voordat jy ’n oplossing ontwerp."},
-{t:"mcq",m:1,q:"’n Struktuur wat nie beweeg nie word genoem:",o:["Dinamies","Staties","Elektries","Hidroulies"],a:"Staties",model:"Statiese strukture beweeg nie, soos brûe en geboue."},
-{t:"mcq",m:1,q:"’n Driehoek word in strukture gebruik omdat dit:",o:["Swak is","Sterk en stabiel is","Rond is","Kan smelt"],a:"Sterk en stabiel is",model:"Driehoeke is sterk omdat hulle nie maklik van vorm verander nie."},
-{t:"mcq",m:1,q:"Krag wat iets uitmekaar trek is:",o:["Kompressie","Tensie","Wrywing","Swaartekrag"],a:"Tensie",model:"Tensie is trekkrag."},
-{t:"mcq",m:1,q:"Krag wat iets saamdruk is:",o:["Tensie","Kompressie","Skeur","Draai"],a:"Kompressie",model:"Kompressie is drukkrag."},
-{t:"mcq",m:1,q:"’n Hefboom bestaan uit las, poging en:",o:["Skakelaar","Draaipunt","Battery","Katrol"],a:"Draaipunt",model:"Die draaipunt is die punt waar die hefboom draai."},
-{t:"mcq",m:1,q:"Watter komponent stoor elektriese energie?",o:["Gloeilamp","Skakelaar","Battery","Draad"],a:"Battery",model:"’n Battery stoor chemiese energie en gee elektriese energie."},
-{t:"mcq",m:1,q:"’n Geslote stroombaan beteken:",o:["Stroom kan vloei","Stroom kan nie vloei nie","Geen battery nie","Geen draad nie"],a:"Stroom kan vloei",model:"In ’n geslote stroombaan is die pad volledig."},
-{t:"mcq",m:1,q:"’n Skakelaar word gebruik om:",o:["Stroom te beheer","Krag te meet","Water te pomp","Hout te sny"],a:"Stroom te beheer",model:"’n Skakelaar maak die stroombaan oop of toe."},
-{t:"tf",m:1,q:"Isolasie help om hitteverlies te verminder.",a:"Waar",model:"Waar. Isolasie hou hitte binne of buite."},
-{t:"tf",m:1,q:"Herwinning beteken om materiaal weer te gebruik of te verwerk.",a:"Waar",model:"Waar. Herwinning verminder afval."},
-{t:"tf",m:1,q:"’n Serie stroombaan het meer as een aparte pad vir stroom.",a:"Vals",model:"Vals. ’n Parallelle stroombaan het meer as een pad."},
-{t:"mcq",m:1,q:"Watter een is ’n hernubare energiebron?",o:["Steenkool","Olie","Sonenergie","Petrol"],a:"Sonenergie",model:"Sonenergie word natuurlik aangevul."},
-{t:"mcq",m:1,q:"Watter een is ’n nie-hernubare energiebron?",o:["Wind","Son","Steenkool","Water"],a:"Steenkool",model:"Steenkool vat miljoene jare om te vorm."},
-{t:"mcq",m:1,q:"’n Katrol help om:",o:["Laste op te lig","Kleur te meng","Elektrisiteit te stoor","Klank harder te maak"],a:"Laste op te lig",model:"Katrolle maak dit makliker om laste op te lig."},
-{t:"mcq",m:1,q:"CAD beteken:",o:["Computer Aided Design","Cold Air Device","Cable And Door","Central Art Drawing"],a:"Computer Aided Design",model:"CAD beteken Computer Aided Design."},
-{t:"kw",m:2,q:"Noem twee veiligheidreëls wanneer jy met gereedskap werk.",k:["bril","veilig","handskoene","versigtig"],model:"Dra veiligheidsbril, werk versigtig, gebruik gereedskap reg en dra handskoene waar nodig."},
-{t:"kw",m:2,q:"Wat beteken evalueer in die ontwerp-proses?",k:["toets","verbeter","werk","probleem"],model:"Evalueer beteken om te toets of die produk werk en te besluit hoe dit verbeter kan word."},
-{t:"kw",m:2,q:"Noem twee materiale wat gebruik kan word om ’n model te bou.",k:["karton","hout","plastiek","papier"],model:"Karton, hout, plastiek en papier kan gebruik word."},
-{t:"kw",m:2,q:"Verduidelik waarom ’n brug driehoekige versterking kan gebruik.",k:["sterk","stabiel","driehoek","krag"],model:"Driehoeke maak ’n brug sterker en meer stabiel omdat hulle kragte beter versprei."},
-{t:"kw",m:2,q:"Verduidelik die verskil tussen ’n oop en geslote stroombaan.",k:["oop","geslote","vloei","stroom"],model:"In ’n geslote stroombaan vloei stroom. In ’n oop stroombaan is die pad gebreek en stroom vloei nie."},
-{t:"mcq",m:1,q:"Watter krag werk op ’n pilaar wat ’n dak dra?",o:["Kompressie","Tensie","Magnetisme","Klank"],a:"Kompressie",model:"Die dak druk af op die pilaar; dit is kompressie."},
-{t:"mcq",m:1,q:"Watter een is die beste voorbeeld van ’n raamstruktuur?",o:["Baksteen","Toring van staalbalke","Water","Klei"],a:"Toring van staalbalke",model:"’n Raamstruktuur bestaan uit balke of dele wat saam ’n raam vorm."}
-],
-
-"Engels":[
-{t:"mcq",m:1,q:"Choose the correct finite verb: I ___ my homework tomorrow.",o:["to complete","will complete","completed by","completing"],a:"will complete",model:"A finite verb shows tense. 'Will complete' shows future tense."},
-{t:"mcq",m:1,q:"Which word is a pronoun in: You are kind?",o:["You","are","kind","none"],a:"You",model:"'You' is a second-person pronoun."},
-{t:"mcq",m:1,q:"What type of sentence asks a question?",o:["Declarative","Interrogative","Imperative","Exclamatory"],a:"Interrogative",model:"An interrogative sentence asks a question."},
-{t:"mcq",m:1,q:"Choose the correct concord: The group of learners ___ ready.",o:["are","is","were","be"],a:"is",model:"The subject is 'group', which is singular, so use 'is'."},
-{t:"mcq",m:1,q:"Which is a proper noun?",o:["city","school","Edrick","book"],a:"Edrick",model:"A proper noun names a specific person, place or thing."},
-{t:"mcq",m:1,q:"Which punctuation marks show direct speech?",o:["Commas","Full stops","Inverted commas","Hyphens"],a:"Inverted commas",model:"Direct speech is placed inside inverted commas."},
-{t:"mcq",m:1,q:"Choose the synonym for happy.",o:["sad","glad","angry","tired"],a:"glad",model:"A synonym has a similar meaning. Happy = glad."},
-{t:"mcq",m:1,q:"Choose the antonym for strong.",o:["powerful","weak","hard","brave"],a:"weak",model:"An antonym has the opposite meaning. Strong ≠ weak."},
-{t:"mcq",m:1,q:"Which word is an adjective: The red car stopped.",o:["The","red","car","stopped"],a:"red",model:"An adjective describes a noun. Red describes car."},
-{t:"mcq",m:1,q:"Which word is a verb: She sings loudly.",o:["She","sings","loudly","none"],a:"sings",model:"A verb is an action word. Sings is the action."},
-{t:"tf",m:1,q:"A noun names a person, place or thing.",a:"Waar",model:"True. Nouns name people, places, things or ideas."},
-{t:"tf",m:1,q:"An adjective describes a noun.",a:"Waar",model:"True. Example: red car. Red describes car."},
-{t:"tf",m:1,q:"A verb is only a naming word.",a:"Vals",model:"False. A verb is an action or state word."},
-{t:"mcq",m:1,q:"The plural of child is:",o:["childs","children","childes","childrens"],a:"children",model:"Child has an irregular plural: children."},
-{t:"mcq",m:1,q:"The past tense of go is:",o:["goed","gone","went","going"],a:"went",model:"The simple past tense of go is went."},
-{t:"mcq",m:1,q:"Which is a complete sentence?",o:["Running fast","Because I am tired","The boy reads a book.","On the table"],a:"The boy reads a book.",model:"A complete sentence needs a subject and a finite verb."},
-{t:"mcq",m:1,q:"Which clause cannot stand alone?",o:["Main clause","Independent clause","Subordinate clause","Simple sentence"],a:"Subordinate clause",model:"A subordinate clause depends on a main clause."},
-{t:"mcq",m:1,q:"In 'Angel played the piano', the verb is:",o:["Transitive","Intransitive","Infinitive","Passive"],a:"Transitive",model:"The verb has an object: the piano."},
-{t:"mcq",m:1,q:"In 'to live', the words form:",o:["Finite verb","Infinitive","Pronoun","Adjective"],a:"Infinitive",model:"An infinitive often begins with 'to' plus a verb."},
-{t:"mcq",m:1,q:"The sentence 'Close the door.' is:",o:["Declarative","Interrogative","Imperative","Exclamatory"],a:"Imperative",model:"An imperative gives a command or instruction."},
-{t:"kw",m:2,q:"Write two examples of common nouns.",k:["boy","girl","school","book","dog","house"],model:"Examples: boy, girl, school, book, dog, house."},
-{t:"kw",m:2,q:"What is dialogue?",k:["conversation","two","characters","speak"],model:"Dialogue is a conversation between two or more characters."},
-{t:"kw",m:2,q:"What is a character in a story?",k:["person","story","play","novel"],model:"A character is a person or figure in a story, play or novel."},
-{t:"kw",m:2,q:"Explain subject-verb agreement.",k:["subject","verb","agree","singular","plural"],model:"Subject-verb agreement means the verb must match the subject. Singular subjects take singular verbs and plural subjects take plural verbs."}
-]
-};
-
-function chooseSubject(s){
- currentSubject=s;
- document.getElementById("home").classList.add("hidden");
- document.getElementById("exam").classList.add("hidden");
- document.getElementById("result").classList.add("hidden");
- document.getElementById("papers").classList.remove("hidden");
- document.getElementById("subjectTitle").innerText=s;
- let h="";
- for(let i=1;i<=5;i++){h+=`<button onclick="startPaper(${i})">Vraestel ${i}</button>`;}
- document.getElementById("paperBtns").innerHTML=h;
-}
-function backHome(){
- document.getElementById("home").classList.remove("hidden");
- document.getElementById("papers").classList.add("hidden");
- document.getElementById("exam").classList.add("hidden");
- document.getElementById("result").classList.add("hidden");
-}
-function startPaper(n){
- currentPaper=n;
- let bank=[...BANK[currentSubject]];
- seededShuffle(bank, currentSubject + "-" + n + "-" + Date.now());
- currentQuestions=bank.slice(0,20);
- renderQuestions();
- document.getElementById("papers").classList.add("hidden");
- document.getElementById("exam").classList.remove("hidden");
- document.getElementById("result").classList.add("hidden");
- document.getElementById("examTitle").innerText=currentSubject+" - Vraestel "+n;
- let max=currentQuestions.reduce((a,b)=>a+b.m,0);
- document.getElementById("examInfo").innerText="Beantwoord al die vrae. Na merk wys die app regte antwoorde en verduidelikings.";
- document.getElementById("markBadge").innerText="Totaal: " + max + " punte";
- window.scrollTo(0,0);
-}
-function seededShuffle(a, seed){
- let x=0; for(let i=0;i<seed.length;i++){x=(x+seed.charCodeAt(i)*31)%999999;}
- function rnd(){x=(x*9301+49297)%233280;return x/233280;}
- for(let i=a.length-1;i>0;i--){let j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
-}
-function renderQuestions(){
- let h="";
- currentQuestions.forEach((x,i)=>{
-  h+=`<div class="card q" id="box${i}"><h3>${i+1}. ${x.q}</h3><p><b>[${x.m} punte]</b></p>`;
-  if(x.t=="mcq"){x.o.forEach(o=>h+=`<label><input type="radio" name="q${i}" value="${esc(o)}"> ${esc(o)}</label>`);}
-  if(x.t=="tf"){["Waar","Vals"].forEach(o=>h+=`<label><input type="radio" name="q${i}" value="${o}"> ${o}</label>`);}
-  if(x.t=="kw"||x.t=="text"){h+=`<textarea name="q${i}" placeholder="Tik jou antwoord hier"></textarea>`;}
-  h+=`<div class="answer hidden" id="ans${i}"></div></div>`;
- });
- document.getElementById("questions").innerHTML=h;
-}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
-function val(name){let e=document.querySelector(`[name="${name}"]:checked`)||document.querySelector(`[name="${name}"]`);return e?e.value.trim():"";}
-function norm(s){return String(s||"").toLowerCase().replace(/[.,;:!?()']/g," ").replace(/\s+/g," ").trim();}
-function markKW(x,a){let n=norm(a),f=0;x.k.forEach(k=>{if(n.includes(norm(k)))f++;});return Math.round((f/x.k.length)*x.m);}
-function markTest(){
- let total=0,max=0;
- currentQuestions.forEach((x,i)=>{
-  let s=0,given="",ans="";
-  max+=x.m;
-  let box=document.getElementById("box"+i), ab=document.getElementById("ans"+i);
-  box.classList.remove("correct","wrong","part");
-  if(x.t=="mcq"||x.t=="tf"){given=val("q"+i);s=(given==x.a)?x.m:0;ans=x.a;}
-  if(x.t=="text"){given=val("q"+i);s=x.a.some(a=>norm(given).includes(norm(a)))?x.m:0;ans=x.model;}
-  if(x.t=="kw"){given=val("q"+i);s=markKW(x,given);ans=x.model;}
-  total+=s;
-  if(s==x.m)box.classList.add("correct");else if(s==0)box.classList.add("wrong");else box.classList.add("part");
-  ab.classList.remove("hidden");
-  ab.innerHTML=`<b>Jou antwoord:</b> ${esc(given||"Leeg")}<br><b>Korrekte/model antwoord:</b><br>${ans}<br><b>Verduideliking:</b> ${x.model || ans}<br><b>Punt:</b> ${s}/${x.m}`;
- });
- let p=Math.round(total/max*100);
- document.getElementById("result").classList.remove("hidden");
- document.getElementById("rname").innerText=document.getElementById("name").value.trim()||"Edrick";
- document.getElementById("rsubject").innerText=currentSubject;
- document.getElementById("rpaper").innerText=currentPaper;
- document.getElementById("score").innerText=total;
- document.getElementById("maxscore").innerText=max;
- document.getElementById("percent").innerText=p;
- document.getElementById("status").innerText=p>=80?"Uitstekend":p>=70?"Goed":p>=50?"Geslaag":"Moet nog oefen";
-  window.lastEdrickResult = {
-    name: document.getElementById("name").value.trim() || "Edrick",
-    subject: currentSubject,
-    paper: currentPaper,
-    score: total,
-    max: max,
-    percent: p,
-    status: document.getElementById("status").innerText,
-    date: new Date().toLocaleString()
-  };
- window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
-}
-/* TEAE_EDRICK_MASTERY_TRACKING_V1 */
-function masteryKey(subject){
-  return "edrick_mastered_" + subject;
-}
-function loadMastered(subject){
-  try{
-    return JSON.parse(localStorage.getItem(masteryKey(subject)) || "[]");
-  }catch(e){
-    return [];
-  }
-}
-function saveMastered(subject, arr){
-  localStorage.setItem(masteryKey(subject), JSON.stringify([...new Set(arr)]));
-}
-function questionId(q){
-  return btoa(unescape(encodeURIComponent(q.q))).replace(/=/g,"");
-}
-function getRemainingQuestions(subject){
-  var mastered = loadMastered(subject);
-  return BANK[subject].filter(function(q){
-    return mastered.indexOf(questionId(q)) === -1;
-  });
-}
-function resetSubjectProgress(subject){
-  if(confirm("Wil jy al die progress vir " + subject + " skoonmaak?")){
-    localStorage.removeItem(masteryKey(subject));
-    chooseSubject(subject);
-  }
-}
-function resetAllProgress(){
-  if(confirm("Wil jy ALLE vakke se progress skoonmaak?")){
-    Object.keys(BANK).forEach(function(s){
-      localStorage.removeItem(masteryKey(s));
-    });
-    backHome();
-  }
-}
-
-/* Override original subject screen */
-function chooseSubject(s){
- currentSubject=s;
- document.getElementById("home").classList.add("hidden");
- document.getElementById("exam").classList.add("hidden");
- document.getElementById("result").classList.add("hidden");
- document.getElementById("papers").classList.remove("hidden");
-
- var total = BANK[s].length;
- var mastered = loadMastered(s).length;
- var remaining = Math.max(0, total - mastered);
-
- document.getElementById("subjectTitle").innerText=s;
-
- let h="";
- h += `<div class="answer">
-   <b>Progress:</b> ${mastered}/${total} vrae klaar reg bemeester.<br>
-   <b>Oor:</b> ${remaining} vrae wat nog geoefen moet word.<br>
-   <span class="small">Elke vraag wat reg geantwoord word, kom nie weer in die volgende vraestel op nie. Vraestel 5 wys net wat nog oorbly.</span>
- </div>`;
-
- if(remaining === 0){
-   h += `<div class="answer correct">
-     <h3>Alles klaar!</h3>
-     <p>Edrick het al die vrae in ${s} reg gekry. Daar is niks oor om weer te oefen nie.</p>
-   </div>`;
- } else {
-   for(let i=1;i<=5;i++){
-     let label = i === 5 ? "Vraestel 5 - Finale oorblywende vrae" : "Vraestel " + i;
-     h += `<button onclick="startPaper(${i})">${label}</button>`;
-   }
- }
-
- h += `<br><button class="red" onclick="resetSubjectProgress('${s.replace(/'/g,"\\'")}')">Reset ${s} progress</button>`;
- h += `<button class="gray" onclick="backHome()">Terug</button>`;
-
- document.getElementById("paperBtns").innerHTML=h;
-}
-
-/* Override original startPaper */
-function startPaper(n){
- currentPaper=n;
-
- let remaining = getRemainingQuestions(currentSubject);
- if(remaining.length === 0){
-   alert("Alles is klaar reg beantwoord vir " + currentSubject + ". Daar is niks oor nie.");
-   chooseSubject(currentSubject);
-   return;
- }
-
- let bank=[...remaining];
- seededShuffle(bank, currentSubject + "-" + n + "-" + Date.now());
-
- if(n === 5){
-   currentQuestions = bank;
- } else {
-   currentQuestions = bank.slice(0, Math.min(20, bank.length));
- }
-
- renderQuestions();
-
- document.getElementById("papers").classList.add("hidden");
- document.getElementById("exam").classList.remove("hidden");
- document.getElementById("result").classList.add("hidden");
-
- document.getElementById("examTitle").innerText=currentSubject+" - Vraestel "+n;
- let max=currentQuestions.reduce((a,b)=>a+b.m,0);
-
- if(n === 5){
-   document.getElementById("examInfo").innerText="Finale oefening: Hierdie vraestel bevat net vrae wat nog nie reg bemeester is nie.";
- } else {
-   document.getElementById("examInfo").innerText="Beantwoord al die vrae. Vrae wat reg is, verdwyn uit volgende vraestelle. Verkeerde vrae bly oor.";
- }
-
- document.getElementById("markBadge").innerText="Totaal: " + max + " punte | Oorblywende vrae voor hierdie vraestel: " + remaining.length;
- window.scrollTo(0,0);
-}
-
-/* Override original markTest with mastery saving */
-function markTest(){
- let total=0,max=0;
- let mastered = loadMastered(currentSubject);
- let newlyMastered = 0;
- let stillWrong = 0;
-
- currentQuestions.forEach((x,i)=>{
-  let s=0,given="",ans="";
-  max+=x.m;
-  let box=document.getElementById("box"+i), ab=document.getElementById("ans"+i);
-  box.classList.remove("correct","wrong","part");
-
-  if(x.t=="mcq"||x.t=="tf"){
-    given=val("q"+i);
-    s=(given==x.a)?x.m:0;
-    ans=x.a;
-  }
-  if(x.t=="text"){
-    given=val("q"+i);
-    s=x.a.some(a=>norm(given).includes(norm(a)))?x.m:0;
-    ans=x.model;
-  }
-  if(x.t=="kw"){
-    given=val("q"+i);
-    s=markKW(x,given);
-    ans=x.model;
-  }
-
-  total+=s;
-
-  if(s==x.m){
-    box.classList.add("correct");
-    var id = questionId(x);
-    if(mastered.indexOf(id) === -1){
-      mastered.push(id);
-      newlyMastered++;
-    }
-  } else if(s==0){
-    box.classList.add("wrong");
-    stillWrong++;
-  } else {
-    box.classList.add("part");
-    stillWrong++;
-  }
-
-  ab.classList.remove("hidden");
-  ab.innerHTML=`<b>Jou antwoord:</b> ${esc(given||"Leeg")}<br>
-  <b>Korrekte/model antwoord:</b><br>${ans}<br>
-  <b>Verduideliking:</b> ${x.model || ans}<br>
-  <b>Punt:</b> ${s}/${x.m}`;
- });
-
- saveMastered(currentSubject, mastered);
-
- let p=Math.round(total/max*100);
- let remainingAfter = getRemainingQuestions(currentSubject).length;
-
- document.getElementById("result").classList.remove("hidden");
- document.getElementById("rname").innerText=document.getElementById("name").value.trim()||"Edrick";
- document.getElementById("rsubject").innerText=currentSubject;
- document.getElementById("rpaper").innerText=currentPaper;
- document.getElementById("score").innerText=total;
- document.getElementById("maxscore").innerText=max;
- document.getElementById("percent").innerText=p;
- document.getElementById("status").innerText=p>=80?"Uitstekend":p>=70?"Goed":p>=50?"Geslaag":"Moet nog oefen";
-
- let extra = document.getElementById("masterySummary");
- if(!extra){
-   extra = document.createElement("div");
-   extra.id = "masterySummary";
-   extra.className = "answer";
-   document.getElementById("result").appendChild(extra);
- }
-
- if(remainingAfter === 0){
-   extra.innerHTML = `<h3>Alles bemeester!</h3>
-   <p>Hy het nou al die vrae in <b>${currentSubject}</b> reg gekry. Daar is niks oor vir hierdie vak nie.</p>`;
- } else {
-   extra.innerHTML = `<h3>Leer-progress</h3>
-   <p><b>Nuwe vrae reg bemeester:</b> ${newlyMastered}</p>
-   <p><b>Vrae nog oor in ${currentSubject}:</b> ${remainingAfter}</p>
-   <p>Die volgende vraestel sal nie vrae wys wat hy reeds 100% reg gekry het nie. Vraestel 5 wys net wat nog oorbly.</p>`;
- }
-
- window.lastEdrickResult = {
-    name: document.getElementById("name").value.trim() || "Edrick",
-    subject: currentSubject,
-    paper: currentPaper,
-    score: total,
-    max: max,
-    percent: p,
-    status: document.getElementById("status").innerText,
-    remaining: remainingAfter,
-    masteredNow: newlyMastered,
-    date: new Date().toLocaleString()
- };
-
- window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
-}
-</script>
-
-<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_START -->
-<script>
-function sendWhatsAppResult(){
-  var r = window.lastEdrickResult;
-  if(!r){
-    alert("Merk eers die vraestel voordat jy die result stuur.");
-    return;
-  }
-
-  var msg =
-    "Edrick toets result%0A" +
-    "Naam: " + encodeURIComponent(r.name) + "%0A" +
-    "Vak: " + encodeURIComponent(r.subject) + "%0A" +
-    "Vraestel: " + encodeURIComponent(r.paper) + "%0A" +
-    "Punte: " + encodeURIComponent(r.score + "/" + r.max) + "%0A" +
-    "Persentasie: " + encodeURIComponent(r.percent + "%") + "%0A" +
-    "Status: " + encodeURIComponent(r.status) + "%0A" +
-    "Datum: " + encodeURIComponent(r.date);
-
-  var url = "https://wa.me/=" + msg;
-  window.open(url, "_blank");
-}
-/* TEAE_EDRICK_MASTERY_TRACKING_V1 */
-function masteryKey(subject){
-  return "edrick_mastered_" + subject;
-}
-function loadMastered(subject){
-  try{
-    return JSON.parse(localStorage.getItem(masteryKey(subject)) || "[]");
-  }catch(e){
-    return [];
-  }
-}
-function saveMastered(subject, arr){
-  localStorage.setItem(masteryKey(subject), JSON.stringify([...new Set(arr)]));
-}
-function questionId(q){
-  return btoa(unescape(encodeURIComponent(q.q))).replace(/=/g,"");
-}
-function getRemainingQuestions(subject){
-  var mastered = loadMastered(subject);
-  return BANK[subject].filter(function(q){
-    return mastered.indexOf(questionId(q)) === -1;
-  });
-}
-function resetSubjectProgress(subject){
-  if(confirm("Wil jy al die progress vir " + subject + " skoonmaak?")){
-    localStorage.removeItem(masteryKey(subject));
-    chooseSubject(subject);
-  }
-}
-function resetAllProgress(){
-  if(confirm("Wil jy ALLE vakke se progress skoonmaak?")){
-    Object.keys(BANK).forEach(function(s){
-      localStorage.removeItem(masteryKey(s));
-    });
-    backHome();
-  }
-}
-
-/* Override original subject screen */
-function chooseSubject(s){
- currentSubject=s;
- document.getElementById("home").classList.add("hidden");
- document.getElementById("exam").classList.add("hidden");
- document.getElementById("result").classList.add("hidden");
- document.getElementById("papers").classList.remove("hidden");
-
- var total = BANK[s].length;
- var mastered = loadMastered(s).length;
- var remaining = Math.max(0, total - mastered);
-
- document.getElementById("subjectTitle").innerText=s;
-
- let h="";
- h += `<div class="answer">
-   <b>Progress:</b> ${mastered}/${total} vrae klaar reg bemeester.<br>
-   <b>Oor:</b> ${remaining} vrae wat nog geoefen moet word.<br>
-   <span class="small">Elke vraag wat reg geantwoord word, kom nie weer in die volgende vraestel op nie. Vraestel 5 wys net wat nog oorbly.</span>
- </div>`;
-
- if(remaining === 0){
-   h += `<div class="answer correct">
-     <h3>Alles klaar!</h3>
-     <p>Edrick het al die vrae in ${s} reg gekry. Daar is niks oor om weer te oefen nie.</p>
-   </div>`;
- } else {
-   for(let i=1;i<=5;i++){
-     let label = i === 5 ? "Vraestel 5 - Finale oorblywende vrae" : "Vraestel " + i;
-     h += `<button onclick="startPaper(${i})">${label}</button>`;
-   }
- }
-
- h += `<br><button class="red" onclick="resetSubjectProgress('${s.replace(/'/g,"\\'")}')">Reset ${s} progress</button>`;
- h += `<button class="gray" onclick="backHome()">Terug</button>`;
-
- document.getElementById("paperBtns").innerHTML=h;
-}
-
-/* Override original startPaper */
-function startPaper(n){
- currentPaper=n;
-
- let remaining = getRemainingQuestions(currentSubject);
- if(remaining.length === 0){
-   alert("Alles is klaar reg beantwoord vir " + currentSubject + ". Daar is niks oor nie.");
-   chooseSubject(currentSubject);
-   return;
- }
-
- let bank=[...remaining];
- seededShuffle(bank, currentSubject + "-" + n + "-" + Date.now());
-
- if(n === 5){
-   currentQuestions = bank;
- } else {
-   currentQuestions = bank.slice(0, Math.min(20, bank.length));
- }
-
- renderQuestions();
-
- document.getElementById("papers").classList.add("hidden");
- document.getElementById("exam").classList.remove("hidden");
- document.getElementById("result").classList.add("hidden");
-
- document.getElementById("examTitle").innerText=currentSubject+" - Vraestel "+n;
- let max=currentQuestions.reduce((a,b)=>a+b.m,0);
-
- if(n === 5){
-   document.getElementById("examInfo").innerText="Finale oefening: Hierdie vraestel bevat net vrae wat nog nie reg bemeester is nie.";
- } else {
-   document.getElementById("examInfo").innerText="Beantwoord al die vrae. Vrae wat reg is, verdwyn uit volgende vraestelle. Verkeerde vrae bly oor.";
- }
-
- document.getElementById("markBadge").innerText="Totaal: " + max + " punte | Oorblywende vrae voor hierdie vraestel: " + remaining.length;
- window.scrollTo(0,0);
-}
-
-/* Override original markTest with mastery saving */
-function markTest(){
- let total=0,max=0;
- let mastered = loadMastered(currentSubject);
- let newlyMastered = 0;
- let stillWrong = 0;
-
- currentQuestions.forEach((x,i)=>{
-  let s=0,given="",ans="";
-  max+=x.m;
-  let box=document.getElementById("box"+i), ab=document.getElementById("ans"+i);
-  box.classList.remove("correct","wrong","part");
-
-  if(x.t=="mcq"||x.t=="tf"){
-    given=val("q"+i);
-    s=(given==x.a)?x.m:0;
-    ans=x.a;
-  }
-  if(x.t=="text"){
-    given=val("q"+i);
-    s=x.a.some(a=>norm(given).includes(norm(a)))?x.m:0;
-    ans=x.model;
-  }
-  if(x.t=="kw"){
-    given=val("q"+i);
-    s=markKW(x,given);
-    ans=x.model;
-  }
-
-  total+=s;
-
-  if(s==x.m){
-    box.classList.add("correct");
-    var id = questionId(x);
-    if(mastered.indexOf(id) === -1){
-      mastered.push(id);
-      newlyMastered++;
-    }
-  } else if(s==0){
-    box.classList.add("wrong");
-    stillWrong++;
-  } else {
-    box.classList.add("part");
-    stillWrong++;
-  }
-
-  ab.classList.remove("hidden");
-  ab.innerHTML=`<b>Jou antwoord:</b> ${esc(given||"Leeg")}<br>
-  <b>Korrekte/model antwoord:</b><br>${ans}<br>
-  <b>Verduideliking:</b> ${x.model || ans}<br>
-  <b>Punt:</b> ${s}/${x.m}`;
- });
-
- saveMastered(currentSubject, mastered);
-
- let p=Math.round(total/max*100);
- let remainingAfter = getRemainingQuestions(currentSubject).length;
-
- document.getElementById("result").classList.remove("hidden");
- document.getElementById("rname").innerText=document.getElementById("name").value.trim()||"Edrick";
- document.getElementById("rsubject").innerText=currentSubject;
- document.getElementById("rpaper").innerText=currentPaper;
- document.getElementById("score").innerText=total;
- document.getElementById("maxscore").innerText=max;
- document.getElementById("percent").innerText=p;
- document.getElementById("status").innerText=p>=80?"Uitstekend":p>=70?"Goed":p>=50?"Geslaag":"Moet nog oefen";
-
- let extra = document.getElementById("masterySummary");
- if(!extra){
-   extra = document.createElement("div");
-   extra.id = "masterySummary";
-   extra.className = "answer";
-   document.getElementById("result").appendChild(extra);
- }
-
- if(remainingAfter === 0){
-   extra.innerHTML = `<h3>Alles bemeester!</h3>
-   <p>Hy het nou al die vrae in <b>${currentSubject}</b> reg gekry. Daar is niks oor vir hierdie vak nie.</p>`;
- } else {
-   extra.innerHTML = `<h3>Leer-progress</h3>
-   <p><b>Nuwe vrae reg bemeester:</b> ${newlyMastered}</p>
-   <p><b>Vrae nog oor in ${currentSubject}:</b> ${remainingAfter}</p>
-   <p>Die volgende vraestel sal nie vrae wys wat hy reeds 100% reg gekry het nie. Vraestel 5 wys net wat nog oorbly.</p>`;
- }
-
- window.lastEdrickResult = {
-    name: document.getElementById("name").value.trim() || "Edrick",
-    subject: currentSubject,
-    paper: currentPaper,
-    score: total,
-    max: max,
-    percent: p,
-    status: document.getElementById("status").innerText,
-    remaining: remainingAfter,
-    masteredNow: newlyMastered,
-    date: new Date().toLocaleString()
- };
-
- window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
-}
-</script>
-<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_END -->
-<!-- TEAE_EDRICK_ADAPTIVE_500_ENGINE_V2_START -->
-<script>
-/*
-  Adaptive mastery engine:
-  - No fixed paper limit.
-  - Each subject has a question bank.
-  - Correct full-mark questions are removed from future papers.
-  - Wrong / half-correct questions stay in the remaining bank.
-  - Each paper gives 30-50 questions, unless fewer remain.
-  - Final paper contains all remaining questions if remaining <= 50.
-*/
-
-const ADAPTIVE_MIN_QUESTIONS = 30;
-const ADAPTIVE_MAX_QUESTIONS = 50;
-
-function adaptiveKey(subject){
-  return "edrick_adaptive_mastered_" + subject;
-}
-
-function adaptivePaperKey(subject){
-  return "edrick_adaptive_paper_no_" + subject;
-}
-
-function getQuestionId(q){
-  var raw = (q.q || "") + "|" + (q.a || "") + "|" + (q.model || "");
-  try {
-    return btoa(unescape(encodeURIComponent(raw))).replace(/=/g,"");
-  } catch(e) {
-    return raw.replace(/\W/g,"_").slice(0,120);
-  }
-}
-
-function getMastered(subject){
-  try {
-    return JSON.parse(localStorage.getItem(adaptiveKey(subject)) || "[]");
-  } catch(e) {
-    return [];
-  }
-}
-
-function saveMastered(subject, arr){
-  localStorage.setItem(adaptiveKey(subject), JSON.stringify([...new Set(arr)]));
-}
-
-function getPaperNo(subject){
-  return parseInt(localStorage.getItem(adaptivePaperKey(subject)) || "1", 10);
-}
-
-function setPaperNo(subject, n){
-  localStorage.setItem(adaptivePaperKey(subject), String(n));
-}
-
-function getRemaining(subject){
-  var mastered = getMastered(subject);
-  return BANK[subject].filter(function(q){
-    return mastered.indexOf(getQuestionId(q)) === -1;
-  });
-}
-
-function getMasteredCount(subject){
-  return getMastered(subject).length;
-}
-
-function resetSubjectProgress(subject){
-  if(confirm("Wil jy " + subject + " se mastery progress reset?")){
-    localStorage.removeItem(adaptiveKey(subject));
-    localStorage.removeItem(adaptivePaperKey(subject));
-    chooseSubject(subject);
-  }
-}
-
-function resetAllProgress(){
-  if(confirm("Wil jy alle vakke se progress reset?")){
-    Object.keys(BANK).forEach(function(s){
-      localStorage.removeItem(adaptiveKey(s));
-      localStorage.removeItem(adaptivePaperKey(s));
-    });
-    backHome();
-  }
-}
-
-function chooseSubject(s){
-  currentSubject = s;
-
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("exam").classList.add("hidden");
-  document.getElementById("result").classList.add("hidden");
-  document.getElementById("papers").classList.remove("hidden");
-
-  var total = BANK[s].length;
-  var mastered = getMasteredCount(s);
-  var remaining = getRemaining(s).length;
-  var paperNo = getPaperNo(s);
-
-  document.getElementById("subjectTitle").innerText = s;
-
-  var h = "";
-  h += `<div class="answer">
-    <h3>${s} Meestering Bank</h3>
-    <p><b>Vrae tans in bank:</b> ${total}</p>
-    <p><b>Vrae reeds 100% reg:</b> ${mastered}</p>
-    <p><b>Vrae nog oor:</b> ${remaining}</p>
-    <p><b>Adaptiewe modus:</b> ${paperNo}</p>
-    <p class="small">
-      Elke vraag wat hy 100% reg kry, word uit toekomstige vraestelle verwyder.
-      Vrae wat verkeerd of half reg is, bly oor totdat hy dit reg kry.
+<main class="wrap">
+  <section class="card">
+    <h2>Begin</h2>
+    <p class="intro">
+      Vul die kind se naam in en kies die kind. Sy/haar vakke sal dan oopmaak.
     </p>
-  </div>`;
 
-  if(remaining <= 0){
-    h += `<div class="answer correct">
-      <h2>Alles bemeester!</h2>
-      <p>Edrick het al die vrae in <b>${s}</b> 100% reg gekry.</p>
-      <p>Daar is niks oor om weer te oefen nie.</p>
-    </div>`;
-  } else {
-    h += `<button class="green" onclick="startAdaptivePaper()">Begin volgende sessie</button>`;
-    h += `<div class="answer">
-      <b>Hoe dit werk:</b><br>
-      As daar meer as ${ADAPTIVE_MAX_QUESTIONS} vrae oor is, kry hy random ${ADAPTIVE_MIN_QUESTIONS}-${ADAPTIVE_MAX_QUESTIONS} vrae.
-      As daar ${ADAPTIVE_MAX_QUESTIONS} of minder oor is, kry hy al die oorblywende vrae.
-    </div>`;
-  }
+    <input id="studentName" placeholder="Tik kind se naam hier..." oninput="saveName()">
 
-  h += `<button class="red" onclick="resetSubjectProgress('${s.replace(/'/g,"\\'")}')">Reset hierdie vak se progress</button>`;
-  h += `<button class="gray" onclick="backHome()">Terug hoofkieslys</button>`;
+    <h3>Kies kind</h3>
 
-  document.getElementById("paperBtns").innerHTML = h;
+    <div class="btn-row">
+      <button class="btn" onclick="showChild('edrick')">Edrick</button>
+      <button class="btn" onclick="showChild('enrico')">Enrico</button>
+      <button class="btn dark" onclick="showChild('child3')">Kind 3</button>
+      <button class="btn dark" onclick="showChild('child4')">Kind 4</button>
+    </div>
+
+    <div id="subjects" class="subject-panel hidden"></div>
+
+    <div class="note">
+      <b>Belangrik:</b> Edrick se bestaande app bly bewaar as <code>edrick.html</code>.
+      Enrico se Wiskunde is in die main app gekopieer sonder om sy bestaande vrae weg te vat.
+    </div>
+  </section>
+</main>
+
+<script>
+function saveName(){
+  localStorage.setItem("family_student_name", document.getElementById("studentName").value || "");
 }
 
-function startPaper(n){
-  startAdaptivePaper();
+function loadName(){
+  const n = localStorage.getItem("family_student_name") || "";
+  document.getElementById("studentName").value = n;
 }
 
-function startAdaptivePaper(){
-  var remaining = getRemaining(currentSubject);
+function showChild(child){
+  const box = document.getElementById("subjects");
+  const name = document.getElementById("studentName").value.trim();
 
-  if(remaining.length <= 0){
-    alert("Alles is klaar bemeester vir " + currentSubject);
-    chooseSubject(currentSubject);
+  if(!name){
+    alert("Vul eers die kind se naam in.");
+    document.getElementById("studentName").focus();
     return;
   }
 
-  var paperNo = getPaperNo(currentSubject);
-  currentPaper = paperNo;
-
-  var bank = [...remaining];
-  seededShuffle(bank, currentSubject + "-" + paperNo + "-" + Date.now());
-
-  var count;
-  if(bank.length <= ADAPTIVE_MAX_QUESTIONS){
-    count = bank.length;
-  } else {
-    count = ADAPTIVE_MIN_QUESTIONS + Math.floor(Math.random() * (ADAPTIVE_MAX_QUESTIONS - ADAPTIVE_MIN_QUESTIONS + 1));
-  }
-
-  currentQuestions = bank.slice(0, count);
-
-  renderQuestions();
-
-  document.getElementById("papers").classList.add("hidden");
-  document.getElementById("exam").classList.remove("hidden");
-  document.getElementById("result").classList.add("hidden");
-
-  var max = currentQuestions.reduce((a,b)=>a+b.m,0);
-
-  document.getElementById("examTitle").innerText = currentSubject + " - Vraestel " + paperNo;
-  document.getElementById("examInfo").innerText =
-    "Hierdie vraestel kom uit die oorblywende vrae. Regte vrae verdwyn; verkeerde vrae bly oor.";
-  document.getElementById("markBadge").innerText =
-    "Vrae in hierdie vraestel: " + currentQuestions.length +
-    " | Oorblywend voor begin: " + remaining.length +
-    " | Totaal punte: " + max;
-
-  window.scrollTo(0,0);
-}
-
-function markTest(){
-  var total = 0;
-  var max = 0;
-  var mastered = getMastered(currentSubject);
-  var newlyMastered = 0;
-  var stillRemainingFromPaper = 0;
-
-  currentQuestions.forEach((x,i)=>{
-    let s = 0, given = "", ans = "";
-    max += x.m;
-
-    let box = document.getElementById("box"+i);
-    let ab = document.getElementById("ans"+i);
-
-    box.classList.remove("correct","wrong","part");
-
-    if(x.t=="mcq" || x.t=="tf"){
-      given = val("q"+i);
-      s = (given == x.a) ? x.m : 0;
-      ans = x.a;
-    }
-
-    if(x.t=="text"){
-      given = val("q"+i);
-      s = x.a.some(a=>norm(given).includes(norm(a))) ? x.m : 0;
-      ans = x.model;
-    }
-
-    if(x.t=="kw"){
-      given = val("q"+i);
-      s = markKW(x,given);
-      ans = x.model;
-    }
-
-    total += s;
-
-    if(s == x.m){
-      box.classList.add("correct");
-      var id = getQuestionId(x);
-      if(mastered.indexOf(id) === -1){
-        mastered.push(id);
-        newlyMastered++;
-      }
-    } else if(s == 0){
-      box.classList.add("wrong");
-      stillRemainingFromPaper++;
-    } else {
-      box.classList.add("part");
-      stillRemainingFromPaper++;
-    }
-
-    ab.classList.remove("hidden");
-    ab.innerHTML =
-      `<b>Jou antwoord:</b> ${esc(given || "Leeg")}<br>
-       <b>Korrekte/model antwoord:</b><br>${ans}<br>
-       <b>Verduideliking:</b> ${x.model || ans}<br>
-       <b>Punt:</b> ${s}/${x.m}<br>
-       <span class="small">${s == x.m ? "Hierdie vraag is nou bemeester en sal nie weer opkom nie." : "Hierdie vraag bly oor vir ’n volgende vraestel."}</span>`;
-  });
-
-  saveMastered(currentSubject, mastered);
-
-  var paperNo = getPaperNo(currentSubject);
-  setPaperNo(currentSubject, paperNo + 1);
-
-  var percent = Math.round(total / max * 100);
-  var remainingAfter = getRemaining(currentSubject).length;
-  var masteredTotal = getMasteredCount(currentSubject);
-  var bankTotal = BANK[currentSubject].length;
-
-  document.getElementById("result").classList.remove("hidden");
-  document.getElementById("rname").innerText = document.getElementById("name").value.trim() || "Edrick";
-  document.getElementById("rsubject").innerText = currentSubject;
-  document.getElementById("rpaper").innerText = paperNo;
-  document.getElementById("score").innerText = total;
-  document.getElementById("maxscore").innerText = max;
-  document.getElementById("percent").innerText = percent;
-
-  var statusText = percent>=80 ? "Uitstekend" : percent>=70 ? "Goed" : percent>=50 ? "Geslaag" : "Moet nog oefen";
-  document.getElementById("status").innerText = statusText;
-
-  var extra = document.getElementById("masterySummary");
-  if(!extra){
-    extra = document.createElement("div");
-    extra.id = "masterySummary";
-    extra.className = "answer";
-    document.getElementById("result").appendChild(extra);
-  }
-
-  if(remainingAfter <= 0){
-    extra.innerHTML =
-      `<h2>Alles bemeester!</h2>
-       <p>Edrick het nou al die vrae in <b>${currentSubject}</b> 100% reg gekry.</p>
-       <p><b>Mastery:</b> ${masteredTotal}/${bankTotal}</p>`;
-  } else {
-    extra.innerHTML =
-      `<h3>Mastery progress</h3>
-       <p><b>Nuwe vrae reg bemeester in hierdie vraestel:</b> ${newlyMastered}</p>
-       <p><b>Vrae in hierdie vraestel wat nog oorbly:</b> ${stillRemainingFromPaper}</p>
-       <p><b>Totale vrae reeds bemeester:</b> ${masteredTotal}/${bankTotal}</p>
-       <p><b>Totale vrae nog oor:</b> ${remainingAfter}</p>
-       <p>Die volgende vraestel sal moeiliker voel, want die maklike vrae wat hy reg gekry het, val weg.</p>`;
-  }
-
-  window.lastEdrickResult = {
-    name: document.getElementById("name").value.trim() || "Edrick",
-    subject: currentSubject,
-    paper: paperNo,
-    score: total,
-    max: max,
-    percent: percent,
-    status: statusText,
-    masteredNow: newlyMastered,
-    masteredTotal: masteredTotal,
-    remaining: remainingAfter,
-    bankTotal: bankTotal,
-    date: new Date().toLocaleString()
-  };
-
-  window.scrollTo({top:document.getElementById("result").offsetTop, behavior:"smooth"});
-}
-</script>
-<!-- TEAE_EDRICK_ADAPTIVE_500_ENGINE_V2_END -->
-<!-- TEAE_EDRICK_UI_WORDING_FIX_V1_START -->
-<script>
-(function () {
-  function replaceTextNodes(root) {
-    const pairs = [
-      ["3 vakke | 5 vraestelle per vak | Moeiliker vrae | Outomaties gemerk", "3 vakke | Groot vraebanke | Adaptiewe leer | Outomaties gemerk"],
-      ["Kies Vraestel 1 tot 5. Hy kan na elke vraestel terugkom en ’n nuwe een begin.", "Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is."],
-      ["Kies Vraestel 1 tot 5. Hy kan na elke vraestel terugkom en 'n nuwe een begin.", "Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is."],
-      ["5 vraestelle per vak", "Groot vraebanke per vak"],
-      ["Volgende vraestel:", "Adaptiewe modus:"],
-      ["Begin volgende vraestel", "Begin volgende sessie"],
-      ["Mastery Bank", "Meestering Bank"],
-      ["Totale vrae in bank:", "Vrae tans in bank:"]
-    );
-
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    let node;
-    while ((node = walker.nextNode())) {
-      let txt = node.nodeValue;
-      let changed = txt;
-      pairs.forEach(pair => {
-        changed = changed.split(pair[0]).join(pair[1]);
-      });
-      if (changed !== txt) node.nodeValue = changed;
-    }
-  }
-
-  function patchAdaptiveRow() {
-    const all = Array.from(document.querySelectorAll("div, p, span, strong, b, h1, h2, h3, h4, button"));
-    all.forEach(el => {
-      const txt = (el.textContent || "").replace(/\s+/g, " ").trim();
-
-      if (/Volgende vraestel:/i.test(txt)) {
-        el.textContent = txt.replace(/Volgende vraestel:/i, "Adaptiewe modus:");
-      }
-
-      if (/Adaptiewe modus:\s*1$/i.test(txt)) {
-        el.textContent = "Adaptiewe modus: Geen vaste nommers";
-      }
-
-      if (/Volgende vraestel:\s*1$/i.test(txt)) {
-        el.textContent = "Adaptiewe modus: Geen vaste nommers";
-      }
-
-      if (/Kies Vraestel 1 tot 5/i.test(txt)) {
-        el.textContent = "Hier is nie vaste vraestelnommers nie. Edrick werk deur 'n groot vraebank totdat alles 100% reg is.";
-      }
-    });
-  }
-
-  function runPatch() {
-    replaceTextNodes(document.body);
-    patchAdaptiveRow();
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    runPatch();
-    const obs = new MutationObserver(function () { runPatch(); });
-    obs.observe(document.body, { childList: true, subtree: true });
-  });
-})();
-</script>
-<!-- TEAE_EDRICK_UI_WORDING_FIX_V1_END -->
-<!-- TEAE_EDRICK_TRUE_500_CLEAN_UI_V3_START -->
-<style>
-/* TEAE_EDRICK_TRUE_500_CLEAN_UI_V3 */
-#paperBtns{
-  display:block !important;
-}
-.edrick-bank-panel{
-  display:grid;
-  grid-template-columns:1.1fr 1fr;
-  gap:14px;
-  align-items:stretch;
-}
-.edrick-stats{
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:16px;
-  padding:16px;
-}
-.edrick-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-.edrick-actions button{
-  width:100%;
-  min-height:64px;
-  margin:0;
-  font-size:15px;
-  border-radius:14px;
-}
-.edrick-help{
-  margin-top:14px;
-  background:#eef2ff;
-  border:1px solid #c7d2fe;
-  border-radius:16px;
-  padding:14px;
-  line-height:1.45;
-}
-.edrick-big{
-  font-size:28px;
-  font-weight:bold;
-  color:#2563eb;
-}
-.edrick-stat-row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:8px 0;
-  border-bottom:1px solid #e5e7eb;
-}
-.edrick-stat-row:last-child{
-  border-bottom:0;
-}
-@media(max-width:700px){
-  .edrick-bank-panel{grid-template-columns:1fr}
-  .edrick-actions{grid-template-columns:1fr}
-}
-</style>
-
-<script>
-/* TEAE_EDRICK_TRUE_500_CLEAN_UI_V3 */
-(function(){
-  const TARGET_BANK_SIZE = 500;
-  const MIN_PER_SESSION = 30;
-  const MAX_PER_SESSION = 50;
-
-  function bankExists(){
-    return (typeof BANK !== "undefined" && BANK && typeof BANK === "object");
-  }
-
-  function baseQuestionText(q){
-    return String(q.q || "").replace(/^Bank item\s+\d+\s*:\s*/i, "").trim();
-  }
-
-  function cloneQuestion(q, n){
-    const c = JSON.parse(JSON.stringify(q));
-    const cleanQ = baseQuestionText(c);
-    c.q = "Bank item " + n + ": " + cleanQ;
-    c._bankItemNo = n;
-    c._autoExpanded500 = true;
-
-    if(c.model){
-      c.model = c.model;
-    } else {
-      c.model = "Lees die korrekte antwoord en verduideliking mooi deur.";
-    }
-
-    return c;
-  }
-
-  function expandSubjectBank(subject){
-    if(!bankExists()) return;
-    if(!Array.isArray(BANK[subject])) return;
-
-    let original = BANK[subject].filter(q => !q._autoExpanded500);
-    if(original.length === 0){
-      original = BANK[subject];
-    }
-
-    const expanded = [];
-    let i = 0;
-
-    while(expanded.length < TARGET_BANK_SIZE){
-      const base = original[i % original.length];
-      expanded.push(cloneQuestion(base, expanded.length + 1));
-      i++;
-    }
-
-    BANK[subject] = expanded;
-  }
-
-  function expandAllBanksTo500(){
-    if(!bankExists()) return;
-    Object.keys(BANK).forEach(subject => expandSubjectBank(subject));
-  }
-
-  function keySafe(subject){
-    return String(subject || "").replace(/\s+/g,"_");
-  }
-
-  window.edrickAdaptiveKey = function(subject){
-    return "edrick_true500_mastered_" + keySafe(subject);
-  };
-
-  window.edrickSessionKey = function(subject){
-    return "edrick_true500_session_" + keySafe(subject);
-  };
-
-  window.getQuestionId = function(q){
-    const no = q._bankItemNo || "";
-    const raw = no + "|" + (q.q || "") + "|" + (q.a || "") + "|" + (q.model || "");
-    try{
-      return btoa(unescape(encodeURIComponent(raw))).replace(/=/g,"");
-    }catch(e){
-      return raw.replace(/\W/g,"_").slice(0,180);
-    }
-  };
-
-  window.getMastered = function(subject){
-    try{
-      return JSON.parse(localStorage.getItem(window.edrickAdaptiveKey(subject)) || "[]");
-    }catch(e){
-      return [];
-    }
-  };
-
-  window.saveMastered = function(subject, arr){
-    localStorage.setItem(window.edrickAdaptiveKey(subject), JSON.stringify([...new Set(arr)]));
-  };
-
-  window.getSessionNo = function(subject){
-    return parseInt(localStorage.getItem(window.edrickSessionKey(subject)) || "1", 10);
-  };
-
-  window.setSessionNo = function(subject, n){
-    localStorage.setItem(window.edrickSessionKey(subject), String(n));
-  };
-
-  window.getRemaining = function(subject){
-    expandAllBanksTo500();
-    const mastered = window.getMastered(subject);
-    return BANK[subject].filter(q => mastered.indexOf(window.getQuestionId(q)) === -1);
-  };
-
-  window.resetSubjectProgress = function(subject){
-    if(confirm("Wil jy " + subject + " se progress reset?")){
-      localStorage.removeItem(window.edrickAdaptiveKey(subject));
-      localStorage.removeItem(window.edrickSessionKey(subject));
-      chooseSubject(subject);
-    }
-  };
-
-  window.resetAllProgress = function(){
-    if(!bankExists()) return;
-    if(confirm("Wil jy ALLE vakke se progress reset?")){
-      Object.keys(BANK).forEach(function(s){
-        localStorage.removeItem(window.edrickAdaptiveKey(s));
-        localStorage.removeItem(window.edrickSessionKey(s));
-      });
-      backHome();
-    }
-  };
-
-  window.chooseSubject = function(s){
-    expandAllBanksTo500();
-
-    currentSubject = s;
-
-    document.getElementById("home").classList.add("hidden");
-    document.getElementById("exam").classList.add("hidden");
-    document.getElementById("result").classList.add("hidden");
-    document.getElementById("papers").classList.remove("hidden");
-
-    const total = BANK[s].length;
-    const mastered = window.getMastered(s).length;
-    const remaining = window.getRemaining(s).length;
-    const sessionNo = window.getSessionNo(s);
-
-    document.getElementById("subjectTitle").innerText = s;
-
-    let h = `
-      <div class="edrick-bank-panel">
-        <div class="edrick-stats">
-          <h3>${s} Adaptiewe Leerbank</h3>
-
-          <div class="edrick-stat-row">
-            <b>Vrae in groot bank</b>
-            <span>${total}</span>
-          </div>
-
-          <div class="edrick-stat-row">
-            <b>Reeds 100% reg</b>
-            <span>${mastered}</span>
-          </div>
-
-          <div class="edrick-stat-row">
-            <b>Vrae nog oor</b>
-            <span class="edrick-big">${remaining}</span>
-          </div>
-
-          <div class="edrick-stat-row">
-            <b>Volgende oefensessie</b>
-            <span>${sessionNo}</span>
-          </div>
-
-          <p class="small">
-            Elke vraag wat Edrick 100% reg kry, word uit die bank gehaal.
-            Vrae wat verkeerd of half reg is, bly oor totdat hy dit reg kry.
-          </p>
-        </div>
-
-        <div>
-          <div class="edrick-actions">
-            <button class="green" onclick="startAdaptivePaper()">Begin volgende oefensessie</button>
-            <button class="red" onclick="resetSubjectProgress('${String(s).replace(/'/g,"\\'")}')">Reset hierdie vak</button>
-            <button class="gray" onclick="backHome()">Terug hoofkieslys</button>
-            <button onclick="window.print()">Print / Save</button>
-          </div>
-
-          <div class="edrick-help">
-            <b>Hoe dit werk:</b><br>
-            Die app gee elke keer 30–50 vrae uit die vrae wat nog oor is.
-            As daar 50 of minder oorbly, kry hy al die oorblywende vrae.
-            Hoe verder hy gaan, hoe meer fokus die toets op wat hy nog nie ken nie.
-          </div>
-        </div>
+  localStorage.setItem("family_active_child", child);
+  localStorage.setItem("family_student_name", name);
+
+  if(child === "edrick"){
+    box.innerHTML = `
+      <div class="child-title">Edrick se vakke</div>
+      <div class="small">Edrick se app werk soos voorheen met sy adaptiewe vraebank.</div>
+      <div class="btn-row">
+        <a class="btn" href="edrick.html">Kuns en Kultuur</a>
+        <a class="btn" href="edrick.html">Tegnologie</a>
+        <a class="btn" href="edrick.html">Engels</a>
+        <a class="btn red" href="index.html">Terug</a>
       </div>
     `;
+  }
 
-    if(remaining <= 0){
-      h = `
-        <div class="answer correct">
-          <h2>Alles bemeester!</h2>
-          <p>Edrick het al ${total} vrae in <b>${s}</b> 100% reg gekry.</p>
-          <button class="red" onclick="resetSubjectProgress('${String(s).replace(/'/g,"\\'")}')">Reset hierdie vak</button>
-          <button class="gray" onclick="backHome()">Terug hoofkieslys</button>
-        </div>
-      `;
-    }
+  if(child === "enrico"){
+    box.innerHTML = `
+      <div class="child-title">Enrico se vakke</div>
+      <div class="small">Enrico se Wiskunde maak direk oop. K53, RTT/CAT en Landbou is nog in die ou app totdat ons dit apart uitsplit.</div>
+      <div class="btn-row">
+        <a class="btn" href="enrico_math_mastery.html">Wiskunde</a>
+        <a class="btn" href="enrico_legacy_index.html?subject=k53">K53</a>
+        <a class="btn" href="enrico_legacy_index.html?subject=cat">RTT / CAT</a>
+        <a class="btn" href="enrico_legacy_index.html?subject=landbou">Landbou</a>
+      </div>
+    `;
+  }
 
-    document.getElementById("paperBtns").innerHTML = h;
-  };
+  if(child === "child3"){
+    box.innerHTML = `
+      <div class="child-title">Kind 3</div>
+      <div class="small">Nog nie opgestel nie. Ons kan hierdie kind se vakke volgende bysit.</div>
+      <div class="btn-row">
+        <button class="btn dark">Nog nie gereed</button>
+      </div>
+    `;
+  }
 
-  window.startPaper = function(){
-    startAdaptivePaper();
-  };
+  if(child === "child4"){
+    box.innerHTML = `
+      <div class="child-title">Kind 4</div>
+      <div class="small">Nog nie opgestel nie. Ons kan hierdie kind se vakke volgende bysit.</div>
+      <div class="btn-row">
+        <button class="btn dark">Nog nie gereed</button>
+      </div>
+    `;
+  }
 
-  window.startAdaptivePaper = function(){
-    expandAllBanksTo500();
+  box.classList.remove("hidden");
+  box.scrollIntoView({behavior:"smooth", block:"center"});
+}
 
-    const remaining = window.getRemaining(currentSubject);
-
-    if(remaining.length <= 0){
-      alert("Alles is klaar bemeester vir " + currentSubject);
-      chooseSubject(currentSubject);
-      return;
-    }
-
-    const sessionNo = window.getSessionNo(currentSubject);
-    currentPaper = sessionNo;
-
-    let bank = [...remaining];
-    seededShuffle(bank, currentSubject + "-session-" + sessionNo + "-" + Date.now());
-
-    let count;
-    if(bank.length <= MAX_PER_SESSION){
-      count = bank.length;
-    } else {
-      count = MIN_PER_SESSION + Math.floor(Math.random() * (MAX_PER_SESSION - MIN_PER_SESSION + 1));
-    }
-
-    currentQuestions = bank.slice(0, count);
-    renderQuestions();
-
-    document.getElementById("papers").classList.add("hidden");
-    document.getElementById("exam").classList.remove("hidden");
-    document.getElementById("result").classList.add("hidden");
-
-    const max = currentQuestions.reduce((a,b)=>a+b.m,0);
-
-    document.getElementById("examTitle").innerText = currentSubject + " - Oefensessie " + sessionNo;
-    document.getElementById("examInfo").innerText =
-      "Hierdie sessie kom uit die vrae wat nog oor is. Regte vrae verdwyn; verkeerde vrae bly oor.";
-    document.getElementById("markBadge").innerText =
-      "Vrae in hierdie sessie: " + currentQuestions.length +
-      " | Oorblywend voor begin: " + remaining.length +
-      " | Totaal punte: " + max;
-
-    window.scrollTo(0,0);
-  };
-
-  window.markTest = function(){
-    let total = 0;
-    let max = 0;
-    let mastered = window.getMastered(currentSubject);
-    let newlyMastered = 0;
-    let stillRemainingFromSession = 0;
-
-    currentQuestions.forEach((x,i)=>{
-      let s = 0, given = "", ans = "";
-      max += x.m;
-
-      let box = document.getElementById("box"+i);
-      let ab = document.getElementById("ans"+i);
-
-      box.classList.remove("correct","wrong","part");
-
-      if(x.t=="mcq" || x.t=="tf"){
-        given = val("q"+i);
-        s = (given == x.a) ? x.m : 0;
-        ans = x.a;
-      }
-
-      if(x.t=="text"){
-        given = val("q"+i);
-        s = x.a.some(a=>norm(given).includes(norm(a))) ? x.m : 0;
-        ans = x.model;
-      }
-
-      if(x.t=="kw"){
-        given = val("q"+i);
-        s = markKW(x,given);
-        ans = x.model;
-      }
-
-      total += s;
-
-      if(s == x.m){
-        box.classList.add("correct");
-        const id = window.getQuestionId(x);
-        if(mastered.indexOf(id) === -1){
-          mastered.push(id);
-          newlyMastered++;
-        }
-      } else if(s == 0){
-        box.classList.add("wrong");
-        stillRemainingFromSession++;
-      } else {
-        box.classList.add("part");
-        stillRemainingFromSession++;
-      }
-
-      ab.classList.remove("hidden");
-      ab.innerHTML =
-        `<b>Jou antwoord:</b> ${esc(given || "Leeg")}<br>
-         <b>Korrekte/model antwoord:</b><br>${ans}<br>
-         <b>Verduideliking:</b> ${x.model || ans}<br>
-         <b>Punt:</b> ${s}/${x.m}<br>
-         <span class="small">${s == x.m ? "Hierdie vraag is nou bemeester en kom nie weer op nie." : "Hierdie vraag bly oor vir ’n volgende oefensessie."}</span>`;
-    });
-
-    window.saveMastered(currentSubject, mastered);
-
-    const sessionNo = window.getSessionNo(currentSubject);
-    window.setSessionNo(currentSubject, sessionNo + 1);
-
-    const percent = Math.round(total / max * 100);
-    const remainingAfter = window.getRemaining(currentSubject).length;
-    const masteredTotal = window.getMastered(currentSubject).length;
-    const bankTotal = BANK[currentSubject].length;
-
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("rname").innerText = document.getElementById("name").value.trim() || "Edrick";
-    document.getElementById("rsubject").innerText = currentSubject;
-    document.getElementById("rpaper").innerText = "Oefensessie " + sessionNo;
-    document.getElementById("score").innerText = total;
-    document.getElementById("maxscore").innerText = max;
-    document.getElementById("percent").innerText = percent;
-
-    const statusText = percent>=80 ? "Uitstekend" : percent>=70 ? "Goed" : percent>=50 ? "Geslaag" : "Moet nog oefen";
-    document.getElementById("status").innerText = statusText;
-
-    let extra = document.getElementById("masterySummary");
-    if(!extra){
-      extra = document.createElement("div");
-      extra.id = "masterySummary";
-      extra.className = "answer";
-      document.getElementById("result").appendChild(extra);
-    }
-
-    if(remainingAfter <= 0){
-      extra.innerHTML =
-        `<h2>Alles bemeester!</h2>
-         <p>Edrick het nou al ${bankTotal} vrae in <b>${currentSubject}</b> 100% reg gekry.</p>`;
-    } else {
-      extra.innerHTML =
-        `<h3>Mastery progress</h3>
-         <p><b>Nuwe vrae reg bemeester in hierdie sessie:</b> ${newlyMastered}</p>
-         <p><b>Vrae in hierdie sessie wat nog oorbly:</b> ${stillRemainingFromSession}</p>
-         <p><b>Totale vrae reeds bemeester:</b> ${masteredTotal}/${bankTotal}</p>
-         <p><b>Totale vrae nog oor:</b> ${remainingAfter}</p>
-         <p>Die volgende sessie sal meer fokus op wat hy nog nie ken nie.</p>`;
-    }
-
-    window.lastEdrickResult = {
-      name: document.getElementById("name").value.trim() || "Edrick",
-      subject: currentSubject,
-      paper: "Oefensessie " + sessionNo,
-      score: total,
-      max: max,
-      percent: percent,
-      status: statusText,
-      masteredNow: newlyMastered,
-      masteredTotal: masteredTotal,
-      remaining: remainingAfter,
-      bankTotal: bankTotal,
-      date: new Date().toLocaleString()
-    };
-
-    window.scrollTo({top:document.getElementById("result").offsetTop, behavior:"smooth"});
-  };
-
-  expandAllBanksTo500();
-
-  document.addEventListener("DOMContentLoaded", function(){
-    expandAllBanksTo500();
-  });
-})();
+loadName();
 </script>
-<!-- TEAE_EDRICK_TRUE_500_CLEAN_UI_V3_END -->
 </body>
 </html>
-
-
-
-
-
-
