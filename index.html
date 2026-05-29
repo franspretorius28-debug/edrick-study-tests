@@ -71,6 +71,9 @@ textarea,input{width:100%;padding:11px;border:1px solid #bbb;border-radius:10px;
 <p class="score"><span id="percent"></span>%</p>
 <p><b>Status:</b> <span id="status"></span></p>
 <button onclick="window.print()">Druk / Save as PDF</button>
+<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_START -->
+<button class="green" onclick="sendWhatsAppResult()">Stuur result na WhatsApp</button>
+<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_END -->
 </div>
 </div>
 
@@ -243,8 +246,44 @@ function markTest(){
  document.getElementById("maxscore").innerText=max;
  document.getElementById("percent").innerText=p;
  document.getElementById("status").innerText=p>=80?"Uitstekend":p>=70?"Goed":p>=50?"Geslaag":"Moet nog oefen";
+  window.lastEdrickResult = {
+    name: document.getElementById("name").value.trim() || "Edrick",
+    subject: currentSubject,
+    paper: currentPaper,
+    score: total,
+    max: max,
+    percent: p,
+    status: document.getElementById("status").innerText,
+    date: new Date().toLocaleString()
+  };
  window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
 }
 </script>
+
+<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_START -->
+<script>
+function sendWhatsAppResult(){
+  var r = window.lastEdrickResult;
+  if(!r){
+    alert("Merk eers die vraestel voordat jy die result stuur.");
+    return;
+  }
+
+  var msg =
+    "Edrick toets result%0A" +
+    "Naam: " + encodeURIComponent(r.name) + "%0A" +
+    "Vak: " + encodeURIComponent(r.subject) + "%0A" +
+    "Vraestel: " + encodeURIComponent(r.paper) + "%0A" +
+    "Punte: " + encodeURIComponent(r.score + "/" + r.max) + "%0A" +
+    "Persentasie: " + encodeURIComponent(r.percent + "%") + "%0A" +
+    "Status: " + encodeURIComponent(r.status) + "%0A" +
+    "Datum: " + encodeURIComponent(r.date);
+
+  var url = "https://wa.me/=" + msg;
+  window.open(url, "_blank");
+}
+</script>
+<!-- TEAE_EDRICK_WHATSAPP_RESULT_V1_END -->
 </body>
 </html>
+
