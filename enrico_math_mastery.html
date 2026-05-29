@@ -2315,128 +2315,190 @@ try { buildMoreChatGPTMathScreenshotQuestions(); } catch(e) { console.error('Mor
 renderTiles();
 startFreshTest();
 </script>
-<!-- TEAE_ENRICO_MATH_HIDE_ORIGINAL_UNTIL_START_V1_START -->
-<style>
-/* Hou Wiskunde soos die ander vakke: eers net die leerbank/dashboard wys */
-body.teae-math-cover-mode > *:not(.enrico-edrick-top):not(.enrico-edrick-wrap):not(script):not(style){
-  display:none !important;
-}
-
-/* Sodra hy begin, wys die oorspronklike Wiskunde app weer */
-body.teae-math-test-mode > *{
-  display:revert;
-}
-
-/* Moenie die dashboard weer wys as toets begin het nie */
-body.teae-math-test-mode .enrico-edrick-top,
-body.teae-math-test-mode .enrico-edrick-wrap{
-  display:none !important;
-}
-</style>
-
+<!-- TEAE_ENRICO_MATH_FORCE_COVER_V2_START -->
 <script>
 (function(){
-  function setCoverMode(){
-    document.body.classList.add("teae-math-cover-mode");
-    document.body.classList.remove("teae-math-test-mode");
+  let mathStarted = false;
+
+  function txt(el){
+    return String((el && (el.innerText || el.textContent)) || "").toLowerCase().replace(/\s+/g," ").trim();
   }
 
-  function setTestMode(){
-    document.body.classList.remove("teae-math-cover-mode");
-    document.body.classList.add("teae-math-test-mode");
+  function findDashboard(){
+    const all = Array.from(document.querySelectorAll("section,div,main"));
+    let best = null;
+
+    for(const el of all){
+      const t = txt(el);
+      if(
+        t.includes("wiskunde adaptiewe leerbank") &&
+        t.includes("vrae in groot bank") &&
+        t.includes("begin volgende oefensessie")
+      ){
+        if(!best || t.length < txt(best).length){
+          best = el;
+        }
+      }
+    }
+
+    return best;
   }
 
-  function clickOriginalStart(){
-    const buttons = Array.from(document.querySelectorAll("button,a"));
-    const btn =
-      buttons.find(b => (b.innerText || "").toLowerCase().includes("begin nuwe toets")) ||
-      buttons.find(b => (b.innerText || "").toLowerCase().includes("begin vars ronde")) ||
-      buttons.find(b => (b.innerText || "").toLowerCase().includes("begin volgende toets")) ||
-      buttons.find(b => (b.innerText || "").toLowerCase().includes("random"));
+  function isInsideDashboard(el){
+    const dash = findDashboard();
+    return dash && (dash === el || dash.contains(el));
+  }
 
-    if(btn){
-      setTimeout(function(){
-        try { btn.click(); } catch(e) {}
-      }, 200);
+  function hideOriginalMath(){
+    if(mathStarted) return;
+
+    const killTexts = [
+      "graad 10 wiskunde kwartaal 2",
+      "kies afdeling",
+      "finansiële dokumente",
+      "fakture en vat",
+      "vraag 1 van",
+      "eksamen-styl",
+      "bemeester:",
+      "uitstaande:",
+      "verkeerd hierdie toets",
+      "hierdie toets:",
+      "lees die dokument/prent",
+      "klaar met toets"
+    ];
+
+    const all = Array.from(document.querySelectorAll("body > *, main, section, div, header"));
+
+    all.forEach(function(el){
+      if(isInsideDashboard(el)) return;
+
+      const t = txt(el);
+      if(!t) return;
+
+      const shouldHide = killTexts.some(k => t.includes(k));
+
+      if(shouldHide){
+        el.setAttribute("data-teae-math-hidden", "1");
+        el.style.display = "none";
+      }
+    });
+
+    // Hou net die eerste donker heading en dashboard sigbaar.
+    const dash = findDashboard();
+    if(dash){
+      dash.style.display = "";
+      let p = dash;
+      while(p && p !== document.body){
+        p.style.display = "";
+        p = p.parentElement;
+      }
     }
   }
 
-  function patchDashboardButtons(){
-    const buttons = Array.from(document.querySelectorAll("button,a"));
+  function showOriginalMath(){
+    mathStarted = true;
 
-    buttons.forEach(function(b){
-      const t = (b.innerText || "").toLowerCase();
+    document.querySelectorAll('[data-teae-math-hidden="1"]').forEach(function(el){
+      el.style.display = "";
+      el.removeAttribute("data-teae-math-hidden");
+    });
+
+    const dash = findDashboard();
+    if(dash){
+      dash.style.display = "none";
+    }
+
+    // Probeer die oorspronklike Wiskunde app se begin-knoppie druk.
+    setTimeout(function(){
+      const buttons = Array.from(document.querySelectorAll("button,a"));
+      const original =
+        buttons.find(b => !isInsideDashboard(b) && txt(b).includes("begin nuwe toets")) ||
+        buttons.find(b => !isInsideDashboard(b) && txt(b).includes("begin vars ronde")) ||
+        buttons.find(b => !isInsideDashboard(b) && txt(b).includes("random"));
+
+      if(original){
+        try { original.click(); } catch(e) {}
+      }
+
+      window.scrollTo(0,0);
+    }, 300);
+  }
+
+  function patchDashboardButtons(){
+    const dash = findDashboard();
+    if(!dash) return;
+
+    const buttons = Array.from(dash.querySelectorAll("button,a"));
+
+    buttons.forEach(function(btn){
+      const t = txt(btn);
 
       if(t.includes("begin volgende oefensessie") || t.includes("begin volgende")){
-        b.onclick = function(e){
+        btn.onclick = function(e){
           e.preventDefault();
           e.stopPropagation();
-          setTestMode();
-          clickOriginalStart();
-          setTimeout(function(){ window.scrollTo(0,0); }, 300);
+          showOriginalMath();
         };
       }
 
-      if(t.includes("net verkeerde")){
-        b.onclick = function(e){
+      if(t.includes("net verkeerde vrae")){
+        btn.onclick = function(e){
           e.preventDefault();
           e.stopPropagation();
-          setTestMode();
+          showOriginalMath();
 
-          const original = Array.from(document.querySelectorAll("button,a")).find(x =>
-            (x.innerText || "").toLowerCase().includes("volgende toets: net verkeerdes")
-          );
-
-          if(original){
-            setTimeout(function(){ original.click(); }, 200);
-          }
-
-          setTimeout(function(){ window.scrollTo(0,0); }, 300);
+          setTimeout(function(){
+            const b = Array.from(document.querySelectorAll("button,a")).find(x =>
+              !isInsideDashboard(x) && txt(x).includes("volgende toets: net verkeerdes")
+            );
+            if(b) b.click();
+          }, 500);
         };
       }
 
-      if(t.includes("random")){
-        b.onclick = function(e){
+      if(t === "random"){
+        btn.onclick = function(e){
           e.preventDefault();
           e.stopPropagation();
-          setTestMode();
+          showOriginalMath();
 
-          const original = Array.from(document.querySelectorAll("button,a")).find(x =>
-            (x.innerText || "").toLowerCase().trim() === "random"
-          );
+          setTimeout(function(){
+            const b = Array.from(document.querySelectorAll("button,a")).find(x =>
+              !isInsideDashboard(x) && txt(x) === "random"
+            );
+            if(b) b.click();
+          }, 500);
+        };
+      }
 
-          if(original){
-            setTimeout(function(){ original.click(); }, 200);
-          }
-
-          setTimeout(function(){ window.scrollTo(0,0); }, 300);
+      if(t.includes("terug hoofkieslys")){
+        btn.onclick = function(e){
+          e.preventDefault();
+          window.location.href = "index.html";
         };
       }
     });
   }
 
   document.addEventListener("DOMContentLoaded", function(){
-    setCoverMode();
-
     let tries = 0;
+
     const timer = setInterval(function(){
       tries++;
       patchDashboardButtons();
+      hideOriginalMath();
 
-      if(document.getElementById("enricoEdrickDash") || tries > 20){
-        patchDashboardButtons();
-      }
-
-      if(tries > 25){
+      if(tries > 30){
         clearInterval(timer);
       }
     }, 250);
   });
 })();
 </script>
-<!-- TEAE_ENRICO_MATH_HIDE_ORIGINAL_UNTIL_START_V1_END -->
+<!-- TEAE_ENRICO_MATH_FORCE_COVER_V2_END -->
 </body>
 </html>
+
 
 
 
