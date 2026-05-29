@@ -189,8 +189,11 @@ body{
   }
 
   window.enricoStartNew = function(){
-    var b = findButtonByText(["begin","nuwe"]) || findButtonByText(["begin"]);
-    if(b) b.click();
+    if(typeof teaeStartMathSession === "function"){
+      teaeStartMathSession();
+    } else if(typeof startFreshTest === "function"){
+      startFreshTest();
+    }
   };
 
   window.enricoWrongOnly = function(){
@@ -1360,13 +1363,37 @@ function pool(){
 
 function shuffle(arr){return arr.sort(()=>Math.random()-0.5)}
 
-function startFreshTest(){
-  questions = shuffle(pool());
+// TEAE_MATH_30_50_SESSION_HELPER_V1_START
+function teaeMathSessionPool(){
+  let base = pool();
+
+  try {
+    const mastered = Array.from(new Set(masteredKeys || []));
+    const notMastered = base.filter(q => !mastered.includes(qKey(q)));
+    if(notMastered.length > 0) base = notMastered;
+  } catch(e) {}
+
+  base = shuffle([...base]);
+
+  const size = base.length <= 50 ? base.length : 30 + Math.floor(Math.random() * 21);
+  return base.slice(0, size);
+}
+
+function teaeStartMathSession(){
+  questions = teaeMathSessionPool();
   current = 0;
   answers = {};
   wrongQuestions = [];
-  document.getElementById("review").innerHTML = "";
+
+  const review = document.getElementById("review");
+  if(review) review.innerHTML = "";
+
   render();
+}
+// TEAE_MATH_30_50_SESSION_HELPER_V1_END
+
+function startFreshTest(){
+  teaeStartMathSession();
 }
 
 function startWrongOnlyTest(){
@@ -1385,12 +1412,7 @@ function startWrongOnlyTest(){
 }
 
 function shuffleCurrent(){
-  questions = shuffle(questions.length ? questions : pool());
-  current = 0;
-  answers = {};
-  wrongQuestions = [];
-  document.getElementById("review").innerHTML = "";
-  render();
+  teaeStartMathSession();
 }
 
 function render(){
@@ -1560,15 +1582,7 @@ function finishTest(){
 }
 
 function resetMasteryRound(){
-  if(!confirm("Begin vars ronde? Dit maak sterre en verkeerde vrae skoon.")) return;
-  masteredKeys = [];
-  stars = 0;
-  wrongQuestions = [];
-  answers = {};
-  localStorage.removeItem("enricoMathMasteredKeys");
-  localStorage.removeItem("enricoMathWrongKeys");
-  localStorage.setItem("enricoMathStars", "0");
-  startFreshTest();
+  teaeStartMathSession();
 }
 
 document.addEventListener("keydown",e=>{if(e.key==="Enter")submitAnswer()});
@@ -2515,6 +2529,7 @@ startFreshTest();
 <!-- TEAE_ENRICO_MATH_FORCE_COVER_V3_END -->
 </body>
 </html>
+
 
 
 
