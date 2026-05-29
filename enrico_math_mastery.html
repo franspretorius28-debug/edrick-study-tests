@@ -2315,7 +2315,7 @@ try { buildMoreChatGPTMathScreenshotQuestions(); } catch(e) { console.error('Mor
 renderTiles();
 startFreshTest();
 </script>
-<!-- TEAE_ENRICO_MATH_FORCE_COVER_V2_START -->
+<!-- TEAE_ENRICO_MATH_FORCE_COVER_V3_START -->
 <script>
 (function(){
   let mathStarted = false;
@@ -2383,7 +2383,6 @@ startFreshTest();
       }
     });
 
-    // Hou net die eerste donker heading en dashboard sigbaar.
     const dash = findDashboard();
     if(dash){
       dash.style.display = "";
@@ -2407,21 +2406,53 @@ startFreshTest();
     if(dash){
       dash.style.display = "none";
     }
+  }
 
-    // Probeer die oorspronklike Wiskunde app se begin-knoppie druk.
+  function clickOriginalRound(){
+    showOriginalMath();
+
     setTimeout(function(){
       const buttons = Array.from(document.querySelectorAll("button,a"));
+
+      // BELANGRIK: "Begin vars ronde" moet eerste wees.
+      // "Begin nuwe toets" gee al 547 vrae, so moenie hom eerste klik nie.
       const original =
-        buttons.find(b => !isInsideDashboard(b) && txt(b).includes("begin nuwe toets")) ||
         buttons.find(b => !isInsideDashboard(b) && txt(b).includes("begin vars ronde")) ||
+        buttons.find(b => !isInsideDashboard(b) && txt(b).includes("volgende toets: net verkeerdes")) ||
         buttons.find(b => !isInsideDashboard(b) && txt(b).includes("random"));
 
       if(original){
         try { original.click(); } catch(e) {}
       }
 
-      window.scrollTo(0,0);
-    }, 300);
+      setTimeout(function(){ window.scrollTo(0,0); }, 300);
+    }, 350);
+  }
+
+  function clickOriginalWrongOnly(){
+    showOriginalMath();
+
+    setTimeout(function(){
+      const b = Array.from(document.querySelectorAll("button,a")).find(x =>
+        !isInsideDashboard(x) && txt(x).includes("volgende toets: net verkeerdes")
+      );
+      if(b) b.click();
+
+      setTimeout(function(){ window.scrollTo(0,0); }, 300);
+    }, 350);
+  }
+
+  function clickOriginalRandom(){
+    showOriginalMath();
+
+    setTimeout(function(){
+      const b = Array.from(document.querySelectorAll("button,a")).find(x =>
+        !isInsideDashboard(x) && txt(x) === "random"
+      );
+      if(b) b.click();
+
+      setTimeout(function(){ window.scrollTo(0,0); }, 300);
+    }, 350);
   }
 
   function patchDashboardButtons(){
@@ -2437,7 +2468,7 @@ startFreshTest();
         btn.onclick = function(e){
           e.preventDefault();
           e.stopPropagation();
-          showOriginalMath();
+          clickOriginalRound();
         };
       }
 
@@ -2445,14 +2476,7 @@ startFreshTest();
         btn.onclick = function(e){
           e.preventDefault();
           e.stopPropagation();
-          showOriginalMath();
-
-          setTimeout(function(){
-            const b = Array.from(document.querySelectorAll("button,a")).find(x =>
-              !isInsideDashboard(x) && txt(x).includes("volgende toets: net verkeerdes")
-            );
-            if(b) b.click();
-          }, 500);
+          clickOriginalWrongOnly();
         };
       }
 
@@ -2460,14 +2484,7 @@ startFreshTest();
         btn.onclick = function(e){
           e.preventDefault();
           e.stopPropagation();
-          showOriginalMath();
-
-          setTimeout(function(){
-            const b = Array.from(document.querySelectorAll("button,a")).find(x =>
-              !isInsideDashboard(x) && txt(x) === "random"
-            );
-            if(b) b.click();
-          }, 500);
+          clickOriginalRandom();
         };
       }
 
@@ -2495,9 +2512,10 @@ startFreshTest();
   });
 })();
 </script>
-<!-- TEAE_ENRICO_MATH_FORCE_COVER_V2_END -->
+<!-- TEAE_ENRICO_MATH_FORCE_COVER_V3_END -->
 </body>
 </html>
+
 
 
 
