@@ -2315,8 +2315,129 @@ try { buildMoreChatGPTMathScreenshotQuestions(); } catch(e) { console.error('Mor
 renderTiles();
 startFreshTest();
 </script>
+<!-- TEAE_ENRICO_MATH_HIDE_ORIGINAL_UNTIL_START_V1_START -->
+<style>
+/* Hou Wiskunde soos die ander vakke: eers net die leerbank/dashboard wys */
+body.teae-math-cover-mode > *:not(.enrico-edrick-top):not(.enrico-edrick-wrap):not(script):not(style){
+  display:none !important;
+}
+
+/* Sodra hy begin, wys die oorspronklike Wiskunde app weer */
+body.teae-math-test-mode > *{
+  display:revert;
+}
+
+/* Moenie die dashboard weer wys as toets begin het nie */
+body.teae-math-test-mode .enrico-edrick-top,
+body.teae-math-test-mode .enrico-edrick-wrap{
+  display:none !important;
+}
+</style>
+
+<script>
+(function(){
+  function setCoverMode(){
+    document.body.classList.add("teae-math-cover-mode");
+    document.body.classList.remove("teae-math-test-mode");
+  }
+
+  function setTestMode(){
+    document.body.classList.remove("teae-math-cover-mode");
+    document.body.classList.add("teae-math-test-mode");
+  }
+
+  function clickOriginalStart(){
+    const buttons = Array.from(document.querySelectorAll("button,a"));
+    const btn =
+      buttons.find(b => (b.innerText || "").toLowerCase().includes("begin nuwe toets")) ||
+      buttons.find(b => (b.innerText || "").toLowerCase().includes("begin vars ronde")) ||
+      buttons.find(b => (b.innerText || "").toLowerCase().includes("begin volgende toets")) ||
+      buttons.find(b => (b.innerText || "").toLowerCase().includes("random"));
+
+    if(btn){
+      setTimeout(function(){
+        try { btn.click(); } catch(e) {}
+      }, 200);
+    }
+  }
+
+  function patchDashboardButtons(){
+    const buttons = Array.from(document.querySelectorAll("button,a"));
+
+    buttons.forEach(function(b){
+      const t = (b.innerText || "").toLowerCase();
+
+      if(t.includes("begin volgende oefensessie") || t.includes("begin volgende")){
+        b.onclick = function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          setTestMode();
+          clickOriginalStart();
+          setTimeout(function(){ window.scrollTo(0,0); }, 300);
+        };
+      }
+
+      if(t.includes("net verkeerde")){
+        b.onclick = function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          setTestMode();
+
+          const original = Array.from(document.querySelectorAll("button,a")).find(x =>
+            (x.innerText || "").toLowerCase().includes("volgende toets: net verkeerdes")
+          );
+
+          if(original){
+            setTimeout(function(){ original.click(); }, 200);
+          }
+
+          setTimeout(function(){ window.scrollTo(0,0); }, 300);
+        };
+      }
+
+      if(t.includes("random")){
+        b.onclick = function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          setTestMode();
+
+          const original = Array.from(document.querySelectorAll("button,a")).find(x =>
+            (x.innerText || "").toLowerCase().trim() === "random"
+          );
+
+          if(original){
+            setTimeout(function(){ original.click(); }, 200);
+          }
+
+          setTimeout(function(){ window.scrollTo(0,0); }, 300);
+        };
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    setCoverMode();
+
+    let tries = 0;
+    const timer = setInterval(function(){
+      tries++;
+      patchDashboardButtons();
+
+      if(document.getElementById("enricoEdrickDash") || tries > 20){
+        patchDashboardButtons();
+      }
+
+      if(tries > 25){
+        clearInterval(timer);
+      }
+    }, 250);
+  });
+})();
+</script>
+<!-- TEAE_ENRICO_MATH_HIDE_ORIGINAL_UNTIL_START_V1_END -->
 </body>
 </html>
+
 
 
 
