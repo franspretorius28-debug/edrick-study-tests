@@ -42,6 +42,7 @@ label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;
     <h2>Begin</h2>
     <p class="small">Elke vraag wat Enrico 100% reg kry, val uit. Vrae wat verkeerd is, bly oor totdat hy dit reg kry.</p>
     <input id="name" value="Enrico" placeholder="Enrico">
+
     <div class="grid">
       <div class="stats">
         <h3>Landbou Wetenskappe Adaptiewe Leerbank</h3>
@@ -49,9 +50,10 @@ label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;
         <div class="row"><b>Reeds 100% reg</b><span id="done">0</span></div>
         <div class="row"><b>Vrae nog oor</b><span class="big" id="remaining">500</span></div>
       </div>
+
       <div>
-        <button class="green" onclick="startSession()">Begin volgende oefensessie</button>
-        <button class="red" onclick="resetProgress()">Reset hierdie vak</button>
+        <button class="green" id="startBtn" type="button">Begin volgende oefensessie</button>
+        <button class="red" id="resetBtn" type="button">Reset hierdie vak</button>
         <a class="btn gray" href="index.html">Terug hoofkieslys</a>
         <div class="answer">
           <b>Hoe dit werk:</b><br>
@@ -62,11 +64,11 @@ label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;
   </section>
 
   <section class="card hidden" id="exam">
-    <h2 id="examTitle">Landbou Wetenskappe - Oefensessie</h2>
+    <h2>Landbou Wetenskappe - Oefensessie</h2>
     <p id="info"></p>
     <div id="questions"></div>
-    <button class="green" onclick="markSession()">Merk sessie</button>
-    <button class="gray" onclick="location.reload()">Terug</button>
+    <button class="green" id="markBtn" type="button">Merk sessie</button>
+    <button class="gray" type="button" onclick="location.reload()">Terug</button>
   </section>
 
   <section class="card hidden" id="result">
@@ -80,138 +82,218 @@ label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;
 </main>
 
 <script>
-const SUBJECT = "Landbou Wetenskappe";
-const TARGET = 500;
-const MINQ = 30;
-const MAXQ = 50;
-
-const BASE_QUESTIONS = [
- {t:"mcq",m:1,q:"What do plants need for photosynthesis?",o:["Water, carbon dioxide and sunlight","Only soil","Only oxygen","Only fertilizer"],a:"Water, carbon dioxide and sunlight",model:"Photosynthesis needs water, carbon dioxide and light."},
- {t:"mcq",m:1,q:"Which part of the plant absorbs water?",o:["Flower","Root","Fruit","Stem only"],a:"Root",model:"Roots absorb water and minerals from the soil."},
- {t:"mcq",m:1,q:"What is compost used for?",o:["To poison soil","To improve soil fertility","To dry plants","To stop sunlight"],a:"To improve soil fertility",model:"Compost adds organic matter and nutrients to soil."},
- {t:"mcq",m:1,q:"Which factor can cause soil erosion?",o:["Good cover crops","Strong wind and water runoff","Mulching","Contour ploughing"],a:"Strong wind and water runoff",model:"Wind and water runoff can remove topsoil."},
- {t:"kw",m:2,q:"Name two ways to prevent soil erosion.",k:["mulch","cover","contour","terrace"],model:"Use cover crops, mulch, contour ploughing or terracing to reduce erosion."}
+var SUBJECT = "Landbou Wetenskappe";
+var TARGET = 500;
+var MINQ = 30;
+var MAXQ = 50;
+var BASE_QUESTIONS = [
+ {"t":"mcq","m":1,"q":"What do plants need for photosynthesis?","o":["Water, carbon dioxide and sunlight","Only soil","Only oxygen","Only fertilizer"],"a":"Water, carbon dioxide and sunlight","model":"Photosynthesis needs water, carbon dioxide and light."},
+ {"t":"mcq","m":1,"q":"Which part of the plant absorbs water?","o":["Flower","Root","Fruit","Stem only"],"a":"Root","model":"Roots absorb water and minerals from the soil."},
+ {"t":"mcq","m":1,"q":"What is compost used for?","o":["To poison soil","To improve soil fertility","To dry plants","To stop sunlight"],"a":"To improve soil fertility","model":"Compost adds organic matter and nutrients to soil."},
+ {"t":"mcq","m":1,"q":"Which factor can cause soil erosion?","o":["Good cover crops","Strong wind and water runoff","Mulching","Contour ploughing"],"a":"Strong wind and water runoff","model":"Wind and water runoff can remove topsoil."},
+ {"t":"kw","m":2,"q":"Name two ways to prevent soil erosion.","k":["mulch","cover","contour","terrace"],"model":"Use cover crops, mulch, contour ploughing or terracing to reduce erosion."}
 ];
+var BANK = [];
+var current = [];
 
-function cloneQuestion(q,n){
-  const c = JSON.parse(JSON.stringify(q));
-  c.id = "bank-" + n;
-  c.q = "Bank item " + n + ": " + c.q;
-  return c;
+function safeText(s){
+  return String(s || "").replace(/[&<>"']/g,function(ch){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",""":"&quot;","'":"&#039;"}[ch] || ch;
+  });
 }
 
-function buildBank(){
-  const bank = [];
-  let i = 0;
-  while(bank.length < TARGET){
-    bank.push(cloneQuestion(BASE_QUESTIONS[i % BASE_QUESTIONS.length], bank.length + 1));
-    i++;
+function makeBank(){
+  BANK = [];
+  var n = 1;
+  while(BANK.length < TARGET){
+    for(var i=0; i<BASE_QUESTIONS.length && BANK.length<TARGET; i++){
+      var q = JSON.parse(JSON.stringify(BASE_QUESTIONS[i]));
+      q.id = SUBJECT.replace(/\s+/g,"_") + "_" + n;
+      q.q = "Vraag " + n + ": " + q.q;
+      BANK.push(q);
+      n++;
+    }
   }
-  return bank;
 }
 
-const BANK = buildBank();
-
-function key(){ return "enrico_mastery_" + SUBJECT.replace(/\\s+/g,"_"); }
-function mastered(){
-  try{return JSON.parse(localStorage.getItem(key())||"[]")}catch(e){return []}
+function storageKey(){
+  return "enrico_mastery_" + SUBJECT.replace(/\s+/g,"_");
 }
-function saveMastered(a){localStorage.setItem(key(),JSON.stringify([...new Set(a)]))}
-function remaining(){const m=mastered();return BANK.filter(q=>!m.includes(q.id))}
+
+function getDone(){
+  try { return JSON.parse(localStorage.getItem(storageKey()) || "[]"); }
+  catch(e){ return []; }
+}
+
+function setDone(arr){
+  localStorage.setItem(storageKey(), JSON.stringify(Array.from(new Set(arr))));
+}
+
+function getRemaining(){
+  var done = getDone();
+  return BANK.filter(function(q){ return done.indexOf(q.id) === -1; });
+}
+
 function updateStats(){
-  const d=mastered().length, r=remaining().length;
-  document.getElementById("total").innerText=BANK.length;
-  document.getElementById("done").innerText=d;
-  document.getElementById("remaining").innerText=r;
+  var done = getDone().length;
+  var rem = getRemaining().length;
+  document.getElementById("total").textContent = BANK.length;
+  document.getElementById("done").textContent = done;
+  document.getElementById("remaining").textContent = rem;
 }
-function shuffle(a){
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+
+function shuffle(arr){
+  for(var i=arr.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var t=arr[i]; arr[i]=arr[j]; arr[j]=t;
+  }
 }
-let current=[];
 
 function startSession(){
-  const r=remaining();
-  if(r.length===0){alert("Alles is bemeester!");return}
-  shuffle(r);
-  const count = r.length <= MAXQ ? r.length : MINQ + Math.floor(Math.random()*(MAXQ-MINQ+1));
-  current = r.slice(0,count);
-  render();
+  var rem = getRemaining();
+  if(rem.length === 0){
+    alert("Alles is klaar 100% reg!");
+    return;
+  }
+
+  shuffle(rem);
+  var count = rem.length <= MAXQ ? rem.length : MINQ + Math.floor(Math.random() * (MAXQ - MINQ + 1));
+  current = rem.slice(0, count);
+
+  renderQuestions();
+
   document.getElementById("home").classList.add("hidden");
   document.getElementById("result").classList.add("hidden");
   document.getElementById("exam").classList.remove("hidden");
-  document.getElementById("info").innerText="Vrae in hierdie sessie: "+current.length+" | Oorblywend voor begin: "+r.length;
+  document.getElementById("info").textContent = "Vrae in hierdie sessie: " + current.length + " | Oorblywend voor begin: " + rem.length;
   window.scrollTo(0,0);
 }
 
-function render(){
-  let h="";
-  current.forEach((x,i)=>{
-    h += <div class="card" id="box\"><h3>\. \</h3><p><b>[\ punte]</b></p>;
-    if(x.t==="mcq"){
-      x.o.forEach(o=>h+=<label><input type="radio" name="q\" value="\"> \</label>);
+function renderQuestions(){
+  var html = "";
+
+  current.forEach(function(q, i){
+    html += '<div class="card" id="box_'+i+'">';
+    html += '<h3>'+(i+1)+'. '+safeText(q.q)+'</h3>';
+    html += '<p><b>['+q.m+' punte]</b></p>';
+
+    if(q.t === "mcq"){
+      q.o.forEach(function(opt){
+        html += '<label><input type="radio" name="q_'+i+'" value="'+safeText(opt)+'"> '+safeText(opt)+'</label>';
+      });
     } else {
-      h += <textarea name="q\" placeholder="Tik jou antwoord hier"></textarea>;
+      html += '<textarea name="q_'+i+'" placeholder="Tik jou antwoord hier"></textarea>';
     }
-    h += <div class="answer hidden" id="ans\"></div></div>;
+
+    html += '<div class="answer hidden" id="ans_'+i+'"></div>';
+    html += '</div>';
   });
-  document.getElementById("questions").innerHTML=h;
+
+  document.getElementById("questions").innerHTML = html;
 }
 
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;","'":"&#039;"}[m]))}
-function val(i){let e=document.querySelector([name="q\"]:checked)||document.querySelector([name="q\"]);return e?e.value.trim():""}
-function norm(s){return String(s||"").toLowerCase().replace(/[.,;:!?()']/g," ").replace(/\\s+/g," ").trim()}
-function markKw(x,a){let n=norm(a),f=0;x.k.forEach(k=>{if(n.includes(norm(k)))f++});return Math.round((f/x.k.length)*x.m)}
+function getAnswer(i){
+  var checked = document.querySelector('input[name="q_'+i+'"]:checked');
+  if(checked) return checked.value.trim();
 
-function markSession(){
-  let total=0,max=0,newDone=0,wrong=0;
-  let m=mastered();
+  var txt = document.querySelector('textarea[name="q_'+i+'"]');
+  if(txt) return txt.value.trim();
 
-  current.forEach((x,i)=>{
-    let s=0,given=val(i),ans=x.a||x.model;
-    max+=x.m;
-    const box=document.getElementById("box"+i), ab=document.getElementById("ans"+i);
-    box.classList.remove("correct","wrong","part");
+  return "";
+}
 
-    if(x.t==="mcq") s=(given===x.a)?x.m:0;
-    else s=markKw(x,given);
+function norm(s){
+  return String(s || "").toLowerCase().replace(/[.,;:!?()']/g," ").replace(/\s+/g," ").trim();
+}
 
-    total+=s;
+function markKeywords(q, ans){
+  var n = norm(ans);
+  var found = 0;
 
-    if(s===x.m){
-      box.classList.add("correct");
-      if(!m.includes(x.id)){m.push(x.id);newDone++}
-    } else {
-      box.classList.add(s>0?"part":"wrong");
-      wrong++;
-    }
-
-    ab.classList.remove("hidden");
-    ab.innerHTML=<b>Jou antwoord:</b> \<br><b>Korrekte/model antwoord:</b><br>\<br><b>Verduideliking:</b> \<br><b>Punt:</b> \/\;
+  q.k.forEach(function(k){
+    if(n.indexOf(norm(k)) >= 0) found++;
   });
 
-  saveMastered(m);
+  return Math.round((found / q.k.length) * q.m);
+}
+
+function markSession(){
+  var total = 0;
+  var max = 0;
+  var newDone = 0;
+  var done = getDone();
+
+  current.forEach(function(q, i){
+    var ans = getAnswer(i);
+    var score = 0;
+    max += q.m;
+
+    if(q.t === "mcq"){
+      score = ans === q.a ? q.m : 0;
+    } else {
+      score = markKeywords(q, ans);
+    }
+
+    total += score;
+
+    var box = document.getElementById("box_"+i);
+    var feedback = document.getElementById("ans_"+i);
+
+    box.classList.remove("correct","wrong","part");
+
+    if(score === q.m){
+      box.classList.add("correct");
+      if(done.indexOf(q.id) === -1){
+        done.push(q.id);
+        newDone++;
+      }
+    } else if(score > 0){
+      box.classList.add("part");
+    } else {
+      box.classList.add("wrong");
+    }
+
+    feedback.classList.remove("hidden");
+    feedback.innerHTML =
+      "<b>Jou antwoord:</b> " + safeText(ans || "Leeg") +
+      "<br><b>Korrekte/model antwoord:</b><br>" + safeText(q.a || q.model) +
+      "<br><b>Verduideliking:</b> " + safeText(q.model) +
+      "<br><b>Punt:</b> " + score + "/" + q.m;
+  });
+
+  setDone(done);
   updateStats();
 
-  const p=Math.round(total/max*100);
-  const rem=remaining().length;
+  var percent = max ? Math.round((total / max) * 100) : 0;
 
   document.getElementById("result").classList.remove("hidden");
-  document.getElementById("rname").innerText=document.getElementById("name").value||"Enrico";
-  document.getElementById("score").innerText=total;
-  document.getElementById("maxscore").innerText=max;
-  document.getElementById("percent").innerText=p;
-  document.getElementById("summary").innerHTML=<b>Nuwe vrae reg bemeester:</b> \<br><b>Vrae nog oor:</b> \<br>Die volgende sessie fokus net op wat nog oorbly.;
-  window.scrollTo({top:document.getElementById("result").offsetTop,behavior:"smooth"});
+  document.getElementById("rname").textContent = document.getElementById("name").value || "Enrico";
+  document.getElementById("score").textContent = total;
+  document.getElementById("maxscore").textContent = max;
+  document.getElementById("percent").textContent = percent;
+  document.getElementById("summary").innerHTML =
+    "<b>Nuwe vrae 100% reg:</b> " + newDone +
+    "<br><b>Vrae nog oor:</b> " + getRemaining().length +
+    "<br>Die volgende sessie fokus net op wat nog oorbly.";
+
+  window.scrollTo({top:document.getElementById("result").offsetTop, behavior:"smooth"});
 }
 
 function resetProgress(){
-  if(confirm("Reset Landbou Wetenskappe progress?")){
-    localStorage.removeItem(key());
+  if(confirm("Reset " + SUBJECT + " progress?")){
+    localStorage.removeItem(storageKey());
     updateStats();
   }
 }
 
-updateStats();
+document.addEventListener("DOMContentLoaded", function(){
+  makeBank();
+  updateStats();
+
+  document.getElementById("startBtn").addEventListener("click", startSession);
+  document.getElementById("markBtn").addEventListener("click", markSession);
+  document.getElementById("resetBtn").addEventListener("click", resetProgress);
+});
 </script>
 </body>
 </html>
