@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elona - Graad 7 Wiskunde</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef2ff;color:#111827}
+header{background:#0f172a;color:white;text-align:center;padding:34px 14px 42px}
+header h1{margin:0 0 16px;font-size:38px;font-weight:900;letter-spacing:1px}
+header p{margin:0;font-size:18px}
+.wrap{max-width:1080px;margin:30px auto;padding:0 16px}
+.card{background:white;border-radius:18px;padding:24px;margin:16px 0;box-shadow:0 12px 30px #0002}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.stats{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.row{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:10px 0;font-size:18px}
+.row:last-child{border-bottom:0}
+.big{font-size:32px;font-weight:900;color:#2563eb}
+input,textarea{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;margin:8px 0}
+textarea{min-height:80px}
+button,.btn{border:0;border-radius:12px;padding:14px 18px;margin:6px;font-weight:900;background:#2563eb;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}
+.topic{background:#eef2ff;border-left:5px solid #2563eb;padding:12px;border-radius:12px;margin:8px 0;font-weight:800}
+.answer{background:#eef2ff;padding:13px;border-radius:12px;margin-top:10px;line-height:1.55}
+.formula{background:#fff7ed;border:1px solid #fdba74;padding:12px;border-radius:12px;margin-top:10px;line-height:1.55}
+.correct{background:#f0fdf4!important;border:2px solid #22c55e!important}
+.wrong{background:#fef2f2!important;border:2px solid #ef4444!important}
+.hidden{display:none}
+.small{color:#64748b;line-height:1.45}
+.badge{display:inline-block;background:#dcfce7;color:#166534;padding:5px 10px;border-radius:999px;font-weight:900;font-size:13px}
+@media(max-width:800px){header h1{font-size:30px}.grid{grid-template-columns:1fr}.wrap{margin:18px auto}}
+</style>
+</head>
+<body>
+<header>
+  <h1>📘 Elona - Graad 7 Wiskunde</h1>
+  <p>500-vrae bank | Berekeninge | Formules | Redes | Adaptiewe leer</p>
+</header>
+
+<main class="wrap">
+  <section class="card" id="home">
+    <h2>Begin</h2>
+    <p class="small">
+      Hierdie vrae is gebou op Elona se vraestel: eksponente, telgetalle/heelgetalle, breuke/desimale,
+      patrone en funksies. Sy moet die antwoord én berekening invul.
+    </p>
+    <input id="name" value="Elona" placeholder="Elona">
+
+    <div class="grid">
+      <div class="stats">
+        <h3>Wiskunde Adaptiewe Leerbank</h3>
+        <div class="row"><b>Vrae in groot bank</b><span id="total">500</span></div>
+        <div class="row"><b>Reeds 100% reg</b><span id="done">0</span></div>
+        <div class="row"><b>Vrae nog oor</b><span class="big" id="remaining">500</span></div>
+      </div>
+
+      <div>
+        <button class="green" id="startBtn" type="button">Begin volgende oefensessie</button>
+        <button class="red" id="resetBtn" type="button">Reset hierdie vak</button>
+        <a class="btn gray" href="index.html">Terug hoofkieslys</a>
+        <div class="answer">
+          <b>Hoe dit werk:</b><br>
+          Die app gee 30–50 vrae. Vrae wat sy reg kry, val uit. Vrae wat verkeerd is, bly oor.
+          Na elke vraag wys die app die formule, rede en stappe.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="exam">
+    <h2>Elona Wiskunde - Oefensessie</h2>
+    <p id="info"></p>
+    <div id="questions"></div>
+    <button class="green" id="markBtn" type="button">Merk sessie</button>
+    <a class="btn gray" href="index.html">Terug hoofkieslys</a>
+  </section>
+
+  <section class="card hidden" id="result">
+    <h2>Finale Resultaat</h2>
+    <div id="resultText" class="answer"></div>
+  </section>
+</main>
+
+<script>
+const TARGET = 500;
+let BANK = [];
+let CURRENT = [];
+
+function esc(s){
+  return String(s || "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"
+  }[c]));
+}
+
+function norm(s){
+  return String(s || "")
+    .toLowerCase()
+    .replace(",", ".")
+    .replace(/[^\d\.\-\<\>\=\w\s\/]/g,"")
+    .replace(/\s+/g,"")
+    .trim();
+}
+
+function storageKey(){ return "elona_grade7_math_mastery_v1"; }
+
+function getDone(){
+  try { return JSON.parse(localStorage.getItem(storageKey()) || "[]"); }
+  catch(e){ return []; }
+}
+
+function saveDone(arr){
+  localStorage.setItem(storageKey(), JSON.stringify(Array.from(new Set(arr))));
+}
+
+function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){let t=b;b=a%b;a=t;} return a || 1; }
+
+function simp(n,d){
+  let g=gcd(n,d);
+  n/=g; d/=g;
+  if(d<0){ n=-n; d=-d; }
+  return d===1 ? String(n) : n + "/" + d;
+}
+
+function addQ(topic,q,answer,formula,steps,reason,alts){
+  BANK.push({
+    id:"elona_" + (BANK.length+1),
+    topic,q,
+    answer:String(answer),
+    alts:(alts||[]).map(String),
+    formula,steps,reason
+  });
+}
+
+function buildBank(){
+  BANK = [];
+
+  // 1. Eksponente en wortels
+  for(let i=0;i<90;i++){
+    let a = 2 + (i % 8);
+    let p = 2 + (i % 4);
+    addQ("Eksponente",
+      `Skryf ${a} × ${a} × ${a} in eksponentvorm.`,
+      `${a}^3`,
+      "Herhaalde vermenigvuldiging: a × a × a = a³",
+      `${a} word 3 keer met homself vermenigvuldig, daarom is dit ${a}³.`,
+      "Die eksponent sê hoeveel keer die basis herhaal word.",
+      [`${a}³`]
+    );
+
+    let n = (2 + (i % 12));
+    addQ("Eksponente",
+      `Bereken ${n}².`,
+      n*n,
+      "n² = n × n",
+      `${n}² = ${n} × ${n} = ${n*n}`,
+      "Kwadraat beteken die getal maal homself.",
+      []
+    );
+
+    let sq = (2 + (i % 12));
+    addQ("Eksponente",
+      `Bereken √${sq*sq}.`,
+      sq,
+      "√x vra: watter getal × homself gee x?",
+      `√${sq*sq} = ${sq}, want ${sq} × ${sq} = ${sq*sq}`,
+      "Die vierkantswortel is die teenoorgestelde van kwadraat.",
+      []
+    );
+
+    addQ("Eksponente",
+      `Bereken 10³ - 10².`,
+      900,
+      "10³ = 1000 en 10² = 100",
+      "10³ - 10² = 1000 - 100 = 900",
+      "Werk eers die eksponente uit, dan trek jy af.",
+      []
+    );
+  }
+
+  // 2. Heelgetalle en telgetalle
+  for(let i=0;i<90;i++){
+    let a = -20 + (i % 41);
+    let b = -20 + ((i*7) % 41);
+    let sign = a < b ? "<" : a > b ? ">" : "=";
+    addQ("Heelgetalle",
+      `Vergelyk die getalle: ${a} ___ ${b}. Vul <, > of = in.`,
+      sign,
+      "Op 'n getallelyn is die getal regs groter.",
+      `${a} is ${sign === "<" ? "kleiner as" : sign === ">" ? "groter as" : "gelyk aan"} ${b}, daarom is die teken ${sign}.`,
+      "Negatiewe getalle verder links is kleiner.",
+      []
+    );
+
+    let x = -12 + (i % 25);
+    let y = -8 + ((i*3) % 17);
+    let ans = x + y;
+    addQ("Heelgetalle",
+      `Bereken ${x} + (${y}).`,
+      ans,
+      "Dieselfde tekens: tel op. Verskillende tekens: trek af en hou die teken van die grootste absolute waarde.",
+      `${x} + (${y}) = ${ans}`,
+      "Gebruik die getallelyn of tekenreëls vir heelgetalle.",
+      []
+    );
+
+    let n = 12 + (i % 30);
+    let factors = [];
+    for(let f=1;f<=n;f++){ if(n%f===0) factors.push(f); }
+    addQ("Faktore en veelvoude",
+      `Skryf al die faktore van ${n} neer.`,
+      factors.join(","),
+      "Faktore is getalle wat presies in 'n getal kan deel.",
+      `${n} se faktore is: ${factors.join(", ")}`,
+      "As daar geen res oorbly nie, is dit 'n faktor.",
+      [factors.join(", ")]
+    );
+
+    let m = 3 + (i % 9);
+    addQ("Faktore en veelvoude",
+      `Skryf die eerste 3 veelvoude van ${m} neer.`,
+      `${m},${m*2},${m*3}`,
+      "Veelvoude: getal × 1, × 2, × 3 ...",
+      `${m}×1=${m}, ${m}×2=${m*2}, ${m}×3=${m*3}`,
+      "Veelvoude kom uit maaltafels.",
+      [`${m}, ${m*2}, ${m*3}`]
+    );
+  }
+
+  // 3. Gewone breuke en desimale
+  for(let i=0;i<100;i++){
+    let a = 1 + (i % 5), b = 2 + (i % 6);
+    let c = 1 + ((i*2) % 5), d = 2 + ((i*3) % 6);
+    let lcm = b*d/gcd(b,d);
+    let n = a*(lcm/b) + c*(lcm/d);
+    addQ("Breuke",
+      `Bereken ${a}/${b} + ${c}/${d}.`,
+      simp(n,lcm),
+      "Maak noemers dieselfde, tel tellers op, vereenvoudig.",
+      `${a}/${b} + ${c}/${d} = ${a*(lcm/b)}/${lcm} + ${c*(lcm/d)}/${lcm} = ${n}/${lcm} = ${simp(n,lcm)}`,
+      "Breuke kan net opgetel word as die noemers dieselfde is.",
+      []
+    );
+
+    let p = 1 + (i % 5), q = 2 + ((i+2) % 6);
+    let r = 1 + ((i+3) % 5), s = 2 + ((i+4) % 6);
+    addQ("Breuke",
+      `Bereken ${p}/${q} × ${r}/${s}.`,
+      simp(p*r,q*s),
+      "Vermenigvuldig teller met teller en noemer met noemer.",
+      `${p}/${q} × ${r}/${s} = ${p*r}/${q*s} = ${simp(p*r,q*s)}`,
+      "By maal met breuke hoef die noemers nie dieselfde te wees nie.",
+      []
+    );
+
+    let da = (i%9)/10 + 0.4;
+    let db = ((i*3)%9)/10 + 0.1;
+    let sum = (da + db).toFixed(1);
+    addQ("Desimale breuke",
+      `Bereken ${da.toFixed(1).replace(".",",")} + ${db.toFixed(1).replace(".",",")}.`,
+      sum.replace(".",","),
+      "Skryf kommas onder mekaar en tel plekwaardes op.",
+      `${da.toFixed(1).replace(".",",")} + ${db.toFixed(1).replace(".",",")} = ${sum.replace(".",",")}`,
+      "Desimale getalle word volgens plekwaarde opgetel.",
+      [sum]
+    );
+
+    let dm1 = 2 + (i % 8);
+    let dm2 = ((i % 9)+1)/10;
+    let prod = (dm1*dm2).toFixed(1);
+    addQ("Desimale breuke",
+      `Bereken ${dm1} × ${dm2.toFixed(1).replace(".",",")}.`,
+      prod.replace(".",","),
+      "Maal soos heelgetalle en plaas die desimale komma terug.",
+      `${dm1} × ${dm2.toFixed(1).replace(".",",")} = ${prod.replace(".",",")}`,
+      "By desimale vermenigvuldiging moet die komma op die regte plek kom.",
+      [prod]
+    );
+  }
+
+  // 4. Patrone
+  for(let i=0;i<110;i++){
+    let start = 1 + (i % 20);
+    let diff = 2 + (i % 9);
+    let seq = [start,start+diff,start+2*diff,start+3*diff];
+    addQ("Numeriese patrone",
+      `Voltooi die volgende 3 terme: ${seq.join("; ")}; ___; ___; ___`,
+      `${start+4*diff},${start+5*diff},${start+6*diff}`,
+      "Konstante verskil: voeg elke keer dieselfde getal by.",
+      `Die verskil is +${diff}. Volgende terme: ${start+4*diff}, ${start+5*diff}, ${start+6*diff}`,
+      "As die verskil dieselfde bly, is dit 'n rekenkundige patroon.",
+      [`${start+4*diff};${start+5*diff};${start+6*diff}`,`${start+4*diff}, ${start+5*diff}, ${start+6*diff}`]
+    );
+
+    let mult = 2 + (i % 4);
+    let gstart = 1 + (i % 5);
+    let gseq = [gstart,gstart*mult,gstart*mult*mult,gstart*mult*mult*mult];
+    addQ("Numeriese patrone",
+      `Vind die reël vir die patroon: ${gseq.join("; ")}.`,
+      `×${mult}`,
+      "Kyk of jy elke term met dieselfde getal maal.",
+      `${gstart} × ${mult} = ${gstart*mult}, en ${gstart*mult} × ${mult} = ${gstart*mult*mult}. Reël: ×${mult}`,
+      "As jy elke keer maal, is dit 'n meetkundige patroon.",
+      [`x${mult}`,`maal${mult}`,`*${mult}`]
+    );
+
+    let pos = 4 + (i % 20);
+    addQ("Meetkundige patrone",
+      `Figuur 1 het 4 blokkies. Elke volgende figuur kry 3 blokkies by. Hoeveel blokkies het figuur ${pos}?`,
+      4 + (pos-1)*3,
+      "Term = eerste term + (posisie - 1) × verskil",
+      `T${pos} = 4 + (${pos}-1)×3 = ${4 + (pos-1)*3}`,
+      "Gebruik die posisie om enige figuur se hoeveelheid te bereken.",
+      []
+    );
+  }
+
+  // 5. Funksies en verwantskappe
+  for(let i=0;i<110;i++){
+    let x = 1 + (i % 25);
+    addQ("Funksies en verwantskappe",
+      `Gebruik die reël y = x - 3. As x = ${x}, bereken y.`,
+      x-3,
+      "y = x - 3",
+      `y = ${x} - 3 = ${x-3}`,
+      "Vervang x met die gegewe waarde en bereken.",
+      []
+    );
+
+    let y = -5 + (i % 20);
+    addQ("Funksies en verwantskappe",
+      `Gebruik die reël y = x - 3. As y = ${y}, bereken x.`,
+      y+3,
+      "As y = x - 3, dan x = y + 3",
+      `x = ${y} + 3 = ${y+3}`,
+      "Doen die teenoorgestelde bewerking om x te kry.",
+      []
+    );
+
+    let inp = 1 + (i % 15);
+    addQ("Funksies en verwantskappe",
+      `Gebruik die masjienreël ×2 - 7. As die inset ${inp} is, wat is die uitset?`,
+      inp*2-7,
+      "Uitset = inset × 2 - 7",
+      `${inp} × 2 - 7 = ${inp*2} - 7 = ${inp*2-7}`,
+      "Volg die volgorde van die masjien: maal eers, trek dan af.",
+      []
+    );
+
+    let speed = 40 + (i % 9)*10;
+    let time = 1 + (i % 5);
+    addQ("Probleemoplossing",
+      `Jannie ry ${time} ure teen ${speed} km/h. Bereken die afstand.`,
+      speed*time,
+      "Afstand = Spoed × Tyd",
+      `Afstand = ${speed} × ${time} = ${speed*time} km`,
+      "As spoed in km/h en tyd in ure is, is afstand in km.",
+      [`${speed*time}km`,`${speed*time} km`]
+    );
+  }
+
+  BANK = BANK.slice(0,500);
+}
+
+function remainingBank(){
+  const d = getDone();
+  return BANK.filter(q => !d.includes(q.id));
+}
+
+function updateStats(){
+  document.getElementById("total").textContent = BANK.length;
+  document.getElementById("done").textContent = getDone().length;
+  document.getElementById("remaining").textContent = remainingBank().length;
+}
+
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){
+    let j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+}
+
+function startSession(){
+  let rem = remainingBank();
+
+  if(rem.length === 0){
+    alert("Alles is klaar 100% reg!");
+    return;
+  }
+
+  shuffle(rem);
+  let count = rem.length <= 50 ? rem.length : 30 + Math.floor(Math.random()*21);
+  CURRENT = rem.slice(0,count);
+
+  let html = "";
+  CURRENT.forEach((q,i) => {
+    html += `<div class="card" id="box_${i}">`;
+    html += `<span class="badge">${esc(q.topic)}</span>`;
+    html += `<h3>${i+1}. ${esc(q.q)}</h3>`;
+    html += `<label>Antwoord:</label><input id="ans_${i}" placeholder="Tik finale antwoord hier">`;
+    html += `<label>Berekening / redes:</label><textarea id="work_${i}" placeholder="Wys jou berekening soos op die vraestel"></textarea>`;
+    html += `<div class="formula hidden" id="fb_${i}"></div>`;
+    html += `</div>`;
+  });
+
+  document.getElementById("questions").innerHTML = html;
+  document.getElementById("info").innerHTML = `Vrae in hierdie sessie: <b>${CURRENT.length}</b>`;
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+function isCorrect(given,q){
+  let g = norm(given);
+  let ans = norm(q.answer);
+
+  if(g === ans) return true;
+
+  for(const a of q.alts || []){
+    if(g === norm(a)) return true;
+  }
+
+  return false;
+}
+
+function markSession(){
+  let score = 0;
+  let d = getDone();
+
+  CURRENT.forEach((q,i) => {
+    const given = document.getElementById("ans_"+i).value;
+    const work = document.getElementById("work_"+i).value;
+    const box = document.getElementById("box_"+i);
+    const fb = document.getElementById("fb_"+i);
+
+    box.classList.remove("correct","wrong");
+
+    const ok = isCorrect(given,q);
+
+    if(ok){
+      score++;
+      box.classList.add("correct");
+      if(!d.includes(q.id)) d.push(q.id);
+    } else {
+      box.classList.add("wrong");
+    }
+
+    fb.classList.remove("hidden");
+    fb.innerHTML =
+      `<b>Jou antwoord:</b> ${esc(given || "Leeg")}<br>` +
+      `<b>Jou berekening:</b><br>${esc(work || "Geen berekening ingevul nie")}<br><br>` +
+      `<b>Regte antwoord:</b> ${esc(q.answer)}<br>` +
+      `<b>Formule:</b> ${esc(q.formula)}<br>` +
+      `<b>Stappe:</b> ${esc(q.steps)}<br>` +
+      `<b>Rede:</b> ${esc(q.reason)}`;
+  });
+
+  saveDone(d);
+  updateStats();
+
+  let percent = CURRENT.length ? Math.round(score/CURRENT.length*100) : 0;
+
+  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("resultText").innerHTML =
+    `<h2>${percent}%</h2>` +
+    `<b>Punte:</b> ${score}/${CURRENT.length}<br>` +
+    `<b>Vrae nog oor:</b> ${remainingBank().length}<br>` +
+    `Die volgende sessie vra net uit wat sy nog nie 100% reg het nie.`;
+
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function resetProgress(){
+  if(confirm("Reset Elona se Wiskunde progress?")){
+    localStorage.removeItem(storageKey());
+    updateStats();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  buildBank();
+  updateStats();
+  document.getElementById("startBtn").addEventListener("click", startSession);
+  document.getElementById("markBtn").addEventListener("click", markSession);
+  document.getElementById("resetBtn").addEventListener("click", resetProgress);
+});
+</script>
+<!-- TEAE_SESSION_WHATSAPP_RESULTS_ALL_KIDS_V1_START -->
+<script>
+(function(){
+  const TEAE_CHILD = "Elona";
+  const TEAE_SUBJECT = "Wiskunde";
+  const TEAE_DAD = "27642203726";
+
+  let teaeLastSendKey = "";
+
+  function teaeCleanText(s){
+    return String(s || "").replace(/\\s+/g, " ").trim();
+  }
+
+  function teaeFindScore(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Punte:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      text.match(/Score:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      text.match(/Finale result:\\s*(\\d+)%/i) ||
+      text.match(/Final Result[\\s\\S]{0,120}?(\\d+)%/i) ||
+      text.match(/Resultaat[\\s\\S]{0,120}?(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(!m) return "";
+
+    if(m.length >= 3){
+      const got = Number(m[1]);
+      const total = Number(m[2]);
+      const percent = total ? Math.round((got / total) * 100) : "";
+      return got + "/" + total + (percent !== "" ? " (" + percent + "%)" : "");
+    }
+
+    return m[1] + "%";
+  }
+
+  function teaeFindLeft(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Vrae nog oor:\\s*(\\d+)/i) ||
+      text.match(/Somme nog oor:\\s*(\\d+)/i) ||
+      text.match(/Questions left:\\s*(\\d+)/i) ||
+      text.match(/Nog oor\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeFindDone(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Reeds reg\\s*(\\d+)/i) ||
+      text.match(/Reeds 100% reg\\s*(\\d+)/i) ||
+      text.match(/Already 100% correct\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeFindSessionSize(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Vrae in hierdie sessie:\\s*(\\d+)/i) ||
+      text.match(/Questions in this session:\\s*(\\d+)/i) ||
+      text.match(/Somme in hierdie sessie\\.\\s*(\\d+)/i) ||
+      text.match(/(\\d+)\\s*somme in hierdie sessie/i) ||
+      text.match(/(\\d+)\\s*vrae in hierdie sessie/i) ||
+      text.match(/Vraag\\s*1\\s*van\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeBuildMessage(reason){
+    const score = teaeFindScore();
+    const left = teaeFindLeft();
+    const done = teaeFindDone();
+    const sessionSize = teaeFindSessionSize();
+
+    const date = new Date().toLocaleString("af-ZA");
+
+    let msg = "";
+    msg += "📚 *Sessie klaar*%0A";
+    msg += "Kind: " + TEAE_CHILD + "%0A";
+    msg += "Vak: " + TEAE_SUBJECT + "%0A";
+    msg += "Datum: " + date + "%0A";
+
+    if(sessionSize) msg += "Vrae/Somme in sessie: " + sessionSize + "%0A";
+    if(score) msg += "Punte: " + score + "%0A";
+    if(done) msg += "Reeds reg/bemeester: " + done + "%0A";
+    if(left) msg += "Nog oor: " + left + "%0A";
+
+    msg += "Rede: " + reason + "%0A";
+    msg += "%0A";
+    msg += "Stuur hierdie WhatsApp om die uitslag te bêre.";
+
+    return msg;
+  }
+
+  function teaeOpenWhatsApp(reason){
+    const score = teaeFindScore();
+    const left = teaeFindLeft();
+    const done = teaeFindDone();
+    const sessionSize = teaeFindSessionSize();
+
+    const sendKey = [
+      TEAE_CHILD,
+      TEAE_SUBJECT,
+      score,
+      left,
+      done,
+      sessionSize,
+      reason
+    ].join("|");
+
+    if(sendKey === teaeLastSendKey) return;
+    teaeLastSendKey = sendKey;
+
+    const url = "https://wa.me/" + TEAE_DAD + "?text=" + teaeBuildMessage(reason);
+    window.open(url, "_blank");
+  }
+
+  function teaeLooksLikeSessionDone(){
+    const text = document.body ? document.body.innerText : "";
+
+    if(/Finale Resultaat/i.test(text)) return true;
+    if(/Final Result/i.test(text)) return true;
+    if(/Resultaat/i.test(text) && /Punte:/i.test(text)) return true;
+    if(/Sessie klaar/i.test(text)) return true;
+    if(/session complete/i.test(text)) return true;
+
+    return false;
+  }
+
+  // Blokkeer ou "elke 10 vrae" WhatsApp waar moontlik.
+  window.teaeWhatsappEvery10Disabled = true;
+  window.sendEvery10Whatsapp = function(){ return false; };
+  window.sendWhatsappEvery10 = function(){ return false; };
+  window.whatsappEvery10 = function(){ return false; };
+
+  // As die app alert sê sessie klaar, stuur resultate.
+  const oldAlert = window.alert;
+  window.alert = function(msg){
+    const txt = String(msg || "");
+    if(
+      txt.toLowerCase().includes("sessie klaar") ||
+      txt.toLowerCase().includes("session") ||
+      txt.toLowerCase().includes("alles is klaar")
+    ){
+      setTimeout(function(){
+        teaeOpenWhatsApp("Sessie voltooi");
+      }, 250);
+    }
+    return oldAlert.call(window, msg);
+  };
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("button,a,div");
+    if(!el) return;
+
+    const t = teaeCleanText(el.innerText || el.textContent || "").toLowerCase();
+
+    if(
+      t.includes("merk sessie") ||
+      t.includes("mark session") ||
+      t.includes("merk antwoorde") ||
+      t.includes("next / enter") ||
+      t.includes("next")
+    ){
+      setTimeout(function(){
+        if(teaeLooksLikeSessionDone()){
+          teaeOpenWhatsApp("Sessie voltooi");
+        }
+      }, 800);
+
+      setTimeout(function(){
+        if(teaeLooksLikeSessionDone()){
+          teaeOpenWhatsApp("Sessie voltooi");
+        }
+      }, 1800);
+    }
+  }, true);
+
+  // Sit ook 'n handmatige WhatsApp-knoppie onderaan as popup geblok word.
+  document.addEventListener("DOMContentLoaded", function(){
+    setTimeout(function(){
+      if(document.getElementById("teaeManualWhatsAppBtn")) return;
+
+      const btn = document.createElement("button");
+      btn.id = "teaeManualWhatsAppBtn";
+      btn.type = "button";
+      btn.innerText = "📲 Stuur sessie uitslag WhatsApp";
+      btn.style.cssText = "position:fixed;right:12px;bottom:12px;z-index:99999;background:#16a34a;color:white;border:0;border-radius:14px;padding:12px 14px;font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.25);";
+      btn.onclick = function(){
+        teaeOpenWhatsApp("Handmatig gestuur");
+      };
+
+      document.body.appendChild(btn);
+    }, 1000);
+  });
+})();
+</script>
+<!-- TEAE_SESSION_WHATSAPP_RESULTS_ALL_KIDS_V1_END -->
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_START -->
+<style>
+#teaeWellDoneOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.72);
+  z-index:999999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  font-family:Arial,sans-serif;
+}
+#teaeWellDoneCard{
+  width:min(620px,96vw);
+  background:white;
+  border-radius:24px;
+  padding:26px;
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+  text-align:center;
+  color:#111827;
+  animation:teaePop .22s ease-out;
+}
+@keyframes teaePop{
+  from{transform:scale(.92);opacity:.2}
+  to{transform:scale(1);opacity:1}
+}
+#teaeWellDoneCard h1{
+  margin:0 0 8px;
+  font-size:34px;
+  font-weight:1000;
+}
+#teaeWellDoneCard .teae-status{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:22px;
+  font-weight:1000;
+  color:white;
+  margin:10px 0;
+}
+#teaeWellDoneCard .teae-pass{background:#16a34a}
+#teaeWellDoneCard .teae-fail{background:#dc2626}
+#teaeWellDoneCard .teae-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:18px 0;
+}
+#teaeWellDoneCard .teae-box{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:14px;
+}
+#teaeWellDoneCard .teae-big{
+  font-size:30px;
+  font-weight:1000;
+  color:#2563eb;
+}
+#teaeWellDoneCard .teae-msg{
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  border-radius:16px;
+  padding:14px;
+  line-height:1.45;
+  font-size:17px;
+  margin-top:12px;
+}
+#teaeWellDoneCard button{
+  border:0;
+  border-radius:14px;
+  padding:13px 18px;
+  margin:8px 5px 0;
+  font-weight:1000;
+  cursor:pointer;
+  color:white;
+  background:#2563eb;
+}
+#teaeWellDoneCard .teae-gray{background:#475569}
+@media(max-width:600px){
+  #teaeWellDoneCard{padding:20px}
+  #teaeWellDoneCard h1{font-size:28px}
+  #teaeWellDoneCard .teae-grid{grid-template-columns:1fr}
+}
+</style>
+
+<script>
+(function(){
+  const TEAE_CHILD = "Elona";
+  const TEAE_SUBJECT = "Wiskunde";
+  let teaeLastResultKey = "";
+
+  function cleanText(s){
+    return String(s || "").replace(/\\s+/g," ").trim();
+  }
+
+  function bodyText(){
+    return document.body ? document.body.innerText : "";
+  }
+
+  function findScore(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Punte:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Score:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Punt:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      const got = Number(m[1]);
+      const total = Number(m[2]);
+      const percent = total ? Math.round((got / total) * 100) : 0;
+      return { got, total, percent };
+    }
+
+    let p =
+      t.match(/Persentasie:\\s*(\\d+)%/i) ||
+      t.match(/(\\d+)%/i);
+
+    if(p){
+      return { got:Number(p[1]), total:100, percent:Number(p[1]) };
+    }
+
+    return null;
+  }
+
+  function findGrandProgress(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae reeds bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Reeds 100% reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Progress:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Mastery:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      return { done:Number(m[1]), total:Number(m[2]) };
+    }
+
+    let done =
+      t.match(/Reeds 100% reg\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)/i) ||
+      t.match(/Bemeester\\s*(\\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Vrae in bank\\s*(\\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    if(done){
+      return { done:Number(done[1]), total: total && total[1] ? Number(total[1]) : 500 };
+    }
+
+    return { done:0, total:500 };
+  }
+
+  function findLeft(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae nog oor:\\s*(\\d+)/i) ||
+      t.match(/Vrae nog oor\\s*(\\d+)/i) ||
+      t.match(/Nog oor:\\s*(\\d+)/i) ||
+      t.match(/Oor:\\s*(\\d+)/i);
+
+    return m ? Number(m[1]) : null;
+  }
+
+  function motivational(percent, grandDone, grandTotal){
+    if(grandDone >= grandTotal){
+      return "🏆 Fantasties! Jy het hierdie hele bank klaargemaak. Dit is groot werk — jy kan trots wees!";
+    }
+
+    if(percent >= 80){
+      return "🔥 Uitstekend! Jy bou sterk kennis. Hou so aan — elke sessie vat jou nader aan klaar.";
+    }
+
+    if(percent >= 50){
+      return "👏 Mooi gedoen! Jy het geslaag. Kyk nou mooi na die vrae wat oorbly en probeer die volgende sessie nog beter.";
+    }
+
+    return "💪 Moenie moed opgee nie. Hierdie was oefening, nie mislukking nie. Die vrae wat moeilik was, bly oor sodat jy dit kan baasraak.";
+  }
+
+  function ensureOverlay(){
+    let overlay = document.getElementById("teaeWellDoneOverlay");
+    if(overlay) return overlay;
+
+    overlay = document.createElement("div");
+    overlay.id = "teaeWellDoneOverlay";
+    overlay.innerHTML = '<div id="teaeWellDoneCard"></div>';
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", function(e){
+      if(e.target === overlay){
+        overlay.style.display = "none";
+      }
+    });
+
+    return overlay;
+  }
+
+  function showWellDone(reason){
+    const score = findScore();
+    if(!score) return;
+
+    const grand = findGrandProgress();
+    const leftRaw = findLeft();
+    const left = leftRaw === null ? Math.max(0, grand.total - grand.done) : leftRaw;
+
+    const passed = score.percent >= 50;
+    const resultKey = [
+      TEAE_CHILD,
+      TEAE_SUBJECT,
+      score.got,
+      score.total,
+      score.percent,
+      grand.done,
+      grand.total,
+      left,
+      reason
+    ].join("|");
+
+    if(resultKey === teaeLastResultKey) return;
+    teaeLastResultKey = resultKey;
+
+    const overlay = ensureOverlay();
+    const card = document.getElementById("teaeWellDoneCard");
+
+    const statusClass = passed ? "teae-pass" : "teae-fail";
+    const statusText = passed ? "PASSED ✅" : "FAILED ❌";
+    const heading = passed ? "🎉 Well done!" : "💪 Hou aan probeer!";
+    const msg = motivational(score.percent, grand.done, grand.total);
+
+    card.innerHTML = 
+      <h1>\</h1>
+      <p><b>\</b> — \</p>
+
+      <div class="teae-status \">\</div>
+
+      <div class="teae-grid">
+        <div class="teae-box">
+          <div>Sessie score</div>
+          <div class="teae-big">\/\</div>
+          <div>\%</div>
+        </div>
+
+        <div class="teae-box">
+          <div>Grand total progress</div>
+          <div class="teae-big">\/\</div>
+          <div>Nog oor: \</div>
+        </div>
+      </div>
+
+      <div class="teae-msg">\</div>
+
+      <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'">Gaan voort</button>
+      <button class="teae-gray" onclick="window.scrollTo(0,0);document.getElementById('teaeWellDoneOverlay').style.display='none'">Terug boontoe</button>
+    ;
+
+    overlay.style.display = "flex";
+  }
+
+  function looksFinished(){
+    const t = bodyText();
+
+    return (
+      /Finale Uitslag/i.test(t) ||
+      /Resultaat/i.test(t) ||
+      /Punte:\\s*\\d+\\s*\\/\\s*\\d+/i.test(t) ||
+      /Persentasie:\\s*\\d+%/i.test(t) ||
+      /Mastery progress/i.test(t) ||
+      /Leer-progress/i.test(t)
+    );
+  }
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("button,a,div");
+    if(!el) return;
+
+    const tx = cleanText(el.innerText || el.textContent || "").toLowerCase();
+
+    if(
+      tx.includes("merk") ||
+      tx.includes("klaar") ||
+      tx.includes("finish") ||
+      tx.includes("submit") ||
+      tx.includes("check")
+    ){
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 1700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 3000);
+    }
+  }, true);
+
+  window.teaeShowWellDoneNow = function(){
+    showWellDone("Handmatig");
+  };
+})();
+</script>
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_END -->
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_START -->
+<script>
+(function(){
+  function txt(){ return document.body ? document.body.innerText : ""; }
+
+  function findGrand(){
+    const t = txt();
+
+    let m =
+      t.match(/Grand total progress\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Totale vrae reeds bemeester:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Progress:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Reeds 100% reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i);
+
+    if(m) return { done:Number(m[1]), total:Number(m[2]) };
+
+    let done =
+      t.match(/Reeds 100% reg\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)/i) ||
+      t.match(/Bemeester\s*(\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Vrae in bank\s*(\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    return {
+      done: done ? Number(done[1]) : 0,
+      total: total && total[1] ? Number(total[1]) : 500
+    };
+  }
+
+  function makeFinalLook(){
+    const overlay = document.getElementById("teaeWellDoneOverlay");
+    const card = document.getElementById("teaeWellDoneCard");
+    if(!overlay || !card || overlay.style.display === "none") return;
+
+    const g = findGrand();
+
+    if(g.total > 0 && g.done >= g.total){
+      card.innerHTML = `
+        <h1 style="font-size:38px;margin-bottom:8px">🏆 FANTASTIES!</h1>
+        <h2 style="margin:0 0 10px;color:#16a34a">HELE VAK KLAAR ✅</h2>
+
+        <div style="display:inline-block;background:#16a34a;color:white;padding:12px 22px;border-radius:999px;font-size:24px;font-weight:1000;margin:12px 0">
+          PASSED ✅
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0">
+          <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Grand Total</div>
+            <div style="font-size:34px;font-weight:1000;color:#16a34a">${g.done}/${g.total}</div>
+            <div>Alles bemeester</div>
+          </div>
+
+          <div style="background:#eff6ff;border:2px solid #2563eb;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Nog oor</div>
+            <div style="font-size:34px;font-weight:1000;color:#2563eb">0</div>
+            <div>Geen vrae oor nie</div>
+          </div>
+        </div>
+
+        <div style="background:#fff7ed;border:2px solid #fb923c;border-radius:18px;padding:16px;font-size:18px;line-height:1.45">
+          🌟 Jy het nie net ’n toets klaar gemaak nie — jy het ’n hele groot leerbank voltooi.
+          Dit is baie werk en jy kan regtig trots wees op jouself.
+          Hou hierdie selfde fokus vir jou finale vraestel!
+        </div>
+
+        <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'"
+          style="background:#2563eb;color:white;border:0;border-radius:14px;padding:14px 20px;margin-top:16px;font-weight:1000">
+          Klaar
+        </button>
+      `;
+    }
+  }
+
+  document.addEventListener("click", function(){
+    setTimeout(makeFinalLook, 900);
+    setTimeout(makeFinalLook, 1800);
+    setTimeout(makeFinalLook, 3200);
+  }, true);
+
+  window.addEventListener("load", function(){
+    setInterval(makeFinalLook, 1500);
+  });
+})();
+</script>
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_END -->
+</body>
+</html>
+
+
+

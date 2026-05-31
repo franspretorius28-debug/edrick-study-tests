@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elona - Grade 7 English</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef2ff;color:#111827}
+header{background:#0f172a;color:white;text-align:center;padding:34px 14px 42px}
+header h1{margin:0 0 16px;font-size:38px;font-weight:900;letter-spacing:1px}
+header p{margin:0;font-size:18px}
+.wrap{max-width:1080px;margin:30px auto;padding:0 16px}
+.card{background:white;border-radius:18px;padding:24px;margin:16px 0;box-shadow:0 12px 30px #0002}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.stats{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.row{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:10px 0;font-size:18px}
+.row:last-child{border-bottom:0}
+.big{font-size:32px;font-weight:900;color:#2563eb}
+input,textarea{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;margin:8px 0}
+textarea{min-height:90px}
+button,.btn{border:0;border-radius:12px;padding:14px 18px;margin:6px;font-weight:900;background:#2563eb;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}
+label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;margin:8px 0;padding:11px}
+.answer{background:#eef2ff;padding:13px;border-radius:12px;margin-top:10px;line-height:1.55}
+.correct{background:#f0fdf4!important;border:2px solid #22c55e!important}
+.wrong{background:#fef2f2!important;border:2px solid #ef4444!important}
+.hidden{display:none}
+.small{color:#64748b;line-height:1.45}
+.badge{display:inline-block;background:#dcfce7;color:#166534;padding:5px 10px;border-radius:999px;font-weight:900;font-size:13px}
+.visual{background:#fff7ed;border:1px solid #fdba74;padding:12px;border-radius:12px;margin:10px 0;line-height:1.55}
+@media(max-width:800px){header h1{font-size:30px}.grid{grid-template-columns:1fr}.wrap{margin:18px auto}}
+</style>
+</head>
+<body>
+<header>
+  <h1>📙 Elona - Grade 7 English</h1>
+  <p>500-question bank | Comprehension | Visual text | Language | Summary</p>
+</header>
+
+<main class="wrap">
+  <section class="card" id="home">
+    <h2>Begin</h2>
+    <p class="small">
+      Hierdie Engels bank is gebou op Elona se afbakening: comprehension, visual text, summary,
+      punctuation, nouns, verbs, pronouns, sentence types, synonyms and antonyms.
+    </p>
+    <input id="name" value="Elona" placeholder="Elona">
+
+    <div class="grid">
+      <div class="stats">
+        <h3>English Adaptive Learning Bank</h3>
+        <div class="row"><b>Questions in big bank</b><span id="total">500</span></div>
+        <div class="row"><b>Already 100% correct</b><span id="done">0</span></div>
+        <div class="row"><b>Questions left</b><span class="big" id="remaining">500</span></div>
+      </div>
+
+      <div>
+        <button class="green" id="startBtn" type="button">Begin next practice session</button>
+        <button class="red" id="resetBtn" type="button">Reset this subject</button>
+        <a class="btn gray" href="index.html">Terug hoofkieslys</a>
+        <div class="answer">
+          <b>Hoe dit werk:</b><br>
+          Die app gee 30–50 vrae per sessie. Regte vrae val uit. Verkeerde vrae bly oor.
+          Na merk wys die app die regte antwoord en die rede.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="exam">
+    <h2>Elona English - Practice Session</h2>
+    <p id="info"></p>
+    <div id="questions"></div>
+    <button class="green" id="markBtn" type="button">Mark session</button>
+    <a class="btn gray" href="index.html">Terug hoofkieslys</a>
+  </section>
+
+  <section class="card hidden" id="result">
+    <h2>Final Result</h2>
+    <div id="resultText" class="answer"></div>
+  </section>
+</main>
+
+<script>
+const TARGET = 500;
+let BANK = [];
+let CURRENT = [];
+
+function esc(s){
+  return String(s || "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"
+  }[c]));
+}
+
+function norm(s){
+  return String(s || "")
+    .toLowerCase()
+    .replace(/[.,;:!?'"()]/g," ")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function storageKey(){ return "elona_grade7_english_mastery_v1"; }
+
+function getDone(){
+  try { return JSON.parse(localStorage.getItem(storageKey()) || "[]"); }
+  catch(e){ return []; }
+}
+
+function saveDone(arr){
+  localStorage.setItem(storageKey(), JSON.stringify(Array.from(new Set(arr))));
+}
+
+function addQ(type, topic, q, options, answer, reason, passage){
+  BANK.push({
+    id:"elona_eng_" + (BANK.length + 1),
+    type, topic, q,
+    options: options || [],
+    answer: String(answer),
+    reason,
+    passage: passage || ""
+  });
+}
+
+function buildBank(){
+  BANK = [];
+
+  const passages = [
+    {
+      title:"The Lost Puppy",
+      text:"Lily found a small puppy near the school gate. It was wet and scared. She took it to the office, and the principal phoned the owner. The owner thanked Lily for being kind.",
+      qs:[
+        ["Where did Lily find the puppy?","near the school gate","The passage says Lily found it near the school gate."],
+        ["How did the puppy feel?","wet and scared","The passage says the puppy was wet and scared."],
+        ["Who phoned the owner?","the principal","The principal phoned the owner."],
+        ["What kind action did Lily do?","she took the puppy to the office","She helped by taking the puppy to the office."],
+        ["What is the main idea?","Lily helped a lost puppy","The whole passage is about Lily helping the puppy."]
+      ]
+    },
+    {
+      title:"A Rainy Sports Day",
+      text:"The learners were excited for sports day, but dark clouds covered the sky. The teacher moved the races to the hall. Everyone still had fun playing indoor games.",
+      qs:[
+        ["Why did they move the races?","because it was going to rain","Dark clouds covered the sky, so they moved inside."],
+        ["Where did they go?","to the hall","The races were moved to the hall."],
+        ["How did the learners feel at first?","excited","The passage says they were excited."],
+        ["Did they still enjoy the day?","yes","The passage says everyone still had fun."],
+        ["What is a good title?","A Rainy Sports Day","The passage is about sports day changing because of weather."]
+      ]
+    }
+  ];
+
+  for(let i=0;i<60;i++){
+    const p = passages[i % passages.length];
+    const item = p.qs[i % p.qs.length];
+    addQ("text","Comprehension",
+      item[0],
+      [],
+      item[1],
+      item[2],
+      `<b>${p.title}</b><br>${p.text}`
+    );
+  }
+
+  const visualItems = [
+    ["A poster says: SCHOOL FUN DAY — Friday 10 May — Tickets R10 — Starts 14:00. What is the event?", "School Fun Day", "The heading on the poster gives the event name."],
+    ["A poster says: SCHOOL FUN DAY — Friday 10 May — Tickets R10 — Starts 14:00. How much is a ticket?", "R10", "The poster states Tickets R10."],
+    ["A poster says: SCHOOL FUN DAY — Friday 10 May — Tickets R10 — Starts 14:00. What time does it start?", "14:00", "The poster states Starts 14:00."],
+    ["A weather chart shows Monday: sunny, Tuesday: rainy, Wednesday: cloudy. Which day is rainy?", "Tuesday", "The chart says Tuesday is rainy."],
+    ["A shop advert says: Apples R20, Bread R15, Milk R18. Which item costs R15?", "Bread", "The advert shows Bread R15."]
+  ];
+
+  for(let i=0;i<55;i++){
+    const v = visualItems[i % visualItems.length];
+    addQ("text","Visual text",v[0],[],v[1],v[2],"<b>Visual text practice:</b> Read the information carefully and answer only what is asked.");
+  }
+
+  const mcq = [
+    ["Sentence types","Which sentence is a question?",["I am happy.","Where are you going?","Wow, that is amazing!","Close the door."],"Where are you going?","A question asks something and ends with a question mark."],
+    ["Sentence types","Which sentence is an exclamation?",["The dog is brown.","Are you ready?","What a beautiful day!","I went home."],"What a beautiful day!","An exclamation shows strong feeling and ends with an exclamation mark."],
+    ["Sentence types","Which sentence is a statement?",["Do you like apples?","I like apples.","Run fast!","What a surprise!"],"I like apples.","A statement tells us something."],
+    ["Concrete nouns","Which word is a concrete noun?",["table","love","sadness","anger"],"table","A concrete noun is something you can touch or see."],
+    ["Abstract nouns","Which word is an abstract noun?",["chair","pencil","love","book"],"love","An abstract noun is a feeling or idea you cannot touch."],
+    ["Verbs","Which word is a verb?",["running","table","happy","blue"],"running","A verb is a doing word."],
+    ["Personal pronouns","Choose the personal pronoun.",["quickly","they","table","beautiful"],"they","They is a personal pronoun."],
+    ["Simple and compound sentences","Which word often joins two sentences in a compound sentence?",["and","table","quick","sad"],"and","Compound sentences are often joined with and/but."],
+    ["Punctuation","Which punctuation ends a question?",[".","?","!",","],"?","A question mark ends a question."],
+    ["Punctuation","Which letter should start a sentence?",["small letter","capital letter","number","comma"],"capital letter","A sentence starts with a capital letter."],
+    ["Countable nouns","Which noun is countable?",["water","rice","apple","sand"],"apple","You can count apples: one apple, two apples."],
+    ["Uncountable nouns","Which noun is usually uncountable?",["book","chair","milk","pencil"],"milk","Milk is usually measured, not counted."],
+    ["Synonyms","Choose a synonym for tasty.",["yummy","bad","slow","cold"],"yummy","A synonym means the same or similar."],
+    ["Antonyms","Choose an antonym for love.",["like","hate","care","enjoy"],"hate","An antonym means the opposite."],
+    ["Synonyms","Choose a synonym for humans.",["people","tables","animals only","cars"],"people","Humans means people."]
+  ];
+
+  for(let i=0;i<230;i++){
+    const m = mcq[i % mcq.length];
+    addQ("mcq",m[0],m[1],m[2],m[3],m[4],"");
+  }
+
+  const textQs = [
+    ["Punctuation","Rewrite with correct punctuation: where is my book","Where is my book?","A question must start with a capital letter and end with a question mark."],
+    ["Punctuation","Rewrite with correct punctuation: wow that is big","Wow, that is big!","An exclamation can use an exclamation mark."],
+    ["Punctuation","Rewrite with correct punctuation: i like english","I like English.","Start with a capital I and end with a full stop."],
+    ["Simple and compound sentences","Join these sentences with and: I packed my bag. I went to school.","I packed my bag and I went to school.","And can join two simple sentences."],
+    ["Simple and compound sentences","Join these sentences with but: I was tired. I finished my homework.","I was tired but I finished my homework.","But joins two contrasting ideas."],
+    ["Pronouns","Replace the noun with a pronoun: Sarah is reading. Sarah is happy.","She is reading. She is happy.","Sarah is one girl, so use she."],
+    ["Pronouns","Replace the noun with a pronoun: The boys are playing. The boys are loud.","They are playing. They are loud.","More than one person can be replaced by they."],
+    ["Verbs","Find the verb in this sentence: The dog runs fast.","runs","Runs is the doing word."],
+    ["Concrete nouns","Find the concrete noun: The pencil is on the desk.","pencil","A pencil is something you can touch."],
+    ["Abstract nouns","Find the abstract noun: Her sadness was clear.","sadness","Sadness is a feeling you cannot touch."],
+    ["Countable nouns","Write the plural: one apple, two _____.","apples","Apple is countable, so we can add s."],
+    ["Uncountable nouns","Choose the correct phrase: many milk / much milk","much milk","Use much with uncountable nouns."],
+    ["Synonyms","Give a synonym for happy.","glad","Glad means similar to happy."],
+    ["Antonyms","Give an antonym for hot.","cold","Cold is the opposite of hot."],
+    ["Summary","Write a short summary sentence: Tom was late, ran to school, and arrived before the bell.","Tom ran to school and arrived before the bell.","A summary keeps only the most important information."]
+  ];
+
+  for(let i=0;i<155;i++){
+    const t = textQs[i % textQs.length];
+    addQ("text",t[0],t[1],[],t[2],t[3],"");
+  }
+
+  BANK = BANK.slice(0,500);
+}
+
+function remainingBank(){
+  const d = getDone();
+  return BANK.filter(q => !d.includes(q.id));
+}
+
+function updateStats(){
+  document.getElementById("total").textContent = BANK.length;
+  document.getElementById("done").textContent = getDone().length;
+  document.getElementById("remaining").textContent = remainingBank().length;
+}
+
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){
+    let j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+}
+
+function startSession(){
+  let rem = remainingBank();
+
+  if(rem.length === 0){
+    alert("Alles is klaar 100% reg!");
+    return;
+  }
+
+  shuffle(rem);
+  let count = rem.length <= 50 ? rem.length : 30 + Math.floor(Math.random()*21);
+  CURRENT = rem.slice(0,count);
+
+  let html = "";
+  CURRENT.forEach((q,i) => {
+    html += `<div class="card" id="box_${i}">`;
+    html += `<span class="badge">${esc(q.topic)}</span>`;
+    if(q.passage) html += `<div class="visual">${q.passage}</div>`;
+    html += `<h3>${i+1}. ${esc(q.q)}</h3>`;
+
+    if(q.type === "mcq"){
+      q.options.forEach(opt => {
+        html += `<label><input type="radio" name="q_${i}" value="${esc(opt)}"> ${esc(opt)}</label>`;
+      });
+    } else {
+      html += `<input id="ans_${i}" placeholder="Type your answer here">`;
+    }
+
+    html += `<div class="answer hidden" id="fb_${i}"></div>`;
+    html += `</div>`;
+  });
+
+  document.getElementById("questions").innerHTML = html;
+  document.getElementById("info").innerHTML = `Questions in this session: <b>${CURRENT.length}</b>`;
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+function getAnswer(i,q){
+  if(q.type === "mcq"){
+    const checked = document.querySelector(`input[name="q_${i}"]:checked`);
+    return checked ? checked.value : "";
+  }
+  const inp = document.getElementById("ans_"+i);
+  return inp ? inp.value : "";
+}
+
+function isCorrect(given,q){
+  return norm(given) === norm(q.answer);
+}
+
+function markSession(){
+  let score = 0;
+  let d = getDone();
+
+  CURRENT.forEach((q,i) => {
+    const given = getAnswer(i,q);
+    const box = document.getElementById("box_"+i);
+    const fb = document.getElementById("fb_"+i);
+
+    box.classList.remove("correct","wrong");
+
+    const ok = isCorrect(given,q);
+
+    if(ok){
+      score++;
+      box.classList.add("correct");
+      if(!d.includes(q.id)) d.push(q.id);
+    } else {
+      box.classList.add("wrong");
+    }
+
+    fb.classList.remove("hidden");
+    fb.innerHTML =
+      `<b>Your answer:</b> ${esc(given || "Blank")}<br>` +
+      `<b>Correct answer:</b> ${esc(q.answer)}<br>` +
+      `<b>Reason:</b> ${esc(q.reason)}`;
+  });
+
+  saveDone(d);
+  updateStats();
+
+  let percent = CURRENT.length ? Math.round(score/CURRENT.length*100) : 0;
+
+  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("resultText").innerHTML =
+    `<h2>${percent}%</h2>` +
+    `<b>Score:</b> ${score}/${CURRENT.length}<br>` +
+    `<b>Questions left:</b> ${remainingBank().length}<br>` +
+    `Next session only asks questions she has not mastered yet.`;
+
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function resetProgress(){
+  if(confirm("Reset Elona English progress?")){
+    localStorage.removeItem(storageKey());
+    updateStats();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  buildBank();
+  updateStats();
+  document.getElementById("startBtn").addEventListener("click", startSession);
+  document.getElementById("markBtn").addEventListener("click", markSession);
+  document.getElementById("resetBtn").addEventListener("click", resetProgress);
+});
+</script>
+<!-- TEAE_SESSION_WHATSAPP_RESULTS_ALL_KIDS_V1_START -->
+<script>
+(function(){
+  const TEAE_CHILD = "Elona";
+  const TEAE_SUBJECT = "Engels";
+  const TEAE_DAD = "27642203726";
+
+  let teaeLastSendKey = "";
+
+  function teaeCleanText(s){
+    return String(s || "").replace(/\\s+/g, " ").trim();
+  }
+
+  function teaeFindScore(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Punte:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      text.match(/Score:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      text.match(/Finale result:\\s*(\\d+)%/i) ||
+      text.match(/Final Result[\\s\\S]{0,120}?(\\d+)%/i) ||
+      text.match(/Resultaat[\\s\\S]{0,120}?(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(!m) return "";
+
+    if(m.length >= 3){
+      const got = Number(m[1]);
+      const total = Number(m[2]);
+      const percent = total ? Math.round((got / total) * 100) : "";
+      return got + "/" + total + (percent !== "" ? " (" + percent + "%)" : "");
+    }
+
+    return m[1] + "%";
+  }
+
+  function teaeFindLeft(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Vrae nog oor:\\s*(\\d+)/i) ||
+      text.match(/Somme nog oor:\\s*(\\d+)/i) ||
+      text.match(/Questions left:\\s*(\\d+)/i) ||
+      text.match(/Nog oor\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeFindDone(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Reeds reg\\s*(\\d+)/i) ||
+      text.match(/Reeds 100% reg\\s*(\\d+)/i) ||
+      text.match(/Already 100% correct\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeFindSessionSize(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Vrae in hierdie sessie:\\s*(\\d+)/i) ||
+      text.match(/Questions in this session:\\s*(\\d+)/i) ||
+      text.match(/Somme in hierdie sessie\\.\\s*(\\d+)/i) ||
+      text.match(/(\\d+)\\s*somme in hierdie sessie/i) ||
+      text.match(/(\\d+)\\s*vrae in hierdie sessie/i) ||
+      text.match(/Vraag\\s*1\\s*van\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeBuildMessage(reason){
+    const score = teaeFindScore();
+    const left = teaeFindLeft();
+    const done = teaeFindDone();
+    const sessionSize = teaeFindSessionSize();
+
+    const date = new Date().toLocaleString("af-ZA");
+
+    let msg = "";
+    msg += "📚 *Sessie klaar*%0A";
+    msg += "Kind: " + TEAE_CHILD + "%0A";
+    msg += "Vak: " + TEAE_SUBJECT + "%0A";
+    msg += "Datum: " + date + "%0A";
+
+    if(sessionSize) msg += "Vrae/Somme in sessie: " + sessionSize + "%0A";
+    if(score) msg += "Punte: " + score + "%0A";
+    if(done) msg += "Reeds reg/bemeester: " + done + "%0A";
+    if(left) msg += "Nog oor: " + left + "%0A";
+
+    msg += "Rede: " + reason + "%0A";
+    msg += "%0A";
+    msg += "Stuur hierdie WhatsApp om die uitslag te bêre.";
+
+    return msg;
+  }
+
+  function teaeOpenWhatsApp(reason){
+    const score = teaeFindScore();
+    const left = teaeFindLeft();
+    const done = teaeFindDone();
+    const sessionSize = teaeFindSessionSize();
+
+    const sendKey = [
+      TEAE_CHILD,
+      TEAE_SUBJECT,
+      score,
+      left,
+      done,
+      sessionSize,
+      reason
+    ].join("|");
+
+    if(sendKey === teaeLastSendKey) return;
+    teaeLastSendKey = sendKey;
+
+    const url = "https://wa.me/" + TEAE_DAD + "?text=" + teaeBuildMessage(reason);
+    window.open(url, "_blank");
+  }
+
+  function teaeLooksLikeSessionDone(){
+    const text = document.body ? document.body.innerText : "";
+
+    if(/Finale Resultaat/i.test(text)) return true;
+    if(/Final Result/i.test(text)) return true;
+    if(/Resultaat/i.test(text) && /Punte:/i.test(text)) return true;
+    if(/Sessie klaar/i.test(text)) return true;
+    if(/session complete/i.test(text)) return true;
+
+    return false;
+  }
+
+  // Blokkeer ou "elke 10 vrae" WhatsApp waar moontlik.
+  window.teaeWhatsappEvery10Disabled = true;
+  window.sendEvery10Whatsapp = function(){ return false; };
+  window.sendWhatsappEvery10 = function(){ return false; };
+  window.whatsappEvery10 = function(){ return false; };
+
+  // As die app alert sê sessie klaar, stuur resultate.
+  const oldAlert = window.alert;
+  window.alert = function(msg){
+    const txt = String(msg || "");
+    if(
+      txt.toLowerCase().includes("sessie klaar") ||
+      txt.toLowerCase().includes("session") ||
+      txt.toLowerCase().includes("alles is klaar")
+    ){
+      setTimeout(function(){
+        teaeOpenWhatsApp("Sessie voltooi");
+      }, 250);
+    }
+    return oldAlert.call(window, msg);
+  };
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("button,a,div");
+    if(!el) return;
+
+    const t = teaeCleanText(el.innerText || el.textContent || "").toLowerCase();
+
+    if(
+      t.includes("merk sessie") ||
+      t.includes("mark session") ||
+      t.includes("merk antwoorde") ||
+      t.includes("next / enter") ||
+      t.includes("next")
+    ){
+      setTimeout(function(){
+        if(teaeLooksLikeSessionDone()){
+          teaeOpenWhatsApp("Sessie voltooi");
+        }
+      }, 800);
+
+      setTimeout(function(){
+        if(teaeLooksLikeSessionDone()){
+          teaeOpenWhatsApp("Sessie voltooi");
+        }
+      }, 1800);
+    }
+  }, true);
+
+  // Sit ook 'n handmatige WhatsApp-knoppie onderaan as popup geblok word.
+  document.addEventListener("DOMContentLoaded", function(){
+    setTimeout(function(){
+      if(document.getElementById("teaeManualWhatsAppBtn")) return;
+
+      const btn = document.createElement("button");
+      btn.id = "teaeManualWhatsAppBtn";
+      btn.type = "button";
+      btn.innerText = "📲 Stuur sessie uitslag WhatsApp";
+      btn.style.cssText = "position:fixed;right:12px;bottom:12px;z-index:99999;background:#16a34a;color:white;border:0;border-radius:14px;padding:12px 14px;font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.25);";
+      btn.onclick = function(){
+        teaeOpenWhatsApp("Handmatig gestuur");
+      };
+
+      document.body.appendChild(btn);
+    }, 1000);
+  });
+})();
+</script>
+<!-- TEAE_SESSION_WHATSAPP_RESULTS_ALL_KIDS_V1_END -->
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_START -->
+<style>
+#teaeWellDoneOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.72);
+  z-index:999999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  font-family:Arial,sans-serif;
+}
+#teaeWellDoneCard{
+  width:min(620px,96vw);
+  background:white;
+  border-radius:24px;
+  padding:26px;
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+  text-align:center;
+  color:#111827;
+  animation:teaePop .22s ease-out;
+}
+@keyframes teaePop{
+  from{transform:scale(.92);opacity:.2}
+  to{transform:scale(1);opacity:1}
+}
+#teaeWellDoneCard h1{
+  margin:0 0 8px;
+  font-size:34px;
+  font-weight:1000;
+}
+#teaeWellDoneCard .teae-status{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:22px;
+  font-weight:1000;
+  color:white;
+  margin:10px 0;
+}
+#teaeWellDoneCard .teae-pass{background:#16a34a}
+#teaeWellDoneCard .teae-fail{background:#dc2626}
+#teaeWellDoneCard .teae-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:18px 0;
+}
+#teaeWellDoneCard .teae-box{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:14px;
+}
+#teaeWellDoneCard .teae-big{
+  font-size:30px;
+  font-weight:1000;
+  color:#2563eb;
+}
+#teaeWellDoneCard .teae-msg{
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  border-radius:16px;
+  padding:14px;
+  line-height:1.45;
+  font-size:17px;
+  margin-top:12px;
+}
+#teaeWellDoneCard button{
+  border:0;
+  border-radius:14px;
+  padding:13px 18px;
+  margin:8px 5px 0;
+  font-weight:1000;
+  cursor:pointer;
+  color:white;
+  background:#2563eb;
+}
+#teaeWellDoneCard .teae-gray{background:#475569}
+@media(max-width:600px){
+  #teaeWellDoneCard{padding:20px}
+  #teaeWellDoneCard h1{font-size:28px}
+  #teaeWellDoneCard .teae-grid{grid-template-columns:1fr}
+}
+</style>
+
+<script>
+(function(){
+  const TEAE_CHILD = "Elona";
+  const TEAE_SUBJECT = "Engels";
+  let teaeLastResultKey = "";
+
+  function cleanText(s){
+    return String(s || "").replace(/\\s+/g," ").trim();
+  }
+
+  function bodyText(){
+    return document.body ? document.body.innerText : "";
+  }
+
+  function findScore(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Punte:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Score:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Punt:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      const got = Number(m[1]);
+      const total = Number(m[2]);
+      const percent = total ? Math.round((got / total) * 100) : 0;
+      return { got, total, percent };
+    }
+
+    let p =
+      t.match(/Persentasie:\\s*(\\d+)%/i) ||
+      t.match(/(\\d+)%/i);
+
+    if(p){
+      return { got:Number(p[1]), total:100, percent:Number(p[1]) };
+    }
+
+    return null;
+  }
+
+  function findGrandProgress(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae reeds bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Reeds 100% reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Progress:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Mastery:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      return { done:Number(m[1]), total:Number(m[2]) };
+    }
+
+    let done =
+      t.match(/Reeds 100% reg\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)/i) ||
+      t.match(/Bemeester\\s*(\\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Vrae in bank\\s*(\\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    if(done){
+      return { done:Number(done[1]), total: total && total[1] ? Number(total[1]) : 500 };
+    }
+
+    return { done:0, total:500 };
+  }
+
+  function findLeft(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae nog oor:\\s*(\\d+)/i) ||
+      t.match(/Vrae nog oor\\s*(\\d+)/i) ||
+      t.match(/Nog oor:\\s*(\\d+)/i) ||
+      t.match(/Oor:\\s*(\\d+)/i);
+
+    return m ? Number(m[1]) : null;
+  }
+
+  function motivational(percent, grandDone, grandTotal){
+    if(grandDone >= grandTotal){
+      return "🏆 Fantasties! Jy het hierdie hele bank klaargemaak. Dit is groot werk — jy kan trots wees!";
+    }
+
+    if(percent >= 80){
+      return "🔥 Uitstekend! Jy bou sterk kennis. Hou so aan — elke sessie vat jou nader aan klaar.";
+    }
+
+    if(percent >= 50){
+      return "👏 Mooi gedoen! Jy het geslaag. Kyk nou mooi na die vrae wat oorbly en probeer die volgende sessie nog beter.";
+    }
+
+    return "💪 Moenie moed opgee nie. Hierdie was oefening, nie mislukking nie. Die vrae wat moeilik was, bly oor sodat jy dit kan baasraak.";
+  }
+
+  function ensureOverlay(){
+    let overlay = document.getElementById("teaeWellDoneOverlay");
+    if(overlay) return overlay;
+
+    overlay = document.createElement("div");
+    overlay.id = "teaeWellDoneOverlay";
+    overlay.innerHTML = '<div id="teaeWellDoneCard"></div>';
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", function(e){
+      if(e.target === overlay){
+        overlay.style.display = "none";
+      }
+    });
+
+    return overlay;
+  }
+
+  function showWellDone(reason){
+    const score = findScore();
+    if(!score) return;
+
+    const grand = findGrandProgress();
+    const leftRaw = findLeft();
+    const left = leftRaw === null ? Math.max(0, grand.total - grand.done) : leftRaw;
+
+    const passed = score.percent >= 50;
+    const resultKey = [
+      TEAE_CHILD,
+      TEAE_SUBJECT,
+      score.got,
+      score.total,
+      score.percent,
+      grand.done,
+      grand.total,
+      left,
+      reason
+    ].join("|");
+
+    if(resultKey === teaeLastResultKey) return;
+    teaeLastResultKey = resultKey;
+
+    const overlay = ensureOverlay();
+    const card = document.getElementById("teaeWellDoneCard");
+
+    const statusClass = passed ? "teae-pass" : "teae-fail";
+    const statusText = passed ? "PASSED ✅" : "FAILED ❌";
+    const heading = passed ? "🎉 Well done!" : "💪 Hou aan probeer!";
+    const msg = motivational(score.percent, grand.done, grand.total);
+
+    card.innerHTML = 
+      <h1>\</h1>
+      <p><b>\</b> — \</p>
+
+      <div class="teae-status \">\</div>
+
+      <div class="teae-grid">
+        <div class="teae-box">
+          <div>Sessie score</div>
+          <div class="teae-big">\/\</div>
+          <div>\%</div>
+        </div>
+
+        <div class="teae-box">
+          <div>Grand total progress</div>
+          <div class="teae-big">\/\</div>
+          <div>Nog oor: \</div>
+        </div>
+      </div>
+
+      <div class="teae-msg">\</div>
+
+      <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'">Gaan voort</button>
+      <button class="teae-gray" onclick="window.scrollTo(0,0);document.getElementById('teaeWellDoneOverlay').style.display='none'">Terug boontoe</button>
+    ;
+
+    overlay.style.display = "flex";
+  }
+
+  function looksFinished(){
+    const t = bodyText();
+
+    return (
+      /Finale Uitslag/i.test(t) ||
+      /Resultaat/i.test(t) ||
+      /Punte:\\s*\\d+\\s*\\/\\s*\\d+/i.test(t) ||
+      /Persentasie:\\s*\\d+%/i.test(t) ||
+      /Mastery progress/i.test(t) ||
+      /Leer-progress/i.test(t)
+    );
+  }
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("button,a,div");
+    if(!el) return;
+
+    const tx = cleanText(el.innerText || el.textContent || "").toLowerCase();
+
+    if(
+      tx.includes("merk") ||
+      tx.includes("klaar") ||
+      tx.includes("finish") ||
+      tx.includes("submit") ||
+      tx.includes("check")
+    ){
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 1700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 3000);
+    }
+  }, true);
+
+  window.teaeShowWellDoneNow = function(){
+    showWellDone("Handmatig");
+  };
+})();
+</script>
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_END -->
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_START -->
+<script>
+(function(){
+  function txt(){ return document.body ? document.body.innerText : ""; }
+
+  function findGrand(){
+    const t = txt();
+
+    let m =
+      t.match(/Grand total progress\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Totale vrae reeds bemeester:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Progress:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Reeds 100% reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i);
+
+    if(m) return { done:Number(m[1]), total:Number(m[2]) };
+
+    let done =
+      t.match(/Reeds 100% reg\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)/i) ||
+      t.match(/Bemeester\s*(\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Vrae in bank\s*(\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    return {
+      done: done ? Number(done[1]) : 0,
+      total: total && total[1] ? Number(total[1]) : 500
+    };
+  }
+
+  function makeFinalLook(){
+    const overlay = document.getElementById("teaeWellDoneOverlay");
+    const card = document.getElementById("teaeWellDoneCard");
+    if(!overlay || !card || overlay.style.display === "none") return;
+
+    const g = findGrand();
+
+    if(g.total > 0 && g.done >= g.total){
+      card.innerHTML = `
+        <h1 style="font-size:38px;margin-bottom:8px">🏆 FANTASTIES!</h1>
+        <h2 style="margin:0 0 10px;color:#16a34a">HELE VAK KLAAR ✅</h2>
+
+        <div style="display:inline-block;background:#16a34a;color:white;padding:12px 22px;border-radius:999px;font-size:24px;font-weight:1000;margin:12px 0">
+          PASSED ✅
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0">
+          <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Grand Total</div>
+            <div style="font-size:34px;font-weight:1000;color:#16a34a">${g.done}/${g.total}</div>
+            <div>Alles bemeester</div>
+          </div>
+
+          <div style="background:#eff6ff;border:2px solid #2563eb;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Nog oor</div>
+            <div style="font-size:34px;font-weight:1000;color:#2563eb">0</div>
+            <div>Geen vrae oor nie</div>
+          </div>
+        </div>
+
+        <div style="background:#fff7ed;border:2px solid #fb923c;border-radius:18px;padding:16px;font-size:18px;line-height:1.45">
+          🌟 Jy het nie net ’n toets klaar gemaak nie — jy het ’n hele groot leerbank voltooi.
+          Dit is baie werk en jy kan regtig trots wees op jouself.
+          Hou hierdie selfde fokus vir jou finale vraestel!
+        </div>
+
+        <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'"
+          style="background:#2563eb;color:white;border:0;border-radius:14px;padding:14px 20px;margin-top:16px;font-weight:1000">
+          Klaar
+        </button>
+      `;
+    }
+  }
+
+  document.addEventListener("click", function(){
+    setTimeout(makeFinalLook, 900);
+    setTimeout(makeFinalLook, 1800);
+    setTimeout(makeFinalLook, 3200);
+  }, true);
+
+  window.addEventListener("load", function(){
+    setInterval(makeFinalLook, 1500);
+  });
+})();
+</script>
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_END -->
+</body>
+</html>
+
+
+

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elona - Graad 7 TEG</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef2ff;color:#111827}
+header{background:#0f172a;color:white;text-align:center;padding:34px 14px 40px}
+header h1{margin:0 0 12px;font-size:36px;font-weight:1000;letter-spacing:1px}
+header p{margin:0;font-size:18px}
+.wrap{max-width:980px;margin:26px auto;padding:0 14px}
+.card{background:white;border-radius:18px;padding:22px;margin:15px 0;box-shadow:0 10px 26px #0002}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.stats{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.row{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:10px 0;font-size:18px}
+.row:last-child{border-bottom:0}
+.big{font-size:34px;font-weight:900;color:#2563eb}
+button,.btn{border:0;border-radius:12px;padding:13px 17px;margin:5px;font-weight:900;background:#2563eb;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}.orange{background:#ea580c}
+label{display:block;background:#f8fafc;border:1px solid #ddd;border-radius:10px;margin:8px 0;padding:11px;font-size:17px}
+.qbox{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin:14px 0}
+.qbox h3{font-size:22px;margin:10px 0}
+.badge{display:inline-block;background:#dcfce7;color:#166534;padding:5px 10px;border-radius:999px;font-weight:900;font-size:13px}
+.feedback{margin-top:10px;border-radius:12px;padding:12px;line-height:1.5;background:#eef2ff}
+.correct{background:#f0fdf4!important;border:2px solid #22c55e!important}
+.wrong{background:#fef2f2!important;border:2px solid #ef4444!important}
+.hidden{display:none!important}
+.small{color:#64748b;line-height:1.45}
+.visual{background:#fff7ed;border:2px dashed #fdba74;border-radius:14px;padding:14px;margin:12px 0;font-size:28px;text-align:center;line-height:1.5}
+.diagram{font-family:monospace;white-space:pre-wrap;background:#f1f5f9;border-radius:12px;padding:12px;margin:10px 0;font-weight:900;color:#0f172a}
+input[type=text]{width:100%;padding:12px;border:2px solid #94a3b8;border-radius:12px;font-size:18px}
+@media(max-width:760px){header h1{font-size:28px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🛠️ Elona - Graad 7 TEG</h1>
+  <p>500-vrae bank | Afbakening Termyn 2 | Strukture, hefbome, ontwerp en pneumatiese stelsels</p>
+</header>
+
+<main class="wrap">
+  <section class="card" id="home">
+    <h2>Begin</h2>
+    <p class="small">
+      Hierdie TEG-bank is gebou volgens Elona se afbakening: hefbome, ontwerp, pneumatiese stelsels,
+      perspektief, dimensies, eienskappe, raamstrukture, triangulasie, waterdig, natuurlike/mensgemaakte
+      strukture, dop-, raam- en soliede strukture, en 3 klasse hefbome.
+    </p>
+
+    <div class="grid">
+      <div class="stats">
+        <h3>TEG Leerbank</h3>
+        <div class="row"><b>Vrae in bank</b><span id="total">500</span></div>
+        <div class="row"><b>Reeds reg</b><span id="done">0</span></div>
+        <div class="row"><b>Vrae nog oor</b><span class="big" id="left">500</span></div>
+      </div>
+
+      <div>
+        <button class="green" id="startBtn">Begin 10 vrae</button>
+        <button class="red" id="resetBtn">Reset TEG</button>
+        <a class="btn gray" href="index.html">Terug hoofkieslys</a>
+        <div class="feedback">
+          <b>Hoe dit werk:</b><br>
+          Elona kry 10 vrae per sessie. Regte vrae val uit. Verkeerde vrae bly oor tot sy dit reg kry.
+          Na die sessie maak WhatsApp oop met haar uitslag.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="test">
+    <h2>Oefensessie</h2>
+    <p id="info"></p>
+    <div id="questions"></div>
+    <button class="green" id="markBtn">Merk sessie</button>
+    <button class="gray" id="backBtn">Terug</button>
+  </section>
+
+  <section class="card hidden" id="result">
+    <h2>Resultaat</h2>
+    <div id="resultText" class="feedback"></div>
+  </section>
+</main>
+
+<script>
+let BANK = [];
+let CURRENT = [];
+const DAD = "27642203726";
+
+function key(){ return "elona_grade7_teg_done_v1"; }
+
+function getDone(){
+  try { return JSON.parse(localStorage.getItem(key()) || "[]"); }
+  catch(e){ return []; }
+}
+
+function saveDone(arr){
+  localStorage.setItem(key(), JSON.stringify(Array.from(new Set(arr))));
+}
+
+function addQ(topic, q, options, answer, reason, visual){
+  BANK.push({
+    id:"elona_teg_" + (BANK.length + 1),
+    topic,
+    q,
+    options,
+    answer,
+    reason,
+    visual: visual || ""
+  });
+}
+
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){
+    let j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+}
+
+function addMany(topic, list, targetCount){
+  let i = 0;
+  while(i < targetCount){
+    const x = list[i % list.length];
+    addQ(topic, x.q, x.o, x.a, x.r, x.v || "");
+    i++;
+  }
+}
+
+function buildBank(){
+  BANK = [];
+
+  const concepts = [
+    {q:"Wat is ’n hefboom?", o:["’n Stywe staaf of stang wat om ’n steunpunt beweeg","’n Waterdigte stof","’n Pneumatiese pomp","’n Tekening van ’n huis"], a:"’n Stywe staaf of stang wat om ’n steunpunt beweeg", r:"’n Hefboom is ’n stywe staaf/stang wat om ’n steunpunt kan draai.", v:"Hefboom: las ↓  steunpunt ▲  krag ↓"},
+    {q:"Wat is ontwerp in TEG?", o:["Om ’n tekening of plan te ontwikkel wat ’n doel dien","Om net te verf","Om ’n antwoord te raai","Om water uit te hou"], a:"Om ’n tekening of plan te ontwikkel wat ’n doel dien", r:"Ontwerp beteken jy ontwikkel ’n plan of tekening vir ’n spesifieke doel."},
+    {q:"Wat gebruik pneumatiese stelsels?", o:["Gasse of lug","Water","Hout","Grond"], a:"Gasse of lug", r:"Pneumatiese stelsels werk met gasse/lug onder druk."},
+    {q:"Wat beteken perspektief?", o:["Hoe ons ’n voorwerp vanuit verskillende hoeke sien","Hoe swaar iets is","Hoe koud iets is","Hoe waterdig iets is"], a:"Hoe ons ’n voorwerp vanuit verskillende hoeke sien", r:"Perspektief is hoe ’n voorwerp lyk wanneer jy dit uit verskillende hoeke sien."},
+    {q:"Wat beteken dimensies?", o:["Hoe iets lyk, voel of funksioneer","Hoe waterdig iets is","Hoe vinnig iets beweeg","Hoe ’n voorwerp klink"], a:"Hoe iets lyk, voel of funksioneer", r:"Volgens die afbakening: dimensies is hoe iets lyk, voel of funksioneer."},
+    {q:"Wat beteken eienskappe?", o:["Hoe iets lyk, voel of funksioneer","Net die kleur van iets","Net die prys van iets","Die naam van die winkel"], a:"Hoe iets lyk, voel of funksioneer", r:"Eienskappe beskryf hoe iets lyk, voel of funksioneer."},
+    {q:"Wat is ’n raamstruktuur?", o:["’n Struktuur wat deur ’n raamwerk ondersteun word","’n Struktuur sonder dele","’n Struktuur wat net uit modder bestaan","’n Stelsel met lugdruk"], a:"’n Struktuur wat deur ’n raamwerk ondersteun word", r:"’n Raamstruktuur word deur ’n raamwerk ondersteun."},
+    {q:"Wat is triangulasie?", o:["Om driehoeke te gebruik om ’n struktuur sterk te maak","Om ’n sirkel te teken","Om ’n ding waterdig te maak","Om ’n oppervlak te verf"], a:"Om driehoeke te gebruik om ’n struktuur sterk te maak", r:"Triangulasie gebruik driehoekvorms om ’n struktuur stewig en sterk te maak.", v:"▲ driehoek = sterk raam"},
+    {q:"Wat beteken waterdig?", o:["Dat ’n struktuur water kan uithou","Dat iets baie swaar is","Dat iets met lug werk","Dat iets ’n hefboom is"], a:"Dat ’n struktuur water kan uithou", r:"Waterdig beteken water kan nie maklik deurgaan nie."}
+  ];
+  addMany("Afdeling A: Konsepte", concepts, 90);
+
+  const structures = [
+    {q:"Wat is ’n natuurlike struktuur?", o:["Iets wat deur die natuur gemaak is","Iets wat deur ’n mens gemaak is","’n Struktuur met net een deel","’n Lugstelsel"], a:"Iets wat deur die natuur gemaak is", r:"Natuurlike strukture kom uit die natuur, byvoorbeeld ’n boom of eier.", v:"🌳 🥚"},
+    {q:"Watter een is ’n natuurlike struktuur?", o:["boom","baksteen","vuurtoring","stapelaar"], a:"boom", r:"’n Boom is deur die natuur gemaak."},
+    {q:"Watter een is ’n natuurlike struktuur?", o:["eier","baksteen","hek","stoel"], a:"eier", r:"’n Eier is ’n natuurlike struktuur."},
+    {q:"Wat is ’n mensgemaakte struktuur?", o:["Iets wat deur mense gemaak is","Iets wat natuurlik groei","Iets wat altyd rond is","Iets wat asemhaal"], a:"Iets wat deur mense gemaak is", r:"Mensgemaakte strukture word deur mense gebou of gemaak."},
+    {q:"Watter een is ’n mensgemaakte struktuur?", o:["baksteen","boom","eier","rots"], a:"baksteen", r:"’n Baksteen word deur mense gemaak."},
+    {q:"Watter een is ’n mensgemaakte struktuur?", o:["vuurtoring","boom","eier","blaar"], a:"vuurtoring", r:"’n Vuurtoring is deur mense gebou."},
+    {q:"Wat is ’n dopstruktuur?", o:["’n Struktuur wat deur sy eie gewig en onderdele beskerm word","’n Struktuur wat net uit ’n raam bestaan","’n Hefboom klas 1","’n Pneumatiese stelsel"], a:"’n Struktuur wat deur sy eie gewig en onderdele beskerm word", r:"Dopstrukture beskerm deur hul buite-dop of vorm, soos ’n eierdop."},
+    {q:"Watter voorbeeld pas by ’n dopstruktuur?", o:["eierdop","selfoontoring","windpomp","stoelraam"], a:"eierdop", r:"’n Eierdop is ’n dopstruktuur."},
+    {q:"Wat is ’n raamstruktuur?", o:["’n Struktuur wat op sy eie kan staan met ’n raamwerk","’n Soliede blok sonder spasies","’n Natuurlike dop","’n Los stuk papier"], a:"’n Struktuur wat op sy eie kan staan met ’n raamwerk", r:"Raamstrukture bestaan uit dele wat ’n raam vorm."},
+    {q:"Watter een is ’n raamstruktuur?", o:["selfoontoring","baksteen","eierdop","stomp"], a:"selfoontoring", r:"’n Selfoontoring het ’n raamwerk."},
+    {q:"Watter een is ’n raamstruktuur?", o:["windpomp","baksteen","stomp","eierdop"], a:"windpomp", r:"’n Windpomp het ’n raamstruktuur."},
+    {q:"Wat is ’n soliedestruktuur?", o:["’n Struktuur met net een deel en geen spasies tussenin nie","’n Struktuur met ’n raam","’n Struktuur van lug","’n Hefboom"], a:"’n Struktuur met net een deel en geen spasies tussenin nie", r:"Soliedestrukture is kompakte strukture, soos ’n baksteen of stomp."},
+    {q:"Watter een is ’n soliedestruktuur?", o:["baksteen","windpomp","selfoontoring","hek"], a:"baksteen", r:"’n Baksteen is solied."},
+    {q:"Watter een is ’n soliedestruktuur?", o:["stomp","selfoontoring","eierdop","windpomp"], a:"stomp", r:"’n Stomp is ’n soliede struktuur."}
+  ];
+  addMany("Afdeling B: Strukture", structures, 110);
+
+  const levers = [
+    {q:"Klas 1 hefboom: Waar is die steunpunt?", o:["Tussen die krag en die las","Aan die einde na die las","Aan dieselfde kant as die krag","Daar is geen steunpunt nie"], a:"Tussen die krag en die las", r:"By klas 1 is die steunpunt in die middel tussen krag en las.", v:"Krag ↓   ▲ steunpunt   Las ↓"},
+    {q:"Watter voorbeeld is ’n klas 1 hefboom?", o:["wipplank / see-saw","kruiwa","stapler","vishengel"], a:"wipplank / see-saw", r:"’n Wipplank is klas 1: steunpunt tussen las en krag."},
+    {q:"Watter voorbeeld is ’n klas 1 hefboom?", o:["skêr","kruiwa","deure","besem"], a:"skêr", r:"’n Skêr werk soos ’n klas 1 hefboom."},
+    {q:"Watter voorbeeld is ’n klas 1 hefboom?", o:["tang","stapler","vishengel","deur"], a:"tang", r:"’n Tang is klas 1 omdat die steunpunt tussen die hande en kake is."},
+    {q:"Klas 2 hefboom: Waar is die las?", o:["Tussen die steunpunt en die krag","Heel links buite","Heel regs buite","Daar is geen las nie"], a:"Tussen die steunpunt en die krag", r:"By klas 2 is die las tussen die steunpunt en die krag.", v:"▲ steunpunt   Las ↓   Krag ↑"},
+    {q:"Watter voorbeeld is ’n klas 2 hefboom?", o:["kruiwa","skêr","tang","wipplank"], a:"kruiwa", r:"’n Kruiwa is klas 2: die vrag is tussen die wiel en die hande."},
+    {q:"Watter voorbeeld is ’n klas 2 hefboom?", o:["deur","besem","tang","skêr"], a:"deur", r:"Volgens die afbakening is ’n deur ’n klas 2 voorbeeld."},
+    {q:"Watter voorbeeld is ’n klas 2 hefboom?", o:["stapler","vishengel","wipplank","skêr"], a:"stapler", r:"Volgens die afbakening is ’n stapler ’n klas 2 voorbeeld."},
+    {q:"Klas 3 hefboom: Waar is die krag?", o:["Tussen die steunpunt en die las","Heel links as steunpunt","Onder die struktuur","Daar is geen krag nie"], a:"Tussen die steunpunt en die las", r:"By klas 3 is die krag tussen die steunpunt en die las.", v:"▲ steunpunt   Krag ↑   Las ↓"},
+    {q:"Watter voorbeeld is ’n klas 3 hefboom?", o:["vishengel","wipplank","kruiwa","skêr"], a:"vishengel", r:"’n Vishengel is klas 3."},
+    {q:"Watter voorbeeld is ’n klas 3 hefboom?", o:["krieketkolf","tang","skêr","deur"], a:"krieketkolf", r:"Volgens die afbakening is ’n krieketkolf klas 3."},
+    {q:"Watter voorbeeld is ’n klas 3 hefboom?", o:["besem","kruiwa","wipplank","eierdop"], a:"besem", r:"Volgens die afbakening is ’n besem klas 3."}
+  ];
+  addMany("Hefbome", levers, 110);
+
+  const application = [
+    {q:"Waarom word driehoeke in raamstrukture gebruik?", o:["Dit maak die struktuur sterker en stewiger","Dit maak dit waterdig","Dit maak dit sag","Dit maak dit ’n dopstruktuur"], a:"Dit maak die struktuur sterker en stewiger", r:"Driehoeke verander nie maklik van vorm nie, daarom versterk hulle raamstrukture.", v:"□ minder sterk → ▲ sterker"},
+    {q:"Watter struktuur het ’n raamwerk?", o:["selfoontoring","eier","baksteen","stomp"], a:"selfoontoring", r:"’n Selfoontoring het dele wat ’n raam vorm."},
+    {q:"Watter materiaal sal help om iets waterdig te maak?", o:["plastiek","papier met gate","droë sand","karton sonder bedekking"], a:"plastiek", r:"Plastiek kan water uithou."},
+    {q:"Hoekom moet ’n boot waterdig wees?", o:["Sodat water nie inkom en dit sink nie","Sodat dit kan vlieg","Sodat dit kan brand","Sodat dit klein bly"], a:"Sodat water nie inkom en dit sink nie", r:"Waterdigte strukture hou water uit."},
+    {q:"Wat wys ’n ontwerptekening?", o:["Hoe die produk of struktuur moet lyk","Net die prys","Net die naam","Net die kleur van die bladsy"], a:"Hoe die produk of struktuur moet lyk", r:"Ontwerptekeninge wys planne en idees."},
+    {q:"Waarom gebruik ons dimensies op ’n tekening?", o:["Om grootte/afmetings duidelik te wys","Om die tekening mooi te kleur","Om lugdruk te wys","Om die antwoord te raai"], a:"Om grootte/afmetings duidelik te wys", r:"Dimensies help iemand verstaan hoe groot of lank iets moet wees."},
+    {q:"Wat is ’n voorbeeld van ’n eienskap van materiaal?", o:["hard of sag","Maandag","links","vinnig hardloop"], a:"hard of sag", r:"Eienskappe beskryf hoe materiaal lyk, voel of werk."},
+    {q:"Watter eienskap is belangrik vir ’n sambreel?", o:["waterdig","breekbaar","swaar soos klip","vol gate"], a:"waterdig", r:"’n Sambreel moet water uithou."},
+    {q:"Watter eienskap is belangrik vir ’n brug?", o:["sterk","sag","papierdun","nat"], a:"sterk", r:"’n Brug moet sterk wees om las te dra."},
+    {q:"Watter stelsel werk met lugdruk?", o:["pneumatiese stelsel","soliede struktuur","natuurlike struktuur","perspektief"], a:"pneumatiese stelsel", r:"Pneumatiese stelsels gebruik lug/gas onder druk."}
+  ];
+  addMany("Toepassing en redes", application, 100);
+
+  const mixed = [
+    {q:"Kies die regte paar: natuurlike struktuur + voorbeeld", o:["natuurlik - boom","natuurlik - baksteen","natuurlik - vuurtoring","natuurlik - stapler"], a:"natuurlik - boom", r:"’n Boom kom uit die natuur."},
+    {q:"Kies die regte paar: mensgemaakte struktuur + voorbeeld", o:["mensgemaak - baksteen","mensgemaak - eier","mensgemaak - boom","mensgemaak - blaar"], a:"mensgemaak - baksteen", r:"’n Baksteen word deur mense gemaak."},
+    {q:"Kies die regte paar: dopstruktuur + voorbeeld", o:["dop - eierdop","dop - selfoontoring","dop - windpomp","dop - kruiwa"], a:"dop - eierdop", r:"’n Eierdop is ’n dopstruktuur."},
+    {q:"Kies die regte paar: raamstruktuur + voorbeeld", o:["raam - windpomp","raam - baksteen","raam - stomp","raam - eier"], a:"raam - windpomp", r:"’n Windpomp het ’n raamwerk."},
+    {q:"Kies die regte paar: soliedestruktuur + voorbeeld", o:["solied - stomp","solied - selfoontoring","solied - eierdop","solied - hek"], a:"solied - stomp", r:"’n Stomp is solied."},
+    {q:"Wat help ’n raamstruktuur die meeste sterk maak?", o:["triangulasie","water","kleur","papier"], a:"triangulasie", r:"Triangulasie gebruik driehoeke om raamstrukture sterk te maak."},
+    {q:"Watter woord beteken dat water nie maklik deurkom nie?", o:["waterdig","perspektief","dimensie","pneumaties"], a:"waterdig", r:"Waterdig beteken water word uitgehou."},
+    {q:"Watter woord beteken hoe iets vanuit ’n hoek lyk?", o:["perspektief","hefboom","waterdig","solied"], a:"perspektief", r:"Perspektief is hoe iets lyk vanuit verskillende hoeke."},
+    {q:"Watter woord beskryf grootte/afmeting op ’n tekening?", o:["dimensie","waterdig","las","skêr"], a:"dimensie", r:"Dimensies wys afmetings/grootte."},
+    {q:"Watter woord beskryf hoe iets lyk of voel?", o:["eienskap","hefboom","kruiwa","gas"], a:"eienskap", r:"Eienskappe sê hoe iets lyk, voel of funksioneer."}
+  ];
+  addMany("Gemengde herhaling", mixed, 90);
+
+  BANK = BANK.slice(0,500);
+}
+
+function leftBank(){
+  const done = getDone();
+  return BANK.filter(q => !done.includes(q.id));
+}
+
+function updateStats(){
+  document.getElementById("total").textContent = BANK.length;
+  document.getElementById("done").textContent = getDone().length;
+  document.getElementById("left").textContent = leftBank().length;
+}
+
+function start(){
+  let left = leftBank();
+  if(left.length === 0){
+    alert("Alles is klaar reg!");
+    return;
+  }
+
+  shuffle(left);
+  CURRENT = left.slice(0, Math.min(10, left.length));
+
+  let html = "";
+  CURRENT.forEach((q,i)=>{
+    html += `
+      <div class="qbox" id="box_${i}">
+        <span class="badge">${q.topic}</span>
+        ${q.visual ? `<div class="visual">${q.visual}</div>` : ""}
+        <h3>${i+1}. ${q.q}</h3>
+        ${q.options.map(opt => `
+          <label><input type="radio" name="q_${i}" value="${opt}"> ${opt}</label>
+        `).join("")}
+        <div class="feedback hidden" id="fb_${i}"></div>
+      </div>
+    `;
+  });
+
+  document.getElementById("questions").innerHTML = html;
+  document.getElementById("info").innerHTML = `<b>${CURRENT.length}</b> vrae in hierdie sessie.`;
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("test").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+function sendWhatsapp(score,total,left,done){
+  const date = new Date().toLocaleString("af-ZA");
+  const percent = total ? Math.round((score/total)*100) : 0;
+  let msg = "";
+  msg += "📚 *Sessie klaar*%0A";
+  msg += "Kind: Elona%0A";
+  msg += "Vak: TEG / Tegnologie%0A";
+  msg += "Datum: " + date + "%0A";
+  msg += "Vrae in sessie: " + total + "%0A";
+  msg += "Punte: " + score + "/" + total + " (" + percent + "%)%0A";
+  msg += "Reeds reg/bemeester: " + done + "%0A";
+  msg += "Nog oor: " + left + "%0A";
+  msg += "%0AStuur hierdie WhatsApp om die uitslag te bêre.";
+  window.open("https://wa.me/" + DAD + "?text=" + msg, "_blank");
+}
+
+function mark(){
+  let score = 0;
+  let done = getDone();
+
+  CURRENT.forEach((q,i)=>{
+    const checked = document.querySelector(`input[name="q_${i}"]:checked`);
+    const val = checked ? checked.value : "";
+    const box = document.getElementById("box_"+i);
+    const fb = document.getElementById("fb_"+i);
+
+    box.classList.remove("correct","wrong");
+    fb.classList.remove("hidden");
+
+    if(val === q.answer){
+      score++;
+      box.classList.add("correct");
+      if(!done.includes(q.id)) done.push(q.id);
+      fb.innerHTML = `<b>Reg!</b><br>${q.reason}<br><br>Hierdie vraag is nou bemeester en kom nie weer op nie.`;
+    } else {
+      box.classList.add("wrong");
+      fb.innerHTML = `<b>Verkeerd.</b><br>Jou antwoord: ${val || "leeg"}<br>Regte antwoord: <b>${q.answer}</b><br>${q.reason}<br><br>Hierdie vraag bly oor vir ’n volgende oefensessie.`;
+    }
+  });
+
+  saveDone(done);
+  updateStats();
+
+  const left = leftBank().length;
+  const doneNow = getDone().length;
+
+  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("resultText").innerHTML =
+    `<b>Punte:</b> ${score}/${CURRENT.length}<br>` +
+    `<b>Vrae nog oor:</b> ${left}<br>` +
+    `Volgende sessie vra net wat nog nie reg is nie.`;
+
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+
+  setTimeout(function(){
+    sendWhatsapp(score, CURRENT.length, left, doneNow);
+  }, 600);
+}
+
+function reset(){
+  if(confirm("Reset Elona TEG progress?")){
+    localStorage.removeItem(key());
+    updateStats();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  buildBank();
+  updateStats();
+  document.getElementById("startBtn").onclick = start;
+  document.getElementById("markBtn").onclick = mark;
+  document.getElementById("resetBtn").onclick = reset;
+  document.getElementById("backBtn").onclick = function(){
+    document.getElementById("test").classList.add("hidden");
+    document.getElementById("home").classList.remove("hidden");
+    document.getElementById("result").classList.add("hidden");
+    updateStats();
+    window.scrollTo(0,0);
+  };
+});
+</script>
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_START -->
+<style>
+#teaeWellDoneOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.72);
+  z-index:999999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  font-family:Arial,sans-serif;
+}
+#teaeWellDoneCard{
+  width:min(620px,96vw);
+  background:white;
+  border-radius:24px;
+  padding:26px;
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+  text-align:center;
+  color:#111827;
+  animation:teaePop .22s ease-out;
+}
+@keyframes teaePop{
+  from{transform:scale(.92);opacity:.2}
+  to{transform:scale(1);opacity:1}
+}
+#teaeWellDoneCard h1{
+  margin:0 0 8px;
+  font-size:34px;
+  font-weight:1000;
+}
+#teaeWellDoneCard .teae-status{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:22px;
+  font-weight:1000;
+  color:white;
+  margin:10px 0;
+}
+#teaeWellDoneCard .teae-pass{background:#16a34a}
+#teaeWellDoneCard .teae-fail{background:#dc2626}
+#teaeWellDoneCard .teae-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:18px 0;
+}
+#teaeWellDoneCard .teae-box{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:14px;
+}
+#teaeWellDoneCard .teae-big{
+  font-size:30px;
+  font-weight:1000;
+  color:#2563eb;
+}
+#teaeWellDoneCard .teae-msg{
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  border-radius:16px;
+  padding:14px;
+  line-height:1.45;
+  font-size:17px;
+  margin-top:12px;
+}
+#teaeWellDoneCard button{
+  border:0;
+  border-radius:14px;
+  padding:13px 18px;
+  margin:8px 5px 0;
+  font-weight:1000;
+  cursor:pointer;
+  color:white;
+  background:#2563eb;
+}
+#teaeWellDoneCard .teae-gray{background:#475569}
+@media(max-width:600px){
+  #teaeWellDoneCard{padding:20px}
+  #teaeWellDoneCard h1{font-size:28px}
+  #teaeWellDoneCard .teae-grid{grid-template-columns:1fr}
+}
+</style>
+
+<script>
+(function(){
+  const TEAE_CHILD = "Elona";
+  const TEAE_SUBJECT = "TEG";
+  let teaeLastResultKey = "";
+
+  function cleanText(s){
+    return String(s || "").replace(/\\s+/g," ").trim();
+  }
+
+  function bodyText(){
+    return document.body ? document.body.innerText : "";
+  }
+
+  function findScore(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Punte:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Score:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Punt:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      const got = Number(m[1]);
+      const total = Number(m[2]);
+      const percent = total ? Math.round((got / total) * 100) : 0;
+      return { got, total, percent };
+    }
+
+    let p =
+      t.match(/Persentasie:\\s*(\\d+)%/i) ||
+      t.match(/(\\d+)%/i);
+
+    if(p){
+      return { got:Number(p[1]), total:100, percent:Number(p[1]) };
+    }
+
+    return null;
+  }
+
+  function findGrandProgress(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae reeds bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Reeds 100% reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Progress:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Mastery:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      return { done:Number(m[1]), total:Number(m[2]) };
+    }
+
+    let done =
+      t.match(/Reeds 100% reg\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)/i) ||
+      t.match(/Bemeester\\s*(\\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Vrae in bank\\s*(\\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    if(done){
+      return { done:Number(done[1]), total: total && total[1] ? Number(total[1]) : 500 };
+    }
+
+    return { done:0, total:500 };
+  }
+
+  function findLeft(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae nog oor:\\s*(\\d+)/i) ||
+      t.match(/Vrae nog oor\\s*(\\d+)/i) ||
+      t.match(/Nog oor:\\s*(\\d+)/i) ||
+      t.match(/Oor:\\s*(\\d+)/i);
+
+    return m ? Number(m[1]) : null;
+  }
+
+  function motivational(percent, grandDone, grandTotal){
+    if(grandDone >= grandTotal){
+      return "🏆 Fantasties! Jy het hierdie hele bank klaargemaak. Dit is groot werk — jy kan trots wees!";
+    }
+
+    if(percent >= 80){
+      return "🔥 Uitstekend! Jy bou sterk kennis. Hou so aan — elke sessie vat jou nader aan klaar.";
+    }
+
+    if(percent >= 50){
+      return "👏 Mooi gedoen! Jy het geslaag. Kyk nou mooi na die vrae wat oorbly en probeer die volgende sessie nog beter.";
+    }
+
+    return "💪 Moenie moed opgee nie. Hierdie was oefening, nie mislukking nie. Die vrae wat moeilik was, bly oor sodat jy dit kan baasraak.";
+  }
+
+  function ensureOverlay(){
+    let overlay = document.getElementById("teaeWellDoneOverlay");
+    if(overlay) return overlay;
+
+    overlay = document.createElement("div");
+    overlay.id = "teaeWellDoneOverlay";
+    overlay.innerHTML = '<div id="teaeWellDoneCard"></div>';
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", function(e){
+      if(e.target === overlay){
+        overlay.style.display = "none";
+      }
+    });
+
+    return overlay;
+  }
+
+  function showWellDone(reason){
+    const score = findScore();
+    if(!score) return;
+
+    const grand = findGrandProgress();
+    const leftRaw = findLeft();
+    const left = leftRaw === null ? Math.max(0, grand.total - grand.done) : leftRaw;
+
+    const passed = score.percent >= 50;
+    const resultKey = [
+      TEAE_CHILD,
+      TEAE_SUBJECT,
+      score.got,
+      score.total,
+      score.percent,
+      grand.done,
+      grand.total,
+      left,
+      reason
+    ].join("|");
+
+    if(resultKey === teaeLastResultKey) return;
+    teaeLastResultKey = resultKey;
+
+    const overlay = ensureOverlay();
+    const card = document.getElementById("teaeWellDoneCard");
+
+    const statusClass = passed ? "teae-pass" : "teae-fail";
+    const statusText = passed ? "PASSED ✅" : "FAILED ❌";
+    const heading = passed ? "🎉 Well done!" : "💪 Hou aan probeer!";
+    const msg = motivational(score.percent, grand.done, grand.total);
+
+    card.innerHTML = 
+      <h1>\</h1>
+      <p><b>\</b> — \</p>
+
+      <div class="teae-status \">\</div>
+
+      <div class="teae-grid">
+        <div class="teae-box">
+          <div>Sessie score</div>
+          <div class="teae-big">\/\</div>
+          <div>\%</div>
+        </div>
+
+        <div class="teae-box">
+          <div>Grand total progress</div>
+          <div class="teae-big">\/\</div>
+          <div>Nog oor: \</div>
+        </div>
+      </div>
+
+      <div class="teae-msg">\</div>
+
+      <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'">Gaan voort</button>
+      <button class="teae-gray" onclick="window.scrollTo(0,0);document.getElementById('teaeWellDoneOverlay').style.display='none'">Terug boontoe</button>
+    ;
+
+    overlay.style.display = "flex";
+  }
+
+  function looksFinished(){
+    const t = bodyText();
+
+    return (
+      /Finale Uitslag/i.test(t) ||
+      /Resultaat/i.test(t) ||
+      /Punte:\\s*\\d+\\s*\\/\\s*\\d+/i.test(t) ||
+      /Persentasie:\\s*\\d+%/i.test(t) ||
+      /Mastery progress/i.test(t) ||
+      /Leer-progress/i.test(t)
+    );
+  }
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("button,a,div");
+    if(!el) return;
+
+    const tx = cleanText(el.innerText || el.textContent || "").toLowerCase();
+
+    if(
+      tx.includes("merk") ||
+      tx.includes("klaar") ||
+      tx.includes("finish") ||
+      tx.includes("submit") ||
+      tx.includes("check")
+    ){
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 1700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 3000);
+    }
+  }, true);
+
+  window.teaeShowWellDoneNow = function(){
+    showWellDone("Handmatig");
+  };
+})();
+</script>
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_END -->
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_START -->
+<script>
+(function(){
+  function txt(){ return document.body ? document.body.innerText : ""; }
+
+  function findGrand(){
+    const t = txt();
+
+    let m =
+      t.match(/Grand total progress\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Totale vrae reeds bemeester:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Progress:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Reeds 100% reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i);
+
+    if(m) return { done:Number(m[1]), total:Number(m[2]) };
+
+    let done =
+      t.match(/Reeds 100% reg\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)/i) ||
+      t.match(/Bemeester\s*(\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Vrae in bank\s*(\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    return {
+      done: done ? Number(done[1]) : 0,
+      total: total && total[1] ? Number(total[1]) : 500
+    };
+  }
+
+  function makeFinalLook(){
+    const overlay = document.getElementById("teaeWellDoneOverlay");
+    const card = document.getElementById("teaeWellDoneCard");
+    if(!overlay || !card || overlay.style.display === "none") return;
+
+    const g = findGrand();
+
+    if(g.total > 0 && g.done >= g.total){
+      card.innerHTML = `
+        <h1 style="font-size:38px;margin-bottom:8px">🏆 FANTASTIES!</h1>
+        <h2 style="margin:0 0 10px;color:#16a34a">HELE VAK KLAAR ✅</h2>
+
+        <div style="display:inline-block;background:#16a34a;color:white;padding:12px 22px;border-radius:999px;font-size:24px;font-weight:1000;margin:12px 0">
+          PASSED ✅
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0">
+          <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Grand Total</div>
+            <div style="font-size:34px;font-weight:1000;color:#16a34a">${g.done}/${g.total}</div>
+            <div>Alles bemeester</div>
+          </div>
+
+          <div style="background:#eff6ff;border:2px solid #2563eb;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Nog oor</div>
+            <div style="font-size:34px;font-weight:1000;color:#2563eb">0</div>
+            <div>Geen vrae oor nie</div>
+          </div>
+        </div>
+
+        <div style="background:#fff7ed;border:2px solid #fb923c;border-radius:18px;padding:16px;font-size:18px;line-height:1.45">
+          🌟 Jy het nie net ’n toets klaar gemaak nie — jy het ’n hele groot leerbank voltooi.
+          Dit is baie werk en jy kan regtig trots wees op jouself.
+          Hou hierdie selfde fokus vir jou finale vraestel!
+        </div>
+
+        <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'"
+          style="background:#2563eb;color:white;border:0;border-radius:14px;padding:14px 20px;margin-top:16px;font-weight:1000">
+          Klaar
+        </button>
+      `;
+    }
+  }
+
+  document.addEventListener("click", function(){
+    setTimeout(makeFinalLook, 900);
+    setTimeout(makeFinalLook, 1800);
+    setTimeout(makeFinalLook, 3200);
+  }, true);
+
+  window.addEventListener("load", function(){
+    setInterval(makeFinalLook, 1500);
+  });
+})();
+</script>
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_END -->
+</body>
+</html>
+
+
