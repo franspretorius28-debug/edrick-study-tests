@@ -95,13 +95,13 @@ const BANK = {
 {t:"mcq",m:2,q:"Watter fatsoen is natuurlik en onreëlmatig, soos ’n blaar of wolk?",o:["Organies","Geometries","Simmetries","Meganies"],a:"Organies",model:"Organiese fatsoene kom uit die natuur en is dikwels onreëlmatig."},
 {t:"mcq",m:2,q:"Watter tipe fatsoen stel nie duidelik ’n regte voorwerp voor nie?",o:["Geometries","Organies","Abstrak","Geslote"],a:"Abstrak",model:"Abstrakte fatsoene lyk nie noodwendig soos iets realisties nie."},
 {t:"mcq",m:1,q:"Wat is ’n monochromatiese kunswerk?",o:["’n Kunswerk met baie helder kleure","’n Kunswerk met een kleur of skakerings van een kleur","’n Kunswerk met net warm kleure","’n Kunswerk sonder lyne"],a:"’n Kunswerk met een kleur of skakerings van een kleur",model:"Monochromaties beteken een kleur plus sy ligter en donkerder skakerings."},
-{t:"text",m:2,q:"Wie het Starry Night geskilder en in watter jaar?",a:["vincent van gogh 1889","van gogh 1889"],model:"Vincent van Gogh het Starry Night in 1889 geskilder."},
+{t:"kw",m:2,q:"Wie het Starry Night geskilder en in watter jaar?",k:["vincent","van gogh","1889"],model:"Vincent van Gogh het Starry Night in 1889 geskilder."},
 {t:"kw",m:2,q:"Noem twee materiale vir swart-en-wit kunswerke.",k:["potlood","houtskool","ink","grafiet"],model:"Voorbeelde is potlood, houtskool, ink en grafiet."},
 {t:"kw",m:2,q:"Verduidelik hoe kleur emosie in ’n kunswerk kan wys.",k:["warm","koud","emosie","gevoel"],model:"Warm kleure kan energie, woede of geluk wys. Koue kleure kan kalmte of hartseer wys."},
 {t:"kw",m:2,q:"Verduidelik hoe tekstuur emosie in ’n kunswerk kan wys.",k:["rof","glad","emosie","gevoel"],model:"Rof tekstuur kan harde of gespanne gevoelens wys. Gladde tekstuur kan kalmte wys."},
-{t:"kw",m:2,q:"Bespreek die gebruik van lyn in Starry Night.",k:["draaierig","gekrom","beweging","lug"],model:"Starry Night gebruik draaierige, gekromde lyne in die lug. Dit skep beweging en energie."},
-{t:"kw",m:2,q:"Bespreek die gebruik van kleur in Starry Night.",k:["blou","geel","kontras","nag"],model:"Die donker blou naglug kontrasteer met die helder geel sterre en maan."},
-{t:"kw",m:2,q:"Verduidelik hoe klem in Starry Night geskep word.",k:["sterre","maan","helder","aandag"],model:"Die helder sterre en maan trek die kyker se aandag en skep klem."},
+
+
+
 {t:"kw",m:3,q:"Plaas hierdie kunsbewegings in volgorde in jou antwoord: Realisme, Impressionisme, Ekspressionisme, Kubisme, Surrealisme, Popkuns.",k:["realisme","impressionisme","ekspressionisme","kubisme","surrealisme","popkuns"],model:"Korrek: Realisme, Impressionisme, Ekspressionisme, Kubisme, Surrealisme, Popkuns."},
 {t:"mcq",m:1,q:"Wat is mimiek?",o:["Hard praat op die verhoog","Toneelspel sonder woorde deur beweging en gesigsuitdrukking","Die hoogste spanningspunt","’n Voorwerp op die verhoog"],a:"Toneelspel sonder woorde deur beweging en gesigsuitdrukking",model:"Mimiek gebruik liggaam en gesig sonder woorde."},
 {t:"mcq",m:1,q:"Wat is ’n monoloog?",o:["’n Gesprek tussen twee karakters","’n Toespraak deur een karakter","’n Verhooglig","’n Bevrore prent"],a:"’n Toespraak deur een karakter",model:"’n Monoloog is wanneer een karakter lank alleen praat."},
@@ -2722,8 +2722,135 @@ function markTest(){
   setInterval(fixMasteryText, 2000);
 })();
 </script>
+<script>
+// TEAE_STARRY_NIGHT_DUPLICATE_AND_MARK_FIX_V9
+// Fix Starry Night duplicates + fair marking for Vincent van Gogh / 1889.
+
+(function () {
+  function norm(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[’‘]/g, "'")
+      .replace(/[^a-z0-9\s']/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function isStarryQuestion(q) {
+    q = norm(q);
+    return q.includes("starry night") && (q.includes("wie") || q.includes("geskilder") || q.includes("jaar"));
+  }
+
+  function starryScore(answer, max) {
+    const a = norm(answer);
+    let score = 0;
+
+    const hasArtist =
+      a.includes("vincent van gogh") ||
+      a.includes("van gogh") ||
+      a.includes("gogh");
+
+    const hasYear = a.includes("1889");
+
+    if (hasArtist) score++;
+    if (hasYear) score++;
+
+    return Math.min(Number(max || 2), score);
+  }
+
+  // Override keyword marking so Starry Night answer is accepted.
+  const oldMarkKW = window.markKW;
+  window.markKW = function (x, answer) {
+    try {
+      if (x && isStarryQuestion(x.q)) {
+        return starryScore(answer, x.m || 2);
+      }
+    } catch (e) {}
+
+    if (typeof oldMarkKW === "function") {
+      return oldMarkKW(x, answer);
+    }
+
+    return 0;
+  };
+
+  function patchQuestionObject(x) {
+    if (!x || typeof x !== "object") return;
+
+    if (isStarryQuestion(x.q)) {
+      x.t = "kw";
+      x.m = 2;
+      x.q = "Wie het Starry Night geskilder en in watter jaar?";
+      x.k = ["vincent", "van gogh", "1889"];
+      x.model = "Vincent van Gogh het Starry Night in 1889 geskilder.";
+      x.a = "Vincent van Gogh het Starry Night in 1889 geskilder.";
+    }
+  }
+
+  function dedupeArray(arr) {
+    if (!Array.isArray(arr)) return;
+
+    let seenStarry = false;
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+      const x = arr[i];
+      if (!x || typeof x !== "object" || !x.q) continue;
+
+      if (isStarryQuestion(x.q)) {
+        if (seenStarry) {
+          arr.splice(i, 1);
+        } else {
+          seenStarry = true;
+          patchQuestionObject(x);
+        }
+      }
+    }
+  }
+
+  function scanObject(obj, depth, seen) {
+    if (!obj || depth > 4) return;
+    if (seen.has(obj)) return;
+    seen.add(obj);
+
+    if (Array.isArray(obj)) {
+      dedupeArray(obj);
+      obj.forEach(x => scanObject(x, depth + 1, seen));
+      return;
+    }
+
+    if (typeof obj !== "object") return;
+
+    Object.keys(obj).forEach(function (k) {
+      try {
+        const v = obj[k];
+        if (Array.isArray(v)) dedupeArray(v);
+        if (v && typeof v === "object") scanObject(v, depth + 1, seen);
+      } catch (e) {}
+    });
+  }
+
+  function runFix() {
+    try {
+      scanObject(window, 0, new WeakSet());
+    } catch (e) {}
+
+    try {
+      if (Array.isArray(window.questions)) dedupeArray(window.questions);
+      if (Array.isArray(window.currentQuestions)) dedupeArray(window.currentQuestions);
+      if (Array.isArray(window.currentTest)) dedupeArray(window.currentTest);
+      if (Array.isArray(window.examQuestions)) dedupeArray(window.examQuestions);
+    } catch (e) {}
+  }
+
+  runFix();
+  setTimeout(runFix, 300);
+  setTimeout(runFix, 1000);
+  setInterval(runFix, 3000);
+})();
+</script>
 </body>
 </html>
+
 
 
 
