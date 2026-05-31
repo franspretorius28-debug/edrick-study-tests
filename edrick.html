@@ -2901,8 +2901,162 @@ function markTest(){
   };
 })();
 </script>
+<script>
+// TEAE_REMOVE_STARRY_OUTSTANDING_V11
+// Verwyder alle Starry Night duplicate vrae uit Edrick se bank/outstanding.
+// Dit maak die 16 duplicate outstanding klaar/weg.
+
+(function () {
+  function norm(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[’‘]/g, "'")
+      .replace(/[^a-z0-9\s']/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function isStarryText(s) {
+    s = norm(s);
+    return s.includes("starry night") && (s.includes("wie") || s.includes("geskilder") || s.includes("jaar") || s.includes("gogh") || s.includes("1889"));
+  }
+
+  function isStarryQuestion(x) {
+    if (!x) return false;
+    if (typeof x === "string") return isStarryText(x);
+    if (typeof x === "object") {
+      return isStarryText(x.q || x.question || x.text || x.model || x.a || JSON.stringify(x).slice(0, 500));
+    }
+    return false;
+  }
+
+  function cleanArray(arr) {
+    if (!Array.isArray(arr)) return arr;
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+      if (isStarryQuestion(arr[i])) {
+        arr.splice(i, 1);
+      }
+    }
+
+    return arr;
+  }
+
+  function scanAndClean(obj, depth, seen) {
+    if (!obj || depth > 4) return;
+    if (seen.has(obj)) return;
+    seen.add(obj);
+
+    if (Array.isArray(obj)) {
+      cleanArray(obj);
+      obj.forEach(x => scanAndClean(x, depth + 1, seen));
+      return;
+    }
+
+    if (typeof obj !== "object") return;
+
+    Object.keys(obj).forEach(function (k) {
+      try {
+        const v = obj[k];
+
+        if (Array.isArray(v)) {
+          cleanArray(v);
+        } else if (v && typeof v === "object") {
+          scanAndClean(v, depth + 1, seen);
+        }
+      } catch(e) {}
+    });
+  }
+
+  function cleanLocalStorageStarry() {
+    try {
+      const keys = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.toLowerCase().includes("edrick")) keys.push(k);
+      }
+
+      keys.forEach(function (key) {
+        const raw = localStorage.getItem(key);
+        if (!raw || !raw.toLowerCase().includes("starry")) return;
+
+        try {
+          let data = JSON.parse(raw);
+
+          function cleanData(v) {
+            if (Array.isArray(v)) {
+              return v.filter(x => !isStarryQuestion(x)).map(cleanData);
+            }
+
+            if (v && typeof v === "object") {
+              Object.keys(v).forEach(function (kk) {
+                if (isStarryText(kk) || isStarryQuestion(v[kk])) {
+                  delete v[kk];
+                } else {
+                  v[kk] = cleanData(v[kk]);
+                }
+              });
+              return v;
+            }
+
+            if (typeof v === "string" && isStarryText(v)) return "";
+            return v;
+          }
+
+          data = cleanData(data);
+          localStorage.setItem(key, JSON.stringify(data));
+        } catch(e) {
+          // As dit plain text is met Starry Night, los dit uit.
+          if (isStarryText(raw)) localStorage.removeItem(key);
+        }
+      });
+    } catch(e) {}
+  }
+
+  function removeStarryDomCards() {
+    document.querySelectorAll("div, section, article").forEach(function (el) {
+      const txt = el.textContent || "";
+      if (isStarryText(txt) && txt.includes("Bank item")) {
+        const card = el.closest(".question-card, .card, section, article, div");
+        if (card) card.style.display = "none";
+      }
+    });
+  }
+
+  function runFix() {
+    try {
+      cleanLocalStorageStarry();
+      scanAndClean(window, 0, new WeakSet());
+
+      if (Array.isArray(window.questions)) cleanArray(window.questions);
+      if (Array.isArray(window.currentQuestions)) cleanArray(window.currentQuestions);
+      if (Array.isArray(window.currentTest)) cleanArray(window.currentTest);
+      if (Array.isArray(window.examQuestions)) cleanArray(window.examQuestions);
+      if (Array.isArray(window.bank)) cleanArray(window.bank);
+      if (Array.isArray(window.currentBank)) cleanArray(window.currentBank);
+
+      removeStarryDomCards();
+    } catch(e) {
+      console.warn("TEAE remove Starry outstanding error", e);
+    }
+  }
+
+  // Patch random/selectors too: if code builds session after load, remove Starry after every click/start.
+  document.addEventListener("click", function () {
+    setTimeout(runFix, 50);
+    setTimeout(runFix, 500);
+    setTimeout(runFix, 1500);
+  }, true);
+
+  runFix();
+  setTimeout(runFix, 300);
+  setTimeout(runFix, 1000);
+  setInterval(runFix, 2500);
+})();
+</script>
 </body>
 </html>
+
 
 
 
