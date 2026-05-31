@@ -1468,7 +1468,7 @@ document.addEventListener("DOMContentLoaded", function(){
 // Voeg < > = ≤ ≥ knoppies by vir Echart se Wiskunde antwoorde op selfoon.
 
 (function () {
-  const SYMBOLS = ["A", "B", "C", "D", "<", ">", "=", "≤", "≥"];
+  const SYMBOLS = ["<", ">", "=", "≤", "≥"];
 
   function isAnswerInput(el) {
     if (!el) return false;
@@ -1571,7 +1571,7 @@ document.addEventListener("DOMContentLoaded", function(){
         bottom: 8px;
         z-index: 999999;
         display: grid;
-        grid-template-columns: repeat(9, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 8px;
         background: rgba(255,255,255,.96);
         border: 1px solid #e5e7eb;
@@ -1715,7 +1715,7 @@ document.addEventListener("DOMContentLoaded", function(){
         bar.insertBefore(btn, bar.firstChild);
       });
 
-      bar.style.gridTemplateColumns = "repeat(9, 1fr)";
+      bar.style.gridTemplateColumns = "repeat(5, 1fr)";
     }
   }
 
@@ -1728,8 +1728,34 @@ document.addEventListener("DOMContentLoaded", function(){
   setInterval(run, 1500);
 })();
 </script>
+<script>
+// TEAE_REMOVE_ECHART_ABC_BUTTONS_V3
+// Haal A/B/C/D knoppies uit Echart se onderste symbol bar; keyboard se ABC bly normaal.
+
+(function () {
+  function removeABCButtons() {
+    const bar = document.getElementById("teae-echart-symbol-bar");
+    if (!bar) return;
+
+    Array.from(bar.querySelectorAll("button")).forEach(function(btn) {
+      const txt = (btn.textContent || "").trim().toUpperCase();
+      if (["A", "B", "C", "D"].includes(txt)) {
+        btn.remove();
+      }
+    });
+
+    bar.style.gridTemplateColumns = "repeat(5, 1fr)";
+  }
+
+  removeABCButtons();
+  setTimeout(removeABCButtons, 300);
+  setTimeout(removeABCButtons, 1000);
+  setInterval(removeABCButtons, 1500);
+})();
+</script>
 </body>
 </html>
+
 
 
 
