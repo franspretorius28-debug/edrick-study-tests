@@ -1463,8 +1463,158 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 </script>
 <!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_END -->
+<script>
+// TEAE_ECHART_MATH_SYMBOL_BUTTONS_V1
+// Voeg < > = ≤ ≥ knoppies by vir Echart se Wiskunde antwoorde op selfoon.
+
+(function () {
+  const SYMBOLS = ["<", ">", "=", "≤", "≥"];
+
+  function isAnswerInput(el) {
+    if (!el) return false;
+    if (!["INPUT", "TEXTAREA"].includes(el.tagName)) return false;
+
+    const info = [
+      el.id || "",
+      el.name || "",
+      el.className || "",
+      el.placeholder || "",
+      el.getAttribute("aria-label") || ""
+    ].join(" ").toLowerCase();
+
+    return (
+      info.includes("antwoord") ||
+      info.includes("answer") ||
+      info.includes("input") ||
+      info.includes("tik") ||
+      el.closest(".question") ||
+      el.closest(".card") ||
+      el.closest(".quiz")
+    );
+  }
+
+  function activeAnswerInput() {
+    const active = document.activeElement;
+    if (isAnswerInput(active)) return active;
+
+    const inputs = Array.from(document.querySelectorAll("input, textarea")).filter(isAnswerInput);
+    return inputs[inputs.length - 1] || null;
+  }
+
+  function insertSymbol(sym) {
+    const el = activeAnswerInput();
+    if (!el) {
+      alert("Klik eers in die antwoord blokkie.");
+      return;
+    }
+
+    el.focus();
+
+    const start = el.selectionStart ?? el.value.length;
+    const end = el.selectionEnd ?? el.value.length;
+
+    el.value = el.value.slice(0, start) + sym + el.value.slice(end);
+
+    const pos = start + sym.length;
+    try { el.setSelectionRange(pos, pos); } catch(e) {}
+
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+
+  function fixInputs() {
+    document.querySelectorAll("input, textarea").forEach(function(el) {
+      if (!isAnswerInput(el)) return;
+
+      if (el.tagName === "INPUT" && el.type === "number") {
+        try { el.type = "text"; } catch(e) {}
+      }
+
+      el.setAttribute("inputmode", "text");
+      el.removeAttribute("pattern");
+      el.removeAttribute("min");
+      el.removeAttribute("max");
+      el.removeAttribute("step");
+    });
+  }
+
+  function addBar() {
+    if (document.getElementById("teae-echart-symbol-bar")) return;
+
+    const bar = document.createElement("div");
+    bar.id = "teae-echart-symbol-bar";
+    bar.innerHTML = SYMBOLS.map(s =>
+      `<button type="button" class="teae-symbol-btn" data-symbol="${s}">${s}</button>`
+    ).join("");
+
+    document.body.appendChild(bar);
+
+    bar.querySelectorAll(".teae-symbol-btn").forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        insertSymbol(this.dataset.symbol);
+      };
+    });
+  }
+
+  function addStyle() {
+    if (document.getElementById("teae-echart-symbol-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "teae-echart-symbol-style";
+    style.textContent = `
+      #teae-echart-symbol-bar {
+        position: fixed;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        z-index: 999999;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        background: rgba(255,255,255,.96);
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 8px;
+        box-shadow: 0 6px 24px rgba(0,0,0,.18);
+      }
+
+      .teae-symbol-btn {
+        background: #2563eb;
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        padding: 12px 6px;
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      body {
+        padding-bottom: 80px !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function run() {
+    fixInputs();
+    addStyle();
+    addBar();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+
+  setInterval(run, 1500);
+})();
+</script>
 </body>
 </html>
+
 
 
 
