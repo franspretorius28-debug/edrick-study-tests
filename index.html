@@ -234,8 +234,186 @@ function showChild(child){
 
 loadName();
 </script>
+<script>
+// TEAE_RESTORE_ELONA_ECHART_MAIN_V1
+// Herstel Kind 3/Kind 4 na Elona/Echart op die main screen en route hulle vakke reg.
+
+(function () {
+  const KIDS = ["Edrick", "Enrico", "Elona", "Echart"];
+
+  const SUBJECTS = {
+    Edrick: [
+      { label: "Wiskunde", file: "edrick.html" }
+    ],
+    Enrico: [
+      { label: "Wiskunde", file: "enrico_math_mastery.html" },
+      { label: "K53", file: "enrico_k53_mastery.html" },
+      { label: "RTT / CAT", file: "enrico_cat_mastery.html" },
+      { label: "Landbou", file: "enrico_landbou_mastery.html" }
+    ],
+    Elona: [
+      { label: "Wiskunde", file: "elona_math_mastery.html" },
+      { label: "Engels", file: "elona_english_mastery.html" },
+      { label: "TEG", file: "elona_teg_mastery.html" }
+    ],
+    Echart: [
+      { label: "Wiskunde", file: "echardt_math_mastery.html" },
+      { label: "Spelling", file: "echardt_spelling_mastery.html" },
+      { label: "Life Skills", file: "echardt_life_skills.html" }
+    ]
+  };
+
+  function getInput() {
+    return document.querySelector("input[type='text'], input:not([type])");
+  }
+
+  function currentKid() {
+    const input = getInput();
+    return localStorage.getItem("teae_selected_child") || (input && input.value) || "Enrico";
+  }
+
+  function setKid(name) {
+    if (!KIDS.includes(name)) return;
+
+    localStorage.setItem("teae_selected_child", name);
+    localStorage.setItem("selected_child", name);
+    localStorage.setItem("current_child", name);
+    localStorage.setItem("student_name", name);
+
+    const input = getInput();
+    if (input) {
+      input.value = name;
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+
+    document.querySelectorAll(".teae-kid-btn, button").forEach(btn => {
+      const txt = (btn.textContent || "").trim();
+      btn.classList.toggle("active", txt === name);
+    });
+
+    renderSubjects(name);
+  }
+
+  function openFile(file) {
+    const kid = currentKid();
+    window.location.href = file + "?child=" + encodeURIComponent(kid) + "&name=" + encodeURIComponent(kid) + "&v=" + Date.now();
+  }
+
+  function fixKidButtons() {
+    const buttons = Array.from(document.querySelectorAll("button"));
+
+    buttons.forEach(btn => {
+      const txt = (btn.textContent || "").trim();
+
+      if (txt === "Kind 3") btn.textContent = "Elona";
+      if (txt === "Kind 4") btn.textContent = "Echart";
+    });
+
+    Array.from(document.querySelectorAll("button")).forEach(btn => {
+      const txt = (btn.textContent || "").trim();
+      if (!KIDS.includes(txt)) return;
+
+      btn.classList.add("teae-kid-btn");
+      btn.dataset.kid = txt;
+
+      if (btn.dataset.teaeKidFixed === "1") return;
+      btn.dataset.teaeKidFixed = "1";
+
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        setKid(txt);
+      }, true);
+    });
+  }
+
+  function findSubjectBox() {
+    const headings = Array.from(document.querySelectorAll("h2, h3"));
+    const heading = headings.find(h => (h.textContent || "").includes("se vakke"));
+    if (heading) return heading.closest("div");
+
+    return Array.from(document.querySelectorAll("div")).find(d =>
+      (d.textContent || "").includes("Wiskunde") &&
+      (d.textContent || "").includes("se vakke")
+    );
+  }
+
+  function renderSubjects(kid) {
+    const box = findSubjectBox();
+    if (!box) return;
+
+    const subjects = SUBJECTS[kid] || SUBJECTS.Enrico;
+
+    box.innerHTML = `
+      <h2>${kid} se vakke</h2>
+      <p>Kies die vak. Elke kind se vordering bly apart.</p>
+      <div class="teae-subject-grid">
+        ${subjects.map(s => `<button type="button" class="teae-subject-btn" data-file="${s.file}">${s.label}</button>`).join("")}
+      </div>
+    `;
+
+    box.querySelectorAll(".teae-subject-btn").forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openFile(this.dataset.file);
+      }, true);
+    });
+  }
+
+  function addStyle() {
+    if (document.getElementById("teae-restore-elona-echart-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "teae-restore-elona-echart-style";
+    style.textContent = `
+      .teae-subject-grid {
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:14px;
+        margin-top:16px;
+      }
+      .teae-subject-btn {
+        background:#2563eb;
+        color:white;
+        border:0;
+        border-radius:10px;
+        padding:16px 10px;
+        font-weight:800;
+        font-size:16px;
+        cursor:pointer;
+      }
+      @media (max-width:700px) {
+        .teae-subject-grid {
+          grid-template-columns:repeat(2,1fr);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function run() {
+    addStyle();
+    fixKidButtons();
+
+    const saved = currentKid();
+    setKid(KIDS.includes(saved) ? saved : "Enrico");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+
+  setTimeout(run, 300);
+  setTimeout(run, 1000);
+})();
+</script>
 </body>
 </html>
+
 
 
 
