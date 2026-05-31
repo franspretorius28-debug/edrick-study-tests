@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echardt - Graad 2 Wiskunde</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef2ff;color:#111827}
+header{background:#0f172a;color:white;text-align:center;padding:32px 14px 38px}
+header h1{margin:0 0 12px;font-size:36px;font-weight:900;letter-spacing:1px}
+header p{margin:0;font-size:18px}
+.wrap{max-width:960px;margin:26px auto;padding:0 14px}
+.card{background:white;border-radius:18px;padding:22px;margin:15px 0;box-shadow:0 10px 26px #0002}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.stats{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.row{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:10px 0;font-size:18px}
+.row:last-child{border-bottom:0}
+.big{font-size:34px;font-weight:900;color:#2563eb}
+button,.btn{border:0;border-radius:12px;padding:13px 17px;margin:5px;font-weight:900;background:#2563eb;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+.green{background:#16a34a}.red{background:#dc2626}.gray{background:#475569}
+input{width:180px;max-width:100%;padding:12px;border:2px solid #94a3b8;border-radius:12px;font-size:24px;font-weight:900;text-align:center}
+.qbox{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin:14px 0}
+.qbox h3{font-size:26px;margin:8px 0}
+.badge{display:inline-block;background:#dcfce7;color:#166534;padding:5px 10px;border-radius:999px;font-weight:900;font-size:13px}
+.feedback{margin-top:10px;border-radius:12px;padding:12px;line-height:1.5;background:#eef2ff}
+.correct{background:#f0fdf4!important;border:2px solid #22c55e!important}
+.wrong{background:#fef2f2!important;border:2px solid #ef4444!important}
+.hidden{display:none!important}
+.small{color:#64748b;line-height:1.45}
+
+.visual-wrap{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin:14px 0}
+.visual-group{display:flex;gap:6px;align-items:flex-end;flex-wrap:wrap;padding:8px 10px;border:1px dashed #cbd5e1;border-radius:12px;background:#fff}
+.plus-sign{font-size:34px;font-weight:900;color:#2563eb;align-self:center}
+.shape.block{width:18px;height:18px;background:#60a5fa;border:2px solid #2563eb;border-radius:4px}
+.shape.line{width:7px;height:36px;background:#10b981;border-radius:4px}
+.shape.circle{width:18px;height:18px;background:#f59e0b;border:2px solid #d97706;border-radius:50%}
+.shape.triangle{font-size:24px;line-height:1;color:#8b5cf6;font-weight:900}
+.shape.tally{font-size:28px;line-height:1;color:#1f2937;font-weight:900;min-width:10px;text-align:center}
+
+.visual-note{font-size:15px;color:#475569;margin-top:6px}
+
+@media(max-width:760px){
+  header h1{font-size:28px}
+  .grid{grid-template-columns:1fr}
+}
+/* TEAE_ECHARDT_SHAPES_CSS_V1 */
+.shape-big-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin:14px 0;
+  padding:14px;
+  background:#fff;
+  border:2px dashed #cbd5e1;
+  border-radius:14px;
+}
+.shape-big{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  width:58px;
+  height:58px;
+  border-radius:12px;
+  background:#f8fafc;
+  border:2px solid #cbd5e1;
+}
+.shape-name-note{
+  color:#475569;
+  font-size:15px;
+  margin-top:6px;
+}
+/* TEAE_ECHARDT_MULTIPLY_CSS_V1 */
+.multiply-visual{
+  background:#fff;
+  border:2px dashed #cbd5e1;
+  border-radius:14px;
+  padding:14px;
+  margin:14px 0;
+}
+.multiply-row{
+  display:flex;
+  gap:8px;
+  margin:8px 0;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.multiply-dot{
+  width:18px;
+  height:18px;
+  background:#60a5fa;
+  border:2px solid #2563eb;
+  border-radius:50%;
+  display:inline-block;
+}
+.multiply-group-label{
+  font-size:14px;
+  font-weight:900;
+  color:#475569;
+  min-width:70px;
+}
+/* TEAE_ECHARDT_MORE_GRADE2_CSS_V1 */
+.money-row,.clock-row,.data-row,.fraction-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin:14px 0;
+  padding:14px;
+  background:#fff;
+  border:2px dashed #cbd5e1;
+  border-radius:14px;
+}
+.money-note,.clock-note,.data-note,.fraction-note{
+  color:#475569;
+  font-size:15px;
+  margin-top:6px;
+}
+.coin{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#fef3c7;
+  border:3px solid #d97706;
+  font-weight:1000;
+  color:#92400e;
+}
+.note-money{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:78px;
+  height:42px;
+  border-radius:10px;
+  background:#dcfce7;
+  border:3px solid #16a34a;
+  font-weight:1000;
+  color:#166534;
+}
+.clock-face{
+  width:120px;
+  height:120px;
+  border:5px solid #0f172a;
+  border-radius:50%;
+  position:relative;
+  background:white;
+}
+.hand-hour,.hand-minute{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform-origin:left center;
+  height:5px;
+  background:#2563eb;
+  border-radius:99px;
+}
+.hand-hour{width:34px}
+.hand-minute{width:46px;background:#dc2626}
+.clock-center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:10px;
+  height:10px;
+  background:#0f172a;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.bar{
+  display:flex;
+  align-items:end;
+  gap:8px;
+}
+.bar-col{
+  width:42px;
+  background:#60a5fa;
+  border:2px solid #2563eb;
+  border-radius:8px 8px 0 0;
+  display:flex;
+  align-items:end;
+  justify-content:center;
+  font-weight:1000;
+  color:#0f172a;
+  padding-bottom:4px;
+}
+.fraction-box{
+  display:grid;
+  border:3px solid #0f172a;
+  width:120px;
+  height:80px;
+}
+.fraction-cell{
+  border:1px solid #0f172a;
+  background:white;
+}
+.fraction-cell.fill{
+  background:#60a5fa;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>📘 Echardt - Graad 2 Wiskunde</h1>
+  <p>500 somme | 10 per sessie | Graad 2 Volledige Bank</p>
+</header>
+
+<main class="wrap">
+  <section class="card" id="home">
+    <h2>Begin</h2>
+    <p class="small">
+      Hierdie bank oefen Graad 2 Wiskunde: optel, aftrek, getalbindinge, plekwaarde, verdubbel, halveer,
+      woordprobleme en nou ook <b>prentjie-optel</b> met strepies, blokies, lyntjies, sirkels en driehoekies.
+    </p>
+
+    <div class="grid">
+      <div class="stats">
+        <h3>Wiskunde Leerbank</h3>
+        <div class="row"><b>Somme in bank</b><span id="total">500</span></div>
+        <div class="row"><b>Reeds reg</b><span id="done">0</span></div>
+        <div class="row"><b>Somme nog oor</b><span class="big" id="left">500</span></div>
+      </div>
+
+      <div>
+        <button class="green" id="startBtn">Begin 10 somme</button>
+        <button class="red" id="resetBtn">Reset Wiskunde</button>
+        <a class="btn gray" href="index.html">Terug hoofkieslys</a>
+        <div class="feedback">
+          <b>Hoe dit werk:</b><br>
+          Hy kry 10 somme per sessie. Regte somme val uit die bank uit. Verkeerde somme bly oor.
+          Prentjie-vrae vra dat hy die voorwerpe tel en dan saam optel.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="test">
+    <h2>Oefensessie</h2>
+    <p id="info"></p>
+    <div id="questions"></div>
+    <button class="green" id="markBtn">Merk sessie</button>
+    <button class="gray" id="backBtn">Terug</button>
+  </section>
+
+  <section class="card hidden" id="result">
+    <h2>Resultaat</h2>
+    <div id="resultText" class="feedback"></div>
+  </section>
+</main>
+
+<script>
+/* TEAE_ECHARDT_MATH_PICTURE_BANK_V2 */
+let BANK = [];
+let CURRENT = [];
+
+function key(){ return "echardt_grade2_math_done_v2"; }
+
+function getDone(){
+  try { return JSON.parse(localStorage.getItem(key()) || "[]"); }
+  catch(e){ return []; }
+}
+
+function saveDone(arr){
+  localStorage.setItem(key(), JSON.stringify(Array.from(new Set(arr))));
+}
+
+function addQ(type, q, answer, steps, visualHtml){
+  BANK.push({
+    id: "ech_math_" + (BANK.length + 1),
+    type,
+    q,
+    answer: String(answer),
+    steps,
+    visualHtml: visualHtml || ""
+  });
+}
+
+function buildShapeGroup(type, count){
+  let html = '<div class="visual-group">';
+  for(let i=0;i<count;i++){
+    if(type === "block"){
+      html += '<span class="shape block"></span>';
+    } else if(type === "line"){
+      html += '<span class="shape line"></span>';
+    } else if(type === "circle"){
+      html += '<span class="shape circle"></span>';
+    } else if(type === "triangle"){
+      html += '<span class="shape triangle">▲</span>';
+    } else {
+      html += '<span class="shape tally">|</span>';
+    }
+  }
+  html += '</div>';
+  return html;
+}
+
+function buildVisualAddition(type, a, b){
+  return `
+    <div class="visual-wrap">
+      ${buildShapeGroup(type, a)}
+      <div class="plus-sign">+</div>
+      ${buildShapeGroup(type, b)}
+    </div>
+    <div class="visual-note">Tel al die prentjies saam en skryf die antwoord.</div>
+  `;
+}
+
+function buildBank(){
+  BANK = [];
+
+  // 100 gewone vrae
+  for(let i=0;i<25;i++){
+    let a = 5 + (i * 3) % 45;
+    let b = 2 + (i * 5) % 35;
+    addQ("Optel", `${a} + ${b} = ?`, a+b, `${a} + ${b} = ${a+b}. Tel eers die eerste getal en dan die tweede by.`);
+  }
+
+  for(let i=0;i<25;i++){
+    let a = 30 + (i * 4) % 65;
+    let b = 2 + (i * 3) % 25;
+    if(b > a){ b = 1; }
+    addQ("Aftrek", `${a} - ${b} = ?`, a-b, `${a} - ${b} = ${a-b}. Begin by ${a} en tel ${b} terug.`);
+  }
+
+  for(let i=0;i<10;i++){
+    let total = i < 5 ? 10 : 20;
+    let a = 1 + (i * 3) % (total-1);
+    addQ("Getalbindinge", `${a} + ___ = ${total}`, total-a, `${total} - ${a} = ${total-a}. Die ontbrekende getal is ${total-a}.`);
+  }
+
+  for(let i=0;i<10;i++){
+    let tens = 1 + (i % 9);
+    let ones = (i * 3) % 10;
+    let num = tens * 10 + ones;
+    addQ("Plekwaarde", `Hoeveel tiene is in ${num}?`, tens, `${num} = ${tens} tiene en ${ones} ene. Daarom is daar ${tens} tiene.`);
+  }
+
+  for(let i=0;i<10;i++){
+    let n = 2 + i * 2;
+    addQ("Verdubbel", `Verdubbel ${n}.`, n*2, `Verdubbel beteken ${n} + ${n} = ${n*2}.`);
+  }
+
+  for(let i=0;i<10;i++){
+    let n = 4 + i * 4;
+    addQ("Halveer", `Halveer ${n}.`, n/2, `Halveer beteken deel in 2 gelyke dele: ${n} ÷ 2 = ${n/2}.`);
+  }
+
+  for(let i=0;i<10;i++){
+    let a = 8 + i * 3;
+    let b = 2 + i;
+    if(i % 2 === 0){
+      addQ("Woordprobleem", `Echardt het ${a} lekkers. Hy kry nog ${b}. Hoeveel het hy nou?`, a+b, `Kry nog beteken optel: ${a} + ${b} = ${a+b}.`);
+    } else {
+      addQ("Woordprobleem", `Echardt het ${a} lekkers. Hy gee ${b} weg. Hoeveel bly oor?`, a-b, `Gee weg beteken aftrek: ${a} - ${b} = ${a-b}.`);
+    }
+  }
+
+  // 100 prentjie-optel vrae
+  const pictureSets = [
+    { type: "tally", label: "Strepies", startA: 2, startB: 1, stepA: 1, stepB: 2, count: 20 },
+    { type: "block", label: "Blokies", startA: 3, startB: 2, stepA: 2, stepB: 1, count: 20 },
+    { type: "line", label: "Lyntjies", startA: 1, startB: 4, stepA: 2, stepB: 1, count: 20 },
+    { type: "circle", label: "Sirkels", startA: 2, startB: 3, stepA: 1, stepB: 2, count: 20 },
+    { type: "triangle", label: "Driehoekies", startA: 1, startB: 2, stepA: 2, stepB: 1, count: 20 }
+  ];
+
+  pictureSets.forEach(function(set){
+    for(let i=0;i<set.count;i++){
+      let a = set.startA + ((i * set.stepA) % 8);
+      let b = set.startB + ((i * set.stepB) % 8);
+
+      if(a < 1) a = 1;
+      if(b < 1) b = 1;
+      if(a > 10) a = 10;
+      if(b > 10) b = 10;
+
+      let total = a + b;
+      let visual = buildVisualAddition(set.type, a, b);
+
+      addQ(
+        "Prentjie optel",
+        `Tel die ${set.label.toLowerCase()} saam.`,
+        total,
+        `Tel die eerste groep: ${a}. Tel die tweede groep: ${b}. Dan tel ons saam: ${a} + ${b} = ${total}.`,
+        visual
+      );
+    }
+  });
+
+  
+// TEAE_ECHARDT_GRADE2_SHAPES_V1_START
+  function shapeVisual(symbols){
+    let html = '<div class="shape-big-row">';
+    symbols.forEach(function(s){
+      html += '<span class="shape-big">' + s + '</span>';
+    });
+    html += '</div><div class="shape-name-note">Kyk mooi na die vorm en antwoord die vraag.</div>';
+    return html;
+  }
+
+  const shapes = [
+    {name:"sirkel", symbol:"●", sides:0, corners:0, hint:"'n Sirkel is rond en het geen reguit sye nie."},
+    {name:"vierkant", symbol:"■", sides:4, corners:4, hint:"'n Vierkant het 4 gelyke sye en 4 hoeke."},
+    {name:"reghoek", symbol:"▭", sides:4, corners:4, hint:"'n Reghoek het 4 sye en 4 hoeke; twee lang sye en twee kort sye."},
+    {name:"driehoek", symbol:"▲", sides:3, corners:3, hint:"'n Driehoek het 3 sye en 3 hoeke."},
+    {name:"diamant", symbol:"◆", sides:4, corners:4, hint:"'n Diamant het 4 sye en 4 hoeke."},
+    {name:"ster", symbol:"★", sides:0, corners:5, hint:"Hierdie eenvoudige ster het 5 punte."}
+  ];
+
+  // 18 vrae: watter vorm is dit?
+  for(let i=0;i<18;i++){
+    let s = shapes[i % shapes.length];
+    addQ(
+      "Vorms",
+      "Watter vorm is dit?",
+      s.name,
+      "Die vorm is 'n " + s.name + ". " + s.hint,
+      shapeVisual([s.symbol])
+    );
+  }
+
+  // 12 vrae: hoeveel sye?
+  const sideShapes = shapes.filter(s => s.name !== "ster");
+  for(let i=0;i<12;i++){
+    let s = sideShapes[i % sideShapes.length];
+    addQ(
+      "Vorms",
+      "Hoeveel sye het hierdie vorm?",
+      s.sides,
+      "Hierdie vorm is 'n " + s.name + ". Dit het " + s.sides + " sye.",
+      shapeVisual([s.symbol])
+    );
+  }
+
+  // 10 vrae: hoeveel hoeke?
+  const cornerShapes = shapes.filter(s => s.name !== "sirkel");
+  for(let i=0;i<10;i++){
+    let s = cornerShapes[i % cornerShapes.length];
+    addQ(
+      "Vorms",
+      "Hoeveel hoeke/punte het hierdie vorm?",
+      s.corners,
+      "Hierdie vorm is 'n " + s.name + ". Dit het " + s.corners + " hoeke/punte.",
+      shapeVisual([s.symbol])
+    );
+  }
+
+  // 10 vrae: tel die vorms
+  for(let i=0;i<10;i++){
+    let s = shapes[i % shapes.length];
+    let count = 3 + (i % 7);
+    let arr = [];
+    for(let x=0;x<count;x++){
+      arr.push(s.symbol);
+    }
+
+    addQ(
+      "Vorms tel",
+      "Tel die " + s.name + " vorms. Hoeveel is daar?",
+      count,
+      "Daar is " + count + " " + s.name + " vorms. Tel hulle een vir een.",
+      shapeVisual(arr)
+    );
+  }
+// TEAE_ECHARDT_GRADE2_SHAPES_V1_END
+
+  
+// TEAE_ECHARDT_GRADE2_SMALL_MULTIPLY_V1_START
+  function multiplyVisual(groups, each){
+    let html = '<div class="multiply-visual">';
+    html += '<b>Kyk na die groepies:</b><br>';
+
+    for(let g=1; g<=groups; g++){
+      html += '<div class="multiply-row">';
+      html += '<span class="multiply-group-label">Groep ' + g + ':</span>';
+      for(let x=0; x<each; x++){
+        html += '<span class="multiply-dot"></span>';
+      }
+      html += '</div>';
+    }
+
+    html += '<div class="visual-note">Tel die groepies saam. ' + groups + ' groepies van ' + each + ' beteken ' + groups + ' × ' + each + '.</div>';
+    html += '</div>';
+    return html;
+  }
+
+  const smallTables = [2, 3, 4, 5, 10];
+
+  smallTables.forEach(function(table){
+    for(let i=1; i<=10; i++){
+      let answer = table * i;
+
+      addQ(
+        "Klein maal",
+        table + " × " + i + " = ?",
+        answer,
+        table + " × " + i + " beteken " + i + " groepies van " + table + ". " + table + " × " + i + " = " + answer + ".",
+        multiplyVisual(i, table)
+      );
+    }
+  });
+// TEAE_ECHARDT_GRADE2_SMALL_MULTIPLY_V1_END
+
+  
+// TEAE_ECHARDT_GRADE2_MORE_TOPICS_V1_START
+  function moneyVisual(items){
+    let html = '<div class="money-row">';
+    items.forEach(function(v){
+      if(v >= 10){
+        html += '<span class="note-money">R' + v + '</span>';
+      } else {
+        html += '<span class="coin">R' + v + '</span>';
+      }
+    });
+    html += '</div><div class="money-note">Tel die geld saam of trek die prys af.</div>';
+    return html;
+  }
+
+  function clockVisual(hour, minute){
+    const minDeg = minute * 6 - 90;
+    const hourDeg = ((hour % 12) * 30 + minute * 0.5) - 90;
+
+    return `
+      <div class="clock-row">
+        <div class="clock-face">
+          <div class="hand-hour" style="transform:rotate(${hourDeg}deg)"></div>
+          <div class="hand-minute" style="transform:rotate(${minDeg}deg)"></div>
+          <div class="clock-center"></div>
+        </div>
+      </div>
+      <div class="clock-note">Blou wys die uur. Rooi wys die minute.</div>
+    `;
+  }
+
+  function dataVisual(a,b,c){
+    return `
+      <div class="data-row">
+        <div class="bar">
+          <div><div class="bar-col" style="height:${a*12}px">${a}</div><b>Appels</b></div>
+          <div><div class="bar-col" style="height:${b*12}px">${b}</div><b>Piesangs</b></div>
+          <div><div class="bar-col" style="height:${c*12}px">${c}</div><b>Lemoene</b></div>
+        </div>
+      </div>
+      <div class="data-note">Kyk na die grafiek en vergelyk die hoeveelhede.</div>
+    `;
+  }
+
+  function fractionVisual(parts, fill){
+    let html = '<div class="fraction-row"><div class="fraction-box" style="grid-template-columns:repeat(' + parts + ',1fr)">';
+    for(let i=0;i<parts;i++){
+      html += '<span class="fraction-cell ' + (i < fill ? 'fill' : '') + '"></span>';
+    }
+    html += '</div></div><div class="fraction-note">Die blou deel wys die breuk.</div>';
+    return html;
+  }
+
+  // 50 getalpatrone
+  for(let i=0;i<50;i++){
+    if(i < 15){
+      let start = 2 + (i % 8);
+      let seq = [start, start+2, start+4, start+6];
+      addQ(
+        "Getalpatrone",
+        "Voltooi die patroon: " + seq.join(", ") + ", ___",
+        start + 8,
+        "Die patroon tel elke keer 2 by. " + (start+6) + " + 2 = " + (start+8) + "."
+      );
+    } else if(i < 30){
+      let start = 5 + (i % 6);
+      let seq = [start, start+5, start+10, start+15];
+      addQ(
+        "Getalpatrone",
+        "Voltooi die patroon: " + seq.join(", ") + ", ___",
+        start + 20,
+        "Die patroon tel elke keer 5 by. " + (start+15) + " + 5 = " + (start+20) + "."
+      );
+    } else if(i < 40){
+      let start = 10 + (i % 9);
+      let seq = [start, start+10, start+20, start+30];
+      addQ(
+        "Getalpatrone",
+        "Voltooi die patroon: " + seq.join(", ") + ", ___",
+        start + 40,
+        "Die patroon tel elke keer 10 by. " + (start+30) + " + 10 = " + (start+40) + "."
+      );
+    } else {
+      let start = 3 + (i % 7);
+      let seq = [start, start+3, start+6, start+9];
+      addQ(
+        "Getalpatrone",
+        "Voltooi die patroon: " + seq.join(", ") + ", ___",
+        start + 12,
+        "Die patroon tel elke keer 3 by. " + (start+9) + " + 3 = " + (start+12) + "."
+      );
+    }
+  }
+
+  // 30 voor / na / tussen / volgorde
+  for(let i=0;i<30;i++){
+    if(i < 10){
+      let n = 20 + (i * 7) % 70;
+      addQ(
+        "Getallelyn",
+        "Watter getal kom NA " + n + "?",
+        n + 1,
+        "Die getal na " + n + " is " + (n+1) + ". Tel een vorentoe."
+      );
+    } else if(i < 20){
+      let n = 21 + (i * 5) % 70;
+      addQ(
+        "Getallelyn",
+        "Watter getal kom VOOR " + n + "?",
+        n - 1,
+        "Die getal voor " + n + " is " + (n-1) + ". Tel een terug."
+      );
+    } else {
+      let a = 10 + (i * 3) % 70;
+      addQ(
+        "Getallelyn",
+        "Watter getal is tussen " + a + " en " + (a+2) + "?",
+        a + 1,
+        "Die getal tussen " + a + " en " + (a+2) + " is " + (a+1) + "."
+      );
+    }
+  }
+
+  // 30 groter as / kleiner as / gelyk aan
+  for(let i=0;i<30;i++){
+    let a = 10 + (i * 9) % 90;
+    let b = 10 + (i * 4) % 90;
+
+    if(i % 10 === 0){
+      b = a;
+    }
+
+    let ans = a > b ? ">" : a < b ? "<" : "=";
+
+    addQ(
+      "Groter / Kleiner",
+      a + " ___ " + b + ". Vul in: >, < of =",
+      ans,
+      "Vergelyk die twee getalle. " + a + " is " + (ans === ">" ? "groter as " : ans === "<" ? "kleiner as " : "gelyk aan ") + b + "."
+    );
+  }
+
+  // 30 geld
+  for(let i=0;i<30;i++){
+    if(i < 10){
+      let coins = [1,2,5,1,2].slice(0, 2 + (i % 4));
+      let total = coins.reduce((a,b)=>a+b,0);
+      addQ(
+        "Geld",
+        "Tel die geld saam. Hoeveel rand is daar?",
+        total,
+        "Tel die munte/notas saam: " + coins.map(x=>"R"+x).join(" + ") + " = R" + total + ".",
+        moneyVisual(coins)
+      );
+    } else if(i < 20){
+      let have = 10 + (i % 3) * 10;
+      let price = 2 + (i % 8);
+      addQ(
+        "Geld",
+        "Jy het R" + have + ". Jy koop iets vir R" + price + ". Hoeveel geld bly oor?",
+        have - price,
+        "Kleingeld beteken aftrek: R" + have + " - R" + price + " = R" + (have-price) + ".",
+        moneyVisual([have])
+      );
+    } else {
+      let a = 5 + (i % 5);
+      let b = 2 + (i % 6);
+      addQ(
+        "Geld",
+        "Een lekkertjie kos R" + a + " en 'n sap kos R" + b + ". Hoeveel kos dit saam?",
+        a + b,
+        "Saam kos beteken optel: R" + a + " + R" + b + " = R" + (a+b) + "."
+      );
+    }
+  }
+
+  // 20 tyd
+  for(let i=0;i<20;i++){
+    if(i < 10){
+      let h = 1 + (i % 12);
+      addQ(
+        "Tyd",
+        "Hoe laat wys die horlosie? Skryf net die uur, byvoorbeeld 3:00",
+        h + ":00",
+        "Die groot rooi wyser is op 12, daarom is dit " + h + ":00.",
+        clockVisual(h,0)
+      );
+    } else {
+      let h = 1 + (i % 12);
+      addQ(
+        "Tyd",
+        "Hoe laat wys die horlosie? Skryf soos 4:30",
+        h + ":30",
+        "Die rooi wyser is op 6, dit beteken halfuur. Die tyd is " + h + ":30.",
+        clockVisual(h,30)
+      );
+    }
+  }
+
+  // 20 breuke
+  for(let i=0;i<20;i++){
+    if(i < 10){
+      addQ(
+        "Breuke",
+        "Watter breuk is blou? Skryf 1/2",
+        "1/2",
+        "Een uit twee gelyke dele is blou. Dit is 1/2.",
+        fractionVisual(2,1)
+      );
+    } else {
+      addQ(
+        "Breuke",
+        "Watter breuk is blou? Skryf 1/4",
+        "1/4",
+        "Een uit vier gelyke dele is blou. Dit is 1/4.",
+        fractionVisual(4,1)
+      );
+    }
+  }
+
+  // 20 data / grafieke
+  for(let i=0;i<20;i++){
+    let a = 2 + (i % 7);
+    let b = 3 + ((i*2) % 7);
+    let c = 1 + ((i*3) % 7);
+
+    if(i < 10){
+      let max = Math.max(a,b,c);
+      let ans = max === a ? "appels" : max === b ? "piesangs" : "lemoene";
+
+      addQ(
+        "Data / Grafieke",
+        "Watter een is die meeste?",
+        ans,
+        "Kyk na die hoogste staaf. Die meeste is " + ans + ".",
+        dataVisual(a,b,c)
+      );
+    } else {
+      let total = a + b + c;
+
+      addQ(
+        "Data / Grafieke",
+        "Hoeveel vrugte is daar altesaam?",
+        total,
+        "Tel almal saam: " + a + " + " + b + " + " + c + " = " + total + ".",
+        dataVisual(a,b,c)
+      );
+    }
+  }
+// TEAE_ECHARDT_GRADE2_MORE_TOPICS_V1_END
+
+  BANK = BANK.slice(0, 500);
+}
+
+function leftBank(){
+  const done = getDone();
+  return BANK.filter(q => !done.includes(q.id));
+}
+
+function updateStats(){
+  document.getElementById("total").textContent = BANK.length;
+  document.getElementById("done").textContent = getDone().length;
+  document.getElementById("left").textContent = leftBank().length;
+}
+
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){
+    let j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+}
+
+function start(){
+  let left = leftBank();
+  if(left.length === 0){
+    alert("Alles is klaar reg!");
+    return;
+  }
+
+  shuffle(left);
+  CURRENT = left.slice(0, Math.min(10, left.length));
+
+  let html = "";
+  CURRENT.forEach((q,i)=>{
+    html += `
+      <div class="qbox" id="box_${i}">
+        <span class="badge">${q.type}</span>
+        <h3>${i+1}. ${q.q}</h3>
+        ${q.visualHtml ? q.visualHtml : ""}
+        <input id="ans_${i}" inputmode="numeric" placeholder="Antwoord">
+        <div class="feedback hidden" id="fb_${i}"></div>
+      </div>
+    `;
+  });
+
+  document.getElementById("questions").innerHTML = html;
+  document.getElementById("info").innerHTML = `<b>${CURRENT.length}</b> somme in hierdie sessie.`;
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("test").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+function mark(){
+  let score = 0;
+  let done = getDone();
+
+  CURRENT.forEach((q,i)=>{
+    let val = String(document.getElementById("ans_"+i).value || "").trim();
+    let box = document.getElementById("box_"+i);
+    let fb = document.getElementById("fb_"+i);
+
+    box.classList.remove("correct","wrong");
+    fb.classList.remove("hidden");
+
+    if(val === String(q.answer)){
+      score++;
+      box.classList.add("correct");
+      if(!done.includes(q.id)) done.push(q.id);
+      fb.innerHTML = `<b>Reg!</b><br>${q.steps}`;
+    } else {
+      box.classList.add("wrong");
+      fb.innerHTML = `<b>Verkeerd.</b><br>Jou antwoord: ${val || "leeg"}<br>Regte antwoord: <b>${q.answer}</b><br>${q.steps}`;
+    }
+  });
+
+  saveDone(done);
+  updateStats();
+
+  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("resultText").innerHTML =
+    `<b>Punte:</b> ${score}/${CURRENT.length}<br>` +
+    `<b>Somme nog oor:</b> ${leftBank().length}<br>` +
+    `Volgende sessie vra net uit wat nog nie reg is nie.`;
+
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function resetProgress(){
+  if(confirm("Reset Echardt se Wiskunde progress?")){
+    localStorage.removeItem(key());
+    updateStats();
+    alert("Progress is reset.");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  buildBank();
+  updateStats();
+
+  document.getElementById("startBtn").onclick = start;
+  document.getElementById("markBtn").onclick = mark;
+  document.getElementById("resetBtn").onclick = resetProgress;
+  document.getElementById("backBtn").onclick = function(){
+    document.getElementById("test").classList.add("hidden");
+    document.getElementById("home").classList.remove("hidden");
+    document.getElementById("result").classList.add("hidden");
+    updateStats();
+    window.scrollTo(0,0);
+  };
+});
+</script>
+<!-- TEAE_SESSION_WHATSAPP_RESULTS_ALL_KIDS_V1_START -->
+<script>
+(function(){
+  const TEAE_CHILD = "Echardt";
+  const TEAE_SUBJECT = "Wiskunde";
+  const TEAE_DAD = "27642203726";
+
+  let teaeLastSendKey = "";
+
+  function teaeCleanText(s){
+    return String(s || "").replace(/\\s+/g, " ").trim();
+  }
+
+  function teaeFindScore(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Punte:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      text.match(/Score:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      text.match(/Finale result:\\s*(\\d+)%/i) ||
+      text.match(/Final Result[\\s\\S]{0,120}?(\\d+)%/i) ||
+      text.match(/Resultaat[\\s\\S]{0,120}?(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(!m) return "";
+
+    if(m.length >= 3){
+      const got = Number(m[1]);
+      const total = Number(m[2]);
+      const percent = total ? Math.round((got / total) * 100) : "";
+      return got + "/" + total + (percent !== "" ? " (" + percent + "%)" : "");
+    }
+
+    return m[1] + "%";
+  }
+
+  function teaeFindLeft(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Vrae nog oor:\\s*(\\d+)/i) ||
+      text.match(/Somme nog oor:\\s*(\\d+)/i) ||
+      text.match(/Questions left:\\s*(\\d+)/i) ||
+      text.match(/Nog oor\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeFindDone(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Reeds reg\\s*(\\d+)/i) ||
+      text.match(/Reeds 100% reg\\s*(\\d+)/i) ||
+      text.match(/Already 100% correct\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeFindSessionSize(){
+    const text = document.body ? document.body.innerText : "";
+
+    let m =
+      text.match(/Vrae in hierdie sessie:\\s*(\\d+)/i) ||
+      text.match(/Questions in this session:\\s*(\\d+)/i) ||
+      text.match(/Somme in hierdie sessie\\.\\s*(\\d+)/i) ||
+      text.match(/(\\d+)\\s*somme in hierdie sessie/i) ||
+      text.match(/(\\d+)\\s*vrae in hierdie sessie/i) ||
+      text.match(/Vraag\\s*1\\s*van\\s*(\\d+)/i);
+
+    return m ? m[1] : "";
+  }
+
+  function teaeBuildMessage(reason){
+    const score = teaeFindScore();
+    const left = teaeFindLeft();
+    const done = teaeFindDone();
+    const sessionSize = teaeFindSessionSize();
+
+    const date = new Date().toLocaleString("af-ZA");
+
+    let msg = "";
+    msg += "📚 *Sessie klaar*%0A";
+    msg += "Kind: " + TEAE_CHILD + "%0A";
+    msg += "Vak: " + TEAE_SUBJECT + "%0A";
+    msg += "Datum: " + date + "%0A";
+
+    if(sessionSize) msg += "Vrae/Somme in sessie: " + sessionSize + "%0A";
+    if(score) msg += "Punte: " + score + "%0A";
+    if(done) msg += "Reeds reg/bemeester: " + done + "%0A";
+    if(left) msg += "Nog oor: " + left + "%0A";
+
+    msg += "Rede: " + reason + "%0A";
+    msg += "%0A";
+    msg += "Stuur hierdie WhatsApp om die uitslag te bêre.";
+
+    return msg;
+  }
+
+  function teaeOpenWhatsApp(reason){
+    const score = teaeFindScore();
+    const left = teaeFindLeft();
+    const done = teaeFindDone();
+    const sessionSize = teaeFindSessionSize();
+
+    const sendKey = [
+      TEAE_CHILD,
+      TEAE_SUBJECT,
+      score,
+      left,
+      done,
+      sessionSize,
+      reason
+    ].join("|");
+
+    if(sendKey === teaeLastSendKey) return;
+    teaeLastSendKey = sendKey;
+
+    const url = "https://wa.me/" + TEAE_DAD + "?text=" + teaeBuildMessage(reason);
+    window.open(url, "_blank");
+  }
+
+  function teaeLooksLikeSessionDone(){
+    const text = document.body ? document.body.innerText : "";
+
+    if(/Finale Resultaat/i.test(text)) return true;
+    if(/Final Result/i.test(text)) return true;
+    if(/Resultaat/i.test(text) && /Punte:/i.test(text)) return true;
+    if(/Sessie klaar/i.test(text)) return true;
+    if(/session complete/i.test(text)) return true;
+
+    return false;
+  }
+
+  // Blokkeer ou "elke 10 vrae" WhatsApp waar moontlik.
+  window.teaeWhatsappEvery10Disabled = true;
+  window.sendEvery10Whatsapp = function(){ return false; };
+  window.sendWhatsappEvery10 = function(){ return false; };
+  window.whatsappEvery10 = function(){ return false; };
+
+  // As die app alert sê sessie klaar, stuur resultate.
+  const oldAlert = window.alert;
+  window.alert = function(msg){
+    const txt = String(msg || "");
+    if(
+      txt.toLowerCase().includes("sessie klaar") ||
+      txt.toLowerCase().includes("session") ||
+      txt.toLowerCase().includes("alles is klaar")
+    ){
+      setTimeout(function(){
+        teaeOpenWhatsApp("Sessie voltooi");
+      }, 250);
+    }
+    return oldAlert.call(window, msg);
+  };
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("button,a,div");
+    if(!el) return;
+
+    const t = teaeCleanText(el.innerText || el.textContent || "").toLowerCase();
+
+    if(
+      t.includes("merk sessie") ||
+      t.includes("mark session") ||
+      t.includes("merk antwoorde") ||
+      t.includes("next / enter") ||
+      t.includes("next")
+    ){
+      setTimeout(function(){
+        if(teaeLooksLikeSessionDone()){
+          teaeOpenWhatsApp("Sessie voltooi");
+        }
+      }, 800);
+
+      setTimeout(function(){
+        if(teaeLooksLikeSessionDone()){
+          teaeOpenWhatsApp("Sessie voltooi");
+        }
+      }, 1800);
+    }
+  }, true);
+
+  // Sit ook 'n handmatige WhatsApp-knoppie onderaan as popup geblok word.
+  document.addEventListener("DOMContentLoaded", function(){
+    setTimeout(function(){
+      if(document.getElementById("teaeManualWhatsAppBtn")) return;
+
+      const btn = document.createElement("button");
+      btn.id = "teaeManualWhatsAppBtn";
+      btn.type = "button";
+      btn.innerText = "📲 Stuur sessie uitslag WhatsApp";
+      btn.style.cssText = "position:fixed;right:12px;bottom:12px;z-index:99999;background:#16a34a;color:white;border:0;border-radius:14px;padding:12px 14px;font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.25);";
+      btn.onclick = function(){
+        teaeOpenWhatsApp("Handmatig gestuur");
+      };
+
+      document.body.appendChild(btn);
+    }, 1000);
+  });
+})();
+</script>
+<!-- TEAE_SESSION_WHATSAPP_RESULTS_ALL_KIDS_V1_END -->
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_START -->
+<style>
+#teaeWellDoneOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.72);
+  z-index:999999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  font-family:Arial,sans-serif;
+}
+#teaeWellDoneCard{
+  width:min(620px,96vw);
+  background:white;
+  border-radius:24px;
+  padding:26px;
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+  text-align:center;
+  color:#111827;
+  animation:teaePop .22s ease-out;
+}
+@keyframes teaePop{
+  from{transform:scale(.92);opacity:.2}
+  to{transform:scale(1);opacity:1}
+}
+#teaeWellDoneCard h1{
+  margin:0 0 8px;
+  font-size:34px;
+  font-weight:1000;
+}
+#teaeWellDoneCard .teae-status{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:22px;
+  font-weight:1000;
+  color:white;
+  margin:10px 0;
+}
+#teaeWellDoneCard .teae-pass{background:#16a34a}
+#teaeWellDoneCard .teae-fail{background:#dc2626}
+#teaeWellDoneCard .teae-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:18px 0;
+}
+#teaeWellDoneCard .teae-box{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:14px;
+}
+#teaeWellDoneCard .teae-big{
+  font-size:30px;
+  font-weight:1000;
+  color:#2563eb;
+}
+#teaeWellDoneCard .teae-msg{
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  border-radius:16px;
+  padding:14px;
+  line-height:1.45;
+  font-size:17px;
+  margin-top:12px;
+}
+#teaeWellDoneCard button{
+  border:0;
+  border-radius:14px;
+  padding:13px 18px;
+  margin:8px 5px 0;
+  font-weight:1000;
+  cursor:pointer;
+  color:white;
+  background:#2563eb;
+}
+#teaeWellDoneCard .teae-gray{background:#475569}
+@media(max-width:600px){
+  #teaeWellDoneCard{padding:20px}
+  #teaeWellDoneCard h1{font-size:28px}
+  #teaeWellDoneCard .teae-grid{grid-template-columns:1fr}
+}
+</style>
+
+<script>
+(function(){
+  const TEAE_CHILD = "Echardt";
+  const TEAE_SUBJECT = "Wiskunde";
+  let teaeLastResultKey = "";
+
+  function cleanText(s){
+    return String(s || "").replace(/\\s+/g," ").trim();
+  }
+
+  function bodyText(){
+    return document.body ? document.body.innerText : "";
+  }
+
+  function findScore(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Punte:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Score:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Punt:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      const got = Number(m[1]);
+      const total = Number(m[2]);
+      const percent = total ? Math.round((got / total) * 100) : 0;
+      return { got, total, percent };
+    }
+
+    let p =
+      t.match(/Persentasie:\\s*(\\d+)%/i) ||
+      t.match(/(\\d+)%/i);
+
+    if(p){
+      return { got:Number(p[1]), total:100, percent:Number(p[1]) };
+    }
+
+    return null;
+  }
+
+  function findGrandProgress(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae reeds bemeester:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Reeds 100% reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)[\\s\\S]{0,80}?Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Progress:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i) ||
+      t.match(/Mastery:\\s*(\\d+)\\s*\\/\\s*(\\d+)/i);
+
+    if(m){
+      return { done:Number(m[1]), total:Number(m[2]) };
+    }
+
+    let done =
+      t.match(/Reeds 100% reg\\s*(\\d+)/i) ||
+      t.match(/Reeds reg\\s*(\\d+)/i) ||
+      t.match(/Bemeester\\s*(\\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\\s*(\\d+)/i) ||
+      t.match(/Vrae in bank\\s*(\\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    if(done){
+      return { done:Number(done[1]), total: total && total[1] ? Number(total[1]) : 500 };
+    }
+
+    return { done:0, total:500 };
+  }
+
+  function findLeft(){
+    const t = bodyText();
+
+    let m =
+      t.match(/Totale vrae nog oor:\\s*(\\d+)/i) ||
+      t.match(/Vrae nog oor\\s*(\\d+)/i) ||
+      t.match(/Nog oor:\\s*(\\d+)/i) ||
+      t.match(/Oor:\\s*(\\d+)/i);
+
+    return m ? Number(m[1]) : null;
+  }
+
+  function motivational(percent, grandDone, grandTotal){
+    if(grandDone >= grandTotal){
+      return "🏆 Fantasties! Jy het hierdie hele bank klaargemaak. Dit is groot werk — jy kan trots wees!";
+    }
+
+    if(percent >= 80){
+      return "🔥 Uitstekend! Jy bou sterk kennis. Hou so aan — elke sessie vat jou nader aan klaar.";
+    }
+
+    if(percent >= 50){
+      return "👏 Mooi gedoen! Jy het geslaag. Kyk nou mooi na die vrae wat oorbly en probeer die volgende sessie nog beter.";
+    }
+
+    return "💪 Moenie moed opgee nie. Hierdie was oefening, nie mislukking nie. Die vrae wat moeilik was, bly oor sodat jy dit kan baasraak.";
+  }
+
+  function ensureOverlay(){
+    let overlay = document.getElementById("teaeWellDoneOverlay");
+    if(overlay) return overlay;
+
+    overlay = document.createElement("div");
+    overlay.id = "teaeWellDoneOverlay";
+    overlay.innerHTML = '<div id="teaeWellDoneCard"></div>';
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", function(e){
+      if(e.target === overlay){
+        overlay.style.display = "none";
+      }
+    });
+
+    return overlay;
+  }
+
+  function showWellDone(reason){
+    const score = findScore();
+    if(!score) return;
+
+    const grand = findGrandProgress();
+    const leftRaw = findLeft();
+    const left = leftRaw === null ? Math.max(0, grand.total - grand.done) : leftRaw;
+
+    const passed = score.percent >= 50;
+    const resultKey = [
+      TEAE_CHILD,
+      TEAE_SUBJECT,
+      score.got,
+      score.total,
+      score.percent,
+      grand.done,
+      grand.total,
+      left,
+      reason
+    ].join("|");
+
+    if(resultKey === teaeLastResultKey) return;
+    teaeLastResultKey = resultKey;
+
+    const overlay = ensureOverlay();
+    const card = document.getElementById("teaeWellDoneCard");
+
+    const statusClass = passed ? "teae-pass" : "teae-fail";
+    const statusText = passed ? "PASSED ✅" : "FAILED ❌";
+    const heading = passed ? "🎉 Well done!" : "💪 Hou aan probeer!";
+    const msg = motivational(score.percent, grand.done, grand.total);
+
+    card.innerHTML = 
+      <h1>\</h1>
+      <p><b>\</b> — \</p>
+
+      <div class="teae-status \">\</div>
+
+      <div class="teae-grid">
+        <div class="teae-box">
+          <div>Sessie score</div>
+          <div class="teae-big">\/\</div>
+          <div>\%</div>
+        </div>
+
+        <div class="teae-box">
+          <div>Grand total progress</div>
+          <div class="teae-big">\/\</div>
+          <div>Nog oor: \</div>
+        </div>
+      </div>
+
+      <div class="teae-msg">\</div>
+
+      <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'">Gaan voort</button>
+      <button class="teae-gray" onclick="window.scrollTo(0,0);document.getElementById('teaeWellDoneOverlay').style.display='none'">Terug boontoe</button>
+    ;
+
+    overlay.style.display = "flex";
+  }
+
+  function looksFinished(){
+    const t = bodyText();
+
+    return (
+      /Finale Uitslag/i.test(t) ||
+      /Resultaat/i.test(t) ||
+      /Punte:\\s*\\d+\\s*\\/\\s*\\d+/i.test(t) ||
+      /Persentasie:\\s*\\d+%/i.test(t) ||
+      /Mastery progress/i.test(t) ||
+      /Leer-progress/i.test(t)
+    );
+  }
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("button,a,div");
+    if(!el) return;
+
+    const tx = cleanText(el.innerText || el.textContent || "").toLowerCase();
+
+    if(
+      tx.includes("merk") ||
+      tx.includes("klaar") ||
+      tx.includes("finish") ||
+      tx.includes("submit") ||
+      tx.includes("check")
+    ){
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 1700);
+      setTimeout(function(){ if(looksFinished()) showWellDone("Sessie voltooi"); }, 3000);
+    }
+  }, true);
+
+  window.teaeShowWellDoneNow = function(){
+    showWellDone("Handmatig");
+  };
+})();
+</script>
+<!-- TEAE_WELL_DONE_SESSION_RESULT_ALL_KIDS_V1_END -->
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_START -->
+<script>
+(function(){
+  function txt(){ return document.body ? document.body.innerText : ""; }
+
+  function findGrand(){
+    const t = txt();
+
+    let m =
+      t.match(/Grand total progress\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Totale vrae reeds bemeester:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Progress:\s*(\d+)\s*\/\s*(\d+)/i) ||
+      t.match(/Reeds 100% reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)[\s\S]{0,80}?Vrae in groot bank\s*(\d+)/i);
+
+    if(m) return { done:Number(m[1]), total:Number(m[2]) };
+
+    let done =
+      t.match(/Reeds 100% reg\s*(\d+)/i) ||
+      t.match(/Reeds reg\s*(\d+)/i) ||
+      t.match(/Bemeester\s*(\d+)/i);
+
+    let total =
+      t.match(/Vrae in groot bank\s*(\d+)/i) ||
+      t.match(/Vrae in bank\s*(\d+)/i) ||
+      t.match(/500-vrae bank/i);
+
+    return {
+      done: done ? Number(done[1]) : 0,
+      total: total && total[1] ? Number(total[1]) : 500
+    };
+  }
+
+  function makeFinalLook(){
+    const overlay = document.getElementById("teaeWellDoneOverlay");
+    const card = document.getElementById("teaeWellDoneCard");
+    if(!overlay || !card || overlay.style.display === "none") return;
+
+    const g = findGrand();
+
+    if(g.total > 0 && g.done >= g.total){
+      card.innerHTML = `
+        <h1 style="font-size:38px;margin-bottom:8px">🏆 FANTASTIES!</h1>
+        <h2 style="margin:0 0 10px;color:#16a34a">HELE VAK KLAAR ✅</h2>
+
+        <div style="display:inline-block;background:#16a34a;color:white;padding:12px 22px;border-radius:999px;font-size:24px;font-weight:1000;margin:12px 0">
+          PASSED ✅
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0">
+          <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Grand Total</div>
+            <div style="font-size:34px;font-weight:1000;color:#16a34a">${g.done}/${g.total}</div>
+            <div>Alles bemeester</div>
+          </div>
+
+          <div style="background:#eff6ff;border:2px solid #2563eb;border-radius:18px;padding:16px">
+            <div style="font-weight:900">Nog oor</div>
+            <div style="font-size:34px;font-weight:1000;color:#2563eb">0</div>
+            <div>Geen vrae oor nie</div>
+          </div>
+        </div>
+
+        <div style="background:#fff7ed;border:2px solid #fb923c;border-radius:18px;padding:16px;font-size:18px;line-height:1.45">
+          🌟 Jy het nie net ’n toets klaar gemaak nie — jy het ’n hele groot leerbank voltooi.
+          Dit is baie werk en jy kan regtig trots wees op jouself.
+          Hou hierdie selfde fokus vir jou finale vraestel!
+        </div>
+
+        <button onclick="document.getElementById('teaeWellDoneOverlay').style.display='none'"
+          style="background:#2563eb;color:white;border:0;border-radius:14px;padding:14px 20px;margin-top:16px;font-weight:1000">
+          Klaar
+        </button>
+      `;
+    }
+  }
+
+  document.addEventListener("click", function(){
+    setTimeout(makeFinalLook, 900);
+    setTimeout(makeFinalLook, 1800);
+    setTimeout(makeFinalLook, 3200);
+  }, true);
+
+  window.addEventListener("load", function(){
+    setInterval(makeFinalLook, 1500);
+  });
+})();
+</script>
+<!-- TEAE_FINAL_500_COMPLETE_WELL_DONE_V2_END -->
+</body>
+</html>
+
+
+
+
+
+
