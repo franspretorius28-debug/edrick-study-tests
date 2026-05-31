@@ -656,8 +656,215 @@ loadName();
   setTimeout(run, 1000);
 })();
 </script>
+<script>
+// TEAE_FIX_EDRICK_REAL_SUBJECTS_V6
+// Edrick se regte vakke: Kuns en Kultuur, Tegnologie, Engels. Nie Wiskunde nie.
+
+(function () {
+  const EDRICK_SUBJECTS = [
+    ["Kuns en Kultuur", "edrick.html?subject=kuns"],
+    ["Tegnologie", "edrick.html?subject=tegnologie"],
+    ["Engels", "edrick.html?subject=engels"]
+  ];
+
+  function cleanTopText() {
+    Array.from(document.body.childNodes).forEach(function(n) {
+      if (n.nodeType === 3 && (n.textContent || "").trim().match(/^r[`\\]?n$/i)) {
+        n.textContent = "";
+      }
+    });
+  }
+
+  function setInput() {
+    const input = document.querySelector("input[type='text'], input:not([type])");
+    if (input) {
+      input.value = "Edrick";
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  }
+
+  function saveEdrick() {
+    localStorage.setItem("teae_selected_child", "Edrick");
+    localStorage.setItem("selected_child", "Edrick");
+    localStorage.setItem("current_child", "Edrick");
+    localStorage.setItem("student_name", "Edrick");
+  }
+
+  function openEdrickSubject(file) {
+    saveEdrick();
+    window.location.href = file + "&child=Edrick&name=Edrick&v=" + Date.now();
+  }
+
+  function removeWrongPanels() {
+    Array.from(document.querySelectorAll("h2, h3")).forEach(function(h) {
+      const txt = h.textContent || "";
+      if (txt.includes("Edrick se vakke")) {
+        const box = h.closest("div");
+        if (box && box.id !== "teae-edrick-real-subject-panel") {
+          box.remove();
+        }
+      }
+    });
+  }
+
+  function findKidRow() {
+    const buttons = Array.from(document.querySelectorAll("button"));
+    const edrickBtn = buttons.find(b => (b.textContent || "").trim() === "Edrick");
+    return edrickBtn ? edrickBtn.parentElement : null;
+  }
+
+  function ensurePanel() {
+    let panel = document.getElementById("teae-edrick-real-subject-panel");
+    if (panel) return panel;
+
+    panel = document.createElement("div");
+    panel.id = "teae-edrick-real-subject-panel";
+
+    const row = findKidRow();
+    if (row) {
+      row.insertAdjacentElement("afterend", panel);
+    } else {
+      document.body.appendChild(panel);
+    }
+
+    return panel;
+  }
+
+  function renderEdrickSubjects() {
+    cleanTopText();
+    saveEdrick();
+    setInput();
+    removeWrongPanels();
+
+    Array.from(document.querySelectorAll("button")).forEach(function(btn) {
+      const txt = (btn.textContent || "").trim();
+      if (txt === "Edrick") {
+        btn.style.background = "#0f172a";
+        btn.style.color = "white";
+        btn.style.outline = "4px solid rgba(37,99,235,.25)";
+      } else if (["Enrico", "Elona", "Echart"].includes(txt)) {
+        btn.style.background = "#2563eb";
+        btn.style.color = "white";
+        btn.style.outline = "none";
+      }
+    });
+
+    const panel = ensurePanel();
+    panel.innerHTML = `
+      <div class="teae-edrick-card">
+        <h2>Edrick se vakke</h2>
+        <p>Kies die vak. Elke vak maak Edrick se bestaande oefen-app oop.</p>
+        <div class="teae-edrick-grid">
+          ${EDRICK_SUBJECTS.map(s => `
+            <button type="button" class="teae-edrick-subject-btn" data-file="${s[1]}">${s[0]}</button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+
+    panel.querySelectorAll(".teae-edrick-subject-btn").forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openEdrickSubject(this.dataset.file);
+      };
+    });
+  }
+
+  function fixEdrickButton() {
+    Array.from(document.querySelectorAll("button")).forEach(function(btn) {
+      const txt = (btn.textContent || "").trim();
+      if (txt !== "Edrick") return;
+
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        renderEdrickSubjects();
+        return false;
+      };
+
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        renderEdrickSubjects();
+        return false;
+      }, true);
+    });
+  }
+
+  function addStyle() {
+    if (document.getElementById("teae-edrick-real-subject-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "teae-edrick-real-subject-style";
+    style.textContent = `
+      #teae-edrick-real-subject-panel {
+        margin-top: 18px !important;
+      }
+      .teae-edrick-card {
+        border: 1px solid #e5e7eb !important;
+        border-radius: 14px !important;
+        padding: 18px !important;
+        background: #fff !important;
+      }
+      .teae-edrick-card h2 {
+        margin: 0 0 8px 0 !important;
+        font-size: 26px !important;
+        color: #111827 !important;
+      }
+      .teae-edrick-card p {
+        margin: 0 0 14px 0 !important;
+        color: #64748b !important;
+      }
+      .teae-edrick-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 14px !important;
+      }
+      .teae-edrick-subject-btn {
+        background: #2563eb !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 10px !important;
+        padding: 16px 10px !important;
+        font-weight: 800 !important;
+        font-size: 16px !important;
+        cursor: pointer !important;
+      }
+      @media (max-width: 700px) {
+        .teae-edrick-grid {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function run() {
+    cleanTopText();
+    addStyle();
+    fixEdrickButton();
+
+    const saved = localStorage.getItem("teae_selected_child");
+    if (saved === "Edrick") {
+      setTimeout(renderEdrickSubjects, 100);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+
+  setTimeout(run, 300);
+  setTimeout(run, 1000);
+})();
+</script>
 </body>
 </html>
+
 
 
 
