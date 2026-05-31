@@ -2589,8 +2589,142 @@ function markTest(){
   setInterval(run, 1500);
 })();
 </script>
+<script>
+// TEAE_EDRICK_FAIR_MARKING_V8
+// Maak Edrick se lang antwoorde billiker: spelling/woordorde mag verskil.
+// Vrae word net bemeester as volpunte gekry is.
+
+(function () {
+  function normText(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[’‘]/g, "'")
+      .replace(/[^a-z0-9áéíóúèêëïöüçñ\s']/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function hasAny(text, words) {
+    text = normText(text);
+    return words.some(w => text.includes(normText(w)));
+  }
+
+  function hasAll(text, words) {
+    text = normText(text);
+    return words.every(w => text.includes(normText(w)));
+  }
+
+  function fairScore(question, answer) {
+    const q = normText((question && question.q) || "");
+    const a = normText(answer || "");
+    const max = Number((question && question.m) || 1);
+
+    if (!a) return 0;
+
+    // Starry Night vraag
+    if (q.includes("starry night") || q.includes("stary night")) {
+      const hasArtist = hasAny(a, ["vincent van gogh", "van gogh", "gogh"]);
+      const hasYear = hasAny(a, ["1889"]);
+      let score = 0;
+      if (hasArtist) score++;
+      if (hasYear) score++;
+      return Math.min(max, score);
+    }
+
+    // Kleur en emosie vraag
+    if (q.includes("kleur emosie") || q.includes("kleur en emosie")) {
+      let score = 0;
+
+      const warmOk =
+        hasAny(a, ["warm", "warm kleure"]) &&
+        hasAny(a, ["energie", "woede", "geluk", "agresief", "aggressief"]);
+
+      const coolOk =
+        hasAny(a, ["koue", "koel", "koue kleure", "koel kleure"]) &&
+        hasAny(a, ["kalmte", "kalmt", "hartseer", "seer", "sad"]);
+
+      if (warmOk) score++;
+      if (coolOk) score++;
+      return Math.min(max, score);
+    }
+
+    // Fallback: keyword marking, maar bietjie billiker.
+    const model = normText((question && (question.model || question.a)) || "");
+    const keywords = Array.isArray(question && question.k) ? question.k : [];
+
+    if (keywords.length) {
+      let hits = 0;
+      keywords.forEach(k => {
+        if (hasAny(a, [k])) hits++;
+      });
+
+      if (hits > 0) {
+        return Math.min(max, Math.round((hits / keywords.length) * max));
+      }
+    }
+
+    // As antwoord baie naby model is, gee volpunte.
+    if (model && a.length > 8) {
+      const modelWords = model.split(" ").filter(w => w.length > 3);
+      const ansWords = a.split(" ").filter(w => w.length > 3);
+      const common = modelWords.filter(w => ansWords.includes(w)).length;
+      const ratio = modelWords.length ? common / modelWords.length : 0;
+
+      if (ratio >= 0.55) return max;
+      if (ratio >= 0.35) return Math.max(1, Math.round(max / 2));
+    }
+
+    return 0;
+  }
+
+  // Override markKW globally.
+  window.markKW = function (x, answer) {
+    try {
+      return fairScore(x, answer);
+    } catch (e) {
+      console.warn("Fair marking fallback error", e);
+      return 0;
+    }
+  };
+
+  // Stop wrong "bemeester" text for partial/wrong answers after marking.
+  function fixMasteryText() {
+    document.querySelectorAll("*").forEach(function (el) {
+      const txt = el.textContent || "";
+      if (!txt.includes("Punt:")) return;
+
+      const m = txt.match(/Punt:\s*(\d+)\s*\/\s*(\d+)/i);
+      if (!m) return;
+
+      const score = parseInt(m[1], 10);
+      const max = parseInt(m[2], 10);
+
+      if (score < max && txt.includes("Hierdie vraag is nou bemeester")) {
+        el.innerHTML = el.innerHTML.replace(
+          /Hierdie vraag is nou bemeester en kom nie weer op nie\./g,
+          "Hierdie vraag is nog nie volpunte nie en bly in die bank."
+        );
+      }
+    });
+  }
+
+  const oldAlert = window.alert;
+  window.alert = function (msg) {
+    setTimeout(fixMasteryText, 300);
+    return oldAlert.call(window, msg);
+  };
+
+  document.addEventListener("click", function () {
+    setTimeout(fixMasteryText, 500);
+    setTimeout(fixMasteryText, 1500);
+  }, true);
+
+  setInterval(fixMasteryText, 2000);
+})();
+</script>
 </body>
 </html>
+
 
 
 
