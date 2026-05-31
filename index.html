@@ -411,8 +411,254 @@ loadName();
   setTimeout(run, 1000);
 })();
 </script>
+<script>
+// TEAE_CHILD_SUBJECT_PANEL_FORCE_V3
+// Forceer kind-keuse + wys elke kind se eie vakke op main screen.
+
+(function () {
+  const SUBJECTS = {
+    "Edrick": [
+      ["Wiskunde", "edrick.html"]
+    ],
+    "Enrico": [
+      ["Wiskunde", "enrico_math_mastery.html"],
+      ["K53", "enrico_k53_mastery.html"],
+      ["RTT / CAT", "enrico_cat_mastery.html"],
+      ["Landbou", "enrico_landbou_mastery.html"]
+    ],
+    "Elona": [
+      ["Wiskunde", "elona_math_mastery.html"],
+      ["Engels", "elona_english_mastery.html"],
+      ["TEG", "elona_teg_mastery.html"]
+    ],
+    "Echart": [
+      ["Wiskunde", "echardt_math_mastery.html"],
+      ["Spelling", "echardt_spelling_mastery.html"],
+      ["Life Skills", "echardt_life_skills.html"]
+    ]
+  };
+
+  const KIDS = Object.keys(SUBJECTS);
+
+  function qsAll(sel) {
+    return Array.from(document.querySelectorAll(sel));
+  }
+
+  function getNameInput() {
+    return document.querySelector("input[type='text'], input:not([type])");
+  }
+
+  function currentKid() {
+    const input = getNameInput();
+    const saved = localStorage.getItem("teae_selected_child");
+    if (saved && SUBJECTS[saved]) return saved;
+    if (input && SUBJECTS[input.value]) return input.value;
+    return "Enrico";
+  }
+
+  function setNameInput(kid) {
+    const input = getNameInput();
+    if (!input) return;
+
+    input.value = kid;
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+
+  function openSubject(file, kid) {
+    localStorage.setItem("teae_selected_child", kid);
+    localStorage.setItem("selected_child", kid);
+    localStorage.setItem("current_child", kid);
+    localStorage.setItem("student_name", kid);
+
+    window.location.href =
+      file +
+      "?child=" + encodeURIComponent(kid) +
+      "&name=" + encodeURIComponent(kid) +
+      "&student=" + encodeURIComponent(kid) +
+      "&v=" + Date.now();
+  }
+
+  function ensurePanel() {
+    let panel = document.getElementById("teae-child-subject-panel");
+    if (panel) return panel;
+
+    panel = document.createElement("div");
+    panel.id = "teae-child-subject-panel";
+
+    const kidButtons = qsAll("button").filter(b => KIDS.includes((b.textContent || "").trim()));
+    const lastKidButton = kidButtons[kidButtons.length - 1];
+
+    if (lastKidButton) {
+      const parent = lastKidButton.parentElement;
+      parent.insertAdjacentElement("afterend", panel);
+    } else {
+      const card = document.querySelector(".card, main, body");
+      card.appendChild(panel);
+    }
+
+    return panel;
+  }
+
+  function renderSubjects(kid) {
+    if (!SUBJECTS[kid]) kid = "Enrico";
+
+    setNameInput(kid);
+
+    localStorage.setItem("teae_selected_child", kid);
+    localStorage.setItem("selected_child", kid);
+    localStorage.setItem("current_child", kid);
+    localStorage.setItem("student_name", kid);
+
+    qsAll("button").forEach(btn => {
+      const txt = (btn.textContent || "").trim();
+      if (txt === "Kind 3") btn.textContent = "Elona";
+      if (txt === "Kind 4") btn.textContent = "Echart";
+    });
+
+    qsAll("button").forEach(btn => {
+      const txt = (btn.textContent || "").trim();
+      if (KIDS.includes(txt)) {
+        btn.classList.toggle("teae-active-kid", txt === kid);
+      }
+    });
+
+    const panel = ensurePanel();
+
+    panel.innerHTML = `
+      <div class="teae-subject-card">
+        <h2>${kid} se vakke</h2>
+        <p>Kies ’n vak vir ${kid}. Elke kind se vordering bly apart.</p>
+        <div class="teae-subject-grid">
+          ${SUBJECTS[kid].map(s =>
+            `<button type="button" class="teae-subject-btn" data-file="${s[1]}" data-kid="${kid}">${s[0]}</button>`
+          ).join("")}
+        </div>
+      </div>
+    `;
+
+    panel.querySelectorAll(".teae-subject-btn").forEach(btn => {
+      btn.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openSubject(this.dataset.file, this.dataset.kid);
+      };
+    });
+  }
+
+  function fixKidButtons() {
+    qsAll("button").forEach(btn => {
+      let txt = (btn.textContent || "").trim();
+
+      if (txt === "Kind 3") {
+        btn.textContent = "Elona";
+        txt = "Elona";
+      }
+
+      if (txt === "Kind 4") {
+        btn.textContent = "Echart";
+        txt = "Echart";
+      }
+
+      if (!KIDS.includes(txt)) return;
+
+      btn.classList.add("teae-kid-main-btn");
+
+      btn.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        renderSubjects(txt);
+      };
+    });
+  }
+
+  function addStyle() {
+    if (document.getElementById("teae-child-subject-panel-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "teae-child-subject-panel-style";
+    style.textContent = `
+      .teae-active-kid {
+        background: #0f172a !important;
+        outline: 4px solid rgba(37,99,235,.22) !important;
+      }
+
+      #teae-child-subject-panel {
+        margin-top: 18px !important;
+      }
+
+      .teae-subject-card {
+        border: 1px solid #e5e7eb !important;
+        border-radius: 14px !important;
+        padding: 18px !important;
+        background: #fff !important;
+      }
+
+      .teae-subject-card h2 {
+        margin: 0 0 8px 0 !important;
+        font-size: 26px !important;
+        color: #111827 !important;
+      }
+
+      .teae-subject-card p {
+        margin: 0 0 14px 0 !important;
+        color: #64748b !important;
+      }
+
+      .teae-subject-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 14px !important;
+      }
+
+      .teae-subject-btn {
+        background: #2563eb !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 10px !important;
+        padding: 16px 10px !important;
+        font-weight: 800 !important;
+        font-size: 16px !important;
+        cursor: pointer !important;
+      }
+
+      @media (max-width: 700px) {
+        .teae-subject-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function cleanupText() {
+    document.body.childNodes.forEach(function (n) {
+      if (n.nodeType === 3 && (n.textContent || "").trim() === "r`n") {
+        n.textContent = "";
+      }
+    });
+  }
+
+  function run() {
+    cleanupText();
+    addStyle();
+    fixKidButtons();
+    renderSubjects(currentKid());
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+
+  setTimeout(run, 300);
+  setTimeout(run, 1000);
+})();
+</script>
 </body>
 </html>
+
 
 
 
