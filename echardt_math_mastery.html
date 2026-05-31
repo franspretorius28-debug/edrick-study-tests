@@ -1468,7 +1468,7 @@ document.addEventListener("DOMContentLoaded", function(){
 // Voeg < > = ≤ ≥ knoppies by vir Echart se Wiskunde antwoorde op selfoon.
 
 (function () {
-  const SYMBOLS = ["<", ">", "=", "≤", "≥"];
+  const SYMBOLS = ["A", "B", "C", "D", "<", ">", "=", "≤", "≥"];
 
   function isAnswerInput(el) {
     if (!el) return false;
@@ -1571,7 +1571,7 @@ document.addEventListener("DOMContentLoaded", function(){
         bottom: 8px;
         z-index: 999999;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(9, 1fr);
         gap: 8px;
         background: rgba(255,255,255,.96);
         border: 1px solid #e5e7eb;
@@ -1612,8 +1612,125 @@ document.addEventListener("DOMContentLoaded", function(){
   setInterval(run, 1500);
 })();
 </script>
+<script>
+// TEAE_ECHART_MATH_ABC_INPUT_V2
+// Laat Echart se Wiskunde antwoorde ook A/B/C/D aanvaar.
+
+(function () {
+  function isAnswerInput(el) {
+    if (!el) return false;
+    if (!["INPUT", "TEXTAREA"].includes(el.tagName)) return false;
+
+    const info = [
+      el.id || "",
+      el.name || "",
+      el.className || "",
+      el.placeholder || "",
+      el.getAttribute("aria-label") || ""
+    ].join(" ").toLowerCase();
+
+    return (
+      info.includes("antwoord") ||
+      info.includes("answer") ||
+      info.includes("input") ||
+      info.includes("tik") ||
+      el.closest(".question") ||
+      el.closest(".card") ||
+      el.closest(".quiz")
+    );
+  }
+
+  function fixInputs() {
+    document.querySelectorAll("input, textarea").forEach(function (el) {
+      if (!isAnswerInput(el)) return;
+
+      if (el.tagName === "INPUT" && el.type === "number") {
+        try { el.type = "text"; } catch(e) {}
+      }
+
+      el.setAttribute("inputmode", "text");
+      el.removeAttribute("pattern");
+      el.removeAttribute("min");
+      el.removeAttribute("max");
+      el.removeAttribute("step");
+      el.setAttribute("autocapitalize", "characters");
+      el.setAttribute("autocomplete", "off");
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    const el = document.activeElement;
+    if (!isAnswerInput(el)) return;
+    if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+    if (e.key && e.key.length === 1 && /^[a-dA-D]$/.test(e.key)) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const start = el.selectionStart ?? el.value.length;
+      const end = el.selectionEnd ?? el.value.length;
+
+      el.value = el.value.slice(0, start) + e.key.toUpperCase() + el.value.slice(end);
+
+      try { el.setSelectionRange(start + 1, start + 1); } catch(err) {}
+
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  }, true);
+
+  function run() {
+    fixInputs();
+
+    // Maak seker ou symbol bar wys ook A/B/C/D indien hy reeds op bladsy is
+    const bar = document.getElementById("teae-echart-symbol-bar");
+    if (bar && !bar.dataset.abcUpdated) {
+      bar.dataset.abcUpdated = "1";
+      ["A", "B", "C", "D"].reverse().forEach(function(sym) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "teae-symbol-btn";
+        btn.dataset.symbol = sym;
+        btn.textContent = sym;
+        btn.onclick = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const el = document.activeElement;
+          if (!isAnswerInput(el)) {
+            alert("Klik eers in die antwoord blokkie.");
+            return;
+          }
+
+          const start = el.selectionStart ?? el.value.length;
+          const end = el.selectionEnd ?? el.value.length;
+
+          el.value = el.value.slice(0, start) + sym + el.value.slice(end);
+
+          try { el.setSelectionRange(start + 1, start + 1); } catch(err) {}
+
+          el.dispatchEvent(new Event("input", { bubbles: true }));
+          el.dispatchEvent(new Event("change", { bubbles: true }));
+        };
+        bar.insertBefore(btn, bar.firstChild);
+      });
+
+      bar.style.gridTemplateColumns = "repeat(9, 1fr)";
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+
+  setInterval(run, 1500);
+})();
+</script>
 </body>
 </html>
+
 
 
 
