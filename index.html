@@ -863,47 +863,49 @@ loadName();
 })();
 </script>
 
-<!-- TEAE_HIDE_ENRICO_TEMP_V1 START -->
-<style id="TEAE_HIDE_ENRICO_TEMP_V1-style">
+<!-- TEAE_HIDE_ENRICO_TEMP_V2 START -->
+<style id="TEAE_HIDE_ENRICO_TEMP_V2-style">
   a[href*="enrico" i],
-  button[data-hide-enrico="1"],
-  .teae-hide-enrico-temp {
+  [data-teae-enrico-hidden="1"] {
     display: none !important;
   }
 </style>
-<script id="TEAE_HIDE_ENRICO_TEMP_V1-script">
+<script id="TEAE_HIDE_ENRICO_TEMP_V2-script">
 (function(){
-  function hideEnrico(){
-    var words = ["enrico"];
-    var selectors = "a, button, .card, .subject-card, .student-card, .tile, .menu-item, li, div";
-    document.querySelectorAll(selectors).forEach(function(el){
-      var txt = (el.innerText || el.textContent || "").toLowerCase();
-      var href = ((el.getAttribute && el.getAttribute("href")) || "").toLowerCase();
-      var id = ((el.id || "") + " " + (el.className || "")).toLowerCase();
+  function hideEnricoSafely(){
+    document.querySelectorAll('a[href*="enrico" i]').forEach(function(a){
+      var box = a.closest('.card, .student-card, .child-card, .subject-card, .tile, li') || a;
+      box.setAttribute('data-teae-enrico-hidden', '1');
+      box.style.display = 'none';
+    });
 
-      var hit = words.some(function(w){
-        return txt.indexOf(w) >= 0 || href.indexOf(w) >= 0 || id.indexOf(w) >= 0;
-      });
+    document.querySelectorAll('.card, .student-card, .child-card, .subject-card, .tile, li').forEach(function(el){
+      var txt = (el.innerText || el.textContent || '').toLowerCase();
 
-      if (hit) {
-        var box = el.closest(".card, .subject-card, .student-card, .tile, .menu-item, li, section, article") || el;
-        box.classList.add("teae-hide-enrico-temp");
-        box.style.display = "none";
+      if (
+        txt.indexOf('enrico') >= 0 &&
+        txt.indexOf('edrick') < 0 &&
+        txt.indexOf('elona') < 0 &&
+        txt.indexOf('echardt') < 0
+      ) {
+        el.setAttribute('data-teae-enrico-hidden', '1');
+        el.style.display = 'none';
       }
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", hideEnrico);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideEnricoSafely);
   } else {
-    hideEnrico();
+    hideEnricoSafely();
   }
 
-  setTimeout(hideEnrico, 300);
-  setTimeout(hideEnrico, 1000);
+  setTimeout(hideEnricoSafely, 300);
+  setTimeout(hideEnricoSafely, 1000);
 })();
 </script>
-<!-- TEAE_HIDE_ENRICO_TEMP_V1 END -->
+<!-- TEAE_HIDE_ENRICO_TEMP_V2 END -->
+
 </body>
 </html>
 
