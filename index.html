@@ -862,8 +862,51 @@ loadName();
   setTimeout(run, 1000);
 })();
 </script>
+
+<!-- TEAE_HIDE_ENRICO_TEMP_V1 START -->
+<style id="TEAE_HIDE_ENRICO_TEMP_V1-style">
+  a[href*="enrico" i],
+  button[data-hide-enrico="1"],
+  .teae-hide-enrico-temp {
+    display: none !important;
+  }
+</style>
+<script id="TEAE_HIDE_ENRICO_TEMP_V1-script">
+(function(){
+  function hideEnrico(){
+    var words = ["enrico"];
+    var selectors = "a, button, .card, .subject-card, .student-card, .tile, .menu-item, li, div";
+    document.querySelectorAll(selectors).forEach(function(el){
+      var txt = (el.innerText || el.textContent || "").toLowerCase();
+      var href = ((el.getAttribute && el.getAttribute("href")) || "").toLowerCase();
+      var id = ((el.id || "") + " " + (el.className || "")).toLowerCase();
+
+      var hit = words.some(function(w){
+        return txt.indexOf(w) >= 0 || href.indexOf(w) >= 0 || id.indexOf(w) >= 0;
+      });
+
+      if (hit) {
+        var box = el.closest(".card, .subject-card, .student-card, .tile, .menu-item, li, section, article") || el;
+        box.classList.add("teae-hide-enrico-temp");
+        box.style.display = "none";
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", hideEnrico);
+  } else {
+    hideEnrico();
+  }
+
+  setTimeout(hideEnrico, 300);
+  setTimeout(hideEnrico, 1000);
+})();
+</script>
+<!-- TEAE_HIDE_ENRICO_TEMP_V1 END -->
 </body>
 </html>
+
 
 
 
