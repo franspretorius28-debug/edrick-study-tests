@@ -56,7 +56,7 @@
 
     <div class="task">
       <h3>Wiskunde</h3>
-      <p>Oefen elke dag <b>2, 5 en 10 maal tafels</b>. Skryf dit gemeng uit.</p>
+      <p>Oefen elke dag <b>al die 2, 5 en 10 maal tafels</b> van 1 tot 12. Merk jou antwoorde en oefen weer totdat alles reg is.</p>
       <div id="maths"></div>
       <button class="green" onclick="markMaths()">Merk Wiskunde</button>
       <button onclick="clearMaths()">Maak antwoorde skoon</button>
@@ -87,7 +87,7 @@
 </div>
 
 <script>
-const sums = [[2,3],[5,4],[10,7],[2,4],[5,6],[10,5],[10,8],[7,2],[5,5],[10,10]];
+const sums = []; [2,5,10].forEach(t => { for(let i=1; i<=12; i++){ sums.push([t,i]); } });
 
 function loadMaths(){
   const box = document.getElementById("maths");
@@ -224,4 +224,5 @@ setupCanvas('englishCanvas');
 </script>
 </body>
 </html>
+
 
