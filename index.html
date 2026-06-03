@@ -906,8 +906,75 @@ loadName();
 </script>
 <!-- TEAE_HIDE_ENRICO_TEMP_V2 END -->
 
+<!-- TEAE_FORCE_SUBJECT_BUTTONS_OPEN_V1_START -->
+<script>
+(function(){
+  function currentChild(){
+    var input = document.querySelector("input");
+    var val = input ? (input.value || "").trim() : "";
+    var chosen = document.querySelector(".active, .selected, .chosen");
+    var chosenText = chosen ? (chosen.textContent || "").trim() : "";
+    var txt = (chosenText || val || localStorage.getItem("selectedChild") || localStorage.getItem("childName") || "").toLowerCase();
+
+    if (txt.includes("enrico")) return "Enrico";
+    if (txt.includes("elona")) return "Elona";
+    if (txt.includes("echart") || txt.includes("echardt")) return "Echart";
+    if (txt.includes("edrick")) return "Edrick";
+    return val || "Enrico";
+  }
+
+  function subjectFile(child, label){
+    child = String(child || "").toLowerCase();
+    label = String(label || "").toLowerCase();
+
+    if (child.includes("enrico")) {
+      if (label.includes("wiskunde")) return "enrico_math_mastery.html";
+      if (label.includes("k53")) return "enrico_k53_mastery.html";
+      if (label.includes("cat") || label.includes("rtt")) return "enrico_cat_mastery.html";
+      if (label.includes("landbou")) return "enrico_landbou_mastery.html";
+    }
+
+    if (child.includes("elona")) {
+      if (label.includes("wiskunde")) return "elona_math_mastery.html";
+      if (label.includes("engels")) return "elona_english_mastery.html";
+      if (label.includes("teg")) return "elona_teg_mastery.html";
+    }
+
+    if (child.includes("echart") || child.includes("echardt")) {
+      if (label.includes("wiskunde")) return "echardt_math_mastery.html";
+      if (label.includes("spelling")) return "echardt_spelling_mastery.html";
+      if (label.includes("life")) return "echardt_life_skills.html";
+    }
+
+    if (child.includes("edrick")) {
+      if (label.includes("wiskunde")) return "edrick.html";
+    }
+
+    return "";
+  }
+
+  document.addEventListener("click", function(e){
+    var el = e.target.closest("a, button, .btn");
+    if (!el) return;
+
+    var label = (el.textContent || "").trim();
+    if (!/wiskunde|k53|rtt|cat|landbou|engels|teg|spelling|life/i.test(label)) return;
+
+    var child = currentChild();
+    var file = subjectFile(child, label);
+    if (!file) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    window.location.href = file + "?v=" + Date.now();
+  }, true);
+})();
+</script>
+<!-- TEAE_FORCE_SUBJECT_BUTTONS_OPEN_V1_END -->
 </body>
 </html>
+
 
 
 
