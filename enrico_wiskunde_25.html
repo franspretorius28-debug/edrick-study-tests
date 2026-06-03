@@ -200,197 +200,7 @@ body{
     if(typeof teaeStartMathSession === "function"){
       teaeStartMathSession();
     } else if(typeof startFreshTest === "function"){
-      <!-- TEAE_ENRICO_WISKUNDE_25_FORCE_V1_START -->
-<script>
-(function(){
-  const SESSION_SIZE = 25;
-  const PATCH = "TEAE_ENRICO_WISKUNDE_25_FORCE_V1";
-
-  function qText(q){
-    return String((q && (q.q || q.question || q.vraag || q.prompt || q.text || q.id)) || JSON.stringify(q || {}));
-  }
-
-  function cleanKey(q){
-    return qText(q)
-      .toLowerCase()
-      .replace(/<[^>]*>/g, " ")
-      .replace(/[0-9]+/g, "#")
-      .replace(/[^a-z0-9#áéíóúàèìòùâêîôûäëïöüñç\s]/gi, " ")
-      .replace(/\s+/g, " ")
-      .trim()
-      .slice(0, 160);
-  }
-
-  function topicOf(q){
-    const t = String((q && q.topic) || "").trim();
-    if (t) return t;
-    const s = qText(q).toLowerCase();
-    if (/bank|geld|rand|deposit|betaling|wins|verlies|koste|prys|invoice|faktuur|vat|btw/.test(s)) return "Finansies";
-    if (/breuk|fraction|vereenvoudig/.test(s)) return "Breuke";
-    if (/persent|%|percentage/.test(s)) return "Persentasies";
-    if (/algebra|vergelyking|los op|hakies|uitdrukking/.test(s)) return "Algebra";
-    if (/patroon|reeks|volgende term/.test(s)) return "Patrone";
-    if (/grafiek|koordinaat|gradiënt|gradient|lyn/.test(s)) return "Grafieke";
-    if (/hoek|driehoek|sirkel|area|omtrek|volume|meetkunde/.test(s)) return "Meetkunde";
-    if (/gemiddeld|mediaan|modus|data|tabel|waarskynlikheid/.test(s)) return "Data";
-    return "Gemeng";
-  }
-
-  function sessionNumber(maxSessions){
-    const url = new URL(location.href);
-    let n = parseInt(url.searchParams.get("session") || localStorage.getItem("enrico_wiskunde_25_session") || "1", 10);
-    if (!n || n < 1) n = 1;
-    if (n > maxSessions) n = maxSessions;
-    localStorage.setItem("enrico_wiskunde_25_session", String(n));
-    return n;
-  }
-
-  function goSession(n){
-    localStorage.setItem("enrico_wiskunde_25_session", String(n));
-    const url = new URL(location.href);
-    url.searchParams.set("session", String(n));
-    url.searchParams.set("v", Date.now());
-    location.href = url.toString();
-  }
-
-  function dedupe(list){
-    const seen = {};
-    const out = [];
-    (list || []).forEach(function(q){
-      const key = cleanKey(q) || String(q && q.id || Math.random());
-      if (!seen[key]) {
-        seen[key] = true;
-        out.push(q);
-      }
-    });
-    return out;
-  }
-
-  function buildBalanced(list, session, maxSessions){
-    const unique = dedupe(list);
-    const buckets = {};
-    unique.forEach(function(q){
-      const tp = topicOf(q);
-      if (!buckets[tp]) buckets[tp] = [];
-      buckets[tp].push(q);
-    });
-
-    const topics = Object.keys(buckets).sort(function(a,b){
-      return buckets[b].length - buckets[a].length;
-    });
-
-    const selected = [];
-    const used = {};
-    const offset = (session - 1) * SESSION_SIZE;
-
-    function add(q){
-      if (!q) return;
-      const key = String(q.id || cleanKey(q));
-      if (used[key]) return;
-      used[key] = true;
-      selected.push(q);
-    }
-
-    let round = 0;
-    while (selected.length < SESSION_SIZE && round < 500) {
-      let added = false;
-      topics.forEach(function(tp, idx){
-        if (selected.length >= SESSION_SIZE) return;
-        const arr = buckets[tp] || [];
-        if (!arr.length) return;
-        const pick = (offset + round + idx) % arr.length;
-        const before = selected.length;
-        add(arr[pick]);
-        if (selected.length > before) added = true;
-      });
-      if (!added) break;
-      round++;
-    }
-
-    for (let i = 0; selected.length < SESSION_SIZE && i < unique.length; i++) {
-      add(unique[(offset + i) % unique.length]);
-    }
-
-    return {
-      originalTotal: (list || []).length,
-      uniqueTotal: unique.length,
-      selected: selected.slice(0, SESSION_SIZE),
-      topics: Array.from(new Set(selected.map(topicOf))),
-      maxSessions: Math.max(1, Math.ceil(unique.length / SESSION_SIZE))
-    };
-  }
-
-  function banner(info, session){
-    if (document.getElementById("teae-wiskunde-25-banner")) return;
-
-    const div = document.createElement("div");
-    div.id = "teae-wiskunde-25-banner";
-    div.style.cssText = "max-width:980px;margin:12px auto;padding:14px;border:3px solid #16a34a;border-radius:16px;background:#f0fdf4;color:#0f172a;font-family:Arial,sans-serif;box-shadow:0 8px 24px rgba(22,163,74,.18);";
-    div.innerHTML =
-      '<div style="font-size:22px;font-weight:900;margin-bottom:6px;">Enrico Wiskunde - 25 vrae per sessie</div>' +
-      '<div style="font-size:15px;margin-bottom:8px;">Sessie <b>' + session + '</b> van <b>' + info.maxSessions + '</b>. Hierdie sessie wys net <b>' + info.selected.length + '</b> vrae. Oorspronklik: ' + info.originalTotal + '. Uniek na filter: ' + info.uniqueTotal + '.</div>' +
-      '<div style="font-size:14px;margin-bottom:12px;"><b>Gedek:</b> ' + info.topics.join(", ") + '</div>' +
-      '<button id="teae-prev25" style="padding:10px 14px;margin:4px;border:0;border-radius:10px;background:#475569;color:white;font-weight:900;">Vorige sessie</button>' +
-      '<button id="teae-next25" style="padding:10px 14px;margin:4px;border:0;border-radius:10px;background:#2563eb;color:white;font-weight:900;">Volgende sessie</button>' +
-      '<button id="teae-reset25" style="padding:10px 14px;margin:4px;border:0;border-radius:10px;background:#16a34a;color:white;font-weight:900;">Begin sessie 1</button>';
-
-    document.body.insertBefore(div, document.body.firstElementChild);
-
-    document.getElementById("teae-prev25").onclick = function(){ goSession(Math.max(1, session - 1)); };
-    document.getElementById("teae-next25").onclick = function(){ goSession(Math.min(info.maxSessions, session + 1)); };
-    document.getElementById("teae-reset25").onclick = function(){ goSession(1); };
-  }
-
-  function force25(){
-    if (typeof allQuestions === "undefined" || !Array.isArray(allQuestions)) return false;
-
-    if (!window.__TEAE_FULL_ENRICO_BANK__) {
-      window.__TEAE_FULL_ENRICO_BANK__ = allQuestions.slice();
-    }
-
-    const full = window.__TEAE_FULL_ENRICO_BANK__;
-    const maxSessions = Math.max(1, Math.ceil(dedupe(full).length / SESSION_SIZE));
-    const session = sessionNumber(maxSessions);
-    const info = buildBalanced(full, session, maxSessions);
-
-    allQuestions.splice(0, allQuestions.length);
-    info.selected.forEach(function(q){ allQuestions.push(q); });
-
-    try {
-      if (Array.isArray(questions)) {
-        questions.splice(0, questions.length);
-        info.selected.forEach(function(q){ questions.push(q); });
-      }
-      if (typeof current !== "undefined") current = 0;
-    } catch(e) {}
-
-    setTimeout(function(){ banner(info, session); }, 50);
-    console.log(PATCH, "forced", info.selected.length, "questions from", info.originalTotal);
-    return true;
-  }
-
-  const oldStart = window.startFreshTest;
-  window.startFreshTest = function(){
-    force25();
-    if (typeof oldStart === "function") {
-      const result = oldStart.apply(this, arguments);
-      force25();
-      return result;
-    }
-  };
-
-  // Run before original auto start, and again after page load
-  force25();
-  document.addEventListener("DOMContentLoaded", force25);
-  window.addEventListener("load", function(){
-    force25();
-    setTimeout(force25, 300);
-    setTimeout(force25, 1000);
-  });
-})();
-</script>
-<!-- TEAE_ENRICO_WISKUNDE_25_FORCE_V1_END -->
-startFreshTest();
+      startFreshTest();
     }
   };
 
@@ -2526,6 +2336,186 @@ function buildMoreChatGPTMathScreenshotQuestions(){
 buildAll();
 try { buildMoreChatGPTMathScreenshotQuestions(); } catch(e) { console.error('More ChatGPT questions failed', e); }
 renderTiles();
+<!-- TEAE_ENRICO_WISKUNDE_25_FORCE_V2_START -->
+<script>
+(function(){
+  const SESSION_SIZE = 25;
+
+  function getText(q){
+    return String((q && (q.q || q.question || q.vraag || q.prompt || q.text || q.id)) || "");
+  }
+
+  function keyOf(q){
+    return getText(q).toLowerCase()
+      .replace(/<[^>]+>/g, " ")
+      .replace(/[0-9]+/g, "#")
+      .replace(/[^a-z0-9#áéíóúàèìòùâêîôûäëïöüñç\s]/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 160);
+  }
+
+  function topicOf(q){
+    if (q && q.topic) return String(q.topic);
+    const s = getText(q).toLowerCase();
+    if (/bank|geld|rand|deposit|betaling|wins|verlies|koste|prys|faktuur|vat|btw/.test(s)) return "Finansies";
+    if (/breuk|fraction|vereenvoudig/.test(s)) return "Breuke";
+    if (/persent|%|percentage/.test(s)) return "Persentasies";
+    if (/algebra|vergelyking|los op|hakies|uitdrukking/.test(s)) return "Algebra";
+    if (/patroon|reeks|volgende/.test(s)) return "Patrone";
+    if (/grafiek|koordinaat|gradiënt|gradient|lyn/.test(s)) return "Grafieke";
+    if (/hoek|driehoek|sirkel|area|omtrek|volume|meetkunde/.test(s)) return "Meetkunde";
+    if (/gemiddeld|mediaan|modus|data|tabel|waarskynlikheid/.test(s)) return "Data";
+    return "Gemeng";
+  }
+
+  function dedupe(list){
+    const seen = {};
+    const out = [];
+    (list || []).forEach(function(q){
+      const k = keyOf(q) || String(q.id || Math.random());
+      if (!seen[k]) {
+        seen[k] = true;
+        out.push(q);
+      }
+    });
+    return out;
+  }
+
+  function getSession(max){
+    const url = new URL(location.href);
+    let n = parseInt(url.searchParams.get("session") || localStorage.getItem("enrico_wiskunde_25_session") || "1", 10);
+    if (!n || n < 1) n = 1;
+    if (n > max) n = max;
+    localStorage.setItem("enrico_wiskunde_25_session", String(n));
+    return n;
+  }
+
+  function goSession(n){
+    localStorage.setItem("enrico_wiskunde_25_session", String(n));
+    const url = new URL(location.href);
+    url.searchParams.set("session", String(n));
+    url.searchParams.set("v", Date.now());
+    location.href = url.toString();
+  }
+
+  function build25(full){
+    const unique = dedupe(full);
+    const maxSessions = Math.max(1, Math.ceil(unique.length / SESSION_SIZE));
+    const session = getSession(maxSessions);
+    const offset = (session - 1) * SESSION_SIZE;
+
+    const buckets = {};
+    unique.forEach(function(q){
+      const t = topicOf(q);
+      if (!buckets[t]) buckets[t] = [];
+      buckets[t].push(q);
+    });
+
+    const topics = Object.keys(buckets).sort(function(a,b){
+      return buckets[b].length - buckets[a].length;
+    });
+
+    const selected = [];
+    const used = {};
+
+    function add(q){
+      if (!q) return;
+      const k = String(q.id || keyOf(q));
+      if (used[k]) return;
+      used[k] = true;
+      selected.push(q);
+    }
+
+    let round = 0;
+    while (selected.length < SESSION_SIZE && round < 500) {
+      let added = false;
+      topics.forEach(function(t, idx){
+        if (selected.length >= SESSION_SIZE) return;
+        const arr = buckets[t] || [];
+        if (!arr.length) return;
+        const before = selected.length;
+        add(arr[(offset + round + idx) % arr.length]);
+        if (selected.length > before) added = true;
+      });
+      if (!added) break;
+      round++;
+    }
+
+    for (let i = 0; selected.length < SESSION_SIZE && i < unique.length; i++) {
+      add(unique[(offset + i) % unique.length]);
+    }
+
+    return {
+      originalTotal: full.length,
+      uniqueTotal: unique.length,
+      maxSessions,
+      session,
+      selected: selected.slice(0, SESSION_SIZE),
+      topics: Array.from(new Set(selected.map(topicOf)))
+    };
+  }
+
+  function showBanner(info){
+    if (document.getElementById("teae-wiskunde-25-banner")) return;
+
+    const div = document.createElement("div");
+    div.id = "teae-wiskunde-25-banner";
+    div.style.cssText = "max-width:980px;margin:12px auto;padding:14px;border:3px solid #16a34a;border-radius:16px;background:#f0fdf4;color:#0f172a;font-family:Arial,sans-serif;";
+    div.innerHTML =
+      '<div style="font-size:22px;font-weight:900;margin-bottom:6px;">Enrico Wiskunde - 25 vrae per sessie</div>' +
+      '<div style="font-size:15px;margin-bottom:8px;">Sessie <b>' + info.session + '</b> van <b>' + info.maxSessions + '</b>. Hierdie sessie wys <b>' + info.selected.length + '</b> vrae. Oorspronklik: ' + info.originalTotal + '. Uniek: ' + info.uniqueTotal + '.</div>' +
+      '<div style="font-size:14px;margin-bottom:12px;"><b>Gedek:</b> ' + info.topics.join(", ") + '</div>' +
+      '<button id="teae-prev25" style="padding:10px 14px;margin:4px;border:0;border-radius:10px;background:#475569;color:white;font-weight:900;">Vorige sessie</button>' +
+      '<button id="teae-next25" style="padding:10px 14px;margin:4px;border:0;border-radius:10px;background:#2563eb;color:white;font-weight:900;">Volgende sessie</button>' +
+      '<button id="teae-reset25" style="padding:10px 14px;margin:4px;border:0;border-radius:10px;background:#16a34a;color:white;font-weight:900;">Begin sessie 1</button>';
+
+    document.body.insertBefore(div, document.body.firstElementChild);
+
+    document.getElementById("teae-prev25").onclick = function(){ goSession(Math.max(1, info.session - 1)); };
+    document.getElementById("teae-next25").onclick = function(){ goSession(Math.min(info.maxSessions, info.session + 1)); };
+    document.getElementById("teae-reset25").onclick = function(){ goSession(1); };
+  }
+
+  function force25(){
+    if (typeof allQuestions === "undefined" || !Array.isArray(allQuestions)) return;
+
+    if (!window.__TEAE_FULL_BANK_25__) {
+      window.__TEAE_FULL_BANK_25__ = allQuestions.slice();
+    }
+
+    const info = build25(window.__TEAE_FULL_BANK_25__);
+
+    allQuestions.splice(0, allQuestions.length);
+    info.selected.forEach(function(q){ allQuestions.push(q); });
+
+    if (typeof questions !== "undefined" && Array.isArray(questions)) {
+      questions.splice(0, questions.length);
+      info.selected.forEach(function(q){ questions.push(q); });
+    }
+
+    try { current = 0; } catch(e) {}
+    showBanner(info);
+  }
+
+  const originalStart = window.startFreshTest;
+  window.startFreshTest = function(){
+    force25();
+    const result = originalStart ? originalStart.apply(this, arguments) : undefined;
+    force25();
+    return result;
+  };
+
+  force25();
+  document.addEventListener("DOMContentLoaded", force25);
+  window.addEventListener("load", function(){
+    force25();
+    setTimeout(force25, 300);
+    setTimeout(force25, 1000);
+  });
+})();
+</script>
+<!-- TEAE_ENRICO_WISKUNDE_25_FORCE_V2_END -->
 startFreshTest();
 </script>
 <!-- TEAE_ENRICO_MATH_FORCE_COVER_V3_START -->
@@ -2732,6 +2722,7 @@ startFreshTest();
 
 </body>
 </html>
+
 
 
 
