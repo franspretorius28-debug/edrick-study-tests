@@ -1,37 +1,62 @@
 <!DOCTYPE html>
-<html lang="af">
+<html lang="af" translate="no">
 <head>
   <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="robots" content="notranslate">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Familie - Finale Oefen Toetse</title>
+
   <style>
+    .goog-te-banner-frame,
+    .goog-te-balloon-frame,
+    .goog-tooltip,
+    .goog-tooltip:hover,
+    .goog-text-highlight,
+    iframe.skiptranslate,
+    #goog-gt-tt,
+    .skiptranslate {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+
     body {
+      top: 0 !important;
       margin: 0;
       font-family: Arial, sans-serif;
       background: #eef3ff;
       color: #0f172a;
     }
+
     header {
       background: #0f172a;
       color: white;
       text-align: center;
       padding: 45px 15px;
     }
+
     header h1 {
       margin: 0;
       font-size: 42px;
       font-weight: 900;
       letter-spacing: 1px;
     }
+
     header p {
       font-size: 18px;
       margin-top: 18px;
     }
+
     .wrap {
       max-width: 980px;
       margin: 40px auto;
       padding: 0 15px;
     }
+
     .card {
       background: white;
       border-radius: 18px;
@@ -39,10 +64,12 @@
       box-shadow: 0 14px 35px rgba(15,23,42,.12);
       margin-bottom: 24px;
     }
+
     h2 {
       margin-top: 0;
       font-size: 30px;
     }
+
     .child {
       border: 1px solid #e2e8f0;
       border-radius: 16px;
@@ -50,21 +77,25 @@
       margin: 18px 0;
       background: #ffffff;
     }
+
     .child h3 {
       margin: 0 0 8px;
       font-size: 26px;
     }
+
     .child p {
       margin: 0 0 16px;
       color: #64748b;
       font-size: 16px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(140px, 1fr));
       gap: 12px;
     }
-    a.btn {
+
+    .btn {
       display: block;
       text-align: center;
       text-decoration: none;
@@ -74,10 +105,14 @@
       border-radius: 12px;
       font-size: 17px;
       font-weight: 900;
+      border: 0;
+      cursor: pointer;
     }
-    a.btn:hover {
+
+    .btn:hover {
       background: #1d4ed8;
     }
+
     .note {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
@@ -86,45 +121,39 @@
       color: #475569;
       font-size: 15px;
     }
+
     @media (max-width: 750px) {
       header h1 { font-size: 30px; }
       .grid { grid-template-columns: 1fr 1fr; }
       .card { padding: 18px; }
     }
   </style>
-<!-- TEAE_KILL_CACHE_V1_START -->
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<script>
-(function(){
-  try {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(regs){
-        return Promise.all(regs.map(function(r){ return r.unregister(); }));
-      }).then(function(){
-        console.log("All service workers unregistered");
-      }).catch(function(e){
-        console.log("SW unregister error", e);
-      });
+
+  <script>
+    function openVak(url) {
+      window.location.href = url + "?v=" + Date.now();
     }
 
-    if ('caches' in window) {
-      caches.keys().then(function(keys){
-        return Promise.all(keys.map(function(k){ return caches.delete(k); }));
-      }).then(function(){
-        console.log("Browser caches cleared");
-      }).catch(function(e){
-        console.log("Cache clear error", e);
-      });
+    function killTranslatePopup() {
+      try {
+        document.querySelectorAll(
+          ".goog-te-banner-frame,.goog-te-balloon-frame,.goog-tooltip,.goog-text-highlight,iframe.skiptranslate,#goog-gt-tt,.skiptranslate"
+        ).forEach(function(el){
+          el.remove();
+        });
+        document.body.style.top = "0px";
+      } catch(e) {}
     }
-  } catch(e) {
-    console.log("Cache killer error", e);
-  }
-})();
-</script>
-<!-- TEAE_KILL_CACHE_V1_END -->
+
+    document.addEventListener("DOMContentLoaded", function(){
+      killTranslatePopup();
+      setTimeout(killTranslatePopup, 500);
+      setTimeout(killTranslatePopup, 1500);
+      setTimeout(killTranslatePopup, 3000);
+    });
+  </script>
 </head>
+
 <body>
   <header>
     <h1>Familie - Finale Oefen Toetse</h1>
@@ -134,46 +163,48 @@
   <div class="wrap">
     <div class="card">
       <h2>Kies kind en vak</h2>
-      <p>Hierdie blad gebruik gewone direkte links. Geen ou block of click script kan dit keer nie.</p>
+      <p>Hierdie blad gebruik harde direkte links. Die translate popup is afgesit.</p>
 
       <div class="child">
         <h3>Enrico se vakke</h3>
-        <p>Wiskunde is nou in kleiner sessies sodat hy nie 500 vrae op een slag kry nie.</p>
+        <p>Wiskunde moet nou in kleiner sessies oopmaak.</p>
         <div class="grid">
-          <a class="btn" href="/edrick-study-tests/enrico_math_mastery.html?v=swreset">Wiskunde</a>
-          <a class="btn" href="/edrick-study-tests/enrico_k53_mastery.html?v=swreset">K53</a>
-          <a class="btn" href="/edrick-study-tests/enrico_cat_mastery.html?v=swreset">RTT / CAT</a>
-          <a class="btn" href="/edrick-study-tests/enrico_landbou_mastery.html?v=swreset">Landbou</a>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/enrico_math_mastery.html')">Wiskunde</button>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/enrico_k53_mastery.html')">K53</button>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/enrico_cat_mastery.html')">RTT / CAT</button>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/enrico_landbou_mastery.html')">Landbou</button>
         </div>
       </div>
 
       <div class="child">
         <h3>Elona se vakke</h3>
         <div class="grid">
-          <a class="btn" href="/edrick-study-tests/elona_math_mastery.html?v=swreset">Wiskunde</a>
-          <a class="btn" href="/edrick-study-tests/elona_english_mastery.html?v=swreset">Engels</a>
-          <a class="btn" href="/edrick-study-tests/elona_teg_mastery.html?v=swreset">TEG</a>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/elona_math_mastery.html')">Wiskunde</button>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/elona_english_mastery.html')">Engels</button>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/elona_teg_mastery.html')">TEG</button>
         </div>
       </div>
 
       <div class="child">
         <h3>Echardt se vakke</h3>
         <div class="grid">
-          <a class="btn" href="/edrick-study-tests/echardt_math_mastery.html?v=swreset">Wiskunde</a>
-          <a class="btn" href="/edrick-study-tests/echardt_spelling_mastery.html?v=swreset">Spelling</a>
-          <a class="btn" href="/edrick-study-tests/echardt_life_skills.html?v=swreset">Life Skills</a>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/echardt_math_mastery.html')">Wiskunde</button>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/echardt_spelling_mastery.html')">Spelling</button>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/echardt_life_skills.html')">Life Skills</button>
         </div>
       </div>
 
       <div class="child">
         <h3>Edrick se vakke</h3>
         <div class="grid">
-          <a class="btn" href="/edrick-study-tests/edrick.html?v=swreset">Wiskunde</a>
+          <button class="btn" onclick="openVak('https://franspretorius28-debug.github.io/edrick-study-tests/edrick.html')">Wiskunde</button>
         </div>
       </div>
 
       <div class="note">
-        Belangrik: Enrico se Wiskunde gebruik <b>enrico_math_mastery.html</b> met kleiner sessies.
+        Direkte Enrico Wiskunde:
+        <br>
+        <a href="https://franspretorius28-debug.github.io/edrick-study-tests/enrico_math_mastery.html?v=direct">https://franspretorius28-debug.github.io/edrick-study-tests/enrico_math_mastery.html</a>
       </div>
     </div>
   </div>
