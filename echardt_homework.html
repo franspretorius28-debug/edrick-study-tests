@@ -15,17 +15,19 @@
   h2{font-size:28px;margin:0 0 12px}
   h3{font-size:23px;margin:0 0 10px;color:#2563eb}
   textarea{width:100%;min-height:130px;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:12px;box-sizing:border-box}
-  input{padding:10px;font-size:18px;border:1px solid #cbd5e1;border-radius:10px;width:90px}
+  input{padding:13px;font-size:22px;border:1px solid #cbd5e1;border-radius:10px;width:150px}
   button{padding:12px 15px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer;margin:6px 4px}
   button.green{background:#16a34a}
   button.gray{background:#475569}
-  .sum{display:flex;align-items:center;gap:10px;margin:10px 0;font-size:20px;font-weight:800}
-  .ok{color:#16a34a;font-weight:900}
-  .bad{color:#dc2626;font-weight:900}
+  button.orange{background:#f97316}
+  .ok{color:#16a34a;font-weight:900;font-size:20px}
+  .bad{color:#dc2626;font-weight:900;font-size:20px}
   .note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;color:#475569}
   .drawBox{border:2px dashed #94a3b8;border-radius:14px;background:#ffffff;margin-top:12px;padding:10px}
   canvas{width:100%;height:260px;border:1px solid #cbd5e1;border-radius:12px;background:white;touch-action:none;display:block}
-  .drawTools{margin-top:8px}
+  .mathCard{border:2px solid #dbeafe;background:#eff6ff;border-radius:16px;padding:18px;margin-top:12px}
+  .bigsum{font-size:34px;font-weight:900;margin:15px 0;color:#0f172a}
+  .progress{font-weight:900;font-size:18px;margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -45,22 +47,34 @@
       <textarea id="afrikaans" placeholder="Skryf jou paragraaf hier..."></textarea>
       <br>
       <button class="green" onclick="saveWork()">Stoor werk</button>
+
       <div class="drawBox">
         <h3 style="color:#0f172a;margin-top:0">Teken jou prent hier</h3>
         <canvas id="afrikaansCanvas" width="900" height="260"></canvas>
-        <div class="drawTools">
-          <button onclick="clearCanvas('afrikaansCanvas')">Maak tekening skoon</button>
-        </div>
+        <button onclick="clearCanvas('afrikaansCanvas')">Maak tekening skoon</button>
       </div>
     </div>
 
     <div class="task">
       <h3>Wiskunde</h3>
-      <p>Oefen elke dag <b>al die 2, 5 en 10 maal tafels</b> van 1 tot 12. Merk jou antwoorde en oefen weer totdat alles reg is.</p>
-      <div id="maths"></div>
-      <button class="green" onclick="markMaths()">Merk Wiskunde</button>
-      <button onclick="clearMaths()">Maak antwoorde skoon</button>
-      <div id="mathResult" style="font-size:20px;font-weight:900;margin-top:12px"></div>
+      <p>Oefen elke dag <b>al die 2, 5 en 10 maal tafels</b> van 1 tot 12.</p>
+      <p><b>Belangrik:</b> Hy kry nou net <b>een som op ’n slag</b>. As dit verkeerd is, moet hy dieselfde som weer reg doen voordat hy kan aangaan.</p>
+
+      <div class="mathCard">
+        <div class="progress" id="mathProgress"></div>
+        <div class="bigsum" id="mathQuestion"></div>
+
+        <input id="mathAnswer" type="number" placeholder="Antwoord" onkeydown="if(event.key==='Enter') checkMathAnswer()">
+
+        <div>
+          <button class="green" onclick="checkMathAnswer()">Merk</button>
+          <button id="nextBtn" onclick="nextMathQuestion()" style="display:none">Volgende som</button>
+          <button class="orange" onclick="restartMath()">Begin weer</button>
+        </div>
+
+        <div id="mathFeedback" style="margin-top:12px"></div>
+        <div id="mathResult" style="margin-top:12px;font-size:20px;font-weight:900"></div>
+      </div>
     </div>
 
     <div class="task">
@@ -69,17 +83,16 @@
       <textarea id="english" placeholder="Write your 5 English sentences here..."></textarea>
       <br>
       <button class="green" onclick="saveWork()">Stoor werk</button>
+
       <div class="drawBox">
         <h3 style="color:#0f172a;margin-top:0">Draw your picture here</h3>
         <canvas id="englishCanvas" width="900" height="260"></canvas>
-        <div class="drawTools">
-          <button onclick="clearCanvas('englishCanvas')">Clear drawing</button>
-        </div>
+        <button onclick="clearCanvas('englishCanvas')">Clear drawing</button>
       </div>
     </div>
 
     <div class="note">
-      Prent teken: doen dit in sy boek/papier. Hierdie app help hom met die skryfwerk en tafels.
+      Die tekeninge en skryfwerk word op hierdie toestel gestoor as hy “Stoor werk” druk.
     </div>
 
     <button class="gray" onclick="location.href='index.html?v='+Date.now()">Terug main</button>
@@ -87,44 +100,83 @@
 </div>
 
 <script>
-const sums = []; [2,5,10].forEach(t => { for(let i=1; i<=12; i++){ sums.push([t,i]); } });
+let sums = [];
+let currentMath = 0;
+let mathScore = 0;
+let currentCorrect = false;
 
-function loadMaths(){
-  const box = document.getElementById("maths");
-  box.innerHTML = "";
-  sums.forEach((s,i)=>{
-    box.innerHTML += `
-      <div class="sum">
-        <span>${s[0]} × ${s[1]} = </span>
-        <input id="sum_${i}" type="number">
-        <span id="fb_${i}"></span>
-      </div>
-    `;
-  });
-}
-
-function markMaths(){
-  let correct = 0;
-  sums.forEach((s,i)=>{
-    const ans = s[0] * s[1];
-    const val = Number(document.getElementById("sum_"+i).value);
-    const fb = document.getElementById("fb_"+i);
-    if(val === ans){
-      correct++;
-      fb.innerHTML = "<span class='ok'>Reg</span>";
-    } else {
-      fb.innerHTML = "<span class='bad'>Verkeerd - antwoord is " + ans + "</span>";
+function buildSums(){
+  sums = [];
+  [2,5,10].forEach(t => {
+    for(let i=1; i<=12; i++){
+      sums.push([t,i]);
     }
   });
-  document.getElementById("mathResult").textContent = "Punt: " + correct + " uit " + sums.length;
+
+  // Meng die somme sodat dit nie net 2s, dan 5s, dan 10s is nie
+  for(let i=sums.length-1; i>0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [sums[i], sums[j]] = [sums[j], sums[i]];
+  }
 }
 
-function clearMaths(){
-  sums.forEach((s,i)=>{
-    document.getElementById("sum_"+i).value = "";
-    document.getElementById("fb_"+i).innerHTML = "";
-  });
+function showMath(){
+  const s = sums[currentMath];
+  document.getElementById("mathProgress").textContent =
+    "Som " + (currentMath+1) + " van " + sums.length + " | Reg: " + mathScore;
+
+  document.getElementById("mathQuestion").textContent = s[0] + " × " + s[1] + " = ?";
+  document.getElementById("mathAnswer").value = "";
+  document.getElementById("mathFeedback").innerHTML = "";
+  document.getElementById("nextBtn").style.display = "none";
+  currentCorrect = false;
+
+  setTimeout(() => document.getElementById("mathAnswer").focus(), 100);
+}
+
+function checkMathAnswer(){
+  if(currentCorrect) return;
+
+  const s = sums[currentMath];
+  const ans = s[0] * s[1];
+  const val = Number(document.getElementById("mathAnswer").value);
+  const fb = document.getElementById("mathFeedback");
+
+  if(val === ans){
+    mathScore++;
+    currentCorrect = true;
+    fb.innerHTML = "<span class='ok'>Reg! Goed gedoen.</span>";
+    document.getElementById("nextBtn").style.display = "inline-block";
+    document.getElementById("mathProgress").textContent =
+      "Som " + (currentMath+1) + " van " + sums.length + " | Reg: " + mathScore;
+  } else {
+    fb.innerHTML = "<span class='bad'>Verkeerd — antwoord is " + ans + ". Tik dit nou reg in om aan te gaan.</span>";
+    document.getElementById("mathAnswer").value = "";
+    setTimeout(() => document.getElementById("mathAnswer").focus(), 100);
+  }
+}
+
+function nextMathQuestion(){
+  if(!currentCorrect) return;
+
+  if(currentMath < sums.length - 1){
+    currentMath++;
+    showMath();
+  } else {
+    document.getElementById("mathQuestion").textContent = "Klaar!";
+    document.getElementById("mathFeedback").innerHTML = "<span class='ok'>Jy het al 36 somme klaar geoefen.</span>";
+    document.getElementById("mathResult").textContent = "Finale punt: " + mathScore + " uit " + sums.length;
+    document.getElementById("nextBtn").style.display = "none";
+  }
+}
+
+function restartMath(){
+  currentMath = 0;
+  mathScore = 0;
+  currentCorrect = false;
+  buildSums();
   document.getElementById("mathResult").textContent = "";
+  showMath();
 }
 
 function saveWork(){
@@ -174,15 +226,14 @@ function setupCanvas(id){
     ctx.stroke();
   }
 
-  function end(e){
+  function end(){
     drawing = false;
-    try { saveCanvas(id); } catch(err) {}
+    saveCanvas(id);
   }
 
   canvas.addEventListener("mousedown", start);
   canvas.addEventListener("mousemove", move);
   window.addEventListener("mouseup", end);
-
   canvas.addEventListener("touchstart", start, {passive:false});
   canvas.addEventListener("touchmove", move, {passive:false});
   canvas.addEventListener("touchend", end);
@@ -217,12 +268,11 @@ function clearCanvas(id){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   localStorage.removeItem("echardt_" + id);
 }
-loadMaths();
+
 loadSaved();
-setupCanvas('afrikaansCanvas');
-setupCanvas('englishCanvas');
+setupCanvas("afrikaansCanvas");
+setupCanvas("englishCanvas");
+restartMath();
 </script>
 </body>
 </html>
-
-
