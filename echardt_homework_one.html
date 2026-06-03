@@ -383,67 +383,185 @@ function line(ok, text){
 }
 
 function markAfrikaans(){
-  const text = document.getElementById("afrikaans").value.trim();
+  if(typeof saveWork === "function"){ saveWork(); }
+
+  const resultBox = document.getElementById("afrikaansMarkResult");
+  const textEl = document.getElementById("afrikaans");
+  const text = textEl ? textEl.value.trim() : "";
   const lower = text.toLowerCase();
-  let score = 0;
-  let total = 7;
 
-  const checks = [
-    {ok: /diereskuil|skuiling|diere skuiling|diere/.test(lower), text: "Dit gaan oor diereskuilings/diere."},
-    {ok: countSentences(text) >= 5, text: "Ten minste 5 sinne."},
-    {ok: /hond|kat|dier|diere|voël|haas|perd/.test(lower), text: "Noem diere."},
-    {ok: /help|kos|water|veilig|hok|huis|aanneming|versorg/.test(lower), text: "Noem hoe mense diere kan help of versorg."},
-    {ok: sentenceCapitalScore(text), text: "Sinne begin met hoofletters."},
-    {ok: hasFullStops(text), text: "Sinne eindig met punte."},
-    {ok: hasDrawing("afrikaansCanvas"), text: "Prent is geteken."}
-  ];
-
-  checks.forEach(c => { if(c.ok) score++; });
-
-  let msg = "<div class='rubricScore'>Afrikaans punt: " + score + " uit " + total + "</div>";
-  checks.forEach(c => msg += line(c.ok, c.text));
-
-  if(score === total){
-    msg += "<p class='pass'>⭐ Uitstekend! Alles is reg.</p>";
-  } else {
-    msg += "<p class='fail'>☹ Kyk na die rooi goed en maak dit beter, merk dan weer.</p>";
+  function countSentences(t){
+    return String(t || "")
+      .split(/[.!?]+/)
+      .map(s => s.trim())
+      .filter(Boolean).length;
   }
 
-  document.getElementById("afrikaansMarkResult").innerHTML = msg;
+  function getSentences(t){
+    return String(t || "")
+      .split(/[.!?]+/)
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  function startsWithCapital(s){
+    s = String(s || "").trim();
+    if(!s) return false;
+    return /^[A-ZÀ-Ý]/.test(s);
+  }
+
+  function sentenceCapitalScore(t){
+    const arr = getSentences(t);
+    if(arr.length === 0) return false;
+    return arr.every(startsWithCapital);
+  }
+
+  function hasFullStops(t){
+    const stops = (String(t || "").match(/[.!?]/g) || []).length;
+    return stops >= Math.min(countSentences(t), 3);
+  }
+
+  function hasDrawing(canvasId){
+    const c = document.getElementById(canvasId);
+    if(!c) return false;
+    const ctx = c.getContext("2d");
+    const data = ctx.getImageData(0,0,c.width,c.height).data;
+    for(let i=0;i<data.length;i+=4){
+      const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
+      if(a > 0 && !(r > 245 && g > 245 && b > 245)){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const checks = [
+    { ok: /diereskuil|skuiling|diere|dier/.test(lower), text: "Dit gaan oor diereskuilings/diere." },
+    { ok: countSentences(text) >= 5, text: "Ten minste 5 sinne." },
+    { ok: /hond|kat|dier|diere|vo[eë]l|haas|perd/.test(lower), text: "Noem diere." },
+    { ok: /help|kos|water|veilig|hok|huis|aanneming|versorg/.test(lower), text: "Noem hoe mense diere kan help of versorg." },
+    { ok: sentenceCapitalScore(text), text: "Sinne begin met hoofletters." },
+    { ok: hasFullStops(text), text: "Sinne eindig met punte." },
+    { ok: hasDrawing("afrikaansCanvas"), text: "Afrikaanse prent is geteken." }
+  ];
+
+  const score = checks.filter(x => x.ok).length;
+  const total = checks.length;
+
+  let html = "<div class='rubricScore'>Afrikaans punt: " + score + " uit " + total + "</div>";
+  checks.forEach(c => {
+    html += "<div class='" + (c.ok ? "pass" : "fail") + "'>" + (c.ok ? "⭐ " : "☹ ") + c.text + "</div>";
+  });
+
+  if(score === total){
+    html += "<p class='pass'>🎉 Alles reg! Afrikaans is mooi gedoen.</p>";
+  } else {
+    html += "<p class='fail'>Kyk na die ☹ items, maak dit reg en merk weer.</p>";
+  }
+
+  if(resultBox){ resultBox.innerHTML = html; }
 }
 
 function markEnglish(){
-  const text = document.getElementById("english").value.trim();
+  if(typeof saveWork === "function"){ saveWork(); }
+
+  const resultBox = document.getElementById("englishMarkResult");
+  const textEl = document.getElementById("english");
+  const text = textEl ? textEl.value.trim() : "";
   const lower = text.toLowerCase();
-  let score = 0;
-  let total = 6;
 
-  const checks = [
-    {ok: /animal|animals|shelter|dog|cat/.test(lower), text: "It is about animals in a shelter."},
-    {ok: countSentences(text) >= 5, text: "At least 5 sentences."},
-    {ok: /dog|cat|animal|animals|shelter|food|water|help|safe/.test(lower), text: "Uses animal/shelter words."},
-    {ok: sentenceCapitalScore(text), text: "Sentences start with capital letters."},
-    {ok: hasFullStops(text), text: "Sentences end with full stops."},
-    {ok: hasDrawing("englishCanvas"), text: "Picture is drawn."}
-  ];
-
-  checks.forEach(c => { if(c.ok) score++; });
-
-  let msg = "<div class='rubricScore'>English mark: " + score + " out of " + total + "</div>";
-  checks.forEach(c => msg += line(c.ok, c.text));
-
-  if(score === total){
-    msg += "<p class='pass'>⭐ Excellent! Everything is correct.</p>";
-  } else {
-    msg += "<p class='fail'>☹ Fix the red items and mark again.</p>";
+  function countSentences(t){
+    return String(t || "")
+      .split(/[.!?]+/)
+      .map(s => s.trim())
+      .filter(Boolean).length;
   }
 
-  document.getElementById("englishMarkResult").innerHTML = msg;
+  function getSentences(t){
+    return String(t || "")
+      .split(/[.!?]+/)
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  function startsWithCapital(s){
+    s = String(s || "").trim();
+    if(!s) return false;
+    return /^[A-Z]/.test(s);
+  }
+
+  function sentenceCapitalScore(t){
+    const arr = getSentences(t);
+    if(arr.length === 0) return false;
+    return arr.every(startsWithCapital);
+  }
+
+  function hasFullStops(t){
+    const stops = (String(t || "").match(/[.!?]/g) || []).length;
+    return stops >= Math.min(countSentences(t), 3);
+  }
+
+  function hasDrawing(canvasId){
+    const c = document.getElementById(canvasId);
+    if(!c) return false;
+    const ctx = c.getContext("2d");
+    const data = ctx.getImageData(0,0,c.width,c.height).data;
+    for(let i=0;i<data.length;i+=4){
+      const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
+      if(a > 0 && !(r > 245 && g > 245 && b > 245)){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const checks = [
+    { ok: /animal|animals|shelter|dog|cat/.test(lower), text: "It is about animals / a shelter." },
+    { ok: countSentences(text) >= 5, text: "At least 5 sentences." },
+    { ok: /dog|cat|animal|animals|shelter|food|water|help|safe/.test(lower), text: "Uses animal / shelter words." },
+    { ok: sentenceCapitalScore(text), text: "Sentences start with capital letters." },
+    { ok: hasFullStops(text), text: "Sentences end with full stops." },
+    { ok: hasDrawing("englishCanvas"), text: "English picture is drawn." }
+  ];
+
+  const score = checks.filter(x => x.ok).length;
+  const total = checks.length;
+
+  let html = "<div class='rubricScore'>English mark: " + score + " out of " + total + "</div>";
+  checks.forEach(c => {
+    html += "<div class='" + (c.ok ? "pass" : "fail") + "'>" + (c.ok ? "⭐ " : "☹ ") + c.text + "</div>";
+  });
+
+  if(score === total){
+    html += "<p class='pass'>🎉 Excellent! English work is correct.</p>";
+  } else {
+    html += "<p class='fail'>Fix the ☹ items and mark again.</p>";
+  }
+
+  if(resultBox){ resultBox.innerHTML = html; }
 }
 </script>
 <!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_JS_END -->
 
+<script>
+/* TEAE_FIX_DUPLICATE_MARK_BUTTONS_V1 */
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = Array.from(document.querySelectorAll("button"));
+
+  const afrikaansButtons = buttons.filter(b => b.textContent.trim() === "Merk Afrikaans");
+  afrikaansButtons.forEach((btn, idx) => {
+    if (idx > 0) btn.remove();
+  });
+
+  const englishButtons = Array.from(document.querySelectorAll("button"))
+    .filter(b => b.textContent.trim() === "Mark English");
+  englishButtons.forEach((btn, idx) => {
+    if (idx > 0) btn.remove();
+  });
+});
+</script>
 </body>
 </html>
+
 
 
