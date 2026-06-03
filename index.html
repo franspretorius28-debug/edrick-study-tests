@@ -863,48 +863,7 @@ loadName();
 })();
 </script>
 
-<!-- TEAE_HIDE_ENRICO_TEMP_V2 START -->
-<style id="TEAE_HIDE_ENRICO_TEMP_V2-style">
-  a[href*="enrico" i],
-  [data-teae-enrico-hidden="1"] {
-    display: none !important;
-  }
-</style>
-<script id="TEAE_HIDE_ENRICO_TEMP_V2-script">
-(function(){
-  function hideEnricoSafely(){
-    document.querySelectorAll('a[href*="enrico" i]').forEach(function(a){
-      var box = a.closest('.card, .student-card, .child-card, .subject-card, .tile, li') || a;
-      box.setAttribute('data-teae-enrico-hidden', '1');
-      box.style.display = 'none';
-    });
 
-    document.querySelectorAll('.card, .student-card, .child-card, .subject-card, .tile, li').forEach(function(el){
-      var txt = (el.innerText || el.textContent || '').toLowerCase();
-
-      if (
-        txt.indexOf('enrico') >= 0 &&
-        txt.indexOf('edrick') < 0 &&
-        txt.indexOf('elona') < 0 &&
-        txt.indexOf('echardt') < 0
-      ) {
-        el.setAttribute('data-teae-enrico-hidden', '1');
-        el.style.display = 'none';
-      }
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', hideEnricoSafely);
-  } else {
-    hideEnricoSafely();
-  }
-
-  setTimeout(hideEnricoSafely, 300);
-  setTimeout(hideEnricoSafely, 1000);
-})();
-</script>
-<!-- TEAE_HIDE_ENRICO_TEMP_V2 END -->
 
 <!-- TEAE_FORCE_SUBJECT_BUTTONS_OPEN_V1_START -->
 <script>
@@ -972,65 +931,22 @@ loadName();
 })();
 </script>
 <!-- TEAE_FORCE_SUBJECT_BUTTONS_OPEN_V1_END -->
-<!-- TEAE_ENRICO_EMERGENCY_DIRECT_BUTTONS_V1_START -->
-<script>
-(function(){
-  function isEnricoSelected(){
-    var bodyText = document.body ? document.body.innerText.toLowerCase() : "";
-    var input = document.querySelector("input");
-    var inputVal = input ? (input.value || "").toLowerCase() : "";
-    return inputVal.includes("enrico") || bodyText.includes("enrico se vakke");
-  }
 
-  function openFile(file){
-    window.location.assign(file + "?v=" + Date.now());
-  }
-
-  function addEmergencyButtons(){
-    if (!isEnricoSelected()) return;
-    if (document.getElementById("teae-enrico-emergency-buttons")) return;
-
-    var panel = document.createElement("div");
-    panel.id = "teae-enrico-emergency-buttons";
-    panel.style.cssText = "max-width:980px;margin:14px auto;padding:14px;border:3px solid #f97316;border-radius:16px;background:#fff7ed;color:#111827;font-family:Arial,sans-serif;box-shadow:0 8px 24px rgba(249,115,22,.22);";
-
-    panel.innerHTML =
-      '<div style="font-size:20px;font-weight:900;margin-bottom:6px;">Enrico - NOOD OPEN VAKKE</div>' +
-      '<div style="font-size:14px;margin-bottom:12px;">Gebruik hierdie knoppies as die gewone vak-knoppies nie oopmaak nie.</div>' +
-      '<div style="display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:10px;">' +
-        '<button id="teae-open-enrico-math" style="padding:14px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">Wiskunde</button>' +
-        '<button id="teae-open-enrico-k53" style="padding:14px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">K53</button>' +
-        '<button id="teae-open-enrico-cat" style="padding:14px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">RTT / CAT</button>' +
-        '<button id="teae-open-enrico-landbou" style="padding:14px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">Landbou</button>' +
-      '</div>';
-
-    var target = document.querySelector(".card, .box, main, body") || document.body;
-    target.parentNode.insertBefore(panel, target.nextSibling);
-
-    document.getElementById("teae-open-enrico-math").onclick = function(){ openFile("enrico_math_mastery.html"); };
-    document.getElementById("teae-open-enrico-k53").onclick = function(){ openFile("enrico_k53_mastery.html"); };
-    document.getElementById("teae-open-enrico-cat").onclick = function(){ openFile("enrico_cat_mastery.html"); };
-    document.getElementById("teae-open-enrico-landbou").onclick = function(){ openFile("enrico_landbou_mastery.html"); };
-  }
-
-  document.addEventListener("DOMContentLoaded", addEmergencyButtons);
-  window.addEventListener("load", addEmergencyButtons);
-  setTimeout(addEmergencyButtons, 300);
-  setTimeout(addEmergencyButtons, 1000);
-
-  document.addEventListener("click", function(e){
-    var t = e.target;
-    if (!t || !t.id) return;
-    if (t.id === "teae-open-enrico-math") { e.preventDefault(); openFile("enrico_math_mastery.html"); }
-    if (t.id === "teae-open-enrico-k53") { e.preventDefault(); openFile("enrico_k53_mastery.html"); }
-    if (t.id === "teae-open-enrico-cat") { e.preventDefault(); openFile("enrico_cat_mastery.html"); }
-    if (t.id === "teae-open-enrico-landbou") { e.preventDefault(); openFile("enrico_landbou_mastery.html"); }
-  }, true);
-})();
-</script>
-<!-- TEAE_ENRICO_EMERGENCY_DIRECT_BUTTONS_V1_END -->
+<!-- TEAE_ENRICO_REAL_DIRECT_LINKS_V1_START -->
+<div id="teae-enrico-real-links" style="max-width:980px;margin:14px auto;padding:14px;border:3px solid #f97316;border-radius:16px;background:#fff7ed;color:#111827;font-family:Arial,sans-serif;box-shadow:0 8px 24px rgba(249,115,22,.22);">
+  <div style="font-size:20px;font-weight:900;margin-bottom:6px;">Enrico - DIREKTE VAKKE</div>
+  <div style="font-size:14px;margin-bottom:12px;">Hierdie is regte links en bypass die ou geblokte knoppies.</div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:10px;">
+    <a href="enrico_math_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">Wiskunde</a>
+    <a href="enrico_k53_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">K53</a>
+    <a href="enrico_cat_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">RTT / CAT</a>
+    <a href="enrico_landbou_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">Landbou</a>
+  </div>
+</div>
+<!-- TEAE_ENRICO_REAL_DIRECT_LINKS_V1_END -->
 </body>
 </html>
+
 
 
 
