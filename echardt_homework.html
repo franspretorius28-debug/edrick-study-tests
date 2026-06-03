@@ -7,34 +7,29 @@
 <title>Echardt Huiswerk - Maandag</title>
 <style>
   body{margin:0;font-family:Arial,sans-serif;background:#eef3ff;color:#0f172a}
-  header{background:#0f172a;color:#fff;text-align:center;padding:28px 12px}
+  header{background:#0f172a;color:white;text-align:center;padding:28px 12px}
   header h1{margin:0;font-size:34px}
-  header p{margin:8px 0 0;font-size:18px}
-  .wrap{max-width:980px;margin:24px auto;padding:12px}
-  .card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14)}
+  .wrap{max-width:950px;margin:24px auto;padding:12px}
+  .card{background:white;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14)}
   .task{border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin:14px 0;background:#fff}
   h2{font-size:28px;margin:0 0 12px}
   h3{font-size:23px;margin:0 0 10px;color:#2563eb}
   textarea{width:100%;min-height:130px;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:12px;box-sizing:border-box}
-  input.answer{padding:10px 12px;font-size:22px;border:1px solid #cbd5e1;border-radius:10px;width:110px}
+  input{padding:13px;font-size:24px;border:1px solid #cbd5e1;border-radius:10px;width:160px}
   button{padding:12px 15px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer;margin:6px 4px}
   button.green{background:#16a34a}
   button.gray{background:#475569}
   button.orange{background:#f97316}
+  .ok{color:#16a34a;font-weight:900;font-size:22px}
+  .bad{color:#dc2626;font-weight:900;font-size:22px}
   .note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;color:#475569}
   .drawBox{border:2px dashed #94a3b8;border-radius:14px;background:#ffffff;margin-top:12px;padding:10px}
   canvas{width:100%;height:260px;border:1px solid #cbd5e1;border-radius:12px;background:white;touch-action:none;display:block}
-  .mathCard{border:2px solid #dbeafe;background:#eff6ff;border-radius:16px;padding:18px;margin-top:12px}
-  .mathRow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 0;border-bottom:1px solid #dbeafe}
-  .mathRow:last-child{border-bottom:none}
-  .sumText{font-size:20px;font-weight:900;min-width:110px}
-  .status{font-size:18px;font-weight:900}
-  .good{color:#16a34a}
-  .bad{color:#dc2626}
-  .starsBox{background:#fff7cc;border:1px solid #facc15;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-weight:900}
-  .progressBox{background:#fff;border:1px solid #cbd5e1;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-weight:900}
-  .doneBox{background:#dcfce7;border:2px solid #16a34a;border-radius:14px;padding:16px;margin-top:12px}
-  .small{font-size:14px;color:#64748b}
+  .mathCard{border:2px solid #dbeafe;background:#eff6ff;border-radius:16px;padding:22px;margin-top:12px}
+  .bigsum{font-size:42px;font-weight:900;margin:18px 0;color:#0f172a}
+  .progress{font-weight:900;font-size:20px;margin-bottom:10px}
+  .stars{background:#fff7cc;border:1px solid #facc15;border-radius:12px;padding:10px;margin-bottom:12px;font-weight:900}
+  .doneBox{background:#dcfce7;border:2px solid #16a34a;border-radius:14px;padding:16px;margin-top:12px;font-size:20px}
 </style>
 </head>
 <body>
@@ -65,21 +60,24 @@
     <div class="task">
       <h3>Wiskunde</h3>
       <p>Oefen elke dag <b>al die 2, 5 en 10 maal tafels</b> van 1 tot 12.</p>
-      <p><b>Reël:</b> Somme wat reg is kry <b>⭐</b> en val weg. Somme wat verkeerd is kry <b>☹</b> en bly oor totdat alles reg is.</p>
+      <p><b>Reël:</b> Net <b>een som</b> wys op ’n slag. As hy verkeerd is, kry hy ☹ en moet dieselfde som reg doen voor hy kan aangaan.</p>
 
       <div class="mathCard">
-        <div class="starsBox" id="starsBox">Sterre: 0 ⭐</div>
-        <div class="progressBox" id="progressBox">Oorblywende somme: 36</div>
+        <div class="stars" id="starsBox">Sterre: 0 ⭐ | Sad gesigte: 0 ☹</div>
+        <div class="progress" id="mathProgress"></div>
 
-        <div id="mathList"></div>
+        <div class="bigsum" id="mathQuestion"></div>
 
-        <div style="margin-top:12px">
-          <button class="green" onclick="markMath()">Merk Wiskunde</button>
-          <button class="orange" onclick="clearRemainingAnswers()">Maak oorblywende antwoorde skoon</button>
-          <button class="gray" onclick="restartMath()">Begin alles weer</button>
+        <input id="mathAnswer" type="number" inputmode="numeric" placeholder="Antwoord" onkeydown="if(event.key==='Enter') checkMathAnswer()">
+
+        <div>
+          <button class="green" onclick="checkMathAnswer()">Merk</button>
+          <button id="nextBtn" onclick="nextMathQuestion()" style="display:none">Volgende som</button>
+          <button class="orange" onclick="restartMath()">Begin weer</button>
         </div>
 
-        <div id="mathDone"></div>
+        <div id="mathFeedback" style="margin-top:14px"></div>
+        <div id="mathResult"></div>
       </div>
     </div>
 
@@ -106,120 +104,118 @@
 </div>
 
 <script>
-let allSums = [];
-let remainingSums = [];
-let stars = 0;
+let sums = [];
+let currentMath = 0;
+let mathScore = 0;
+let wrongFirstTry = 0;
+let triedThisQuestion = false;
+let currentCorrect = false;
 
-function buildAllSums(){
-  allSums = [];
+function buildSums(){
+  sums = [];
   [2,5,10].forEach(t => {
     for(let i=1; i<=12; i++){
-      allSums.push({a:t,b:i});
+      sums.push([t,i]);
     }
   });
 
-  // mix
-  for(let i = allSums.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    [allSums[i], allSums[j]] = [allSums[j], allSums[i]];
+  for(let i=sums.length-1; i>0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [sums[i], sums[j]] = [sums[j], sums[i]];
   }
+}
+
+function updateStars(){
+  document.getElementById("starsBox").textContent =
+    "Sterre: " + mathScore + " ⭐ | Sad gesigte: " + wrongFirstTry + " ☹";
+}
+
+function showMath(){
+  const s = sums[currentMath];
+
+  document.getElementById("mathProgress").textContent =
+    "Som " + (currentMath+1) + " van " + sums.length;
+
+  document.getElementById("mathQuestion").textContent = s[0] + " × " + s[1] + " = ?";
+  document.getElementById("mathAnswer").value = "";
+  document.getElementById("mathFeedback").innerHTML = "";
+  document.getElementById("nextBtn").style.display = "none";
+  document.getElementById("mathResult").innerHTML = "";
+
+  triedThisQuestion = false;
+  currentCorrect = false;
+  updateStars();
+
+  setTimeout(() => document.getElementById("mathAnswer").focus(), 100);
+}
+
+function checkMathAnswer(){
+  if(currentCorrect) return;
+
+  const s = sums[currentMath];
+  const ans = s[0] * s[1];
+  const val = Number(document.getElementById("mathAnswer").value);
+  const fb = document.getElementById("mathFeedback");
+
+  if(val === ans){
+    mathScore++;
+    currentCorrect = true;
+    fb.innerHTML = "<span class='ok'>⭐ Reg! Goed gedoen.</span>";
+    document.getElementById("nextBtn").style.display = "inline-block";
+    updateStars();
+  } else {
+    if(!triedThisQuestion){
+      wrongFirstTry++;
+      triedThisQuestion = true;
+    }
+
+    fb.innerHTML = "<span class='bad'>☹ Verkeerd — antwoord is " + ans + ". Tik dit nou reg in om aan te gaan.</span>";
+    document.getElementById("mathAnswer").value = "";
+    updateStars();
+    setTimeout(() => document.getElementById("mathAnswer").focus(), 100);
+  }
+}
+
+function nextMathQuestion(){
+  if(!currentCorrect) return;
+
+  if(currentMath < sums.length - 1){
+    currentMath++;
+    showMath();
+  } else {
+    finishMath();
+  }
+}
+
+function finishMath(){
+  document.getElementById("mathQuestion").textContent = "Klaar!";
+  document.getElementById("mathAnswer").style.display = "none";
+  document.getElementById("nextBtn").style.display = "none";
+  document.getElementById("mathFeedback").innerHTML =
+    "<span class='ok'>🎉 Alles is klaar geoefen.</span>";
+
+  let msg = "Jy het " + mathScore + " reg gekry ⭐ en jy het " + wrongFirstTry + " verkeerd gehad ☹. ";
+  if(wrongFirstTry > 0){
+    msg += "Probeer weer en kyk of jy alles reg kan kry.";
+  } else {
+    msg += "Uitstekend! Jy het alles eerste keer reg gekry!";
+  }
+
+  document.getElementById("mathResult").innerHTML =
+    "<div class='doneBox'>" + msg + "</div>";
+
+  updateStars();
 }
 
 function restartMath(){
-  buildAllSums();
-  remainingSums = allSums.map(x => ({a:x.a,b:x.b}));
-  stars = 0;
-  document.getElementById("mathDone").innerHTML = "";
-  renderMathList();
-}
-
-function renderMathList(){
-  const box = document.getElementById("mathList");
-  const progress = document.getElementById("progressBox");
-  const starsBox = document.getElementById("starsBox");
-
-  starsBox.textContent = "Sterre: " + stars + " ⭐";
-  progress.textContent = "Oorblywende somme: " + remainingSums.length;
-
-  if(remainingSums.length === 0){
-    box.innerHTML = "";
-    document.getElementById("mathDone").innerHTML =
-      "<div class='doneBox'><div style='font-size:26px;font-weight:900'>🎉 Alles reg!</div><div style='margin-top:8px'>Echardt het al 36 somme reg gekry.</div><div style='margin-top:8px;font-size:22px;font-weight:900'>Sterre: " + stars + " ⭐</div></div>";
-    return;
-  }
-
-  let html = "";
-  remainingSums.forEach((s, idx) => {
-    html += `
-      <div class="mathRow">
-        <div class="sumText">${s.a} × ${s.b} =</div>
-        <input class="answer" id="ans_${idx}" type="number" inputmode="numeric" onkeydown="handleMathKey(event)">
-        <div class="status" id="status_${idx}"></div>
-      </div>
-    `;
-  });
-
-  box.innerHTML = html;
-
-  const first = document.querySelector(".answer");
-  if(first){ first.focus(); }
-}
-
-function handleMathKey(e){
-  if(e.key === "Enter"){
-    markMath();
-  }
-}
-
-function clearRemainingAnswers(){
-  remainingSums.forEach((s, idx) => {
-    const el = document.getElementById("ans_" + idx);
-    const st = document.getElementById("status_" + idx);
-    if(el) el.value = "";
-    if(st) st.textContent = "";
-    if(st) st.className = "status";
-  });
-}
-
-function markMath(){
-  if(remainingSums.length === 0) return;
-
-  let nextRemaining = [];
-  let gotAnyCorrect = false;
-
-  remainingSums.forEach((s, idx) => {
-    const el = document.getElementById("ans_" + idx);
-    const st = document.getElementById("status_" + idx);
-    const val = Number(el.value);
-    const correct = s.a * s.b;
-
-    if(el.value !== "" && val === correct){
-      if(st){
-        st.innerHTML = "⭐ Reg!";
-        st.className = "status good";
-      }
-      stars++;
-      gotAnyCorrect = true;
-    } else {
-      if(st){
-        st.innerHTML = "☹ Verkeerd" + (el.value === "" ? "" : " — antwoord is " + correct);
-        st.className = "status bad";
-      }
-      nextRemaining.push({a:s.a,b:s.b});
-    }
-  });
-
-  setTimeout(() => {
-    remainingSums = nextRemaining;
-
-    // mix the remaining ones again so he cannot just memorize exact line order
-    for(let i = remainingSums.length - 1; i > 0; i--){
-      const j = Math.floor(Math.random() * (i + 1));
-      [remainingSums[i], remainingSums[j]] = [remainingSums[j], remainingSums[i]];
-    }
-
-    renderMathList();
-  }, 800);
+  currentMath = 0;
+  mathScore = 0;
+  wrongFirstTry = 0;
+  triedThisQuestion = false;
+  currentCorrect = false;
+  buildSums();
+  document.getElementById("mathAnswer").style.display = "inline-block";
+  showMath();
 }
 
 function saveWork(){
@@ -319,4 +315,3 @@ restartMath();
 </script>
 </body>
 </html>
-
