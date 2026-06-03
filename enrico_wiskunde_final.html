@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrico Wiskunde - 25 Vrae</title>
+<style>
+  body{margin:0;font-family:Arial,sans-serif;background:#eef3ff;color:#0f172a}
+  header{background:#0f172a;color:white;text-align:center;padding:26px 12px}
+  header h1{margin:0;font-size:34px}
+  .wrap{max-width:900px;margin:24px auto;padding:12px}
+  .card{background:white;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14)}
+  .banner{border:3px solid #16a34a;background:#f0fdf4;border-radius:16px;padding:14px;margin-bottom:18px}
+  .qbox{border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-top:14px}
+  .topic{font-weight:900;color:#2563eb;margin-bottom:6px}
+  .question{font-size:22px;font-weight:900;margin:10px 0}
+  input{width:100%;padding:14px;font-size:20px;border:1px solid #cbd5e1;border-radius:12px;box-sizing:border-box}
+  button{padding:13px 16px;margin:8px 6px 0 0;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer}
+  button.green{background:#16a34a}
+  button.gray{background:#475569}
+  button.orange{background:#f97316}
+  .feedback{font-size:18px;font-weight:900;margin-top:12px}
+  .ok{color:#16a34a}.bad{color:#dc2626}
+  .small{color:#64748b;font-size:15px}
+  .progress{font-weight:900;margin:12px 0}
+  a{color:#2563eb;font-weight:900}
+</style>
+</head>
+<body>
+<header>
+  <h1>Enrico Wiskunde</h1>
+  <p>25 vrae per sessie | Minder herhaling | Alles gedek</p>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <div class="banner">
+      <div style="font-size:22px;font-weight:900">Sessie <span id="sessionNo">1</span> van <span id="sessionTotal">1</span></div>
+      <div class="small">Hierdie toets wys net 25 vrae op ’n slag sodat dit nie oorweldigend is nie.</div>
+    </div>
+
+    <div>
+      <button class="gray" onclick="prevSession()">Vorige sessie</button>
+      <button class="green" onclick="nextSession()">Volgende sessie</button>
+      <button class="orange" onclick="restartSession()">Begin sessie weer</button>
+      <button class="gray" onclick="location.href='index.html?v='+Date.now()">Terug main</button>
+    </div>
+
+    <div class="progress" id="progress"></div>
+
+    <div class="qbox">
+      <div class="topic" id="topic"></div>
+      <div class="question" id="question"></div>
+      <div class="small" id="hint"></div>
+      <input id="answer" placeholder="Tik jou antwoord hier" onkeydown="if(event.key==='Enter') checkAnswer()">
+      <div>
+        <button class="green" onclick="checkAnswer()">Merk antwoord</button>
+        <button onclick="nextQuestion()">Volgende vraag</button>
+      </div>
+      <div class="feedback" id="feedback"></div>
+      <div class="small" id="steps"></div>
+    </div>
+
+    <div id="result" style="margin-top:18px;font-size:20px;font-weight:900"></div>
+  </div>
+</div>
+
+<script>
+const SESSION_SIZE = 25;
+let currentSession = Number(localStorage.getItem("enricoFinalMathSession") || 1);
+let current = 0;
+let score = 0;
+let answered = false;
+
+function money(n){ return "R" + Number(n).toFixed(2).replace(".", ","); }
+
+function buildQuestions(){
+  const qs = [];
+
+  for(let i=1;i<=12;i++){
+    let opening=1200+i*90, deposit=400+i*60, atm=100+i*15;
+    qs.push({topic:"Finansiële dokumente", q:`Bankstaat: Opening balance is ${money(opening)} en deposit is ${money(deposit)}. Wat is die nuwe balance?`, a:opening+deposit, step:`${money(opening)} + ${money(deposit)} = ${money(opening+deposit)}`});
+    qs.push({topic:"Finansiële dokumente", q:`Bankstaat: Balance is ${money(opening+deposit)} en ATM withdrawal is ${money(atm)}. Wat bly oor?`, a:opening+deposit-atm, step:`${money(opening+deposit)} - ${money(atm)} = ${money(opening+deposit-atm)}`});
+  }
+
+  for(let i=1;i<=12;i++){
+    let price=25+i*3, qty=2+(i%4);
+    qs.push({topic:"Fakture", q:`Faktuur: ${qty} items teen ${money(price)} elk. Wat is die totaal?`, a:price*qty, step:`${qty} × ${money(price)} = ${money(price*qty)}`});
+    let subtotal=100+i*20, vat= +(subtotal*0.15).toFixed(2);
+    qs.push({topic:"VAT / BTW", q:`Bereken 15% VAT op ${money(subtotal)}.`, a:vat, step:`${money(subtotal)} × 15% = ${money(vat)}`});
+  }
+
+  for(let i=1;i<=12;i++){
+    let total=200+i*25, percent=[10,15,20,25][i%4];
+    qs.push({topic:"Persentasies", q:`Bereken ${percent}% van ${total}.`, a:total*percent/100, step:`${total} × ${percent}/100 = ${total*percent/100}`});
+    let old=300+i*20, disc=10+(i%4)*5;
+    qs.push({topic:"Afslag", q:`’n Item kos ${money(old)}. Afslag is ${disc}%. Wat is die afslag bedrag?`, a:old*disc/100, step:`${money(old)} × ${disc}% = ${money(old*disc/100)}`});
+  }
+
+  for(let i=1;i<=12;i++){
+    let a=2+i, b=3+i;
+    qs.push({topic:"Algebra", q:`Los op: x + ${a} = ${a+b}. Wat is x?`, a:b, step:`x = ${a+b} - ${a} = ${b}`});
+    qs.push({topic:"Algebra", q:`Vereenvoudig: ${a}x + ${b}x. Hoeveel x?`, a:a+b, step:`${a}x + ${b}x = ${a+b}x`});
+  }
+
+  for(let i=1;i<=10;i++){
+    let start=i*2, diff=3+i;
+    qs.push({topic:"Patrone", q:`Patroon: ${start}, ${start+diff}, ${start+diff*2}, __ . Wat is die volgende term?`, a:start+diff*3, step:`Tel elke keer ${diff} by.`});
+  }
+
+  for(let i=1;i<=10;i++){
+    let l=4+i, w=3+i;
+    qs.push({topic:"Meetkunde", q:`Reghoek: lengte ${l} cm en breedte ${w} cm. Bereken area.`, a:l*w, step:`Area = lengte × breedte = ${l} × ${w} = ${l*w}`});
+    qs.push({topic:"Meetkunde", q:`Reghoek: lengte ${l} cm en breedte ${w} cm. Bereken omtrek.`, a:2*(l+w), step:`Omtrek = 2(l+b) = 2(${l}+${w}) = ${2*(l+w)}`});
+  }
+
+  for(let i=1;i<=10;i++){
+    let nums=[i+2,i+4,i+6,i+8,i+10];
+    let avg=nums.reduce((a,b)=>a+b,0)/nums.length;
+    qs.push({topic:"Data", q:`Data: ${nums.join(", ")}. Bereken die gemiddelde.`, a:avg, step:`Tel alles by en deel deur ${nums.length}.`});
+    qs.push({topic:"Data", q:`Data: ${nums.join(", ")}. Wat is die mediaan?`, a:nums[2], step:`Die middelste waarde is ${nums[2]}.`});
+  }
+
+  for(let i=1;i<=10;i++){
+    let km=5+i;
+    qs.push({topic:"Meting", q:`Skakel ${km} km om na meter.`, a:km*1000, step:`${km} × 1000 = ${km*1000} m`});
+    let kg=2+i;
+    qs.push({topic:"Meting", q:`Skakel ${kg} kg om na gram.`, a:kg*1000, step:`${kg} × 1000 = ${kg*1000} g`});
+  }
+
+  return qs;
+}
+
+const allQuestions = buildQuestions();
+const totalSessions = Math.ceil(allQuestions.length / SESSION_SIZE);
+
+function sessionQuestions(){
+  if(currentSession < 1) currentSession = 1;
+  if(currentSession > totalSessions) currentSession = totalSessions;
+  localStorage.setItem("enricoFinalMathSession", currentSession);
+  const start = (currentSession-1)*SESSION_SIZE;
+  return allQuestions.slice(start,start+SESSION_SIZE);
+}
+
+let questions = sessionQuestions();
+
+function render(){
+  document.getElementById("sessionNo").textContent = currentSession;
+  document.getElementById("sessionTotal").textContent = totalSessions;
+  document.getElementById("progress").textContent = `Vraag ${current+1} van ${questions.length} | Reg: ${score}`;
+  document.getElementById("topic").textContent = questions[current].topic;
+  document.getElementById("question").textContent = questions[current].q;
+  document.getElementById("hint").textContent = "Wenk: wys jou berekening op papier voordat jy antwoord.";
+  document.getElementById("answer").value = "";
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("steps").textContent = "";
+  answered = false;
+}
+
+function clean(v){ return String(v||"").replace(",", ".").replace(/[^\d.-]/g,""); }
+
+function checkAnswer(){
+  if(answered) return;
+  const q = questions[current];
+  const user = Number(clean(document.getElementById("answer").value));
+  const ans = Number(q.a);
+  if(!Number.isNaN(user) && Math.abs(user-ans) < 0.01){
+    score++;
+    document.getElementById("feedback").innerHTML = "<span class='ok'>Reg!</span>";
+  } else {
+    document.getElementById("feedback").innerHTML = `<span class='bad'>Verkeerd. Antwoord: ${q.a}</span>`;
+  }
+  document.getElementById("steps").textContent = "Uitwerking: " + q.step;
+  answered = true;
+  document.getElementById("progress").textContent = `Vraag ${current+1} van ${questions.length} | Reg: ${score}`;
+}
+
+function nextQuestion(){
+  if(current < questions.length-1){
+    current++;
+    render();
+  } else {
+    document.getElementById("result").innerHTML = `Klaar! Punt: ${score}/${questions.length}.`;
+  }
+}
+
+function restartSession(){
+  current = 0; score = 0; questions = sessionQuestions(); render();
+}
+function nextSession(){
+  currentSession++; if(currentSession>totalSessions) currentSession=totalSessions;
+  restartSession();
+}
+function prevSession(){
+  currentSession--; if(currentSession<1) currentSession=1;
+  restartSession();
+}
+
+render();
+</script>
+</body>
+</html>
