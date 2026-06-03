@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echardt Huiswerk - Maandag</title>
+<style>
+  body{margin:0;font-family:Arial,sans-serif;background:#eef3ff;color:#0f172a}
+  header{background:#0f172a;color:white;text-align:center;padding:28px 12px}
+  header h1{margin:0;font-size:34px}
+  .wrap{max-width:950px;margin:24px auto;padding:12px}
+  .card{background:white;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14);margin-bottom:18px}
+  h2{font-size:28px;margin:0 0 12px}
+  h3{font-size:23px;margin:0 0 10px;color:#2563eb}
+  .task{border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin:14px 0;background:#fff}
+  textarea{width:100%;min-height:130px;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:12px;box-sizing:border-box}
+  input{padding:10px;font-size:18px;border:1px solid #cbd5e1;border-radius:10px;width:90px}
+  button{padding:12px 15px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer;margin:6px 4px}
+  button.green{background:#16a34a}
+  button.gray{background:#475569}
+  .sum{display:flex;align-items:center;gap:10px;margin:10px 0;font-size:20px;font-weight:800}
+  .ok{color:#16a34a;font-weight:900}
+  .bad{color:#dc2626;font-weight:900}
+  .note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;color:#475569}
+</style>
+</head>
+<body>
+<header>
+  <h1>Echardt Huiswerk</h1>
+  <p>Maandag</p>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <h2>Maandag se werk</h2>
+
+    <div class="task">
+      <h3>Afrikaans</h3>
+      <p><b>Geen spelwoorde.</b></p>
+      <p>Skryf ’n paragraaf oor <b>diereskuilings</b> en teken ’n prent daarby.</p>
+      <textarea id="afrikaans" placeholder="Skryf jou paragraaf hier..."></textarea>
+      <br>
+      <button class="green" onclick="saveWork()">Stoor werk</button>
+    </div>
+
+    <div class="task">
+      <h3>Wiskunde</h3>
+      <p>Oefen elke dag <b>2, 5 en 10 maal tafels</b>. Skryf dit gemeng uit.</p>
+
+      <div id="maths"></div>
+
+      <button class="green" onclick="markMaths()">Merk Wiskunde</button>
+      <button onclick="clearMaths()">Maak antwoorde skoon</button>
+      <div id="mathResult" style="font-size:20px;font-weight:900;margin-top:12px"></div>
+    </div>
+
+    <div class="task">
+      <h3>Engels</h3>
+      <p>Draw a picture of animals in a shelter and write <b>5 sentences</b>.</p>
+      <textarea id="english" placeholder="Write your 5 English sentences here..."></textarea>
+      <br>
+      <button class="green" onclick="saveWork()">Stoor werk</button>
+    </div>
+
+    <div class="note">
+      Prent teken: doen dit in sy boek/papier. Hierdie app help hom om die skryfwerk en tafels te oefen.
+    </div>
+
+    <button class="gray" onclick="location.href='index.html?v='+Date.now()">Terug main</button>
+  </div>
+</div>
+
+<script>
+const sums = [
+  [2,3],[5,4],[10,7],[2,4],[5,6],
+  [10,5],[10,8],[7,2],[5,5],[10,10]
+];
+
+function loadMaths(){
+  const box = document.getElementById("maths");
+  box.innerHTML = "";
+  sums.forEach((s,i)=>{
+    box.innerHTML += `
+      <div class="sum">
+        <span>${s[0]} × ${s[1]} = </span>
+        <input id="sum_${i}" type="number">
+        <span id="fb_${i}"></span>
+      </div>
+    `;
+  });
+}
+
+function markMaths(){
+  let correct = 0;
+  sums.forEach((s,i)=>{
+    const ans = s[0] * s[1];
+    const val = Number(document.getElementById("sum_"+i).value);
+    const fb = document.getElementById("fb_"+i);
+    if(val === ans){
+      correct++;
+      fb.innerHTML = "<span class='ok'>Reg</span>";
+    } else {
+      fb.innerHTML = "<span class='bad'>Verkeerd - antwoord is " + ans + "</span>";
+    }
+  });
+  document.getElementById("mathResult").textContent = "Punt: " + correct + " uit " + sums.length;
+}
+
+function clearMaths(){
+  sums.forEach((s,i)=>{
+    document.getElementById("sum_"+i).value = "";
+    document.getElementById("fb_"+i).innerHTML = "";
+  });
+  document.getElementById("mathResult").textContent = "";
+}
+
+function saveWork(){
+  localStorage.setItem("echardt_monday_afrikaans", document.getElementById("afrikaans").value);
+  localStorage.setItem("echardt_monday_english", document.getElementById("english").value);
+  alert("Echardt se Maandag werk is gestoor op hierdie toestel.");
+}
+
+function loadSaved(){
+  document.getElementById("afrikaans").value = localStorage.getItem("echardt_monday_afrikaans") || "";
+  document.getElementById("english").value = localStorage.getItem("echardt_monday_english") || "";
+}
+
+loadMaths();
+loadSaved();
+</script>
+</body>
+</html>
