@@ -1,966 +1,149 @@
 <!DOCTYPE html>
-<html lang="af" translate="no">
+<html lang="af">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Familie Study App</title>
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#eef2ff;
-  color:#111827;
-}
-header{
-  background:#0f172a;
-  color:white;
-  text-align:center;
-  padding:34px 14px 42px;
-}
-header h1{
-  margin:0 0 18px;
-  font-size:38px;
-  font-weight:800;
-  letter-spacing:1px;
-}
-header p{
-  margin:0;
-  font-size:18px;
-}
-.wrap{
-  max-width:1060px;
-  margin:48px auto;
-  padding:0 16px;
-}
-.card{
-  background:white;
-  border-radius:18px;
-  padding:26px;
-  box-shadow:0 12px 30px #0002;
-}
-h2{
-  margin:0 0 18px;
-  font-size:30px;
-}
-.intro{
-  margin:0 0 18px;
-  font-size:18px;
-  line-height:1.5;
-}
-input{
-  width:100%;
-  padding:13px 14px;
-  border:1px solid #cbd5e1;
-  border-radius:10px;
-  font-size:17px;
-  margin:0 0 22px;
-}
-h3{
-  margin:0 0 16px;
-  font-size:22px;
-}
-.btn-row{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:54px;
-  padding:14px 16px;
-  background:#2563eb;
-  color:white;
-  text-decoration:none;
-  border-radius:12px;
-  font-weight:800;
-  text-align:center;
-  border:0;
-  cursor:pointer;
-  font-size:16px;
-}
-.btn:hover{background:#1d4ed8}
-.green{background:#16a34a}
-.green:hover{background:#15803d}
-.red{background:#dc2626}
-.red:hover{background:#b91c1c}
-.dark{background:#475569}
-.dark:hover{background:#334155}
-.hidden{display:none}
-.note{
-  margin-top:18px;
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:14px;
-  padding:14px 16px;
-  color:#64748b;
-  line-height:1.45;
-}
-.subject-panel{
-  margin-top:24px;
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:18px;
-  padding:20px;
-}
-.child-title{
-  font-size:26px;
-  font-weight:900;
-  margin-bottom:8px;
-}
-.small{
-  color:#64748b;
-  line-height:1.45;
-  margin-bottom:18px;
-}
-@media(max-width:800px){
-  header h1{font-size:30px}
-  .wrap{margin:26px auto}
-  .card{padding:18px}
-  .btn-row{grid-template-columns:1fr}
-}
-</style>
-<meta name="google" content="notranslate">`r`n</head>
-<body class="notranslate notranslate">
-<header>
-  <h1>Familie - Finale Oefen Toetse</h1>
-  <p>Alle kinders | Alle vakke | Groot vraebanke | Adaptiewe leer</p>
-</header>
-
-<main class="wrap">
-  <section class="card">
-    <h2>Begin</h2>
-    <p class="intro">
-      Vul die kind se naam in en kies die kind. Sy/haar vakke sal dan oopmaak.
-    </p>
-
-    <input id="studentName" placeholder="Tik kind se naam hier..." oninput="saveName()">
-
-    <h3>Kies kind</h3>
-
-    <div class="btn-row">
-      <button class="btn" onclick="showChild('edrick')">Edrick</button>
-      <button class="btn" onclick="showChild('enrico')">Enrico</button>
-      <button class="btn dark" onclick="showChild('child3')">Kind 3</button>
-      <button class="btn dark" onclick="showChild('child4')">Kind 4</button>
-    </div>
-
-    <div id="subjects" class="subject-panel hidden"></div>
-
-    <div class="note">
-      <b>Belangrik:</b> Edrick se bestaande app bly bewaar as <code>edrick.html</code>.
-      Enrico se Wiskunde is in die main app gekopieer sonder om sy bestaande vrae weg te vat.
-    </div>
-  </section>
-</main>
-
-<script>
-function saveName(){
-  localStorage.setItem("family_student_name", document.getElementById("studentName").value || "");
-}
-
-function loadName(){
-  const n = localStorage.getItem("family_student_name") || "";
-  document.getElementById("studentName").value = n;
-}
-
-function showChild(child){
-  const box = document.getElementById("subjects");
-  const name = document.getElementById("studentName").value.trim();
-
-  if(!name){
-    alert("Vul eers die kind se naam in.");
-    document.getElementById("studentName").focus();
-    return;
-  }
-
-  localStorage.setItem("family_active_child", child);
-  localStorage.setItem("family_student_name", name);
-
-  if(child === "edrick"){
-    box.innerHTML = `
-      <div class="child-title">Edrick se vakke</div>
-      <div class="small">Edrick se app werk soos voorheen met sy adaptiewe vraebank.</div>
-      <div class="btn-row">
-        <a class="btn" href="edrick.html">Kuns en Kultuur</a>
-        <a class="btn" href="edrick.html">Tegnologie</a>
-        <a class="btn" href="edrick.html">Engels</a>
-        <a class="btn red" href="index.html">Terug</a>
-      </div>
-    `;
-  }
-
-  if(child === "enrico"){
-    box.innerHTML = `
-      <div class="child-title">Enrico se vakke</div>
-      <div class="small">
-        Kies die vak. Elke vak maak nou direk oop en werk soos Edrick se adaptiewe vraebank.
-      </div>
-
-      <div class="btn-row">
-        <a class="btn" href="enrico_math_mastery.html">Wiskunde</a>
-        <a class="btn" href="enrico_k53_mastery.html?v=20260529_182353">K53</a>
-        <a class="btn" href="enrico_cat_mastery.html?v=20260529_182353">RTT / CAT</a>
-        <a class="btn" href="enrico_landbou_mastery.html?v=20260529_182353">Landbou</a>
-      </div>
-    `;
-  }
-
-  if(child === "child3"){
-    box.innerHTML = `
-      <div class="child-title">Kind 3</div>
-      <div class="small">Nog nie opgestel nie. Ons kan hierdie kind se vakke volgende bysit.</div>
-      <div class="btn-row">
-        <button class="btn dark">Nog nie gereed</button>
-      </div>
-    `;
-  }
-
-  if(child === "child4"){
-    box.innerHTML = `
-      <div class="child-title">Kind 4</div>
-      <div class="small">Nog nie opgestel nie. Ons kan hierdie kind se vakke volgende bysit.</div>
-      <div class="btn-row">
-        <button class="btn dark">Nog nie gereed</button>
-      </div>
-    `;
-  }
-
-  box.classList.remove("hidden");
-  box.scrollIntoView({behavior:"smooth", block:"center"});
-}
-
-loadName();
-</script>
-<script>
-// TEAE_RESTORE_ELONA_ECHART_MAIN_V1
-// Herstel Kind 3/Kind 4 na Elona/Echart op die main screen en route hulle vakke reg.
-
-(function () {
-  const KIDS = ["Edrick", "Enrico", "Elona", "Echart"];
-
-  const SUBJECTS = {
-    Edrick: [
-      { label: "Wiskunde", file: "edrick.html" }
-    ],
-    Enrico: [
-      { label: "Wiskunde", file: "enrico_math_mastery.html" },
-      { label: "K53", file: "enrico_k53_mastery.html" },
-      { label: "RTT / CAT", file: "enrico_cat_mastery.html" },
-      { label: "Landbou", file: "enrico_landbou_mastery.html" }
-    ],
-    Elona: [
-      { label: "Wiskunde", file: "elona_math_mastery.html" },
-      { label: "Engels", file: "elona_english_mastery.html" },
-      { label: "TEG", file: "elona_teg_mastery.html" }
-    ],
-    Echart: [
-      { label: "Wiskunde", file: "echardt_math_mastery.html" },
-      { label: "Spelling", file: "echardt_spelling_mastery.html" },
-      { label: "Life Skills", file: "echardt_life_skills.html" }
-    ]
-  };
-
-  function getInput() {
-    return document.querySelector("input[type='text'], input:not([type])");
-  }
-
-  function currentKid() {
-    const input = getInput();
-    return localStorage.getItem("teae_selected_child") || (input && input.value) || "Enrico";
-  }
-
-  function setKid(name) {
-    if (!KIDS.includes(name)) return;
-
-    localStorage.setItem("teae_selected_child", name);
-    localStorage.setItem("selected_child", name);
-    localStorage.setItem("current_child", name);
-    localStorage.setItem("student_name", name);
-
-    const input = getInput();
-    if (input) {
-      input.value = name;
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      input.dispatchEvent(new Event("change", { bubbles: true }));
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Familie - Finale Oefen Toetse</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef3ff;
+      color: #0f172a;
     }
-
-    document.querySelectorAll(".teae-kid-btn, button").forEach(btn => {
-      const txt = (btn.textContent || "").trim();
-      btn.classList.toggle("active", txt === name);
-    });
-
-    renderSubjects(name);
-  }
-
-  function openFile(file) {
-    const kid = currentKid();
-    window.location.href = file + "?child=" + encodeURIComponent(kid) + "&name=" + encodeURIComponent(kid) + "&v=" + Date.now();
-  }
-
-  function fixKidButtons() {
-    const buttons = Array.from(document.querySelectorAll("button"));
-
-    buttons.forEach(btn => {
-      const txt = (btn.textContent || "").trim();
-
-      if (txt === "Kind 3") btn.textContent = "Elona";
-      if (txt === "Kind 4") btn.textContent = "Echart";
-    });
-
-    Array.from(document.querySelectorAll("button")).forEach(btn => {
-      const txt = (btn.textContent || "").trim();
-      if (!KIDS.includes(txt)) return;
-
-      btn.classList.add("teae-kid-btn");
-      btn.dataset.kid = txt;
-
-      if (btn.dataset.teaeKidFixed === "1") return;
-      btn.dataset.teaeKidFixed = "1";
-
-      btn.addEventListener("click", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        setKid(txt);
-      }, true);
-    });
-  }
-
-  function findSubjectBox() {
-    const headings = Array.from(document.querySelectorAll("h2, h3"));
-    const heading = headings.find(h => (h.textContent || "").includes("se vakke"));
-    if (heading) return heading.closest("div");
-
-    return Array.from(document.querySelectorAll("div")).find(d =>
-      (d.textContent || "").includes("Wiskunde") &&
-      (d.textContent || "").includes("se vakke")
-    );
-  }
-
-  function renderSubjects(kid) {
-    const box = findSubjectBox();
-    if (!box) return;
-
-    const subjects = SUBJECTS[kid] || SUBJECTS.Enrico;
-
-    box.innerHTML = `
-      <h2>${kid} se vakke</h2>
-      <p>Kies die vak. Elke kind se vordering bly apart.</p>
-      <div class="teae-subject-grid">
-        ${subjects.map(s => `<button type="button" class="teae-subject-btn" data-file="${s.file}">${s.label}</button>`).join("")}
-      </div>
-    `;
-
-    box.querySelectorAll(".teae-subject-btn").forEach(btn => {
-      btn.addEventListener("click", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        openFile(this.dataset.file);
-      }, true);
-    });
-  }
-
-  function addStyle() {
-    if (document.getElementById("teae-restore-elona-echart-style")) return;
-
-    const style = document.createElement("style");
-    style.id = "teae-restore-elona-echart-style";
-    style.textContent = `
-      .teae-subject-grid {
-        display:grid;
-        grid-template-columns:repeat(4,1fr);
-        gap:14px;
-        margin-top:16px;
-      }
-      .teae-subject-btn {
-        background:#2563eb;
-        color:white;
-        border:0;
-        border-radius:10px;
-        padding:16px 10px;
-        font-weight:800;
-        font-size:16px;
-        cursor:pointer;
-      }
-      @media (max-width:700px) {
-        .teae-subject-grid {
-          grid-template-columns:repeat(2,1fr);
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  function run() {
-    addStyle();
-    fixKidButtons();
-
-    const saved = currentKid();
-    setKid(KIDS.includes(saved) ? saved : "Enrico");
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else {
-    run();
-  }
-
-  setTimeout(run, 300);
-  setTimeout(run, 1000);
-})();
-</script>
-<script>
-// TEAE_CHILD_SUBJECT_PANEL_FORCE_V3
-// Forceer kind-keuse + wys elke kind se eie vakke op main screen.
-
-(function () {
-  const SUBJECTS = {
-    "Edrick": [
-      ["Wiskunde", "edrick.html"]
-    ],
-    "Enrico": [
-      ["Wiskunde", "enrico_math_mastery.html"],
-      ["K53", "enrico_k53_mastery.html"],
-      ["RTT / CAT", "enrico_cat_mastery.html"],
-      ["Landbou", "enrico_landbou_mastery.html"]
-    ],
-    "Elona": [
-      ["Wiskunde", "elona_math_mastery.html"],
-      ["Engels", "elona_english_mastery.html"],
-      ["TEG", "elona_teg_mastery.html"]
-    ],
-    "Echart": [
-      ["Wiskunde", "echardt_math_mastery.html"],
-      ["Spelling", "echardt_spelling_mastery.html"],
-      ["Life Skills", "echardt_life_skills.html"]
-    ]
-  };
-
-  const KIDS = Object.keys(SUBJECTS);
-
-  function qsAll(sel) {
-    return Array.from(document.querySelectorAll(sel));
-  }
-
-  function getNameInput() {
-    return document.querySelector("input[type='text'], input:not([type])");
-  }
-
-  function currentKid() {
-    const input = getNameInput();
-    const saved = localStorage.getItem("teae_selected_child");
-    if (saved && SUBJECTS[saved]) return saved;
-    if (input && SUBJECTS[input.value]) return input.value;
-    return "Enrico";
-  }
-
-  function setNameInput(kid) {
-    const input = getNameInput();
-    if (!input) return;
-
-    input.value = kid;
-    input.dispatchEvent(new Event("input", { bubbles: true }));
-    input.dispatchEvent(new Event("change", { bubbles: true }));
-  }
-
-  function openSubject(file, kid) {
-    localStorage.setItem("teae_selected_child", kid);
-    localStorage.setItem("selected_child", kid);
-    localStorage.setItem("current_child", kid);
-    localStorage.setItem("student_name", kid);
-
-    window.location.href =
-      file +
-      "?child=" + encodeURIComponent(kid) +
-      "&name=" + encodeURIComponent(kid) +
-      "&student=" + encodeURIComponent(kid) +
-      "&v=" + Date.now();
-  }
-
-  function ensurePanel() {
-    let panel = document.getElementById("teae-child-subject-panel");
-    if (panel) return panel;
-
-    panel = document.createElement("div");
-    panel.id = "teae-child-subject-panel";
-
-    const kidButtons = qsAll("button").filter(b => KIDS.includes((b.textContent || "").trim()));
-    const lastKidButton = kidButtons[kidButtons.length - 1];
-
-    if (lastKidButton) {
-      const parent = lastKidButton.parentElement;
-      parent.insertAdjacentElement("afterend", panel);
-    } else {
-      const card = document.querySelector(".card, main, body");
-      card.appendChild(panel);
+    header {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 45px 15px;
     }
+    header h1 {
+      margin: 0;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 18px;
+      margin-top: 18px;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 14px 35px rgba(15,23,42,.12);
+      margin-bottom: 24px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 30px;
+    }
+    .child {
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 22px;
+      margin: 18px 0;
+      background: #ffffff;
+    }
+    .child h3 {
+      margin: 0 0 8px;
+      font-size: 26px;
+    }
+    .child p {
+      margin: 0 0 16px;
+      color: #64748b;
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    a.btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #2563eb;
+      color: white;
+      padding: 16px 12px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+    a.btn:hover {
+      background: #1d4ed8;
+    }
+    .note {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 15px;
+      color: #475569;
+      font-size: 15px;
+    }
+    @media (max-width: 750px) {
+      header h1 { font-size: 30px; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Familie - Finale Oefen Toetse</h1>
+    <p>Alle kinders | Alle vakke | Groot vraebanke | Adaptiewe leer</p>
+  </header>
 
-    return panel;
-  }
+  <div class="wrap">
+    <div class="card">
+      <h2>Kies kind en vak</h2>
+      <p>Hierdie blad gebruik gewone direkte links. Geen ou block of click script kan dit keer nie.</p>
 
-  function renderSubjects(kid) {
-    if (!SUBJECTS[kid]) kid = "Enrico";
-
-    setNameInput(kid);
-
-    localStorage.setItem("teae_selected_child", kid);
-    localStorage.setItem("selected_child", kid);
-    localStorage.setItem("current_child", kid);
-    localStorage.setItem("student_name", kid);
-
-    qsAll("button").forEach(btn => {
-      const txt = (btn.textContent || "").trim();
-      if (txt === "Kind 3") btn.textContent = "Elona";
-      if (txt === "Kind 4") btn.textContent = "Echart";
-    });
-
-    qsAll("button").forEach(btn => {
-      const txt = (btn.textContent || "").trim();
-      if (KIDS.includes(txt)) {
-        btn.classList.toggle("teae-active-kid", txt === kid);
-      }
-    });
-
-    const panel = ensurePanel();
-
-    panel.innerHTML = `
-      <div class="teae-subject-card">
-        <h2>${kid} se vakke</h2>
-        <p>Kies ’n vak vir ${kid}. Elke kind se vordering bly apart.</p>
-        <div class="teae-subject-grid">
-          ${SUBJECTS[kid].map(s =>
-            `<button type="button" class="teae-subject-btn" data-file="${s[1]}" data-kid="${kid}">${s[0]}</button>`
-          ).join("")}
+      <div class="child">
+        <h3>Enrico se vakke</h3>
+        <p>Wiskunde is nou in kleiner sessies sodat hy nie 500 vrae op een slag kry nie.</p>
+        <div class="grid">
+          <a class="btn" href="enrico_math_mastery.html?v=clean">Wiskunde</a>
+          <a class="btn" href="enrico_k53_mastery.html?v=clean">K53</a>
+          <a class="btn" href="enrico_cat_mastery.html?v=clean">RTT / CAT</a>
+          <a class="btn" href="enrico_landbou_mastery.html?v=clean">Landbou</a>
         </div>
       </div>
-    `;
 
-    panel.querySelectorAll(".teae-subject-btn").forEach(btn => {
-      btn.onclick = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        openSubject(this.dataset.file, this.dataset.kid);
-      };
-    });
-  }
-
-  function fixKidButtons() {
-    qsAll("button").forEach(btn => {
-      let txt = (btn.textContent || "").trim();
-
-      if (txt === "Kind 3") {
-        btn.textContent = "Elona";
-        txt = "Elona";
-      }
-
-      if (txt === "Kind 4") {
-        btn.textContent = "Echart";
-        txt = "Echart";
-      }
-
-      if (!KIDS.includes(txt)) return;
-
-      btn.classList.add("teae-kid-main-btn");
-
-      btn.onclick = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        renderSubjects(txt);
-      };
-    });
-  }
-
-  function addStyle() {
-    if (document.getElementById("teae-child-subject-panel-style")) return;
-
-    const style = document.createElement("style");
-    style.id = "teae-child-subject-panel-style";
-    style.textContent = `
-      .teae-active-kid {
-        background: #0f172a !important;
-        outline: 4px solid rgba(37,99,235,.22) !important;
-      }
-
-      #teae-child-subject-panel {
-        margin-top: 18px !important;
-      }
-
-      .teae-subject-card {
-        border: 1px solid #e5e7eb !important;
-        border-radius: 14px !important;
-        padding: 18px !important;
-        background: #fff !important;
-      }
-
-      .teae-subject-card h2 {
-        margin: 0 0 8px 0 !important;
-        font-size: 26px !important;
-        color: #111827 !important;
-      }
-
-      .teae-subject-card p {
-        margin: 0 0 14px 0 !important;
-        color: #64748b !important;
-      }
-
-      .teae-subject-grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 14px !important;
-      }
-
-      .teae-subject-btn {
-        background: #2563eb !important;
-        color: white !important;
-        border: 0 !important;
-        border-radius: 10px !important;
-        padding: 16px 10px !important;
-        font-weight: 800 !important;
-        font-size: 16px !important;
-        cursor: pointer !important;
-      }
-
-      @media (max-width: 700px) {
-        .teae-subject-grid {
-          grid-template-columns: repeat(2, 1fr) !important;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  function cleanupText() {
-    document.body.childNodes.forEach(function (n) {
-      if (n.nodeType === 3 && (n.textContent || "").trim() === "r`n") {
-        n.textContent = "";
-      }
-    });
-  }
-
-  function run() {
-    cleanupText();
-    addStyle();
-    fixKidButtons();
-    renderSubjects(currentKid());
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else {
-    run();
-  }
-
-  setTimeout(run, 300);
-  setTimeout(run, 1000);
-})();
-</script>
-<script>
-// TEAE_FIX_EDRICK_REAL_SUBJECTS_V6
-// Edrick se regte vakke: Kuns en Kultuur, Tegnologie, Engels. Nie Wiskunde nie.
-
-(function () {
-  const EDRICK_SUBJECTS = [
-    ["Kuns en Kultuur", "edrick.html?subject=kuns"],
-    ["Tegnologie", "edrick.html?subject=tegnologie"],
-    ["Engels", "edrick.html?subject=engels"]
-  ];
-
-  function cleanTopText() {
-    Array.from(document.body.childNodes).forEach(function(n) {
-      if (n.nodeType === 3 && (n.textContent || "").trim().match(/^r[`\\]?n$/i)) {
-        n.textContent = "";
-      }
-    });
-  }
-
-  function setInput() {
-    const input = document.querySelector("input[type='text'], input:not([type])");
-    if (input) {
-      input.value = "Edrick";
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      input.dispatchEvent(new Event("change", { bubbles: true }));
-    }
-  }
-
-  function saveEdrick() {
-    localStorage.setItem("teae_selected_child", "Edrick");
-    localStorage.setItem("selected_child", "Edrick");
-    localStorage.setItem("current_child", "Edrick");
-    localStorage.setItem("student_name", "Edrick");
-  }
-
-  function openEdrickSubject(file) {
-    saveEdrick();
-    window.location.href = file + "&child=Edrick&name=Edrick&v=" + Date.now();
-  }
-
-  function removeWrongPanels() {
-    Array.from(document.querySelectorAll("h2, h3")).forEach(function(h) {
-      const txt = h.textContent || "";
-      if (txt.includes("Edrick se vakke")) {
-        const box = h.closest("div");
-        if (box && box.id !== "teae-edrick-real-subject-panel") {
-          box.remove();
-        }
-      }
-    });
-  }
-
-  function findKidRow() {
-    const buttons = Array.from(document.querySelectorAll("button"));
-    const edrickBtn = buttons.find(b => (b.textContent || "").trim() === "Edrick");
-    return edrickBtn ? edrickBtn.parentElement : null;
-  }
-
-  function ensurePanel() {
-    let panel = document.getElementById("teae-edrick-real-subject-panel");
-    if (panel) return panel;
-
-    panel = document.createElement("div");
-    panel.id = "teae-edrick-real-subject-panel";
-
-    const row = findKidRow();
-    if (row) {
-      row.insertAdjacentElement("afterend", panel);
-    } else {
-      document.body.appendChild(panel);
-    }
-
-    return panel;
-  }
-
-  function renderEdrickSubjects() {
-    cleanTopText();
-    saveEdrick();
-    setInput();
-    removeWrongPanels();
-
-    Array.from(document.querySelectorAll("button")).forEach(function(btn) {
-      const txt = (btn.textContent || "").trim();
-      if (txt === "Edrick") {
-        btn.style.background = "#0f172a";
-        btn.style.color = "white";
-        btn.style.outline = "4px solid rgba(37,99,235,.25)";
-      } else if (["Enrico", "Elona", "Echart"].includes(txt)) {
-        btn.style.background = "#2563eb";
-        btn.style.color = "white";
-        btn.style.outline = "none";
-      }
-    });
-
-    const panel = ensurePanel();
-    panel.innerHTML = `
-      <div class="teae-edrick-card">
-        <h2>Edrick se vakke</h2>
-        <p>Kies die vak. Elke vak maak Edrick se bestaande oefen-app oop.</p>
-        <div class="teae-edrick-grid">
-          ${EDRICK_SUBJECTS.map(s => `
-            <button type="button" class="teae-edrick-subject-btn" data-file="${s[1]}">${s[0]}</button>
-          `).join("")}
+      <div class="child">
+        <h3>Elona se vakke</h3>
+        <div class="grid">
+          <a class="btn" href="elona_math_mastery.html?v=clean">Wiskunde</a>
+          <a class="btn" href="elona_english_mastery.html?v=clean">Engels</a>
+          <a class="btn" href="elona_teg_mastery.html?v=clean">TEG</a>
         </div>
       </div>
-    `;
 
-    panel.querySelectorAll(".teae-edrick-subject-btn").forEach(function(btn) {
-      btn.onclick = function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        openEdrickSubject(this.dataset.file);
-      };
-    });
-  }
+      <div class="child">
+        <h3>Echardt se vakke</h3>
+        <div class="grid">
+          <a class="btn" href="echardt_math_mastery.html?v=clean">Wiskunde</a>
+          <a class="btn" href="echardt_spelling_mastery.html?v=clean">Spelling</a>
+          <a class="btn" href="echardt_life_skills.html?v=clean">Life Skills</a>
+        </div>
+      </div>
 
-  function fixEdrickButton() {
-    Array.from(document.querySelectorAll("button")).forEach(function(btn) {
-      const txt = (btn.textContent || "").trim();
-      if (txt !== "Edrick") return;
+      <div class="child">
+        <h3>Edrick se vakke</h3>
+        <div class="grid">
+          <a class="btn" href="edrick.html?v=clean">Wiskunde</a>
+        </div>
+      </div>
 
-      btn.onclick = function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        renderEdrickSubjects();
-        return false;
-      };
-
-      btn.addEventListener("click", function(e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        renderEdrickSubjects();
-        return false;
-      }, true);
-    });
-  }
-
-  function addStyle() {
-    if (document.getElementById("teae-edrick-real-subject-style")) return;
-
-    const style = document.createElement("style");
-    style.id = "teae-edrick-real-subject-style";
-    style.textContent = `
-      #teae-edrick-real-subject-panel {
-        margin-top: 18px !important;
-      }
-      .teae-edrick-card {
-        border: 1px solid #e5e7eb !important;
-        border-radius: 14px !important;
-        padding: 18px !important;
-        background: #fff !important;
-      }
-      .teae-edrick-card h2 {
-        margin: 0 0 8px 0 !important;
-        font-size: 26px !important;
-        color: #111827 !important;
-      }
-      .teae-edrick-card p {
-        margin: 0 0 14px 0 !important;
-        color: #64748b !important;
-      }
-      .teae-edrick-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 14px !important;
-      }
-      .teae-edrick-subject-btn {
-        background: #2563eb !important;
-        color: white !important;
-        border: 0 !important;
-        border-radius: 10px !important;
-        padding: 16px 10px !important;
-        font-weight: 800 !important;
-        font-size: 16px !important;
-        cursor: pointer !important;
-      }
-      @media (max-width: 700px) {
-        .teae-edrick-grid {
-          grid-template-columns: 1fr !important;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  function run() {
-    cleanTopText();
-    addStyle();
-    fixEdrickButton();
-
-    const saved = localStorage.getItem("teae_selected_child");
-    if (saved === "Edrick") {
-      setTimeout(renderEdrickSubjects, 100);
-    }
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else {
-    run();
-  }
-
-  setTimeout(run, 300);
-  setTimeout(run, 1000);
-})();
-</script>
-
-
-
-<!-- TEAE_FORCE_SUBJECT_BUTTONS_OPEN_V1_START -->
-<script>
-(function(){
-  function currentChild(){
-    var input = document.querySelector("input");
-    var val = input ? (input.value || "").trim() : "";
-    var chosen = document.querySelector(".active, .selected, .chosen");
-    var chosenText = chosen ? (chosen.textContent || "").trim() : "";
-    var txt = (chosenText || val || localStorage.getItem("selectedChild") || localStorage.getItem("childName") || "").toLowerCase();
-
-    if (txt.includes("enrico")) return "Enrico";
-    if (txt.includes("elona")) return "Elona";
-    if (txt.includes("echart") || txt.includes("echardt")) return "Echart";
-    if (txt.includes("edrick")) return "Edrick";
-    return val || "Enrico";
-  }
-
-  function subjectFile(child, label){
-    child = String(child || "").toLowerCase();
-    label = String(label || "").toLowerCase();
-
-    if (child.includes("enrico")) {
-      if (label.includes("wiskunde")) return "enrico_math_mastery.html";
-      if (label.includes("k53")) return "enrico_k53_mastery.html";
-      if (label.includes("cat") || label.includes("rtt")) return "enrico_cat_mastery.html";
-      if (label.includes("landbou")) return "enrico_landbou_mastery.html";
-    }
-
-    if (child.includes("elona")) {
-      if (label.includes("wiskunde")) return "elona_math_mastery.html";
-      if (label.includes("engels")) return "elona_english_mastery.html";
-      if (label.includes("teg")) return "elona_teg_mastery.html";
-    }
-
-    if (child.includes("echart") || child.includes("echardt")) {
-      if (label.includes("wiskunde")) return "echardt_math_mastery.html";
-      if (label.includes("spelling")) return "echardt_spelling_mastery.html";
-      if (label.includes("life")) return "echardt_life_skills.html";
-    }
-
-    if (child.includes("edrick")) {
-      if (label.includes("wiskunde")) return "edrick.html";
-    }
-
-    return "";
-  }
-
-  document.addEventListener("click", function(e){
-    var el = e.target.closest("a, button, .btn");
-    if (!el) return;
-
-    var label = (el.textContent || "").trim();
-    if (!/wiskunde|k53|rtt|cat|landbou|engels|teg|spelling|life/i.test(label)) return;
-
-    var child = currentChild();
-    var file = subjectFile(child, label);
-    if (!file) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    window.location.href = file + "?v=" + Date.now();
-  }, true);
-})();
-</script>
-<!-- TEAE_FORCE_SUBJECT_BUTTONS_OPEN_V1_END -->
-
-<!-- TEAE_ENRICO_REAL_DIRECT_LINKS_V1_START -->
-<div id="teae-enrico-real-links" style="max-width:980px;margin:14px auto;padding:14px;border:3px solid #f97316;border-radius:16px;background:#fff7ed;color:#111827;font-family:Arial,sans-serif;box-shadow:0 8px 24px rgba(249,115,22,.22);">
-  <div style="font-size:20px;font-weight:900;margin-bottom:6px;">Enrico - DIREKTE VAKKE</div>
-  <div style="font-size:14px;margin-bottom:12px;">Hierdie is regte links en bypass die ou geblokte knoppies.</div>
-  <div style="display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:10px;">
-    <a href="enrico_math_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">Wiskunde</a>
-    <a href="enrico_k53_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">K53</a>
-    <a href="enrico_cat_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">RTT / CAT</a>
-    <a href="enrico_landbou_mastery.html?v=direct" style="display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;">Landbou</a>
+      <div class="note">
+        Belangrik: Enrico se Wiskunde gebruik <b>enrico_math_mastery.html</b> met kleiner sessies.
+      </div>
+    </div>
   </div>
-</div>
-<!-- TEAE_ENRICO_REAL_DIRECT_LINKS_V1_END -->
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
