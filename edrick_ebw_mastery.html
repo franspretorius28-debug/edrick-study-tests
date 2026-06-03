@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edrick EBW - Graad 9</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#eef3ff;color:#0f172a}
+header{background:#0f172a;color:white;text-align:center;padding:30px 12px}
+header h1{margin:0;font-size:36px}
+.wrap{max-width:980px;margin:24px auto;padding:12px}
+.card{background:white;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14)}
+.banner{border:3px solid #2563eb;background:#eff6ff;border-radius:16px;padding:14px;margin-bottom:16px}
+.qbox{border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-top:14px;background:white}
+.topic{font-weight:900;color:#2563eb;margin-bottom:8px}
+.question{font-size:22px;font-weight:900;margin:12px 0}
+.option{display:block;width:100%;text-align:left;background:#f8fafc;color:#0f172a;border:1px solid #cbd5e1;border-radius:12px;padding:13px;margin:8px 0;font-size:17px;font-weight:800;cursor:pointer}
+.option:hover{background:#e0f2fe}
+.option.selected{background:#dbeafe;border-color:#2563eb}
+button{padding:12px 15px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer;margin:6px 4px}
+button.green{background:#16a34a}
+button.gray{background:#475569}
+button.orange{background:#f97316}
+.ok{color:#16a34a;font-weight:900;font-size:19px}
+.bad{color:#dc2626;font-weight:900;font-size:19px}
+.small{color:#64748b;font-size:15px}
+.result{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-top:14px;font-weight:900}
+</style>
+</head>
+<body>
+<header>
+  <h1>Edrick EBW</h1>
+  <p>Graad 9 | Ekonomiese Stelsels | Ekonomiese Kringloop | Prysteorie | Sektore</p>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <div class="banner">
+      <div style="font-size:23px;font-weight:900">Sessie <span id="sessionNo">1</span> van <span id="sessionTotal">10</span></div>
+      <div class="small">250 vrae totaal. Elke sessie het 25 vrae.</div>
+    </div>
+
+    <button class="gray" onclick="prevSession()">Vorige sessie</button>
+    <button class="green" onclick="nextSession()">Volgende sessie</button>
+    <button class="orange" onclick="restartSession()">Begin sessie weer</button>
+    <button class="gray" onclick="location.href='index.html?v='+Date.now()">Terug main</button>
+
+    <div class="result" id="progress"></div>
+
+    <div class="qbox">
+      <div class="topic" id="topic"></div>
+      <div class="question" id="question"></div>
+      <div id="options"></div>
+
+      <button class="green" onclick="markAnswer()">Merk antwoord</button>
+      <button onclick="nextQuestion()">Volgende vraag</button>
+
+      <div id="feedback" style="margin-top:14px"></div>
+      <div class="small" id="explain" style="margin-top:8px"></div>
+    </div>
+
+    <div id="finalResult" class="result" style="display:none"></div>
+  </div>
+</div>
+
+<script>
+const SESSION_SIZE = 25;
+let currentSession = Number(localStorage.getItem("edrickEBWSession") || 1);
+let current = 0;
+let score = 0;
+let selected = null;
+let marked = false;
+
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function makeQuestion(topic, q, correct, wrongs, explain){
+  let opts = shuffle([correct, ...wrongs].slice());
+  return {topic,q,correct,options:opts,explain};
+}
+
+function buildBank(){
+  const bank = [];
+
+  const systems = [
+    ["Tradisionele ekonomiese stelsel", "besluite word volgens gebruike en tradisies geneem"],
+    ["Bevelsekonomie", "die regering beheer produksie en verspreiding"],
+    ["Markekonomie", "kopers en verkopers bepaal pryse deur vraag en aanbod"],
+    ["Gemengde ekonomie", "die regering en privaat sektor werk saam in die ekonomie"]
+  ];
+
+  systems.forEach(([name,desc])=>{
+    bank.push(makeQuestion("Ekonomiese Stelsels", `Watter ekonomiese stelsel beteken dat ${desc}?`, name, systems.filter(x=>x[0]!==name).map(x=>x[0]), `${name}: ${desc}.`));
+    bank.push(makeQuestion("Ekonomiese Stelsels", `Wat beskryf ${name} die beste?`, desc, systems.filter(x=>x[1]!==desc).map(x=>x[1]), `${name} beteken: ${desc}.`));
+  });
+
+  const systemFacts = [
+    ["In ’n markekonomie speel vraag en aanbod ’n groot rol.", "Waar"],
+    ["In ’n bevelsekonomie maak die regering baie ekonomiese besluite.", "Waar"],
+    ["’n Tradisionele ekonomie verander gewoonlik baie vinnig.", "Vals"],
+    ["Suid-Afrika is ’n gemengde ekonomie.", "Waar"],
+    ["Privaat besighede is belangrik in ’n markekonomie.", "Waar"],
+    ["In ’n gemengde ekonomie is daar geen rol vir die regering nie.", "Vals"],
+    ["Tradisionele ekonomieë gebruik dikwels ou gebruike en gemeenskapsgewoontes.", "Waar"],
+    ["’n Bevelsekonomie word heeltemal deur kopers beheer.", "Vals"]
+  ];
+
+  systemFacts.forEach(([statement, ans])=>{
+    bank.push(makeQuestion("Ekonomiese Stelsels", statement, ans, ans==="Waar"?["Vals","Vraag","Aanbod"]:["Waar","Mark","Wins"], ans==="Waar" ? "Die stelling is korrek." : "Die stelling is nie korrek nie."));
+  });
+
+  const flowTerms = [
+    ["Huishoudings", "mense wat arbeid aanbied en goedere/dienste koop"],
+    ["Besighede", "produsente wat goedere en dienste maak"],
+    ["Regering", "hef belasting en lewer openbare dienste"],
+    ["Buitelandse sektor", "handel met ander lande"],
+    ["Finansiële sektor", "banke en instellings wat geld spaar en uitleen"]
+  ];
+
+  flowTerms.forEach(([term,desc])=>{
+    bank.push(makeQuestion("Ekonomiese Kringloop", `Wie/Wat is ${desc}?`, term, flowTerms.filter(x=>x[0]!==term).slice(0,3).map(x=>x[0]), `${term}: ${desc}.`));
+    bank.push(makeQuestion("Ekonomiese Kringloop", `Wat is die rol van ${term} in die ekonomiese kringloop?`, desc, flowTerms.filter(x=>x[1]!==desc).slice(0,3).map(x=>x[1]), `${term} se rol: ${desc}.`));
+  });
+
+  const flowFacts = [
+    ["Huishoudings bied arbeid aan besighede.", "Waar"],
+    ["Besighede betaal lone aan huishoudings.", "Waar"],
+    ["Die regering ontvang belasting.", "Waar"],
+    ["Banke is deel van die finansiële sektor.", "Waar"],
+    ["Invoer beteken goedere word uit die land verkoop.", "Vals"],
+    ["Uitvoer beteken goedere word aan ander lande verkoop.", "Waar"],
+    ["Die ekonomiese kringloop wys vloei van geld, goedere en dienste.", "Waar"],
+    ["Huishoudings produseer altyd alle goedere in fabrieke.", "Vals"]
+  ];
+
+  flowFacts.forEach(([statement, ans])=>{
+    bank.push(makeQuestion("Ekonomiese Kringloop", statement, ans, ans==="Waar"?["Vals","Inflasie","Kapitaal"]:["Waar","Spaargeld","Produksie"], ans==="Waar" ? "Die stelling is korrek." : "Die stelling is verkeerd."));
+  });
+
+  const priceTerms = [
+    ["Vraag", "hoeveel verbruikers bereid en in staat is om te koop"],
+    ["Aanbod", "hoeveel produsente bereid en in staat is om te verkoop"],
+    ["Ewewigsprys", "die prys waar vraag en aanbod gelyk is"],
+    ["Tekort", "wanneer vraag groter as aanbod is"],
+    ["Oorskot", "wanneer aanbod groter as vraag is"],
+    ["Prys", "die bedrag geld wat vir ’n produk betaal word"]
+  ];
+
+  priceTerms.forEach(([term,desc])=>{
+    bank.push(makeQuestion("Prysteorie", `Wat beteken ${term}?`, desc, priceTerms.filter(x=>x[1]!==desc).slice(0,3).map(x=>x[1]), `${term}: ${desc}.`));
+    bank.push(makeQuestion("Prysteorie", `${desc} verwys na:`, term, priceTerms.filter(x=>x[0]!==term).slice(0,3).map(x=>x[0]), `${term} is die regte begrip.`));
+  });
+
+  for(let i=1;i<=20;i++){
+    const demandUp = [
+      makeQuestion("Prysteorie", "As die prys van ’n produk daal, wat gebeur gewoonlik met vraag?", "Vraag styg", ["Vraag daal","Aanbod verdwyn","Belasting verdubbel"], "Laer pryse moedig mense gewoonlik aan om meer te koop."),
+      makeQuestion("Prysteorie", "As aanbod groter as vraag is, noem ons dit ’n:", "Oorskot", ["Tekort","Wins","Invoer"], "Oorskot beteken daar is te veel produkte beskikbaar."),
+      makeQuestion("Prysteorie", "As vraag groter as aanbod is, noem ons dit ’n:", "Tekort", ["Oorskot","Ewewig","Uitvoer"], "Tekort beteken daar is nie genoeg produkte vir almal nie."),
+      makeQuestion("Prysteorie", "Wat gebeur gewoonlik met prys as vraag styg en aanbod dieselfde bly?", "Prys styg", ["Prys daal","Prys bly altyd nul","Vraag verdwyn"], "Hoër vraag kan pryse opdruk.")
+    ];
+    bank.push(demandUp[i % demandUp.length]);
+  }
+
+  const sectors = [
+    ["Primêre sektor", "ontgin grondstowwe uit die natuur"],
+    ["Sekondêre sektor", "verwerk grondstowwe tot produkte"],
+    ["Tersiêre sektor", "lewer dienste aan mense en besighede"]
+  ];
+
+  sectors.forEach(([term,desc])=>{
+    bank.push(makeQuestion("Sektore", `Watter sektor ${desc}?`, term, sectors.filter(x=>x[0]!==term).map(x=>x[0]).concat(["Informele sektor"]).slice(0,3), `${term}: ${desc}.`));
+    bank.push(makeQuestion("Sektore", `Wat beteken ${term}?`, desc, sectors.filter(x=>x[1]!==desc).map(x=>x[1]).concat(["koop net ingevoerde produkte"]).slice(0,3), `${term} beteken: ${desc}.`));
+  });
+
+  const sectorExamples = [
+    ["Boerdery", "Primêre sektor"],
+    ["Mynbou", "Primêre sektor"],
+    ["Visvang", "Primêre sektor"],
+    ["Fabriek wat klere maak", "Sekondêre sektor"],
+    ["Bakkery wat brood bak", "Sekondêre sektor"],
+    ["Motorvervaardiging", "Sekondêre sektor"],
+    ["Bank", "Tersiêre sektor"],
+    ["Skool", "Tersiêre sektor"],
+    ["Hospitaal", "Tersiêre sektor"],
+    ["Winkel", "Tersiêre sektor"]
+  ];
+
+  sectorExamples.forEach(([example, sector])=>{
+    bank.push(makeQuestion("Sektore", `${example} behoort aan watter sektor?`, sector, sectors.map(x=>x[0]).filter(x=>x!==sector).concat(["Geen sektor"]).slice(0,3), `${example} is deel van die ${sector}.`));
+  });
+
+  const general = [
+    ["Produksie beteken om goedere of dienste te maak.", "Waar", "Produksie is die maak/lewer van goedere en dienste."],
+    ["Verbruikers koop goedere en dienste.", "Waar", "Verbruikers gebruik of koop produkte."],
+    ["Produsente koop net produkte en maak niks nie.", "Vals", "Produsente maak of lewer goedere en dienste."],
+    ["’n Diens is iets soos onderwys, bankdienste of mediese hulp.", "Waar", "Dienste is nie tasbare produkte nie."],
+    ["Goedere is altyd onsigbaar.", "Vals", "Goedere is tasbare produkte."],
+    ["Belasting help die regering om dienste te lewer.", "Waar", "Regering gebruik belasting vir openbare dienste."]
+  ];
+
+  general.forEach(([statement, ans, exp])=>{
+    bank.push(makeQuestion("Gemengde EBW", statement, ans, ans==="Waar"?["Vals","Vraag","Aanbod"]:["Waar","Prys","Sektor"], exp));
+  });
+
+  // Vul op tot presies 250 met variasies oor die vier afdelings
+  const templates = [
+    () => makeQuestion("Ekonomiese Stelsels", "Watter stelsel het beide privaat besighede en regering betrokke?", "Gemengde ekonomie", ["Markekonomie","Tradisionele ekonomie","Bevelsekonomie"], "Gemengde ekonomie het elemente van regering en privaat sektor."),
+    () => makeQuestion("Ekonomiese Kringloop", "Wat vloei van besighede na huishoudings?", "Goedere, dienste en lone", ["Net belasting","Net invoere","Net grondstowwe"], "Besighede betaal lone en lewer goedere/dienste."),
+    () => makeQuestion("Prysteorie", "Wat bepaal prys in ’n mark?", "Vraag en aanbod", ["Net tradisie","Net weer","Net huishoudings"], "Pryse word deur vraag en aanbod beïnvloed."),
+    () => makeQuestion("Sektore", "Watter sektor verkoop dienste soos banke en skole?", "Tersiêre sektor", ["Primêre sektor","Sekondêre sektor","Mynbou sektor"], "Tersiêre sektor lewer dienste.")
+  ];
+
+  let n = 0;
+  while(bank.length < 250){
+    bank.push(templates[n % templates.length]());
+    n++;
+  }
+
+  return bank.slice(0,250);
+}
+
+const allQuestions = buildBank();
+const totalSessions = Math.ceil(allQuestions.length / SESSION_SIZE);
+
+function getSessionQuestions(){
+  if(currentSession < 1) currentSession = 1;
+  if(currentSession > totalSessions) currentSession = totalSessions;
+  localStorage.setItem("edrickEBWSession", String(currentSession));
+  const start = (currentSession - 1) * SESSION_SIZE;
+  return allQuestions.slice(start, start + SESSION_SIZE);
+}
+
+let questions = getSessionQuestions();
+
+function render(){
+  selected = null;
+  marked = false;
+
+  document.getElementById("sessionNo").textContent = currentSession;
+  document.getElementById("sessionTotal").textContent = totalSessions;
+  document.getElementById("progress").textContent = `Vraag ${current+1} van ${questions.length} | Reg: ${score}`;
+
+  const q = questions[current];
+  document.getElementById("topic").textContent = q.topic;
+  document.getElementById("question").textContent = q.q;
+
+  const optionsBox = document.getElementById("options");
+  optionsBox.innerHTML = "";
+
+  q.options.forEach(opt=>{
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.textContent = opt;
+    btn.onclick = function(){
+      document.querySelectorAll(".option").forEach(b=>b.classList.remove("selected"));
+      btn.classList.add("selected");
+      selected = opt;
+    };
+    optionsBox.appendChild(btn);
+  });
+
+  document.getElementById("feedback").innerHTML = "";
+  document.getElementById("explain").textContent = "";
+  document.getElementById("finalResult").style.display = "none";
+}
+
+function markAnswer(){
+  if(marked) return;
+  const q = questions[current];
+
+  if(!selected){
+    document.getElementById("feedback").innerHTML = "<span class='bad'>Kies eers ’n antwoord.</span>";
+    return;
+  }
+
+  marked = true;
+
+  if(selected === q.correct){
+    score++;
+    document.getElementById("feedback").innerHTML = "<span class='ok'>⭐ Reg!</span>";
+  } else {
+    document.getElementById("feedback").innerHTML = "<span class='bad'>☹ Verkeerd. Regte antwoord: " + q.correct + "</span>";
+  }
+
+  document.getElementById("explain").textContent = "Verduideliking: " + q.explain;
+  document.getElementById("progress").textContent = `Vraag ${current+1} van ${questions.length} | Reg: ${score}`;
+}
+
+function nextQuestion(){
+  if(!marked){
+    document.getElementById("feedback").innerHTML = "<span class='bad'>Merk eers die antwoord.</span>";
+    return;
+  }
+
+  if(current < questions.length - 1){
+    current++;
+    render();
+  } else {
+    finishSession();
+  }
+}
+
+function finishSession(){
+  const wrong = questions.length - score;
+  const box = document.getElementById("finalResult");
+  box.style.display = "block";
+
+  let msg = `Sessie klaar! Punt: ${score} uit ${questions.length}. Verkeerd: ${wrong}.`;
+  if(wrong > 0){
+    msg += " Probeer die sessie weer en kyk of jy alles reg kan kry.";
+  } else {
+    msg += " Uitstekend! Alles reg.";
+  }
+
+  box.textContent = msg;
+}
+
+function restartSession(){
+  current = 0;
+  score = 0;
+  selected = null;
+  marked = false;
+  questions = getSessionQuestions();
+  render();
+}
+
+function nextSession(){
+  currentSession++;
+  if(currentSession > totalSessions) currentSession = totalSessions;
+  restartSession();
+}
+
+function prevSession(){
+  currentSession--;
+  if(currentSession < 1) currentSession = 1;
+  restartSession();
+}
+
+render();
+</script>
+</body>
+</html>
