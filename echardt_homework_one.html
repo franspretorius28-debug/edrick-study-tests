@@ -4,44 +4,37 @@
 <meta charset="UTF-8">
 <meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Echardt Huiswerk - Een Som</title>
+<title>Echardt Huiswerk - Maandag</title>
 <style>
-  body{margin:0;font-family:Arial,sans-serif;background:#eef3ff;color:#0f172a}
-  header{background:#0f172a;color:white;text-align:center;padding:28px 12px}
-  header h1{margin:0;font-size:34px}
-  .wrap{max-width:950px;margin:24px auto;padding:12px}
-  .card{background:white;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14)}
-  .task{border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin:14px 0;background:#fff}
-  h2{font-size:28px;margin:0 0 12px}
-  h3{font-size:23px;margin:0 0 10px;color:#2563eb}
-  textarea{width:100%;min-height:130px;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:12px;box-sizing:border-box}
-  input{padding:13px;font-size:26px;border:1px solid #cbd5e1;border-radius:10px;width:170px}
-  button{padding:12px 15px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer;margin:6px 4px}
-  button.green{background:#16a34a}
-  button.gray{background:#475569}
-  button.orange{background:#f97316}
-  .ok{color:#16a34a;font-weight:900;font-size:22px}
-  .bad{color:#dc2626;font-weight:900;font-size:22px}
-  .note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;color:#475569}
-  .drawBox{border:2px dashed #94a3b8;border-radius:14px;background:#fff;margin-top:12px;padding:10px}
-  canvas{width:100%;height:260px;border:1px solid #cbd5e1;border-radius:12px;background:white;touch-action:none;display:block}
-  .mathCard{border:3px solid #16a34a;background:#f0fdf4;border-radius:16px;padding:22px;margin-top:12px}
-  .bigsum{font-size:48px;font-weight:900;margin:18px 0;color:#0f172a}
-  .progress{font-weight:900;font-size:20px;margin-bottom:10px}
-  .stars{background:#fff7cc;border:1px solid #facc15;border-radius:12px;padding:10px;margin-bottom:12px;font-weight:900}
-  .doneBox{background:#dcfce7;border:2px solid #16a34a;border-radius:14px;padding:16px;margin-top:12px;font-size:20px}
+body{margin:0;font-family:Arial,sans-serif;background:#eef3ff;color:#0f172a}
+header{background:#0f172a;color:white;text-align:center;padding:28px 12px}
+header h1{margin:0;font-size:34px}
+.wrap{max-width:950px;margin:24px auto;padding:12px}
+.card{background:white;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14)}
+.task{border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin:14px 0;background:#fff}
+h2{font-size:28px;margin:0 0 12px}
+h3{font-size:23px;margin:0 0 10px;color:#2563eb}
+textarea{width:100%;min-height:130px;padding:12px;font-size:17px;border:1px solid #cbd5e1;border-radius:12px;box-sizing:border-box}
+input{padding:13px;font-size:26px;border:1px solid #cbd5e1;border-radius:10px;width:170px}
+button{padding:12px 15px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer;margin:6px 4px}
+button.green{background:#16a34a}
+button.gray{background:#475569}
+button.orange{background:#f97316}
+.ok,.pass{color:#16a34a;font-weight:900}
+.bad,.fail{color:#dc2626;font-weight:900}
+.note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;color:#475569}
+.drawBox{border:2px dashed #94a3b8;border-radius:14px;background:#fff;margin-top:12px;padding:10px}
+canvas{width:100%;height:260px;border:1px solid #cbd5e1;border-radius:12px;background:white;touch-action:none;display:block}
+.mathCard{border:3px solid #16a34a;background:#f0fdf4;border-radius:16px;padding:22px;margin-top:12px}
+.bigsum{font-size:48px;font-weight:900;margin:18px 0;color:#0f172a}
+.progress{font-weight:900;font-size:20px;margin-bottom:10px}
+.stars{background:#fff7cc;border:1px solid #facc15;border-radius:12px;padding:10px;margin-bottom:12px;font-weight:900}
+.doneBox{background:#dcfce7;border:2px solid #16a34a;border-radius:14px;padding:16px;margin-top:12px;font-size:20px}
+.rubricBox{background:#f8fafc;border:1px solid #cbd5e1;border-radius:12px;padding:12px;margin-top:12px}
+.rubricScore{font-size:22px;font-weight:900;margin-bottom:8px}
 </style>
-
-<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_CSS_START -->
-<style>
-  .rubricBox{background:#f8fafc;border:1px solid #cbd5e1;border-radius:12px;padding:12px;margin-top:12px}
-  .rubricBox .pass{color:#16a34a;font-weight:900}
-  .rubricBox .fail{color:#dc2626;font-weight:900}
-  .rubricScore{font-size:22px;font-weight:900;margin-bottom:8px}
-</style>
-<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_CSS_END -->
-
 </head>
+
 <body>
 <header>
   <h1>Echardt Huiswerk</h1>
@@ -56,15 +49,11 @@
       <h3>Afrikaans</h3>
       <p><b>Geen spelwoorde.</b></p>
       <p>Skryf ’n paragraaf oor <b>diereskuilings</b> en teken ’n prent daarby.</p>
+
       <textarea id="afrikaans" placeholder="Skryf jou paragraaf hier..."></textarea>
       <br>
-      <button class="green" onclick="markAfrikaans()">Merk Afrikaans</button><div id="afrikaansMarkResult" class="rubricBox"></div>
-
-<!-- TEAE_AFRIKAANS_MARK_BUTTON_V1_START -->
-      <button class="orange" onclick="markAfrikaans()">Merk Afrikaans</button>
+      <button class="green" onclick="markAfrikaans()">Merk Afrikaans</button>
       <div id="afrikaansMarkResult" class="rubricBox"></div>
-<!-- TEAE_AFRIKAANS_MARK_BUTTON_V1_END -->
-
 
       <div class="drawBox">
         <h3 style="color:#0f172a;margin-top:0">Teken jou prent hier</h3>
@@ -99,15 +88,11 @@
     <div class="task">
       <h3>Engels</h3>
       <p>Draw a picture of animals in a shelter and write <b>5 sentences</b>.</p>
+
       <textarea id="english" placeholder="Write your 5 English sentences here..."></textarea>
       <br>
-      <button class="green" onclick="markAfrikaans()">Merk Afrikaans</button><div id="afrikaansMarkResult" class="rubricBox"></div>
-
-<!-- TEAE_ENGLISH_MARK_BUTTON_V1_START -->
-      <button class="orange" onclick="markEnglish()">Mark English</button>
+      <button class="green" onclick="markEnglish()">Mark English</button>
       <div id="englishMarkResult" class="rubricBox"></div>
-<!-- TEAE_ENGLISH_MARK_BUTTON_V1_END -->
-
 
       <div class="drawBox">
         <h3 style="color:#0f172a;margin-top:0">Draw your picture here</h3>
@@ -117,7 +102,7 @@
     </div>
 
     <div class="note">
-      Gebruik <b>Merk Afrikaans</b> en <b>Mark English</b> om punte direk te kry. Hy kan dit regmaak en weer merk.
+      Gebruik <b>Merk Afrikaans</b> en <b>Mark English</b> om punte direk te kry. Die app merk die paragraaf én prent.
     </div>
 
     <button class="gray" onclick="location.href='index.html?v='+Date.now()">Terug main</button>
@@ -240,6 +225,109 @@ function restartMath(){
   showMath();
 }
 
+function countSentences(text){
+  return String(text || "").split(/[.!?]+/).map(s => s.trim()).filter(Boolean).length;
+}
+
+function getSentences(text){
+  return String(text || "").split(/[.!?]+/).map(s => s.trim()).filter(Boolean);
+}
+
+function startsWithCapital(sentence){
+  const s = String(sentence || "").trim();
+  if(!s) return false;
+  return /^[A-ZÀ-Ý]/.test(s);
+}
+
+function sentenceCapitalScore(text){
+  const parts = getSentences(text);
+  if(parts.length === 0) return false;
+  return parts.every(startsWithCapital);
+}
+
+function hasFullStops(text){
+  const stops = (String(text || "").match(/[.!?]/g) || []).length;
+  return stops >= Math.min(countSentences(text), 3);
+}
+
+function hasDrawing(canvasId){
+  const c = document.getElementById(canvasId);
+  if(!c) return false;
+
+  const ctx = c.getContext("2d");
+  const data = ctx.getImageData(0, 0, c.width, c.height).data;
+
+  for(let i=0; i<data.length; i+=4){
+    const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
+    if(a > 0 && !(r > 245 && g > 245 && b > 245)){
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function line(ok, text){
+  return "<div class='" + (ok ? "pass" : "fail") + "'>" + (ok ? "⭐ " : "☹ ") + text + "</div>";
+}
+
+function markAfrikaans(){
+  const text = document.getElementById("afrikaans").value.trim();
+  const lower = text.toLowerCase();
+
+  const checks = [
+    {ok:/diereskuil|skuiling|diere|dier/.test(lower), text:"Dit gaan oor diereskuilings/diere."},
+    {ok:countSentences(text) >= 5, text:"Ten minste 5 sinne."},
+    {ok:/hond|kat|dier|diere|voël|voel|haas|perd/.test(lower), text:"Noem diere."},
+    {ok:/help|kos|water|veilig|hok|huis|aanneming|versorg/.test(lower), text:"Noem hoe mense diere kan help of versorg."},
+    {ok:sentenceCapitalScore(text), text:"Sinne begin met hoofletters."},
+    {ok:hasFullStops(text), text:"Sinne eindig met punte."},
+    {ok:hasDrawing("afrikaansCanvas"), text:"Afrikaanse prent is geteken."}
+  ];
+
+  const score = checks.filter(c => c.ok).length;
+  const total = checks.length;
+
+  let html = "<div class='rubricScore'>Afrikaans punt: " + score + " uit " + total + "</div>";
+  checks.forEach(c => html += line(c.ok, c.text));
+
+  if(score === total){
+    html += "<p class='pass'>🎉 Alles reg! Afrikaans is mooi gedoen.</p>";
+  } else {
+    html += "<p class='fail'>Maak die ☹ items reg en merk weer.</p>";
+  }
+
+  document.getElementById("afrikaansMarkResult").innerHTML = html;
+}
+
+function markEnglish(){
+  const text = document.getElementById("english").value.trim();
+  const lower = text.toLowerCase();
+
+  const checks = [
+    {ok:/animal|animals|shelter|dog|cat/.test(lower), text:"It is about animals / a shelter."},
+    {ok:countSentences(text) >= 5, text:"At least 5 sentences."},
+    {ok:/dog|cat|animal|animals|shelter|food|water|help|safe/.test(lower), text:"Uses animal / shelter words."},
+    {ok:sentenceCapitalScore(text), text:"Sentences start with capital letters."},
+    {ok:hasFullStops(text), text:"Sentences end with full stops."},
+    {ok:hasDrawing("englishCanvas"), text:"English picture is drawn."}
+  ];
+
+  const score = checks.filter(c => c.ok).length;
+  const total = checks.length;
+
+  let html = "<div class='rubricScore'>English mark: " + score + " out of " + total + "</div>";
+  checks.forEach(c => html += line(c.ok, c.text));
+
+  if(score === total){
+    html += "<p class='pass'>🎉 Excellent! English work is correct.</p>";
+  } else {
+    html += "<p class='fail'>Fix the ☹ items and mark again.</p>";
+  }
+
+  document.getElementById("englishMarkResult").innerHTML = html;
+}
+
 function saveWork(){
   localStorage.setItem("echardt_monday_afrikaans", document.getElementById("afrikaans").value);
   localStorage.setItem("echardt_monday_english", document.getElementById("english").value);
@@ -255,10 +343,12 @@ function loadSaved(){
 function setupCanvas(id){
   const canvas = document.getElementById(id);
   if(!canvas) return;
+
   const ctx = canvas.getContext("2d");
   ctx.lineWidth = 4;
   ctx.lineCap = "round";
   ctx.strokeStyle = "#0f172a";
+
   let drawing = false;
 
   function pos(e){
@@ -310,8 +400,10 @@ function saveCanvas(id){
 function loadCanvas(id){
   const canvas = document.getElementById(id);
   if(!canvas) return;
+
   const data = localStorage.getItem("echardt_" + id);
   if(!data) return;
+
   const img = new Image();
   img.onload = function(){
     const ctx = canvas.getContext("2d");
@@ -324,6 +416,7 @@ function loadCanvas(id){
 function clearCanvas(id){
   const canvas = document.getElementById(id);
   if(!canvas) return;
+
   const ctx = canvas.getContext("2d");
   ctx.clearRect(0,0,canvas.width,canvas.height);
   localStorage.removeItem("echardt_" + id);
@@ -334,234 +427,5 @@ setupCanvas("afrikaansCanvas");
 setupCanvas("englishCanvas");
 restartMath();
 </script>
-
-<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_JS_START -->
-<script>
-function countSentences(text){
-  const parts = String(text || "")
-    .split(/[.!?]+/)
-    .map(s => s.trim())
-    .filter(Boolean);
-  return parts.length;
-}
-
-function startsWithCapital(sentence){
-  const s = String(sentence || "").trim();
-  if(!s) return false;
-  const first = s[0];
-  return first === first.toUpperCase() && /[A-ZÀ-ÿ]/.test(first);
-}
-
-function sentenceCapitalScore(text){
-  const parts = String(text || "")
-    .split(/[.!?]+/)
-    .map(s => s.trim())
-    .filter(Boolean);
-  if(parts.length === 0) return false;
-  return parts.every(startsWithCapital);
-}
-
-function hasFullStops(text){
-  const sentenceCount = countSentences(text);
-  const stops = (String(text || "").match(/[.!?]/g) || []).length;
-  return sentenceCount >= 3 && stops >= Math.min(sentenceCount, 3);
-}
-
-function hasDrawing(canvasId){
-  const c = document.getElementById(canvasId);
-  if(!c) return false;
-  const ctx = c.getContext("2d");
-  const data = ctx.getImageData(0, 0, c.width, c.height).data;
-  for(let i=3; i<data.length; i+=4){
-    if(data[i] !== 0) return true;
-  }
-  return false;
-}
-
-function line(ok, text){
-  return "<div class='" + (ok ? "pass" : "fail") + "'>" + (ok ? "✓ " : "✗ ") + text + "</div>";
-}
-
-function markAfrikaans(){
-  if(typeof saveWork === "function"){ saveWork(); }
-
-  const resultBox = document.getElementById("afrikaansMarkResult");
-  const textEl = document.getElementById("afrikaans");
-  const text = textEl ? textEl.value.trim() : "";
-  const lower = text.toLowerCase();
-
-  function countSentences(t){
-    return String(t || "")
-      .split(/[.!?]+/)
-      .map(s => s.trim())
-      .filter(Boolean).length;
-  }
-
-  function getSentences(t){
-    return String(t || "")
-      .split(/[.!?]+/)
-      .map(s => s.trim())
-      .filter(Boolean);
-  }
-
-  function startsWithCapital(s){
-    s = String(s || "").trim();
-    if(!s) return false;
-    return /^[A-ZÀ-Ý]/.test(s);
-  }
-
-  function sentenceCapitalScore(t){
-    const arr = getSentences(t);
-    if(arr.length === 0) return false;
-    return arr.every(startsWithCapital);
-  }
-
-  function hasFullStops(t){
-    const stops = (String(t || "").match(/[.!?]/g) || []).length;
-    return stops >= Math.min(countSentences(t), 3);
-  }
-
-  function hasDrawing(canvasId){
-    const c = document.getElementById(canvasId);
-    if(!c) return false;
-    const ctx = c.getContext("2d");
-    const data = ctx.getImageData(0,0,c.width,c.height).data;
-    for(let i=0;i<data.length;i+=4){
-      const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
-      if(a > 0 && !(r > 245 && g > 245 && b > 245)){
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const checks = [
-    { ok: /diereskuil|skuiling|diere|dier/.test(lower), text: "Dit gaan oor diereskuilings/diere." },
-    { ok: countSentences(text) >= 5, text: "Ten minste 5 sinne." },
-    { ok: /hond|kat|dier|diere|vo[eë]l|haas|perd/.test(lower), text: "Noem diere." },
-    { ok: /help|kos|water|veilig|hok|huis|aanneming|versorg/.test(lower), text: "Noem hoe mense diere kan help of versorg." },
-    { ok: sentenceCapitalScore(text), text: "Sinne begin met hoofletters." },
-    { ok: hasFullStops(text), text: "Sinne eindig met punte." },
-    { ok: hasDrawing("afrikaansCanvas"), text: "Afrikaanse prent is geteken." }
-  ];
-
-  const score = checks.filter(x => x.ok).length;
-  const total = checks.length;
-
-  let html = "<div class='rubricScore'>Afrikaans punt: " + score + " uit " + total + "</div>";
-  checks.forEach(c => {
-    html += "<div class='" + (c.ok ? "pass" : "fail") + "'>" + (c.ok ? "⭐ " : "☹ ") + c.text + "</div>";
-  });
-
-  if(score === total){
-    html += "<p class='pass'>🎉 Alles reg! Afrikaans is mooi gedoen.</p>";
-  } else {
-    html += "<p class='fail'>Kyk na die ☹ items, maak dit reg en merk weer.</p>";
-  }
-
-  if(resultBox){ resultBox.innerHTML = html; }
-}
-
-function markEnglish(){
-  if(typeof saveWork === "function"){ saveWork(); }
-
-  const resultBox = document.getElementById("englishMarkResult");
-  const textEl = document.getElementById("english");
-  const text = textEl ? textEl.value.trim() : "";
-  const lower = text.toLowerCase();
-
-  function countSentences(t){
-    return String(t || "")
-      .split(/[.!?]+/)
-      .map(s => s.trim())
-      .filter(Boolean).length;
-  }
-
-  function getSentences(t){
-    return String(t || "")
-      .split(/[.!?]+/)
-      .map(s => s.trim())
-      .filter(Boolean);
-  }
-
-  function startsWithCapital(s){
-    s = String(s || "").trim();
-    if(!s) return false;
-    return /^[A-Z]/.test(s);
-  }
-
-  function sentenceCapitalScore(t){
-    const arr = getSentences(t);
-    if(arr.length === 0) return false;
-    return arr.every(startsWithCapital);
-  }
-
-  function hasFullStops(t){
-    const stops = (String(t || "").match(/[.!?]/g) || []).length;
-    return stops >= Math.min(countSentences(t), 3);
-  }
-
-  function hasDrawing(canvasId){
-    const c = document.getElementById(canvasId);
-    if(!c) return false;
-    const ctx = c.getContext("2d");
-    const data = ctx.getImageData(0,0,c.width,c.height).data;
-    for(let i=0;i<data.length;i+=4){
-      const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
-      if(a > 0 && !(r > 245 && g > 245 && b > 245)){
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const checks = [
-    { ok: /animal|animals|shelter|dog|cat/.test(lower), text: "It is about animals / a shelter." },
-    { ok: countSentences(text) >= 5, text: "At least 5 sentences." },
-    { ok: /dog|cat|animal|animals|shelter|food|water|help|safe/.test(lower), text: "Uses animal / shelter words." },
-    { ok: sentenceCapitalScore(text), text: "Sentences start with capital letters." },
-    { ok: hasFullStops(text), text: "Sentences end with full stops." },
-    { ok: hasDrawing("englishCanvas"), text: "English picture is drawn." }
-  ];
-
-  const score = checks.filter(x => x.ok).length;
-  const total = checks.length;
-
-  let html = "<div class='rubricScore'>English mark: " + score + " out of " + total + "</div>";
-  checks.forEach(c => {
-    html += "<div class='" + (c.ok ? "pass" : "fail") + "'>" + (c.ok ? "⭐ " : "☹ ") + c.text + "</div>";
-  });
-
-  if(score === total){
-    html += "<p class='pass'>🎉 Excellent! English work is correct.</p>";
-  } else {
-    html += "<p class='fail'>Fix the ☹ items and mark again.</p>";
-  }
-
-  if(resultBox){ resultBox.innerHTML = html; }
-}
-</script>
-<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_JS_END -->
-
-<script>
-/* TEAE_FIX_DUPLICATE_MARK_BUTTONS_V1 */
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = Array.from(document.querySelectorAll("button"));
-
-  const afrikaansButtons = buttons.filter(b => b.textContent.trim() === "Merk Afrikaans");
-  afrikaansButtons.forEach((btn, idx) => {
-    if (idx > 0) btn.remove();
-  });
-
-  const englishButtons = Array.from(document.querySelectorAll("button"))
-    .filter(b => b.textContent.trim() === "Mark English");
-  englishButtons.forEach((btn, idx) => {
-    if (idx > 0) btn.remove();
-  });
-});
-</script>
 </body>
 </html>
-
-
-
