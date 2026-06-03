@@ -92,6 +92,38 @@
       .card { padding: 18px; }
     }
   </style>
+<!-- TEAE_KILL_CACHE_V1_START -->
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>
+(function(){
+  try {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(regs){
+        return Promise.all(regs.map(function(r){ return r.unregister(); }));
+      }).then(function(){
+        console.log("All service workers unregistered");
+      }).catch(function(e){
+        console.log("SW unregister error", e);
+      });
+    }
+
+    if ('caches' in window) {
+      caches.keys().then(function(keys){
+        return Promise.all(keys.map(function(k){ return caches.delete(k); }));
+      }).then(function(){
+        console.log("Browser caches cleared");
+      }).catch(function(e){
+        console.log("Cache clear error", e);
+      });
+    }
+  } catch(e) {
+    console.log("Cache killer error", e);
+  }
+})();
+</script>
+<!-- TEAE_KILL_CACHE_V1_END -->
 </head>
 <body>
   <header>
@@ -108,35 +140,35 @@
         <h3>Enrico se vakke</h3>
         <p>Wiskunde is nou in kleiner sessies sodat hy nie 500 vrae op een slag kry nie.</p>
         <div class="grid">
-          <a class="btn" href="enrico_math_mastery.html?v=clean">Wiskunde</a>
-          <a class="btn" href="enrico_k53_mastery.html?v=clean">K53</a>
-          <a class="btn" href="enrico_cat_mastery.html?v=clean">RTT / CAT</a>
-          <a class="btn" href="enrico_landbou_mastery.html?v=clean">Landbou</a>
+          <a class="btn" href="/edrick-study-tests/enrico_math_mastery.html?v=swreset">Wiskunde</a>
+          <a class="btn" href="/edrick-study-tests/enrico_k53_mastery.html?v=swreset">K53</a>
+          <a class="btn" href="/edrick-study-tests/enrico_cat_mastery.html?v=swreset">RTT / CAT</a>
+          <a class="btn" href="/edrick-study-tests/enrico_landbou_mastery.html?v=swreset">Landbou</a>
         </div>
       </div>
 
       <div class="child">
         <h3>Elona se vakke</h3>
         <div class="grid">
-          <a class="btn" href="elona_math_mastery.html?v=clean">Wiskunde</a>
-          <a class="btn" href="elona_english_mastery.html?v=clean">Engels</a>
-          <a class="btn" href="elona_teg_mastery.html?v=clean">TEG</a>
+          <a class="btn" href="/edrick-study-tests/elona_math_mastery.html?v=swreset">Wiskunde</a>
+          <a class="btn" href="/edrick-study-tests/elona_english_mastery.html?v=swreset">Engels</a>
+          <a class="btn" href="/edrick-study-tests/elona_teg_mastery.html?v=swreset">TEG</a>
         </div>
       </div>
 
       <div class="child">
         <h3>Echardt se vakke</h3>
         <div class="grid">
-          <a class="btn" href="echardt_math_mastery.html?v=clean">Wiskunde</a>
-          <a class="btn" href="echardt_spelling_mastery.html?v=clean">Spelling</a>
-          <a class="btn" href="echardt_life_skills.html?v=clean">Life Skills</a>
+          <a class="btn" href="/edrick-study-tests/echardt_math_mastery.html?v=swreset">Wiskunde</a>
+          <a class="btn" href="/edrick-study-tests/echardt_spelling_mastery.html?v=swreset">Spelling</a>
+          <a class="btn" href="/edrick-study-tests/echardt_life_skills.html?v=swreset">Life Skills</a>
         </div>
       </div>
 
       <div class="child">
         <h3>Edrick se vakke</h3>
         <div class="grid">
-          <a class="btn" href="edrick.html?v=clean">Wiskunde</a>
+          <a class="btn" href="/edrick-study-tests/edrick.html?v=swreset">Wiskunde</a>
         </div>
       </div>
 
@@ -147,3 +179,4 @@
   </div>
 </body>
 </html>
+
