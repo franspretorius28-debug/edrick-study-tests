@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="af" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrico Landbou</title>
+<style>
+  body{margin:0;font-family:Arial,sans-serif;background:#eef3ff;color:#0f172a}
+  header{background:#0f172a;color:white;text-align:center;padding:26px 12px}
+  header h1{margin:0;font-size:34px}
+  .wrap{max-width:900px;margin:24px auto;padding:12px}
+  .card{background:white;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.14)}
+  .banner{border:3px solid #2563eb;background:#eff6ff;border-radius:16px;padding:14px;margin-bottom:18px}
+  .qbox{border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-top:14px}
+  .question{font-size:22px;font-weight:900;margin:10px 0}
+  button{padding:13px 16px;margin:8px 6px 0 0;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:900;font-size:16px;cursor:pointer}
+  button.green{background:#16a34a}
+  button.gray{background:#475569}
+  .small{color:#64748b;font-size:15px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Enrico Landbou</h1>
+  <p>25 vrae per sessie</p>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <div class="banner">
+      <div style="font-size:22px;font-weight:900">Enrico - Landbou</div>
+      <div class="small">Hierdie blad is selfstandig en spring nie terug main screen toe nie.</div>
+    </div>
+
+    <div class="qbox">
+      <div class="question">Hierdie vak se nuwe oefenblad is oop en werk.</div>
+      <p>Volgende stap: ons kan nou hierdie vak volmaak met 25-vrae sessies soos Wiskunde.</p>
+
+      <button class="green" onclick="alert('Hierdie vak werk nou. Ons kan nou vrae hier insit.')">Toets knoppie</button>
+      <button class="gray" onclick="location.href='enrico_start.html?v='+Date.now()">Terug na Enrico</button>
+      <button class="gray" onclick="location.href='index.html?v='+Date.now()">Terug main</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
