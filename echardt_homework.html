@@ -23,6 +23,9 @@
   .ok{color:#16a34a;font-weight:900}
   .bad{color:#dc2626;font-weight:900}
   .note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;color:#475569}
+  .drawBox{border:2px dashed #94a3b8;border-radius:14px;background:#ffffff;margin-top:12px;padding:10px}
+  canvas{width:100%;height:260px;border:1px solid #cbd5e1;border-radius:12px;background:white;touch-action:none;display:block}
+  .drawTools{margin-top:8px}
 </style>
 </head>
 <body>
@@ -42,6 +45,13 @@
       <textarea id="afrikaans" placeholder="Skryf jou paragraaf hier..."></textarea>
       <br>
       <button class="green" onclick="saveWork()">Stoor werk</button>
+      <div class="drawBox">
+        <h3 style="color:#0f172a;margin-top:0">Teken jou prent hier</h3>
+        <canvas id="afrikaansCanvas" width="900" height="260"></canvas>
+        <div class="drawTools">
+          <button onclick="clearCanvas('afrikaansCanvas')">Maak tekening skoon</button>
+        </div>
+      </div>
     </div>
 
     <div class="task">
@@ -59,6 +69,13 @@
       <textarea id="english" placeholder="Write your 5 English sentences here..."></textarea>
       <br>
       <button class="green" onclick="saveWork()">Stoor werk</button>
+      <div class="drawBox">
+        <h3 style="color:#0f172a;margin-top:0">Draw your picture here</h3>
+        <canvas id="englishCanvas" width="900" height="260"></canvas>
+        <div class="drawTools">
+          <button onclick="clearCanvas('englishCanvas')">Clear drawing</button>
+        </div>
+      </div>
     </div>
 
     <div class="note">
@@ -113,7 +130,9 @@ function clearMaths(){
 function saveWork(){
   localStorage.setItem("echardt_monday_afrikaans", document.getElementById("afrikaans").value);
   localStorage.setItem("echardt_monday_english", document.getElementById("english").value);
-  alert("Echardt se Maandag werk is gestoor op hierdie toestel.");
+  saveCanvas("afrikaansCanvas");
+  saveCanvas("englishCanvas");
+  alert("Echardt se Maandag werk en tekeninge is gestoor op hierdie toestel.");
 }
 
 function loadSaved(){
@@ -121,8 +140,88 @@ function loadSaved(){
   document.getElementById("english").value = localStorage.getItem("echardt_monday_english") || "";
 }
 
+function setupCanvas(id){
+  const canvas = document.getElementById(id);
+  if(!canvas) return;
+  const ctx = canvas.getContext("2d");
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#0f172a";
+  let drawing = false;
+
+  function pos(e){
+    const r = canvas.getBoundingClientRect();
+    const p = e.touches ? e.touches[0] : e;
+    return {
+      x: (p.clientX - r.left) * (canvas.width / r.width),
+      y: (p.clientY - r.top) * (canvas.height / r.height)
+    };
+  }
+
+  function start(e){
+    e.preventDefault();
+    drawing = true;
+    const p = pos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  }
+
+  function move(e){
+    if(!drawing) return;
+    e.preventDefault();
+    const p = pos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  }
+
+  function end(e){
+    drawing = false;
+    try { saveCanvas(id); } catch(err) {}
+  }
+
+  canvas.addEventListener("mousedown", start);
+  canvas.addEventListener("mousemove", move);
+  window.addEventListener("mouseup", end);
+
+  canvas.addEventListener("touchstart", start, {passive:false});
+  canvas.addEventListener("touchmove", move, {passive:false});
+  canvas.addEventListener("touchend", end);
+
+  loadCanvas(id);
+}
+
+function saveCanvas(id){
+  const canvas = document.getElementById(id);
+  if(!canvas) return;
+  localStorage.setItem("echardt_" + id, canvas.toDataURL("image/png"));
+}
+
+function loadCanvas(id){
+  const canvas = document.getElementById(id);
+  if(!canvas) return;
+  const data = localStorage.getItem("echardt_" + id);
+  if(!data) return;
+  const img = new Image();
+  img.onload = function(){
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(img,0,0,canvas.width,canvas.height);
+  };
+  img.src = data;
+}
+
+function clearCanvas(id){
+  const canvas = document.getElementById(id);
+  if(!canvas) return;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  localStorage.removeItem("echardt_" + id);
+}
 loadMaths();
 loadSaved();
+setupCanvas('afrikaansCanvas');
+setupCanvas('englishCanvas');
 </script>
 </body>
 </html>
+
