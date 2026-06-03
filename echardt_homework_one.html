@@ -58,7 +58,7 @@
       <p>Skryf ’n paragraaf oor <b>diereskuilings</b> en teken ’n prent daarby.</p>
       <textarea id="afrikaans" placeholder="Skryf jou paragraaf hier..."></textarea>
       <br>
-      <button class="green" onclick="saveWork()">Merk werk</button>
+      <button class="green" onclick="markAfrikaans()">Merk Afrikaans</button><div id="afrikaansMarkResult" class="rubricBox"></div>
 
 <!-- TEAE_AFRIKAANS_MARK_BUTTON_V1_START -->
       <button class="orange" onclick="markAfrikaans()">Merk Afrikaans</button>
@@ -101,7 +101,7 @@
       <p>Draw a picture of animals in a shelter and write <b>5 sentences</b>.</p>
       <textarea id="english" placeholder="Write your 5 English sentences here..."></textarea>
       <br>
-      <button class="green" onclick="saveWork()">Merk werk</button>
+      <button class="green" onclick="markAfrikaans()">Merk Afrikaans</button><div id="afrikaansMarkResult" class="rubricBox"></div>
 
 <!-- TEAE_ENGLISH_MARK_BUTTON_V1_START -->
       <button class="orange" onclick="markEnglish()">Mark English</button>
@@ -117,7 +117,7 @@
     </div>
 
     <div class="note">
-      Die tekeninge en skryfwerk word op hierdie toestel gestoor as hy <b>Merk werk</b> druk.
+      Gebruik <b>Merk Afrikaans</b> en <b>Mark English</b> om punte direk te kry. Hy kan dit regmaak en weer merk.
     </div>
 
     <button class="gray" onclick="location.href='index.html?v='+Date.now()">Terug main</button>
@@ -245,7 +245,6 @@ function saveWork(){
   localStorage.setItem("echardt_monday_english", document.getElementById("english").value);
   saveCanvas("afrikaansCanvas");
   saveCanvas("englishCanvas");
-  alert("Echardt se Maandag werk en tekeninge is gemerk en gestoor op hierdie toestel.");
 }
 
 function loadSaved(){
@@ -446,4 +445,5 @@ function markEnglish(){
 
 </body>
 </html>
+
 
