@@ -2658,6 +2658,211 @@ startFreshTest();
 })();
 </script>
 <!-- TEAE_FINAL_MATH_30_50_OVERRIDE_V1_END -->
+
+<!-- TEAE_ENRICO_LESS_QUESTIONS_SESSIONS_V2_START -->
+<script>
+(function(){
+  const SESSION_SIZE = 25;
+  const PATCH_NAME = "TEAE_ENRICO_LESS_QUESTIONS_SESSIONS_V2";
+
+  function log(msg){
+    try { console.log(PATCH_NAME + ": " + msg); } catch(e) {}
+  }
+
+  function clearEnricoLocks(){
+    try {
+      const remove = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i) || "";
+        const lk = k.toLowerCase();
+        if (lk.includes("enrico") && /(block|blocked|lock|locked|gesluit|unlock)/.test(lk)) {
+          remove.push(k);
+        }
+      }
+      remove.forEach(k => localStorage.removeItem(k));
+      log("lock keys removed: " + remove.length);
+    } catch(e) {}
+  }
+
+  function getQuestionText(q){
+    if (!q) return "";
+    return String(q.question || q.vraag || q.prompt || q.text || q.title || q.q || q.instruction || JSON.stringify(q));
+  }
+
+  function cleanKey(t){
+    return String(t || "")
+      .toLowerCase()
+      .replace(/<[^>]+>/g, " ")
+      .replace(/[0-9]+/g, "#")
+      .replace(/[^a-z0-9#áéíóúàèìòùâêîôûäëïöüñç\s]/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 180);
+  }
+
+  function topicOf(q){
+    const t = getQuestionText(q).toLowerCase();
+
+    if (/breuk|breuke|fraction|vereenvoudig/.test(t)) return "Breuke";
+    if (/persentasie|persent|%|percentage/.test(t)) return "Persentasies";
+    if (/algebra|vergelyking|los op|uitdrukking|hakies/.test(t)) return "Algebra";
+    if (/patroon|volgende term|sequence|reeks/.test(t)) return "Patrone";
+    if (/grafiek|koordinaat|gradient|gradiënt|lyn/.test(t)) return "Grafieke";
+    if (/hoek|driehoek|vierkant|sirkel|area|omtrek|volume|meetkunde/.test(t)) return "Meetkunde";
+    if (/gemiddeld|mediaan|modus|data|tabel|waarskynlikheid/.test(t)) return "Data";
+    if (/rand|geld|wins|verlies|koste|prys|afslag|vat|btw|deposito/.test(t)) return "Finansies";
+    if (/ggd|kgv|lcm|hcf|heelgetal|telgetal|faktor|veelvoud|eksponent/.test(t)) return "Getalle";
+
+    return "Gemeng";
+  }
+
+  function getSession(maxSessions){
+    const url = new URL(window.location.href);
+    let n = parseInt(url.searchParams.get("session") || localStorage.getItem("enrico_math_session") || "1", 10);
+    if (!n || n < 1) n = 1;
+    if (n > maxSessions) n = maxSessions;
+    localStorage.setItem("enrico_math_session", String(n));
+    return n;
+  }
+
+  function goSession(n){
+    localStorage.setItem("enrico_math_session", String(n));
+    const url = new URL(window.location.href);
+    url.searchParams.set("session", String(n));
+    url.searchParams.set("v", Date.now());
+    window.location.href = url.toString();
+  }
+
+  function enableEverything(){
+    try {
+      document.querySelectorAll("button,input[type='button'],input[type='submit']").forEach(el => {
+        el.disabled = false;
+        el.removeAttribute("disabled");
+        el.style.pointerEvents = "auto";
+        el.style.opacity = "";
+      });
+    } catch(e) {}
+  }
+
+  function addBanner(info){
+    if (document.getElementById("teae-enrico-session-banner")) return;
+
+    const box = document.createElement("div");
+    box.id = "teae-enrico-session-banner";
+    box.style.cssText = "margin:12px auto;padding:14px;max-width:980px;border:2px solid #2563eb;border-radius:14px;background:#eff6ff;color:#0f172a;font-family:Arial,sans-serif;box-shadow:0 6px 20px rgba(37,99,235,.12);";
+
+    box.innerHTML =
+      '<div style="font-weight:900;font-size:20px;margin-bottom:6px;">Enrico Wiskunde - Sessie ' + info.session + ' van ' + info.maxSessions + '</div>' +
+      '<div style="font-size:15px;margin-bottom:10px;">Net <b>' + info.shown + '</b> vrae in hierdie sessie. Duplicates is uitgefilter. Oorspronklik: ' + info.originalTotal + ' vrae. Unieke vrae: ' + info.uniqueTotal + '.</div>' +
+      '<div style="font-size:14px;margin-bottom:10px;"><b>Gedek:</b> ' + info.topics.join(", ") + '</div>' +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
+        '<button id="teae-prev-session" style="padding:10px 14px;border:0;border-radius:10px;background:#475569;color:white;font-weight:800;">Vorige sessie</button>' +
+        '<button id="teae-next-session" style="padding:10px 14px;border:0;border-radius:10px;background:#2563eb;color:white;font-weight:800;">Volgende sessie</button>' +
+        '<button id="teae-reset-session" style="padding:10px 14px;border:0;border-radius:10px;background:#16a34a;color:white;font-weight:800;">Begin by sessie 1</button>' +
+      '</div>';
+
+    document.body.insertBefore(box, document.body.firstElementChild);
+
+    document.getElementById("teae-prev-session").onclick = () => goSession(Math.max(1, info.session - 1));
+    document.getElementById("teae-next-session").onclick = () => goSession(Math.min(info.maxSessions, info.session + 1));
+    document.getElementById("teae-reset-session").onclick = () => goSession(1);
+  }
+
+  function patchQuestions(){
+    clearEnricoLocks();
+    enableEverything();
+
+    let arr = null;
+    try {
+      if (typeof allQuestions !== "undefined" && Array.isArray(allQuestions)) arr = allQuestions;
+    } catch(e) {}
+
+    if (!arr || arr.__teaeLessQuestionsV2) return;
+    arr.__teaeLessQuestionsV2 = true;
+
+    const originalTotal = arr.length;
+
+    const seen = {};
+    const unique = [];
+    arr.forEach(q => {
+      let key = cleanKey(getQuestionText(q));
+      if (!key) key = JSON.stringify(q).slice(0,180);
+      if (!seen[key]) {
+        seen[key] = true;
+        unique.push(q);
+      }
+    });
+
+    const buckets = {};
+    unique.forEach(q => {
+      const topic = topicOf(q);
+      if (!buckets[topic]) buckets[topic] = [];
+      buckets[topic].push(q);
+    });
+
+    const topicNames = Object.keys(buckets).sort((a,b) => buckets[b].length - buckets[a].length);
+    const maxSessions = Math.max(1, Math.ceil(unique.length / SESSION_SIZE));
+    const session = getSession(maxSessions);
+    const startOffset = (session - 1) * SESSION_SIZE;
+
+    const selected = [];
+    const used = new Set();
+
+    function add(q){
+      if (!q) return;
+      const key = cleanKey(getQuestionText(q)) + "|" + JSON.stringify(q).length;
+      if (used.has(key)) return;
+      used.add(key);
+      selected.push(q);
+    }
+
+    let round = 0;
+    while (selected.length < SESSION_SIZE && round < 1000) {
+      let added = false;
+      topicNames.forEach((topic, idx) => {
+        if (selected.length >= SESSION_SIZE) return;
+        const list = buckets[topic] || [];
+        if (!list.length) return;
+        const pick = (startOffset + round + idx) % list.length;
+        const before = selected.length;
+        add(list[pick]);
+        if (selected.length > before) added = true;
+      });
+      if (!added) break;
+      round++;
+    }
+
+    const fillStart = startOffset % Math.max(1, unique.length);
+    for (let i = 0; selected.length < SESSION_SIZE && i < unique.length; i++) {
+      add(unique[(fillStart + i) % unique.length]);
+    }
+
+    arr.splice(0, arr.length);
+    selected.forEach(q => arr.push(q));
+
+    const topics = Array.from(new Set(selected.map(topicOf)));
+
+    addBanner({
+      originalTotal,
+      uniqueTotal: unique.length,
+      shown: arr.length,
+      session,
+      maxSessions,
+      topics
+    });
+
+    log("original=" + originalTotal + " unique=" + unique.length + " shown=" + arr.length + " session=" + session + "/" + maxSessions);
+  }
+
+  patchQuestions();
+  document.addEventListener("DOMContentLoaded", patchQuestions);
+  window.addEventListener("load", patchQuestions);
+  setTimeout(patchQuestions, 300);
+  setTimeout(enableEverything, 800);
+})();
+</script>
+<!-- TEAE_ENRICO_LESS_QUESTIONS_SESSIONS_V2_END -->
+
 </body>
 </html>
 
