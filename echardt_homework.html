@@ -31,6 +31,16 @@
   .stars{background:#fff7cc;border:1px solid #facc15;border-radius:12px;padding:10px;margin-bottom:12px;font-weight:900}
   .doneBox{background:#dcfce7;border:2px solid #16a34a;border-radius:14px;padding:16px;margin-top:12px;font-size:20px}
 </style>
+
+<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_CSS_START -->
+<style>
+  .rubricBox{background:#f8fafc;border:1px solid #cbd5e1;border-radius:12px;padding:12px;margin-top:12px}
+  .rubricBox .pass{color:#16a34a;font-weight:900}
+  .rubricBox .fail{color:#dc2626;font-weight:900}
+  .rubricScore{font-size:22px;font-weight:900;margin-bottom:8px}
+</style>
+<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_CSS_END -->
+
 </head>
 <body>
 <header>
@@ -49,6 +59,12 @@
       <textarea id="afrikaans" placeholder="Skryf jou paragraaf hier..."></textarea>
       <br>
       <button class="green" onclick="saveWork()">Stoor werk</button>
+
+<!-- TEAE_AFRIKAANS_MARK_BUTTON_V1_START -->
+      <button class="orange" onclick="markAfrikaans()">Merk Afrikaans</button>
+      <div id="afrikaansMarkResult" class="rubricBox"></div>
+<!-- TEAE_AFRIKAANS_MARK_BUTTON_V1_END -->
+
 
       <div class="drawBox">
         <h3 style="color:#0f172a;margin-top:0">Teken jou prent hier</h3>
@@ -87,6 +103,12 @@
       <textarea id="english" placeholder="Write your 5 English sentences here..."></textarea>
       <br>
       <button class="green" onclick="saveWork()">Stoor werk</button>
+
+<!-- TEAE_ENGLISH_MARK_BUTTON_V1_START -->
+      <button class="orange" onclick="markEnglish()">Mark English</button>
+      <div id="englishMarkResult" class="rubricBox"></div>
+<!-- TEAE_ENGLISH_MARK_BUTTON_V1_END -->
+
 
       <div class="drawBox">
         <h3 style="color:#0f172a;margin-top:0">Draw your picture here</h3>
@@ -313,5 +335,114 @@ setupCanvas("afrikaansCanvas");
 setupCanvas("englishCanvas");
 restartMath();
 </script>
+
+<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_JS_START -->
+<script>
+function countSentences(text){
+  const parts = String(text || "")
+    .split(/[.!?]+/)
+    .map(s => s.trim())
+    .filter(Boolean);
+  return parts.length;
+}
+
+function startsWithCapital(sentence){
+  const s = String(sentence || "").trim();
+  if(!s) return false;
+  const first = s[0];
+  return first === first.toUpperCase() && /[A-ZÀ-ÿ]/.test(first);
+}
+
+function sentenceCapitalScore(text){
+  const parts = String(text || "")
+    .split(/[.!?]+/)
+    .map(s => s.trim())
+    .filter(Boolean);
+  if(parts.length === 0) return false;
+  return parts.every(startsWithCapital);
+}
+
+function hasFullStops(text){
+  const sentenceCount = countSentences(text);
+  const stops = (String(text || "").match(/[.!?]/g) || []).length;
+  return sentenceCount >= 3 && stops >= Math.min(sentenceCount, 3);
+}
+
+function hasDrawing(canvasId){
+  const c = document.getElementById(canvasId);
+  if(!c) return false;
+  const ctx = c.getContext("2d");
+  const data = ctx.getImageData(0, 0, c.width, c.height).data;
+  for(let i=3; i<data.length; i+=4){
+    if(data[i] !== 0) return true;
+  }
+  return false;
+}
+
+function line(ok, text){
+  return "<div class='" + (ok ? "pass" : "fail") + "'>" + (ok ? "✓ " : "✗ ") + text + "</div>";
+}
+
+function markAfrikaans(){
+  const text = document.getElementById("afrikaans").value.trim();
+  const lower = text.toLowerCase();
+  let score = 0;
+  let total = 7;
+
+  const checks = [
+    {ok: /diereskuil|skuiling|diere skuiling|diere/.test(lower), text: "Dit gaan oor diereskuilings/diere."},
+    {ok: countSentences(text) >= 5, text: "Ten minste 5 sinne."},
+    {ok: /hond|kat|dier|diere|voël|haas|perd/.test(lower), text: "Noem diere."},
+    {ok: /help|kos|water|veilig|hok|huis|aanneming|versorg/.test(lower), text: "Noem hoe mense diere kan help of versorg."},
+    {ok: sentenceCapitalScore(text), text: "Sinne begin met hoofletters."},
+    {ok: hasFullStops(text), text: "Sinne eindig met punte."},
+    {ok: hasDrawing("afrikaansCanvas"), text: "Prent is geteken."}
+  ];
+
+  checks.forEach(c => { if(c.ok) score++; });
+
+  let msg = "<div class='rubricScore'>Afrikaans punt: " + score + " uit " + total + "</div>";
+  checks.forEach(c => msg += line(c.ok, c.text));
+
+  if(score === total){
+    msg += "<p class='pass'>⭐ Uitstekend! Alles is reg.</p>";
+  } else {
+    msg += "<p class='fail'>☹ Kyk na die rooi goed en maak dit beter, merk dan weer.</p>";
+  }
+
+  document.getElementById("afrikaansMarkResult").innerHTML = msg;
+}
+
+function markEnglish(){
+  const text = document.getElementById("english").value.trim();
+  const lower = text.toLowerCase();
+  let score = 0;
+  let total = 6;
+
+  const checks = [
+    {ok: /animal|animals|shelter|dog|cat/.test(lower), text: "It is about animals in a shelter."},
+    {ok: countSentences(text) >= 5, text: "At least 5 sentences."},
+    {ok: /dog|cat|animal|animals|shelter|food|water|help|safe/.test(lower), text: "Uses animal/shelter words."},
+    {ok: sentenceCapitalScore(text), text: "Sentences start with capital letters."},
+    {ok: hasFullStops(text), text: "Sentences end with full stops."},
+    {ok: hasDrawing("englishCanvas"), text: "Picture is drawn."}
+  ];
+
+  checks.forEach(c => { if(c.ok) score++; });
+
+  let msg = "<div class='rubricScore'>English mark: " + score + " out of " + total + "</div>";
+  checks.forEach(c => msg += line(c.ok, c.text));
+
+  if(score === total){
+    msg += "<p class='pass'>⭐ Excellent! Everything is correct.</p>";
+  } else {
+    msg += "<p class='fail'>☹ Fix the red items and mark again.</p>";
+  }
+
+  document.getElementById("englishMarkResult").innerHTML = msg;
+}
+</script>
+<!-- TEAE_ECHARDT_LANGUAGE_MARKING_V1_JS_END -->
+
 </body>
 </html>
