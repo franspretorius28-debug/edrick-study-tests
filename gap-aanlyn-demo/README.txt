@@ -1,25 +1,17 @@
-GAP AANLYN IMAGE MATCH DEMO V3
+GAP AANLYN CLEAN DEMO V5
 
-This version is designed to match the premium mockup image much more closely.
+What changed in this version:
+- Cleaner and more professional layout
+- The repeated large tools section was redesigned so it no longer feels duplicated
+- More polished first section / hero area
+- Footer cleaned up (removed 'Web design by Janen Enterprises')
+- Logo updated closer to the original look by using a cropped logo image from the user's provided screenshot
+- Video centre still works with the YouTube popup + animated demo popups
+- Portal page updated to use the improved logo
 
-Files:
+Files included:
 - index.html
 - portal.html
 - styles.css
 - script.js
-
-Features:
-- premium modern homepage
-- portal page
-- clear Afrikaans | English language switch
-- logo styling closer to GAP look
-- video centre
-- walkthrough / portal sections
-- pricing, testimonials, contact, footer
-
-
-V4 update:
-- Video cards now open professional modal popups.
-- The first video embeds the actual GAP Aanlyn YouTube video.
-- The other three cards open built-in animated explainer demos:
-  Portal Walkthrough, Parent Progress, and Assignments & Tests.
+- gap-logo.png
