@@ -17,3 +17,11 @@ Files:
 - gap-logo.png
 - dashboard-preview.png
 - portal-showcase.png
+
+
+V9 update:
+- Removed the demo note bar
+- Removed the centered card/shadow feeling
+- Expanded the exact-image page to feel like a real website
+- Kept all hotspots and video/portal click behaviour
+- White full-page background so it no longer looks like a screenshot placed on a purple canvas
