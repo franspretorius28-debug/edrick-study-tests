@@ -1,15 +1,25 @@
-GAP AANLYN CLEAN DEMO V5
+GAP AANLYN EXACT DEMO V6
 
-What changed in this version:
-- Cleaner and more professional layout
-- The repeated large tools section was redesigned so it no longer feels duplicated
-- More polished first section / hero area
-- Footer cleaned up (removed 'Web design by Janen Enterprises')
-- Logo updated closer to the original look by using a cropped logo image from the user's provided screenshot
-- Video centre still works with the YouTube popup + animated demo popups
-- Portal page updated to use the improved logo
+This version is rebuilt to match the provided screenshot much more closely.
 
-Files included:
+Included:
+- full premium landing page
+- matching layout sections in the same order as the screenshot
+- hero split layout
+- feature cards
+- portal workflow cards
+- video centre
+- tools section
+- portal preview section
+- pricing CTA strip
+- testimonials
+- contact section
+- footer
+- clickable portal page
+- language switch
+- video popup demo + YouTube embed
+
+Files:
 - index.html
 - portal.html
 - styles.css

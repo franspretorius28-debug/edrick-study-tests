@@ -3,31 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Aanlyn – Portal</title>
+  <title>GAP Aanlyn – Portal Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="portal-body">
+<body class="portal-page">
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand-logo" href="index.html">
-        <img src="gap-logo.png" alt="GAP Aanlyn logo">
-      </a>
+      <a href="index.html" class="brand-logo"><img src="gap-logo.png" alt="GAP Aanlyn"></a>
       <button class="menu-btn" onclick="toggleMenu()">☰</button>
       <nav id="mainNav" class="main-nav">
         <a href="index.html">Home</a>
-        <a href="index.html#portal">Platform</a>
         <a href="index.html#videos">Videos</a>
         <a href="index.html#contact">Contact</a>
       </nav>
       <div class="nav-actions">
-        <button class="lang-select" onclick="toggleLanguage()"><span class="globe">🌐</span><span id="langLabel">Afrikaans | English</span><span>▾</span></button>
+        <button class="lang-btn" onclick="toggleLanguage()"><span>🌐</span><span id="langLabel">Afrikaans | English</span><span>▾</span></button>
       </div>
     </div>
   </header>
 
   <main class="portal-layout">
     <aside class="portal-sidebar">
-      <div class="portal-brand">GAP <span>Portal</span></div>
+      <div class="portal-logo">GAP <span>Portal</span></div>
       <a class="active" href="#">Dashboard</a>
       <a href="#">My Subjects</a>
       <a href="#">Tasks</a>
@@ -39,29 +36,26 @@
       <a href="#">Settings</a>
     </aside>
 
-    <section class="portal-content">
-      <div class="portal-topbar">
+    <section class="portal-main">
+      <div class="portal-top-card">
         <div>
           <div class="eyebrow">LEARNER DASHBOARD</div>
           <h1>Hello, Liam! 👋</h1>
           <p>Welcome back. Keep up the great work!</p>
         </div>
-        <div class="portal-profile">L</div>
+        <div class="portal-avatar">L</div>
       </div>
 
-      <div class="portal-kpis">
+      <div class="portal-kpi-grid">
         <div class="portal-kpi"><strong>6</strong><span>Subjects</span></div>
         <div class="portal-kpi"><strong>14</strong><span>Tasks Due</span></div>
         <div class="portal-kpi"><strong>3</strong><span>Tests Due</span></div>
         <div class="portal-kpi"><strong>78%</strong><span>Average</span></div>
       </div>
 
-      <div class="portal-panels">
+      <div class="portal-panel-grid">
         <div class="portal-panel large">
-          <div class="panel-head">
-            <h3>Progress Overview</h3>
-            <span>EN | AF</span>
-          </div>
+          <div class="panel-title"><h3>Progress Overview</h3><span>EN | AF</span></div>
           <div class="progress-row"><label>Afrikaans</label><b>90%</b><div class="bar"><i style="width:90%"></i></div></div>
           <div class="progress-row"><label>Mathematics</label><b>78%</b><div class="bar"><i style="width:78%"></i></div></div>
           <div class="progress-row"><label>Life Skills</label><b>85%</b><div class="bar"><i style="width:85%"></i></div></div>
@@ -70,17 +64,12 @@
         </div>
 
         <div class="portal-panel">
-          <div class="panel-head"><h3>Calendar</h3></div>
-          <div class="calendar-grid">
-            <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
-            <span></span><span></span><span></span><span></span><span>1</span><span>2</span><span>3</span>
-            <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            <span>11</span><span>12</span><span>13</span><span>14</span><span class="active-day">15</span><span>16</span><span>17</span>
-          </div>
+          <div class="panel-title"><h3>Calendar</h3></div>
+          <div class="calendar-widget"></div>
         </div>
 
         <div class="portal-panel">
-          <div class="panel-head"><h3>Upcoming</h3></div>
+          <div class="panel-title"><h3>Upcoming</h3></div>
           <ul class="plain-list">
             <li><strong>Maths Test</strong><span>May 20</span></li>
             <li><strong>Science Assignment</strong><span>May 22</span></li>
@@ -89,7 +78,7 @@
         </div>
 
         <div class="portal-panel large">
-          <div class="panel-head"><h3>Recent Activity</h3></div>
+          <div class="panel-title"><h3>Recent Activity</h3></div>
           <ul class="plain-list">
             <li><strong>Task Submitted</strong><span>English</span></li>
             <li><strong>Test Completed</strong><span>Mathematics</span></li>
