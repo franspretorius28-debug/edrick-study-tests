@@ -1,23 +1,18 @@
-GAP AANLYN REAL HTML WEBSITE DEMO V10
+GAP AANLYN ROLLBACK EXACT IMAGE V11
 
-This version is not an A4 image with clickable hotspots.
-It is rebuilt as a real HTML/CSS website while keeping the same professional layout direction.
+This is a rollback from the real HTML V10 back to the exact visual image-based demo.
+
+Purpose:
+- Look exactly like the uploaded professional image again
+- Still have clickable buttons/videos/portal/WhatsApp
+- Avoid the V10 issue where it felt like a real website but no longer matched the reference
 
 Files:
 - index.html
 - portal.html
 - styles.css
 - script.js
+- gap-demo-exact.png
 - gap-logo.png
-
-Features:
-- real sections
-- real cards
-- real responsive layout
-- no image-background poster feeling
-- no hero overlap
-- clickable portal
-- clickable videos
-- Afrikaans / English language switch
-- contact form demo
-- WhatsApp footer button
+- dashboard-preview.png
+- portal-showcase.png

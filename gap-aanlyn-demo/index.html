@@ -3,326 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Aanlyn – Website Demo</title>
+  <title>GAP Aanlyn – Exact Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="logo" href="#home" aria-label="GAP Aanlyn Home">
-        <img src="gap-logo.png" alt="GAP Aanlyn" />
-      </a>
+  <main class="page">
+    <div class="stage" id="top">
+      <img src="gap-demo-exact.png" alt="GAP Aanlyn demo" class="exact-img">
 
-      <button class="mobile-menu" onclick="toggleMenu()" aria-label="Menu">☰</button>
+      <a class="hotspot hs-home" href="#top" aria-label="Home"></a>
+      <button class="hotspot hs-info" onclick="toast('Information page preview can be added in the full build.')" aria-label="Information"></button>
+      <button class="hotspot hs-forms" onclick="toast('Forms can connect to registration and enquiries.')" aria-label="Forms"></button>
+      <button class="hotspot hs-programs" onclick="toast('Programs page can be added in the full build.')" aria-label="Programs"></button>
+      <button class="hotspot hs-downloads" onclick="toast('Downloads can contain printable resources.')" aria-label="Downloads"></button>
+      <button class="hotspot hs-subjects" onclick="toast('Subjects page can list all school subjects neatly.')" aria-label="Subjects"></button>
+      <button class="hotspot hs-marketing" onclick="toast('Marketing page can be redesigned professionally.')" aria-label="Marketing"></button>
+      <button class="hotspot hs-centres" onclick="toast('Centres page can show locations in a modern directory.')" aria-label="Centres"></button>
+      <button class="hotspot hs-sponsors" onclick="toast('Sponsors page can show partners and projects.')" aria-label="Sponsors"></button>
 
-      <nav id="mainNav" class="nav-links">
-        <a class="active" href="#home" data-af="Tuis" data-en="Home">Tuis</a>
-        <a href="#features" data-af="Inligting" data-en="Information">Inligting</a>
-        <a href="#tools" data-af="Vorms" data-en="Forms">Vorms</a>
-        <a href="#steps" data-af="Programme" data-en="Programs">Programme</a>
-        <a href="#tools" data-af="Aflaaie" data-en="Downloads">Aflaaie</a>
-        <a href="#tools" data-af="Vakke" data-en="Subjects">Vakke</a>
-        <a href="#videos" data-af="Bemarking" data-en="Marketing">Bemarking</a>
-        <a href="#tools" data-af="Inkleurkompetisie" data-en="Coloring Competition">Inkleurkompetisie</a>
-        <a href="#contact" data-af="Sentrums" data-en="Centres">Sentrums</a>
-        <a href="#footer" data-af="Borge" data-en="Sponsors">Borge</a>
-      </nav>
+      <a class="hotspot hs-portal-top" href="portal.html" aria-label="Portal"></a>
+      <button class="hotspot hs-lang-top" onclick="toast('Afrikaans | English language switch demo.')" aria-label="Language switch"></button>
 
-      <div class="nav-actions">
-        <a href="portal.html" class="btn btn-primary small">Portal</a>
-        <button class="lang-switch" onclick="toggleLanguage()">
-          <span>🌐</span>
-          <span id="langText">Afrikaans | English</span>
-          <span>▾</span>
-        </button>
-      </div>
+      <button class="hotspot hs-view-demo" onclick="openVideo('youtube')" aria-label="View Demo"></button>
+      <button class="hotspot hs-watch-intro" onclick="openVideo('youtube')" aria-label="Watch Intro"></button>
+      <a class="hotspot hs-open-portal" href="portal.html" aria-label="Open Portal"></a>
+      <button class="hotspot hs-lang-strip" onclick="toast('This shows where users can switch between Afrikaans and English.')" aria-label="Language strip"></button>
+
+      <button class="hotspot hs-video1" onclick="openVideo('youtube')" aria-label="Welcome video"></button>
+      <button class="hotspot hs-video2" onclick="openVideo('portal')" aria-label="Portal walkthrough"></button>
+      <button class="hotspot hs-video3" onclick="openVideo('parents')" aria-label="Parent progress"></button>
+      <button class="hotspot hs-video4" onclick="openVideo('tasks')" aria-label="Assignments and tests"></button>
+      <button class="hotspot hs-view-all" onclick="openVideo('youtube')" aria-label="View all videos"></button>
+
+      <a class="hotspot hs-open-portal2" href="portal.html" aria-label="Open portal section"></a>
+      <button class="hotspot hs-view-demo2" onclick="openVideo('portal')" aria-label="View portal demo"></button>
+
+      <button class="hotspot hs-enquire" onclick="toast('Enquiry button can connect to WhatsApp, email or form submission.')" aria-label="Enquire"></button>
+      <button class="hotspot hs-pricing" onclick="toast('Pricing can be connected in the final website.')" aria-label="Pricing"></button>
+      <button class="hotspot hs-send" onclick="toast('Demo enquiry submitted. Final build can send to email or WhatsApp.')" aria-label="Send enquiry"></button>
+      <a class="hotspot hs-whatsapp" href="https://wa.me/" target="_blank" aria-label="WhatsApp"></a>
     </div>
-  </header>
-
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="tag">🌐 <span data-af="AFRIKAANS & ENGELS BESKIKBAAR" data-en="AFRIKAANS & ENGLISH AVAILABLE">AFRIKAANS & ENGELS BESKIKBAAR</span></div>
-
-          <h1>
-            <span data-af="Een Platform." data-en="One Platform.">Een Platform.</span><br />
-            <span data-af="Twee Tale." data-en="Two Languages.">Twee Tale.</span><br />
-            <span class="gradient" data-af="Beter Leer." data-en="Better Learning.">Beter Leer.</span>
-          </h1>
-
-          <p data-af="GAP Aanlyn is ’n premium aanlyn leerplatform met CAPS-belynde inhoud, onmiddellike taalwisseling, ingeboude ouerhulpmiddels en ’n maklik-om-te-gebruik leerderportaal — alles op een plek."
-             data-en="GAP Aanlyn is a premium online learning platform with CAPS-aligned content, instant language switching, built-in parent tools and an easy-to-use learner portal — all in one place.">
-             GAP Aanlyn is ’n premium aanlyn leerplatform met CAPS-belynde inhoud, onmiddellike taalwisseling, ingeboude ouerhulpmiddels en ’n maklik-om-te-gebruik leerderportaal — alles op een plek.
-          </p>
-
-          <div class="hero-actions">
-            <button class="btn btn-primary" onclick="openVideo('youtube')" data-af="Kyk Demo" data-en="View Demo">Kyk Demo ▶</button>
-            <button class="btn btn-outline" onclick="openVideo('youtube')" data-af="Kyk Intro" data-en="Watch Intro">Kyk Intro ▶</button>
-            <a class="btn btn-pink" href="portal.html" data-af="Maak Portaal Oop" data-en="Open Portal">Maak Portaal Oop ↗</a>
-          </div>
-
-          <div class="stat-row">
-            <div class="stat-card">
-              <span class="stat-icon people"></span>
-              <strong>2,500+</strong>
-              <small data-af="Gesinne" data-en="Families">Gesinne</small>
-            </div>
-            <div class="stat-card">
-              <span class="stat-icon shield"></span>
-              <strong>98%</strong>
-              <small data-af="Ouer Tevredenheid" data-en="Parent Satisfaction">Ouer Tevredenheid</small>
-            </div>
-            <div class="stat-card">
-              <span class="stat-icon star"></span>
-              <strong>4.9/5</strong>
-              <small data-af="Gemiddelde Gradering" data-en="Average Rating">Gemiddelde Gradering</small>
-            </div>
-            <div class="stat-card">
-              <span class="stat-icon book"></span>
-              <strong>CAPS</strong>
-              <small data-af="Belynde Inhoud" data-en="Aligned Content">Belynde Inhoud</small>
-            </div>
-          </div>
-
-          <button class="switch-strip" onclick="toggleLanguage()">
-            <span>↻</span>
-            <b data-af="Verander onmiddellik tussen Afrikaans en Engels" data-en="Switch instantly between Afrikaans and English">Verander onmiddellik tussen Afrikaans en Engels</b>
-            <em>AF</em><em>EN</em>
-          </button>
-        </div>
-
-        <div class="hero-art">
-          <div class="blob"></div>
-          <div class="photo-card">
-            <img src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?auto=format&fit=crop&w=900&q=80" alt="Ouer en leerder by laptop" />
-          </div>
-
-          <div class="dashboard-card">
-            <div class="dash-top">
-              <strong data-af="Leerder Dashboard" data-en="Learner Dashboard">Leerder Dashboard</strong>
-              <div class="mini-lang"><span>EN</span><b>AF</b></div>
-            </div>
-            <div class="dash-layout">
-              <aside class="dash-sidebar">
-                <span class="active">Dashboard</span>
-                <span>My Subjects</span>
-                <span>Tasks</span>
-                <span>Tests</span>
-                <span>Progress</span>
-                <span>Reports</span>
-                <span>Calendar</span>
-                <span>Messages</span>
-              </aside>
-              <section class="dash-main">
-                <div class="dash-welcome">
-                  <strong>Hello, Liam! 👋</strong>
-                  <small data-af="Welkom terug." data-en="Welcome back.">Welkom terug.</small>
-                </div>
-                <div class="dash-kpis">
-                  <div><b>6</b><small data-af="Vakke" data-en="Subjects">Vakke</small></div>
-                  <div><b>14</b><small data-af="Take Oop" data-en="Tasks Due">Take Oop</small></div>
-                  <div><b>3</b><small data-af="Toetse Oop" data-en="Tests Due">Toetse Oop</small></div>
-                  <div><b>78%</b><small data-af="Gemiddeld" data-en="Average">Gemiddeld</small></div>
-                </div>
-                <h4 data-af="Vordering Oorsig" data-en="Progress Overview">Vordering Oorsig</h4>
-                <div class="progress-row"><label>Afrikaans</label><span>90%</span><div class="bar"><i style="width:90%"></i></div></div>
-                <div class="progress-row"><label>Mathematics</label><span>78%</span><div class="bar"><i style="width:78%"></i></div></div>
-                <div class="progress-row"><label>Life Skills</label><span>85%</span><div class="bar"><i style="width:85%"></i></div></div>
-                <div class="progress-row"><label>Natural Sciences</label><span>73%</span><div class="bar"><i style="width:73%"></i></div></div>
-                <div class="progress-row"><label>Social Sciences</label><span>88%</span><div class="bar"><i style="width:88%"></i></div></div>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section features" id="features">
-      <div class="container">
-        <div class="section-title">
-          <span data-af="HOEKOM GAP AANLYN?" data-en="WHY CHOOSE GAP AANLYN?">HOEKOM GAP AANLYN?</span>
-          <h2 data-af="Kragtige funksies wat elke leerder en elke ouer ondersteun." data-en="Powerful features that support every learner and every parent.">Kragtige funksies wat elke leerder en elke ouer ondersteun.</h2>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card"><div class="line-icon cap"></div><h3 data-af="CAPS-Belynde Inhoud" data-en="CAPS-Aligned Content">CAPS-Belynde Inhoud</h3><p data-af="Opgedateerde lesse en hulpbronne vir alle kernvakke." data-en="Up-to-date lessons and resources for all core subjects.">Opgedateerde lesse en hulpbronne vir alle kernvakke.</p></article>
-          <article class="feature-card"><div class="line-icon globe"></div><h3 data-af="Afrikaans & Engels" data-en="Afrikaans & English">Afrikaans & Engels</h3><p data-af="Verander onmiddellik tussen tale enige tyd en enige plek." data-en="Switch instantly between languages anytime, anywhere.">Verander onmiddellik tussen tale enige tyd en enige plek.</p></article>
-          <article class="feature-card"><div class="line-icon chart"></div><h3 data-af="Volg Vordering Maklik" data-en="Track Progress Easily">Volg Vordering Maklik</h3><p data-af="Regstreekse verslae en insigte vir beter uitkomste." data-en="Real-time reports and insights for better outcomes.">Regstreekse verslae en insigte vir beter uitkomste.</p></article>
-          <article class="feature-card"><div class="line-icon clipboard"></div><h3 data-af="Take, Toetse & Opdragte" data-en="Tasks, Tests & Assignments">Take, Toetse & Opdragte</h3><p data-af="Interaktiewe aktiwiteite en assesserings op een plek." data-en="Interactive activities and assessments in one place.">Interaktiewe aktiwiteite en assesserings op een plek.</p></article>
-          <article class="feature-card"><div class="line-icon group"></div><h3 data-af="Ouer Toesig" data-en="Parent Oversight">Ouer Toesig</h3><p data-af="Monitor vordering, boodskappe en belangrike opdaterings." data-en="Monitor progress, messages and important updates.">Monitor vordering, boodskappe en belangrike opdaterings.</p></article>
-          <article class="feature-card"><div class="line-icon lock"></div><h3 data-af="Veilig & Sekuur" data-en="Safe & Secure">Veilig & Sekuur</h3><p data-af="Ondernemingsvlak sekuriteit om jou kind se data te beskerm." data-en="Enterprise-grade security to protect your child’s data.">Ondernemingsvlak sekuriteit om jou kind se data te beskerm.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section steps" id="steps">
-      <div class="container">
-        <div class="section-title slim">
-          <span data-af="HOE DIE PORTAAL WERK" data-en="HOW THE PORTAL WORKS">HOE DIE PORTAAL WERK</span>
-        </div>
-        <div class="steps-grid">
-          <article class="step-card"><b>1</b><div><h3 data-af="Leer" data-en="Learn">Leer</h3><p data-af="Betrokke videolesse en notas vir elke vak." data-en="Engaging video lessons and notes for every subject.">Betrokke videolesse en notas vir elke vak.</p></div><div class="step-graphic laptop"></div></article>
-          <article class="step-card"><b>2</b><div><h3 data-af="Oefen" data-en="Practice">Oefen</h3><p data-af="Voltooi take, vasvrae en toetse om selfvertroue te bou." data-en="Complete tasks, quizzes and tests to build confidence.">Voltooi take, vasvrae en toetse om selfvertroue te bou.</p></div><div class="step-graphic checklist"></div></article>
-          <article class="step-card"><b>3</b><div><h3 data-af="Volg Vordering" data-en="Track Progress">Volg Vordering</h3><p data-af="Sien punte, verslae en vakvordering in regte tyd." data-en="View marks, reports and subject progress in real time.">Sien punte, verslae en vakvordering in regte tyd.</p></div><div class="step-graphic graph"></div></article>
-          <article class="step-card"><b>4</b><div><h3 data-af="Bly Betrokke" data-en="Stay Involved">Bly Betrokke</h3><p data-af="Ouers kry opdaterings, boodskappe en belangrike kennisgewings." data-en="Parents get updates, messages and important alerts.">Ouers kry opdaterings, boodskappe en belangrike kennisgewings.</p></div><div class="step-graphic bell"></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section videos" id="videos">
-      <div class="container">
-        <div class="video-head">
-          <div>
-            <span data-af="KYK HOE DIT WERK" data-en="WATCH HOW IT WORKS">KYK HOE DIT WERK</span>
-            <h2 data-af="Video Sentrum" data-en="Video Centre">Video Sentrum</h2>
-          </div>
-          <button class="btn btn-outline small" onclick="openVideo('youtube')" data-af="Sien alle videos →" data-en="View all videos →">Sien alle videos →</button>
-        </div>
-
-        <div class="video-grid">
-          <button class="video-card" onclick="openVideo('youtube')">
-            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80')"><i>▶</i><em>EN | AF</em><small>1:32</small></div>
-            <div><h3>Welcome to GAP</h3><p data-af="Ontdek die krag van tweetalige leer met GAP Aanlyn." data-en="Discover the power of bilingual learning with GAP Aanlyn.">Ontdek die krag van tweetalige leer met GAP Aanlyn.</p></div>
-          </button>
-          <button class="video-card" onclick="openVideo('portal')">
-            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80')"><i>▶</i><em>EN | AF</em><small>2:45</small></div>
-            <div><h3>Portal Walkthrough</h3><p data-af="Sien stap vir stap hoe die leerderportaal werk." data-en="See how the learner portal works step-by-step.">Sien stap vir stap hoe die leerderportaal werk.</p></div>
-          </button>
-          <button class="video-card" onclick="openVideo('parents')">
-            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80')"><i>▶</i><em>EN | AF</em><small>2:10</small></div>
-            <div><h3>How Parents Track Progress</h3><p data-af="Bly ingelig en ondersteun jou kind elke tree van die pad." data-en="Stay informed and support your child every step of the way.">Bly ingelig en ondersteun jou kind elke tree van die pad.</p></div>
-          </button>
-          <button class="video-card" onclick="openVideo('tasks')">
-            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80')"><i>▶</i><em>EN | AF</em><small>2:22</small></div>
-            <div><h3>How Assignments & Tests Work</h3><p data-af="Van take tot toetse — alles wat jou kind nodig het om te slaag." data-en="From tasks to tests — everything your child needs to succeed.">Van take tot toetse — alles wat jou kind nodig het om te slaag.</p></div>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section tools" id="tools">
-      <div class="container">
-        <div class="section-title">
-          <span data-af="ALLES OP EEN PLEK" data-en="EVERYTHING IN ONE PLACE">ALLES OP EEN PLEK</span>
-          <h2 data-af="Al die hulpmiddels en inligting wat jy nodig het." data-en="All the tools and information you need.">Al die hulpmiddels en inligting wat jy nodig het.</h2>
-        </div>
-        <div class="tools-grid">
-          <article class="tool-card"><div class="line-icon info"></div><h3 data-af="Inligting" data-en="Information">Inligting</h3><p data-af="Oor GAP Aanlyn, beleide en meer" data-en="About GAP Aanlyn, policies & more">Oor GAP Aanlyn, beleide en meer</p></article>
-          <article class="tool-card"><div class="line-icon form"></div><h3 data-af="Vorms" data-en="Forms">Vorms</h3><p data-af="Registrasies, opdaterings en meer" data-en="Registrations, updates & more">Registrasies, opdaterings en meer</p></article>
-          <article class="tool-card"><div class="line-icon program"></div><h3 data-af="Programme" data-en="Programs">Programme</h3><p data-af="Kurrikulum & leerprogramme" data-en="Curriculum & learning programs">Kurrikulum & leerprogramme</p></article>
-          <article class="tool-card"><div class="line-icon download"></div><h3 data-af="Aflaaie" data-en="Downloads">Aflaaie</h3><p data-af="Dokumente, gidse & templates" data-en="Documents, guides & templates">Dokumente, gidse & templates</p></article>
-          <article class="tool-card"><div class="line-icon layers"></div><h3 data-af="Vakke" data-en="Subjects">Vakke</h3><p data-af="Verken alle kernskoolvakke" data-en="Explore all core school subjects">Verken alle kernskoolvakke</p></article>
-          <article class="tool-card"><div class="line-icon megaphone"></div><h3 data-af="Bemarking" data-en="Marketing">Bemarking</h3><p data-af="Promosies, nuus & opdaterings" data-en="Promotions, news & updates">Promosies, nuus & opdaterings</p></article>
-          <article class="tool-card"><div class="line-icon target"></div><h3 data-af="Inkleurkompetisie" data-en="Coloring Competition">Inkleurkompetisie</h3><p data-af="Jaarlikse kompetisie vir kinders" data-en="Annual competition for kids">Jaarlikse kompetisie vir kinders</p></article>
-          <article class="tool-card"><div class="line-icon building"></div><h3 data-af="Sentrums" data-en="Centres">Sentrums</h3><p data-af="Vind ’n GAP leersentrum" data-en="Find a GAP learning centre">Vind ’n GAP leersentrum</p></article>
-          <article class="tool-card"><div class="line-icon sprout"></div><h3 data-af="Borge" data-en="Sponsors">Borge</h3><p data-af="Ons vennote & ondersteuners" data-en="Our partners & supporters">Ons vennote & ondersteuners</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section portal-section" id="portal">
-      <div class="container portal-grid">
-        <div class="portal-copy">
-          <span data-af="DIE GAP LEERDERPORTAAL" data-en="THE GAP LEARNER PORTAL">DIE GAP LEERDERPORTAAL</span>
-          <h2 data-af="Slim. Eenvoudig. Kragtig." data-en="Smart. Simple. Powerful.">Slim. Eenvoudig. Kragtig.</h2>
-          <p data-af="Alles wat leerders en ouers nodig het in een veilige, maklik-om-te-gebruik dashboard." data-en="Everything learners and parents need in one secure, easy-to-use dashboard.">Alles wat leerders en ouers nodig het in een veilige, maklik-om-te-gebruik dashboard.</p>
-          <ul>
-            <li data-af="Opdragte, toetse & hulpbronne" data-en="Assignments, tests & resources">Opdragte, toetse & hulpbronne</li>
-            <li data-af="Punte, verslae & vorderingsopsporing" data-en="Marks, reports & progress tracking">Punte, verslae & vorderingsopsporing</li>
-            <li data-af="Kalender, boodskappe & aankondigings" data-en="Calendar, messages & announcements">Kalender, boodskappe & aankondigings</li>
-            <li data-af="Beskikbaar in Afrikaans & Engels" data-en="Available in Afrikaans & English">Beskikbaar in Afrikaans & Engels</li>
-          </ul>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="portal.html" data-af="Maak Portaal Oop" data-en="Open Portal">Maak Portaal Oop</a>
-            <button class="btn btn-outline" onclick="openVideo('portal')" data-af="Kyk Demo" data-en="View Demo">Kyk Demo ▶</button>
-          </div>
-        </div>
-
-        <div class="device-wrap">
-          <div class="laptop-shell">
-            <div class="portal-ui">
-              <aside class="portal-menu">
-                <strong>GAP</strong>
-                <span>Dashboard</span><span>My Subjects</span><span>Tasks</span><span>Tests</span><span>Progress</span><span>Reports</span><span>Calendar</span><span>Messages</span><span>Settings</span>
-              </aside>
-              <main class="portal-main">
-                <div class="portal-head">
-                  <div><strong>Hello, Liam! ✨</strong><small data-af="Hou aan met die goeie werk!" data-en="Keep up the great work!">Hou aan met die goeie werk!</small></div>
-                  <div class="fake-calendar"></div>
-                </div>
-                <div class="portal-kpis"><div><b>6</b><small>Subjects</small></div><div><b>14</b><small>Tasks Due</small></div><div><b>3</b><small>Tests Due</small></div><div><b>78%</b><small>Average</small></div></div>
-                <div class="portal-bars">
-                  <div><label>Afrikaans</label><div class="bar"><i style="width:90%"></i></div></div>
-                  <div><label>Mathematics</label><div class="bar"><i style="width:78%"></i></div></div>
-                  <div><label>Life Skills</label><div class="bar"><i style="width:85%"></i></div></div>
-                  <div><label>Natural Sciences</label><div class="bar"><i style="width:73%"></i></div></div>
-                  <div><label>Social Sciences</label><div class="bar"><i style="width:88%"></i></div></div>
-                </div>
-              </main>
-            </div>
-          </div>
-          <div class="phone-shell">
-            <strong>Hello, Liam!</strong>
-            <div class="progress-row"><label>Afrikaans</label><div class="bar"><i style="width:90%"></i></div></div>
-            <div class="progress-row"><label>Mathematics</label><div class="bar"><i style="width:78%"></i></div></div>
-            <div class="progress-row"><label>Life Skills</label><div class="bar"><i style="width:85%"></i></div></div>
-            <div class="progress-row"><label>Natural Sciences</label><div class="bar"><i style="width:73%"></i></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container cta-grid">
-        <div class="cta-left">
-          <span>🚀</span>
-          <div><strong data-af="Gereed om jou kind die beste begin te gee?" data-en="Ready to give your child the best start?">Gereed om jou kind die beste begin te gee?</strong><p data-af="Sluit aan by duisende gesinne wat reeds slimmer leer." data-en="Join thousands of families already learning the smarter way.">Sluit aan by duisende gesinne wat reeds slimmer leer.</p></div>
-        </div>
-        <div class="price"><small data-af="Bekostigbaar. Deursigtig. Effektief." data-en="Affordable. Transparent. Effective.">Bekostigbaar. Deursigtig. Effektief.</small><b>R500</b><em data-af="per leerder" data-en="per learner">per leerder</em></div>
-        <div class="cta-buttons"><a class="btn btn-light" href="#contact" data-af="Doen Nou Navraag" data-en="Enquire Now">Doen Nou Navraag</a><a class="btn btn-light-outline" href="#contact" data-af="Sien Pryse" data-en="View Pricing">Sien Pryse</a></div>
-      </div>
-    </section>
-
-    <section class="section testimonials">
-      <div class="container">
-        <div class="section-title slim"><span data-af="WAT OUERS SÊ" data-en="WHAT PARENTS SAY">WAT OUERS SÊ</span></div>
-        <div class="testimonial-grid">
-          <article><b>❝</b><p>GAP Aanlyn has made a huge difference in my daughter's confidence and results.</p><footer>— Mariska S. <span>★★★★★</span></footer></article>
-          <article><b>❝</b><p>The teachers are friendly, the content is excellent and the portal is easy to use.</p><footer>— Johan B. <span>★★★★★</span></footer></article>
-          <article><b>❝</b><p>My kids enjoy the portal and the tasks are clear and easy to follow.</p><footer>— Freya N. <span>★★★★★</span></footer></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-card">
-          <span data-af="ONS IS HIER OM TE HELP" data-en="WE'RE HERE TO HELP">ONS IS HIER OM TE HELP</span>
-          <h2 data-af="Kontak Ons" data-en="Get in touch">Kontak Ons</h2>
-          <p data-af="Het jy ’n vraag of wil jy meer weet? Ons hoor graag van jou." data-en="Have a question or want to know more? We'd love to hear from you.">Het jy ’n vraag of wil jy meer weet? Ons hoor graag van jou.</p>
-          <ul><li>📞 +27 62 247 2432</li><li>✉️ info@gapaanlyn.com</li><li>🟢 WhatsApp: +27 62 247 2432</li></ul>
-        </div>
-        <form class="contact-form">
-          <div class="form-row"><input placeholder="Volle Naam" data-af-placeholder="Volle Naam" data-en-placeholder="Full Name"><input placeholder="E-pos Adres" data-af-placeholder="E-pos Adres" data-en-placeholder="Email Address"><input placeholder="Foon / WhatsApp" data-af-placeholder="Foon / WhatsApp" data-en-placeholder="Phone / WhatsApp"><select><option data-af="Navraag Tipe" data-en="Enquiry Type">Navraag Tipe</option></select></div>
-          <textarea rows="4" placeholder="Hoe kan ons jou help?" data-af-placeholder="Hoe kan ons jou help?" data-en-placeholder="How can we help you?"></textarea>
-          <button type="button" class="btn btn-primary full" onclick="showToast('Demo navraag gestuur. In die regte webwerf koppel dit aan e-pos of WhatsApp.')" data-af="Stuur Navraag" data-en="Send Enquiry">Stuur Navraag</button>
-        </form>
-      </div>
-    </section>
   </main>
 
-  <footer class="footer" id="footer">
-    <div class="container footer-grid">
-      <div><img src="gap-logo.png" alt="GAP Aanlyn"><p data-af="Een platform. Twee tale. Eindelose moontlikhede." data-en="One platform. Two languages. Endless possibilities.">Een platform. Twee tale. Eindelose moontlikhede.</p><div class="socials"><span>f</span><span>◎</span><span>▶</span><span>♪</span></div></div>
-      <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#features">Information</a><a href="#tools">Forms</a><a href="#portal">Programs</a><a href="#tools">Subjects</a><a href="portal.html">Portal</a></div>
-      <div><h4>Support</h4><a href="#contact">Contact Us</a><a>FAQ</a><a>Terms & Conditions</a><a>Privacy Policy</a><a>Refund Policy</a></div>
-      <div><h4>Contact</h4><a>+27 62 247 2432</a><a>info@gapaanlyn.com</a><a>WhatsApp: +27 62 247 2432</a><a>South Africa</a></div>
-    </div>
-    <div class="container footer-bottom"><small>© 2025 GAP Aanlyn. All rights reserved.</small><a class="whatsapp" href="https://wa.me/" target="_blank">💬 Chat on WhatsApp</a></div>
-  </footer>
-
   <div id="toast" class="toast"></div>
-  <div id="videoModal" class="modal"><div class="modal-bg" onclick="closeVideo()"></div><div class="modal-box"><button onclick="closeVideo()" class="modal-close">×</button><div id="modalContent"></div></div></div>
+
+  <div id="videoModal" class="modal" aria-hidden="true">
+    <div class="modal-bg" onclick="closeVideo()"></div>
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeVideo()">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
