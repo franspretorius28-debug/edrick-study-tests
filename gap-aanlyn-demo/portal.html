@@ -6,89 +6,67 @@
   <title>GAP Aanlyn – Portal Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="portal-page">
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="brand-logo"><img src="gap-logo.png" alt="GAP Aanlyn"></a>
-      <button class="menu-btn" onclick="toggleMenu()">☰</button>
-      <nav id="mainNav" class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="index.html#videos">Videos</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="lang-btn" onclick="toggleLanguage()"><span>🌐</span><span id="langLabel">Afrikaans | English</span><span>▾</span></button>
-      </div>
+<body class="portal-body-v7">
+  <header class="portal-header">
+    <a href="index.html" class="portal-logo-link"><img src="gap-logo.png" alt="GAP Aanlyn"></a>
+    <div class="portal-header-actions">
+      <button class="header-pill" onclick="showToast('Language switching will be active in the full live build.')">🌐 Afrikaans | English</button>
+      <a href="index.html" class="header-pill solid">Back to Website</a>
     </div>
   </header>
 
-  <main class="portal-layout">
-    <aside class="portal-sidebar">
-      <div class="portal-logo">GAP <span>Portal</span></div>
-      <a class="active" href="#">Dashboard</a>
-      <a href="#">My Subjects</a>
-      <a href="#">Tasks</a>
-      <a href="#">Tests</a>
-      <a href="#">Progress</a>
-      <a href="#">Reports</a>
-      <a href="#">Calendar</a>
-      <a href="#">Messages</a>
-      <a href="#">Settings</a>
-    </aside>
-
-    <section class="portal-main">
-      <div class="portal-top-card">
-        <div>
-          <div class="eyebrow">LEARNER DASHBOARD</div>
-          <h1>Hello, Liam! 👋</h1>
-          <p>Welcome back. Keep up the great work!</p>
+  <main class="portal-page-wrap">
+    <section class="portal-hero-card">
+      <div class="portal-hero-copy">
+        <div class="label-pill">LEARNER PORTAL DEMO</div>
+        <h1>Smart. Simple. Powerful.</h1>
+        <p>This page is a clickable portal-style extension of the homepage demo and gives the client a clearer idea of how the learner dashboard can look in the real project.</p>
+        <div class="portal-actions">
+          <button class="portal-btn-primary" onclick="showToast('Tasks, tests and reports can be connected in the final build.')">Open Tasks</button>
+          <button class="portal-btn-secondary" onclick="showToast('Parent progress tools can be expanded in the final build.')">Parent View</button>
         </div>
-        <div class="portal-avatar">L</div>
+      </div>
+      <div class="portal-hero-art">
+        <img src="portal-card.png" alt="Learner dashboard card">
+      </div>
+    </section>
+
+    <section class="portal-content-grid">
+      <div class="portal-panel big">
+        <img src="portal-showcase.png" alt="Portal showcase" class="showcase-image">
       </div>
 
-      <div class="portal-kpi-grid">
-        <div class="portal-kpi"><strong>6</strong><span>Subjects</span></div>
-        <div class="portal-kpi"><strong>14</strong><span>Tasks Due</span></div>
-        <div class="portal-kpi"><strong>3</strong><span>Tests Due</span></div>
-        <div class="portal-kpi"><strong>78%</strong><span>Average</span></div>
+      <div class="portal-panel side">
+        <h3>Portal Highlights</h3>
+        <ul>
+          <li>Subjects, tasks and tests in one place</li>
+          <li>Progress tracking for parents and learners</li>
+          <li>Afrikaans and English ready</li>
+          <li>Professional mobile and desktop layout</li>
+          <li>Designed to feel clear and trustworthy</li>
+        </ul>
       </div>
 
-      <div class="portal-panel-grid">
-        <div class="portal-panel large">
-          <div class="panel-title"><h3>Progress Overview</h3><span>EN | AF</span></div>
-          <div class="progress-row"><label>Afrikaans</label><b>90%</b><div class="bar"><i style="width:90%"></i></div></div>
-          <div class="progress-row"><label>Mathematics</label><b>78%</b><div class="bar"><i style="width:78%"></i></div></div>
-          <div class="progress-row"><label>Life Skills</label><b>85%</b><div class="bar"><i style="width:85%"></i></div></div>
-          <div class="progress-row"><label>Natural Sciences</label><b>73%</b><div class="bar"><i style="width:73%"></i></div></div>
-          <div class="progress-row"><label>Social Sciences</label><b>88%</b><div class="bar"><i style="width:88%"></i></div></div>
-        </div>
+      <div class="portal-panel small">
+        <h3>Upcoming</h3>
+        <div class="mini-item"><strong>Mathematics Test</strong><span>May 20</span></div>
+        <div class="mini-item"><strong>Science Assignment</strong><span>May 22</span></div>
+        <div class="mini-item"><strong>Afrikaans Essay</strong><span>May 28</span></div>
+      </div>
 
-        <div class="portal-panel">
-          <div class="panel-title"><h3>Calendar</h3></div>
-          <div class="calendar-widget"></div>
-        </div>
-
-        <div class="portal-panel">
-          <div class="panel-title"><h3>Upcoming</h3></div>
-          <ul class="plain-list">
-            <li><strong>Maths Test</strong><span>May 20</span></li>
-            <li><strong>Science Assignment</strong><span>May 22</span></li>
-            <li><strong>Afrikaans Essay</strong><span>May 28</span></li>
-          </ul>
-        </div>
-
-        <div class="portal-panel large">
-          <div class="panel-title"><h3>Recent Activity</h3></div>
-          <ul class="plain-list">
-            <li><strong>Task Submitted</strong><span>English</span></li>
-            <li><strong>Test Completed</strong><span>Mathematics</span></li>
-            <li><strong>Report Viewed</strong><span>Parent Portal</span></li>
-          </ul>
+      <div class="portal-panel small">
+        <h3>Quick Actions</h3>
+        <div class="quick-actions">
+          <button onclick="showToast('Demo action: Open Subjects')">Subjects</button>
+          <button onclick="showToast('Demo action: Open Tasks')">Tasks</button>
+          <button onclick="showToast('Demo action: Open Reports')">Reports</button>
+          <button onclick="showToast('Demo action: Open Messages')">Messages</button>
         </div>
       </div>
     </section>
   </main>
 
+  <div id="toast" class="toast"></div>
   <script src="script.js"></script>
 </body>
 </html>

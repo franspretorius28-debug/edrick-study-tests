@@ -1,40 +1,29 @@
 
-let currentLanguage = localStorage.getItem("gap_lang") || "en";
-
-function applyLanguage(lang){
-  currentLanguage = lang;
-  localStorage.setItem("gap_lang", lang);
-  document.documentElement.lang = lang === "en" ? "en" : "af";
-
-  document.querySelectorAll("[data-en][data-af]").forEach(el => {
-    const val = el.getAttribute(lang === "en" ? "data-en" : "data-af");
-    if(val !== null) el.textContent = val;
-  });
-
-  document.querySelectorAll("input[data-en-placeholder][data-af-placeholder], textarea[data-en-placeholder][data-af-placeholder]").forEach(el => {
-    el.placeholder = el.getAttribute(lang === "en" ? "data-en-placeholder" : "data-af-placeholder");
-  });
-
-  document.querySelectorAll("option[data-en][data-af]").forEach(el => {
-    el.textContent = el.getAttribute(lang === "en" ? "data-en" : "data-af");
-  });
+function showToast(message){
+  const toast = document.getElementById('toast');
+  if(!toast) return;
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(window.__gapToastTimer);
+  window.__gapToastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2600);
 }
 
-function toggleLanguage(){
-  applyLanguage(currentLanguage === "en" ? "af" : "en");
+function toggleLangToast(){
+  showToast('Afrikaans | English switch can be connected fully in the live build. This demo keeps the exact visual layout as requested.');
 }
 
-function toggleMenu(){
-  const nav = document.getElementById("mainNav");
-  if(nav) nav.classList.toggle("open");
+function scrollToContact(){
+  showToast('In the final live build this button can scroll to the contact form or open a quotation / enquiry workflow.');
 }
 
-function openVideoModal(type){
-  const modal = document.getElementById("videoModal");
-  const content = document.getElementById("modalContent");
+function openVideo(type){
+  const modal = document.getElementById('videoModal');
+  const content = document.getElementById('modalContent');
   if(!modal || !content) return;
 
-  if(type === "youtube"){
+  if(type === 'youtube'){
     content.innerHTML = `
       <div class="modal-frame">
         <iframe src="https://www.youtube.com/embed/lecARX06NkM?autoplay=1"
@@ -44,53 +33,56 @@ function openVideoModal(type){
       </div>
     `;
   } else {
-    const videos = {
+    const map = {
       portal: {
-        title: "Portal Walkthrough",
-        step: "Step 1",
-        heading: "Everything in one learner dashboard.",
-        text: "Learners can open subjects, see tasks, write tests, view marks and follow progress in Afrikaans or English."
+        title: 'Portal Walkthrough',
+        step: 'PORTAL TOUR',
+        heading: 'See how the learner portal works step-by-step.',
+        text: 'This polished demo video concept shows the type of guided walkthrough that can explain subjects, tasks, tests, reports and progress to parents and learners.'
       },
       parents: {
-        title: "How Parents Track Progress",
-        step: "Step 2",
-        heading: "Parents stay informed in real time.",
-        text: "Parents can see marks, reports, messages and upcoming tasks without phoning the school or waiting for feedback."
+        title: 'How Parents Track Progress',
+        step: 'PARENT VIEW',
+        heading: 'Real-time insight for parents.',
+        text: 'Parents can see marks, reports, subject progress and important updates in a clean and trustworthy dashboard experience.'
       },
       tasks: {
-        title: "How Assignments & Tests Work",
-        step: "Step 3",
-        heading: "Tasks, tests and feedback in one place.",
-        text: "Learners receive clear instructions, complete work online and get structured results and feedback through the portal."
+        title: 'How Assignments & Tests Work',
+        step: 'TASKS & TESTS',
+        heading: 'Everything your child needs to succeed.',
+        text: 'Assignments, tests and feedback can be presented in one easy learner workflow that feels professional and clear.'
       }
     };
-    const data = videos[type];
-
+    const d = map[type];
     content.innerHTML = `
       <div class="demo-video">
         <div class="demo-head">
-          <h2>${data.title}</h2>
-          <p>This polished built-in explainer gives the client a clear idea of how a real platform walkthrough video can look.</p>
+          <h2>${d.title}</h2>
+          <p>Professional built-in explainer video concept for the website demo.</p>
         </div>
-        <div class="demo-body">
+        <div class="demo-inner">
           <div class="demo-copy">
-            <div class="eyebrow">${data.step}</div>
-            <h3>${data.heading}</h3>
-            <p>${data.text}</p>
+            <div class="eyebrow">${d.step}</div>
+            <h3>${d.heading}</h3>
+            <p>${d.text}</p>
           </div>
-          <div class="demo-screen">
-            <div class="demo-ui">
+          <div class="demo-ui">
+            <div class="demo-ui-layout">
               <div class="demo-side">
                 <strong>GAP</strong>
                 <span>Dashboard</span>
-                <span>Subjects</span>
+                <span>My Subjects</span>
                 <span>Tasks</span>
                 <span>Tests</span>
                 <span>Progress</span>
                 <span>Reports</span>
+                <span>Messages</span>
               </div>
               <div class="demo-main">
-                <div class="demo-main-top"><strong>Hello, Liam! 👋</strong><span>EN | AF</span></div>
+                <div class="demo-top">
+                  <strong>Hello, Liam! 👋</strong>
+                  <span class="pill">EN | AF</span>
+                </div>
                 <div class="demo-kpis">
                   <div><b>6</b><small>Subjects</small></div>
                   <div><b>14</b><small>Tasks</small></div>
@@ -109,31 +101,29 @@ function openVideoModal(type){
           </div>
         </div>
         <div class="demo-controls">
-          <div class="playing">▶ Playing Demo</div>
-          <div class="timeline"><i></i></div>
+          <div class="demo-play">▶ Playing Demo</div>
+          <div class="demo-timeline"><i></i></div>
           <strong>EN | AF</strong>
         </div>
       </div>
     `;
   }
 
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeVideoModal(){
-  const modal = document.getElementById("videoModal");
-  const content = document.getElementById("modalContent");
+  const modal = document.getElementById('videoModal');
+  const content = document.getElementById('modalContent');
   if(!modal || !content) return;
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  content.innerHTML = "";
-  document.body.style.overflow = "";
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  content.innerHTML = '';
+  document.body.style.overflow = '';
 }
 
-document.addEventListener("keydown", (e) => {
-  if(e.key === "Escape") closeVideoModal();
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeVideoModal();
 });
-
-document.addEventListener("DOMContentLoaded", () => applyLanguage(currentLanguage));

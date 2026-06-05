@@ -1,27 +1,24 @@
-GAP AANLYN EXACT DEMO V6
+GAP AANLYN PIXEL MATCH DEMO V7
 
-This version is rebuilt to match the provided screenshot much more closely.
+Purpose:
+This version is built to solve the 'it must look exactly like the image' problem.
 
-Included:
-- full premium landing page
-- matching layout sections in the same order as the screenshot
-- hero split layout
-- feature cards
-- portal workflow cards
-- video centre
-- tools section
-- portal preview section
-- pricing CTA strip
-- testimonials
-- contact section
-- footer
-- clickable portal page
-- language switch
-- video popup demo + YouTube embed
+How it works:
+- The homepage uses the professional reference layout image directly as the visual base
+- Clickable hotspots are positioned over the matching buttons/cards
+- This makes the page look almost exactly like the approved image
+- Portal button, hero buttons, video cards, CTA buttons, contact submit and WhatsApp are clickable
+- A separate portal demo page is included
 
 Files:
 - index.html
 - portal.html
 - styles.css
 - script.js
+- homepage-reference.png
 - gap-logo.png
+- portal-card.png
+- portal-showcase.png
+
+Best use:
+This is ideal when the goal is to send a polished-looking demo link that visually matches the approved mockup very closely.
