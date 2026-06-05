@@ -3,35 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Online – Premium Demo</title>
+  <title>GAP Aanlyn – Premium Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="logo" href="#top">GAP <span>Online</span></a>
+      <a class="logo" href="#top">
+        <span class="logo-big">GAP</span>
+        <span class="logo-small">aanlyn.com</span>
+      </a>
 
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
       <nav id="mainNav" class="main-nav">
         <a href="#top" data-en="Home" data-af="Tuis">Home</a>
-        <a href="#features" data-en="About" data-af="Meer">About</a>
+        <a href="#info" data-en="Information" data-af="Inligting">Information</a>
+        <a href="#forms" data-en="Forms" data-af="Vorms">Forms</a>
+        <a href="#programs" data-en="Programs" data-af="Programme">Programs</a>
+        <a href="#downloads" data-en="Downloads" data-af="Aflaaie">Downloads</a>
         <a href="#subjects" data-en="Subjects" data-af="Vakke">Subjects</a>
-        <a href="portal.html" data-en="Portal" data-af="Portaal">Portal</a>
-        <a href="#video" data-en="Video" data-af="Video">Video</a>
-        <a href="#contact" data-en="Contact" data-af="Kontak">Contact</a>
+        <a href="#marketing" data-en="Marketing" data-af="Bemarking">Marketing</a>
+        <a href="#centres" data-en="Centres" data-af="Sentrums">Centres</a>
+        <a href="#sponsors" data-en="Sponsors" data-af="Borge">Sponsors</a>
       </nav>
 
-      <div class="header-actions">
-        <button class="lang-toggle" onclick="toggleLanguage()">
-          <span id="langLabel">EN | AF</span>
+      <div class="nav-actions">
+        <a class="btn btn-portal" href="portal.html">Portal</a>
+        <button class="lang-select" onclick="toggleLanguage()">
+          <span class="globe">🌐</span>
+          <span id="langLabel">Afrikaans | English</span>
+          <span>▾</span>
         </button>
-        <a class="btn btn-outline small" href="portal.html">
-          <span data-en="View Portal" data-af="Kyk Portaal">View Portal</span>
-        </a>
-        <a class="btn btn-primary small" href="#contact">
-          <span data-en="Enrol Today" data-af="Skryf Vandag In">Enrol Today</span> →
-        </a>
       </div>
     </div>
   </header>
@@ -40,342 +43,324 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow" data-en="RELIABLE ONLINE SCHOOL SUPPORT" data-af="BETROUBARE AANLYN SKOOLONDERSTEUNING">RELIABLE ONLINE SCHOOL SUPPORT</div>
-
-          <h1 id="heroTitle">
-            <span data-en="Better Learning." data-af="Beter Leer.">Better Learning.</span><br>
-            <span data-en="Stronger Results." data-af="Sterker Resultate.">Stronger Results.</span><br>
-            <span class="gradient" data-en="Brighter Futures." data-af="Helderder Toekoms.">Brighter Futures.</span>
+          <div class="pill" data-en="AFRIKAANS & ENGLISH AVAILABLE" data-af="AFRIKAANS & ENGELS BESKIKBAAR">AFRIKAANS & ENGLISH AVAILABLE</div>
+          <h1>
+            <span data-en="One Platform." data-af="Een Platform.">One Platform.</span><br>
+            <span data-en="Two Languages." data-af="Twee Tale.">Two Languages.</span><br>
+            <span class="gradient" data-en="Better Learning." data-af="Beter Leer.">Better Learning.</span>
           </h1>
-
-          <p class="hero-lead"
-             data-en="A modern, safe and user-friendly platform that helps schools deliver exceptional online learning — with less effort."
-             data-af="‘n Moderne, veilige en gebruikersvriendelike platform wat skole help om uitsonderlike aanlyn leer te lewer — met minder moeite.">
-            A modern, safe and user-friendly platform that helps schools deliver exceptional online learning — with less effort.
+          <p class="hero-text"
+             data-en="GAP Aanlyn is a premium online learning platform with CAPS-aligned content, instant language switching, built-in parent tools and an easy-to-use learner portal — all in one place."
+             data-af="GAP Aanlyn is ’n premium aanlyn leerplatform met CAPS-belynde inhoud, onmiddellike taalwisseling, ingeboude ouerhulpmiddels en ’n maklik-om-te-gebruik leerderportaal — alles op een plek.">
+             GAP Aanlyn is a premium online learning platform with CAPS-aligned content, instant language switching, built-in parent tools and an easy-to-use learner portal — all in one place.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact"><span data-en="Enrol Today" data-af="Skryf Vandag In">Enrol Today</span> →</a>
-            <a class="btn btn-outline" href="#video"><span data-en="See how it works" data-af="Kyk hoe dit werk">See how it works</span> ⓘ</a>
+            <a class="btn btn-primary" href="#demo-video"><span data-en="View Demo" data-af="Kyk Demo">View Demo</span> ▶</a>
+            <a class="btn btn-secondary" href="#video-centre"><span data-en="Watch Intro" data-af="Kyk Intro">Watch Intro</span> ▶</a>
+            <a class="btn btn-pink" href="portal.html"><span data-en="Open Portal" data-af="Maak Portaal Oop">Open Portal</span> ⇢</a>
           </div>
 
-          <div class="stats-row">
-            <div class="stat-mini">
-              <div class="icon-badge">👨‍👩‍👧</div>
-              <div>
-                <strong>2,500+</strong>
-                <span data-en="Families" data-af="Gesinne">Families</span>
-              </div>
-            </div>
-            <div class="stat-mini">
-              <div class="icon-badge">🛡️</div>
-              <div>
-                <strong>98%</strong>
-                <span data-en="Parent Satisfaction" data-af="Ouer Tevredenheid">Parent Satisfaction</span>
-              </div>
-            </div>
-            <div class="stat-mini">
-              <div class="icon-badge">⭐</div>
-              <div>
-                <strong>4.9/5</strong>
-                <span data-en="Average Rating" data-af="Gemiddelde Gradering">Average Rating</span>
-              </div>
+          <div class="mini-stats">
+            <div><strong>2,500+</strong><span data-en="Families" data-af="Gesinne">Families</span></div>
+            <div><strong>98%</strong><span data-en="Parent Satisfaction" data-af="Ouer Tevredenheid">Parent Satisfaction</span></div>
+            <div><strong>4.9/5</strong><span data-en="Average Rating" data-af="Gemiddelde Gradering">Average Rating</span></div>
+            <div><strong>CAPS</strong><span data-en="Aligned Content" data-af="Belynde Inhoud">Aligned Content</span></div>
+          </div>
+
+          <div class="switch-strip">
+            <span>↻</span>
+            <span data-en="Switch instantly between Afrikaans and English" data-af="Verander onmiddellik tussen Afrikaans en Engels">Switch instantly between Afrikaans and English</span>
+            <div class="mini-toggle">
+              <span class="active">AF</span><span>EN</span>
             </div>
           </div>
         </div>
 
         <div class="hero-visual">
-          <div class="hero-card">
-            <div class="hero-art">
-              <div class="glow"></div>
-              <div class="people-card">
-                <div class="photo-wrap">
-                  <img src="https://images.unsplash.com/photo-1588072432904-843af37f03ed?auto=format&fit=crop&w=900&q=80" alt="Mother and child learning online">
+          <div class="orb"></div>
+          <div class="photo-card">
+            <img src="https://images.unsplash.com/photo-1588072432904-843af37f03ed?auto=format&fit=crop&w=1000&q=80" alt="Learning together">
+          </div>
+          <div class="dash-card">
+            <div class="dash-top">
+              <strong>Learner Dashboard</strong>
+              <small>EN | AF</small>
+            </div>
+            <div class="dash-grid">
+              <aside>
+                <span class="active">Dashboard</span>
+                <span>My Subjects</span>
+                <span>Tasks</span>
+                <span>Tests</span>
+                <span>Progress</span>
+                <span>Reports</span>
+                <span>Calendar</span>
+                <span>Messages</span>
+              </aside>
+              <div class="dash-main">
+                <p><strong>Hello, Liam! 👋</strong><br><span>Welcome back.</span></p>
+                <div class="dash-stats">
+                  <div><b>6</b><span>Subjects</span></div>
+                  <div><b>14</b><span>Tasks Due</span></div>
+                  <div><b>3</b><span>Tests Due</span></div>
+                  <div><b>78%</b><span>Average</span></div>
                 </div>
-                <div class="safe-note">
-                  <strong data-en="Safe. Secure. Reliable." data-af="Veilig. Betroubaar. Professioneel.">Safe. Secure. Reliable.</strong>
-                  <span data-en="Your child's learning is in good hands." data-af="Jou kind se leer is in goeie hande.">Your child's learning is in good hands.</span>
-                </div>
+                <div class="progress-row"><label>Afrikaans</label><b>90%</b><div class="bar"><i style="width:90%"></i></div></div>
+                <div class="progress-row"><label>Mathematics</label><b>78%</b><div class="bar"><i style="width:78%"></i></div></div>
+                <div class="progress-row"><label>Life Skills</label><b>85%</b><div class="bar"><i style="width:85%"></i></div></div>
+                <div class="progress-row"><label>Natural Sciences</label><b>73%</b><div class="bar"><i style="width:73%"></i></div></div>
+                <div class="progress-row"><label>Social Sciences</label><b>88%</b><div class="bar"><i style="width:88%"></i></div></div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <div class="dashboard-card">
-                <div class="dash-head">
-                  <strong data-en="Learner Dashboard" data-af="Leerder Dashboard">Learner Dashboard</strong>
-                  <div class="tiny-lang">EN | AF</div>
+    <section class="section" id="info">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow" data-en="WHY CHOOSE GAP AANLYN?" data-af="HOEKOM GAP AANLYN?">WHY CHOOSE GAP AANLYN?</div>
+          <h2 data-en="Powerful features that support every learner and every parent." data-af="Kragtige funksies wat elke leerder en elke ouer ondersteun.">Powerful features that support every learner and every parent.</h2>
+        </div>
+
+        <div class="feature-grid six">
+          <article class="feature-card"><div class="feature-icon">🎓</div><h3 data-en="CAPS-Aligned Content" data-af="CAPS-Belynde Inhoud">CAPS-Aligned Content</h3><p data-en="Up-to-date lessons and resources for all core subjects." data-af="Opgedateerde lesse en hulpbronne vir alle kernvakke.">Up-to-date lessons and resources for all core subjects.</p></article>
+          <article class="feature-card"><div class="feature-icon">🌐</div><h3 data-en="Afrikaans & English" data-af="Afrikaans & Engels">Afrikaans & English</h3><p data-en="Switch instantly between languages anytime, anywhere." data-af="Verander onmiddellik tussen tale enige tyd en enige plek.">Switch instantly between languages anytime, anywhere.</p></article>
+          <article class="feature-card"><div class="feature-icon">📊</div><h3 data-en="Track Progress Easily" data-af="Volg Vordering Maklik">Track Progress Easily</h3><p data-en="Real-time reports and insights for better outcomes." data-af="Regstreekse verslae en insigte vir beter uitkomste.">Real-time reports and insights for better outcomes.</p></article>
+          <article class="feature-card"><div class="feature-icon">📝</div><h3 data-en="Tasks, Tests & Assignments" data-af="Take, Toetse & Opdragte">Tasks, Tests & Assignments</h3><p data-en="Interactive activities and assessments in one place." data-af="Interaktiewe aktiwiteite en assesserings op een plek.">Interactive activities and assessments in one place.</p></article>
+          <article class="feature-card"><div class="feature-icon">👨‍👩‍👧</div><h3 data-en="Parent Oversight" data-af="Ouer Toesig">Parent Oversight</h3><p data-en="Monitor progress, messages and important updates." data-af="Monitor vordering, boodskappe en belangrike opdaterings.">Monitor progress, messages and important updates.</p></article>
+          <article class="feature-card"><div class="feature-icon">🔒</div><h3 data-en="Safe & Secure" data-af="Veilig & Sekuur">Safe & Secure</h3><p data-en="Enterprise-grade security to protect your child’s data." data-af="Ondernemingsvlak sekuriteit om jou kind se data te beskerm.">Enterprise-grade security to protect your child’s data.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section slim-section" id="programs">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow" data-en="HOW THE PORTAL WORKS" data-af="HOE DIE PORTAAL WERK">HOW THE PORTAL WORKS</div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-no">1</div><h3 data-en="Learn" data-af="Leer">Learn</h3><p data-en="Engaging video lessons and notes for every subject." data-af="Betrokke videolesse en notas vir elke vak.">Engaging video lessons and notes for every subject.</p><div class="step-ico">💻</div></div>
+          <div class="step-card"><div class="step-no">2</div><h3 data-en="Practice" data-af="Oefen">Practice</h3><p data-en="Complete tasks, quizzes and tests to build confidence." data-af="Voltooi take, vasvrae en toetse om selfvertroue te bou.">Complete tasks, quizzes and tests to build confidence.</p><div class="step-ico">📋</div></div>
+          <div class="step-card"><div class="step-no">3</div><h3 data-en="Track Progress" data-af="Volg Vordering">Track Progress</h3><p data-en="View marks, reports and subject progress in real time." data-af="Sien punte, verslae en vakvordering in regte tyd.">View marks, reports and subject progress in real time.</p><div class="step-ico">📈</div></div>
+          <div class="step-card"><div class="step-no">4</div><h3 data-en="Stay Involved" data-af="Bly Betrokke">Stay Involved</h3><p data-en="Parents get updates, messages and important alerts." data-af="Ouers kry opdaterings, boodskappe en belangrike kennisgewings.">Parents get updates, messages and important alerts.</p><div class="step-ico">🔔</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="video-centre">
+      <div class="container">
+        <div class="video-head">
+          <div>
+            <div class="eyebrow" data-en="WATCH HOW IT WORKS" data-af="KYK HOE DIT WERK">WATCH HOW IT WORKS</div>
+            <h2 data-en="Video Centre" data-af="Video Sentrum">Video Centre</h2>
+          </div>
+          <a class="btn btn-secondary small" href="https://youtu.be/lecARX06NkM?si=qox6xpWt-BBtIP1p" target="_blank">View all videos →</a>
+        </div>
+
+        <div class="video-grid">
+          <a class="video-card" id="demo-video" href="https://youtu.be/lecARX06NkM?si=qox6xpWt-BBtIP1p" target="_blank">
+            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>1:32</small></div>
+            <div class="video-info"><h3>Welcome to GAP</h3><p data-en="Discover the power of bilingual learning with GAP Aanlyn." data-af="Ontdek die krag van tweetalige leer met GAP Aanlyn.">Discover the power of bilingual learning with GAP Aanlyn.</p></div>
+          </a>
+
+          <a class="video-card" href="portal.html">
+            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>2:45</small></div>
+            <div class="video-info"><h3>Portal Walkthrough</h3><p data-en="See how the learner portal works step-by-step." data-af="Sien stap vir stap hoe die leerderportaal werk.">See how the learner portal works step-by-step.</p></div>
+          </a>
+
+          <a class="video-card" href="portal.html">
+            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>2:10</small></div>
+            <div class="video-info"><h3>How Parents Track Progress</h3><p data-en="Stay informed and support your child every step of the way." data-af="Bly ingelig en ondersteun jou kind elke tree van die pad.">Stay informed and support your child every step of the way.</p></div>
+          </a>
+
+          <a class="video-card" href="portal.html">
+            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>2:22</small></div>
+            <div class="video-info"><h3>How Assignments & Tests Work</h3><p data-en="From tasks to tests – everything your child needs to succeed." data-af="Van take tot toetse – alles wat jou kind nodig het om te slaag.">From tasks to tests – everything your child needs to succeed.</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section muted" id="forms">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow" data-en="EVERYTHING IN ONE PLACE" data-af="ALLES OP EEN PLEK">EVERYTHING IN ONE PLACE</div>
+          <h2 data-en="All the tools and information you need." data-af="Al die hulpmiddels en inligting wat jy nodig het.">All the tools and information you need.</h2>
+        </div>
+
+        <div class="tool-grid">
+          <div class="tool-card"><span>ℹ️</span><strong data-en="Information" data-af="Inligting">Information</strong><small data-en="About GAP Aanlyn, policies & more" data-af="Oor GAP Aanlyn, beleide en meer">About GAP Aanlyn, policies & more</small></div>
+          <div class="tool-card"><span>📄</span><strong data-en="Forms" data-af="Vorms">Forms</strong><small data-en="Registrations, updates & more" data-af="Registrasies, opdaterings en meer">Registrations, updates & more</small></div>
+          <div class="tool-card"><span>📚</span><strong data-en="Programs" data-af="Programme">Programs</strong><small data-en="Curriculum & learning programs" data-af="Kurrikulum en leerprogramme">Curriculum & learning programs</small></div>
+          <div class="tool-card"><span>⬇️</span><strong data-en="Downloads" data-af="Aflaaie">Downloads</strong><small data-en="Documents, guides & templates" data-af="Dokumente, gidse en templates">Documents, guides & templates</small></div>
+          <div class="tool-card"><span>🎒</span><strong data-en="Subjects" data-af="Vakke">Subjects</strong><small data-en="Explore all core school subjects" data-af="Verken alle kernskoolvakke">Explore all core school subjects</small></div>
+          <div class="tool-card"><span>📣</span><strong data-en="Marketing" data-af="Bemarking">Marketing</strong><small data-en="Promotions, news & updates" data-af="Promosies, nuus en opdaterings">Promotions, news & updates</small></div>
+          <div class="tool-card"><span>🎨</span><strong data-en="Coloring Competition" data-af="Inkleurkompetisie">Coloring Competition</strong><small data-en="Annual competition for kids" data-af="Jaarlikse kompetisie vir kinders">Annual competition for kids</small></div>
+          <div class="tool-card"><span>🏫</span><strong data-en="Centres" data-af="Sentrums">Centres</strong><small data-en="Find a GAP learning centre" data-af="Vind 'n GAP leersentrum">Find a GAP learning centre</small></div>
+          <div class="tool-card"><span>🌿</span><strong data-en="Sponsors" data-af="Borge">Sponsors</strong><small data-en="Our partners & supporters" data-af="Ons vennote en ondersteuners">Our partners & supporters</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="subjects">
+      <div class="container portal-showcase">
+        <div class="showcase-copy">
+          <div class="eyebrow" data-en="THE GAP LEARNER PORTAL" data-af="DIE GAP LEERDERPORTAAL">THE GAP LEARNER PORTAL</div>
+          <h2 data-en="Smart. Simple. Powerful." data-af="Slim. Eenvoudig. Kragtig.">Smart. Simple. Powerful.</h2>
+          <p data-en="Everything learners and parents need in one secure, easy-to-use dashboard." data-af="Alles wat leerders en ouers nodig het in een veilige, maklik-om-te-gebruik dashboard.">Everything learners and parents need in one secure, easy-to-use dashboard.</p>
+          <ul class="green-list">
+            <li data-en="Assignments, tests & resources" data-af="Opdragte, toetse en hulpbronne">Assignments, tests & resources</li>
+            <li data-en="Marks, reports & progress tracking" data-af="Punte, verslae en vorderingsopsporing">Marks, reports & progress tracking</li>
+            <li data-en="Calendar, messages & announcements" data-af="Kalender, boodskappe en aankondigings">Calendar, messages & announcements</li>
+            <li data-en="Available in Afrikaans & English" data-af="Beskikbaar in Afrikaans & Engels">Available in Afrikaans & English</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="portal.html">Open Portal</a>
+            <a class="btn btn-secondary" href="#video-centre">View Demo</a>
+          </div>
+        </div>
+
+        <div class="device-area">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="screen-ui">
+                <div class="ui-sidebar">
+                  <strong>GAP</strong>
+                  <span>Dashboard</span><span>My Subjects</span><span>Tasks</span><span>Tests</span><span>Progress</span><span>Reports</span><span>Calendar</span><span>Messages</span><span>Settings</span>
                 </div>
-                <div class="dash-body">
-                  <aside class="dash-menu">
-                    <span class="active" data-en="Dashboard" data-af="Tuisblad">Dashboard</span>
-                    <span data-en="My Subjects" data-af="My Vakke">My Subjects</span>
-                    <span data-en="Tasks" data-af="Take">Tasks</span>
-                    <span data-en="Tests" data-af="Toetse">Tests</span>
-                    <span data-en="Progress" data-af="Vordering">Progress</span>
-                    <span data-en="Reports" data-af="Verslae">Reports</span>
-                  </aside>
-                  <div class="dash-content">
-                    <p class="hello"><strong>Hello, Lize! 👋</strong><br><span data-en="Welcome back" data-af="Welkom terug">Welcome back</span></p>
-                    <div class="kpi-grid">
-                      <div><strong>6</strong><span data-en="Subjects" data-af="Vakke">Subjects</span></div>
-                      <div><strong>4</strong><span data-en="Tasks Due" data-af="Take Oop">Tasks Due</span></div>
-                      <div><strong>2</strong><span data-en="Tests Due" data-af="Toetse Oop">Tests Due</span></div>
-                      <div><strong>78%</strong><span data-en="Average Score" data-af="Gem. Punt">Average Score</span></div>
-                    </div>
-                    <div class="progress-list">
-                      <div><label>Afrikaans</label><b>90%</b><div class="bar"><span style="width:90%"></span></div></div>
-                      <div><label>Mathematics</label><b>75%</b><div class="bar"><span style="width:75%"></span></div></div>
-                      <div><label>Life Skills</label><b>85%</b><div class="bar"><span style="width:85%"></span></div></div>
-                      <div><label>Natural Sciences</label><b>75%</b><div class="bar"><span style="width:75%"></span></div></div>
-                    </div>
+                <div class="ui-main">
+                  <div class="ui-top"><strong>Hello, Liam! 👋</strong><span>Keep up the great work!</span></div>
+                  <div class="ui-kpis"><div><b>6</b><span>Subjects</span></div><div><b>14</b><span>Tasks</span></div><div><b>3</b><span>Tests</span></div><div><b>78%</b><span>Average</span></div></div>
+                  <div class="ui-progress">
+                    <div><label>Afrikaans</label><div class="bar"><i style="width:90%"></i></div></div>
+                    <div><label>Mathematics</label><div class="bar"><i style="width:78%"></i></div></div>
+                    <div><label>Life Skills</label><div class="bar"><i style="width:85%"></i></div></div>
+                    <div><label>Natural Sciences</label><div class="bar"><i style="width:73%"></i></div></div>
+                    <div><label>Social Sciences</label><div class="bar"><i style="width:88%"></i></div></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-top center">
-          <div class="eyebrow pink" data-en="WHY CHOOSE GAP ONLINE?" data-af="HOEKOM GAP ONLINE?">WHY CHOOSE GAP ONLINE?</div>
-          <h2 data-en="Everything schools need. Everything learners deserve." data-af="Alles wat skole nodig het. Alles wat leerders verdien.">Everything schools need. Everything learners deserve.</h2>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-icon">👩‍🏫</div>
-            <h3 data-en="Experienced Teachers" data-af="Ervare Onderwysers">Experienced Teachers</h3>
-            <p data-en="Qualified educators with years of online teaching experience." data-af="Gekwalifiseerde opvoeders met jare se ervaring in aanlyn onderrig.">Qualified educators with years of online teaching experience.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h3 data-en="Personalised Attention" data-af="Persoonlike Aandag">Personalised Attention</h3>
-            <p data-en="Small classes and individual support for every learner." data-af="Klein klasse en individuele ondersteuning vir elke leerder.">Small classes and individual support for every learner.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">📈</div>
-            <h3 data-en="Visible Results" data-af="Sigbare Resultate">Visible Results</h3>
-            <p data-en="Real progress you can see in every task, test and report." data-af="Regte vordering wat sigbaar is in take, toetse en verslae.">Real progress you can see in every task, test and report.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">🕒</div>
-            <h3 data-en="Learn Anytime" data-af="Leer Enige Tyd">Learn Anytime</h3>
-            <p data-en="Flexible learning that fits your life, anytime, anywhere." data-af="Buigsame leer wat enige tyd en enige plek werk.">Flexible learning that fits your life, anytime, anywhere.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">🛡️</div>
-            <h3 data-en="Safe & Reliable" data-af="Veilig & Betroubaar">Safe & Reliable</h3>
-            <p data-en="A secure, child-friendly platform built for learning." data-af="‘n Veilige, kindervriendelike platform wat vir leer gebou is.">A secure, child-friendly platform built for learning.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">💗</div>
-            <h3 data-en="Parental Involvement" data-af="Ouer Betrokkenheid">Parental Involvement</h3>
-            <p data-en="Stay connected and support your child’s success." data-af="Bly ingelig en ondersteun jou kind se sukses.">Stay connected and support your child’s success.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="subjects">
-      <div class="container">
-        <div class="section-top center">
-          <h2 data-en="Our Subjects" data-af="Ons Vakke">Our Subjects</h2>
-          <p data-en="High-quality learning across a wide range of subjects." data-af="Hoë kwaliteit leer oor ‘n wye reeks vakke.">High-quality learning across a wide range of subjects.</p>
-        </div>
-        <div class="subject-grid">
-          <a class="subject-pill" href="portal.html">📘 Afrikaans</a>
-          <a class="subject-pill" href="portal.html">💬 English</a>
-          <a class="subject-pill" href="portal.html">🧮 Mathematics</a>
-          <a class="subject-pill" href="portal.html">⭐ Life Skills</a>
-          <a class="subject-pill" href="portal.html">🧪 Natural Sciences</a>
-          <a class="subject-pill" href="portal.html">🌍 Social Sciences</a>
-          <a class="subject-pill" href="portal.html">💻 Computer Applications</a>
-          <a class="subject-pill accent" href="portal.html"><span data-en="View all subjects" data-af="Sien alle vakke">View all subjects</span> →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section portal-preview">
-      <div class="container portal-grid">
-        <div class="portal-copy">
-          <div class="eyebrow pink" data-en="POWERFUL & EASY TO USE" data-af="KRAGTIG & MAKLIK OM TE GEBRUIK">POWERFUL & EASY TO USE</div>
-          <h2 data-en="The GAP Online Learner Portal" data-af="Die GAP Online Leerder Portaal">The GAP Online Learner Portal</h2>
-          <p data-en="A simple, intuitive dashboard designed for learners, parents and teachers." data-af="‘n Eenvoudige, intuïtiewe dashboard ontwerp vir leerders, ouers en onderwysers.">A simple, intuitive dashboard designed for learners, parents and teachers.</p>
-          <ul class="tick-list">
-            <li data-en="Access lessons and resources" data-af="Toegang tot lesse en hulpbronne">Access lessons and resources</li>
-            <li data-en="Interactive tasks and assessments" data-af="Interaktiewe take en assesserings">Interactive tasks and assessments</li>
-            <li data-en="Track progress and performance" data-af="Volg vordering en prestasie">Track progress and performance</li>
-            <li data-en="Clear reports and feedback" data-af="Duidelike verslae en terugvoer">Clear reports and feedback</li>
-            <li data-en="Stay organised with calendars & reminders" data-af="Bly georganiseerd met kalenders en herinneringe">Stay organised with calendars & reminders</li>
-          </ul>
-          <a class="btn btn-primary" href="portal.html"><span data-en="View Portal Demo" data-af="Kyk Portaal Demo">View Portal Demo</span> →</a>
-        </div>
-
-        <div class="devices">
-          <div class="laptop">
-            <div class="screen">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" alt="Portal dashboard interface">
-            </div>
-          </div>
-          <div class="phone">
-            <div class="phone-screen">
-              <div class="mini-ui">
-                <strong data-en="My Progress" data-af="My Vordering">My Progress</strong>
-                <div class="mini-bar"><span style="width:90%"></span><label>Afrikaans 90%</label></div>
-                <div class="mini-bar"><span style="width:75%"></span><label>Mathematics 75%</label></div>
-                <div class="mini-bar"><span style="width:85%"></span><label>Life Skills 85%</label></div>
-                <div class="mini-bar"><span style="width:75%"></span><label>Natural Sciences 75%</label></div>
-              </div>
+          <div class="phone-frame">
+            <div class="phone-inner">
+              <strong>Hello, Liam!</strong>
+              <div class="progress-row"><label>Afrikaans</label><div class="bar"><i style="width:90%"></i></div></div>
+              <div class="progress-row"><label>Mathematics</label><div class="bar"><i style="width:78%"></i></div></div>
+              <div class="progress-row"><label>Life Skills</label><div class="bar"><i style="width:85%"></i></div></div>
+              <div class="progress-row"><label>Natural Sciences</label><div class="bar"><i style="width:73%"></i></div></div>
+              <div class="progress-row"><label>Social Sciences</label><div class="bar"><i style="width:88%"></i></div></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section video-section" id="video">
-      <div class="container">
-        <div class="section-top center">
-          <div class="eyebrow pink" data-en="VIDEO PREVIEW" data-af="VIDEO VOORSKOU">VIDEO PREVIEW</div>
-          <h2 data-en="See the GAP Online video" data-af="Kyk die GAP Online video">See the GAP Online video</h2>
-          <p data-en="If your client looks for the video, it is already built into the demo." data-af="As jou kliënt die video soek, is dit reeds in die demo ingebou.">If your client looks for the video, it is already built into the demo.</p>
+    <section class="price-banner">
+      <div class="container price-wrap">
+        <div class="cta-left">
+          <strong data-en="Ready to give your child the best start?" data-af="Gereed om jou kind die beste begin te gee?">Ready to give your child the best start?</strong>
+          <span data-en="Join thousands of families already learning the smarter way." data-af="Sluit aan by duisende gesinne wat reeds slimmer leer.">Join thousands of families already learning the smarter way.</span>
         </div>
-        <div class="video-card">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/lecARX06NkM"
-              title="GAP Online Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-copy">
-            <h3 data-en="Why this helps your pitch" data-af="Hoekom dit jou aanbod help">Why this helps your pitch</h3>
-            <ul class="tick-list compact">
-              <li data-en="The client can watch the actual video directly in the demo" data-af="Die kliënt kan die regte video direk in die demo kyk">The client can watch the actual video directly in the demo</li>
-              <li data-en="The website mockup and video now work together" data-af="Die website mockup en video werk nou saam">The website mockup and video now work together</li>
-              <li data-en="It makes the presentation feel more real and more professional" data-af="Dit laat die aanbieding meer eg en professioneel voel">It makes the presentation feel more real and more professional</li>
-            </ul>
-            <a class="btn btn-outline" href="https://youtu.be/lecARX06NkM?si=qox6xpWt-BBtIP1p" target="_blank" rel="noopener">
-              <span data-en="Open video on YouTube" data-af="Maak video op YouTube oop">Open video on YouTube</span>
-            </a>
-          </div>
+        <div class="cta-mid">
+          <small data-en="Affordable. Transparent. Effective." data-af="Bekostigbaar. Deursigtig. Effektief.">Affordable. Transparent. Effective.</small>
+          <b>R500</b>
+          <span data-en="per learner" data-af="per leerder">per learner</span>
+        </div>
+        <div class="cta-buttons">
+          <a class="btn btn-light" href="#contact" data-en="Enquire Now" data-af="Doen Nou Navraag">Enquire Now</a>
+          <a class="btn btn-light-outline" href="#pricing" data-en="View Pricing" data-af="Sien Pryse">View Pricing</a>
         </div>
       </div>
     </section>
 
-    <section class="price-band">
-      <div class="container price-grid">
-        <div>
-          <h2 data-en="Affordable. Transparent. Outstanding value." data-af="Bekostigbaar. Deursigtig. Uitstekende waarde.">Affordable. Transparent. Outstanding value.</h2>
-          <p data-en="Premium online education that fits your school's budget." data-af="Premium aanlyn onderwys wat by jou skool se begroting pas.">Premium online education that fits your school's budget.</p>
-        </div>
-        <div class="price-box">
-          <small data-en="From only" data-af="Vanaf slegs">From only</small>
-          <strong>R500</strong>
-          <span data-en="per learner / per year" data-af="per leerder / per jaar">per learner / per year</span>
-        </div>
-        <ul class="tick-list light compact">
-          <li data-en="All core subjects included" data-af="Alle kernvakke ingesluit">All core subjects included</li>
-          <li data-en="Unlimited access to support" data-af="Onbeperkte toegang tot ondersteuning">Unlimited access to support</li>
-          <li data-en="Safe, secure and easy to use" data-af="Veilig, betroubaar en maklik om te gebruik">Safe, secure and easy to use</li>
-          <li data-en="Monthly progress reports" data-af="Maandelikse vorderingsverslae">Monthly progress reports</li>
-          <li data-en="Dedicated support team" data-af="Toegewyde ondersteuning span">Dedicated support team</li>
-        </ul>
-        <div class="price-buttons">
-          <a class="btn btn-light" href="#contact"><span data-en="Enrol Your School Today" data-af="Skryf Jou Skool Vandag In">Enrol Your School Today</span> →</a>
-          <a class="btn btn-light-outline" href="https://wa.me/" target="_blank" rel="noopener">Chat on WhatsApp</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section" id="marketing">
       <div class="container">
-        <div class="section-top center">
-          <h2 data-en="What Parents Say" data-af="Wat Ouers Sê">What Parents Say</h2>
+        <div class="section-head center">
+          <div class="eyebrow" data-en="WHAT PARENTS SAY" data-af="WAT OUERS SÊ">WHAT PARENTS SAY</div>
         </div>
         <div class="testimonial-grid">
-          <article class="testimonial">
-            <p>“GAP Online has made a huge difference in my daughter’s confidence and grades.”</p>
-            <footer>— Mariska S. <span>★★★★★</span></footer>
-          </article>
-          <article class="testimonial">
-            <p>“The teachers are friendly, competent and always willing to help.”</p>
-            <footer>— Johan B. <span>★★★★★</span></footer>
-          </article>
-          <article class="testimonial">
-            <p>“My kids enjoy the portal and the tasks are clear and easy to follow.”</p>
-            <footer>— Faye N. <span>★★★★★</span></footer>
-          </article>
+          <div class="testimonial"><p>“GAP Aanlyn has made a huge difference in my daughter’s confidence and results.”</p><footer>— Mariska S. <span>★★★★★</span></footer></div>
+          <div class="testimonial"><p>“The teachers are friendly, the content is excellent and the portal is easy to use.”</p><footer>— Johan B. <span>★★★★★</span></footer></div>
+          <div class="testimonial"><p>“My kids enjoy the portal and the tasks are clear and easy to follow.”</p><footer>— Freya N. <span>★★★★★</span></footer></div>
         </div>
       </div>
     </section>
 
-    <section class="section contact-section" id="contact">
+    <section class="section contact-area" id="contact">
       <div class="container contact-grid">
-        <div class="contact-left">
-          <div class="eyebrow pink" data-en="WE'RE HERE TO HELP" data-af="ONS IS HIER OM TE HELP">WE'RE HERE TO HELP</div>
-          <h2 data-en="Get in touch" data-af="Kontak ons">Get in touch</h2>
-          <p data-en="Have a question or want to know more? Our team is ready to help." data-af="Het jy ‘n vraag of wil jy meer weet? Ons span is gereed om te help.">Have a question or want to know more? Our team is ready to help.</p>
+        <div class="contact-copy">
+          <div class="eyebrow" data-en="WE'RE HERE TO HELP" data-af="ONS IS HIER OM TE HELP">WE'RE HERE TO HELP</div>
+          <h2 data-en="Get in touch" data-af="Kontak Ons">Get in touch</h2>
+          <p data-en="Have a question or want to know more? We'd love to hear from you." data-af="Het jy ’n vraag of wil jy meer weet? Ons hoor graag van jou.">Have a question or want to know more? We'd love to hear from you.</p>
           <ul class="contact-list">
-            <li>📞 072 234 7826</li>
-            <li>✉️ info@gaponline.com</li>
-            <li>🟢 Send a WhatsApp</li>
-            <li>📍 South Africa</li>
+            <li>📞 +27 62 247 2432</li>
+            <li>✉️ info@gapaanlyn.com</li>
+            <li>🟢 WhatsApp: +27 62 247 2432</li>
           </ul>
         </div>
-        <div class="contact-form">
-          <div class="two-col">
-            <input type="text" data-en-placeholder="Name of Parent" data-af-placeholder="Naam van Ouer" placeholder="Name of Parent">
-            <input type="text" data-en-placeholder="Contact Number" data-af-placeholder="Kontaknommer" placeholder="Contact Number">
-          </div>
-          <div class="two-col">
-            <input type="email" data-en-placeholder="Email Address" data-af-placeholder="E-pos Adres" placeholder="Email Address">
+        <form class="contact-form">
+          <div class="four-grid">
+            <input type="text" placeholder="Full Name" data-en-placeholder="Full Name" data-af-placeholder="Volle Naam">
+            <input type="email" placeholder="Email Address" data-en-placeholder="Email Address" data-af-placeholder="E-pos Adres">
+            <input type="text" placeholder="Phone / WhatsApp" data-en-placeholder="Phone / WhatsApp" data-af-placeholder="Foon / WhatsApp">
             <select>
-              <option data-en="Degree of Learner" data-af="Graad van Leerder">Degree of Learner</option>
-              <option>Grade 1 - 3</option>
-              <option>Grade 4 - 7</option>
-              <option>Grade 8 - 12</option>
+              <option data-en="Enquiry Type" data-af="Navraag Tipe">Enquiry Type</option>
+              <option data-en="Registration" data-af="Registrasie">Registration</option>
+              <option data-en="Portal Demo" data-af="Portaal Demo">Portal Demo</option>
+              <option data-en="General Info" data-af="Algemene Inligting">General Info</option>
             </select>
           </div>
-          <textarea rows="5" data-en-placeholder="How can we help you?" data-af-placeholder="Hoe kan ons jou help?" placeholder="How can we help you?"></textarea>
-          <button class="btn btn-primary full"><span data-en="Send Inquiry" data-af="Stuur Navraag">Send Inquiry</span> →</button>
-        </div>
+          <textarea rows="4" placeholder="How can we help you?" data-en-placeholder="How can we help you?" data-af-placeholder="Hoe kan ons jou help?"></textarea>
+          <button class="btn btn-primary full" type="button" data-en="Send Enquiry" data-af="Stuur Navraag">Send Enquiry</button>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer" id="downloads">
     <div class="container footer-grid">
       <div>
-        <div class="logo footer-logo">GAP <span>Online</span></div>
-        <p data-en="Online school support for growth, learning, and success." data-af="Aanlyn skoolondersteuning vir groei, leer en sukses.">Online school support for growth, learning, and success.</p>
+        <div class="logo footer-logo"><span class="logo-big">GAP</span><span class="logo-small">aanlyn.com</span></div>
+        <p data-en="One platform. Two languages. Endless possibilities." data-af="Een platform. Twee tale. Eindelose moontlikhede.">One platform. Two languages. Endless possibilities.</p>
+        <div class="socials"><span>f</span><span>◎</span><span>▶</span><span>♪</span></div>
       </div>
       <div>
-        <h4 data-en="Quick Links" data-af="Vinnige Skakels">Quick Links</h4>
-        <a href="#top" data-en="Home" data-af="Tuis">Home</a>
-        <a href="#features" data-en="About" data-af="Meer">About</a>
-        <a href="#subjects" data-en="Subjects" data-af="Vakke">Subjects</a>
-        <a href="portal.html" data-en="Portal" data-af="Portaal">Portal</a>
-        <a href="#video" data-en="Video" data-af="Video">Video</a>
+        <h4>Quick Links</h4>
+        <a href="#top">Home</a>
+        <a href="#info">Information</a>
+        <a href="#forms">Forms</a>
+        <a href="#programs">Programs</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#subjects">Subjects</a>
+        <a href="portal.html">Portal</a>
       </div>
       <div>
-        <h4 data-en="Subjects" data-af="Vakke">Subjects</h4>
-        <a href="portal.html">Afrikaans</a>
-        <a href="portal.html">English</a>
-        <a href="portal.html">Mathematics</a>
-        <a href="portal.html">Life Skills</a>
+        <h4>Support</h4>
+        <a href="#contact">Contact Us</a>
+        <a href="#">FAQ</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Refund Policy</a>
       </div>
-      <div>
-        <h4 data-en="Contact" data-af="Kontak">Contact</h4>
-        <a href="#">072 234 7826</a>
-        <a href="#">info@gaponline.com</a>
-        <a href="https://youtu.be/lecARX06NkM?si=qox6xpWt-BBtIP1p" target="_blank" rel="noopener">YouTube Video</a>
-        <a href="#">South Africa</a>
+      <div id="centres">
+        <h4>Contact</h4>
+        <a href="#">+27 62 247 2432</a>
+        <a href="#">info@gapaanlyn.com</a>
+        <a href="#">WhatsApp: +27 62 247 2432</a>
+        <a href="#" id="sponsors">South Africa</a>
       </div>
     </div>
     <div class="container footer-bottom">
-      <small>© 2026 GAP Online Demo. Premium concept by Frans.</small>
+      <small>© 2025 GAP Aanlyn. All rights reserved.</small>
+      <small>Webwerf ontwerp deur JANEN ENTERPRISES</small>
     </div>
   </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/" target="_blank">💬 Chat on WhatsApp</a>
 
   <script src="script.js"></script>
 </body>

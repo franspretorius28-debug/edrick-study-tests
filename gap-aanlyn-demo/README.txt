@@ -1,22 +1,18 @@
-GAP AANLYN PRO DEMO V2
+GAP AANLYN IMAGE MATCH DEMO V3
 
-Included:
-- index.html  -> Premium homepage demo
-- portal.html -> Learner portal demo
-- styles.css  -> Styles for both pages
-- script.js   -> Mobile menu + EN/AF language toggle
+This version is designed to match the premium mockup image much more closely.
 
-Main features:
-- More professional sales-ready design
-- Clickable demo with a portal page
-- English / Afrikaans language switch
-- Embedded YouTube video section using:
-  https://youtu.be/lecARX06NkM?si=qox6xpWt-BBtIP1p
+Files:
+- index.html
+- portal.html
+- styles.css
+- script.js
 
-How to publish:
-1. Upload all files into your GitHub Pages folder, e.g. gap-aanlyn-demo
-2. Push to GitHub
-3. Open index.html from that folder online
-
-Note:
-This is a demo/prototype for pitching and marketing.
+Features:
+- premium modern homepage
+- portal page
+- clear Afrikaans | English language switch
+- logo styling closer to GAP look
+- video centre
+- walkthrough / portal sections
+- pricing, testimonials, contact, footer

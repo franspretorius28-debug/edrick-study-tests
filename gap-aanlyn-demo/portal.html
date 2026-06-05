@@ -3,137 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Online – Portal Demo</title>
+  <title>GAP Aanlyn – Portal</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="portal-page">
+<body class="portal-body">
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="logo" href="index.html">GAP <span>Online</span></a>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <a class="logo" href="index.html">
+        <span class="logo-big">GAP</span>
+        <span class="logo-small">aanlyn.com</span>
+      </a>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
       <nav id="mainNav" class="main-nav">
-        <a href="index.html" data-en="Back to Site" data-af="Terug na Webwerf">Back to Site</a>
-        <a href="index.html#video" data-en="Video" data-af="Video">Video</a>
+        <a href="index.html">Home</a>
+        <a href="index.html#video-centre">Videos</a>
+        <a href="index.html#contact">Contact</a>
       </nav>
-      <div class="header-actions">
-        <button class="lang-toggle" onclick="toggleLanguage()">
-          <span id="langLabel">EN | AF</span>
-        </button>
-        <a class="btn btn-primary small" href="index.html#contact"><span data-en="Enrol Today" data-af="Skryf Vandag In">Enrol Today</span> →</a>
+      <div class="nav-actions">
+        <button class="lang-select" onclick="toggleLanguage()"><span class="globe">🌐</span><span id="langLabel">Afrikaans | English</span><span>▾</span></button>
       </div>
     </div>
   </header>
 
   <main class="portal-layout">
     <aside class="portal-sidebar">
-      <div class="portal-brand">GAP <span>Online</span></div>
-      <nav class="portal-nav">
-        <a class="active" href="#" data-en="Dashboard" data-af="Tuisblad">Dashboard</a>
-        <a href="#" data-en="My Subjects" data-af="My Vakke">My Subjects</a>
-        <a href="#" data-en="Tasks" data-af="Take">Tasks</a>
-        <a href="#" data-en="Tests" data-af="Toetse">Tests</a>
-        <a href="#" data-en="Progress" data-af="Vordering">Progress</a>
-        <a href="#" data-en="Calendar" data-af="Kalender">Calendar</a>
-        <a href="#" data-en="Reports" data-af="Verslae">Reports</a>
-        <a href="#" data-en="Help" data-af="Hulp">Help</a>
-      </nav>
+      <div class="portal-brand">GAP <span>Portal</span></div>
+      <a class="active" href="#">Dashboard</a>
+      <a href="#">My Subjects</a>
+      <a href="#">Tasks</a>
+      <a href="#">Tests</a>
+      <a href="#">Progress</a>
+      <a href="#">Reports</a>
+      <a href="#">Calendar</a>
+      <a href="#">Messages</a>
+      <a href="#">Settings</a>
     </aside>
 
-    <section class="portal-main">
-      <div class="portal-top">
+    <section class="portal-content">
+      <div class="portal-topbar">
         <div>
-          <p class="eyebrow pink" data-en="LEARNER DASHBOARD" data-af="LEERDER DASHBOARD">LEARNER DASHBOARD</p>
-          <h1>Hello, Lize! 👋</h1>
-          <p data-en="Welcome back to your learner portal." data-af="Welkom terug by jou leerder portaal.">Welcome back to your learner portal.</p>
+          <div class="eyebrow">LEARNER DASHBOARD</div>
+          <h1>Hello, Liam! 👋</h1>
+          <p>Welcome back. Keep up the great work!</p>
         </div>
-        <div class="profile-circle">L</div>
+        <div class="portal-profile">L</div>
       </div>
 
       <div class="portal-kpis">
-        <div class="portal-box"><strong>6</strong><span data-en="Subjects" data-af="Vakke">Subjects</span></div>
-        <div class="portal-box"><strong>4</strong><span data-en="Tasks Due" data-af="Take Oop">Tasks Due</span></div>
-        <div class="portal-box"><strong>2</strong><span data-en="Tests Due" data-af="Toetse Oop">Tests Due</span></div>
-        <div class="portal-box"><strong>78%</strong><span data-en="Average Score" data-af="Gem. Punt">Average Score</span></div>
+        <div class="portal-kpi"><strong>6</strong><span>Subjects</span></div>
+        <div class="portal-kpi"><strong>14</strong><span>Tasks Due</span></div>
+        <div class="portal-kpi"><strong>3</strong><span>Tests Due</span></div>
+        <div class="portal-kpi"><strong>78%</strong><span>Average</span></div>
       </div>
 
       <div class="portal-panels">
-        <div class="panel-large">
-          <div class="panel-header">
-            <h3 data-en="My Progress" data-af="My Vordering">My Progress</h3>
-            <a href="#" data-en="View Full Report" data-af="Sien Volledige Verslag">View Full Report</a>
+        <div class="portal-panel large">
+          <div class="panel-head">
+            <h3>Progress Overview</h3>
+            <span>EN | AF</span>
           </div>
-          <div class="progress-block"><span>Afrikaans</span><b>90%</b><div class="bar"><i style="width:90%"></i></div></div>
-          <div class="progress-block"><span>Mathematics</span><b>75%</b><div class="bar"><i style="width:75%"></i></div></div>
-          <div class="progress-block"><span>Life Skills</span><b>85%</b><div class="bar"><i style="width:85%"></i></div></div>
-          <div class="progress-block"><span>Natural Sciences</span><b>75%</b><div class="bar"><i style="width:75%"></i></div></div>
+          <div class="progress-row"><label>Afrikaans</label><b>90%</b><div class="bar"><i style="width:90%"></i></div></div>
+          <div class="progress-row"><label>Mathematics</label><b>78%</b><div class="bar"><i style="width:78%"></i></div></div>
+          <div class="progress-row"><label>Life Skills</label><b>85%</b><div class="bar"><i style="width:85%"></i></div></div>
+          <div class="progress-row"><label>Natural Sciences</label><b>73%</b><div class="bar"><i style="width:73%"></i></div></div>
+          <div class="progress-row"><label>Social Sciences</label><b>88%</b><div class="bar"><i style="width:88%"></i></div></div>
         </div>
 
-        <div class="side-column">
-          <div class="panel-small">
-            <div class="panel-header">
-              <h3 data-en="Calendar" data-af="Kalender">Calendar</h3>
-            </div>
-            <div class="calendar-box">
-              <strong>May 2026</strong>
-              <div class="calendar-grid">
-                <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
-                <span></span><span></span><span></span><span></span><span>1</span><span>2</span><span>3</span>
-                <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-                <span>11</span><span>12</span><span>13</span><span>14</span><span class="active-day">15</span><span>16</span><span>17</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel-small">
-            <div class="panel-header">
-              <h3 data-en="Upcoming" data-af="Opkomend">Upcoming</h3>
-            </div>
-            <ul class="upcoming-list">
-              <li><strong data-en="Maths Test" data-af="Wiskunde Toets">Maths Test</strong><span>24 May • 09:00</span></li>
-              <li><strong data-en="Assignment: NS" data-af="Opdrag: NW">Assignment: NS</strong><span>26 May • 14:00</span></li>
-              <li><strong data-en="Afrikaans Essay" data-af="Afrikaans Opstel">Afrikaans Essay</strong><span>28 May • 11:00</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="portal-panels second">
-        <div class="panel-large">
-          <div class="panel-header">
-            <h3 data-en="Subjects" data-af="Vakke">Subjects</h3>
-          </div>
-          <div class="subject-card-grid">
-            <div class="subject-card">
-              <h4>Afrikaans</h4>
-              <p data-en="Progress 90%" data-af="Vordering 90%">Progress 90%</p>
-              <a class="btn btn-outline small" href="#">Open</a>
-            </div>
-            <div class="subject-card">
-              <h4>English</h4>
-              <p data-en="Progress 84%" data-af="Vordering 84%">Progress 84%</p>
-              <a class="btn btn-outline small" href="#">Open</a>
-            </div>
-            <div class="subject-card">
-              <h4>Mathematics</h4>
-              <p data-en="Progress 75%" data-af="Vordering 75%">Progress 75%</p>
-              <a class="btn btn-outline small" href="#">Open</a>
-            </div>
-            <div class="subject-card">
-              <h4>Natural Sciences</h4>
-              <p data-en="Progress 75%" data-af="Vordering 75%">Progress 75%</p>
-              <a class="btn btn-outline small" href="#">Open</a>
-            </div>
+        <div class="portal-panel">
+          <div class="panel-head"><h3>Calendar</h3></div>
+          <div class="calendar-grid">
+            <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+            <span></span><span></span><span></span><span></span><span>1</span><span>2</span><span>3</span>
+            <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+            <span>11</span><span>12</span><span>13</span><span>14</span><span class="active-day">15</span><span>16</span><span>17</span>
           </div>
         </div>
 
-        <div class="panel-small">
-          <div class="panel-header">
-            <h3 data-en="Recent Activity" data-af="Onlangse Aktiwiteit">Recent Activity</h3>
-          </div>
-          <ul class="activity-list">
-            <li><span data-en="Maths Quiz" data-af="Wiskunde Vasvra">Maths Quiz</span><b>Completed</b></li>
-            <li><span data-en="Afrikaans Essay" data-af="Afrikaans Opstel">Afrikaans Essay</span><b>Submitted</b></li>
-            <li><span data-en="Life Skills Task" data-af="Lewensvaardigheid Taak">Life Skills Task</span><b>Completed</b></li>
+        <div class="portal-panel">
+          <div class="panel-head"><h3>Upcoming</h3></div>
+          <ul class="plain-list">
+            <li><strong>Maths Test</strong><span>May 20</span></li>
+            <li><strong>Science Assignment</strong><span>May 22</span></li>
+            <li><strong>Afrikaans Essay</strong><span>May 28</span></li>
+          </ul>
+        </div>
+
+        <div class="portal-panel large">
+          <div class="panel-head"><h3>Recent Activity</h3></div>
+          <ul class="plain-list">
+            <li><strong>Task Submitted</strong><span>English</span></li>
+            <li><strong>Test Completed</strong><span>Mathematics</span></li>
+            <li><strong>Report Viewed</strong><span>Parent Portal</span></li>
           </ul>
         </div>
       </div>
