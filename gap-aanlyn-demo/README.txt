@@ -1,27 +1,23 @@
-GAP AANLYN EXACT IMAGE DEMO V8
+GAP AANLYN REAL HTML WEBSITE DEMO V10
 
-This is the closest possible version to the approved professional image.
-
-Important:
-- The homepage uses the approved image directly as the visual base.
-- Clickable hotspots are placed over the buttons, videos, portal and WhatsApp.
-- This means the online demo will look exactly like the image, while still feeling clickable.
-- A separate portal page is included for a clickable dashboard preview.
+This version is not an A4 image with clickable hotspots.
+It is rebuilt as a real HTML/CSS website while keeping the same professional layout direction.
 
 Files:
 - index.html
 - portal.html
 - styles.css
 - script.js
-- gap-demo-exact.png
 - gap-logo.png
-- dashboard-preview.png
-- portal-showcase.png
 
-
-V9 update:
-- Removed the demo note bar
-- Removed the centered card/shadow feeling
-- Expanded the exact-image page to feel like a real website
-- Kept all hotspots and video/portal click behaviour
-- White full-page background so it no longer looks like a screenshot placed on a purple canvas
+Features:
+- real sections
+- real cards
+- real responsive layout
+- no image-background poster feeling
+- no hero overlap
+- clickable portal
+- clickable videos
+- Afrikaans / English language switch
+- contact form demo
+- WhatsApp footer button
