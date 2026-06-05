@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAP Aanlyn – Portaal Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="portal-page">
+  <header class="site-header compact">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">GAP <span>Aanlyn</span></a>
+      <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+      <nav id="mainNav" class="main-nav">
+        <a href="index.html">← Terug na Home</a>
+        <a class="btn btn-primary small" href="index.html#contact">Skryf Vandag In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="portal-demo-layout">
+    <aside class="demo-sidebar">
+      <div class="portal-brand-block">
+        <div class="portal-brand-title">GAP Aanlyn</div>
+        <p>Leerder Portaal</p>
+      </div>
+      <nav class="side-nav">
+        <a class="active" href="#">Dashboard</a>
+        <a href="#">My Vakke</a>
+        <a href="#">Take</a>
+        <a href="#">Toetse</a>
+        <a href="#">Vordering</a>
+        <a href="#">Kalender</a>
+        <a href="#">Berigte</a>
+        <a href="#">Instellings</a>
+      </nav>
+    </aside>
+
+    <section class="demo-main">
+      <div class="demo-topbar">
+        <div>
+          <p class="small-label">Hallo, Lian 👋</p>
+          <h1>Welkom terug</h1>
+        </div>
+        <div class="profile-badge">L</div>
+      </div>
+
+      <div class="demo-stats">
+        <div class="stat-box">
+          <strong>6</strong>
+          <span>Vakke</span>
+        </div>
+        <div class="stat-box">
+          <strong>4</strong>
+          <span>Take Oop</span>
+        </div>
+        <div class="stat-box">
+          <strong>2</strong>
+          <span>Toetse</span>
+        </div>
+        <div class="stat-box">
+          <strong>78%</strong>
+          <span>Gem. Punte</span>
+        </div>
+      </div>
+
+      <div class="demo-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Jou Vakke</h3>
+            <a href="#">Sien alles →</a>
+          </div>
+          <div class="mini-courses">
+            <div class="course-card">
+              <h4>Afrikaans</h4>
+              <p>Vordering 82%</p>
+              <a class="btn btn-outline small" href="#">Gaan na vak</a>
+            </div>
+            <div class="course-card">
+              <h4>Wiskunde</h4>
+              <p>Vordering 76%</p>
+              <a class="btn btn-outline small" href="#">Gaan na vak</a>
+            </div>
+            <div class="course-card">
+              <h4>Lewensvaardigheid</h4>
+              <p>Vordering 88%</p>
+              <a class="btn btn-outline small" href="#">Gaan na vak</a>
+            </div>
+            <div class="course-card">
+              <h4>Natuurwetenskappe</h4>
+              <p>Vordering 74%</p>
+              <a class="btn btn-outline small" href="#">Gaan na vak</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-panels">
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Onlangse Aktiwiteit</h3>
+            </div>
+            <ul class="activity-list">
+              <li><span>Wiskunde Taak 12</span><strong>Voltooi</strong></li>
+              <li><span>Afrikaans Toets 5</span><strong>78%</strong></li>
+              <li><span>Lewensvaardigheid</span><strong>Voldoen</strong></li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Volgende Les</h3>
+            </div>
+            <div class="next-lesson">
+              <h4>Wiskunde</h4>
+              <p>Breuke en Desimale</p>
+              <small>Môre, 10:00</small>
+              <a class="btn btn-primary full" href="#">Sluit aan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-grid second">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Ouer Oorsig</h3>
+          </div>
+          <div class="parent-cards">
+            <div class="parent-card">
+              <strong>Teenwoordigheid</strong>
+              <p>Baie goed – 96%</p>
+            </div>
+            <div class="parent-card">
+              <strong>Take ingehandig</strong>
+              <p>18 van 22 voltooi</p>
+            </div>
+            <div class="parent-card">
+              <strong>Areas vir fokus</strong>
+              <p>Wiskunde en spelling benodig ekstra aandag.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Wat hierdie demo wys</h3>
+          </div>
+          <ul class="check-list">
+            <li>Responsive layout vir mobile en PC</li>
+            <li>Klikbare navigasie</li>
+            <li>Professionele dashboard styl</li>
+            <li>Maklike basis vir 'n regte platform</li>
+          </ul>
+          <a class="btn btn-primary" href="index.html">Terug na hoofblad</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
