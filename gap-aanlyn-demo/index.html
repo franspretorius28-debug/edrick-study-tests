@@ -161,25 +161,82 @@
         </div>
 
         <div class="video-grid">
-          <a class="video-card" id="demo-video" href="https://youtu.be/lecARX06NkM?si=qox6xpWt-BBtIP1p" target="_blank">
-            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>1:32</small></div>
-            <div class="video-info"><h3>Welcome to GAP</h3><p data-en="Discover the power of bilingual learning with GAP Aanlyn." data-af="Ontdek die krag van tweetalige leer met GAP Aanlyn.">Discover the power of bilingual learning with GAP Aanlyn.</p></div>
-          </a>
+          <button class="video-card video-button" id="demo-video" onclick="openVideoModal('youtube')">
+            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80')">
+              <span class="video-badge">EN | AF</span>
+              <div class="play">▶</div>
+              <small>1:32</small>
+            </div>
+            <div class="video-info">
+              <h3>Welcome to GAP</h3>
+              <p data-en="Play the official GAP Aanlyn YouTube intro video." data-af="Speel die amptelike GAP Aanlyn YouTube intro video.">Play the official GAP Aanlyn YouTube intro video.</p>
+            </div>
+          </button>
 
-          <a class="video-card" href="portal.html">
-            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>2:45</small></div>
-            <div class="video-info"><h3>Portal Walkthrough</h3><p data-en="See how the learner portal works step-by-step." data-af="Sien stap vir stap hoe die leerderportaal werk.">See how the learner portal works step-by-step.</p></div>
-          </a>
+          <button class="video-card video-button" onclick="openVideoModal('portal')">
+            <div class="video-thumb portal-video-thumb">
+              <span class="video-badge">EN | AF</span>
+              <div class="portal-thumb-ui">
+                <div class="thumb-sidebar"></div>
+                <div class="thumb-main">
+                  <div class="thumb-line big"></div>
+                  <div class="thumb-cards"><span></span><span></span><span></span></div>
+                  <div class="thumb-progress"><i style="width:90%"></i></div>
+                  <div class="thumb-progress"><i style="width:74%"></i></div>
+                  <div class="thumb-progress"><i style="width:82%"></i></div>
+                </div>
+              </div>
+              <div class="play">▶</div>
+              <small>2:45</small>
+            </div>
+            <div class="video-info">
+              <h3>Portal Walkthrough</h3>
+              <p data-en="Watch a built-in animated walkthrough of the learner portal." data-af="Kyk ’n ingeboude geanimeerde voorskou van die leerderportaal.">Watch a built-in animated walkthrough of the learner portal.</p>
+            </div>
+          </button>
 
-          <a class="video-card" href="portal.html">
-            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>2:10</small></div>
-            <div class="video-info"><h3>How Parents Track Progress</h3><p data-en="Stay informed and support your child every step of the way." data-af="Bly ingelig en ondersteun jou kind elke tree van die pad.">Stay informed and support your child every step of the way.</p></div>
-          </a>
+          <button class="video-card video-button" onclick="openVideoModal('parents')">
+            <div class="video-thumb parent-video-thumb">
+              <span class="video-badge">EN | AF</span>
+              <div class="parent-thumb-ui">
+                <div class="phone-mini">
+                  <b>78%</b>
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="report-mini">
+                  <strong>Progress Report</strong>
+                  <i style="width:88%"></i>
+                  <i style="width:76%"></i>
+                  <i style="width:91%"></i>
+                </div>
+              </div>
+              <div class="play">▶</div>
+              <small>2:10</small>
+            </div>
+            <div class="video-info">
+              <h3>How Parents Track Progress</h3>
+              <p data-en="Show parents how marks, reports and updates are visible." data-af="Wys ouers hoe punte, verslae en opdaterings sigbaar is.">Show parents how marks, reports and updates are visible.</p>
+            </div>
+          </button>
 
-          <a class="video-card" href="portal.html">
-            <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80')"><span class="video-badge">EN | AF</span><div class="play">▶</div><small>2:22</small></div>
-            <div class="video-info"><h3>How Assignments & Tests Work</h3><p data-en="From tasks to tests – everything your child needs to succeed." data-af="Van take tot toetse – alles wat jou kind nodig het om te slaag.">From tasks to tests – everything your child needs to succeed.</p></div>
-          </a>
+          <button class="video-card video-button" onclick="openVideoModal('tasks')">
+            <div class="video-thumb tasks-video-thumb">
+              <span class="video-badge">EN | AF</span>
+              <div class="tasks-thumb-ui">
+                <div class="task-paper">
+                  <strong>Weekly Test</strong>
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="tick-circle">✓</div>
+              </div>
+              <div class="play">▶</div>
+              <small>2:22</small>
+            </div>
+            <div class="video-info">
+              <h3>How Assignments & Tests Work</h3>
+              <p data-en="A simple animated explainer for tasks, tests and feedback." data-af="’n Eenvoudige geanimeerde verduideliking vir take, toetse en terugvoer.">A simple animated explainer for tasks, tests and feedback.</p>
+            </div>
+          </button>
         </div>
       </div>
     </section>
@@ -361,6 +418,15 @@
   </footer>
 
   <a class="floating-whatsapp" href="https://wa.me/" target="_blank">💬 Chat on WhatsApp</a>
+
+
+  <div id="videoModal" class="video-modal" aria-hidden="true">
+    <div class="video-modal-backdrop" onclick="closeVideoModal()"></div>
+    <div class="video-modal-panel">
+      <button class="modal-close" onclick="closeVideoModal()">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

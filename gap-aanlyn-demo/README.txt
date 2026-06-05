@@ -16,3 +16,10 @@ Features:
 - video centre
 - walkthrough / portal sections
 - pricing, testimonials, contact, footer
+
+
+V4 update:
+- Video cards now open professional modal popups.
+- The first video embeds the actual GAP Aanlyn YouTube video.
+- The other three cards open built-in animated explainer demos:
+  Portal Walkthrough, Parent Progress, and Assignments & Tests.
