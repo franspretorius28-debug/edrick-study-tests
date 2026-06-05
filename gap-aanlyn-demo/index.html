@@ -21,12 +21,12 @@
       <button class="hotspot hs-centres" onclick="toast('Centres page can show locations in a modern directory.')" aria-label="Centres"></button>
       <button class="hotspot hs-sponsors" onclick="toast('Sponsors page can show partners and projects.')" aria-label="Sponsors"></button>
 
-      <a class="hotspot hs-portal-top" href="portal.html" aria-label="Portal"></a>
+      <button class="hotspot hs-portal-top" onclick="openPortalPreview()" aria-label="Portal"></button>
       <button class="hotspot hs-lang-top" onclick="toast('Afrikaans | English language switch demo.')" aria-label="Language switch"></button>
 
       <button class="hotspot hs-view-demo" onclick="openVideo('youtube')" aria-label="View Demo"></button>
       <button class="hotspot hs-watch-intro" onclick="openVideo('youtube')" aria-label="Watch Intro"></button>
-      <a class="hotspot hs-open-portal" href="portal.html" aria-label="Open Portal"></a>
+      <button class="hotspot hs-open-portal" onclick="openPortalPreview()" aria-label="Open Portal"></button>
       <button class="hotspot hs-lang-strip" onclick="toast('This shows where users can switch between Afrikaans and English.')" aria-label="Language strip"></button>
 
       <button class="hotspot hs-video1" onclick="openVideo('youtube')" aria-label="Welcome video"></button>
@@ -35,7 +35,7 @@
       <button class="hotspot hs-video4" onclick="openVideo('tasks')" aria-label="Assignments and tests"></button>
       <button class="hotspot hs-view-all" onclick="openVideo('youtube')" aria-label="View all videos"></button>
 
-      <a class="hotspot hs-open-portal2" href="portal.html" aria-label="Open portal section"></a>
+      <button class="hotspot hs-open-portal2" onclick="openPortalPreview()" aria-label="Open portal section"></button>
       <button class="hotspot hs-view-demo2" onclick="openVideo('portal')" aria-label="View portal demo"></button>
 
       <button class="hotspot hs-enquire" onclick="toast('Enquiry button can connect to WhatsApp, email or form submission.')" aria-label="Enquire"></button>
@@ -56,5 +56,39 @@
   </div>
 
   <script src="script.js"></script>
+
+  <div id="portalModal" class="modal" aria-hidden="true">
+    <div class="modal-bg" onclick="closePortalPreview()"></div>
+    <div class="modal-box">
+      <button class="modal-close" onclick="closePortalPreview()">×</button>
+      <div id="portalContent" class="portal-preview-wrap">
+        <div class="portal-preview-top">
+          <span class="preview-pill">LEERDER PORTAAL DEMO</span>
+          <h2>Smart. Simple. Powerful.</h2>
+          <p>’n Skoon portaalvoorskou wat professioneel voel, sonder om die exact image homepage te verander.</p>
+        </div>
+        <div class="portal-preview-grid">
+          <div class="portal-card-large">
+            <img src="portal-showcase.png" alt="Portal showcase">
+          </div>
+          <div class="portal-card-side">
+            <h3>Portal funksies</h3>
+            <ul>
+              <li>Vakke, lesse en hulpbronne</li>
+              <li>Take, toetse en opdragte</li>
+              <li>Punte en vorderingsverslae</li>
+              <li>Ouer dashboard en boodskappe</li>
+              <li>Afrikaans en English switch</li>
+            </ul>
+            <div class="portal-preview-actions">
+              <button onclick="toast('Tasks and tests can be built in the full platform.')">Open Tasks</button>
+              <button onclick="toast('Parent dashboard can be added in the full platform.')">Parent View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

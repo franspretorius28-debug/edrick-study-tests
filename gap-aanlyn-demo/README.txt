@@ -1,15 +1,17 @@
-GAP AANLYN ROLLBACK EXACT IMAGE V11
+GAP AANLYN EXACT IMAGE MODAL PORTAL V12
 
-This is a rollback from the real HTML V10 back to the exact visual image-based demo.
+This fixes the V11 problem.
 
-Purpose:
-- Look exactly like the uploaded professional image again
-- Still have clickable buttons/videos/portal/WhatsApp
-- Avoid the V10 issue where it felt like a real website but no longer matched the reference
+What changed:
+- Homepage still uses the exact image layout.
+- Portal button no longer opens the ugly separate portal page.
+- Portal now opens a clean professional modal preview on top of the same page.
+- Videos, buttons and WhatsApp remain clickable.
+- This keeps the exact-image look while avoiding the unwanted extra page.
 
 Files:
 - index.html
-- portal.html
+- portal.html (kept only as backup, not used from homepage)
 - styles.css
 - script.js
 - gap-demo-exact.png

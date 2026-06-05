@@ -41,3 +41,20 @@ function closeVideo(){
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape') closeVideo();
 });
+
+
+function openPortalPreview(){
+  const modal = document.getElementById('portalModal');
+  if(!modal) return;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closePortalPreview(){
+  const modal = document.getElementById('portalModal');
+  if(!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
