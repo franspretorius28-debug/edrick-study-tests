@@ -6,62 +6,52 @@
   <title>GAP Aanlyn – Portal Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="portal-body-v7">
+<body class="portal-body">
   <header class="portal-header">
-    <a href="index.html" class="portal-logo-link"><img src="gap-logo.png" alt="GAP Aanlyn"></a>
-    <div class="portal-header-actions">
-      <button class="header-pill" onclick="showToast('Language switching will be active in the full live build.')">🌐 Afrikaans | English</button>
-      <a href="index.html" class="header-pill solid">Back to Website</a>
+    <a href="index.html"><img src="gap-logo.png" alt="GAP Aanlyn"></a>
+    <div>
+      <button onclick="toast('Language changed: Afrikaans | English demo')">🌐 Afrikaans | English</button>
+      <a href="index.html">Back to Website</a>
     </div>
   </header>
 
-  <main class="portal-page-wrap">
-    <section class="portal-hero-card">
-      <div class="portal-hero-copy">
-        <div class="label-pill">LEARNER PORTAL DEMO</div>
+  <main class="portal-wrap">
+    <section class="portal-hero">
+      <div>
+        <span class="label">LEARNER PORTAL DEMO</span>
         <h1>Smart. Simple. Powerful.</h1>
-        <p>This page is a clickable portal-style extension of the homepage demo and gives the client a clearer idea of how the learner dashboard can look in the real project.</p>
+        <p>This portal page gives the client a clickable preview of the learner dashboard experience, while the homepage stays exactly like the professional image.</p>
         <div class="portal-actions">
-          <button class="portal-btn-primary" onclick="showToast('Tasks, tests and reports can be connected in the final build.')">Open Tasks</button>
-          <button class="portal-btn-secondary" onclick="showToast('Parent progress tools can be expanded in the final build.')">Parent View</button>
+          <button onclick="toast('Tasks and tests can be built in the full platform.')">Open Tasks</button>
+          <button onclick="toast('Parent dashboard can be added in the full platform.')">Parent View</button>
         </div>
       </div>
-      <div class="portal-hero-art">
-        <img src="portal-card.png" alt="Learner dashboard card">
-      </div>
+      <img src="dashboard-preview.png" alt="Dashboard preview">
     </section>
 
-    <section class="portal-content-grid">
-      <div class="portal-panel big">
-        <img src="portal-showcase.png" alt="Portal showcase" class="showcase-image">
-      </div>
-
-      <div class="portal-panel side">
-        <h3>Portal Highlights</h3>
+    <section class="portal-grid">
+      <div class="panel big"><img src="portal-showcase.png" alt="Portal showcase"></div>
+      <div class="panel">
+        <h3>What this portal can include</h3>
         <ul>
-          <li>Subjects, tasks and tests in one place</li>
-          <li>Progress tracking for parents and learners</li>
-          <li>Afrikaans and English ready</li>
-          <li>Professional mobile and desktop layout</li>
-          <li>Designed to feel clear and trustworthy</li>
+          <li>Subjects, lessons and resources</li>
+          <li>Tasks, tests and assignments</li>
+          <li>Marks and progress reports</li>
+          <li>Parent dashboard and messages</li>
+          <li>Afrikaans and English switch</li>
         </ul>
       </div>
-
-      <div class="portal-panel small">
+      <div class="panel">
         <h3>Upcoming</h3>
-        <div class="mini-item"><strong>Mathematics Test</strong><span>May 20</span></div>
-        <div class="mini-item"><strong>Science Assignment</strong><span>May 22</span></div>
-        <div class="mini-item"><strong>Afrikaans Essay</strong><span>May 28</span></div>
+        <p><strong>Mathematics Test</strong><br>May 20</p>
+        <p><strong>Science Assignment</strong><br>May 22</p>
+        <p><strong>Afrikaans Essay</strong><br>May 28</p>
       </div>
-
-      <div class="portal-panel small">
+      <div class="panel">
         <h3>Quick Actions</h3>
-        <div class="quick-actions">
-          <button onclick="showToast('Demo action: Open Subjects')">Subjects</button>
-          <button onclick="showToast('Demo action: Open Tasks')">Tasks</button>
-          <button onclick="showToast('Demo action: Open Reports')">Reports</button>
-          <button onclick="showToast('Demo action: Open Messages')">Messages</button>
-        </div>
+        <button onclick="toast('Open Subjects')">Subjects</button>
+        <button onclick="toast('Open Reports')">Reports</button>
+        <button onclick="toast('Open Messages')">Messages</button>
       </div>
     </section>
   </main>

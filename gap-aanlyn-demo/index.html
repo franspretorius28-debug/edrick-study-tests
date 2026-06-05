@@ -3,71 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Aanlyn – Exact Demo Match</title>
+  <title>GAP Aanlyn – Exact Visual Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="exact-body">
-  <div class="top-note">
-    <span>Exact visual demo layout</span>
-    <span class="dot"></span>
-    <span>Desktop & mobile friendly preview</span>
-  </div>
+<body>
+  <main class="page">
+    <div class="stage" id="top">
+      <img src="gap-demo-exact.png" alt="GAP Aanlyn professional website demo" class="exact-img">
 
-  <main class="reference-wrapper">
-    <div class="reference-stage" id="stage">
-      <img src="homepage-reference.png" alt="GAP Aanlyn premium demo reference" class="reference-image">
+      <!-- Header / navigation clickable zones -->
+      <a class="hotspot hs-home" href="#top" aria-label="Home"></a>
+      <button class="hotspot hs-info" onclick="toast('Information page preview can be added in the full build.')" aria-label="Information"></button>
+      <button class="hotspot hs-forms" onclick="toast('Forms can connect to registration, province forms and enquiries.')" aria-label="Forms"></button>
+      <button class="hotspot hs-programs" onclick="toast('Programs page can link to Android, Windows and portal access.')" aria-label="Programs"></button>
+      <button class="hotspot hs-downloads" onclick="toast('Downloads can contain printable documents and resources.')" aria-label="Downloads"></button>
+      <button class="hotspot hs-subjects" onclick="toast('Subjects page can list all 2026 subjects neatly.')" aria-label="Subjects"></button>
+      <button class="hotspot hs-marketing" onclick="toast('Marketing page can be redesigned professionally.')" aria-label="Marketing"></button>
+      <button class="hotspot hs-centres" onclick="toast('Centres page can show all locations in a modern directory.')" aria-label="Centres"></button>
+      <button class="hotspot hs-sponsors" onclick="toast('Sponsors page can show partners and projects beautifully.')" aria-label="Sponsors"></button>
 
-      <!-- top nav -->
-      <a class="hotspot hs-home" href="#top" title="Home"></a>
-      <a class="hotspot hs-info" href="#top" title="Information"></a>
-      <a class="hotspot hs-forms" href="#top" title="Forms"></a>
-      <a class="hotspot hs-programs" href="#top" title="Programs"></a>
-      <a class="hotspot hs-downloads" href="#top" title="Downloads"></a>
-      <a class="hotspot hs-subjects" href="#top" title="Subjects"></a>
-      <a class="hotspot hs-marketing" href="#top" title="Marketing"></a>
-      <a class="hotspot hs-centres" href="#top" title="Centres"></a>
-      <a class="hotspot hs-sponsors" href="#top" title="Sponsors"></a>
+      <a class="hotspot hs-portal-top" href="portal.html" aria-label="Open Portal"></a>
+      <button class="hotspot hs-lang-top" onclick="toast('Language changed: Afrikaans | English demo')" aria-label="Language Switch"></button>
 
-      <a class="hotspot hs-portal-top" href="portal.html" title="Portal"></a>
-      <button class="hotspot hs-lang" onclick="toggleLangToast()" title="Afrikaans | English"></button>
+      <!-- Hero buttons -->
+      <button class="hotspot hs-view-demo" onclick="openVideo('youtube')" aria-label="View Demo"></button>
+      <button class="hotspot hs-watch-intro" onclick="openVideo('youtube')" aria-label="Watch Intro"></button>
+      <a class="hotspot hs-open-portal" href="portal.html" aria-label="Open Portal"></a>
+      <button class="hotspot hs-lang-strip" onclick="toast('This shows where users switch instantly between Afrikaans and English.')" aria-label="Switch Language"></button>
 
-      <!-- hero buttons -->
-      <button class="hotspot hs-view-demo" onclick="openVideo('youtube')" title="View Demo"></button>
-      <button class="hotspot hs-watch-intro" onclick="openVideo('youtube')" title="Watch Intro"></button>
-      <a class="hotspot hs-open-portal" href="portal.html" title="Open Portal"></a>
+      <!-- Video centre -->
+      <button class="hotspot hs-video1" onclick="openVideo('youtube')" aria-label="Welcome to GAP"></button>
+      <button class="hotspot hs-video2" onclick="openVideo('portal')" aria-label="Portal Walkthrough"></button>
+      <button class="hotspot hs-video3" onclick="openVideo('parents')" aria-label="How Parents Track Progress"></button>
+      <button class="hotspot hs-video4" onclick="openVideo('tasks')" aria-label="How Assignments and Tests Work"></button>
+      <button class="hotspot hs-view-all" onclick="openVideo('youtube')" aria-label="View all videos"></button>
 
-      <!-- language strip -->
-      <button class="hotspot hs-lang-strip" onclick="toggleLangToast()" title="Switch language"></button>
+      <!-- Portal preview -->
+      <a class="hotspot hs-open-portal2" href="portal.html" aria-label="Open Portal Demo"></a>
+      <button class="hotspot hs-view-demo2" onclick="openVideo('portal')" aria-label="View Portal Demo"></button>
 
-      <!-- videos -->
-      <button class="hotspot hs-video-1" onclick="openVideo('youtube')" title="Welcome to GAP"></button>
-      <button class="hotspot hs-video-2" onclick="openVideo('portal')" title="Portal Walkthrough"></button>
-      <button class="hotspot hs-video-3" onclick="openVideo('parents')" title="How Parents Track Progress"></button>
-      <button class="hotspot hs-video-4" onclick="openVideo('tasks')" title="How Assignments & Tests Work"></button>
-      <button class="hotspot hs-view-all" onclick="openVideo('youtube')" title="View all videos"></button>
-
-      <!-- portal section buttons -->
-      <a class="hotspot hs-portal-open-2" href="portal.html" title="Open Portal"></a>
-      <button class="hotspot hs-view-demo-2" onclick="openVideo('portal')" title="View Demo"></button>
-
-      <!-- CTA -->
-      <button class="hotspot hs-enquire" onclick="scrollToContact()" title="Enquire Now"></button>
-      <button class="hotspot hs-pricing" onclick="showToast('Pricing section can be connected in the final live build.')" title="View Pricing"></button>
-
-      <!-- contact -->
-      <button class="hotspot hs-contact-send" onclick="showToast('Demo enquiry submitted — in the final build this will connect to email / WhatsApp / forms.')" title="Send Enquiry"></button>
-
-      <!-- whatsapp -->
-      <a class="hotspot hs-whatsapp" href="https://wa.me/" target="_blank" title="Chat on WhatsApp"></a>
+      <!-- CTA / contact -->
+      <button class="hotspot hs-enquire" onclick="toast('Enquiry button can connect to WhatsApp, email or a form submission.')" aria-label="Enquire Now"></button>
+      <button class="hotspot hs-pricing" onclick="toast('Pricing package can be added here in the final website.')" aria-label="View Pricing"></button>
+      <button class="hotspot hs-send" onclick="toast('Demo enquiry submitted. In the real site this sends to email or WhatsApp.')" aria-label="Send Enquiry"></button>
+      <a class="hotspot hs-whatsapp" href="https://wa.me/" target="_blank" aria-label="WhatsApp"></a>
     </div>
   </main>
 
   <div id="toast" class="toast"></div>
 
-  <div id="videoModal" class="video-modal" aria-hidden="true">
-    <div class="video-modal-backdrop" onclick="closeVideoModal()"></div>
-    <div class="video-modal-panel">
-      <button class="modal-close" onclick="closeVideoModal()">×</button>
+  <div id="videoModal" class="modal" aria-hidden="true">
+    <div class="modal-bg" onclick="closeVideo()"></div>
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeVideo()">×</button>
       <div id="modalContent"></div>
     </div>
   </div>

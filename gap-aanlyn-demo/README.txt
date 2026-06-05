@@ -1,24 +1,19 @@
-GAP AANLYN PIXEL MATCH DEMO V7
+GAP AANLYN EXACT IMAGE DEMO V8
 
-Purpose:
-This version is built to solve the 'it must look exactly like the image' problem.
+This is the closest possible version to the approved professional image.
 
-How it works:
-- The homepage uses the professional reference layout image directly as the visual base
-- Clickable hotspots are positioned over the matching buttons/cards
-- This makes the page look almost exactly like the approved image
-- Portal button, hero buttons, video cards, CTA buttons, contact submit and WhatsApp are clickable
-- A separate portal demo page is included
+Important:
+- The homepage uses the approved image directly as the visual base.
+- Clickable hotspots are placed over the buttons, videos, portal and WhatsApp.
+- This means the online demo will look exactly like the image, while still feeling clickable.
+- A separate portal page is included for a clickable dashboard preview.
 
 Files:
 - index.html
 - portal.html
 - styles.css
 - script.js
-- homepage-reference.png
+- gap-demo-exact.png
 - gap-logo.png
-- portal-card.png
+- dashboard-preview.png
 - portal-showcase.png
-
-Best use:
-This is ideal when the goal is to send a polished-looking demo link that visually matches the approved mockup very closely.

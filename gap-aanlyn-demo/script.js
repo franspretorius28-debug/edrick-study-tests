@@ -1,21 +1,11 @@
 
-function showToast(message){
-  const toast = document.getElementById('toast');
-  if(!toast) return;
-  toast.textContent = message;
-  toast.classList.add('show');
-  clearTimeout(window.__gapToastTimer);
-  window.__gapToastTimer = setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2600);
-}
-
-function toggleLangToast(){
-  showToast('Afrikaans | English switch can be connected fully in the live build. This demo keeps the exact visual layout as requested.');
-}
-
-function scrollToContact(){
-  showToast('In the final live build this button can scroll to the contact form or open a quotation / enquiry workflow.');
+function toast(message){
+  const t = document.getElementById('toast');
+  if(!t) return;
+  t.textContent = message;
+  t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=>t.classList.remove('show'), 2600);
 }
 
 function openVideo(type){
@@ -25,69 +15,43 @@ function openVideo(type){
 
   if(type === 'youtube'){
     content.innerHTML = `
-      <div class="modal-frame">
+      <div class="video-frame">
         <iframe src="https://www.youtube.com/embed/lecARX06NkM?autoplay=1"
           title="GAP Aanlyn Video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen></iframe>
-      </div>
-    `;
+      </div>`;
   } else {
-    const map = {
-      portal: {
-        title: 'Portal Walkthrough',
-        step: 'PORTAL TOUR',
-        heading: 'See how the learner portal works step-by-step.',
-        text: 'This polished demo video concept shows the type of guided walkthrough that can explain subjects, tasks, tests, reports and progress to parents and learners.'
-      },
-      parents: {
-        title: 'How Parents Track Progress',
-        step: 'PARENT VIEW',
-        heading: 'Real-time insight for parents.',
-        text: 'Parents can see marks, reports, subject progress and important updates in a clean and trustworthy dashboard experience.'
-      },
-      tasks: {
-        title: 'How Assignments & Tests Work',
-        step: 'TASKS & TESTS',
-        heading: 'Everything your child needs to succeed.',
-        text: 'Assignments, tests and feedback can be presented in one easy learner workflow that feels professional and clear.'
-      }
-    };
-    const d = map[type];
+    const data = {
+      portal:['PORTAL WALKTHROUGH','See how the learner portal works step-by-step.','Learners can open subjects, view tasks, write tests and track progress in one clean dashboard.'],
+      parents:['PARENT PROGRESS','Stay informed and support your child.','Parents can see marks, progress, reports and messages without needing to phone or wait for feedback.'],
+      tasks:['TASKS & TESTS','From tasks to tests — everything in one place.','The platform can guide learners through assignments, tests, feedback and progress clearly.']
+    }[type];
+
     content.innerHTML = `
       <div class="demo-video">
         <div class="demo-head">
-          <h2>${d.title}</h2>
-          <p>Professional built-in explainer video concept for the website demo.</p>
+          <h2>${data[0]}</h2>
+          <p>This is a polished video-style walkthrough popup for the client demo.</p>
         </div>
-        <div class="demo-inner">
+        <div class="demo-content">
           <div class="demo-copy">
-            <div class="eyebrow">${d.step}</div>
-            <h3>${d.heading}</h3>
-            <p>${d.text}</p>
+            <span>DEMO VIDEO</span>
+            <h3>${data[1]}</h3>
+            <p>${data[2]}</p>
           </div>
           <div class="demo-ui">
             <div class="demo-ui-layout">
               <div class="demo-side">
-                <strong>GAP</strong>
-                <span>Dashboard</span>
-                <span>My Subjects</span>
-                <span>Tasks</span>
-                <span>Tests</span>
-                <span>Progress</span>
-                <span>Reports</span>
-                <span>Messages</span>
+                <strong>GAP</strong><span>Dashboard</span><span>Subjects</span><span>Tasks</span><span>Tests</span><span>Progress</span><span>Reports</span>
               </div>
               <div class="demo-main">
-                <div class="demo-top">
-                  <strong>Hello, Liam! 👋</strong>
-                  <span class="pill">EN | AF</span>
-                </div>
+                <div class="demo-top"><strong>Hello, Liam! 👋</strong><b>EN | AF</b></div>
                 <div class="demo-kpis">
-                  <div><b>6</b><small>Subjects</small></div>
-                  <div><b>14</b><small>Tasks</small></div>
-                  <div><b>3</b><small>Tests</small></div>
-                  <div><b>78%</b><small>Average</small></div>
+                  <div><strong>6</strong><small>Subjects</small></div>
+                  <div><strong>14</strong><small>Tasks</small></div>
+                  <div><strong>3</strong><small>Tests</small></div>
+                  <div><strong>78%</strong><small>Average</small></div>
                 </div>
                 <div class="demo-bars">
                   <div><i style="width:90%"></i></div>
@@ -100,30 +64,25 @@ function openVideo(type){
             </div>
           </div>
         </div>
-        <div class="demo-controls">
-          <div class="demo-play">▶ Playing Demo</div>
-          <div class="demo-timeline"><i></i></div>
-          <strong>EN | AF</strong>
-        </div>
-      </div>
-    `;
+        <div class="demo-controls"><div class="demo-play">▶ Playing Demo</div><div class="demo-line"><i></i></div><strong>EN | AF</strong></div>
+      </div>`;
   }
 
   modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
 }
 
-function closeVideoModal(){
+function closeVideo(){
   const modal = document.getElementById('videoModal');
   const content = document.getElementById('modalContent');
   if(!modal || !content) return;
   modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
-  content.innerHTML = '';
-  document.body.style.overflow = '';
+  modal.setAttribute('aria-hidden','true');
+  content.innerHTML='';
+  document.body.style.overflow='';
 }
 
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape') closeVideoModal();
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closeVideo();
 });
