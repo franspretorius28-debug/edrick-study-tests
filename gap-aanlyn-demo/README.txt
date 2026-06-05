@@ -1,17 +1,17 @@
-GAP AANLYN EXACT IMAGE MODAL PORTAL V12
+GAP AANLYN WIDER WEBSITE FEEL V13
 
-This fixes the V11 problem.
+This keeps the exact-image layout but makes the homepage stretch across the browser width so it feels less like a narrow A4 poster and more like a real website.
 
-What changed:
-- Homepage still uses the exact image layout.
-- Portal button no longer opens the ugly separate portal page.
-- Portal now opens a clean professional modal preview on top of the same page.
-- Videos, buttons and WhatsApp remain clickable.
-- This keeps the exact-image look while avoiding the unwanted extra page.
+Changes:
+- Exact image homepage remains
+- Portal opens in modal, not separate page
+- Page now uses full browser width
+- No centered narrow-card feeling
+- Clickable videos, portal, buttons and WhatsApp remain
 
 Files:
 - index.html
-- portal.html (kept only as backup, not used from homepage)
+- portal.html
 - styles.css
 - script.js
 - gap-demo-exact.png

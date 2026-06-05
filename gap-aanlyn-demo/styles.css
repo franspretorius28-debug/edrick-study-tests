@@ -5,13 +5,15 @@ body{
   font-family:Arial, Helvetica, sans-serif;
   background:#ffffff;
   color:#24154c;
+  overflow-x:hidden;
 }
 a{text-decoration:none;color:inherit}
 button{font:inherit}
 .page{padding:0;background:#fff}
 .stage{
   position:relative;
-  width:min(100vw, 941px);
+  width:100vw;
+  max-width:none;
   margin:0 auto;
   background:#fff;
   box-shadow:none;
@@ -19,7 +21,8 @@ button{font:inherit}
 }
 .exact-img{
   display:block;
-  width:100%;
+  width:100vw;
+  max-width:none;
   height:auto;
   user-select:none;
   -webkit-user-drag:none;
@@ -284,5 +287,33 @@ button{font:inherit}
 @media(max-width:900px){
   .portal-preview-grid{
     grid-template-columns:1fr;
+  }
+}
+
+
+/* V13: wider, more like a real live website */
+.page{
+  width:100vw;
+  background:#fff;
+  overflow:hidden;
+}
+.stage{
+  width:100vw !important;
+  max-width:none !important;
+  border-radius:0 !important;
+}
+.exact-img{
+  width:100vw !important;
+  max-width:none !important;
+}
+@media (min-width: 1600px){
+  .stage,
+  .exact-img{
+    width:100vw !important;
+  }
+}
+@media (max-width: 900px){
+  .hotspot:hover{
+    box-shadow:none;
   }
 }
