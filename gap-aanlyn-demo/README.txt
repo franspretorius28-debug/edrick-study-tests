@@ -1,16 +1,22 @@
-GAP AANLYN CLICKABLE DEMO
+GAP AANLYN PRO DEMO V2
 
-Files included:
-- index.html  -> Main landing page demo
-- portal.html -> Learner portal/dashboard demo
-- styles.css  -> Shared styling
-- script.js   -> Mobile menu script
+Included:
+- index.html  -> Premium homepage demo
+- portal.html -> Learner portal demo
+- styles.css  -> Styles for both pages
+- script.js   -> Mobile menu + EN/AF language toggle
 
-How to use:
-1. Open index.html in your browser.
-2. Click through to portal.html to see the learner portal demo.
-3. The layout is responsive and should work on both mobile and desktop.
+Main features:
+- More professional sales-ready design
+- Clickable demo with a portal page
+- English / Afrikaans language switch
+- Embedded YouTube video section using:
+  https://youtu.be/lecARX06NkM?si=qox6xpWt-BBtIP1p
 
-If you want to host it online:
-- Upload the files to GitHub Pages, Netlify, or any web host.
-- Make sure all 4 files stay together in the same folder.
+How to publish:
+1. Upload all files into your GitHub Pages folder, e.g. gap-aanlyn-demo
+2. Push to GitHub
+3. Open index.html from that folder online
+
+Note:
+This is a demo/prototype for pitching and marketing.
