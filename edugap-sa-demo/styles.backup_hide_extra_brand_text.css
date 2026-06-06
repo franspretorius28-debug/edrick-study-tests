@@ -633,21 +633,3 @@ header{
 
 /* ===== END HUGE LOGO PATCH ===== */
 
-
-/* ===== HIDE EXTRA BRAND TEXT NEXT TO LOGO ===== */
-.site-header .brand > span:not(.brand-mark){
-  display: none !important;
-}
-
-.site-header .brand{
-  gap: 0 !important;
-}
-
-.site-header .brand-logo{
-  width: 360px !important;
-  height: auto !important;
-  max-height: 130px !important;
-  object-fit: contain !important;
-}
-/* ===== END PATCH ===== */
-
