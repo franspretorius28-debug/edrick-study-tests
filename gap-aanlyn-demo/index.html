@@ -3,41 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Aanlyn – Exact Demo</title>
+  <title>GAP Aanlyn – Website Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="real-header">
+    <div class="real-nav">
+      <a class="real-logo" href="#top"><img src="gap-logo-header.png" alt="GAP Aanlyn"></a>
+
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+      <nav id="menu" class="real-links">
+        <a class="active" href="#top">Home</a>
+        <button onclick="toast('Information page preview can be added in the full build.')">Information ▾</button>
+        <button onclick="toast('Forms can connect to registration and enquiries.')">Forms</button>
+        <button onclick="toast('Programs page can be added in the full build.')">Programs</button>
+        <button onclick="toast('Downloads can contain printable resources.')">Downloads</button>
+        <button onclick="toast('Subjects page can list all school subjects neatly.')">Subjects</button>
+        <button onclick="toast('Marketing page can be redesigned professionally.')">Marketing</button>
+        <button onclick="toast('Coloring Competition page can be redesigned.')">Coloring Competition</button>
+        <button onclick="toast('Centres page can show locations in a modern directory.')">Centres</button>
+        <button onclick="toast('Sponsors page can show partners and projects.')">Sponsors</button>
+      </nav>
+
+      <div class="real-actions">
+        <button class="portal-real" onclick="openPortalPreview()">Portal</button>
+        <button class="lang-real" onclick="toast('Afrikaans | English language switch demo.')">🌐 Afrikaans | English ▾</button>
+      </div>
+    </div>
+  </header>
+
   <main class="page">
     <div class="stage" id="top">
-      <img src="gap-demo-exact.png" alt="GAP Aanlyn demo" class="exact-img">
+      <img src="gap-content-no-header.png" alt="GAP Aanlyn demo" class="exact-img">
 
-      <a class="hotspot hs-home" href="#top" aria-label="Home"></a>
-      <button class="hotspot hs-info" onclick="toast('Information page preview can be added in the full build.')" aria-label="Information"></button>
-      <button class="hotspot hs-forms" onclick="toast('Forms can connect to registration and enquiries.')" aria-label="Forms"></button>
-      <button class="hotspot hs-programs" onclick="toast('Programs page can be added in the full build.')" aria-label="Programs"></button>
-      <button class="hotspot hs-downloads" onclick="toast('Downloads can contain printable resources.')" aria-label="Downloads"></button>
-      <button class="hotspot hs-subjects" onclick="toast('Subjects page can list all school subjects neatly.')" aria-label="Subjects"></button>
-      <button class="hotspot hs-marketing" onclick="toast('Marketing page can be redesigned professionally.')" aria-label="Marketing"></button>
-      <button class="hotspot hs-centres" onclick="toast('Centres page can show locations in a modern directory.')" aria-label="Centres"></button>
-      <button class="hotspot hs-sponsors" onclick="toast('Sponsors page can show partners and projects.')" aria-label="Sponsors"></button>
-
-      <button class="hotspot hs-portal-top" onclick="openPortalPreview()" aria-label="Portal"></button>
-      <button class="hotspot hs-lang-top" onclick="toast('Afrikaans | English language switch demo.')" aria-label="Language switch"></button>
-
+      <!-- Hero buttons repositioned for cropped image -->
       <button class="hotspot hs-view-demo" onclick="openVideo('youtube')" aria-label="View Demo"></button>
       <button class="hotspot hs-watch-intro" onclick="openVideo('youtube')" aria-label="Watch Intro"></button>
       <button class="hotspot hs-open-portal" onclick="openPortalPreview()" aria-label="Open Portal"></button>
       <button class="hotspot hs-lang-strip" onclick="toast('This shows where users can switch between Afrikaans and English.')" aria-label="Language strip"></button>
 
+      <!-- Video centre -->
       <button class="hotspot hs-video1" onclick="openVideo('youtube')" aria-label="Welcome video"></button>
       <button class="hotspot hs-video2" onclick="openVideo('portal')" aria-label="Portal walkthrough"></button>
       <button class="hotspot hs-video3" onclick="openVideo('parents')" aria-label="Parent progress"></button>
       <button class="hotspot hs-video4" onclick="openVideo('tasks')" aria-label="Assignments and tests"></button>
       <button class="hotspot hs-view-all" onclick="openVideo('youtube')" aria-label="View all videos"></button>
 
+      <!-- Portal preview -->
       <button class="hotspot hs-open-portal2" onclick="openPortalPreview()" aria-label="Open portal section"></button>
       <button class="hotspot hs-view-demo2" onclick="openVideo('portal')" aria-label="View portal demo"></button>
 
+      <!-- CTA / contact -->
       <button class="hotspot hs-enquire" onclick="toast('Enquiry button can connect to WhatsApp, email or form submission.')" aria-label="Enquire"></button>
       <button class="hotspot hs-pricing" onclick="toast('Pricing can be connected in the final website.')" aria-label="Pricing"></button>
       <button class="hotspot hs-send" onclick="toast('Demo enquiry submitted. Final build can send to email or WhatsApp.')" aria-label="Send enquiry"></button>
@@ -55,8 +72,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
-
   <div id="portalModal" class="modal" aria-hidden="true">
     <div class="modal-bg" onclick="closePortalPreview()"></div>
     <div class="modal-box">
@@ -65,7 +80,7 @@
         <div class="portal-preview-top">
           <span class="preview-pill">LEERDER PORTAAL DEMO</span>
           <h2>Smart. Simple. Powerful.</h2>
-          <p>’n Skoon portaalvoorskou wat professioneel voel, sonder om die exact image homepage te verander.</p>
+          <p>’n Skoon portaalvoorskou wat professioneel voel, sonder om die exact homepage se mooi layout te breek.</p>
         </div>
         <div class="portal-preview-grid">
           <div class="portal-card-large">
@@ -90,5 +105,6 @@
     </div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>

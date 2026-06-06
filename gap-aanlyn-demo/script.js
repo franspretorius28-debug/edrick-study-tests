@@ -58,3 +58,8 @@ function closePortalPreview(){
   modal.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
 }
+
+function toggleMenu(){
+  const menu = document.getElementById('menu');
+  if(menu) menu.classList.toggle('open');
+}

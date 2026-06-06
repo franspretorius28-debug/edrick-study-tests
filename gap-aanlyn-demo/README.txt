@@ -1,20 +1,21 @@
-GAP AANLYN WIDER WEBSITE FEEL V13
+GAP AANLYN REAL HEADER WEBSITE FEEL V14
 
-This keeps the exact-image layout but makes the homepage stretch across the browser width so it feels less like a narrow A4 poster and more like a real website.
-
-Changes:
-- Exact image homepage remains
-- Portal opens in modal, not separate page
-- Page now uses full browser width
-- No centered narrow-card feeling
-- Clickable videos, portal, buttons and WhatsApp remain
+This version keeps the exact-image look but makes it feel more like a live website:
+- Real sticky header/navigation built in HTML
+- The embedded header is cropped off the screenshot body to avoid duplicate header feel
+- Page remains wide/full browser width
+- Portal opens as a modal
+- Videos, buttons and WhatsApp remain clickable
+- Main body still uses the professional image layout so it stays visually close
 
 Files:
 - index.html
 - portal.html
 - styles.css
 - script.js
+- gap-content-no-header.png
 - gap-demo-exact.png
+- gap-logo-header.png
 - gap-logo.png
 - dashboard-preview.png
 - portal-showcase.png
