@@ -1,13 +1,15 @@
-GAP AANLYN REMOVE DUPLICATE TOOLS V18
+GAP AANLYN HERO SINGLE IMAGE V19
 
-Fixes the duplicated section issue:
-- Removed the second “Everything in one place / All the tools and information you need” section.
-- Portal section now follows after the video section.
-- Navigation links are adjusted so they do not jump to the removed duplicate.
-- Header, videos, portal modal, contact and footer remain.
+This version fixes the hero overlap:
+- Removed the dashboard card from the hero area.
+- Replaced the overlapping two-image layout with one clean premium image inside the circular background area.
+- Hero now looks cleaner and more intentional.
+- All other sections stay the same as V18.
 
 Files:
 - index.html
 - styles.css
 - script.js
-- all image assets from V17
+- logo.png
+- hero-family.png
+- other existing assets
