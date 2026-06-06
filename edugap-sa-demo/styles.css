@@ -505,3 +505,35 @@ img{display:block;max-width:100%}
 }
 /* ===== END PATCH ===== */
 
+
+/* ===== BIGGER EDUGAP SA LOGO PATCH ===== */
+.brand-logo{
+  width: 110px !important;
+  height: 110px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.footer-logo{
+  width: 82px !important;
+  height: 82px !important;
+  object-fit: contain !important;
+}
+
+.nav{
+  min-height: 100px !important;
+}
+
+.brand{
+  gap: 14px !important;
+}
+
+.brand strong{
+  font-size: 1.35rem !important;
+}
+
+.brand small{
+  font-size: 0.8rem !important;
+}
+/* ===== END PATCH ===== */
+
