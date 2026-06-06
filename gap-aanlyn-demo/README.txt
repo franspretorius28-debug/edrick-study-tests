@@ -1,10 +1,10 @@
-GAP AANLYN HERO SINGLE IMAGE V19
+GAP AANLYN HERO CIRCLE FIT V20
 
-This version fixes the hero overlap:
-- Removed the dashboard card from the hero area.
-- Replaced the overlapping two-image layout with one clean premium image inside the circular background area.
-- Hero now looks cleaner and more intentional.
-- All other sections stay the same as V18.
+Fixes the hero image crop problem:
+- The hero image is no longer heavily cropped.
+- The image now sits centred inside the circular visual area.
+- Uses object-fit: contain so the image is fully visible and feels cleaner.
+- Keeps the rest of the V19 layout the same.
 
 Files:
 - index.html

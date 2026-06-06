@@ -1256,3 +1256,77 @@ section, main, footer{
     border-radius:24px;
   }
 }
+
+
+/* V20: make hero image sit cleaner inside the circle without harsh cropping */
+.single-hero-visual{
+  min-height:620px !important;
+  position:relative !important;
+  display:block !important;
+}
+
+.single-hero-visual .hero-blob{
+  left:10% !important;
+  right:4% !important;
+  top:6% !important;
+  bottom:6% !important;
+  border-radius:50% !important;
+  background:radial-gradient(circle at 45% 35%, #f7ddf4 0%, #f2e6ff 68%, #f8f0ff 100%) !important;
+  box-shadow:inset 0 0 0 1px rgba(178,128,221,.10);
+}
+
+/* turn the main visual into a centred contained image instead of a cropped card */
+.hero-single-image-card{
+  position:absolute !important;
+  inset:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+  z-index:2 !important;
+}
+
+.hero-single-image-card img{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%, -50%) !important;
+  width:82% !important;
+  height:82% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  display:block !important;
+  filter:drop-shadow(0 20px 38px rgba(70, 32, 120, .12));
+}
+
+/* give the circle area a bit more room on desktop */
+.hero-grid{
+  grid-template-columns:1fr 1.05fr !important;
+  gap:38px !important;
+}
+
+@media(max-width:1280px){
+  .single-hero-visual{
+    min-height:500px !important;
+  }
+  .hero-single-image-card img{
+    width:86% !important;
+    height:86% !important;
+  }
+}
+
+@media(max-width:760px){
+  .single-hero-visual{
+    min-height:360px !important;
+  }
+  .single-hero-visual .hero-blob{
+    left:4% !important;
+    right:4% !important;
+    top:8% !important;
+    bottom:8% !important;
+  }
+  .hero-single-image-card img{
+    width:90% !important;
+    height:90% !important;
+  }
+}
