@@ -1,8 +1,7 @@
-EduGap SA Website With Cropped Big Logo V4
+EduGap SA Website V5
 
-Fix:
-- The generated logo image had lots of white padding, so CSS made the image bigger but the logo still looked small.
-- This version includes edugap-logo-cropped.png with the empty white padding removed.
-- Header logo and brand text are much bigger and more readable.
-
-Deploy folder: edugap-sa-demo
+This version includes:
+- Cropped EduGap SA logo
+- Large logo only in header, no duplicate brand text next to it
+- New hero image with diverse Grade 1-12 learners
+- Hero image stored locally as hero-grade1-12.png

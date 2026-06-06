@@ -547,107 +547,80 @@ img{display:block;max-width:100%}
 }
 /* ===== END V4 LOGO PATCH ===== */
 
-/* ===== HUGE EDUGAP LOGO PATCH ===== */
 
-.site-header,
-header{
-  background: #ffffff !important;
-}
+/* ===== V5 FINAL: BIG LOGO ONLY + NEW GRADE 1-12 HERO IMAGE ===== */
 
-.nav{
-  min-height: 132px !important;
-  align-items: center !important;
-}
-
-.brand{
-  display: flex !important;
-  align-items: center !important;
-  gap: 22px !important;
-  flex: 0 0 auto !important;
-}
-
-.brand-logo{
-  width: 340px !important;
-  height: auto !important;
-  max-height: 128px !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-
-.brand strong{
-  display: block !important;
-  font-size: 2.7rem !important;
-  line-height: 1 !important;
-  font-weight: 900 !important;
-}
-
-.brand small{
-  display: block !important;
-  font-size: 1.2rem !important;
-  line-height: 1.2 !important;
-  margin-top: 8px !important;
-}
-
-.footer-logo{
-  width: 170px !important;
-  height: auto !important;
-}
-
-@media (max-width: 1200px){
-  .brand-logo{
-    width: 280px !important;
-    max-height: 110px !important;
-  }
-
-  .brand strong{
-    font-size: 2.2rem !important;
-  }
-
-  .brand small{
-    font-size: 1rem !important;
-  }
-}
-
-@media (max-width: 768px){
-  .nav{
-    min-height: 96px !important;
-  }
-
-  .brand{
-    gap: 12px !important;
-  }
-
-  .brand-logo{
-    width: 190px !important;
-    max-height: 78px !important;
-  }
-
-  .brand strong{
-    font-size: 1.45rem !important;
-  }
-
-  .brand small{
-    font-size: 0.82rem !important;
-  }
-}
-
-/* ===== END HUGE LOGO PATCH ===== */
-
-
-/* ===== HIDE EXTRA BRAND TEXT NEXT TO LOGO ===== */
+/* Header/logo: show only the logo image, hide the extra text next to it */
 .site-header .brand > span:not(.brand-mark){
-  display: none !important;
+  display:none !important;
 }
 
 .site-header .brand{
-  gap: 0 !important;
+  gap:0 !important;
+  flex:0 0 auto !important;
 }
 
 .site-header .brand-logo{
-  width: 360px !important;
-  height: auto !important;
-  max-height: 130px !important;
-  object-fit: contain !important;
+  width:360px !important;
+  height:auto !important;
+  max-height:130px !important;
+  object-fit:contain !important;
+  display:block !important;
 }
-/* ===== END PATCH ===== */
 
+.nav{
+  min-height:118px !important;
+  align-items:center !important;
+}
+
+/* New hero image */
+.hero-photo{
+  background:
+    linear-gradient(135deg, rgba(32,25,74,.04), rgba(255,255,255,.02)),
+    url("hero-grade1-12.png") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  border-radius:42px !important;
+}
+
+/* Remove the small EduGap SA label from the old photo */
+.rainbow:before{
+  display:none !important;
+}
+
+/* Keep the floating demo cards */
+.student-card{
+  z-index:3 !important;
+}
+
+/* Footer logo and text */
+.footer-logo{
+  width:170px !important;
+  height:auto !important;
+  object-fit:contain !important;
+}
+
+/* Mobile */
+@media(max-width:1200px){
+  .site-header .brand-logo{
+    width:270px !important;
+    max-height:105px !important;
+  }
+  .nav{
+    min-height:98px !important;
+  }
+}
+
+@media(max-width:720px){
+  .site-header .brand-logo{
+    width:190px !important;
+    max-height:76px !important;
+  }
+  .nav{
+    min-height:84px !important;
+  }
+  .hero-photo{
+    background-position:center center !important;
+  }
+}
+/* ===== END V5 FINAL ===== */
