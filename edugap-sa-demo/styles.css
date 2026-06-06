@@ -474,129 +474,75 @@ img{display:block;max-width:100%}
   .footer-bottom{flex-direction:column;align-items:flex-start}
 }
 
-/* ===== BIGGER EDUGAP SA LOGO PATCH ===== */
-.brand-logo{
-  width: 110px !important;
-  height: 110px !important;
-  object-fit: contain !important;
-  display: block !important;
-}
 
-.footer-logo{
-  width: 82px !important;
-  height: 82px !important;
-  object-fit: contain !important;
+/* ===== V4 CROPPED LOGO + MUCH BIGGER HEADER BRAND ===== */
+.site-header{
+  background:#fff !important;
 }
 
 .nav{
-  min-height: 100px !important;
+  min-height:118px !important;
 }
 
 .brand{
-  gap: 14px !important;
-}
-
-.brand strong{
-  font-size: 1.35rem !important;
-}
-
-.brand small{
-  font-size: 0.8rem !important;
-}
-/* ===== END PATCH ===== */
-
-
-/* ===== BIGGER EDUGAP SA LOGO PATCH ===== */
-.brand-logo{
-  width: 110px !important;
-  height: 110px !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-
-.footer-logo{
-  width: 82px !important;
-  height: 82px !important;
-  object-fit: contain !important;
-}
-
-.nav{
-  min-height: 100px !important;
-}
-
-.brand{
-  gap: 14px !important;
-}
-
-.brand strong{
-  font-size: 1.35rem !important;
-}
-
-.brand small{
-  font-size: 0.8rem !important;
-}
-/* ===== END PATCH ===== */
-
-
-/* ===== EDUGAP BIGGER LOGO + READABLE BRAND TEXT ===== */
-
-.brand{
-  display: flex !important;
-  align-items: center !important;
-  gap: 18px !important;
+  gap:18px !important;
+  flex-shrink:0 !important;
 }
 
 .brand-logo{
-  width: 150px !important;
-  height: auto !important;
-  max-height: 95px !important;
-  object-fit: contain !important;
-  display: block !important;
+  width:260px !important;
+  height:auto !important;
+  max-height:105px !important;
+  object-fit:contain !important;
 }
 
 .brand strong{
-  display: block !important;
-  font-size: 2rem !important;
-  line-height: 1.05 !important;
-  font-weight: 800 !important;
-  color: #241b5a !important;
+  font-size:2.45rem !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  color:#20194a !important;
 }
 
 .brand small{
-  display: block !important;
-  font-size: 1.05rem !important;
-  line-height: 1.2 !important;
-  color: #6f6a86 !important;
-  margin-top: 6px !important;
+  font-size:1.2rem !important;
+  line-height:1.2 !important;
+  color:#6d6684 !important;
+  margin-top:8px !important;
 }
 
-.nav,
-.site-header,
-header{
-  min-height: 110px !important;
+.nav-links{
+  gap:18px !important;
 }
 
 .footer-logo{
-  width: 110px !important;
-  height: auto !important;
-  object-fit: contain !important;
+  width:150px !important;
+  height:auto !important;
 }
 
-/* Mobile */
-@media (max-width: 768px){
+@media(max-width:1200px){
   .brand-logo{
-    width: 110px !important;
-    max-height: 72px !important;
+    width:210px !important;
   }
-
   .brand strong{
-    font-size: 1.45rem !important;
+    font-size:2rem !important;
   }
-
   .brand small{
-    font-size: 0.9rem !important;
+    font-size:1rem !important;
   }
 }
 
-/* ===== END PATCH ===== */
-
+@media(max-width:720px){
+  .nav{
+    min-height:92px !important;
+  }
+  .brand-logo{
+    width:150px !important;
+  }
+  .brand strong{
+    font-size:1.45rem !important;
+  }
+  .brand small{
+    font-size:.85rem !important;
+  }
+}
+/* ===== END V4 LOGO PATCH ===== */
