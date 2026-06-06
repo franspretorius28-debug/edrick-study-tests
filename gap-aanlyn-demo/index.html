@@ -3,64 +3,275 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Aanlyn – Website Demo</title>
+  <title>GAP Aanlyn – Professional Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="real-header">
-    <div class="real-nav">
-      <a class="real-logo" href="#top"><img src="gap-logo-header.png" alt="GAP Aanlyn"></a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#top" class="logo-link"><img src="logo.png" alt="GAP Aanlyn" class="logo"></a>
 
-      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-      <nav id="menu" class="real-links">
+      <nav id="mainMenu" class="main-nav">
         <a class="active" href="#top">Home</a>
-        <button onclick="toast('Information page preview can be added in the full build.')">Information ▾</button>
-        <button onclick="toast('Forms can connect to registration and enquiries.')">Forms</button>
-        <button onclick="toast('Programs page can be added in the full build.')">Programs</button>
-        <button onclick="toast('Downloads can contain printable resources.')">Downloads</button>
-        <button onclick="toast('Subjects page can list all school subjects neatly.')">Subjects</button>
-        <button onclick="toast('Marketing page can be redesigned professionally.')">Marketing</button>
-        <button onclick="toast('Coloring Competition page can be redesigned.')">Coloring Competition</button>
-        <button onclick="toast('Centres page can show locations in a modern directory.')">Centres</button>
-        <button onclick="toast('Sponsors page can show partners and projects.')">Sponsors</button>
+        <a href="#info">Information</a>
+        <a href="#forms">Forms</a>
+        <a href="#programs">Programs</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#subjects">Subjects</a>
+        <a href="#marketing">Marketing</a>
+        <a href="#competition">Coloring Competition</a>
+        <a href="#centres">Centres</a>
+        <a href="#sponsors">Sponsors</a>
       </nav>
 
-      <div class="real-actions">
-        <button class="portal-real" onclick="openPortalPreview()">Portal</button>
-        <button class="lang-real" onclick="toast('Afrikaans | English language switch demo.')">🌐 Afrikaans | English ▾</button>
+      <div class="nav-actions">
+        <button class="portal-btn" onclick="openPortalPreview()">Portal</button>
+        <button class="lang-btn" onclick="toast('Afrikaans | English taalwissel kan in die finale build reg werk.')">🌐 Afrikaans | English ▾</button>
       </div>
     </div>
   </header>
 
-  <main class="page">
-    <div class="stage" id="top">
-      <img src="gap-content-no-header.png" alt="GAP Aanlyn demo" class="exact-img">
+  <main id="top">
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="pill">🌐 AFRIKAANS &amp; ENGLISH AVAILABLE</span>
+          <h1>One Platform.<br>Two Languages.<br><span>Better Learning.</span></h1>
+          <p>GAP Aanlyn is a premium online learning platform with CAPS-aligned content, instant language switching, built-in parent tools and an easy-to-use learner portal — all in one place.</p>
 
-      <!-- Hero buttons repositioned for cropped image -->
-      <button class="hotspot hs-view-demo" onclick="openVideo('youtube')" aria-label="View Demo"></button>
-      <button class="hotspot hs-watch-intro" onclick="openVideo('youtube')" aria-label="Watch Intro"></button>
-      <button class="hotspot hs-open-portal" onclick="openPortalPreview()" aria-label="Open Portal"></button>
-      <button class="hotspot hs-lang-strip" onclick="toast('This shows where users can switch between Afrikaans and English.')" aria-label="Language strip"></button>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="openVideo('youtube')">View Demo ▶</button>
+            <button class="btn btn-outline" onclick="openVideo('youtube')">Watch Intro ▶</button>
+            <button class="btn btn-soft" onclick="openPortalPreview()">Open Portal ⤴</button>
+          </div>
 
-      <!-- Video centre -->
-      <button class="hotspot hs-video1" onclick="openVideo('youtube')" aria-label="Welcome video"></button>
-      <button class="hotspot hs-video2" onclick="openVideo('portal')" aria-label="Portal walkthrough"></button>
-      <button class="hotspot hs-video3" onclick="openVideo('parents')" aria-label="Parent progress"></button>
-      <button class="hotspot hs-video4" onclick="openVideo('tasks')" aria-label="Assignments and tests"></button>
-      <button class="hotspot hs-view-all" onclick="openVideo('youtube')" aria-label="View all videos"></button>
+          <div class="hero-stats">
+            <div><strong>2,500+</strong><span>Families</span></div>
+            <div><strong>98%</strong><span>Parent Satisfaction</span></div>
+            <div><strong>4.9/5</strong><span>Average Rating</span></div>
+            <div><strong>CAPS</strong><span>Aligned Content</span></div>
+          </div>
 
-      <!-- Portal preview -->
-      <button class="hotspot hs-open-portal2" onclick="openPortalPreview()" aria-label="Open portal section"></button>
-      <button class="hotspot hs-view-demo2" onclick="openVideo('portal')" aria-label="View portal demo"></button>
+          <button class="lang-switch-strip" onclick="toast('Hier kan die user tussen Afrikaans en English wissel.')">
+            ⟲ Switch instantly between Afrikaans and English
+            <span>AF</span><span>EN</span>
+          </button>
+        </div>
 
-      <!-- CTA / contact -->
-      <button class="hotspot hs-enquire" onclick="toast('Enquiry button can connect to WhatsApp, email or form submission.')" aria-label="Enquire"></button>
-      <button class="hotspot hs-pricing" onclick="toast('Pricing can be connected in the final website.')" aria-label="Pricing"></button>
-      <button class="hotspot hs-send" onclick="toast('Demo enquiry submitted. Final build can send to email or WhatsApp.')" aria-label="Send enquiry"></button>
-      <a class="hotspot hs-whatsapp" href="https://wa.me/" target="_blank" aria-label="WhatsApp"></a>
-    </div>
+        <div class="hero-visuals">
+          <div class="hero-blob"></div>
+          <img src="hero-family.png" alt="Mother and child learning" class="hero-family">
+          <img src="hero-dashboard.png" alt="Learner dashboard" class="hero-dashboard">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="info">
+      <div class="container">
+        <div class="section-heading">
+          <span>WHY CHOOSE GAP AANLYN?</span>
+          <h2>Powerful features that support every learner and every parent.</h2>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card"><div class="icon">🎓</div><h3>CAPS-Aligned Content</h3><p>Up-to-date lessons and resources for all core subjects.</p></div>
+          <div class="feature-card"><div class="icon">🌐</div><h3>Afrikaans & English</h3><p>Switch instantly between languages anytime, anywhere.</p></div>
+          <div class="feature-card"><div class="icon">📊</div><h3>Track Progress Easily</h3><p>Real-time reports and insights for better outcomes.</p></div>
+          <div class="feature-card"><div class="icon">📋</div><h3>Tasks, Tests & Assignments</h3><p>Interactive activities and assessments in one place.</p></div>
+          <div class="feature-card"><div class="icon">👨‍👩‍👧</div><h3>Parent Oversight</h3><p>Monitor progress, messages and important updates.</p></div>
+          <div class="feature-card"><div class="icon">🔒</div><h3>Safe & Secure</h3><p>Enterprise-grade security to protect your child’s data.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how-section">
+      <div class="container">
+        <div class="section-heading">
+          <span>HOW THE PORTAL WORKS</span>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">1</div><h3>Learn</h3><p>Engaging video lessons and notes for every subject.</p><div class="step-icon">💻</div></div>
+          <div class="step-card"><div class="step-num">2</div><h3>Practice</h3><p>Complete tasks, quizzes and tests to build confidence.</p><div class="step-icon">📝</div></div>
+          <div class="step-card"><div class="step-num">3</div><h3>Track Progress</h3><p>View marks, reports and subject progress in real time.</p><div class="step-icon">📈</div></div>
+          <div class="step-card"><div class="step-num">4</div><h3>Stay Involved</h3><p>Parents get updates, messages and important alerts.</p><div class="step-icon">🔔</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section video-section">
+      <div class="container">
+        <div class="section-row">
+          <div class="section-heading left">
+            <span>WATCH HOW IT WORKS</span>
+            <h2>Video Centre</h2>
+          </div>
+          <button class="btn btn-outline small" onclick="openVideo('youtube')">View all videos →</button>
+        </div>
+
+        <div class="videos-grid">
+          <article class="video-card" onclick="openVideo('youtube')">
+            <div class="thumb-wrap"><img src="video-1.png" alt=""><div class="play">▶</div></div>
+            <div class="video-body"><h3>Welcome to GAP</h3><p>Discover the power of bilingual learning with GAP Aanlyn.</p></div>
+          </article>
+          <article class="video-card" onclick="openVideo('portal')">
+            <div class="thumb-wrap"><img src="video-2.png" alt=""><div class="play">▶</div></div>
+            <div class="video-body"><h3>Portal Walkthrough</h3><p>See how the learner portal works step-by-step.</p></div>
+          </article>
+          <article class="video-card" onclick="openVideo('parents')">
+            <div class="thumb-wrap"><img src="video-3.png" alt=""><div class="play">▶</div></div>
+            <div class="video-body"><h3>How Parents Track Progress</h3><p>Stay informed and support your child every step of the way.</p></div>
+          </article>
+          <article class="video-card" onclick="openVideo('tasks')">
+            <div class="thumb-wrap"><img src="video-4.png" alt=""><div class="play">▶</div></div>
+            <div class="video-body"><h3>How Assignments & Tests Work</h3><p>From tasks to tests — everything your child needs to succeed.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tools-section" id="forms">
+      <div class="container">
+        <div class="section-heading">
+          <span>EVERYTHING IN ONE PLACE</span>
+          <h2>All the tools and information you need.</h2>
+        </div>
+
+        <div class="tools-grid">
+          <a class="tool-card" href="#info"><div class="icon">ℹ️</div><h3>Information</h3><p>About GAP Aanlyn, policies & more</p></a>
+          <a class="tool-card" href="#forms"><div class="icon">📄</div><h3>Forms</h3><p>Registrations, updates & more</p></a>
+          <a class="tool-card" href="#programs"><div class="icon">🗂️</div><h3>Programs</h3><p>Curriculum & learning programs</p></a>
+          <a class="tool-card" href="#downloads"><div class="icon">⬇️</div><h3>Downloads</h3><p>Documents, guides & templates</p></a>
+          <a class="tool-card" href="#subjects"><div class="icon">📚</div><h3>Subjects</h3><p>Explore all core school subjects</p></a>
+          <a class="tool-card" href="#marketing"><div class="icon">📣</div><h3>Marketing</h3><p>Promotions, news & updates</p></a>
+          <a class="tool-card" href="#competition"><div class="icon">🎯</div><h3>Coloring Competition</h3><p>Annual competition for kids</p></a>
+          <a class="tool-card" href="#centres"><div class="icon">🏫</div><h3>Centres</h3><p>Find a GAP learning centre</p></a>
+          <a class="tool-card" href="#sponsors"><div class="icon">🌿</div><h3>Sponsors</h3><p>Our partners & supporters</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section portal-section" id="programs">
+      <div class="container portal-grid">
+        <div class="portal-copy">
+          <span class="mini-title">THE GAP LEARNER PORTAL</span>
+          <h2>Smart. Simple. Powerful.</h2>
+          <p>Everything learners and parents need in one secure, easy-to-use dashboard.</p>
+          <ul class="check-list">
+            <li>Assignments, tests & resources</li>
+            <li>Marks, reports & progress tracking</li>
+            <li>Calendar, messages & announcements</li>
+            <li>Available in Afrikaans & English</li>
+          </ul>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="openPortalPreview()">Open Portal</button>
+            <button class="btn btn-outline" onclick="openVideo('portal')">View Demo</button>
+          </div>
+        </div>
+
+        <div class="portal-visual">
+          <img src="portal-laptop.png" alt="Portal on laptop" class="portal-laptop">
+          <img src="portal-phone.png" alt="Portal on phone" class="portal-phone">
+          <img src="plant-right.png" alt="" class="portal-plant">
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container cta-bar">
+        <div class="cta-left"><span class="rocket">🚀</span><div><h3>Ready to give your child the best start?</h3><p>Join thousands of families already learning the smarter way.</p></div></div>
+        <div class="cta-price"><small>Affordable. Transparent. Effective.</small><strong>R500</strong><span>per learner</span></div>
+        <div class="cta-actions">
+          <button class="btn btn-white" onclick="toast('Enquiry button can connect to WhatsApp or email in the final website.')">Enquire Now</button>
+          <button class="btn btn-ghost-light" onclick="toast('Pricing section can be expanded in the final website.')">View Pricing</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials-section" id="subjects">
+      <div class="container">
+        <div class="section-heading">
+          <span>WHAT PARENTS SAY</span>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card"><p>“GAP Aanlyn has made a huge difference in my daughter’s confidence and results.”</p><strong>— Mariska S.</strong><div class="stars">★★★★★</div></div>
+          <div class="testimonial-card"><p>“The teachers are friendly, the content is excellent and the portal is easy to use.”</p><strong>— Johan B.</strong><div class="stars">★★★★★</div></div>
+          <div class="testimonial-card"><p>“My kids enjoy the portal and the tasks are clear and easy to follow.”</p><strong>— Freya N.</strong><div class="stars">★★★★★</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="downloads">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <span class="mini-title">WE'RE HERE TO HELP</span>
+          <h2>Get in touch</h2>
+          <p>Have a question or want to know more? We’d love to hear from you.</p>
+          <ul class="contact-list">
+            <li>📞 +27 62 247 2432</li>
+            <li>✉️ info@gapaanlyn.com</li>
+            <li>💬 +27 62 247 2432</li>
+            <li>🟢 WhatsApp: +27 62 247 2432</li>
+          </ul>
+        </div>
+
+        <form class="form-card" onsubmit="event.preventDefault(); toast('Demo enquiry submitted. Final build can send this to email or WhatsApp.');">
+          <div class="form-row">
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email Address">
+            <input type="text" placeholder="Phone / WhatsApp">
+            <select><option>Enquiry Type</option><option>Registration</option><option>Portal</option><option>Support</option></select>
+          </div>
+          <textarea placeholder="How can we help you?"></textarea>
+          <button class="send-btn" type="submit">Send Enquiry ✈</button>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer" id="marketing">
+    <div class="container footer-grid">
+      <div>
+        <img src="logo.png" alt="GAP Aanlyn" class="footer-logo">
+        <p>One platform. Two languages. Endless possibilities.</p>
+        <div class="socials"><span>f</span><span>▶</span><span>◎</span><span>♪</span></div>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#top">Home</a>
+        <a href="#info">Information</a>
+        <a href="#forms">Forms</a>
+        <a href="#programs">Programs</a>
+        <a href="#subjects">Subjects</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a href="#downloads">Contact Us</a>
+        <a href="#">FAQ</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Refund Policy</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+27622472432">+27 62 247 2432</a>
+        <a href="mailto:info@gapaanlyn.com">info@gapaanlyn.com</a>
+        <a href="https://wa.me/27622472432" target="_blank">WhatsApp: +27 62 247 2432</a>
+        <span>South Africa</span>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2025 GAP Aanlyn. All rights reserved.</span>
+      <button class="footer-chat" onclick="window.open('https://wa.me/27622472432', '_blank')">💬 Chat on WhatsApp</button>
+    </div>
+  </footer>
 
   <div id="toast" class="toast"></div>
 
@@ -76,16 +287,14 @@
     <div class="modal-bg" onclick="closePortalPreview()"></div>
     <div class="modal-box">
       <button class="modal-close" onclick="closePortalPreview()">×</button>
-      <div id="portalContent" class="portal-preview-wrap">
+      <div class="portal-preview-wrap">
         <div class="portal-preview-top">
           <span class="preview-pill">LEERDER PORTAAL DEMO</span>
           <h2>Smart. Simple. Powerful.</h2>
-          <p>’n Skoon portaalvoorskou wat professioneel voel, sonder om die exact homepage se mooi layout te breek.</p>
+          <p>’n Netjiese portaal demo wat nou soos deel van die webwerf voel, nie soos ’n aparte geplakte page nie.</p>
         </div>
         <div class="portal-preview-grid">
-          <div class="portal-card-large">
-            <img src="portal-showcase.png" alt="Portal showcase">
-          </div>
+          <div class="portal-card-large"><img src="portal-laptop.png" alt=""></div>
           <div class="portal-card-side">
             <h3>Portal funksies</h3>
             <ul>

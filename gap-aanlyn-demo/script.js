@@ -22,7 +22,7 @@ function openVideo(type){
       tasks:['TASKS & TESTS','Everything your child needs to succeed.','Assignments, tests and feedback can be presented in one easy learner workflow.']
     }[type];
 
-    content.innerHTML = `<div class="demo-video"><div class="demo-head"><h2>${data[0]}</h2><p>Professional built-in explainer video concept for the website demo.</p></div><div class="demo-content"><div class="demo-copy"><span>DEMO VIDEO</span><h3>${data[1]}</h3><p>${data[2]}</p></div><div class="demo-ui"><div class="demo-ui-layout"><div class="demo-side"><strong>GAP</strong><span>Dashboard</span><span>My Subjects</span><span>Tasks</span><span>Tests</span><span>Progress</span><span>Reports</span></div><div class="demo-main"><div class="demo-top"><strong>Hello, Liam! 👋</strong><b>EN | AF</b></div><div class="demo-kpis"><div><strong>6</strong><small>Subjects</small></div><div><strong>14</strong><small>Tasks</small></div><div><strong>3</strong><small>Tests</small></div><div><strong>78%</strong><small>Average</small></div></div><div class="demo-bars"><div><i style="width:90%"></i></div><div><i style="width:78%"></i></div><div><i style="width:85%"></i></div><div><i style="width:73%"></i></div><div><i style="width:88%"></i></div></div></div></div></div></div></div>`;
+    content.innerHTML = `<div class="demo-video"><div class="demo-head"><h2>${data[0]}</h2><p>Professional built-in explainer video concept for the website demo.</p></div><div class="demo-content"><div class="demo-copy"><span>DEMO VIDEO</span><h3>${data[1]}</h3><p>${data[2]}</p></div><div class="demo-ui"><div class="demo-ui-layout"><div class="demo-side"><strong>GAP</strong><span>Dashboard</span><span>My Subjects</span><span>Tasks</span><span>Tests</span><span>Progress</span><span>Reports</span></div><div class="demo-main"><div class="demo-top"><h4>Hello, Liam! 👋</h4><b>EN | AF</b></div><div class="demo-kpis"><div><strong>6</strong><span>Subjects</span></div><div><strong>14</strong><span>Tasks</span></div><div><strong>3</strong><span>Tests</span></div><div><strong>78%</strong><span>Average</span></div></div><div class="demo-bars"><div><i style="width:90%"></i></div><div><i style="width:76%"></i></div><div><i style="width:85%"></i></div><div><i style="width:73%"></i></div></div></div></div></div></div>`;
   }
 
   modal.classList.add('open');
@@ -37,11 +37,6 @@ function closeVideo(){
   content.innerHTML='';
   document.body.style.overflow='';
 }
-
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape') closeVideo();
-});
-
 
 function openPortalPreview(){
   const modal = document.getElementById('portalModal');
@@ -60,6 +55,13 @@ function closePortalPreview(){
 }
 
 function toggleMenu(){
-  const menu = document.getElementById('menu');
+  const menu = document.getElementById('mainMenu');
   if(menu) menu.classList.toggle('open');
 }
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    closeVideo();
+    closePortalPreview();
+  }
+});

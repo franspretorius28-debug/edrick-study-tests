@@ -1,21 +1,27 @@
-GAP AANLYN REAL HEADER WEBSITE FEEL V14
+GAP AANLYN REAL SECTIONS V15
 
-This version keeps the exact-image look but makes it feel more like a live website:
-- Real sticky header/navigation built in HTML
-- The embedded header is cropped off the screenshot body to avoid duplicate header feel
-- Page remains wide/full browser width
-- Portal opens as a modal
-- Videos, buttons and WhatsApp remain clickable
-- Main body still uses the professional image layout so it stays visually close
+This version solves the issue where only the top felt like a real website.
+Now:
+- The logo is a clean crop from the original reference, not a screenshot pasted into a card.
+- The header is real HTML.
+- The lower sections are also rebuilt as real HTML/CSS website sections.
+- The page now feels like an actual website from top to bottom.
+- Videos open in a modal.
+- Portal opens in a clean modal.
+- WhatsApp, form and navigation work as demo interactions.
 
 Files:
 - index.html
-- portal.html
 - styles.css
 - script.js
-- gap-content-no-header.png
-- gap-demo-exact.png
-- gap-logo-header.png
-- gap-logo.png
-- dashboard-preview.png
-- portal-showcase.png
+- logo.png
+- hero-family.png
+- hero-dashboard.png
+- video-1.png
+- video-2.png
+- video-3.png
+- video-4.png
+- portal-laptop.png
+- portal-phone.png
+- plant-right.png
+- plant-bottom.png
