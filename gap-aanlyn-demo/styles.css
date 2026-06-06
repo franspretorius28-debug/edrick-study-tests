@@ -1164,169 +1164,55 @@ section, main, footer{
 }
 
 
-/* V19: remove dashboard overlap and use one clean hero image */
+/* V21: clean hero crop: only mother + daughter + laptop, no extra text */
 .hero-grid{
-  grid-template-columns:1fr 1fr !important;
-  gap:34px !important;
-  align-items:center !important;
+  grid-template-columns: 1fr 1.05fr !important;
+  gap: 34px !important;
+  align-items: center !important;
 }
-.single-hero-visual{
-  min-height:620px !important;
-  display:block !important;
-  position:relative !important;
+.clean-hero-visuals.single-hero-visual{
+  position: relative;
+  min-height: 620px;
+  display: block !important;
 }
 .single-hero-visual .hero-blob{
-  position:absolute !important;
-  left:6% !important;
-  right:2% !important;
-  top:3% !important;
-  bottom:5% !important;
-  border-radius:50% !important;
-  background:radial-gradient(circle at 45% 38%, #f7ddf4 0%, #f3e8ff 68%, #f7efff 100%) !important;
-  z-index:0 !important;
+  position: absolute !important;
+  left: 7% !important;
+  right: 3% !important;
+  top: 6% !important;
+  bottom: 6% !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 50% 45%, #f6def4 0%, #f1e4ff 70%, #f7efff 100%) !important;
+  z-index: 0;
 }
-.hero-single-image-card{
-  position:absolute;
-  left:14%;
-  right:8%;
-  top:14%;
-  bottom:12%;
-  z-index:2;
-  border-radius:34px;
-  overflow:hidden;
-  background:#fff;
-  box-shadow:0 24px 80px rgba(98,44,157,.18);
-  border:1px solid rgba(173,135,222,.22);
+.hero-single-image-wrap{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero-single-image-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+.hero-clean-image{
+  width: 76% !important;
+  max-width: 760px;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block;
+  filter: drop-shadow(0 18px 34px rgba(74, 34, 124, .10));
 }
 .hero-family-card,
-.hero-dashboard-card{
-  display:none !important;
-}
-
-/* make the visual feel cleaner and more premium */
-.hero{
-  padding-top:38px !important;
-  padding-bottom:30px !important;
-}
-.hero-copy{
-  position:relative;
-  z-index:3;
-}
-.hero h1{
-  font-size:clamp(3.5rem,5vw,5.8rem) !important;
-  line-height:1.02 !important;
-}
-.hero p{
-  font-size:1.28rem !important;
-  line-height:1.65 !important;
-  max-width:710px !important;
-}
-
-/* responsive hero */
-@media(max-width:1280px){
-  .hero-grid{
-    grid-template-columns:1fr !important;
-    gap:24px !important;
-  }
-  .single-hero-visual{
-    min-height:480px !important;
-  }
-  .hero-single-image-card{
-    left:12%;
-    right:12%;
-    top:12%;
-    bottom:12%;
-  }
-}
-@media(max-width:760px){
-  .single-hero-visual{
-    min-height:340px !important;
-  }
-  .hero-single-image-card{
-    left:8%;
-    right:8%;
-    top:10%;
-    bottom:10%;
-    border-radius:24px;
-  }
-}
-
-
-/* V20: make hero image sit cleaner inside the circle without harsh cropping */
-.single-hero-visual{
-  min-height:620px !important;
-  position:relative !important;
-  display:block !important;
-}
-
-.single-hero-visual .hero-blob{
-  left:10% !important;
-  right:4% !important;
-  top:6% !important;
-  bottom:6% !important;
-  border-radius:50% !important;
-  background:radial-gradient(circle at 45% 35%, #f7ddf4 0%, #f2e6ff 68%, #f8f0ff 100%) !important;
-  box-shadow:inset 0 0 0 1px rgba(178,128,221,.10);
-}
-
-/* turn the main visual into a centred contained image instead of a cropped card */
+.hero-dashboard-card,
 .hero-single-image-card{
-  position:absolute !important;
-  inset:0 !important;
-  background:transparent !important;
-  border:0 !important;
-  box-shadow:none !important;
-  overflow:visible !important;
-  z-index:2 !important;
+  display: none !important;
 }
-
-.hero-single-image-card img{
-  position:absolute !important;
-  left:50% !important;
-  top:50% !important;
-  transform:translate(-50%, -50%) !important;
-  width:82% !important;
-  height:82% !important;
-  object-fit:contain !important;
-  object-position:center center !important;
-  display:block !important;
-  filter:drop-shadow(0 20px 38px rgba(70, 32, 120, .12));
+@media(max-width: 1280px){
+  .hero-grid{grid-template-columns:1fr !important;}
+  .clean-hero-visuals.single-hero-visual{min-height: 460px;}
+  .hero-clean-image{width: 72% !important;}
 }
-
-/* give the circle area a bit more room on desktop */
-.hero-grid{
-  grid-template-columns:1fr 1.05fr !important;
-  gap:38px !important;
-}
-
-@media(max-width:1280px){
-  .single-hero-visual{
-    min-height:500px !important;
-  }
-  .hero-single-image-card img{
-    width:86% !important;
-    height:86% !important;
-  }
-}
-
-@media(max-width:760px){
-  .single-hero-visual{
-    min-height:360px !important;
-  }
-  .single-hero-visual .hero-blob{
-    left:4% !important;
-    right:4% !important;
-    top:8% !important;
-    bottom:8% !important;
-  }
-  .hero-single-image-card img{
-    width:90% !important;
-    height:90% !important;
-  }
+@media(max-width: 760px){
+  .clean-hero-visuals.single-hero-visual{min-height: 340px;}
+  .single-hero-visual .hero-blob{left:4% !important; right:4% !important; top:8% !important; bottom:8% !important;}
+  .hero-clean-image{width: 82% !important;}
 }
