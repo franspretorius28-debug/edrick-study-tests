@@ -799,22 +799,3 @@ header nav a.active,
 
 /* ===== END EDUGAP HERO FINAL POLISH ===== */
 
-
-/* ===== HIDE FOOTER EXTRA BRAND TEXT ===== */
-.site-footer .footer-brand > span,
-.site-footer .brand > span:not(.brand-mark){
-  display: none !important;
-}
-
-.site-footer .footer-brand{
-  gap: 0 !important;
-}
-
-.site-footer .footer-logo{
-  width: 180px !important;
-  height: auto !important;
-  object-fit: contain !important;
-  margin-bottom: 12px !important;
-}
-/* ===== END PATCH ===== */
-
