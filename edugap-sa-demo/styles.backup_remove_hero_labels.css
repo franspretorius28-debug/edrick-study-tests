@@ -624,14 +624,3 @@ img{display:block;max-width:100%}
   }
 }
 /* ===== END V5 FINAL ===== */
-
-/* ===== REMOVE TEXT LABELS FROM HERO IMAGE ===== */
-.student-card,
-.card-a,
-.card-b,
-.card-c,
-.rainbow:before{
-  display: none !important;
-}
-/* ===== END PATCH ===== */
-
