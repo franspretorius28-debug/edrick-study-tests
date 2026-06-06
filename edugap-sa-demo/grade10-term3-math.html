@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduGap SA - Grade 10 Mathematical Literacy Term 3</title>
+  <style>
+    :root{
+      --navy:#20194a;--purple:#5f2eea;--blue:#2f80ed;--pink:#f04fb4;--orange:#ff9b3d;
+      --muted:#6d6684;--line:#e9e4f4;--soft:#f8f6ff;--green:#1fb56b;--red:#ef4444;
+      --shadow:0 18px 45px rgba(52,27,112,.11);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fbfaff;color:var(--navy)}
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .container{width:min(1240px,calc(100% - 28px));margin:auto}
+    .nav{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+    .mark{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;display:grid;place-items:center;font-weight:900}
+    .brand small{display:block;color:var(--muted);font-weight:700}
+    .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:900;color:var(--navy)}
+    .btn{border:0;border-radius:16px;padding:13px 18px;font-weight:900;cursor:pointer}
+    .primary{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;box-shadow:var(--shadow)}
+    .pink{background:#fff2fb;color:var(--pink);border:1px solid #ffd5ef}
+    .outline{background:#fff;color:var(--purple);border:2px solid #e5dcfa}
+    .hero{padding:34px 0 28px;background:radial-gradient(circle at 90% 15%,rgba(47,128,237,.12),transparent 28%),radial-gradient(circle at 10% 85%,rgba(240,79,180,.11),transparent 25%),#fff}
+    .hero-grid{display:grid;grid-template-columns:1fr .88fr;gap:26px;align-items:center}
+    .eyebrow{display:inline-flex;background:#efeafd;color:var(--purple);border-radius:999px;padding:10px 14px;font-size:.82rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+    h1{font-size:clamp(2.5rem,5vw,5.2rem);line-height:1;letter-spacing:-.055em;margin:16px 0}
+    .gradient{background:linear-gradient(135deg,var(--purple),var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:1.14rem;line-height:1.7;color:var(--muted);max-width:760px}
+    .hero-card{background:#fff;border:1px solid var(--line);border-radius:30px;padding:22px;box-shadow:var(--shadow)}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+    .kpi{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:14px}
+    .kpi strong{font-size:1.55rem;color:var(--purple);display:block}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}
+    .tab{background:#fff;border:1px solid var(--line);border-radius:999px;padding:11px 15px;font-weight:900;cursor:pointer;color:var(--navy)}
+    .tab.active{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff}
+    .main{padding:28px 0 54px}
+    .grid{display:grid;grid-template-columns:320px 1fr;gap:22px;align-items:start}
+    .sidebar{position:sticky;top:106px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:var(--shadow)}
+    .progress{height:12px;background:#eee9fb;border-radius:999px;overflow:hidden}
+    .progress i{display:block;height:100%;width:0;background:linear-gradient(135deg,var(--purple),var(--pink));transition:.3s}
+    .module-list{display:grid;gap:9px;margin-top:16px}
+    .module-btn{border:1px solid var(--line);background:#fff;border-radius:16px;text-align:left;padding:13px;cursor:pointer;font-weight:900;color:var(--navy)}
+    .module-btn.active{background:#f0ecff;border-color:#cab9ff;color:var(--purple)}
+    .content-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px}
+    .lesson-title{font-size:2.1rem;margin:0 0 8px;letter-spacing:-.03em}
+    .sub{color:var(--muted);line-height:1.65}
+    .concepts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+    .concept{background:#fbf9ff;border:1px solid var(--line);border-radius:18px;padding:16px}
+    .concept h3{margin:0 0 8px;color:var(--purple)}
+    .example{background:#fffaf1;border:1px solid #ffe4ba;border-radius:18px;padding:16px;margin:14px 0}
+    .question{border-top:1px solid var(--line);padding:18px 0}
+    .question h4{margin:0 0 10px;font-size:1.05rem}
+    .options{display:grid;gap:8px}
+    .option{border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px;text-align:left;cursor:pointer}
+    .option.correct{border-color:rgba(31,181,107,.4);background:#effcf5}
+    .option.wrong{border-color:rgba(239,68,68,.35);background:#fff1f2}
+    .feedback{margin-top:8px;font-weight:800}
+    .ok{color:var(--green)}.bad{color:var(--red)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .report-box{background:#fbf9ff;border:1px solid var(--line);border-radius:18px;padding:16px}
+    .report-box strong{display:block;font-size:1.7rem;color:var(--purple)}
+    .hidden{display:none!important}
+    .lang-note{font-size:.9rem;color:var(--muted);margin-top:10px}
+    footer{padding:28px 0;background:var(--navy);color:#fff}
+    footer p{color:rgba(255,255,255,.78)}
+    @media(max-width:980px){.hero-grid,.grid{grid-template-columns:1fr}.sidebar{position:static}.concepts,.report-grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr}h1{font-size:3rem}}
+  </style>
+</head>
+<body translate="no" class="notranslate">
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="mark">EG</span>
+        <span>EduGap SA<small>Grade 10 Mathematical Literacy</small></span>
+      </a>
+      <div class="nav-actions">
+        <button class="pill" onclick="toggleLang()">🌐 <span id="langText">Afrikaans | English</span></button>
+        <a class="pill" href="index.html">← Back to Website</a>
+        <button class="btn primary" onclick="openReport()">View Report</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow" data-af="GRAAD 10 • KWARTAAL 3 • WISKUNDIGE GELETTERDHEID" data-en="GRADE 10 • TERM 3 • MATHEMATICAL LITERACY">GRAAD 10 • KWARTAAL 3 • WISKUNDIGE GELETTERDHEID</span>
+        <h1><span data-af="Leer, oefen en toets." data-en="Learn, practise and test.">Leer, oefen en toets.</span><br><span class="gradient" data-af="Elke punt tel." data-en="Every mark counts.">Elke punt tel.</span></h1>
+        <p data-af="Hier begin Enrico se Graad 10 Kwartaal 3 Wiskundige Geletterdheid module. Die werk is opgedeel in kort lesse, oefenvrae, mini-toetse en ’n progress report."
+           data-en="This is Enrico’s Grade 10 Term 3 Mathematical Literacy module. The work is split into short lessons, practice questions, mini-tests and a progress report.">
+           Hier begin Enrico se Graad 10 Kwartaal 3 Wiskundige Geletterdheid module. Die werk is opgedeel in kort lesse, oefenvrae, mini-toetse en ’n progress report.
+        </p>
+        <div class="actions">
+          <button class="btn primary" onclick="startModule(0)">Start Week 1</button>
+          <button class="btn outline" onclick="openReport()">Progress Report</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h2 style="margin-top:0">Term 3 Roadmap</h2>
+        <p class="sub">Gebaseer op die Term 3 afdelings in die Graad 10 Wiskundige Geletterdheid leerderboek: finansies, meting, en ruimte/vorm/voorstellings.</p>
+        <div class="kpis">
+          <div class="kpi"><strong>8</strong><span>Study weeks</span></div>
+          <div class="kpi"><strong>3</strong><span>Main topics</span></div>
+          <div class="kpi"><strong>40+</strong><span>Practice items</span></div>
+          <div class="kpi"><strong>1</strong><span>Term test</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <div class="tabs">
+        <button class="tab active" onclick="showView('learn')">Learn</button>
+        <button class="tab" onclick="showView('quiz')">Quiz</button>
+        <button class="tab" onclick="showView('report')">Report</button>
+      </div>
+
+      <div class="grid">
+        <aside class="sidebar">
+          <h3 style="margin:0 0 10px">Your Progress</h3>
+          <div class="progress"><i id="progressBar"></i></div>
+          <p class="sub"><span id="progressText">0%</span> complete</p>
+          <div class="module-list" id="moduleList"></div>
+        </aside>
+
+        <section>
+          <div id="learnView" class="content-card"></div>
+          <div id="quizView" class="content-card hidden"></div>
+          <div id="reportView" class="content-card hidden"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>EduGap SA</strong>
+      <p>Original EduGap SA learning module created for Grade 10 Mathematical Literacy Term 3 practice. Use with your learner book and class notes.</p>
+    </div>
+  </footer>
+
+<script>
+const modules = [
+  {
+    title:"Week 1: Income, expenses, profit and loss",
+    afTitle:"Week 1: Inkomste, uitgawes, wins en verlies",
+    goal:"Understand how money comes in, how money goes out, and how to calculate profit or loss.",
+    afGoal:"Verstaan hoe geld inkom, hoe geld uitgaan, en hoe om wins of verlies te bereken.",
+    concepts:[
+      ["Income","Money received, for example sales, salary, commission or pocket money."],
+      ["Expenses","Money paid out, for example rent, transport, stock, airtime or electricity."],
+      ["Profit","Profit = Income − Expenses. If income is more than expenses, there is profit."],
+      ["Loss","Loss = Expenses − Income. If expenses are more than income, there is a loss."]
+    ],
+    example:"A small tuck shop receives R1 850 in sales. Expenses are R1 220. Profit = R1 850 − R1 220 = R630.",
+    questions:[
+      {q:"A learner sells snacks for R420. The snacks cost R275. What is the profit?", a:"R145", opts:["R145","R275","R695","R120"], exp:"Profit = income − expenses = 420 − 275 = R145."},
+      {q:"Income is R900 and expenses are R1 050. What happened?", a:"Loss of R150", opts:["Profit of R150","Loss of R150","Profit of R1 950","Break even"], exp:"Expenses are higher. 1 050 − 900 = R150 loss."},
+      {q:"Which formula is correct?", a:"Profit = Income − Expenses", opts:["Profit = Income + Expenses","Profit = Income − Expenses","Loss = Income − Expenses","Expenses = Profit − Income"], exp:"Profit is the amount left after expenses are subtracted from income."}
+    ]
+  },
+  {
+    title:"Week 2: Budgets",
+    afTitle:"Week 2: Begrotings",
+    goal:"Create and read simple budgets, and decide if spending must be reduced.",
+    afGoal:"Stel eenvoudige begrotings op en besluit of uitgawes verminder moet word.",
+    concepts:[
+      ["Budget","A plan that compares expected income and expected expenses."],
+      ["Surplus","When expected income is more than expected expenses."],
+      ["Shortfall","When expected expenses are more than expected income."],
+      ["Decision making","A budget helps you decide what to cut, save or change."]
+    ],
+    example:"Expected income = R2 500. Expected expenses = R2 200. Surplus = R300.",
+    questions:[
+      {q:"Income is R3 200 and expenses are R2 950. What is the surplus?", a:"R250", opts:["R250","R6 150","R150","R350"], exp:"3 200 − 2 950 = R250."},
+      {q:"If a budget has a shortfall, what should you do first?", a:"Reduce expenses or increase income", opts:["Spend more money","Ignore the budget","Reduce expenses or increase income","Add expenses to income"], exp:"A shortfall means expenses are too high for the income."},
+      {q:"Which item is most likely a fixed monthly expense?", a:"Rent", opts:["Ice cream","Rent","Extra snacks","Movie ticket"], exp:"Rent is usually paid every month and does not change much."}
+    ]
+  },
+  {
+    title:"Week 3: Interest and money decisions",
+    afTitle:"Week 3: Rente en geldbesluite",
+    goal:"Understand simple interest ideas and compare money options.",
+    afGoal:"Verstaan eenvoudige rente-idees en vergelyk geldopsies.",
+    concepts:[
+      ["Interest","Extra money paid on borrowed money or earned on savings."],
+      ["Principal","The original amount of money."],
+      ["Rate","The percentage used to calculate interest."],
+      ["Time","How long the money is borrowed or invested."]
+    ],
+    example:"Simple interest = P × r × t. If P = R1 000, r = 10% per year and t = 1 year, interest = R100.",
+    questions:[
+      {q:"10% of R500 is...", a:"R50", opts:["R5","R50","R100","R450"], exp:"10% = 0,10. 0,10 × 500 = R50."},
+      {q:"If you borrow money, interest is usually...", a:"Extra money you must pay", opts:["A discount","Extra money you must pay","Free money","A receipt"], exp:"Borrowing usually costs extra money called interest."},
+      {q:"R1 200 grows by R120 interest. Final amount?", a:"R1 320", opts:["R1 080","R1 200","R1 320","R120"], exp:"Final amount = 1 200 + 120 = R1 320."}
+    ]
+  },
+  {
+    title:"Week 4: Perimeter",
+    afTitle:"Week 4: Omtrek",
+    goal:"Calculate the distance around shapes.",
+    afGoal:"Bereken die afstand rondom vorms.",
+    concepts:[
+      ["Perimeter","The total distance around the outside of a shape."],
+      ["Rectangle","Perimeter = 2 × length + 2 × width."],
+      ["Square","Perimeter = 4 × side."],
+      ["Units","Perimeter is measured in units like mm, cm, m or km."]
+    ],
+    example:"A rectangle is 8 m long and 3 m wide. Perimeter = 2(8) + 2(3) = 22 m.",
+    questions:[
+      {q:"A square has sides of 6 cm. Perimeter?", a:"24 cm", opts:["12 cm","24 cm","36 cm","6 cm"], exp:"4 × 6 = 24 cm."},
+      {q:"A rectangle is 10 m by 4 m. Perimeter?", a:"28 m", opts:["14 m","28 m","40 m","20 m"], exp:"2×10 + 2×4 = 20 + 8 = 28 m."},
+      {q:"Perimeter is used to calculate...", a:"Fence around a garden", opts:["Paint for a wall","Fence around a garden","Volume of a bottle","Mass of a bag"], exp:"Fencing goes around the outside, so perimeter is used."}
+    ]
+  },
+  {
+    title:"Week 5: Area",
+    afTitle:"Week 5: Oppervlakte",
+    goal:"Calculate the space inside 2D shapes.",
+    afGoal:"Bereken die ruimte binne 2D vorms.",
+    concepts:[
+      ["Area","The amount of surface inside a shape."],
+      ["Rectangle","Area = length × width."],
+      ["Square","Area = side × side."],
+      ["Units","Area uses square units, for example cm² or m²."]
+    ],
+    example:"A room is 5 m long and 4 m wide. Area = 5 × 4 = 20 m².",
+    questions:[
+      {q:"A rectangle is 7 m by 3 m. Area?", a:"21 m²", opts:["10 m²","20 m²","21 m²","24 m²"], exp:"7 × 3 = 21 m²."},
+      {q:"A square has side 9 cm. Area?", a:"81 cm²", opts:["18 cm²","36 cm²","81 cm²","9 cm²"], exp:"9 × 9 = 81 cm²."},
+      {q:"Area is best for calculating...", a:"Tiles for a floor", opts:["Rope around a field","Tiles for a floor","Distance to school","Speed of a taxi"], exp:"Tiles cover a surface, so area is used."}
+    ]
+  },
+  {
+    title:"Week 6: Plans and scale",
+    afTitle:"Week 6: Planne en skaal",
+    goal:"Read simple plans and use scale to estimate real sizes.",
+    afGoal:"Lees eenvoudige planne en gebruik skaal om regte groottes te skat.",
+    concepts:[
+      ["Plan","A drawing of a real object or place from above or from the side."],
+      ["Scale","A comparison between drawing size and real size."],
+      ["1 : 100","1 unit on the plan represents 100 of the same units in real life."],
+      ["Convert units","Remember 100 cm = 1 m and 1 000 m = 1 km."]
+    ],
+    example:"Scale 1:100. A wall is 6 cm on the plan. Real wall = 6 × 100 = 600 cm = 6 m.",
+    questions:[
+      {q:"Scale 1:100. 4 cm on plan is real length...", a:"4 m", opts:["40 cm","4 m","400 m","0,4 m"], exp:"4 cm × 100 = 400 cm = 4 m."},
+      {q:"A scale drawing is used because...", a:"Real objects are too large to draw actual size", opts:["It makes answers random","Real objects are too large to draw actual size","It removes units","It changes the shape"], exp:"Scale keeps the shape but changes the size."},
+      {q:"1 000 mm equals...", a:"1 m", opts:["1 cm","10 cm","1 m","10 m"], exp:"1 000 millimetres = 1 metre."}
+    ]
+  },
+  {
+    title:"Week 7: Data and representations",
+    afTitle:"Week 7: Data en voorstellings",
+    goal:"Read tables, graphs and simple visual information.",
+    afGoal:"Lees tabelle, grafieke en eenvoudige visuele inligting.",
+    concepts:[
+      ["Data","Information collected, often numbers."],
+      ["Table","Organises information in rows and columns."],
+      ["Graph","Shows data visually so patterns are easier to see."],
+      ["Interpret","Explain what the data means in words."]
+    ],
+    example:"If a table shows sales from Monday to Friday, the highest number shows the best sales day.",
+    questions:[
+      {q:"Which is best for comparing sales over 5 days?", a:"Bar graph", opts:["Recipe","Bar graph","Paragraph only","Photo"], exp:"A bar graph makes comparisons easy."},
+      {q:"In a table, columns go...", a:"Up and down", opts:["Up and down","Only left","Only right","Around a shape"], exp:"Columns are vertical."},
+      {q:"If a graph rises from left to right, the values are generally...", a:"Increasing", opts:["Decreasing","Increasing","Always zero","Missing"], exp:"A rising graph usually shows an increase."}
+    ]
+  },
+  {
+    title:"Week 8: Revision and Term Test",
+    afTitle:"Week 8: Hersiening en Kwartaaltoets",
+    goal:"Revise Term 3 and complete a mixed test.",
+    afGoal:"Hersien Kwartaal 3 en voltooi ’n gemengde toets.",
+    concepts:[
+      ["Revise finance","Income, expenses, profit, loss, budgets and interest."],
+      ["Revise measurement","Perimeter, area, units and realistic answers."],
+      ["Revise plans","Scale, layouts and real-life measurements."],
+      ["Revise data","Read tables and graphs carefully."]
+    ],
+    example:"Always write units, check if your answer makes sense, and show your working.",
+    questions:[
+      {q:"Income R2 000, expenses R1 650. Profit?", a:"R350", opts:["R350","R3 650","R650","Loss of R350"], exp:"2 000 − 1 650 = R350."},
+      {q:"A room is 6 m by 5 m. Area?", a:"30 m²", opts:["11 m²","22 m²","30 m²","36 m²"], exp:"6 × 5 = 30 m²."},
+      {q:"Scale 1:50. 10 cm on plan is real length...", a:"5 m", opts:["50 cm","5 m","500 m","0,5 m"], exp:"10 × 50 = 500 cm = 5 m."},
+      {q:"A graph that goes down over time shows...", a:"Decrease", opts:["Increase","Decrease","No change","Profit only"], exp:"Downward trend means values decrease."}
+    ]
+  }
+];
+
+let lang = localStorage.getItem("edugap_grade10_lang") || "en";
+let currentModule = Number(localStorage.getItem("edugap_grade10_current") || 0);
+let answers = JSON.parse(localStorage.getItem("edugap_grade10_answers") || "{}");
+let completed = JSON.parse(localStorage.getItem("edugap_grade10_completed") || "[]");
+
+function t(af,en){return lang==="af"?af:en}
+function toggleLang(){lang = lang==="af" ? "en" : "af"; localStorage.setItem("edugap_grade10_lang", lang); render();}
+function save(){localStorage.setItem("edugap_grade10_answers", JSON.stringify(answers));localStorage.setItem("edugap_grade10_completed", JSON.stringify(completed));localStorage.setItem("edugap_grade10_current", currentModule);}
+function startModule(i){currentModule=i; showView("learn"); render();}
+function showView(view){
+  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".content-card").forEach(v=>v.classList.add("hidden"));
+  if(view==="learn"){document.querySelectorAll(".tab")[0].classList.add("active");document.getElementById("learnView").classList.remove("hidden")}
+  if(view==="quiz"){document.querySelectorAll(".tab")[1].classList.add("active");document.getElementById("quizView").classList.remove("hidden")}
+  if(view==="report"){document.querySelectorAll(".tab")[2].classList.add("active");document.getElementById("reportView").classList.remove("hidden")}
+}
+function openReport(){showView("report"); renderReport();}
+function render(){
+  document.getElementById("langText").textContent = "Afrikaans | English";
+  renderModules(); renderLesson(); renderQuiz(); renderReport(); updateProgress(); save();
+}
+function renderModules(){
+  const list=document.getElementById("moduleList");
+  list.innerHTML=modules.map((m,i)=>`<button class="module-btn ${i===currentModule?'active':''}" onclick="startModule(${i})">${completed.includes(i)?"✅":"○"} ${lang==="af"?m.afTitle:m.title}</button>`).join("");
+}
+function renderLesson(){
+  const m=modules[currentModule];
+  document.getElementById("learnView").innerHTML=`
+    <h2 class="lesson-title">${lang==="af"?m.afTitle:m.title}</h2>
+    <p class="sub">${lang==="af"?m.afGoal:m.goal}</p>
+    <div class="concepts">${m.concepts.map(c=>`<div class="concept"><h3>${c[0]}</h3><p class="sub">${c[1]}</p></div>`).join("")}</div>
+    <div class="example"><strong>Example:</strong><p>${m.example}</p></div>
+    <div class="actions"><button class="btn primary" onclick="showView('quiz')">Start Quiz</button><button class="btn outline" onclick="markComplete()">Mark lesson complete</button></div>
+    <p class="lang-note">Tip: use your learner book and class notes together with this module.</p>`;
+}
+function renderQuiz(){
+  const m=modules[currentModule];
+  document.getElementById("quizView").innerHTML=`
+    <h2 class="lesson-title">Quiz: ${lang==="af"?m.afTitle:m.title}</h2>
+    ${m.questions.map((q,qi)=>renderQuestion(q,qi)).join("")}
+    <div class="actions"><button class="btn primary" onclick="markComplete()">Save Quiz Progress</button><button class="btn outline" onclick="renderQuiz()">Refresh Feedback</button></div>`;
+}
+function renderQuestion(q,qi){
+  const key=`${currentModule}-${qi}`;
+  const chosen=answers[key];
+  return `<div class="question"><h4>${qi+1}. ${q.q}</h4><div class="options">${q.opts.map(o=>{
+    let cls="";
+    if(chosen){
+      if(o===q.a) cls="correct";
+      if(o===chosen && o!==q.a) cls="wrong";
+    }
+    return `<button class="option ${cls}" onclick="answer('${key}', '${escapeHtml(o)}')">${o}</button>`
+  }).join("")}</div>${chosen?`<div class="feedback ${chosen===q.a?'ok':'bad'}">${chosen===q.a?'Correct':'Try again'} — ${q.exp}</div>`:""}</div>`;
+}
+function answer(key,val){answers[key]=val.replaceAll("&amp;","&"); save(); renderQuiz(); updateProgress();}
+function escapeHtml(s){return String(s).replaceAll("&","&amp;").replaceAll("'","\\'")}
+function markComplete(){if(!completed.includes(currentModule)) completed.push(currentModule); save(); render(); alert("Saved!");}
+function score(){
+  let total=0, correct=0;
+  modules.forEach((m,mi)=>m.questions.forEach((q,qi)=>{total++; if(answers[`${mi}-${qi}`]===q.a) correct++;}));
+  return {total,correct,pct: total ? Math.round(correct/total*100) : 0};
+}
+function updateProgress(){
+  const s=score();
+  const lessonPct=Math.round((completed.length/modules.length)*100);
+  const overall=Math.round((lessonPct+s.pct)/2);
+  document.getElementById("progressBar").style.width=overall+"%";
+  document.getElementById("progressText").textContent=overall+"%";
+}
+function renderReport(){
+  const s=score();
+  const lessonPct=Math.round((completed.length/modules.length)*100);
+  const overall=Math.round((lessonPct+s.pct)/2);
+  document.getElementById("reportView").innerHTML=`
+    <h2 class="lesson-title">Progress Report</h2>
+    <p class="sub">Learner: Enrico • Subject: Grade 10 Mathematical Literacy • Term: 3</p>
+    <div class="report-grid">
+      <div class="report-box"><strong>${completed.length}/${modules.length}</strong><span>Lessons completed</span></div>
+      <div class="report-box"><strong>${s.correct}/${s.total}</strong><span>Quiz answers correct</span></div>
+      <div class="report-box"><strong>${overall}%</strong><span>Overall progress</span></div>
+    </div>
+    <h3>Recommended next step</h3>
+    <p class="sub">${overall<50?"Continue with the first 3 weeks and redo incorrect quiz questions.":overall<80?"Good progress. Finish the remaining lessons and revise weak questions.":"Excellent progress. Start mixed revision and prepare for a term test."}</p>
+    <div class="actions"><button class="btn primary" onclick="window.print()">Print Report</button><button class="btn outline" onclick="resetProgress()">Reset Progress</button></div>`;
+}
+function resetProgress(){if(confirm("Reset all progress?")){answers={};completed=[];currentModule=0;save();render();}}
+render();
+</script>
+</body>
+</html>
