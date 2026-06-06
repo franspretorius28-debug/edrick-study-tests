@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduGap SA – Online Learning Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="brand-mark">EG</span>
+        <span>
+          <strong>EduGap SA</strong>
+          <small>Online Learning Academy</small>
+        </span>
+      </a>
+
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+      <nav id="mainMenu" class="nav-links">
+        <a class="active" href="#home" data-af="Tuis" data-en="Home">Tuis</a>
+        <a href="#about" data-af="Oor Ons" data-en="About">Oor Ons</a>
+        <a href="#grades" data-af="Grade" data-en="Grades">Grade</a>
+        <a href="#subjects" data-af="Vakke" data-en="Subjects">Vakke</a>
+        <a href="#portal" data-af="Portaal" data-en="Portal">Portaal</a>
+        <a href="#pricing" data-af="Pryse" data-en="Pricing">Pryse</a>
+        <a href="#contact" data-af="Kontak" data-en="Contact">Kontak</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="lang-btn" onclick="toggleLanguage()">🌐 <span id="langLabel">Afrikaans | English</span></button>
+        <button class="portal-btn" onclick="openPortal()">Learner Portal</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow" data-af="AANLYN LEERONDERSTEUNING VIR SUID-AFRIKA" data-en="ONLINE LEARNING SUPPORT FOR SOUTH AFRICA">AANLYN LEERONDERSTEUNING VIR SUID-AFRIKA</span>
+          <h1>
+            <span data-af="Slimmer leer." data-en="Smarter learning.">Slimmer leer.</span><br>
+            <span data-af="Daaglikse take." data-en="Daily tasks.">Daaglikse take.</span><br>
+            <span class="gradient" data-af="Regte resultate." data-en="Real results.">Regte resultate.</span>
+          </h1>
+          <p data-af="EduGap SA help leerders om elke dag gestruktureerd te leer met CAPS-belynde lesse, take, toetse, resultate en ouer reports — alles in een eenvoudige aanlyn platform."
+             data-en="EduGap SA helps learners study every day with CAPS-aligned lessons, tasks, tests, results and parent reports — all in one simple online platform.">
+             EduGap SA help leerders om elke dag gestruktureerd te leer met CAPS-belynde lesse, take, toetse, resultate en ouer reports — alles in een eenvoudige aanlyn platform.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#pricing" data-af="Begin Nou" data-en="Get Started">Begin Nou</a>
+            <button class="btn btn-outline" onclick="openDemoVideo()" data-af="Kyk Demo" data-en="Watch Demo">Kyk Demo ▶</button>
+            <button class="btn btn-soft" onclick="openPortal()" data-af="Open Portaal" data-en="Open Portal">Open Portaal</button>
+          </div>
+
+          <div class="hero-stats">
+            <div><strong>CAPS</strong><span data-af="Belynde werk" data-en="Aligned work">Belynde werk</span></div>
+            <div><strong>AF | EN</strong><span data-af="Taal opsie" data-en="Language option">Taal opsie</span></div>
+            <div><strong>Reports</strong><span data-af="Vir ouers" data-en="For parents">Vir ouers</span></div>
+            <div><strong>Daily</strong><span data-af="Leerplan" data-en="Study plan">Leerplan</span></div>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="hero-photo rainbow">
+            <div class="student-card card-a"><span>📱</span><strong>Mobile Lessons</strong></div>
+            <div class="student-card card-b"><span>💻</span><strong>Laptop Tasks</strong></div>
+            <div class="student-card card-c"><span>📊</span><strong>Parent Reports</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container split">
+        <div>
+          <span class="eyebrow" data-af="HOEKOM EDUGAP SA?" data-en="WHY EDUGAP SA?">HOEKOM EDUGAP SA?</span>
+          <h2 data-af="’n Platform gebou vir kinders, ouers en daaglikse leer." data-en="A platform built for children, parents and daily learning.">’n Platform gebou vir kinders, ouers en daaglikse leer.</h2>
+          <p data-af="Ons fokus op eenvoudige, praktiese leer. Elke vak word opgebreek in daaglikse lesse, take, mini-toetse, eindtoetse en ’n report wat ouers kan verstaan."
+             data-en="We focus on simple, practical learning. Each subject is broken into daily lessons, tasks, mini-tests, final tests and parent-friendly reports.">
+             Ons fokus op eenvoudige, praktiese leer. Elke vak word opgebreek in daaglikse lesse, take, mini-toetse, eindtoetse en ’n report wat ouers kan verstaan.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3 data-af="Wat ouers kry" data-en="What parents get">Wat ouers kry</h3>
+          <ul>
+            <li data-af="Daaglikse leerwerk" data-en="Daily learning work">Daaglikse leerwerk</li>
+            <li data-af="Take en kort toetse" data-en="Tasks and short tests">Take en kort toetse</li>
+            <li data-af="Resultate en vordering" data-en="Results and progress">Resultate en vordering</li>
+            <li data-af="Eindeksamen per vak" data-en="Final exam per subject">Eindeksamen per vak</li>
+            <li data-af="Ouer report" data-en="Parent report">Ouer report</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section grades" id="grades">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" data-af="BEGIN KLEIN, GROEI GROOT" data-en="START SMALL, GROW BIG">BEGIN KLEIN, GROEI GROOT</span>
+          <h2 data-af="Ons bou graad vir graad, vak vir vak." data-en="We build grade by grade, subject by subject.">Ons bou graad vir graad, vak vir vak.</h2>
+        </div>
+
+        <div class="grade-grid">
+          <article class="grade-card active">
+            <span>01</span>
+            <h3>Graad 1 / Grade 1</h3>
+            <p data-af="Ons eerste fokus: Wiskunde, English, Afrikaans en Lewensvaardigheid." data-en="Our first focus: Numeracy, English, Afrikaans and Life Skills.">Ons eerste fokus: Wiskunde, English, Afrikaans en Lewensvaardigheid.</p>
+          </article>
+          <article class="grade-card"><span>02</span><h3>Graad 2 / Grade 2</h3><p data-af="Volgende fase nadat Graad 1 modules klaar is." data-en="Next phase after Grade 1 modules are ready.">Volgende fase nadat Graad 1 modules klaar is.</p></article>
+          <article class="grade-card"><span>03</span><h3>Graad 3 / Grade 3</h3><p data-af="Foundation Phase uitbreiding met reports en toetse." data-en="Foundation Phase expansion with reports and tests.">Foundation Phase uitbreiding met reports en toetse.</p></article>
+          <article class="grade-card coming"><span>04+</span><h3>Graad 4–12</h3><p data-af="Bou later uit soos die platform groei." data-en="Expanded later as the platform grows.">Bou later uit soos die platform groei.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section subjects" id="subjects">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" data-af="GRAAD 1 BEGINPAKKET" data-en="GRADE 1 STARTER PACK">GRAAD 1 BEGINPAKKET</span>
+          <h2 data-af="Elke vak kry lesse, take, toetse, resultate en ’n report." data-en="Every subject gets lessons, tasks, tests, results and a report.">Elke vak kry lesse, take, toetse, resultate en ’n report.</h2>
+        </div>
+
+        <div class="subject-grid">
+          <article class="subject-card"><div class="icon">🔢</div><h3>Wiskunde / Numeracy</h3><p>Term 3 & 4 workbook lessons, practice and tests.</p><button onclick="showToast('Wiskunde module kom eerste.')">View Module</button></article>
+          <article class="subject-card"><div class="icon">📘</div><h3>English</h3><p>Daily reading, writing, phonics and short assessments.</p><button onclick="showToast('English module sal volgende gebou word.')">View Module</button></article>
+          <article class="subject-card"><div class="icon">📗</div><h3>Afrikaans</h3><p>Lees, klanke, skryfwerk en taal take.</p><button onclick="showToast('Afrikaans module sal gebou word.')">View Module</button></article>
+          <article class="subject-card"><div class="icon">🌱</div><h3>Lewensvaardigheid</h3><p>Praktiese temas, aktiwiteite en ouer terugvoer.</p><button onclick="showToast('Lewensvaardigheid module sal volg.')">View Module</button></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section portal-section" id="portal">
+      <div class="container portal-grid">
+        <div>
+          <span class="eyebrow" data-af="LEERDER & OUER PORTAAL" data-en="LEARNER & PARENT PORTAL">LEERDER & OUER PORTAAL</span>
+          <h2 data-af="Alles in een dashboard." data-en="Everything in one dashboard.">Alles in een dashboard.</h2>
+          <p data-af="Leerders doen take en toetse, en ouers sien punte, vordering en reports. Die platform kan later uitgebrei word met video lessons, WhatsApp alerts en admin tools."
+             data-en="Learners complete tasks and tests, while parents view marks, progress and reports. The platform can later expand with video lessons, WhatsApp alerts and admin tools.">
+             Leerders doen take en toetse, en ouers sien punte, vordering en reports. Die platform kan later uitgebrei word met video lessons, WhatsApp alerts en admin tools.
+          </p>
+          <button class="btn btn-primary" onclick="openPortal()" data-af="Kyk Portaal Demo" data-en="View Portal Demo">Kyk Portaal Demo</button>
+        </div>
+
+        <div class="portal-preview">
+          <aside>
+            <strong>EduGap SA</strong>
+            <span>Dashboard</span><span>Subjects</span><span>Tasks</span><span>Tests</span><span>Reports</span>
+          </aside>
+          <main>
+            <div class="welcome"><strong>Hello, Learner 👋</strong><span>Graad 1 Wiskunde</span></div>
+            <div class="kpis"><div><b>20</b><small>Lessons</small></div><div><b>12</b><small>Tasks</small></div><div><b>4</b><small>Tests</small></div><div><b>82%</b><small>Progress</small></div></div>
+            <div class="bars"><div><i style="width:90%"></i></div><div><i style="width:72%"></i></div><div><i style="width:82%"></i></div></div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" data-af="EENVOUDIGE PRYSE" data-en="SIMPLE PRICING">EENVOUDIGE PRYSE</span>
+          <h2 data-af="Begin met ’n bekostigbare Graad 1 pakket." data-en="Start with an affordable Grade 1 package.">Begin met ’n bekostigbare Graad 1 pakket.</h2>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3 data-af="Per kind" data-en="Per learner">Per kind</h3>
+            <strong>R150–R350</strong>
+            <span data-af="per maand" data-en="per month">per maand</span>
+            <p data-af="Toegang tot daaglikse leerwerk, take en progress reports." data-en="Access to daily lessons, tasks and progress reports.">Toegang tot daaglikse leerwerk, take en progress reports.</p>
+          </article>
+          <article class="price-card featured">
+            <h3 data-af="Premium ondersteuning" data-en="Premium support">Premium ondersteuning</h3>
+            <strong>R500</strong>
+            <span data-af="per maand" data-en="per month">per maand</span>
+            <p data-af="Leerwerk plus ekstra hulp, reports en WhatsApp ondersteuning." data-en="Learning work plus extra help, reports and WhatsApp support.">Leerwerk plus ekstra hulp, reports en WhatsApp ondersteuning.</p>
+          </article>
+          <article class="price-card">
+            <h3 data-af="Module bou" data-en="Module build">Module bou</h3>
+            <strong>Vanaf R500</strong>
+            <span data-af="per vak per graad" data-en="per subject per grade">per vak per graad</span>
+            <p data-af="Vir inhoud, take, eindtoets en report opstel." data-en="For content, tasks, final test and report setup.">Vir inhoud, take, eindtoets en report opstel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow" data-af="KONTAK ONS" data-en="CONTACT US">KONTAK ONS</span>
+          <h2 data-af="Wil jy jou kind laat begin?" data-en="Ready for your child to start?">Wil jy jou kind laat begin?</h2>
+          <p data-af="Stuur ’n boodskap en ons help jou om met die regte graad en vak te begin." data-en="Send a message and we’ll help you start with the right grade and subject.">Stuur ’n boodskap en ons help jou om met die regte graad en vak te begin.</p>
+          <ul class="contact-list">
+            <li>📱 WhatsApp: 064 220 3726</li>
+            <li>✉️ info@edugapsa.co.za</li>
+            <li>🌐 www.edugapsa.co.za</li>
+          </ul>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); showToast('Demo navraag gestuur. In die regte site sal dit na WhatsApp/e-pos gaan.');">
+          <input placeholder="Naam / Name">
+          <input placeholder="Foon / WhatsApp">
+          <select><option>Graad / Grade</option><option>Grade 1</option><option>Grade 2</option></select>
+          <textarea placeholder="Hoe kan ons help?"></textarea>
+          <button class="btn btn-primary" type="submit" data-af="Stuur Navraag" data-en="Send Enquiry">Stuur Navraag</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#home">
+          <span class="brand-mark">EG</span>
+          <span><strong>EduGap SA</strong><small>Online Learning Academy</small></span>
+        </a>
+        <p>CAPS-aligned online learning support for South African learners.</p>
+      </div>
+      <div><h4>Platform</h4><a href="#grades">Grades</a><a href="#subjects">Subjects</a><a href="#portal">Portal</a><a href="#pricing">Pricing</a></div>
+      <div><h4>Support</h4><a href="#contact">Contact</a><a>FAQ</a><a>Parent Reports</a><a>WhatsApp Help</a></div>
+      <div><h4>Contact</h4><a>064 220 3726</a><a>info@edugapsa.co.za</a><a>South Africa</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <small>© 2026 EduGap SA. All rights reserved.</small>
+      <a class="whatsapp" href="https://wa.me/27642203726" target="_blank">💬 WhatsApp</a>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <div id="videoModal" class="modal">
+    <div class="modal-bg" onclick="closeModal()"></div>
+    <div class="modal-box">
+      <button class="close" onclick="closeModal()">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
