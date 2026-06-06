@@ -678,27 +678,3 @@ header nav a.active,
 }
 /* ===== END PROFESSIONAL TOP NAV ===== */
 
-
-/* ===== MAKE NAV LINKS BOLD LIKE LANGUAGE BUTTON ===== */
-.nav-links a{
-  font-size: 18px !important;
-  font-weight: 900 !important;
-  letter-spacing: 0.1px !important;
-  color: #20194a !important;
-  text-decoration: none !important;
-}
-
-.nav-links a.active{
-  font-weight: 900 !important;
-  color: #6d3df2 !important;
-}
-
-.nav-links a:hover{
-  color: #6d3df2 !important;
-}
-
-.nav-links{
-  gap: 30px !important;
-}
-/* ===== END NAV BOLD PATCH ===== */
-
