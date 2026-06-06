@@ -981,3 +981,184 @@ a{text-decoration:none;color:inherit}
     grid-template-columns:repeat(2,1fr);
   }
 }
+
+
+/* V17: fix sticky-header bleed, logo size, and lower-section spacing */
+.site-header{
+  background:#fff !important;
+  backdrop-filter:none !important;
+  box-shadow:0 8px 26px rgba(35,21,72,.06);
+  overflow:hidden;
+}
+.nav-wrap{
+  min-height:76px !important;
+}
+.logo{
+  width:122px !important;
+  max-height:62px !important;
+  object-fit:contain;
+}
+.main-nav{
+  gap:18px !important;
+}
+.main-nav a{
+  font-size:.96rem !important;
+}
+.main-nav a.active:after{
+  bottom:-12px !important;
+}
+.portal-btn{
+  padding:13px 22px !important;
+  border-radius:15px !important;
+}
+.lang-btn{
+  padding:12px 18px !important;
+  border-radius:24px !important;
+}
+
+/* stop any previous section artwork showing through under sticky header */
+main{
+  background:#fff;
+  position:relative;
+  z-index:1;
+}
+.hero{
+  overflow:hidden;
+}
+
+/* make sections feel laid out, not stretched apart */
+.section{
+  padding:34px 0 !important;
+}
+.tools-section{
+  padding-top:28px !important;
+  padding-bottom:22px !important;
+}
+.portal-section{
+  padding-top:22px !important;
+  padding-bottom:34px !important;
+}
+.tools-grid{
+  gap:16px !important;
+}
+.tool-card{
+  min-height:170px !important;
+  padding:22px 12px !important;
+}
+.tool-card .icon{
+  margin-bottom:10px !important;
+}
+.tool-card h3{
+  margin-bottom:6px !important;
+}
+.portal-grid{
+  align-items:center !important;
+  gap:34px !important;
+}
+.portal-copy h2{
+  font-size:clamp(3rem, 4vw, 4.3rem) !important;
+}
+.portal-copy p{
+  max-width:640px;
+}
+.clean-portal-visual{
+  min-height:420px !important;
+  align-items:center !important;
+}
+.portal-laptop-card img{
+  display:block;
+  width:100%;
+}
+.portal-phone-card{
+  margin-bottom:0 !important;
+}
+.cta-section{
+  padding-top:18px !important;
+  padding-bottom:28px !important;
+}
+.testimonials-section{
+  padding-top:24px !important;
+  padding-bottom:24px !important;
+}
+.contact-section{
+  padding-top:24px !important;
+}
+
+/* keep page anchors from hiding behind header */
+section, main, footer{
+  scroll-margin-top:90px;
+}
+
+/* laptop/mobile layout should not be cut off */
+.portal-visual,
+.clean-portal-visual{
+  overflow:visible;
+}
+.portal-laptop-card{
+  overflow:visible;
+}
+
+/* reduce giant whitespace on common laptop sizes */
+@media(max-width:1500px){
+  .section{
+    padding:30px 0 !important;
+  }
+  .section-heading{
+    margin-bottom:22px !important;
+  }
+  .tools-section{
+    padding-bottom:16px !important;
+  }
+  .portal-section{
+    padding-top:14px !important;
+  }
+  .nav-wrap{
+    min-height:72px !important;
+  }
+  .logo{
+    width:110px !important;
+  }
+  .main-nav{
+    gap:13px !important;
+  }
+  .main-nav a{
+    font-size:.84rem !important;
+  }
+  .portal-btn{
+    padding:11px 18px !important;
+  }
+  .lang-btn{
+    padding:10px 15px !important;
+  }
+}
+
+@media(max-width:1200px){
+  .clean-portal-visual{
+    min-height:auto !important;
+  }
+}
+
+
+/* V18: remove duplicated tools/info section and pull portal up */
+.tools-section{
+  display:none !important;
+}
+.portal-section{
+  padding-top:26px !important;
+  margin-top:0 !important;
+}
+.how-section,
+.video-section{
+  padding-bottom:30px !important;
+}
+.video-section + .portal-section{
+  padding-top:22px !important;
+}
+.portal-grid{
+  margin-top:0 !important;
+}
+@media(max-width:1500px){
+  .portal-section{
+    padding-top:18px !important;
+  }
+}
