@@ -1,0 +1,569 @@
+<!doctype html><html lang="af" translate="no"><head><meta charset="utf-8"><meta name="google" content="notranslate"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G10 Wiskunde KW3 Vraestel</title><style>
+:root{--green:#39b54a;--dark:#101828;--soft:#f0fbf1;--line:#d7ead8;--red:#e43d30;--ok:#168a35}
+*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f6f8fb;color:#172033}.wrap{max-width:980px;margin:auto;padding:16px}.hero{background:linear-gradient(135deg,#2fb44c,#74d66a);color:white;padding:18px;border-radius:18px;margin:12px 0;box-shadow:0 8px 22px #0002}.card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin:14px 0;box-shadow:0 3px 14px #0000000d}.btn{border:0;border-radius:12px;padding:12px 16px;background:#22a447;color:white;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;margin:6px 4px}.btn.secondary{background:#344054}.btn.danger{background:#d92d20}.muted{color:#667085}.imgbox{background:#fff;border:1px solid #d0e8d2;border-radius:14px;padding:8px;margin:10px 0;text-align:center}.imgbox img{max-width:100%;border-radius:8px}.question{border-top:1px dashed #c8d7c8;padding:15px 0}.option{display:block;width:100%;text-align:left;background:#f9fafb;border:2px solid #e5e7eb;border-radius:12px;padding:12px;margin:8px 0;font-weight:600;cursor:pointer}.option:hover{background:#eefbf0}.option.correct{border-color:#1f9d48;background:#eaffef}.option.wrong{border-color:#d92d20;background:#fff1f0}.pill{display:inline-block;background:#e7f8eb;color:#157a32;border-radius:99px;padding:5px 10px;font-weight:700;margin:3px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}.score{font-size:18px;font-weight:800}.progress{height:10px;background:#e5e7eb;border-radius:99px;overflow:hidden}.bar{height:10px;background:#22a447;width:0}.small{font-size:13px}.final-list{max-height:380px;overflow:auto}
+</style></head><body><div class="wrap"><div class="hero"><h1>G10 Wiskunde KW3 Vraestel</h1><p>Gebruik AL die daily task-vrae. A/B/C/D word elke keer rondgeskommel.</p><div class="progress"><div id="bar" class="bar"></div></div></div><div class="card"><a class="btn secondary" href="g10-wisk-kw3-overview.html">Terug</a><button class="btn danger" id="start">Begin vraestel</button></div><div id="app"></div></div><script src="k53-supabase.js"></script><script src="g10-wisk-kw3-bank.js"></script><script>
+function hashStr(s){let h=2166136261; for(let i=0;i<s.length;i++){h^=s.charCodeAt(i); h+= (h<<1)+(h<<4)+(h<<7)+(h<<8)+(h<<24);} return h>>>0;}
+function rng(seed){let x=seed>>>0; return function(){x^=x<<13; x^=x>>>17; x^=x<<5; return ((x>>>0)%100000)/100000}}
+function shuffle(a, seed){let r=rng(seed); let b=a.slice(); for(let i=b.length-1;i>0;i--){let j=Math.floor(r()*(i+1)); [b[i],b[j]]=[b[j],b[i]];} return b;}
+const THEORY_DISTRACTORS = [
+ 'Geld wat bestee word om koste te betaal',
+ 'Geld wat oorbly nadat uitgawes afgetrek is',
+ '’n Plan van verwagte inkomste en uitgawes',
+ '’n Dokument wat werklike inkomste en uitgawes opsom',
+ 'Iets wat nodig is vir basiese funksionering',
+ 'Iets wat ’n mens graag wil hê maar nie noodwendig nodig het nie',
+ '’n Uitgawe wat elke maand ongeveer dieselfde bly',
+ '’n Uitgawe wat van maand tot maand kan verander',
+ '’n Uitgawe of inkomste wat net soms voorkom',
+ 'Die afstand rondom die buitekant van ’n vorm',
+ 'Die ruimte binne-in ’n plat vorm',
+ 'Die afstand vanaf die middelpunt van ’n sirkel tot by die rand',
+ 'Die afstand dwars deur ’n sirkel deur die middelpunt',
+ '’n Tweedimensionele tekening van ’n vertrek of gebou',
+ '’n Plan wat wys hoe iets van bo af lyk',
+ '’n Plan wat wys hoe iets van die kant af lyk',
+ 'Prente of diagramme wat wys hoe iets aanmekaar gesit word',
+ 'Geskrewe stappe wat verduidelik hoe iets gedoen word',
+ '’n Probleem waar items in ’n beperkte spasie gepak moet word'
+];
+
+function cleanText(x){
+  return String(x||'').replace(/\s+/g,' ').trim();
+}
+
+function norm(x){
+  return cleanText(x).toLowerCase();
+}
+
+function unique(arr){
+  let out = [];
+  arr.forEach(x=>{
+    x = cleanText(x);
+    if(x && !out.includes(x)) out.push(x);
+  });
+  return out;
+}
+
+function packOptions(q, wrongs, seed){
+  let ans = cleanText(q.answer);
+  let opts = unique([ans].concat(wrongs)).filter(x => x && x !== 'undefined');
+
+  opts = opts.filter(x => {
+    let bad = ['Geen van bogenoemde','Kan nie bepaal word nie','Dieselfde as die vraag','Net ’n skatting','Verkeerde opsie'];
+    return !bad.some(b => x.includes(b));
+  });
+
+  if(opts.length < 4){
+    opts = opts.concat(makeFallbackWrong(q, opts));
+  }
+
+  opts = unique(opts).slice(0,4);
+  while(opts.length < 4){
+    opts.push('’n Ander redelike maar verkeerde antwoord');
+  }
+
+  return shuffle(opts, seed);
+}
+
+function makeFallbackWrong(q, existing){
+  let a = norm(q.answer);
+  let t = norm(q.q + ' ' + q.answer);
+  let wrongs = [];
+
+  if(t.includes('inkomste')){
+    wrongs.push(
+      'Geld wat betaal word vir huishoudelike koste',
+      'Geld wat oorbly nadat alle uitgawes betaal is',
+      'Geld wat net uit ’n lening bestaan',
+      'Geld wat opsy gesit word vir toekomstige uitgawes'
+    );
+  } else if(t.includes('uitgawe') || t.includes('uitgawes')){
+    wrongs.push(
+      'Geld wat ’n persoon ontvang',
+      'Geld wat as wins oorbly',
+      'Geld wat net van ’n salaris af kom',
+      'Geld wat altyd dieselfde bly'
+    );
+  } else if(t.includes('begroting')){
+    wrongs.push(
+      '’n Lys van geld wat reeds bestee is',
+      '’n Diagram van ’n kamer se uitleg',
+      '’n Berekening van die omtrek van ’n vorm',
+      '’n Dokument wat net werklike inkomste wys'
+    );
+  } else if(t.includes('staat')){
+    wrongs.push(
+      '’n Plan van toekomstige koste',
+      '’n Diagram wat wys hoe iets gemonteer word',
+      '’n Skaaltekening van ’n vertrek',
+      '’n Lys van items wat in ’n boks pas'
+    );
+  } else if(t.includes('omtrek')){
+    wrongs.push(
+      'Die ruimte binne-in ’n vorm',
+      'Lengte × breedte',
+      'Die helfte van die oppervlakte',
+      'Die afstand van die middel na die rand'
+    );
+  } else if(t.includes('oppervlakte')){
+    wrongs.push(
+      'Die afstand rondom die buitekant',
+      'Die lengte van net een sy',
+      'Die som van al die sye',
+      'Die deursnee van ’n sirkel'
+    );
+  } else if(t.includes('radius') || t.includes('straal')){
+    wrongs.push(
+      'Die afstand dwars deur die sirkel',
+      'Die afstand rondom die sirkel',
+      'Die oppervlakte van die sirkel',
+      'Die langste koord van die sirkel'
+    );
+  } else if(t.includes('deursnee')){
+    wrongs.push(
+      'Die afstand van die middelpunt tot die rand',
+      'Die afstand rondom die sirkel',
+      'Die helfte van die radius',
+      'Die oppervlakte van die sirkel'
+    );
+  } else if(t.includes('plan') || t.includes('vloerplan') || t.includes('skaal')){
+    wrongs.push(
+      '’n Lys van inkomste en uitgawes',
+      '’n Foto sonder afmetings',
+      '’n Berekening van wins of verlies',
+      '’n Verpakking-rangskikking'
+    );
+  } else if(t.includes('monteer') || t.includes('diagram')){
+    wrongs.push(
+      '’n Begroting vir toekomstige uitgawes',
+      '’n Staat van werklike inkomste',
+      '’n Skaalberekening van ’n vloerplan',
+      '’n Sirkel se oppervlakte'
+    );
+  } else if(t.includes('blikkies') || t.includes('verpakking')){
+    wrongs.push(
+      'Om net die omtrek van die boks te bereken',
+      'Om die items volgens kleur te sorteer',
+      'Om net een laag te tel en die hoogte te ignoreer',
+      'Om die grootste leë spasie in die boks te meet'
+    );
+  } else {
+    wrongs.push(
+      '’n Verkeerde toepassing van die formule',
+      '’n Antwoord wat ’n ander konsep beskryf',
+      '’n Antwoord wat net gedeeltelik waar is',
+      '’n Antwoord wat nie by die vraag pas nie'
+    );
+  }
+
+  return wrongs.filter(x => !existing.includes(x) && norm(x) !== a);
+}
+
+function numericDistractors(q){
+  let ans = cleanText(q.answer);
+  let m = ans.match(/R?\s*([0-9]+(?:[ ][0-9]{3})*(?:[,.][0-9]+)?)/);
+  if(!m) return [];
+
+  let val = parseFloat(m[1].replace(/ /g,'').replace(',', '.'));
+  if(!isFinite(val)) return [];
+
+  let unit = '';
+  let um = ans.match(/(cm²|m²|mm²|cm|m|mm|kg|ml|L|%|blikkies|lae|pale|droppers|vensters|deure|skroewe)$/);
+  if(um) unit = ' ' + um[1];
+
+  function fmt(v){
+    v = Math.round(v * 100) / 100;
+    let s = String(v).replace('.', ',');
+    if(ans.trim().startsWith('R')) s = 'R' + s;
+    return s + unit;
+  }
+
+  let t = norm(q.q);
+  let vals = [];
+
+  if(t.includes('totale') || t.includes('altesaam')){
+    vals = [val + 10, Math.max(0,val - 10), val * 2, Math.max(0,val / 2)];
+  } else if(t.includes('persentasie') || ans.includes('%')){
+    vals = [val + 1, Math.max(0,val - 1), val + 5, Math.max(0,val - 5)];
+  } else if(t.includes('omtrek')){
+    vals = [val / 2, val * 2, val + 4, Math.max(0,val - 4)];
+  } else if(t.includes('oppervlakte')){
+    vals = [val / 2, val * 2, val + 20, Math.max(0,val - 20)];
+  } else if(ans.trim().startsWith('R')){
+    vals = [val * 0.9, val * 1.1, val + 100, Math.max(0,val - 100)];
+  } else {
+    vals = [val + 1, Math.max(0,val - 1), val * 2, Math.max(0,val / 2)];
+  }
+
+  return unique(vals.map(fmt)).filter(x => x !== ans);
+}
+
+function specificWrong(q){
+  let question = norm(q.q);
+  let answer = norm(q.answer);
+  let wrongs = [];
+
+  // FINANSIES — inkomste
+  if(question.includes('wat beteken inkomste')){
+    wrongs = [
+      'Geld wat jy gebruik om rekeninge te betaal',
+      'Geld wat oorbly nadat uitgawes betaal is',
+      'Geld wat net uit ’n salaris kom'
+    ];
+  }
+  else if(question.includes('vaste inkomste')){
+    wrongs = [
+      'Kommissie wat wissel volgens verkope',
+      'Oortydbetaling wat net soms gebeur',
+      '’n Geskenk van ’n familielid'
+    ];
+  }
+  else if(question.includes('veranderlike inkomste')){
+    wrongs = [
+      'Maandelikse salaris wat dieselfde bly',
+      'Sakgeld wat elke maand dieselfde is',
+      'Huurinkomste wat altyd dieselfde is'
+    ];
+  }
+  else if(question.includes('toevallige inkomste')){
+    wrongs = [
+      'Maandelikse salaris',
+      'Gereelde huurinkomste',
+      'Vaste sakgeld elke maand'
+    ];
+  }
+  else if(question.includes('tipes inkomste onderskei')){
+    wrongs = [
+      'Om net te weet hoeveel belasting betaal moet word',
+      'Om te besluit watter winkel goedkoper is',
+      'Om die omtrek van die begroting te bereken'
+    ];
+  }
+
+  // FINANSIES — uitgawes
+  else if(question.includes('behoefte')){
+    wrongs = [
+      'Iets wat jy graag wil hê maar nie nodig het nie',
+      '’n Lae-prioriteit item',
+      '’n Luukse item wat net gekoop word as geld oorbly'
+    ];
+  }
+  else if(question.includes('begeerte')){
+    wrongs = [
+      'Kos en basiese kruideniersware',
+      'Skoolgeld en noodsaaklike vervoer',
+      'Huur of noodsaaklike behuising'
+    ];
+  }
+  else if(question.includes('vaste uitgawe')){
+    wrongs = [
+      'Elektrisiteit wat maandeliks wissel',
+      'Klere wat soms gekoop word',
+      'Motorherstelwerk wat onverwags gebeur'
+    ];
+  }
+  else if(question.includes('veranderlike uitgawe')){
+    wrongs = [
+      'Huur wat elke maand dieselfde bly',
+      'Vaste skoolgeld',
+      'Begrafnispolis met vaste paaiement'
+    ];
+  }
+  else if(question.includes('toevallige uitgawe')){
+    wrongs = [
+      'Huur elke maand',
+      'Skoolgeld elke maand',
+      'Vaste maandelikse paaiement'
+    ];
+  }
+
+  // WINS / VERLIES / BEGROTING
+  else if(question.includes('wins') || question.includes('surplus')){
+    wrongs = [
+      'Wanneer uitgawes meer as inkomste is',
+      'Wanneer inkomste en uitgawes presies gelyk is',
+      'Wanneer daar geen inkomste is nie'
+    ];
+  }
+  else if(question.includes('verlies') || question.includes('tekort')){
+    wrongs = [
+      'Wanneer inkomste meer as uitgawes is',
+      'Wanneer daar geld oorbly',
+      'Wanneer alle uitgawes laer as inkomste is'
+    ];
+  }
+  else if(question.includes('begroting')){
+    wrongs = [
+      '’n Lys van geld wat reeds uitgegee is',
+      '’n Dokument wat net werklike inkomste wys',
+      '’n Plan wat net die uitleg van ’n kamer wys'
+    ];
+  }
+  else if(question.includes('staat van inkomste')){
+    wrongs = [
+      '’n Plan van toekomstige verwagte koste',
+      '’n Monteerdiagram met stappe',
+      '’n Skaaltekening van ’n huis'
+    ];
+  }
+
+  // METING
+  else if(question.includes('omtrek')){
+    wrongs = [
+      'Die hoeveelheid ruimte binne-in ’n vorm',
+      'Lengte × breedte',
+      'Die oppervlakte van die vorm'
+    ];
+  }
+  else if(question.includes('oppervlakte')){
+    wrongs = [
+      'Die afstand rondom die vorm',
+      'Die som van al die sye',
+      'Die lyn van die middelpunt na die rand'
+    ];
+  }
+  else if(question.includes('radius') || question.includes('straal')){
+    wrongs = [
+      'Die afstand dwars deur die sirkel',
+      'Die afstand rondom die sirkel',
+      'Die sirkel se oppervlakte'
+    ];
+  }
+  else if(question.includes('deursnee')){
+    wrongs = [
+      'Die afstand van die middelpunt na die rand',
+      'Die omtrek van die sirkel',
+      'Die helfte van die radius'
+    ];
+  }
+  else if(question.includes('loodregte hoogte')){
+    wrongs = [
+      'Die skuins sy van die driehoek',
+      'Enige sy van die driehoek',
+      'Die omtrek van die driehoek'
+    ];
+  }
+
+  // PLANNE / MONTEER / VERPAKKING
+  else if(question.includes('vloerplan')){
+    wrongs = [
+      'Dit wys hoe die gebou van die kant af lyk',
+      'Dit wys net die dak van die gebou',
+      'Dit is ’n lys van onderdele'
+    ];
+  }
+  else if(question.includes('elevasieplan')){
+    wrongs = [
+      'Dit wys die uitleg van bo af',
+      'Dit wys hoe om ’n prop te bedraad',
+      'Dit wys hoeveel items in ’n boks pas'
+    ];
+  }
+  else if(question.includes('monteer') || question.includes('aanwysings')){
+    wrongs = [
+      '’n Begroting van inkomste en uitgawes',
+      '’n Skaalberekening van ’n vertrek',
+      '’n Lys van wins en verlies'
+    ];
+  }
+  else if(question.includes('verpakkingsprobleem') || question.includes('blikkies')){
+    wrongs = [
+      'Om net die buite-omtrek van die boks te meet',
+      'Om items volgens kleur te sorteer',
+      'Om net die eerste ry te tel en die lae te ignoreer'
+    ];
+  }
+
+  return wrongs;
+}
+
+function answerPoolDistractors(q, current){
+  let pool = [];
+  try{
+    if(window.G10_WISK_KW3_TASKS){
+      G10_WISK_KW3_TASKS.forEach(t => (t.questions||[]).forEach(qq => {
+        if(qq && qq.answer) pool.push(cleanText(qq.answer));
+      }));
+    }
+  }catch(e){}
+
+  let ans = cleanText(current);
+  pool = unique(pool).filter(x => x && x !== ans);
+
+  let qwords = norm(q.q).split(/[^a-z0-9êëéèáàíïóöúü]+/).filter(w => w.length > 4);
+  pool.sort((a,b)=>{
+    let aa = norm(a), bb = norm(b);
+    let sa = qwords.filter(w => aa.includes(w)).length;
+    let sb = qwords.filter(w => bb.includes(w)).length;
+    return sb - sa;
+  });
+
+  return pool.slice(0,8);
+}
+
+function makeOptions(q, seed){
+  let wrongs = [];
+
+  if(q.options && q.options.length >= 4){
+    return shuffle(q.options.map(cleanText), seed);
+  }
+
+  if(q.wrong && q.wrong.length){
+    wrongs = wrongs.concat(q.wrong);
+  }
+
+  wrongs = wrongs
+    .concat(specificWrong(q))
+    .concat(numericDistractors(q))
+    .concat(answerPoolDistractors(q, q.answer))
+    .concat(makeFallbackWrong(q, []));
+
+  return packOptions(q, wrongs, seed);
+}
+function today(){return new Date().toISOString().slice(0,10)}
+function taskFromUrl(){const p=new URLSearchParams(location.search); return p.get('task') || localStorage.getItem('g10_wisk_kw3_task_code') || null}
+function currentPaper(){
+  const p = new URLSearchParams(location.search);
+  const raw = String(
+    p.get("paper") ||
+    localStorage.getItem("g10_wisk_kw3_exam_type") ||
+    localStorage.getItem("edu_current_task_code") ||
+    "1"
+  ).toUpperCase();
+
+  if(raw.includes("2")){
+    return {
+      num:2,
+      code:"G10-WISK-KW3-PAPER-2",
+      title:"Vraestel 2",
+      start:112,
+      end:224
+    };
+  }
+
+  return {
+    num:1,
+    code:"G10-WISK-KW3-PAPER-1",
+    title:"Vraestel 1",
+    start:0,
+    end:112
+  };
+}function currentDailyTask(){const start=new Date('2026-06-12T00:00:00'); const now=new Date(); const diff=Math.max(0,Math.floor((now-start)/86400000)); return G10_WISK_KW3_TASKS[diff % G10_WISK_KW3_TASKS.length];}
+function saveLocal(kind, payload){let key='G10_WISK_KW3_RESULTS'; let arr=JSON.parse(localStorage.getItem(key)||'[]'); arr.push(Object.assign({kind,date:new Date().toISOString()},payload)); localStorage.setItem(key,JSON.stringify(arr));}
+async function saveEduTask(task, score, total, answers){
+ saveLocal('daily',{task_code:task.code,score,total,answers});
+ try{ if(window.k53DbUpsert){ const student=localStorage.getItem('student_no')||localStorage.getItem('k53_student_no')||localStorage.getItem('edu_student_no')||'UNKNOWN'; await window.k53DbUpsert('edu_student_tasks',{student_no:student,task_code:task.code,task_date:today(),subject_code:'G10-WISK-KW3',status:score===total?'completed':'redo',score,total,submitted_answer:JSON.stringify({answers,task_title:task.title})},'student_no,task_code,task_date'); }}catch(e){console.warn(e)}
+}
+async function saveFinal(score,total,answers){
+ const paper=currentPaper();
+ const percent = total ? Math.round((score/total)*100) : 0;
+ const status = percent >= 40 ? "completed" : "redo";
+ const completedAt = status === "completed" ? new Date().toISOString() : null;
+
+ const resultPayload = {
+   task_code: paper.code,
+   score: score,
+   total: total,
+   status: status,
+   completed_at: completedAt,
+   submitted_answer: JSON.stringify({answers:answers,paper:paper.title})
+ };
+
+ localStorage.setItem("edu_task_result_" + paper.code, JSON.stringify(resultPayload));
+ saveLocal('final',{test_type:paper.code,score,total,answers});
+
+ try{
+   if(window.k53DbUpsert){
+     const student=localStorage.getItem('student_no')||localStorage.getItem('k53_student_no')||localStorage.getItem('edu_student_no')||'UNKNOWN';
+
+     await window.k53DbUpsert('edu_student_tasks',{
+       student_no:student,
+       task_code:paper.code,
+       task_date:today(),
+       subject_code:'G10-WISK-KW3',
+       status:status,
+       score:score,
+       total:total,
+       completed_at:completedAt,
+       submitted_answer:resultPayload.submitted_answer
+     },'student_no,task_code,task_date');
+
+     await window.k53DbUpsert('k53_exam_results',{
+       student_no:student,
+       test_type:paper.code,
+       score:score,
+       total:total,
+       answers_json:JSON.stringify(answers),
+       created_at:new Date().toISOString()
+     },'student_no,test_type,created_at');
+   }
+ }catch(e){console.warn(e)}
+}
+</script><script>
+let questions=[], answers={}, locked=false;
+function startExam(){
+  const paper=currentPaper();
+
+  try{
+    document.querySelector(".hero h1").textContent = "G10 Wiskunde KW3 " + paper.title;
+    document.getElementById("start").textContent = "Begin " + paper.title;
+  }catch(e){}
+
+  answers={};
+  locked=false;
+  questions=[];
+
+  G10_WISK_KW3_TASKS.forEach(t=>t.questions.forEach(q=>{
+    questions.push(Object.assign({task:t.code,title:t.title,media:t.media},q));
+  }));
+
+  questions = questions.slice(paper.start, paper.end);
+  questions = shuffle(questions, hashStr(today()+paper.code));
+
+  let passNeed = Math.ceil(questions.length * 0.40);
+  let app=document.getElementById('app');
+
+  app.innerHTML =
+    '<div class="card">' +
+    '<h2>Wiskunde Geletterdheid KW3 ' + paper.title + '</h2>' +
+    '<p class="muted">Totaal vrae: '+questions.length+'</p>' +
+    '<p class="muted">Slaagpunt 40%: '+passNeed+' uit '+questions.length+'</p>' +
+    '<p class="muted">Prente/diagramme wys waar dit aan die oorspronklike task gekoppel is.</p>' +
+    '</div>';
+
+  let c=document.createElement('div');
+  c.className='card';
+
+  questions.forEach((qu,i)=>{
+    let opts=makeOptions(qu, hashStr(qu.uid+today()+paper.code));
+    let img = qu.image || qu.img || ((qu.media && qu.media.length) ? qu.media[0] : "");
+
+    let html=`<div class="question"><p class="pill">${qu.task}</p><h3>${i+1}. ${qu.q}</h3>`;
+
+    if(img){
+      html += `<div class="imgbox"><img src="${img}" alt="diagram"></div>`;
+    }
+
+    opts.forEach((o,idx)=>{
+      html+=`<button class="option" data-uid="${qu.uid}" data-val="${String(o).replace(/"/g,'&quot;')}"><b>${'ABCD'[idx]}.</b> ${o}</button>`;
+    });
+
+    html+=`<p class="muted small" id="exp_${qu.uid}"></p></div>`;
+    c.innerHTML+=html;
+  });
+
+  c.innerHTML+='<button class="btn" id="markBtn">Merk '+paper.title+'</button><p id="result" class="score"></p>';
+  app.appendChild(c);
+
+  document.querySelectorAll('.option').forEach(b=>b.onclick=choose);
+  document.getElementById('markBtn').onclick=mark;
+  updateBar();
+}
+function choose(e){if(locked)return; const uid=e.currentTarget.dataset.uid; answers[uid]=e.currentTarget.dataset.val; document.querySelectorAll(`[data-uid="${uid}"]`).forEach(x=>x.style.background='#f9fafb'); e.currentTarget.style.background='#dff7e5'; updateBar();}
+function updateBar(){document.getElementById('bar').style.width=(Object.keys(answers).length/(questions.length||1)*100)+'%';}
+async function mark(){locked=true; let score=0; questions.forEach(qu=>{let chosen=answers[qu.uid]; let ok=chosen===qu.answer; if(ok) score++; document.querySelectorAll(`[data-uid="${qu.uid}"]`).forEach(b=>{if(b.dataset.val===qu.answer)b.classList.add('correct'); else if(b.dataset.val===chosen)b.classList.add('wrong');}); document.getElementById('exp_'+qu.uid).textContent=(ok?'Reg: ':'Regte antwoord: ')+qu.answer; }); document.getElementById('result').textContent=`${currentPaper().title} punt: ${score} / ${questions.length}`; await saveFinal(score,questions.length,answers); window.scrollTo(0,0);}
+document.getElementById('start').onclick=startExam;
+</script></body></html>
+
+
+

@@ -195,7 +195,7 @@ function studentGrade(){
 }
 
 function enricoDefaultSubjects(){
-  return ["G10-K53","G10-AFR","G10-ENG-FAL","G10-BST","G10-LANDBOU","G10-CAT-IKT","G10-WISK-LIT"];
+  return ["G10-K53","G10-AFR","G10-ENG-FAL","G10-BST","G10-LANDBOU","G10-CAT-IKT","G10-WISK-KW3"];
 }
 function assignedSubjects(){
   var no = localStorage.getItem("edu_student_no") || "";
@@ -662,33 +662,29 @@ function buildPlan(map){
   var schoolDays = allSchoolDays(TERM3_START, TERM3_END);
 
   // Hou einde van kwartaal vir eksamens.
-  // Laaste 11 skooldae is gereserveer vir eksamens/toetse:
+  // Laaste skooldae is gereserveer vir eksamens/toetse:
   // 1 eksamen per dag, en GEEN daily tasks op eksamendae nie.
-  var wiskFinalDate     = schoolDays[schoolDays.length - 1];
-  var k53CTestDate      = schoolDays[schoolDays.length - 2];
-  var k53BTestDate      = schoolDays[schoolDays.length - 3];
-  var k53ATestDate      = schoolDays[schoolDays.length - 4];
-  var catFinalDate      = schoolDays[schoolDays.length - 5];
-  var afrPaper2Date     = schoolDays[schoolDays.length - 6];
-  var afrPaper1Date     = schoolDays[schoolDays.length - 7];
-  var engFinalDate      = schoolDays[schoolDays.length - 8];
-  var bstFinalDate      = schoolDays[schoolDays.length - 9];
-  var landbouFinalDate  = schoolDays[schoolDays.length - 10];
-  var wiskLitFinalDate  = schoolDays[schoolDays.length - 11];
+  var wiskPaper2Date   = schoolDays[schoolDays.length - 1];
+  var wiskPaper1Date   = schoolDays[schoolDays.length - 2];
+  var k53CTestDate     = schoolDays[schoolDays.length - 3];
+  var catFinalDate     = schoolDays[schoolDays.length - 4];
+  var afrPaper2Date    = schoolDays[schoolDays.length - 5];
+  var afrPaper1Date    = schoolDays[schoolDays.length - 6];
+  var engFinalDate     = schoolDays[schoolDays.length - 7];
+  var bstFinalDate     = schoolDays[schoolDays.length - 8];
+  var landbouFinalDate = schoolDays[schoolDays.length - 9];
 
   var examDateMap = {};
   [
-    wiskFinalDate,
+    wiskPaper2Date,
+    wiskPaper1Date,
     k53CTestDate,
-    k53BTestDate,
-    k53ATestDate,
     catFinalDate,
     afrPaper2Date,
     afrPaper1Date,
     engFinalDate,
     bstFinalDate,
-    landbouFinalDate,
-    wiskLitFinalDate
+    landbouFinalDate
   ].forEach(function(d){
     if(d) examDateMap[d] = true;
   });
@@ -772,16 +768,37 @@ function buildPlan(map){
     info:defaultInfo(k53FinalTotal()),
     open:function(){ openK53Final(); }
   });
-items.push({
-    due:wiskFinalDate,
-    no:"Final",
-    subject:"Wiskunde Geletterdheid",
-    title:"Wiskunde Geletterdheid KW3 Finale Eksamen",
-    code:"G10-WISK-KW3-FINAL",
-    type:"exam",
-    info:finalInfo(map,"G10-WISK-KW3-FINAL",224,"Wiskunde Geletterdheid"),
-    open:function(){ location.href="g10-wisk-kw3-final-exam.html"; }
-  });
+  if(hasSubject("G10-WISK-KW3")){
+    items.push({
+      due:wiskPaper1Date,
+      no:"Vraestel 1",
+      subject:"Wiskunde Geletterdheid",
+      title:"Wiskunde Geletterdheid KW3 Vraestel 1",
+      code:"G10-WISK-KW3-PAPER-1",
+      type:"exam",
+      info:finalInfo(map,"G10-WISK-KW3-PAPER-1",112,"Wiskunde Geletterdheid"),
+      open:function(){
+        localStorage.setItem("g10_wisk_kw3_exam_type","PAPER-1");
+        localStorage.setItem("edu_current_task_code","G10-WISK-KW3-PAPER-1");
+        location.href="g10-wisk-kw3-final-exam.html?paper=1";
+      }
+    });
+
+    items.push({
+      due:wiskPaper2Date,
+      no:"Vraestel 2",
+      subject:"Wiskunde Geletterdheid",
+      title:"Wiskunde Geletterdheid KW3 Vraestel 2",
+      code:"G10-WISK-KW3-PAPER-2",
+      type:"exam",
+      info:finalInfo(map,"G10-WISK-KW3-PAPER-2",112,"Wiskunde Geletterdheid"),
+      open:function(){
+        localStorage.setItem("g10_wisk_kw3_exam_type","PAPER-2");
+        localStorage.setItem("edu_current_task_code","G10-WISK-KW3-PAPER-2");
+        location.href="g10-wisk-kw3-final-exam.html?paper=2";
+      }
+    });
+  }
 
 
 
@@ -796,7 +813,7 @@ items.sort(function(a,b){
     if(a.due < b.due) return -1;
     if(a.due > b.due) return 1;
 
-    var order = {"K53":1,"CAT / IKT":2,"Wiskunde":3};
+    var order = {"K53":1,"CAT / IKT":2,"Wiskunde Geletterdheid":3};
     if(a.type === "exam" && b.type !== "exam") return 1;
     if(a.type !== "exam" && b.type === "exam") return -1;
 
@@ -927,6 +944,7 @@ render();
 </script>
 </body>
 </html>
+
 
 
 

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="af" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Graad 10 Wiskunde KW3 Daily Task</title>
+<script src="k53-supabase.js"></script>
+<script src="g10-wisk-kw3-bank.js"></script>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f2f5fa;color:#0f2438}
+  .top{background:#1767d8;color:white;padding:22px 28px;display:flex;justify-content:space-between;align-items:center}
+  .top h1{margin:0;font-size:28px}
+  .top button{background:rgba(255,255,255,.14);color:white;border:0;border-radius:10px;padding:12px 18px;font-weight:900;cursor:pointer}
+  .wrap{max-width:980px;margin:32px auto;padding:0 16px}
+  .hero{background:linear-gradient(135deg,#22c55e,#70dc6c);color:white;border-radius:18px;padding:24px 28px;box-shadow:0 10px 25px rgba(0,0,0,.10)}
+  .hero h2{margin:0 0 8px;font-size:30px}
+  .hero p{margin:0;font-weight:800;opacity:.95}
+  .bar{height:8px;background:rgba(0,0,0,.20);border-radius:999px;margin-top:18px;overflow:hidden}
+  .bar span{display:block;height:100%;background:#0f9f43;width:0%}
+  .nav{background:white;border-radius:14px;margin:16px 0;padding:16px;display:flex;gap:10px;box-shadow:0 5px 18px rgba(0,0,0,.06)}
+  .btn{border:0;border-radius:10px;padding:12px 18px;font-weight:900;cursor:pointer}
+  .btn.dark{background:#0f2438;color:white}
+  .btn.green{background:#16a34a;color:white}
+  .btn.blue{background:#1767d8;color:white}
+  .card{background:white;border-radius:16px;padding:24px;margin-bottom:18px;box-shadow:0 7px 25px rgba(0,0,0,.07)}
+  .task-img{width:100%;max-height:520px;object-fit:contain;border:1px solid #dce8df;border-radius:12px;background:white;margin:12px 0 18px}
+  .q{border-top:1px solid #e5eaf0;padding:22px 0}
+  .q:first-child{border-top:0}
+  .q h3{margin:0 0 14px;font-size:18px}
+  .opt{display:block;width:100%;text-align:left;background:#f8fafc;border:1px solid #d7dee8;border-radius:10px;margin:8px 0;padding:12px 14px;font-weight:800;cursor:pointer}
+  .opt:hover{background:#edf6ff}
+  .opt.sel{border-color:#1767d8;background:#eaf2ff}
+  .opt.good{border-color:#16a34a;background:#dcfce7}
+  .opt.bad{border-color:#ef4444;background:#fee2e2}
+  .small{color:#69768a;font-size:13px;margin-top:8px}
+  .banner{border-radius:14px;padding:18px 20px;margin:18px 0;font-weight:900;line-height:1.5}
+  .banner.good{background:#dcfce7;color:#166534;border:1px solid #86efac}
+  .banner.bad{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}
+  .score{font-size:22px;font-weight:900;margin-top:14px}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>EDUCAP SA - Wiskunde Daily Task</h1>
+  <button onclick="location.href='edu-student-tasks.html'">← Tasks</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h2 id="taskCode">G10-WISK-KW3</h2>
+    <p id="taskTitle">Wiskunde Kwartaal 3 Daily Task</p>
+    <div class="bar"><span id="prog"></span></div>
+  </section>
+
+  <section class="nav">
+    <button class="btn dark" onclick="location.href='edu-student-tasks.html'">Terug</button>
+    <button class="btn green" onclick="location.href='g10-wisk-kw3-overview.html'">Wiskunde KW3 Oorsig</button>
+  </section>
+
+  <section id="status"></section>
+
+  <section class="card">
+    <h2 id="topic">Wiskunde KW3</h2>
+    <p class="small">Kyk na die prent/diagram waar dit wys. Kies A, B, C of D. As jy verkeerd kry, doen jy net daardie vrae weer tot alles reg is.</p>
+    <div id="imageBox"></div>
+    <div id="questions"></div>
+    <button class="btn blue" id="markBtn" onclick="markTask()">Merk Task</button>
+    <div id="score" class="score"></div>
+  </section>
+</main>
+
+<script>
+const LETTERS = ["A","B","C","D"];
+let task = null;
+let originalQuestions = [];
+let activeQuestions = [];
+let answers = {};
+let locked = false;
+let attempt = 1;
+
+function today(){ return new Date().toISOString().slice(0,10); }
+function clean(x){ return String(x||"").replace(/\s+/g," ").trim(); }
+function norm(x){ return clean(x).toLowerCase(); }
+
+function shuffle(arr, seed){
+  let a = arr.slice();
+  let x = 0;
+  String(seed||"seed").split("").forEach(ch => x = ((x*31)+ch.charCodeAt(0)) >>> 0);
+  for(let i=a.length-1;i>0;i--){
+    x = (1664525*x + 1013904223) >>> 0;
+    let j = x % (i+1);
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function unique(arr){
+  let out=[];
+  arr.forEach(x=>{
+    x=clean(x);
+    if(x && !out.includes(x)) out.push(x);
+  });
+  return out;
+}
+
+function numericDistractors(q){
+  let ans = clean(q.answer);
+  let m = ans.match(/R?\s*([0-9]+(?:[ ][0-9]{3})*(?:[,.][0-9]+)?)/);
+  if(!m) return [];
+  let val = parseFloat(m[1].replace(/ /g,"").replace(",","."));
+  if(!isFinite(val)) return [];
+
+  let unit = "";
+  let um = ans.match(/(cm²|m²|mm²|cm|m|mm|kg|ml|L|%|blikkies|lae|pale|droppers|vensters|deure|skroewe)$/);
+  if(um) unit = " " + um[1];
+
+  function fmt(v){
+    v = Math.round(v*100)/100;
+    let s = String(v).replace(".",",");
+    if(ans.trim().startsWith("R")) s = "R" + s;
+    return s + unit;
+  }
+
+  let t = norm(q.q);
+  let vals;
+  if(t.includes("omtrek")) vals = [val/2,val*2,val+4,Math.max(0,val-4)];
+  else if(t.includes("oppervlakte")) vals = [val/2,val*2,val+20,Math.max(0,val-20)];
+  else if(ans.trim().startsWith("R")) vals = [val*0.9,val*1.1,val+100,Math.max(0,val-100)];
+  else vals = [val+1,Math.max(0,val-1),val*2,Math.max(0,val/2)];
+  return unique(vals.map(fmt)).filter(x=>x!==ans);
+}
+
+function specificWrong(q){
+  let question = norm(q.q);
+  let wrongs = [];
+
+  if(question.includes("wat beteken inkomste")) wrongs = [
+    "Geld wat jy gebruik om rekeninge te betaal",
+    "Geld wat oorbly nadat uitgawes betaal is",
+    "Geld wat net uit ’n salaris kom"
+  ];
+  else if(question.includes("vaste inkomste")) wrongs = [
+    "Kommissie wat wissel volgens verkope",
+    "Oortydbetaling wat net soms gebeur",
+    "’n Geskenk van ’n familielid"
+  ];
+  else if(question.includes("veranderlike inkomste")) wrongs = [
+    "Maandelikse salaris wat dieselfde bly",
+    "Sakgeld wat elke maand dieselfde is",
+    "Huurinkomste wat altyd dieselfde is"
+  ];
+  else if(question.includes("toevallige inkomste")) wrongs = [
+    "Maandelikse salaris",
+    "Gereelde huurinkomste",
+    "Vaste sakgeld elke maand"
+  ];
+  else if(question.includes("tipes inkomste onderskei")) wrongs = [
+    "Om die omtrek van die begroting te bereken",
+    "Om te besluit watter winkel goedkoper is",
+    "Om net te weet hoeveel belasting betaal moet word"
+  ];
+  else if(question.includes("behoefte")) wrongs = [
+    "Iets wat jy graag wil hê maar nie nodig het nie",
+    "’n Lae-prioriteit item",
+    "’n Luukse item wat net gekoop word as geld oorbly"
+  ];
+  else if(question.includes("begeerte")) wrongs = [
+    "Kos en basiese kruideniersware",
+    "Skoolgeld en noodsaaklike vervoer",
+    "Huur of noodsaaklike behuising"
+  ];
+  else if(question.includes("wins") || question.includes("surplus")) wrongs = [
+    "Wanneer uitgawes meer as inkomste is",
+    "Wanneer inkomste en uitgawes presies gelyk is",
+    "Wanneer daar geen inkomste is nie"
+  ];
+  else if(question.includes("verlies") || question.includes("tekort")) wrongs = [
+    "Wanneer inkomste meer as uitgawes is",
+    "Wanneer daar geld oorbly",
+    "Wanneer alle uitgawes laer as inkomste is"
+  ];
+  else if(question.includes("begroting")) wrongs = [
+    "’n Lys van geld wat reeds uitgegee is",
+    "’n Dokument wat net werklike inkomste wys",
+    "’n Plan wat net die uitleg van ’n kamer wys"
+  ];
+  else if(question.includes("omtrek")) wrongs = [
+    "Die hoeveelheid ruimte binne-in ’n vorm",
+    "Lengte × breedte",
+    "Die oppervlakte van die vorm"
+  ];
+  else if(question.includes("oppervlakte")) wrongs = [
+    "Die afstand rondom die vorm",
+    "Die som van al die sye",
+    "Die lyn van die middelpunt na die rand"
+  ];
+  else if(question.includes("radius") || question.includes("straal")) wrongs = [
+    "Die afstand dwars deur die sirkel",
+    "Die afstand rondom die sirkel",
+    "Die sirkel se oppervlakte"
+  ];
+  else if(question.includes("deursnee")) wrongs = [
+    "Die afstand van die middelpunt na die rand",
+    "Die omtrek van die sirkel",
+    "Die helfte van die radius"
+  ];
+  else if(question.includes("vloerplan")) wrongs = [
+    "Dit wys hoe die gebou van die kant af lyk",
+    "Dit wys net die dak van die gebou",
+    "Dit is ’n lys van onderdele"
+  ];
+  else if(question.includes("monteer") || question.includes("aanwysings")) wrongs = [
+    "’n Begroting van inkomste en uitgawes",
+    "’n Skaalberekening van ’n vertrek",
+    "’n Lys van wins en verlies"
+  ];
+  else if(question.includes("verpakkingsprobleem") || question.includes("blikkies")) wrongs = [
+    "Om net die buite-omtrek van die boks te meet",
+    "Om items volgens kleur te sorteer",
+    "Om net die eerste ry te tel en die lae te ignoreer"
+  ];
+  else wrongs = [
+    "’n Verkeerde toepassing van die formule",
+    "’n Antwoord wat ’n ander konsep beskryf",
+    "’n Antwoord wat net gedeeltelik waar is"
+  ];
+
+  return wrongs;
+}
+
+function makeOptions(q, seed){
+  if(q.options && q.options.length >= 4) return shuffle(q.options.map(clean), seed);
+  let ans = clean(q.answer);
+  let opts = unique([ans].concat(q.wrong||[]).concat(specificWrong(q)).concat(numericDistractors(q)));
+  opts = opts.filter(x => x && x !== "Geen van bogenoemde" && x !== "Kan nie bepaal word nie" && x !== "Dieselfde as die vraag");
+  while(opts.length < 4){
+    opts.push(["’n Antwoord wat nie by die vraag pas nie","’n Ander konsep uit die hoofstuk","’n Onvolledige berekening"][opts.length%3]);
+  }
+  return shuffle(unique(opts).slice(0,4), seed);
+}
+
+function getTaskCode(){
+  let code = localStorage.getItem("edu_current_task_code");
+  if(code && code.startsWith("G10-WISK-KW3-TASK-")) return code;
+
+  let start = new Date("2026-06-12T00:00:00");
+  let diff = Math.floor((new Date() - start) / 86400000);
+  if(diff < 0) diff = 0;
+  let n = (diff % 44) + 1;
+  return "G10-WISK-KW3-TASK-" + String(n).padStart(3,"0");
+}
+
+function findTask(){
+  let code = getTaskCode();
+  let tasks = window.G10_WISK_KW3_TASKS || [];
+  return tasks.find(t => t.code === code) || tasks[0];
+}
+
+function qId(q,i){ return q.uid || q.id || (task.code + "-Q" + i); }
+
+function render(){
+  locked = false;
+  answers = {};
+  document.getElementById("taskCode").textContent = task.code;
+  document.getElementById("taskTitle").textContent = (task.title || "") + " • " + activeQuestions.length + " vrae";
+  document.getElementById("topic").textContent = task.title || "Wiskunde KW3";
+  document.getElementById("prog").style.width = (100 * (originalQuestions.length-activeQuestions.length) / Math.max(1, originalQuestions.length)) + "%";
+
+  let img = task.image || task.img || task.pageImage || ((task.media && task.media.length) ? task.media[0] : "");
+  if(img){
+    document.getElementById("imageBox").innerHTML = '<img class="task-img" src="'+img+'" alt="diagram">';
+  } else {
+    document.getElementById("imageBox").innerHTML = "";
+  }
+
+  let html = "";
+  activeQuestions.forEach((q,i)=>{
+    let options = makeOptions(q, task.code + "-" + attempt + "-" + i);
+    q._options = options;
+    html += '<div class="q" data-i="'+i+'">';
+    html += '<h3>'+(i+1)+'. '+clean(q.q || q.question)+'</h3>';
+
+    if(q.image || q.img){
+      html += '<img class="task-img" src="'+(q.image||q.img)+'" alt="vraag diagram">';
+    }
+
+    options.forEach((op,oi)=>{
+      html += '<button type="button" class="opt" data-i="'+i+'" data-v="'+encodeURIComponent(op)+'">'+LETTERS[oi]+'. '+op+'</button>';
+    });
+    html += '<div class="small"></div>';
+    html += '</div>';
+  });
+
+  document.getElementById("questions").innerHTML = html;
+  document.getElementById("score").textContent = "";
+  document.getElementById("markBtn").style.display = "inline-block";
+
+  document.querySelectorAll(".opt").forEach(btn=>{
+    btn.addEventListener("click", function(){
+      if(locked) return;
+      let i = this.dataset.i;
+      answers[i] = decodeURIComponent(this.dataset.v);
+      document.querySelectorAll('.opt[data-i="'+i+'"]').forEach(b=>b.classList.remove("sel"));
+      this.classList.add("sel");
+    });
+  });
+}
+
+async function saveResult(status, score, total, wrongList){
+  let student = localStorage.getItem("k53_student_no") || localStorage.getItem("edu_student_no") || "K53-0001";
+  let row = {
+    student_no: student,
+    task_code: task.code,
+    task_date: today(),
+    subject_code: "G10-WISK-KW3",
+    status: status,
+    score: score,
+    total: total,
+    completed_at: status === "completed" ? new Date().toISOString() : null,
+    submitted_answer: JSON.stringify({
+      attempts: attempt,
+      wrong_count: wrongList.length,
+      wrong_questions: wrongList.map(x => clean(x.q || x.question)),
+      daily_question_uids: originalQuestions.map((q,i)=>qId(q,i))
+    })
+  };
+
+  try{
+    if(window.k53DbUpsert){
+      await window.k53DbUpsert("edu_student_tasks", row, "student_no,task_code,task_date");
+    } else if(window.supabaseClient){
+      await window.supabaseClient.from("edu_student_tasks").upsert(row,{onConflict:"student_no,task_code,task_date"});
+    }
+  }catch(e){
+    console.warn("Save failed", e);
+  }
+
+  try{
+    localStorage.setItem("G10_WISK_KW3_LAST_" + task.code, JSON.stringify(row));
+  }catch(e){}
+}
+
+async function markTask(){
+  if(locked) return;
+  locked = true;
+
+  let wrong = [];
+  let correct = 0;
+
+  activeQuestions.forEach((q,i)=>{
+    let chosen = clean(answers[i]);
+    let ans = clean(q.answer);
+    let box = document.querySelector('.q[data-i="'+i+'"]');
+    let small = box.querySelector(".small");
+
+    box.querySelectorAll(".opt").forEach(btn=>{
+      let val = clean(decodeURIComponent(btn.dataset.v));
+      btn.classList.remove("sel");
+      if(val === ans) btn.classList.add("good");
+      if(chosen && val === chosen && val !== ans) btn.classList.add("bad");
+    });
+
+    if(chosen === ans){
+      correct++;
+      small.textContent = "Reg";
+    } else {
+      wrong.push(q);
+      small.textContent = "Regte antwoord: " + ans;
+    }
+  });
+
+  let totalDone = originalQuestions.length - activeQuestions.length + correct;
+  document.getElementById("score").textContent = "Punt: " + totalDone + " / " + originalQuestions.length;
+
+  if(wrong.length === 0){
+    document.getElementById("status").innerHTML =
+      '<div class="banner good">Mooi! Alles is reg. Hierdie Wiskunde task is nou completed.</div>';
+    document.getElementById("prog").style.width = "100%";
+    document.getElementById("markBtn").style.display = "none";
+    await saveResult("completed", originalQuestions.length, originalQuestions.length, []);
+  } else {
+    document.getElementById("status").innerHTML =
+      '<div class="banner bad">Jy het '+wrong.length+' vraag/vrae verkeerd. Doen net daardie verkeerde vrae weer totdat alles reg is.</div>' +
+      '<button class="btn blue" onclick="redoWrong()">Redo Wrong Questions</button>';
+    document.getElementById("markBtn").style.display = "none";
+    await saveResult("redo", totalDone, originalQuestions.length, wrong);
+  }
+}
+
+function redoWrong(){
+  let wrong = [];
+  activeQuestions.forEach((q,i)=>{
+    if(clean(answers[i]) !== clean(q.answer)) wrong.push(q);
+  });
+  activeQuestions = wrong;
+  attempt++;
+  document.getElementById("status").innerHTML = "";
+  window.scrollTo({top:0,behavior:"smooth"});
+  render();
+}
+
+task = findTask();
+originalQuestions = (task.questions || []).slice();
+activeQuestions = originalQuestions.slice();
+render();
+</script>
+</body>
+</html>
+
