@@ -478,21 +478,38 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
     });
   }
 
+  var finalCode = prefix + "-FINAL";
+  var finalTotal = 50;
+  if(prefix === "G10-AFR"){
+    try{
+      var afrBank = (window.EDU_SUBJECT_BANKS || {})[subjectCode];
+      var afrFinal = afrBank && (afrBank.tasks || []).find(function(t){ return t.code === finalCode; });
+      finalTotal = afrFinal && afrFinal.questions ? afrFinal.questions.length : 330;
+    }catch(e){
+      finalTotal = 330;
+    }
+  }
+
   items.push({
     due:finalDue,
     no:"Final",
     subject:subjectName,
     title:subjectName + " Final Exam / Finale Eksamen",
-    code:prefix + "-FINAL",
+    code:finalCode,
     type:"exam",
-    info:defaultInfo(50),
-    open:(function(s,p){
+    info:finalInfo(progressMap || {}, finalCode, finalTotal, subjectName),
+    open:(function(s,p,fc){
       return function(){
         localStorage.setItem("edu_current_subject", s);
+        if(p === "G10-AFR"){
+          localStorage.setItem("edu_current_task_code", fc);
+          location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(fc);
+          return;
+        }
         localStorage.setItem("edu_current_task_code", p + "-TASK-001");
         location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(p + "-TASK-001");
       };
-    })(subjectCode,prefix)
+    })(subjectCode,prefix,finalCode)
   });
 }
 
@@ -604,7 +621,7 @@ items.push({
 
 
 
-  addExtraSubjectTasks(items, schoolDays, map, "G10-AFR", "Afrikaans", "G10-AFR", 18, schoolDays[schoolDays.length - 6], 2);
+  addExtraSubjectTasks(items, schoolDays, map, "G10-AFR", "Afrikaans", "G10-AFR", 33, schoolDays[schoolDays.length - 6], 2);
   addExtraSubjectTasks(items, schoolDays, map, "G10-ENG-FAL", "English FAL", "G10-ENG-FAL", 18, schoolDays[schoolDays.length - 7], 3);
   addExtraSubjectTasks(items, schoolDays, map, "G10-BST", "Besigheidstudies", "G10-BST", 18, schoolDays[schoolDays.length - 8], 4);
   addExtraSubjectTasks(items, schoolDays, map, "G10-LANDBOU", "Landbou", "G10-LANDBOU", 18, schoolDays[schoolDays.length - 9], 5);
@@ -744,6 +761,8 @@ render();
 </script>
 </body>
 </html>
+
+
 
 
 
