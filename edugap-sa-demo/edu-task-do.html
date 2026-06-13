@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="af" translate="no" lang="af">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDUCAP SA - K53 Daily Task</title>
+<style>
+body{margin:0;background:#f2f6fb;font-family:Arial,sans-serif;color:#071b31}
+.top{background:#1262d6;color:white;padding:18px 24px;font-size:25px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
+.top a{color:white;text-decoration:none;background:#ffffff22;padding:10px 18px;border-radius:10px;font-size:17px}
+.wrap{max-width:1050px;margin:28px auto;padding:0 18px}
+.card{background:white;border-radius:22px;padding:28px;box-shadow:0 12px 35px #0001;margin-bottom:18px}
+h1{font-size:34px;margin:0 0 10px}
+h2{font-size:24px;margin:0 0 12px}
+p{font-size:18px;color:#5a667a;line-height:1.5}
+.lesson{background:#edf5ff;border:1px solid #cfe3ff;border-radius:16px;padding:18px;margin:16px 0}
+.badge{display:inline-block;background:#edf5ff;border-radius:18px;padding:8px 14px;font-size:16px;font-weight:900;margin:4px 6px 4px 0}
+.qcard{border:1px solid #d9e3ef;border-radius:18px;padding:22px;margin:18px 0;background:#fff}
+.qtop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.qnum{font-size:18px;font-weight:900;background:#edf5ff;border-radius:14px;padding:8px 12px}
+.q{font-size:24px;font-weight:900;margin:18px 0 12px}
+.qimgWrap{text-align:center;margin:14px 0}
+.qimgWrap img{max-width:360px;max-height:260px;object-fit:contain;border:1px solid #d9e3ef;border-radius:14px;background:white;padding:8px}
+.opt{display:block;width:100%;text-align:left;border:2px solid #d9e3ef;background:white;color:#071b31;border-radius:14px;padding:16px;margin:10px 0;font-size:18px;font-weight:900;cursor:pointer}
+.opt:hover{background:#edf5ff;border-color:#1262d6}
+.opt.selected{background:#dbeafe;border-color:#1262d6;box-shadow:0 0 0 3px rgba(18,98,214,.12)}
+button{border:0;border-radius:12px;padding:14px 20px;font-size:18px;font-weight:900;color:white;background:#1262d6;cursor:pointer;margin:8px 8px 8px 0}
+button.dark{background:#071b31}
+button.green{background:#16a34a}
+.notice{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:14px;padding:14px;font-weight:900}
+.reviewBox{margin-top:16px;border-radius:16px;padding:16px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-weight:800}
+.correctBox{margin-top:16px;border-radius:16px;padding:16px;background:#dcfce7;border:1px solid #bbf7d0;color:#166534;font-weight:800}
+.pass{color:#15803d;font-weight:900}
+.fail{color:#b91c1c;font-weight:900}
+</style>
+<meta name="google" content="notranslate">
+<meta http-equiv="Content-Language" content="af-ZA">
+<style id="disable-browser-translate-popup">
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover{
+ display:none!important;
+ visibility:hidden!important;
+}
+body{top:0!important}
+</style>
+</head>
+<body>
+<div class="top">
+ <div>EDUCAP SA - K53 Daily Task</div>
+ <a href="edu-student-tasks.html">← Tasks</a>
+</div>
+
+<div class="wrap">
+ <div class="card" id="taskCard">
+ <h1>Loading task...</h1>
+ </div>
+</div>
+
+<script src="k53-supabase.js"></script>
+<script src="k53-question-bank.js"></script>
+<script>
+const student = JSON.parse(localStorage.getItem("k53_current_student") || "null");
+if(!student){
+ window.location.href = "k53-student-login.html";
+}
+
+const taskCode = localStorage.getItem("edu_current_task_code");
+const taskDate = localStorage.getItem("edu_current_task_date");
+
+let task = null;
+let selected = {};
+let retryOnlyQuestions = null;
+let dailyQuestions = [];
+
+function allK53Questions(){
+ const bank = window.K53_QUESTION_BANK || {A:[],B:[],C:[]};
+
+ const addMeta = (arr, test) => (arr || []).map((q, idx) => ({
+ ...q,
+ _test: test,
+ _bankIndex: idx,
+ _uid: test + "-" + (q.no || q.id || (idx + 1))
+ }));
+
+ return [
+ ...addMeta(bank.A, "A"),
+ ...addMeta(bank.B, "B"),
+ ...addMeta(bank.C, "C")
+ ];
+}
+
+function normalizeQuestion(q){
+ const opts = q.options || q.o || q.answers || [];
+ let options = [];
+
+ if(Array.isArray(opts)){
+ options = opts.map((x,idx) => {
+ if(typeof x === "string") return {letter:["A","B","C","D"][idx], text:x};
+ return {letter:x.letter || ["A","B","C","D"][idx], text:x.text || x.label || ""};
+ });
+ } else {
+ options = Object.keys(opts).map(k => ({letter:k, text:opts[k]}));
+ }
+
+ const answer = String(q.answer || q.a || q.correct || "").toUpperCase();
+
+ return {
+ uid: q._uid || q.uid || q.id || String(Math.random()),
+ test: q._test || q.test || "",
+ no: q.no || q.number || "",
+ question: q.q || q.question || q.text || "",
+ image: q.img || q.image || q.imageUrl || q.pic || "",
+ options: options,
+ answer: answer
+ };
+}
+
+function hashString(s){
+ let h = 0;
+ for(let i=0;i<s.length;i++){
+ h = ((h << 5) - h) + s.charCodeAt(i);
+ h |= 0;
+ }
+ return Math.abs(h);
+}
+
+function taskFilter(q){
+ const text = ((q.q || q.question || "") + " " + (q.img || q.image || "")).toLowerCase();
+
+ if(taskCode === "G10-K53-TASK-001"){
+ return text.includes("sign") || text.includes("road marking") || text.includes("marking") || q.img || q.image;
+ }
+
+ if(taskCode === "G10-K53-TASK-002"){
+ return text.includes("road") || text.includes("lane") || text.includes("intersection") || text.includes("overtake") || text.includes("vehicle");
+ }
+
+ if(taskCode === "G10-K53-TASK-003"){
+ return text.includes("control") || text.includes("brake") || text.includes("clutch") || text.includes("steering") || text.includes("vehicle");
+ }
+
+ return true;
+}
+
+function pickDailyQuestions(){
+ const all = allK53Questions().filter(taskFilter).map(normalizeQuestion).filter(q => q.question && q.options.length);
+
+ if(!all.length){
+ return [];
+ }
+
+ const seed = hashString(taskCode + "|" + taskDate + "|" + student.studentNo);
+ const sorted = all.slice().sort((a,b)=> hashString(a.uid + seed) - hashString(b.uid + seed));
+
+ return sorted.slice(0, 10);
+}
+
+async function loadTask(){
+ if(!taskCode || !taskDate){
+ document.getElementById("taskCard").innerHTML = "<div class='notice'>No task selected. Go back to Tasks.</div>";
+ return;
+ }
+
+ try{
+ const rows = await k53DbSelect(
+ "edu_tasks",
+ "select=task_code,subject_code,grade,title,instructions,task_type,marks,active" +
+ "&task_code=eq." + encodeURIComponent(taskCode) +
+ "&limit=1"
+ );
+
+ if(!rows.length){
+ document.getElementById("taskCard").innerHTML = "<div class='notice'>Task not found.</div>";
+ return;
+ }
+
+ task = rows[0];
+ dailyQuestions = pickDailyQuestions();
+
+ await loadRetryQuestionsIfNeeded();
+ renderTask();
+
+ }catch(e){
+ document.getElementById("taskCard").innerHTML = "<div class='notice'>Could not load task: " + e.message + "</div>";
+ }
+}
+
+function questionsForTask(){
+ if(retryOnlyQuestions && retryOnlyQuestions.length){
+ return retryOnlyQuestions;
+ }
+ return dailyQuestions;
+}
+
+async function loadRetryQuestionsIfNeeded(){
+ retryOnlyQuestions = null;
+
+ try{
+ const rows = await k53DbSelect(
+ "edu_student_tasks",
+ "select=status,score,total,submitted_answer" +
+ "&student_no=eq." + encodeURIComponent(student.studentNo) +
+ "&task_code=eq." + encodeURIComponent(task.task_code) +
+ "&task_date=eq." + encodeURIComponent(taskDate) +
+ "&limit=1"
+ );
+
+ if(!rows.length) return;
+
+ const old = rows[0];
+ if(old.status !== "retry_needed") return;
+
+ const wrong = old.submitted_answer && old.submitted_answer.wrong ? old.submitted_answer.wrong : [];
+ if(!wrong.length) return;
+
+ retryOnlyQuestions = wrong.map(w => {
+ return dailyQuestions.find(q => q.uid === w.uid) || dailyQuestions.find(q => q.question === w.question);
+ }).filter(Boolean);
+
+ }catch(e){
+ console.warn("Could not load retry questions", e);
+ }
+}
+
+function renderTask(){
+ const qs = questionsForTask();
+ const isRetryOnly = retryOnlyQuestions && retryOnlyQuestions.length;
+
+ if(!qs.length){
+ document.getElementById("taskCard").innerHTML = `
+ <h1>No questions loaded</h1>
+ <div class="notice">
+ The K53 exam question bank did not return questions for this task.
+ Check k53-question-bank.js.
+ </div>
+ <button class="dark" onclick="location.href='edu-student-tasks.html'">Back to Tasks</button>
+ `;
+ return;
+ }
+
+ document.getElementById("taskCard").innerHTML = `
+ <h1>${task.title}${isRetryOnly ? " - Redo Wrong Questions" : ""}</h1>
+ <p>
+ <span class="badge">${task.subject_code}</span>
+ <span class="badge">${qs.length} real exam questions</span>
+ <span class="badge">${taskDate}</span>
+ </p>
+
+ <div class="lesson">
+ <h2>Learn first</h2>
+ <p>${task.instructions || "Practice these questions exactly like the final exam."}</p>
+ <p>These daily task questions are pulled from the real K53 final exam question bank.</p>
+ ${isRetryOnly ? `<div class="reviewBox">You only need to redo the questions you got wrong. Once they are correct, the task will be completed.</div>` : ""}
+ </div>
+
+ ${qs.map((x,i)=>`
+ <div class="qcard">
+ <div class="qtop">
+ <div class="qnum">Question ${i+1} of ${qs.length}</div>
+ <div class="qnum">Test ${x.test}${x.no ? " | Q" + x.no : ""}</div>
+ </div>
+
+ <div class="q">${x.question}</div>
+
+ ${x.image ? `<div class="qimgWrap"><img src="${x.image}" alt="Question image"></div>` : ""}
+
+ ${x.options.map(opt => `
+ <button class="opt" id="q${i}_${opt.letter}" onclick="choose(${i},'${opt.letter}')">
+ ${opt.letter}. ${opt.text}
+ </button>
+ `).join("")}
+ </div>
+ `).join("")}
+
+ <button class="green" onclick="submitTask()">Submit Task</button>
+ <button class="dark" onclick="location.href='edu-student-tasks.html'">Back to Tasks</button>
+ `;
+}
+
+function choose(i, letter){
+ selected[i] = letter;
+ const qs = questionsForTask();
+ qs[i].options.forEach(opt=>{
+ const b = document.getElementById("q" + i + "_" + opt.letter);
+ if(b) b.classList.toggle("selected", selected[i] === opt.letter);
+ });
+}
+
+async function submitTask(){
+ const qs = questionsForTask();
+
+ if(Object.keys(selected).length < qs.length){
+ alert("Please answer all the questions.");
+ return;
+ }
+
+ let score = 0;
+ const wrong = [];
+
+ qs.forEach((q,i)=>{
+ if(String(selected[i]).toUpperCase() === String(q.answer).toUpperCase()){
+ score++;
+ } else {
+ wrong.push({
+ uid: q.uid,
+ test: q.test,
+ no: q.no,
+ question: q.question,
+ image: q.image,
+ options: q.options,
+ your_answer: selected[i],
+ correct_answer: q.answer
+ });
+ }
+ });
+
+ const passedFull = score === qs.length;
+ const fullTotal = dailyQuestions.length || qs.length;
+
+ const row = {
+ student_no: student.studentNo,
+ task_code: task.task_code,
+ subject_code: task.subject_code,
+ task_date: taskDate,
+ status: passedFull ? "completed" : "retry_needed",
+ score: passedFull ? fullTotal : score,
+ total: passedFull ? fullTotal : qs.length,
+ submitted_answer: {
+ selected: selected,
+ wrong: wrong,
+ retry_only: !!(retryOnlyQuestions && retryOnlyQuestions.length),
+ daily_question_uids: dailyQuestions.map(q => q.uid),
+ must_redo_until_all_correct: true
+ },
+ completed_at: passedFull ? new Date().toISOString() : null
+ };
+
+ // K53 LOCAL PLANNER PROGRESS SAVE START
+
+
+ try{
+
+
+   localStorage.setItem("edu_task_result_" + row.student_no + "_" + row.task_code, JSON.stringify(row));
+
+
+   localStorage.setItem("edu_task_result_" + row.task_code, JSON.stringify(row));
+
+
+ }catch(localSaveErr){
+
+
+   console.warn("K53 local planner save failed:", localSaveErr);
+
+
+ }
+
+
+ // K53 LOCAL PLANNER PROGRESS SAVE END
+
+
+
+ try{
+
+
+  await k53DbUpsert("edu_student_tasks", row, "student_no,task_code,task_date");
+
+ if(passedFull){
+ document.getElementById("taskCard").innerHTML = `
+ <h1>Task Completed ✅</h1>
+ <div class="correctBox">
+ ${retryOnlyQuestions && retryOnlyQuestions.length
+ ? "All previously wrong questions are now correct."
+ : "You got " + score + " out of " + qs.length + ". All answers are correct."}
+ </div>
+ <p style="font-size:24px;font-weight:900" class="pass">Excellent work. This daily task is now complete.</p>
+ <button onclick="location.href='edu-student-tasks.html'">Back to Tasks</button>
+ `;
+ } else {
+ document.getElementById("taskCard").innerHTML = `
+ <h1>Redo Needed 🔁</h1>
+ <div class="reviewBox">
+ You got ${score} out of ${qs.length}. This task is not complete yet.
+ <br><br>
+ You only need to redo the ${wrong.length} question(s) you got wrong.
+ </div>
+ <button onclick="location.reload()">Redo Wrong Questions</button>
+ <button class="dark" onclick="location.href='edu-student-tasks.html'">Back to Tasks</button>
+ `;
+ }
+
+ }catch(e){
+ alert("Could not save task: " + e.message);
+ }
+}
+
+loadTask();
+</script>
+<script id="force-real-learner-portal-link">
+(function(){
+ function fixLearnerPortal(){
+ document.querySelectorAll("a,button").forEach(function(el){
+ var txt = (el.textContent || "").trim();
+
+ if(txt === "Learner Portal" || txt === "Portaal"){
+ if(el.tagName.toLowerCase() === "a"){
+ el.setAttribute("href","k53-student-login.html");
+ el.removeAttribute("onclick");
+ el.onclick = function(e){
+ e.preventDefault();
+ window.location.href = "k53-student-login.html";
+ };
+ }else{
+ el.onclick = function(e){
+ e.preventDefault();
+ window.location.href = "k53-student-login.html";
+ };
+ }
+ }
+
+ if(txt === "K53 Portal" || txt === "K53 Admin" || txt === "K53 Mock Tests"){
+ el.remove();
+ }
+ });
+
+ document.querySelectorAll("[id*='k53'],[class*='k53']").forEach(function(el){
+ var txt = (el.textContent || "").trim();
+ if(txt === "K53 Portal" || txt === "K53 Admin" || txt === "K53 Mock Tests"){
+ el.remove();
+ }
+ });
+ }
+
+ fixLearnerPortal();
+ setTimeout(fixLearnerPortal, 300);
+ setTimeout(fixLearnerPortal, 1000);
+})();
+</script>
+<script id="admin-portal-top-secure-patch">
+(function(){
+ var ADMIN_CODE = "4321"; // Verander hierdie kode as jy wil
+
+ function styleAdminButton(btn){
+ btn.textContent = "Admin Portal";
+ btn.id = "adminPortalTopBtn";
+ btn.href = "#";
+ btn.style.display = "inline-flex";
+ btn.style.alignItems = "center";
+ btn.style.justifyContent = "center";
+ btn.style.textDecoration = "none";
+ btn.style.fontWeight = "900";
+ btn.style.borderRadius = "999px";
+ btn.style.padding = "14px 22px";
+ btn.style.marginRight = "10px";
+ btn.style.color = "white";
+ btn.style.background = "linear-gradient(135deg,#0f172a,#2563eb)";
+ btn.style.boxShadow = "0 8px 22px rgba(0,0,0,.12)";
+ btn.onclick = function(e){
+ e.preventDefault();
+ var code = prompt("Admin code:");
+ if(code === ADMIN_CODE){
+ window.location.href = "k53-admin-login.html";
+ }else if(code !== null){
+ alert("Verkeerde admin code.");
+ }
+ };
+ }
+
+ function fixPortalButtons(){
+ if(document.getElementById("adminPortalTopBtn")) return;
+
+ var learner = null;
+ document.querySelectorAll("a,button").forEach(function(el){
+ var txt = (el.textContent || "").trim();
+
+ if(txt === "Learner Portal"){
+ learner = el;
+ if(el.tagName.toLowerCase() === "a"){
+ el.setAttribute("href","k53-student-login.html");
+ el.removeAttribute("onclick");
+ }
+ }
+
+ if(txt === "K53 Portal" || txt === "K53 Admin" || txt === "K53 Mock Tests"){
+ el.remove();
+ }
+ });
+
+ if(learner && learner.parentNode){
+ var admin = document.createElement("a");
+ styleAdminButton(admin);
+ learner.parentNode.insertBefore(admin, learner);
+ }
+ }
+
+ fixPortalButtons();
+ setTimeout(fixPortalButtons, 500);
+ setTimeout(fixPortalButtons, 1500);
+})();
+</script>
+</body>
+</html>
+
+
+
+
+

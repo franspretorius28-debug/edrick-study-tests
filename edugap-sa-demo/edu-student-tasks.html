@@ -311,7 +311,73 @@ async function loadProgress(){
     console.warn("Progress kon nie laai nie", e);
   }
 
+  // K53 DB PROGRESS FALLBACK START
+
+
   try{
+
+
+    if(window.k53DbSelect){
+
+
+      var nos = [];
+
+
+      [studentNo(), studentLegacyNo()].forEach(function(n){
+
+
+        if(n && nos.indexOf(n) < 0) nos.push(n);
+
+
+      });
+
+
+      if(nos.length){
+
+
+        var q = "select=*&student_no=in.(" + nos.map(encodeURIComponent).join(",") + ")";
+
+
+        var rows = await window.k53DbSelect("edu_student_tasks", q);
+
+
+        if(rows && rows.forEach){
+
+
+          rows.forEach(function(r){
+
+
+            if(r && r.task_code) map[r.task_code] = normalizeRow(r);
+
+
+          });
+
+
+        }
+
+
+      }
+
+
+    }
+
+
+  }catch(e){
+
+
+    console.warn("K53 DB progress fallback failed:", e);
+
+
+  }
+
+
+  // K53 DB PROGRESS FALLBACK END
+
+
+
+  try{
+
+
     for(var i = 0; i < localStorage.length; i++){
       var k = localStorage.key(i);
       if(!k || k.indexOf("edu_task_result_") !== 0) continue;
@@ -364,13 +430,13 @@ function subjectTaskLabel(item){
 
   return subjectDisplay(item.subject) + ' | ' + code;
 }
-function setTask(code){
+function setTask(code, date){
   localStorage.setItem("edu_current_task_code", code);
-  localStorage.setItem("edu_current_task_date", today());
+  localStorage.setItem("edu_current_task_date", date || today());
 }
 
-function openK53(code){
-  setTask(code);
+function openK53(code, date){
+  setTask(code, date);
 
   var current = {
     studentNo: localStorage.getItem("k53_student_no") ||
@@ -720,7 +786,7 @@ function buildPlan(map){
         code:code,
         type:"daily",
         info:info(map,code,10),
-        open:function(){ openK53(code); }
+        open:function(){ openK53(code, k53Dates[n-1]); }
       });
     })(k);
   }
