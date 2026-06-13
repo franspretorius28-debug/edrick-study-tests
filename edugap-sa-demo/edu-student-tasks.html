@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="af" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDUCAP SA - Task Planner</title>
+<script src="k53-supabase.js"></script>
+<script src="k53-question-bank.js"></script>
+<script src="g10-subject-banks.js"></script>
+<script src="g10-wisk-kw3-bank.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eef2f7;font-family:Arial,Helvetica,sans-serif;color:#0f2438}
+.top{background:#1767d8;color:white;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+.top h1{margin:0;font-size:26px}
+.top button{background:rgba(255,255,255,.15);color:white;border:0;border-radius:10px;padding:11px 18px;font-weight:900;cursor:pointer;margin-left:8px}
+.wrap{max-width:1240px;margin:26px auto 60px;padding:0 18px}
+.hero{background:#1767d8;color:white;border-radius:22px;padding:26px 30px;display:flex;justify-content:space-between;gap:20px;align-items:center;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.hero h2{margin:0 0 8px;font-size:36px}
+.hero p{margin:0;font-weight:800;opacity:.95}
+.tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.tags span{background:rgba(255,255,255,.17);padding:10px 14px;border-radius:999px;font-weight:900;white-space:nowrap}
+.controls{background:white;border-radius:18px;padding:16px;margin-top:18px;box-shadow:0 6px 18px rgba(0,0,0,.06);display:flex;gap:10px;flex-wrap:wrap}
+.controls button{border:0;border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer;background:#eaf2ff;color:#174ea6}
+.controls button.active{background:#1767d8;color:white}
+.day-card{background:white;border-radius:20px;padding:22px;margin-top:20px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.day-card.today{border:3px solid #16a34a}
+.day-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:14px}
+.day-head h2{margin:0;font-size:28px}
+.day-head .badge{font-weight:900;border-radius:999px;padding:8px 12px;background:#eaf2ff;color:#174ea6}
+.day-card.today .badge{background:#dcfce7;color:#166534}
+.list{display:flex;flex-direction:column;gap:9px}
+.row{display:grid;grid-template-columns:96px 1.35fr 150px 138px 165px 92px;align-items:center;gap:12px;border:1px solid #dbe7f3;border-left:7px solid #1767d8;border-radius:15px;padding:12px 13px;background:#fbfdff}
+.row.done{border-left-color:#16a34a;background:#f7fff9}
+.row.redo{border-left-color:#dc2626;background:#fffafa}
+.row.exam{border-left-color:#7c3aed}
+.no{font-weight:900;color:#1767d8}
+.name b{display:block;font-size:17px}
+.name span,.completed span,.progress span{display:block;color:#526174;font-size:12px;font-weight:800;margin-top:3px}
+.completed b,.progress b{display:block;font-weight:900}
+.bar{height:9px;background:#e5edf7;border-radius:999px;overflow:hidden;margin:6px 0 3px}
+.bar i{display:block;height:100%;background:#1767d8}
+.row.done .bar i{background:#16a34a}
+.row.redo .bar i{background:#dc2626}
+.pill{display:inline-block;min-width:108px;text-align:center;padding:8px 10px;border-radius:999px;font-weight:900;font-size:12px}
+.pill.start{background:#eaf2ff;color:#174ea6;border:1px solid #bfdbfe}
+.pill.redo{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+.pill.done{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.open{border:0;border-radius:12px;padding:10px 12px;color:white;background:#1767d8;font-weight:900;cursor:pointer}
+.open.redo{background:#dc2626}
+.open.done{background:#16a34a}
+.open.exam{background:#7c3aed}
+.open.locked{background:#94a3b8;cursor:not-allowed}
+.row.locked{opacity:.85}
+.lock-note{font-size:12px;font-weight:900;color:#991b1b;margin-top:3px}
+.empty{background:white;border-radius:18px;padding:20px;margin-top:20px;font-weight:900;color:#526174}
+@media(max-width:1050px){
+  .row{grid-template-columns:90px 1fr 130px}
+  .state,.completed,.open{grid-column:auto}
+}
+@media(max-width:720px){
+  .top,.hero,.day-head{display:block}
+  .top div,.tags{margin-top:12px;justify-content:flex-start}
+  .row{grid-template-columns:1fr}
+  .open{width:100%}
+}
+</style>
+<script>
+function studentLogout(){
+  localStorage.removeItem("k53_student_no");
+  localStorage.removeItem("k53_student_name");
+    localStorage.removeItem("edu_student_no");
+  localStorage.removeItem("edu_student_legacy_no");
+  localStorage.removeItem("edu_student_subjects");
+  localStorage.removeItem("edu_student_grade");
+  localStorage.removeItem("edu_student_name");
+  localStorage.removeItem("edu_current_task_code");
+  localStorage.removeItem("edu_current_task_date");
+  window.location.href = "k53-student-login.html";
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <h1>EDUCAP SA - Task Planner</h1>
+  <div><button onclick="studentLogout()">Logout</button></div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h2>Tasks by date / Take volgens datum</h2>
+      <p>Term 3 work starts on 2026-07-21. Monday to Friday only. No weekends, school holidays or public holidays.<br>Kwartaal 3 werk begin op 2026-07-21. Net Maandag tot Vrydag. Geen naweke, skoolvakansies of vakansiedae.</p>
+    </div>
+    <div class="tags">
+      <span id="studentTag">K53-0001 - Enrico Pretorius</span>
+      <span id="gradeTag">Graad 10</span>
+      <span id="todayTag"></span>
+    </div>
+  </section>
+
+  <section class="controls">
+    <button id="showAll" class="active" onclick="setMode('all')">All dates / Alle datums</button>
+    <button id="showToday" onclick="setMode('today')">Today only / Net vandag</button>
+    <button id="showOpen" onclick="setMode('open')">Not completed / Nie done / klaar nie</button>
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">Top / Bo toe</button>
+  </section>
+
+  <section id="planner"></section>
+</main>
+
+<script>
+var MODE = "all";
+var TERM3_START = "2026-07-21";
+var TERM3_END = "2026-09-23";
+
+var SCHOOL_HOLIDAYS = [
+  ["2026-03-28","2026-04-07"],
+  ["2026-06-27","2026-07-20"],
+  ["2026-09-24","2026-10-05"],
+  ["2026-12-12","2027-01-12"]
+];
+
+var PUBLIC_OR_SPECIAL_HOLIDAYS = {
+  "2026-01-01":true,
+  "2026-03-21":true,
+  "2026-04-03":true,
+  "2026-04-06":true,
+  "2026-04-27":true,
+  "2026-05-01":true,
+  "2026-06-15":true,
+  "2026-06-16":true,
+  "2026-08-10":true,
+  "2026-09-24":true,
+  "2026-12-16":true,
+  "2026-12-25":true,
+  "2026-12-26":true
+};
+
+function pad(n){ return String(n).padStart(3,"0"); }
+function today(){ return new Date().toISOString().slice(0,10); }
+function isoDate(d){ return d.toISOString().slice(0,10); }
+
+function inRange(date,start,end){
+  return date >= start && date <= end;
+}
+
+function inSchoolHoliday(date){
+  for(var i=0;i<SCHOOL_HOLIDAYS.length;i++){
+    if(inRange(date,SCHOOL_HOLIDAYS[i][0],SCHOOL_HOLIDAYS[i][1])) return true;
+  }
+  return false;
+}
+
+function isSchoolDay(date){
+  var d = new Date(date + "T00:00:00");
+  var day = d.getDay();
+  if(day === 0 || day === 6) return false;
+  if(inSchoolHoliday(date)) return false;
+  if(PUBLIC_OR_SPECIAL_HOLIDAYS[date]) return false;
+  return true;
+}
+
+function addSchoolDays(base, add){
+  var d = new Date(base + "T00:00:00");
+  var count = 0;
+
+  while(true){
+    var s = isoDate(d);
+
+    if(isSchoolDay(s)){
+      if(count === add) return s;
+      count++;
+    }
+
+    d.setDate(d.getDate() + 1);
+  }
+}
+
+function examAfterLastTask(base, numberOfTasks){
+  return addSchoolDays(base, numberOfTasks);
+}
+
+function studentNo(){
+  return localStorage.getItem("edu_student_no") || "EDUCAP-01";
+}
+
+function studentLegacyNo(){
+  return localStorage.getItem("edu_student_legacy_no") || localStorage.getItem("k53_student_no") || "K53-0001";
+}
+
+function studentGrade(){
+  return localStorage.getItem("edu_student_grade") || "Graad 10";
+}
+
+function enricoDefaultSubjects(){
+  return ["G10-K53","G10-AFR","G10-ENG-FAL","G10-BST","G10-LANDBOU","G10-CAT-IKT","G10-WISK-LIT"];
+}
+function assignedSubjects(){
+  var no = localStorage.getItem("edu_student_no") || "";
+  if(no === "EDUCAP-01") return enricoDefaultSubjects();
+
+  try{
+    var arr = JSON.parse(localStorage.getItem("edu_student_subjects") || "[]");
+    if(Array.isArray(arr)) return arr;
+  }catch(e){}
+  return [];
+}
+
+function hasSubject(code){
+  var arr = assignedSubjects();
+
+  // As geen vakke toegeken is nie, wys niks — dis veiliger as om verkeerde vakke te wys.
+  if(!arr.length) return false;
+
+  return arr.indexOf(code) >= 0;
+}
+function studentName(){
+  return localStorage.getItem("edu_student_name") || "Student";
+}
+
+function subjectDisplay(subject){
+  if(subject === "K53") return "K53 Learner's Licence / K53 Leerlinglisensie";
+  if(subject === "CAT / IKT") return "CAT / IKT / Rekenaartoepassingstegnologie";
+  if(subject === "Afrikaans") return "Afrikaans";
+  if(subject === "English FAL") return "English FAL / Engels EAT";
+  if(subject === "Besigheidstudies") return "Business Studies / Besigheidstudies";
+  if(subject === "Landbou") return "Agricultural Sciences / Landbouwetenskappe";
+  if(subject === "Wiskunde Geletterdheid") return "Mathematical Literacy / Wiskunde Geletterdheid";
+  return subject;
+}
+function passMarkFor(subject, code){
+  if(subject === "K53") return 95;
+  if(subject === "CAT / IKT") return 40;
+  if(subject === "Afrikaans") return 40;
+  if(subject === "English FAL") return 40;
+  if(subject === "Besigheidstudies") return 40;
+  if(subject === "Landbou") return 40;
+  if(subject === "Wiskunde Geletterdheid") return 40;
+  return 40;
+}
+
+function passTextFor(subject, code){
+  return "Pass / Slaag: " + passMarkFor(subject, code) + "%";
+}
+
+function k53ExamTotal(type){
+  try{
+    var b = window.K53_QUESTION_BANK || {};
+    if(type === "A" && Array.isArray(b.A)) return b.A.length;
+    if(type === "B" && Array.isArray(b.B)) return b.B.length;
+    if(type === "C" && Array.isArray(b.C)) return b.C.length;
+  }catch(e){}
+  return 0;
+}
+
+function finalInfo(map, code, total, subject){
+  var x = map[code] || defaultInfo(total || 0);
+  x.pass = passMarkFor(subject, code);
+  return x;
+}
+
+function defaultInfo(total){
+  return {status:"start", score:"0/" + total, percent:0, completed:"-", pass:40};
+}
+
+function normalizeRow(r){
+  var total = Number(r.total || 10);
+  var score = Number(r.score || 0);
+  var status = String(r.status || "start").toLowerCase();
+
+  var finalStatus = "start";
+  if(status.includes("completed")) finalStatus = "done";
+  if(status.includes("redo") || status.includes("retry")) finalStatus = "redo";
+
+  var percent = total ? Math.round((score / total) * 100) : 0;
+  if(finalStatus === "done") percent = 100;
+
+  return {
+    status: finalStatus,
+    score: score + "/" + total,
+    percent: percent,
+    completed: r.completed_at ? new Date(r.completed_at).toLocaleString() : "-"
+  };
+}
+
+async function loadProgress(){
+  var map = {};
+  try{
+    if(window.supabaseClient){
+      var res = await window.supabaseClient
+        .from("edu_student_tasks")
+        .select("*")
+        .in("student_no", [studentNo(), studentLegacyNo()]);
+
+      if(res && res.data){
+        res.data.forEach(function(r){
+          if(r.task_code) map[r.task_code] = normalizeRow(r);
+        });
+      }
+    }
+  }catch(e){
+    console.warn("Progress kon nie laai nie", e);
+  }
+
+  try{
+    for(var i = 0; i < localStorage.length; i++){
+      var k = localStorage.key(i);
+      if(!k || k.indexOf("edu_task_result_") !== 0) continue;
+
+      var raw = localStorage.getItem(k);
+      if(!raw) continue;
+
+      var r = JSON.parse(raw);
+      if(r && r.task_code){
+        map[r.task_code] = normalizeRow(r);
+      }
+    }
+  }catch(e){
+    console.warn("Local progress kon nie laai nie", e);
+  }
+
+  return map;
+}
+
+function info(map, code, total){
+  var x = map[code] || defaultInfo(total);
+  x.pass = passMarkFor("", code);
+  return x;
+}
+
+function pill(x){
+  if(x.status === "done") return '<span class="pill done">✓ Completed / Klaar</span>';
+  if(x.status === "redo") return '<span class="pill redo">↻ Redo / Doen oor</span>';
+  return '<span class="pill start">Start</span>';
+}
+
+function btnText(x){
+  if(x.status === "done") return "Open";
+  if(x.status === "redo") return "Redo / Doen oor";
+  return "Start";
+}
+
+
+function subjectTaskLabel(item){
+  if(!item) return '';
+  var code = item.code || '';
+
+  if(code === 'G10-AFR-TASK-001'){
+    return 'Afrikaans: Hoofstuk 10 - Spotprent interpreteer | ' + code;
+  }
+
+  if(item.subject === 'G10-AFR' || String(code).indexOf('G10-AFR') === 0){
+    return 'Afrikaans | ' + code;
+  }
+
+  return subjectDisplay(item.subject) + ' | ' + code;
+}
+function setTask(code){
+  localStorage.setItem("edu_current_task_code", code);
+  localStorage.setItem("edu_current_task_date", today());
+}
+
+function openK53(code){ setTask(code); location.href = "k53-daily-task-16.html"; }
+function openCat(code){ setTask(code); location.href = "cat-ikt-daily-task.html"; }
+function openWisk(code){ setTask(code); location.href = "g10-wisk-kw3-daily-task.html"; }
+
+function wiskTitle(code, fallback){
+  try{
+    var bank = window.G10_WISK_KW3_TASKS || [];
+    var found = bank.find(function(t){ return t.code === code; });
+    return found && found.title ? found.title : fallback;
+  }catch(e){
+    return fallback;
+  }
+}
+
+function allSchoolDays(start, end){
+  var days = [];
+  var d = new Date(start + "T00:00:00");
+
+  while(isoDate(d) <= end){
+    var s = isoDate(d);
+    if(isSchoolDay(s)) days.push(s);
+    d.setDate(d.getDate() + 1);
+  }
+
+  return days;
+}
+
+function pickSpreadDates(days, count, lastAllowedIndex, offset){
+  var picked = [];
+  if(count <= 0) return picked;
+
+  if(lastAllowedIndex < 0) lastAllowedIndex = days.length - 1;
+  if(lastAllowedIndex >= days.length) lastAllowedIndex = days.length - 1;
+
+  var usable = days.slice(0, lastAllowedIndex + 1);
+  if(!usable.length) return picked;
+
+  if(count === 1){
+    picked.push(usable[Math.min(offset || 0, usable.length - 1)]);
+    return picked;
+  }
+
+  var maxIndex = usable.length - 1;
+
+  for(var i=0;i<count;i++){
+    var raw = Math.round((i * maxIndex) / (count - 1));
+    raw = raw + (offset || 0);
+
+    if(raw > maxIndex) raw = maxIndex;
+    if(raw < 0) raw = 0;
+
+    // Moenie dieselfde vak se task op dieselfde datum dupliseer as dit vermy kan word nie.
+    while(picked.indexOf(usable[raw]) >= 0 && raw < maxIndex){
+      raw++;
+    }
+
+    while(picked.indexOf(usable[raw]) >= 0 && raw > 0){
+      raw--;
+    }
+
+    picked.push(usable[raw]);
+  }
+
+  return picked;
+}
+
+function k53FinalTotal(){
+  try{
+    var b = window.K53_QUESTION_BANK || {A:[],B:[],C:[]};
+    return (b.A || []).length + (b.B || []).length + (b.C || []).length;
+  }catch(e){
+    return 0;
+  }
+}
+
+function openK53Final(){
+  localStorage.setItem("k53_exam_type", "MIX");
+  localStorage.setItem("k53_exam_started_at", new Date().toISOString());
+
+  var current = {
+    studentNo: localStorage.getItem("k53_student_no") || localStorage.getItem("edu_student_legacy_no") || localStorage.getItem("edu_student_no") || "EDUCAP-01",
+    name: localStorage.getItem("edu_student_name") || localStorage.getItem("k53_student_name") || "Student"
+  };
+
+  localStorage.setItem("k53_current_student", JSON.stringify(current));
+  location.href = "k53-exam.html";
+}
+function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subjectName, prefix, count, finalDue, offset){
+  if(!hasSubject(subjectCode)) return;
+
+  var finalIndex = schoolDays.indexOf(finalDue);
+  if(finalIndex < 0) finalIndex = schoolDays.length - 1;
+
+  var dates = pickSpreadDates(schoolDays, count, finalIndex - 1, offset || 0);
+
+  for(var i=1; i<=count; i++){
+    var code = prefix + "-TASK-" + String(i).padStart(3,"0");
+    items.push({
+      due:dates[i-1],
+      no:subjectName.split(" ")[0] + " Task " + i,
+      subject:subjectName,
+      title:subjectName + " Daily Task " + i,
+      code:code,
+      type:"task",
+      info:info(progressMap || {}, code, 10),
+      open:(function(c,d,s){
+        return function(){
+          localStorage.setItem("edu_current_subject", s);
+          localStorage.setItem("edu_current_task_code", c);
+          localStorage.setItem("edu_current_task_date", d);
+          location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(c);
+        };
+      })(code, dates[i-1], subjectCode)
+    });
+  }
+
+  items.push({
+    due:finalDue,
+    no:"Final",
+    subject:subjectName,
+    title:subjectName + " Final Exam / Finale Eksamen",
+    code:prefix + "-FINAL",
+    type:"exam",
+    info:defaultInfo(50),
+    open:(function(s,p){
+      return function(){
+        localStorage.setItem("edu_current_subject", s);
+        localStorage.setItem("edu_current_task_code", p + "-TASK-001");
+        location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(p + "-TASK-001");
+      };
+    })(subjectCode,prefix)
+  });
+}
+
+function buildPlan(map){
+  var items = [];
+  var schoolDays = allSchoolDays(TERM3_START, TERM3_END);
+
+  // Hou einde van kwartaal vir eksamens.
+  // As daar bv 46 skooldae is, gebruik die laaste paar dae vir final/toetse.
+  var wiskFinalDate = schoolDays[schoolDays.length - 1];
+  var k53CTestDate = schoolDays[schoolDays.length - 2];
+  var k53BTestDate = schoolDays[schoolDays.length - 3];
+  var k53ATestDate = schoolDays[schoolDays.length - 4];
+  var catFinalDate  = schoolDays[schoolDays.length - 5];
+
+  var catFinalIndex = schoolDays.indexOf(catFinalDate);
+  var k53AIndex = schoolDays.indexOf(k53ATestDate);
+  var wiskFinalIndex = schoolDays.indexOf(wiskFinalDate);
+
+  // CAT het min tasks, so versprei dit rustig tot voor CAT finale.
+  var catDates = pickSpreadDates(schoolDays, 8, catFinalIndex - 1, 0);
+
+  // K53 het 16 tasks, versprei tot voor Toets A.
+  var k53Dates = pickSpreadDates(schoolDays, 16, k53AIndex - 1, 1);
+
+  // Wiskunde het 44 tasks, so dit moet amper elke skooldag loop,
+  // maar Wisk finale bly na Task 44.
+  var wiskDates = pickSpreadDates(schoolDays, 44, wiskFinalIndex - 1, 0);
+
+  if(hasSubject("G10-K53")) for(var k=1;k<=16;k++){
+    (function(n){
+      var code = "G10-K53-TASK-" + pad(n);
+      items.push({
+        due:k53Dates[n-1],
+        no:"K53 Task " + n,
+        subject:"K53",
+        title:"K53 Daily Task " + n,
+        code:code,
+        type:"daily",
+        info:info(map,code,10),
+        open:function(){ openK53(code); }
+      });
+    })(k);
+  }
+
+  if(hasSubject("G10-CAT-IKT")) for(var c=1;c<=8;c++){
+    (function(n){
+      var code = "G10-CAT-IKT-TASK-" + pad(n);
+      items.push({
+        due:catDates[n-1],
+        no:"CAT Task " + n,
+        subject:"CAT / IKT",
+        title:"Daily Task " + n,
+        code:code,
+        type:"daily",
+        info:info(map,code,10),
+        open:function(){ openCat(code); }
+      });
+    })(c);
+  }
+
+  if(hasSubject("G10-WISK-KW3")) for(var w=1;w<=44;w++){
+    (function(n){
+      var code = "G10-WISK-KW3-TASK-" + pad(n);
+      items.push({
+        due:wiskDates[n-1],
+        no:"Wisk Task " + n,
+        subject:"Wiskunde",
+        title:wiskTitle(code,"KW3 Task " + pad(n)),
+        code:code,
+        type:"daily",
+        info:info(map,code,5),
+        open:function(){ openWisk(code); }
+      });
+    })(w);
+  }
+
+  items.push({
+    due:catFinalDate,
+    no:"Final",
+    subject:"CAT / IKT",
+    title:"CAT / IKT Finale Eksamen",
+    code:"G10-CAT-IKT-FINAL",
+    type:"exam",
+    info:finalInfo(map,"G10-CAT-IKT-FINAL",80,"CAT / IKT"),
+    open:function(){ location.href="cat-ikt-toets.html"; }
+  });
+  if(hasSubject("G10-K53")) items.push({
+    due:k53CTestDate,
+    no:"Final",
+    subject:"K53",
+    title:"K53 Final Exam / Finale Toets",
+    code:"K53-FINAL",
+    type:"exam",
+    info:defaultInfo(k53FinalTotal()),
+    open:function(){ openK53Final(); }
+  });
+items.push({
+    due:wiskFinalDate,
+    no:"Final",
+    subject:"Wiskunde",
+    title:"KW3 Finale Eksamen",
+    code:"G10-WISK-KW3-FINAL",
+    type:"exam",
+    info:finalInfo(map,"G10-WISK-KW3-FINAL",224,"Wiskunde"),
+    open:function(){ location.href="g10-wisk-kw3-final-exam.html"; }
+  });
+
+
+
+
+  addExtraSubjectTasks(items, schoolDays, map, "G10-AFR", "Afrikaans", "G10-AFR", 18, schoolDays[schoolDays.length - 6], 2);
+  addExtraSubjectTasks(items, schoolDays, map, "G10-ENG-FAL", "English FAL", "G10-ENG-FAL", 18, schoolDays[schoolDays.length - 7], 3);
+  addExtraSubjectTasks(items, schoolDays, map, "G10-BST", "Besigheidstudies", "G10-BST", 18, schoolDays[schoolDays.length - 8], 4);
+  addExtraSubjectTasks(items, schoolDays, map, "G10-LANDBOU", "Landbou", "G10-LANDBOU", 18, schoolDays[schoolDays.length - 9], 5);
+  addExtraSubjectTasks(items, schoolDays, map, "G10-WISK-LIT", "Wiskunde Geletterdheid", "G10-WISK-LIT", 18, schoolDays[schoolDays.length - 10], 6);
+items.sort(function(a,b){
+    if(a.due < b.due) return -1;
+    if(a.due > b.due) return 1;
+
+    var order = {"K53":1,"CAT / IKT":2,"Wiskunde":3};
+    if(a.type === "exam" && b.type !== "exam") return 1;
+    if(a.type !== "exam" && b.type === "exam") return -1;
+
+    return (order[a.subject] || 9) - (order[b.subject] || 9);
+  });
+
+  return items;
+}
+
+function isExamLocked(item){
+  if(!item || item.type !== "exam") return false;
+  return today() < item.due;
+}
+
+function lockedText(item){
+  if(!isExamLocked(item)) return "";
+  return "Locked until / Gesluit tot: " + item.due;
+}
+function makeRow(item){
+  var x = item.info;
+  var locked = isExamLocked(item);
+
+  var div = document.createElement("div");
+  div.className = "row " + x.status + (item.type === "exam" ? " exam" : "") + (locked ? " locked" : "");
+
+  var buttonText = locked ? "Locked" : btnText(x);
+  var buttonClass = "open " + x.status + (item.type === "exam" ? " exam" : "") + (locked ? " locked" : "");
+
+  div.innerHTML =
+    '<div class="no">'+item.no+'</div>' +
+    '<div class="name"><b>'+item.title+'</b><span>'+subjectTaskLabel(item)+'</span><span>'+passTextFor(item.subject,item.code)+'</span>' +
+      (locked ? '<div class="lock-note">'+lockedText(item)+'</div>' : '') +
+    '</div>' +
+    '<div class="progress"><b>'+x.percent+'%</b><div class="bar"><i style="width:'+x.percent+'%"></i></div><span>'+x.score+'</span></div>' +
+    '<div class="state">'+(locked ? '<span class="pill start">Locked / Gesluit</span>' : pill(x))+'</div>' +
+    '<div class="completed"><b>Completed / Klaar</b><span>'+x.completed+'</span></div>' +
+    '<button class="'+buttonClass+'">'+buttonText+'</button>';
+
+  div.querySelector("button").onclick = function(){
+    if(locked){
+      alert("This exam is locked until " + item.due + ".\nHierdie eksamen/toets is gesluit tot " + item.due + ".");
+      return;
+    }
+    item.open();
+  };
+
+  return div;
+}
+
+function groupByDate(items){
+  var groups = {};
+  items.forEach(function(item){
+    if(!groups[item.due]) groups[item.due] = [];
+    groups[item.due].push(item);
+  });
+  return groups;
+}
+
+function dateLabel(date){
+  var d = new Date(date + "T00:00:00");
+  return d.toLocaleDateString("af-ZA", {weekday:"long", year:"numeric", month:"long", day:"numeric"});
+}
+
+async function render(){
+  document.getElementById("todayTag").textContent = today();
+  document.getElementById("studentTag").textContent = studentNo() + " - " + studentName();
+  var gt = document.getElementById("gradeTag");
+  if(gt) gt.textContent = studentGrade();
+
+  var map = await loadProgress();
+  var allItems = buildPlan(map);
+
+  var filtered = allItems.filter(function(item){
+    if(MODE === "today") return item.due === today();
+    if(MODE === "open") return item.info.status !== "done";
+    return true;
+  });
+
+  var planner = document.getElementById("planner");
+  planner.innerHTML = "";
+
+  if(!filtered.length){
+    planner.innerHTML = '<div class="empty">No subjects/tasks have been assigned to this student. / Geen vakke/tasks is vir hierdie student toegeken nie. Gaan Admin toe en assign vakke vir hierdie student.</div>';
+    return;
+  }
+
+  var groups = groupByDate(filtered);
+  Object.keys(groups).sort().forEach(function(date){
+    var card = document.createElement("section");
+    card.className = "day-card" + (date === today() ? " today" : "");
+
+    var done = groups[date].filter(function(x){ return x.info.status === "done"; }).length;
+    var total = groups[date].length;
+
+    card.innerHTML =
+      '<div class="day-head">' +
+        '<div><h2>'+dateLabel(date)+'</h2><div style="color:#526174;font-weight:900;margin-top:4px">'+date+'</div></div>' +
+        '<div class="badge">'+done+' / '+total+' done / klaar</div>' +
+      '</div>' +
+      '<div class="list"></div>';
+
+    var list = card.querySelector(".list");
+    groups[date].forEach(function(item){
+      list.appendChild(makeRow(item));
+    });
+
+    planner.appendChild(card);
+  });
+}
+
+function setMode(mode){
+  MODE = mode;
+  document.querySelectorAll(".controls button").forEach(function(b){ b.classList.remove("active"); });
+  if(mode === "all") document.getElementById("showAll").classList.add("active");
+  if(mode === "today") document.getElementById("showToday").classList.add("active");
+  if(mode === "open") document.getElementById("showOpen").classList.add("active");
+  render();
+}
+
+render();
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
