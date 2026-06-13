@@ -362,7 +362,22 @@ function setTask(code){
   localStorage.setItem("edu_current_task_date", today());
 }
 
-function openK53(code){ setTask(code); location.href = "k53-daily-task-16.html"; }
+function openK53(code){
+  setTask(code);
+
+  var current = {
+    studentNo: localStorage.getItem("k53_student_no") ||
+      localStorage.getItem("edu_student_legacy_no") ||
+      localStorage.getItem("edu_student_no") ||
+      "EDUCAP-01",
+    name: localStorage.getItem("edu_student_name") ||
+      localStorage.getItem("k53_student_name") ||
+      "Student"
+  };
+
+  localStorage.setItem("k53_current_student", JSON.stringify(current));
+  location.href = "edu-task-do.html";
+}
 function openCat(code){ setTask(code); location.href = "cat-ikt-daily-task.html"; }
 function openWisk(code){ setTask(code); location.href = "g10-wisk-kw3-daily-task.html"; }
 
@@ -452,8 +467,15 @@ function openK53Final(){
 function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subjectName, prefix, count, finalDue, offset){
   if(!hasSubject(subjectCode)) return;
 
+  var paper2DueOverride = null;
+  if(prefix === "G10-AFR" && typeof finalDue === "string" && finalDue.indexOf("|") >= 0){
+    var dueParts = finalDue.split("|");
+    finalDue = dueParts[0];
+    paper2DueOverride = dueParts[1] || null;
+  }
+
   var finalIndex = schoolDays.indexOf(finalDue);
-  if(finalIndex < 0) finalIndex = schoolDays.length - 1;
+  if(finalIndex < 0) finalIndex = schoolDays.length;
 
   var dates = pickSpreadDates(schoolDays, count, finalIndex - 1, offset || 0);
 
@@ -478,17 +500,51 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
     });
   }
 
+  if(prefix === "G10-AFR"){
+    var paper1Code = "G10-AFR-PAPER-1";
+    var paper2Code = "G10-AFR-PAPER-2";
+    var paper1Due = finalDue;
+    var paper2Due = paper2DueOverride || addSchoolDays(finalDue, 1);
+
+    items.push({
+      due:paper1Due,
+      no:"Vraestel 1",
+      subject:subjectName,
+      title:"Afrikaans Vraestel 1 / Paper 1",
+      code:paper1Code,
+      type:"exam",
+      info:finalInfo(progressMap || {}, paper1Code, 165, subjectName),
+      open:(function(s,fc){
+        return function(){
+          localStorage.setItem("edu_current_subject", s);
+          localStorage.setItem("edu_current_task_code", fc);
+          location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(fc);
+        };
+      })(subjectCode,paper1Code)
+    });
+
+    items.push({
+      due:paper2Due,
+      no:"Vraestel 2",
+      subject:subjectName,
+      title:"Afrikaans Vraestel 2 / Paper 2",
+      code:paper2Code,
+      type:"exam",
+      info:finalInfo(progressMap || {}, paper2Code, 165, subjectName),
+      open:(function(s,fc){
+        return function(){
+          localStorage.setItem("edu_current_subject", s);
+          localStorage.setItem("edu_current_task_code", fc);
+          location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(fc);
+        };
+      })(subjectCode,paper2Code)
+    });
+
+    return;
+  }
+
   var finalCode = prefix + "-FINAL";
   var finalTotal = 50;
-  if(prefix === "G10-AFR"){
-    try{
-      var afrBank = (window.EDU_SUBJECT_BANKS || {})[subjectCode];
-      var afrFinal = afrBank && (afrBank.tasks || []).find(function(t){ return t.code === finalCode; });
-      finalTotal = afrFinal && afrFinal.questions ? afrFinal.questions.length : 330;
-    }catch(e){
-      finalTotal = 330;
-    }
-  }
 
   items.push({
     due:finalDue,
@@ -498,46 +554,155 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
     code:finalCode,
     type:"exam",
     info:finalInfo(progressMap || {}, finalCode, finalTotal, subjectName),
-    open:(function(s,p,fc){
+    open:(function(s,p){
       return function(){
         localStorage.setItem("edu_current_subject", s);
-        if(p === "G10-AFR"){
-          localStorage.setItem("edu_current_task_code", fc);
-          location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(fc);
-          return;
-        }
         localStorage.setItem("edu_current_task_code", p + "-TASK-001");
         location.href = "edu-subject-task.html?subject=" + encodeURIComponent(s) + "&task=" + encodeURIComponent(p + "-TASK-001");
       };
-    })(subjectCode,prefix,finalCode)
+    })(subjectCode,prefix)
   });
 }
 
+function balanceDailyTasks(items, studyDays){
+  if(!items || !studyDays || !studyDays.length) return items;
+
+  var daily = items.filter(function(item){
+    return item && item.type !== "exam";
+  });
+
+  if(!daily.length) return items;
+
+  var subjectOrder = [
+    "K53",
+    "CAT / IKT",
+    "Wiskunde Geletterdheid",
+    "Afrikaans",
+    "English FAL",
+    "Besigheidstudies",
+    "Landbou"
+  ];
+
+  function taskNo(code){
+    var m = String(code || "").match(/TASK-(\d{3})/);
+    return m ? Number(m[1]) : 9999;
+  }
+
+  var groups = {};
+  daily.forEach(function(item){
+    var s = item.subject || "ZZZ";
+    if(!groups[s]) groups[s] = [];
+    groups[s].push(item);
+  });
+
+  Object.keys(groups).forEach(function(s){
+    groups[s].sort(function(a,b){
+      var na = taskNo(a.code);
+      var nb = taskNo(b.code);
+      if(na !== nb) return na - nb;
+      return String(a.code || "").localeCompare(String(b.code || ""));
+    });
+  });
+
+  var maxPerDay = Math.ceil(daily.length / studyDays.length);
+  var load = {};
+  studyDays.forEach(function(d){ load[d] = 0; });
+
+  function findBestDay(targetIndex){
+    if(targetIndex < 0) targetIndex = 0;
+    if(targetIndex >= studyDays.length) targetIndex = studyDays.length - 1;
+
+    for(var i=targetIndex; i<studyDays.length; i++){
+      if(load[studyDays[i]] < maxPerDay) return i;
+    }
+
+    for(var j=targetIndex - 1; j>=0; j--){
+      if(load[studyDays[j]] < maxPerDay) return j;
+    }
+
+    var best = 0;
+    for(var k=1; k<studyDays.length; k++){
+      if(load[studyDays[k]] < load[studyDays[best]]) best = k;
+    }
+    return best;
+  }
+
+  subjectOrder.forEach(function(subject){
+    var arr = groups[subject] || [];
+    var total = arr.length;
+    if(!total) return;
+
+    arr.forEach(function(item, idx){
+      var target = Math.floor((idx * studyDays.length) / total);
+      var dayIndex = findBestDay(target);
+      var d = studyDays[dayIndex];
+      item.due = d;
+      load[d]++;
+    });
+
+    delete groups[subject];
+  });
+
+  Object.keys(groups).sort().forEach(function(subject){
+    var arr = groups[subject] || [];
+    var total = arr.length;
+    arr.forEach(function(item, idx){
+      var target = Math.floor((idx * studyDays.length) / total);
+      var dayIndex = findBestDay(target);
+      var d = studyDays[dayIndex];
+      item.due = d;
+      load[d]++;
+    });
+  });
+
+  return items;
+}
 function buildPlan(map){
   var items = [];
   var schoolDays = allSchoolDays(TERM3_START, TERM3_END);
 
   // Hou einde van kwartaal vir eksamens.
-  // As daar bv 46 skooldae is, gebruik die laaste paar dae vir final/toetse.
-  var wiskFinalDate = schoolDays[schoolDays.length - 1];
-  var k53CTestDate = schoolDays[schoolDays.length - 2];
-  var k53BTestDate = schoolDays[schoolDays.length - 3];
-  var k53ATestDate = schoolDays[schoolDays.length - 4];
-  var catFinalDate  = schoolDays[schoolDays.length - 5];
+  // Laaste 11 skooldae is gereserveer vir eksamens/toetse:
+  // 1 eksamen per dag, en GEEN daily tasks op eksamendae nie.
+  var wiskFinalDate     = schoolDays[schoolDays.length - 1];
+  var k53CTestDate      = schoolDays[schoolDays.length - 2];
+  var k53BTestDate      = schoolDays[schoolDays.length - 3];
+  var k53ATestDate      = schoolDays[schoolDays.length - 4];
+  var catFinalDate      = schoolDays[schoolDays.length - 5];
+  var afrPaper2Date     = schoolDays[schoolDays.length - 6];
+  var afrPaper1Date     = schoolDays[schoolDays.length - 7];
+  var engFinalDate      = schoolDays[schoolDays.length - 8];
+  var bstFinalDate      = schoolDays[schoolDays.length - 9];
+  var landbouFinalDate  = schoolDays[schoolDays.length - 10];
+  var wiskLitFinalDate  = schoolDays[schoolDays.length - 11];
 
-  var catFinalIndex = schoolDays.indexOf(catFinalDate);
-  var k53AIndex = schoolDays.indexOf(k53ATestDate);
-  var wiskFinalIndex = schoolDays.indexOf(wiskFinalDate);
+  var examDateMap = {};
+  [
+    wiskFinalDate,
+    k53CTestDate,
+    k53BTestDate,
+    k53ATestDate,
+    catFinalDate,
+    afrPaper2Date,
+    afrPaper1Date,
+    engFinalDate,
+    bstFinalDate,
+    landbouFinalDate,
+    wiskLitFinalDate
+  ].forEach(function(d){
+    if(d) examDateMap[d] = true;
+  });
 
-  // CAT het min tasks, so versprei dit rustig tot voor CAT finale.
-  var catDates = pickSpreadDates(schoolDays, 8, catFinalIndex - 1, 0);
+  var studyDays = schoolDays.filter(function(d){
+    return !examDateMap[d];
+  });
 
-  // K53 het 16 tasks, versprei tot voor Toets A.
-  var k53Dates = pickSpreadDates(schoolDays, 16, k53AIndex - 1, 1);
+  var lastStudyIndex = studyDays.length - 1;
 
-  // Wiskunde het 44 tasks, so dit moet amper elke skooldag loop,
-  // maar Wisk finale bly na Task 44.
-  var wiskDates = pickSpreadDates(schoolDays, 44, wiskFinalIndex - 1, 0);
+  // Daily tasks word net op study-dae versprei, nooit op eksamendae nie.
+  var catDates = pickSpreadDates(studyDays, 8, lastStudyIndex, 0);
+  var k53Dates = pickSpreadDates(studyDays, 16, lastStudyIndex, 1);
+  var wiskDates = pickSpreadDates(studyDays, 44, lastStudyIndex, 0);
 
   if(hasSubject("G10-K53")) for(var k=1;k<=16;k++){
     (function(n){
@@ -577,7 +742,7 @@ function buildPlan(map){
       items.push({
         due:wiskDates[n-1],
         no:"Wisk Task " + n,
-        subject:"Wiskunde",
+        subject:"Wiskunde Geletterdheid",
         title:wiskTitle(code,"KW3 Task " + pad(n)),
         code:code,
         type:"daily",
@@ -610,22 +775,23 @@ function buildPlan(map){
 items.push({
     due:wiskFinalDate,
     no:"Final",
-    subject:"Wiskunde",
-    title:"KW3 Finale Eksamen",
+    subject:"Wiskunde Geletterdheid",
+    title:"Wiskunde Geletterdheid KW3 Finale Eksamen",
     code:"G10-WISK-KW3-FINAL",
     type:"exam",
-    info:finalInfo(map,"G10-WISK-KW3-FINAL",224,"Wiskunde"),
+    info:finalInfo(map,"G10-WISK-KW3-FINAL",224,"Wiskunde Geletterdheid"),
     open:function(){ location.href="g10-wisk-kw3-final-exam.html"; }
   });
 
 
 
 
-  addExtraSubjectTasks(items, schoolDays, map, "G10-AFR", "Afrikaans", "G10-AFR", 33, schoolDays[schoolDays.length - 6], 2);
-  addExtraSubjectTasks(items, schoolDays, map, "G10-ENG-FAL", "English FAL", "G10-ENG-FAL", 18, schoolDays[schoolDays.length - 7], 3);
-  addExtraSubjectTasks(items, schoolDays, map, "G10-BST", "Besigheidstudies", "G10-BST", 18, schoolDays[schoolDays.length - 8], 4);
-  addExtraSubjectTasks(items, schoolDays, map, "G10-LANDBOU", "Landbou", "G10-LANDBOU", 18, schoolDays[schoolDays.length - 9], 5);
-  addExtraSubjectTasks(items, schoolDays, map, "G10-WISK-LIT", "Wiskunde Geletterdheid", "G10-WISK-LIT", 18, schoolDays[schoolDays.length - 10], 6);
+  addExtraSubjectTasks(items, studyDays, map, "G10-AFR", "Afrikaans", "G10-AFR", 33, afrPaper1Date + "|" + afrPaper2Date, 2);
+  addExtraSubjectTasks(items, studyDays, map, "G10-ENG-FAL", "English FAL", "G10-ENG-FAL", 18, engFinalDate, 3);
+  addExtraSubjectTasks(items, studyDays, map, "G10-BST", "Besigheidstudies", "G10-BST", 18, bstFinalDate, 4);
+  addExtraSubjectTasks(items, studyDays, map, "G10-LANDBOU", "Landbou", "G10-LANDBOU", 18, landbouFinalDate, 5);
+  balanceDailyTasks(items, studyDays);
+
 items.sort(function(a,b){
     if(a.due < b.due) return -1;
     if(a.due > b.due) return 1;
@@ -761,6 +927,13 @@ render();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
