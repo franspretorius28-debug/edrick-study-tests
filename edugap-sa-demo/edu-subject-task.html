@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDUCAP SA - Subject Task</title>
+<script src="k53-supabase.js"></script>
+<script src="g10-subject-banks.js"></script>
+<style>
+  :root{--blue:#1d6bd8;--dark:#082033;--bg:#eef2f7;--good:#16a34a;--bad:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--dark)}
+  .top{background:var(--blue);color:white;padding:18px 22px;display:flex;align-items:center;justify-content:space-between}
+  .top h1{margin:0;font-size:26px}
+  .top button{background:rgba(255,255,255,.16);border:0;color:white;border-radius:10px;padding:12px 18px;font-weight:900;cursor:pointer}
+  .wrap{max-width:980px;margin:28px auto;padding:0 16px}
+  .hero{background:var(--blue);color:white;border-radius:14px;padding:28px 24px;margin-bottom:20px;box-shadow:0 14px 28px rgba(0,0,0,.12)}
+  .hero h2{margin:0 0 10px;font-size:32px}
+  .hero p{margin:0;font-size:18px;font-weight:900}
+  .card{background:white;border-radius:16px;padding:24px;box-shadow:0 14px 30px rgba(0,0,0,.08);margin-bottom:20px}
+  .badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .badge{background:#eaf3ff;color:#164b8f;border-radius:999px;padding:10px 14px;font-weight:900}
+  .q{font-size:24px;font-weight:900;margin:14px 0 18px}
+  .opt{width:100%;text-align:left;border:1px solid #d5dce8;background:#f9fbff;border-radius:10px;padding:14px 16px;margin:6px 0;font-size:16px;font-weight:900;cursor:pointer}
+  .opt:hover{border-color:#1d6bd8}
+  .opt.good{background:#dcfce7;border-color:#22c55e}
+  .opt.bad{background:#fee2e2;border-color:#ef4444}
+  .opt:disabled{opacity:.75;cursor:default}
+  .next{background:var(--blue);color:white;border:0;border-radius:10px;padding:13px 18px;font-size:16px;font-weight:900;cursor:pointer;margin-top:14px}
+  .next.red{background:#dc2626}
+  #result{font-size:22px;font-weight:900;margin-top:16px}
+  .warn{font-size:18px;font-weight:900;color:#92400e;background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:14px;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1 id="pageTitle">EDUCAP SA - Subject</h1>
+  <button type="button" onclick="location.href='edu-student-tasks.html'">← Tasks</button>
+</div>
+
+<div class="wrap" id="app">
+  <div class="hero">
+    <h2 id="title">Loading...</h2>
+    <p id="sub"></p>
+  </div>
+
+  <div class="card" id="questionCard">
+    <div class="badges">
+      <div class="badge" id="qno">Question / Vraag 1 / 1</div>
+      <div class="badge" id="score">Correct / Reg: 0 | Wrong / Verkeerd: 0</div>
+      <div class="badge" id="pass">Daily Task: 100% reg nodig</div>
+    </div>
+
+    <div class="q" id="qtitle"></div>
+
+    <button type="button" class="opt" id="A"></button>
+    <button type="button" class="opt" id="B"></button>
+    <button type="button" class="opt" id="C"></button>
+    <button type="button" class="opt" id="D"></button>
+
+    <button type="button" class="next" id="nextBtn">Next / Volgende</button>
+    <div id="result"></div>
+  </div>
+</div>
+
+<script>
+var params = new URLSearchParams(location.search);
+var subjectCode = params.get("subject") || localStorage.getItem("edu_current_subject") || "G10-AFR";
+var taskCode = params.get("task") || localStorage.getItem("edu_current_task_code") || "";
+
+var BANKS =
+  window.EDU_SUBJECT_BANKS ||
+  window.G10_SUBJECT_BANKS ||
+  window.g10SubjectBanks ||
+  window.subjectBanks ||
+  {};
+var bank = BANKS[subjectCode];
+
+var task = null;
+var questions = [];
+var idx = 0;
+var correct = 0;
+var wrong = 0;
+var answered = {};
+var wrongQuestions = [];
+var wrongPicked = [];
+
+function studentNo(){
+  return localStorage.getItem("edu_student_no") || localStorage.getItem("k53_student_no") || "EDUCAP-01";
+}
+
+function today(){
+  return new Date().toISOString().slice(0,10);
+}
+
+function isDailyTask(){
+  var c = String(taskCode || "");
+  return c.indexOf("-TASK-") >= 0 && c.toUpperCase().indexOf("EXAM") < 0 && c.toUpperCase().indexOf("FINAL") < 0;
+}
+
+function init(){
+  if(!bank){
+    document.getElementById("app").innerHTML = "<div class='card'><h1>Subject bank not found</h1><p>" + subjectCode + "</p><button class='next' onclick=\"location.href='edu-student-tasks.html'\">Back</button></div>";
+    return;
+  }
+
+  var tasks = bank.tasks || [];
+  task = tasks.find(function(t){ return t.code === taskCode; }) || tasks[0];
+
+  if(!task){
+    document.getElementById("app").innerHTML = "<div class='card'><h1>Task not found</h1><p>" + taskCode + "</p><button class='next' onclick=\"location.href='edu-student-tasks.html'\">Back</button></div>";
+    return;
+  }
+
+  taskCode = task.code;
+  questions = (task.questions || []).slice();
+
+  document.getElementById("pageTitle").textContent = "EDUCAP SA - " + (bank.display || subjectCode);
+  document.getElementById("title").textContent = task.title || task.code;
+  document.getElementById("sub").textContent = (bank.display || subjectCode) + " | " + task.code;
+  document.getElementById("pass").textContent = isDailyTask() ? "Daily Task: 100% reg nodig" : ("Pass / Slaag: " + (bank.pass || 40) + "%");
+
+  document.getElementById("nextBtn").onclick = next;
+  render();
+}
+
+function render(){
+  if(!questions.length){
+    document.getElementById("app").innerHTML = "<div class='card'><h1>Geen vrae gevind nie</h1><button class='next' onclick=\"location.href='edu-student-tasks.html'\">Back</button></div>";
+    return;
+  }
+
+  var q = questions[idx];
+
+  document.getElementById("qno").textContent = "Question / Vraag " + (idx + 1) + " / " + questions.length;
+  document.getElementById("score").textContent = "Correct / Reg: " + correct + " | Wrong / Verkeerd: " + wrong;
+  document.getElementById("qtitle").textContent = q.q || "";
+
+  ["A","B","C","D"].forEach(function(letter, pos){
+    var btn = document.getElementById(letter);
+    btn.disabled = false;
+    btn.className = "opt";
+    btn.textContent = letter + ". " + ((q.o || [])[pos] || "");
+    btn.onclick = function(){ pick(letter); };
+  });
+
+  document.getElementById("nextBtn").disabled = false;
+  document.getElementById("result").textContent = "";
+}
+
+function pick(letter){
+  if(answered[idx]) return;
+
+  answered[idx] = letter;
+
+  var q = questions[idx];
+  var ans = String(q.a || "").toUpperCase();
+
+  ["A","B","C","D"].forEach(function(x){
+    var b = document.getElementById(x);
+    b.disabled = true;
+    b.className = "opt";
+    if(x === ans) b.classList.add("good");
+    if(x === letter && x !== ans) b.classList.add("bad");
+  });
+
+  if(letter === ans){
+    correct++;
+    document.getElementById("result").textContent = "Correct / Reg";
+  }else{
+    wrong++;
+    wrongQuestions.push(q);
+    wrongPicked.push({question:q.q || "", picked:letter, correct:ans});
+    document.getElementById("result").textContent = "Wrong / Verkeerd. Correct answer / Regte antwoord: " + ans;
+  }
+
+  document.getElementById("score").textContent = "Correct / Reg: " + correct + " | Wrong / Verkeerd: " + wrong;
+}
+
+function next(){
+  if(!answered[idx]){
+    alert("Choose an answer first. / Kies eers 'n antwoord.");
+    return;
+  }
+
+  if(idx >= questions.length - 1){
+    finish();
+    return;
+  }
+
+  idx++;
+  render();
+}
+
+async function saveTask(statusOverride){
+  var total = questions.length;
+  var percent = total ? Math.round((correct / total) * 100) : 0;
+  var status = statusOverride || (isDailyTask() ? (wrong === 0 ? "completed" : "redo") : (percent >= (bank.pass || 40) ? "completed" : "redo"));
+
+  var row = {
+    student_no: studentNo(),
+    task_code: task.code,
+    task_date: localStorage.getItem("edu_current_task_date") || today(),
+    subject_code: subjectCode,
+    status: status,
+    score: correct,
+    total: total,
+    completed_at: new Date().toISOString(),
+    submitted_answer: JSON.stringify({
+      percent: percent,
+      wrong: wrong,
+      dailyTask: isDailyTask(),
+      wrongPicked: wrongPicked
+    })
+  };
+
+  try{
+    localStorage.setItem("edu_task_result_" + row.student_no + "_" + row.task_code, JSON.stringify(row));
+    localStorage.setItem("edu_task_result_" + row.task_code, JSON.stringify(row));
+  }catch(e){
+    console.warn("local saveTask failed:", e);
+  }
+
+  try{
+    if(window.k53DbUpsert){
+      await window.k53DbUpsert("edu_student_tasks", row, "student_no,task_code,task_date");
+    }else if(window.supabaseClient){
+      await window.supabaseClient.from("edu_student_tasks").upsert(row,{onConflict:"student_no,task_code,task_date"});
+    }
+  }catch(e){
+    console.warn("saveTask failed:", e);
+  }
+}
+
+function finish(){
+  var total = questions.length;
+  var percent = total ? Math.round((correct / total) * 100) : 0;
+  var passed = isDailyTask() ? (wrong === 0) : (percent >= (bank.pass || 40));
+
+  saveTask(passed ? "completed" : "redo");
+
+  if(passed){
+    document.getElementById("app").innerHTML =
+      "<div class='hero'><h2>" + (task.title || task.code) + "</h2><p>" + (bank.display || subjectCode) + " | " + task.code + "</p></div>" +
+      "<div class='card'>" +
+      "<h1>Task completed / Taak klaar</h1>" +
+      "<p style='font-size:24px;font-weight:900'>Score / Punt: " + correct + " / " + total + " (" + percent + "%)</p>" +
+      "<p style='font-size:22px;font-weight:900;color:#166534'>DONE / KLAAR</p>" +
+      "<button type='button' class='next' onclick='location.href=\"edu-student-tasks.html\"'>Back to Tasks / Terug na Tasks</button>" +
+      "</div>";
+    return;
+  }
+
+  document.getElementById("app").innerHTML =
+    "<div class='hero'><h2>" + (task.title || task.code) + "</h2><p>" + (bank.display || subjectCode) + " | " + task.code + "</p></div>" +
+    "<div class='card'>" +
+    "<h1>Redo needed / Doen oor</h1>" +
+    "<p style='font-size:24px;font-weight:900'>Score / Punt: " + correct + " / " + total + " (" + percent + "%)</p>" +
+    "<p style='font-size:22px;font-weight:900;color:#991b1b'>REDO / DOEN WEER</p>" +
+    "<p class='warn'>Jy het " + wrong + " verkeerd. Doen net die verkeerde antwoorde weer.</p>" +
+    "<button type='button' class='next red' onclick='restartTask()'>Redo wrong answers / Doen verkeerde antwoorde</button>" +
+    "</div>";
+}
+
+function restartTask(){
+  var redoQuestions = (wrongQuestions && wrongQuestions.length) ? wrongQuestions.slice() : (task.questions || []).slice();
+
+  idx = 0;
+  correct = 0;
+  wrong = 0;
+  answered = {};
+  wrongQuestions = [];
+  wrongPicked = [];
+  questions = redoQuestions;
+
+  document.getElementById("app").innerHTML =
+    "<div class='hero'><h2 id='title'>" + (task.title || task.code) + "</h2><p id='sub'>" + (bank.display || subjectCode) + " | " + task.code + "</p></div>" +
+    "<div class='card' id='questionCard'>" +
+    "<div class='badges'>" +
+    "<div class='badge' id='qno'></div>" +
+    "<div class='badge' id='score'></div>" +
+    "<div class='badge' id='pass'>" + (isDailyTask() ? "Daily Task: 100% reg nodig" : ("Pass / Slaag: " + (bank.pass || 40) + "%")) + "</div>" +
+    "</div>" +
+    "<div class='q' id='qtitle'></div>" +
+    "<button type='button' class='opt' id='A'></button>" +
+    "<button type='button' class='opt' id='B'></button>" +
+    "<button type='button' class='opt' id='C'></button>" +
+    "<button type='button' class='opt' id='D'></button>" +
+    "<button type='button' class='next' id='nextBtn'>Next / Volgende</button>" +
+    "<div id='result'></div>" +
+    "</div>";
+
+  document.getElementById("nextBtn").onclick = next;
+  render();
+}
+
+init();
+</script>
+</body>
+</html>
+
+
+
+
+
+

@@ -211,7 +211,7 @@ function assignedSubjects(){
 function hasSubject(code){
   var arr = assignedSubjects();
 
-  // As geen vakke toegeken is nie, wys niks — dis veiliger as om verkeerde vakke te wys.
+  // As geen vakke toegeken is nie, wys niks â€” dis veiliger as om verkeerde vakke te wys.
   if(!arr.length) return false;
 
   return arr.indexOf(code) >= 0;
@@ -331,8 +331,8 @@ function info(map, code, total){
 }
 
 function pill(x){
-  if(x.status === "done") return '<span class="pill done">✓ Completed / Klaar</span>';
-  if(x.status === "redo") return '<span class="pill redo">↻ Redo / Doen oor</span>';
+  if(x.status === "done") return '<span class="pill done">âœ“ Completed / Klaar</span>';
+  if(x.status === "redo") return '<span class="pill redo">â†» Redo / Doen oor</span>';
   return '<span class="pill start">Start</span>';
 }
 
@@ -468,7 +468,7 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
   if(!hasSubject(subjectCode)) return;
 
   var paper2DueOverride = null;
-  if(prefix === "G10-AFR" && typeof finalDue === "string" && finalDue.indexOf("|") >= 0){
+  if((prefix === "G10-AFR" || prefix === "G10-ENG-FAL") && typeof finalDue === "string" && finalDue.indexOf("|") >= 0){
     var dueParts = finalDue.split("|");
     finalDue = dueParts[0];
     paper2DueOverride = dueParts[1] || null;
@@ -500,9 +500,9 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
     });
   }
 
-  if(prefix === "G10-AFR"){
-    var paper1Code = "G10-AFR-PAPER-1";
-    var paper2Code = "G10-AFR-PAPER-2";
+  if(prefix === "G10-AFR" || prefix === "G10-ENG-FAL"){
+    var paper1Code = prefix + "-PAPER-1";
+    var paper2Code = prefix + "-PAPER-2";
     var paper1Due = finalDue;
     var paper2Due = paper2DueOverride || addSchoolDays(finalDue, 1);
 
@@ -510,10 +510,10 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
       due:paper1Due,
       no:"Vraestel 1",
       subject:subjectName,
-      title:"Afrikaans Vraestel 1 / Paper 1",
+      title:(prefix === "G10-AFR" ? "Afrikaans" : subjectName) + " Vraestel 1 / Paper 1",
       code:paper1Code,
       type:"exam",
-      info:finalInfo(progressMap || {}, paper1Code, 165, subjectName),
+      info:finalInfo(progressMap || {}, paper1Code, (prefix === "G10-AFR" ? 165 : 100), subjectName),
       open:(function(s,fc){
         return function(){
           localStorage.setItem("edu_current_subject", s);
@@ -527,10 +527,10 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
       due:paper2Due,
       no:"Vraestel 2",
       subject:subjectName,
-      title:"Afrikaans Vraestel 2 / Paper 2",
+      title:(prefix === "G10-AFR" ? "Afrikaans" : subjectName) + " Vraestel 2 / Paper 2",
       code:paper2Code,
       type:"exam",
-      info:finalInfo(progressMap || {}, paper2Code, 165, subjectName),
+      info:finalInfo(progressMap || {}, paper2Code, (prefix === "G10-AFR" ? 165 : 100), subjectName),
       open:(function(s,fc){
         return function(){
           localStorage.setItem("edu_current_subject", s);
@@ -670,9 +670,10 @@ function buildPlan(map){
   var catFinalDate     = schoolDays[schoolDays.length - 4];
   var afrPaper2Date    = schoolDays[schoolDays.length - 5];
   var afrPaper1Date    = schoolDays[schoolDays.length - 6];
-  var engFinalDate     = schoolDays[schoolDays.length - 7];
-  var bstFinalDate     = schoolDays[schoolDays.length - 8];
-  var landbouFinalDate = schoolDays[schoolDays.length - 9];
+  var engPaper2Date    = schoolDays[schoolDays.length - 7];
+  var engPaper1Date    = schoolDays[schoolDays.length - 8];
+  var bstFinalDate     = schoolDays[schoolDays.length - 9];
+  var landbouFinalDate = schoolDays[schoolDays.length - 10];
 
   var examDateMap = {};
   [
@@ -682,7 +683,8 @@ function buildPlan(map){
     catFinalDate,
     afrPaper2Date,
     afrPaper1Date,
-    engFinalDate,
+    engPaper2Date,
+    engPaper1Date,
     bstFinalDate,
     landbouFinalDate
   ].forEach(function(d){
@@ -804,7 +806,7 @@ function buildPlan(map){
 
 
   addExtraSubjectTasks(items, studyDays, map, "G10-AFR", "Afrikaans", "G10-AFR", 33, afrPaper1Date + "|" + afrPaper2Date, 2);
-  addExtraSubjectTasks(items, studyDays, map, "G10-ENG-FAL", "English FAL", "G10-ENG-FAL", 18, engFinalDate, 3);
+  addExtraSubjectTasks(items, studyDays, map, "G10-ENG-FAL", "English FAL", "G10-ENG-FAL", 20, engPaper1Date + "|" + engPaper2Date, 3);
   addExtraSubjectTasks(items, studyDays, map, "G10-BST", "Besigheidstudies", "G10-BST", 18, bstFinalDate, 4);
   addExtraSubjectTasks(items, studyDays, map, "G10-LANDBOU", "Landbou", "G10-LANDBOU", 18, landbouFinalDate, 5);
   balanceDailyTasks(items, studyDays);
@@ -944,6 +946,10 @@ render();
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
