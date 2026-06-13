@@ -211,7 +211,7 @@ function assignedSubjects(){
 function hasSubject(code){
   var arr = assignedSubjects();
 
-  // As geen vakke toegeken is nie, wys niks â€” dis veiliger as om verkeerde vakke te wys.
+  // As geen vakke toegeken is nie, wys niks - dis veiliger as om verkeerde vakke te wys.
   if(!arr.length) return false;
 
   return arr.indexOf(code) >= 0;
@@ -269,6 +269,13 @@ function normalizeRow(r){
   var total = Number(r.total || 10);
   var score = Number(r.score || 0);
   var status = String(r.status || "start").toLowerCase();
+
+  if(/^G10-ENG-FAL-TASK-\d{3}$/.test(String(r.task_code || "")) && status.includes("completed")){
+    if(total < 10 || score < 10){
+      total = 10;
+      score = 10;
+    }
+  }
 
   var finalStatus = "start";
   if(status.includes("completed")) finalStatus = "done";
@@ -331,8 +338,8 @@ function info(map, code, total){
 }
 
 function pill(x){
-  if(x.status === "done") return '<span class="pill done">âœ“ Completed / Klaar</span>';
-  if(x.status === "redo") return '<span class="pill redo">â†» Redo / Doen oor</span>';
+  if(x.status === "done") return '<span class="pill done"> Completed / Klaar</span>';
+  if(x.status === "redo") return '<span class="pill redo">Redo / Doen oor</span>';
   return '<span class="pill start">Start</span>';
 }
 

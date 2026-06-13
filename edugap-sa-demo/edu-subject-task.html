@@ -84,6 +84,7 @@ var wrong = 0;
 var answered = {};
 var wrongQuestions = [];
 var wrongPicked = [];
+var redoMode = false;
 
 function studentNo(){
   return localStorage.getItem("edu_student_no") || localStorage.getItem("k53_student_no") || "EDUCAP-01";
@@ -114,8 +115,8 @@ function init(){
 
   taskCode = task.code;
   questions = (task.questions || []).slice();
-
-  document.getElementById("pageTitle").textContent = "EDUCAP SA - " + (bank.display || subjectCode);
+  redoMode = false;
+document.getElementById("pageTitle").textContent = "EDUCAP SA - " + (bank.display || subjectCode);
   document.getElementById("title").textContent = task.title || task.code;
   document.getElementById("sub").textContent = (bank.display || subjectCode) + " | " + task.code;
   document.getElementById("pass").textContent = isDailyTask() ? "Daily Task: 100% reg nodig" : ("Pass / Slaag: " + (bank.pass || 40) + "%");
@@ -193,8 +194,14 @@ function next(){
 }
 
 async function saveTask(statusOverride){
-  var total = questions.length;
-  var percent = total ? Math.round((correct / total) * 100) : 0;
+  var roundTotal = questions.length;
+  var fullTotal = (task && task.questions) ? (task.questions || []).length : roundTotal;
+  var total = isDailyTask() ? fullTotal : roundTotal;
+  var saveScore = correct;
+  if(isDailyTask() && redoMode && String(statusOverride || "").toLowerCase() === "completed"){
+    saveScore = fullTotal;
+  }
+  var percent = total ? Math.round((saveScore / total) * 100) : 0;
   var status = statusOverride || (isDailyTask() ? (wrong === 0 ? "completed" : "redo") : (percent >= (bank.pass || 40) ? "completed" : "redo"));
 
   var row = {
@@ -203,13 +210,16 @@ async function saveTask(statusOverride){
     task_date: localStorage.getItem("edu_current_task_date") || today(),
     subject_code: subjectCode,
     status: status,
-    score: correct,
+    score: saveScore,
     total: total,
     completed_at: new Date().toISOString(),
     submitted_answer: JSON.stringify({
       percent: percent,
       wrong: wrong,
       dailyTask: isDailyTask(),
+      redoMode: redoMode,
+      roundScore: correct,
+      roundTotal: roundTotal,
       wrongPicked: wrongPicked
     })
   };
@@ -233,9 +243,13 @@ async function saveTask(statusOverride){
 }
 
 function finish(){
-  var total = questions.length;
-  var percent = total ? Math.round((correct / total) * 100) : 0;
-  var passed = isDailyTask() ? (wrong === 0) : (percent >= (bank.pass || 40));
+  var roundTotal = questions.length;
+  var fullTotal = (task && task.questions) ? (task.questions || []).length : roundTotal;
+  var roundPercent = roundTotal ? Math.round((correct / roundTotal) * 100) : 0;
+  var passed = isDailyTask() ? (wrong === 0) : (roundPercent >= (bank.pass || 40));
+  var displayCorrect = (isDailyTask() && redoMode && passed) ? fullTotal : correct;
+  var total = (isDailyTask() && redoMode && passed) ? fullTotal : roundTotal;
+  var percent = total ? Math.round((displayCorrect / total) * 100) : 0;
 
   saveTask(passed ? "completed" : "redo");
 
@@ -244,7 +258,7 @@ function finish(){
       "<div class='hero'><h2>" + (task.title || task.code) + "</h2><p>" + (bank.display || subjectCode) + " | " + task.code + "</p></div>" +
       "<div class='card'>" +
       "<h1>Task completed / Taak klaar</h1>" +
-      "<p style='font-size:24px;font-weight:900'>Score / Punt: " + correct + " / " + total + " (" + percent + "%)</p>" +
+      "<p style='font-size:24px;font-weight:900'>Score / Punt: " + displayCorrect + " / " + total + " (" + percent + "%)</p>" +
       "<p style='font-size:22px;font-weight:900;color:#166534'>DONE / KLAAR</p>" +
       "<button type='button' class='next' onclick='location.href=\"edu-student-tasks.html\"'>Back to Tasks / Terug na Tasks</button>" +
       "</div>";
@@ -255,7 +269,7 @@ function finish(){
     "<div class='hero'><h2>" + (task.title || task.code) + "</h2><p>" + (bank.display || subjectCode) + " | " + task.code + "</p></div>" +
     "<div class='card'>" +
     "<h1>Redo needed / Doen oor</h1>" +
-    "<p style='font-size:24px;font-weight:900'>Score / Punt: " + correct + " / " + total + " (" + percent + "%)</p>" +
+    "<p style='font-size:24px;font-weight:900'>Score / Punt: " + displayCorrect + " / " + total + " (" + percent + "%)</p>" +
     "<p style='font-size:22px;font-weight:900;color:#991b1b'>REDO / DOEN WEER</p>" +
     "<p class='warn'>Jy het " + wrong + " verkeerd. Doen net die verkeerde antwoorde weer.</p>" +
     "<button type='button' class='next red' onclick='restartTask()'>Redo wrong answers / Doen verkeerde antwoorde</button>" +
@@ -264,6 +278,7 @@ function finish(){
 
 function restartTask(){
   var redoQuestions = (wrongQuestions && wrongQuestions.length) ? wrongQuestions.slice() : (task.questions || []).slice();
+  redoMode = true;
 
   idx = 0;
   correct = 0;
