@@ -617,7 +617,7 @@ function addExtraSubjectTasks(items, schoolDays, progressMap, subjectCode, subje
   }
 
   var finalCode = prefix + "-FINAL";
-  var finalTotal = 50;
+  var finalTotal = (prefix === "G10-BST") ? 240 : 50;
 
   items.push({
     due:finalDue,
@@ -880,7 +880,7 @@ function buildPlan(map){
 
   addExtraSubjectTasks(items, studyDays, map, "G10-AFR", "Afrikaans", "G10-AFR", 33, afrPaper1Date + "|" + afrPaper2Date, 2);
   addExtraSubjectTasks(items, studyDays, map, "G10-ENG-FAL", "English FAL", "G10-ENG-FAL", 20, engPaper1Date + "|" + engPaper2Date, 3);
-  addExtraSubjectTasks(items, studyDays, map, "G10-BST", "Besigheidstudies", "G10-BST", 18, bstFinalDate, 4);
+  addExtraSubjectTasks(items, studyDays, map, "G10-BST", "Besigheidstudies", "G10-BST", 24, bstFinalDate, 4);
   addExtraSubjectTasks(items, studyDays, map, "G10-LANDBOU", "Landbou", "G10-LANDBOU", 18, landbouFinalDate, 5);
   balanceDailyTasks(items, studyDays);
 

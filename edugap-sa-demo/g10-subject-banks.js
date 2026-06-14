@@ -6,8 +6,8 @@ window.EDU_SUBJECT_BANKS = {
     starterQuestions: [
       { q:"Wanneer jy 'n spotprent ontleed, wat moet jy probeer verstaan?", o:["Net hoeveel woorde daar is","Die situasie, karakters, humor en boodskap","Net die bladsynommer","Net of die prent mooi lyk"], a:"B" },
       { q:"Hoekom is bekende karakters in 'n spotprent belangrik?", o:["Hulle kan help om die spotprent se konteks of nuusgebeure te verstaan","Hulle maak die vrae altyd maklik","Hulle beteken die spotprent is nie belangrik nie","Hulle wys net wie die tekenaar is"], a:"A" },
-      { q:"Wat beteken "milieu" wanneer jy 'n spotprent bespreek?", o:["Die antwoordblad","Die hoeveelheid vrae","Die plek, tyd en omgewing waarin dit afspeel","Die naam van die boek"], a:"C" },
-      { q:"Hoekom moet jy vra: "Waar speel die spotprent af?"", o:["Die plek is altyd irrelevant","Dit wys net die bladsy se uitleg","Dit sê hoeveel punte die vraag tel","Die plek kan bydra tot die humor en boodskap"], a:"D" },
+      { q:"Wat beteken 'milieu' wanneer jy 'n spotprent bespreek?", o:["Die antwoordblad","Die hoeveelheid vrae","Die plek, tyd en omgewing waarin dit afspeel","Die naam van die boek"], a:"C" },
+      { q:"Hoekom moet jy vra: 'Waar speel die spotprent af?'", o:["Die plek is altyd irrelevant","Dit wys net die bladsy se uitleg","Dit sê hoeveel punte die vraag tel","Die plek kan bydra tot die humor en boodskap"], a:"D" },
       { q:"Watter twee dinge help jou om 'n karakter se gevoel af te lei?", o:["Bladsynommer en hoofstuknommer","Gesigsuitdrukking en lyftaal","Lettertipe en kantlyn","Vraag nommer en puntetelling"], a:"B" },
       { q:"Wat beteken nie-verbale kommunikasie?", o:["Kommunikasie deur net lang paragrawe","Kommunikasie sonder enige betekenis","Kommunikasie deur liggaamstaal, houding en gesigsuitdrukking","Kommunikasie wat net in 'n eksamen gebeur"], a:"C" },
       { q:"Waarom is praatborrels belangrik in 'n spotprent?", o:["Dit is net versiering","Dit kan humor, konflik en verhoudings tussen karakters wys","Dit moet altyd geïgnoreer word","Dit wys net die datum"], a:"B" },
@@ -205,15 +205,15 @@ task("G10-AFR-TASK-005","Hoofstuk 10: Gedigte - temas en beeldspraak",
 task("G10-AFR-TASK-006","Hoofstuk 10: Begripsvrae en taal in gedigte",
 "'n Gedig of verhalende teks kan idiome, metafore, beklemtoning, rym, inversie en sinsdele gebruik. Die leser moet woorde in konteks verstaan en kan sê watter taalverskynsel gebruik word.",
 [
-["Wat beteken die uitdrukking "koud skrik"?",["Baie groot skrik","Letterlik koud kry","Stadig loop","Iemand ignoreer"],"A"],
-["Wat is 'n metafoor?",["'n Direkte vergelyking sonder "soos"","'n Vraagteken","'n Stuk dialoog","'n Bladsynommer"],"A"],
+["Wat beteken die uitdrukking 'koud skrik'?",["Baie groot skrik","Letterlik koud kry","Stadig loop","Iemand ignoreer"],"A"],
+["Wat is 'n metafoor?",["'n Direkte vergelyking sonder 'soos'","'n Vraagteken","'n Stuk dialoog","'n Bladsynommer"],"A"],
 ["Waarom kan 'n wolf as beeld van gevaar gebruik word?",["Omdat dit slinks of bedreigend kan voorstel","Omdat dit altyd vriendelik is","Omdat dit 'n leesteken is","Omdat dit 'n notule skryf"],"A"],
 ["Wat doen 'n akuutteken op 'n woord?",["Dit beklemtoon die woord","Dit vee die woord uit","Dit maak die woord 'n vraag","Dit verander die bladsy"],"A"],
 ["Wat is inversie?",["Wanneer gewone woordorde omgeruil word","Wanneer woorde rym","Wanneer 'n woord verklein word","Wanneer 'n sin geen werkwoord het nie"],"A"],
-["Hoekom rym "Rooikappie" met "pappie"?",["Die woorde klink aan die einde dieselfde","Hulle beteken dieselfde","Hulle is albei plekname","Hulle is albei werkwoorde"],"A"],
-["Wat beteken "motorbende skree" waarskynlik?",["Die motorbende maak 'n harde geluid","Die motorbende slaap","Die motorbende staan stil","Die motorbende lees"],"A"],
+["Hoekom rym 'Rooikappie' met 'pappie'?",["Die woorde klink aan die einde dieselfde","Hulle beteken dieselfde","Hulle is albei plekname","Hulle is albei werkwoorde"],"A"],
+["Wat beteken 'motorbende skree' waarskynlik?",["Die motorbende maak 'n harde geluid","Die motorbende slaap","Die motorbende staan stil","Die motorbende lees"],"A"],
 ["Watter woord kan gevaar aandui?",["bose","pappie","doek","bladsy"],"A"],
-["In "ek gee 'n biertjie", wat is "ek"?",["Onderwerp","Voorwerp","Bywoordelike bepaling","Leesteken"],"A"],
+["In die sin: 'ek gee 'n biertjie', wat is 'ek'?",["Onderwerp","Voorwerp","Bywoordelike bepaling","Leesteken"],"A"],
 ["Waarom is konteks belangrik by woordbetekenis?",["Omdat dieselfde woord in verskillende situasies anders kan werk","Omdat konteks nooit help nie","Omdat dit antwoorde wegsteek","Omdat dit net vir prente geld"],"A"]
 ]),
 
@@ -237,10 +237,10 @@ task("G10-AFR-TASK-008","Hoofstuk 10: Skryf 'n notule",
 [
 ["Wat is die doel van 'n notule?",["Om belangrike punte en besluite van 'n vergadering aan te teken","Om 'n gedig te ontleed","Om 'n advertensie te ontwerp","Om 'n taxi te beskryf"],"A"],
 ["Watter opskrif pas by 'n notule?",["NOTULE","SPOTPRENT","GEDIG","ADVERTENSIE"],"A"],
-["Wat beteken "Bywoning en verskonings"?",["Wie teenwoordig is en wie verskoning gemaak het","Wie die advertensie ontwerp het","Wie die meeste gepraat het","Wie nie van die boek hou nie"],"A"],
+["Wat beteken 'Bywoning en verskonings'?",["Wie teenwoordig is en wie verskoning gemaak het","Wie die advertensie ontwerp het","Wie die meeste gepraat het","Wie nie van die boek hou nie"],"A"],
 ["Waarom bespreek 'n vergadering die vorige notule?",["Om te kyk of vorige punte korrek aangeteken is","Om tyd te mors","Om die voorsitter te vervang","Om die hoofopskrif groter te maak"],"A"],
-["Waar hoort nuwe besprekingspunte?",["Onder "Nuwe sake"","Onder "Afsluiting"","Onder die handtekening","Onder "Verskonings""],"A"],
-["Wat beteken "Algemeen" in 'n notule?",["Punte wat nie onder ander afdelings pas nie maar nog bespreek moet word","Die naam van die skool","Die lys gedigte","Die laaste bladsy"],"A"],
+["Waar hoort nuwe besprekingspunte?",["Onder 'Nuwe sake'","Onder 'Afsluiting'","Onder die handtekening","Onder 'Verskonings'"],"A"],
+["Wat beteken 'Algemeen' in 'n notule?",["Punte wat nie onder ander afdelings pas nie maar nog bespreek moet word","Die naam van die skool","Die lys gedigte","Die laaste bladsy"],"A"],
 ["Waarom moet 'n notule formeel wees?",["Dit is 'n amptelike rekord","Dit moet snaaks wees","Dit moet soos 'n praatborrel klink","Dit is net vir kinders"],"A"],
 ["Watter een is NIE 'n goeie eienskap van 'n notule nie?",["Te veel informele taal en persoonlike opinies","Volledig","Korrek georden","Belangrike inligting"],"A"],
 ["Wie teken gewoonlik onderaan 'n notule?",["Voorsitter en sekretaresse","Digter en illustreerder","Adverteerder en koper","Strokiesprentkarakter en verteller"],"A"],
@@ -248,18 +248,18 @@ task("G10-AFR-TASK-008","Hoofstuk 10: Skryf 'n notule",
 ]),
 
 task("G10-AFR-TASK-009","Hoofstuk 10: Sinsontleding",
-"Sinsontleding kyk na die dele van 'n sin: onderwerp, gesegde, voorwerp en bywoordelike bepalings van tyd, plek en wyse. Voorbeeld: "Die klublede hou gereeld vergaderings."",
+"Sinsontleding kyk na die dele van 'n sin: onderwerp, gesegde, voorwerp en bywoordelike bepalings van tyd, plek en wyse. Voorbeeld: 'Die klublede hou gereeld vergaderings.'",
 [
-["In "Ek hou 'n skoonheidswedstryd", wat is die onderwerp?",["Ek","hou","'n skoonheidswedstryd","wedstryd"],"A"],
-["In "Die klublede hou gereeld vergaderings", wat is die gesegde?",["hou","Die klublede","gereeld","vergaderings"],"A"],
-["In "Die slang verloor die kleur van sy vel", wat is die voorwerp?",["die kleur van sy vel","Die slang","verloor","sy vel"],"A"],
-["In "Ek het te hard geskree", wat is die bywoordelike bepaling van wyse?",["te hard","Ek","het geskree","geskree"],"A"],
-["Watter woord wys hoe dikwels in "Klublede vergader gereeld"?",["gereeld","Klublede","vergader","geen antwoord nie"],"A"],
+["In die sin: 'Ek hou 'n skoonheidswedstryd', wat is die onderwerp?",["Ek","hou","'n skoonheidswedstryd","wedstryd"],"A"],
+["In die sin: 'Die klublede hou gereeld vergaderings', wat is die gesegde?",["hou","Die klublede","gereeld","vergaderings"],"A"],
+["In die sin: 'Die slang verloor die kleur van sy vel', wat is die voorwerp?",["die kleur van sy vel","Die slang","verloor","sy vel"],"A"],
+["In die sin: 'Ek het te hard geskree', wat is die bywoordelike bepaling van wyse?",["te hard","Ek","het geskree","geskree"],"A"],
+["Watter woord wys hoe dikwels in 'Klublede vergader gereeld'?",["gereeld","Klublede","vergader","geen antwoord nie"],"A"],
 ["Watter vraag help om die onderwerp te kry?",["Wie of wat doen die aksie?","Wanneer gebeur dit?","Waar gebeur dit?","Hoe gebeur dit?"],"A"],
 ["Watter vraag help om die gesegde te kry?",["Wat doen die onderwerp?","Wie ontvang die aksie?","Waar is die plek?","Watter woord rym?"],"A"],
 ["Watter een is 'n bywoordelike bepaling van tyd?",["gereeld","in die klub","baie hard","die vergadering"],"A"],
 ["Watter een is 'n voorbeeld van 'n voorwerp?",["'n skoonheidswedstryd","Ek","hou","gereeld"],"A"],
-["Wat is die onderwerp in "Die leerder skryf 'n storie"?",["Die leerder","skryf","'n storie","storie"],"A"]
+["Wat is die onderwerp in 'Die leerder skryf 'n storie'?",["Die leerder","skryf","'n storie","storie"],"A"]
 ]),
 
 task("G10-AFR-TASK-010","Hoofstuk 11: Bendes en boelies - bespreek 'n berig",
@@ -274,7 +274,7 @@ task("G10-AFR-TASK-010","Hoofstuk 11: Bendes en boelies - bespreek 'n berig",
 ["Wat is 'n voorbeeld van boeliegedrag?",["Iemand herhaaldelik seermaak, dreig of verneder","Iemand help met werk","Stil lees","Luister na die onderwyser"],"A"],
 ["Hoe neem jy verantwoordelik aan die bespreking deel?",["Luister met respek en gee verantwoordelike menings","Spot met ander","Onderbreek almal","Vertel ander se geheime"],"A"],
 ["Wat is die beste boodskap van die afdeling?",["Bendes kan gevaarlik wees en leerders moet verantwoordelike keuses maak","Bendes gee net voordele","Boelies moet aangemoedig word","Groepdruk is altyd goed"],"A"],
-["Wat beteken "status" in hierdie konteks?",["Aansien of hoe belangrik iemand vir ander lyk","'n Bladsynommer","'n Leesteken","'n Woordsoort"],"A"]
+["Wat beteken 'status' in hierdie konteks?",["Aansien of hoe belangrik iemand vir ander lyk","'n Bladsynommer","'n Leesteken","'n Woordsoort"],"A"]
 ]),
 
 task("G10-AFR-TASK-011","Hoofstuk 11: Vertel 'n storie",
@@ -295,15 +295,15 @@ task("G10-AFR-TASK-011","Hoofstuk 11: Vertel 'n storie",
 task("G10-AFR-TASK-012","Hoofstuk 11: Ontwikkel jou woordeskat",
 "Woordeskatontwikkeling sluit sinonieme, homonieme, homofone, samestellings, figuurlike taal en een woord vir 'n omskrywing in. Die tema sluit woorde oor bendes, boelies en skoolomgewings in.",
 [
-["Watter woord is 'n sinoniem vir "boelie"?",["afknouer","vriend","luisteraar","voorsitter"],"A"],
-["Wat beteken "kop uitsteek" figuurlik?",["Iets begin onverwags of kom skielik voor","Jou kop by 'n venster uitsteek","Iemand groet","In 'n vergadering praat"],"A"],
-["Watter woord kan "papiergeld" beteken?",["noot","raat","vors","relings"],"A"],
+["Watter woord is 'n sinoniem vir 'boelie'?",["afknouer","vriend","luisteraar","voorsitter"],"A"],
+["Wat beteken 'kop uitsteek' figuurlik?",["Iets begin onverwags of kom skielik voor","Jou kop by 'n venster uitsteek","Iemand groet","In 'n vergadering praat"],"A"],
+["Watter woord kan 'papiergeld' beteken?",["noot","raat","vors","relings"],"A"],
 ["Watter paar kan homofone wees?",["nood en noot","noot en relings","vors en vinger","leun en staan"],"A"],
 ["Wat is 'n samestelling?",["'n Woord wat uit twee of meer woorddele bestaan","'n Woord wat altyd 'n vraag is","'n Woord sonder betekenis","'n Woord net vir gedigte"],"A"],
-["Uit watter woorde bestaan "modderwater"?",["modder + water","mooi + water","moeder + water","modder + weer"],"A"],
-["Wat beteken "skoolmaats"?",["Maats by 'n skool","Mense wat 'n skool bou","Onderwysers van 'n skool","Boeke van 'n skool"],"A"],
+["Uit watter woorde bestaan 'modderwater'?",["modder + water","mooi + water","moeder + water","modder + weer"],"A"],
+["Wat beteken 'skoolmaats'?",["Maats by 'n skool","Mense wat 'n skool bou","Onderwysers van 'n skool","Boeke van 'n skool"],"A"],
 ["Wat kan 'n oorsaak van boeliegedrag wees?",["Boelies kan self slagoffers van geweld wees","Boelies is altyd onskuldig","Boelies help altyd ander","Boelies kom net in stories voor"],"A"],
-["Wat beteken "bullebak"?",["Iemand wat ander boelie of afknou","'n Vriendelike helper","'n Onderwyser","'n Gedig"],"A"],
+["Wat beteken 'bullebak'?",["Iemand wat ander boelie of afknou","'n Vriendelike helper","'n Onderwyser","'n Gedig"],"A"],
 ["Wat is 'n homoniem?",["'n Woord wat dieselfde lyk of klink maar verskillende betekenisse kan hê","'n Woord wat altyd teenoorgesteld beteken","'n Woord wat rym","'n Woord net in Engels"],"A"]
 ]),
 
@@ -346,7 +346,7 @@ task("G10-AFR-TASK-015","Hoofstuk 11: Sinsoorte en woordorde",
 ["Watter leesteken kom gewoonlik aan die einde van 'n vraagsin?",["Vraagteken","Punt","Komma","Dubbelpunt"],"A"],
 ["Watter sin het gewone woordorde?",["Die boelie terg die kind.","Terg die kind die boelie.","Die kind die boelie terg.","Boelie die terg kind."],"A"],
 ["Wat staan gewoonlik eerste in 'n gewone stelsin?",["Die onderwerp","Die leesteken","Die slotwoord","Die voorwerp alleen"],"A"],
-["Wat is die verkleiningsvorm van "groep"?",["groepie","groeper","groepste","groepend"],"A"],
+["Wat is die verkleiningsvorm van 'groep'?",["groepie","groeper","groepste","groepend"],"A"],
 ["Wat is die oortreffende trap van klein?",["kleinste","kleinstes","kleinlik","verklein"],"A"],
 ["Watter uitdrukking beteken 'n geheim raak bekend?",["Die aap uit die mou laat","Die deur sluit","Die sleutel verloor","Die wiel draai"],"A"],
 ["Watter een is 'n samestelling?",["straatbende","netjies","kleiner","moeg"],"A"]
@@ -363,7 +363,7 @@ task("G10-AFR-TASK-016","Hoofstuk 12: Leesstrategieë en afleidings",
 ["Wat beteken dit om 'n afleiding te maak?",["'n Gevolgtrekking uit leidrade maak","Presies oorskryf","Die teks ignoreer","Net die titel lees"],"A"],
 ["Wat beteken implisiet?",["Nie direk gesê nie, maar uit leidrade verstaan","Direk gesê","'n Spelfout","'n Sinoniem"],"A"],
 ["Wat beteken eksplisiet?",["Direk in die teks gesê","Net geraai","Weggesteek in 'n prent","Altyd figuurlik"],"A"],
-["As 'n tiener sê "Ek moet soos my maats lyk", wat kan jy aflei?",["Die tiener voel moontlik druk om in te pas","Die tiener hou nie van sjokolade nie","Die tiener skryf 'n notule","Die tiener leer woordorde"],"A"],
+["As 'n tiener sê: 'Ek moet soos my maats lyk', wat kan jy aflei?",["Die tiener voel moontlik druk om in te pas","Die tiener hou nie van sjokolade nie","Die tiener skryf 'n notule","Die tiener leer woordorde"],"A"],
 ["Waarom lees jy pre-lees, lees en post-lees?",["Om voor, tydens en ná lees betekenis te bou","Om minder te dink","Om vrae weg te laat","Om die teks korter te maak"],"A"]
 ]),
 
@@ -401,10 +401,10 @@ task("G10-AFR-TASK-019","Hoofstuk 12: Ontleed 'n gedig oor sjokolade en liefde",
 "Die gedig gebruik sjokolade-name soos Turkish Delight, KitKat en PS-sjokolade om liefde, verlange en moontlike einde van 'n verhouding te beskryf. Die gedig gebruik beeldspraak, rymskema en simboliek.",
 [
 ["Waarmee word die geliefde vergelyk?",["Sjokolade","'n Taxi","'n Notule","'n Vuvuzela"],"A"],
-["Wat suggereer "Turkish Delight"?",["Die geliefde is besonders of soet vir die spreker","Die geliefde is onbekend","Die geliefde haat sjokolade","Die spreker werk in 'n winkel"],"A"],
+["Wat suggereer 'Turkish Delight'?",["Die geliefde is besonders of soet vir die spreker","Die geliefde is onbekend","Die geliefde haat sjokolade","Die spreker werk in 'n winkel"],"A"],
 ["Wat wys verwysings na KitKat en PS-sjokolade?",["Bekende sjokolade-name beeld gevoelens uit","Die gedig is net 'n advertensie","Die spreker koop net lekkers","Die gedig gaan oor skoolreëls"],"A"],
-["Wat beteken "verban"?",["Weggehou of uitgesluit","Welkom geheet","Herhaal","Vergroot"],"A"],
-["Wat kan "lekkergoedrakke staan leeg" simboliseer?",["Die verhouding of liefde het moontlik geëindig","Geen winkels is oop nie","Die spreker koop te veel","Dit is 'n projek"],"A"],
+["Wat beteken 'verban'?",["Weggehou of uitgesluit","Welkom geheet","Herhaal","Vergroot"],"A"],
+["Wat kan 'lekkergoedrakke staan leeg' simboliseer?",["Die verhouding of liefde het moontlik geëindig","Geen winkels is oop nie","Die spreker koop te veel","Dit is 'n projek"],"A"],
 ["Hoeveel strofes het die gedig volgens die memo?",["Nege","Vier","Ses","Twaalf"],"A"],
 ["Watter rymskema word genoem?",["ababcdcd","aabbcc","vrye vers","paarrym alleen"],"A"],
 ["Wat dui punte aan die einde moontlik aan?",["Finaliteit of einde van verhouding","Die gedig begin weer","'n Vraag","Die titel"],"A"],
@@ -439,7 +439,7 @@ task("G10-AFR-TASK-021","Hoofstuk 12: Drama - stemming, toon en toneelaanwysings
 ["Wat dui kursief tussen hakies dikwels aan?",["Toneelaanwysings of subteks","Woordeboekdefinisie","Hoofopskrif","Rymskema"],"A"],
 ["Wat kan toneelaanwysings aandui?",["Dekor, rekwisiete, bewegings en verhoogplasing","Net bladsy nommer","Net prys","Net boekwinkel"],"A"],
 ["Watter stemming word deur 'n dreigende druglord-toneel geskep?",["Gespanne en dreigend","Rustig en vrolik","Romanties","Speels"],"A"],
-["Wat wys woorde soos "destroy" en "druglord"?",["Streekstaal en sosiale konteks","Formele hoftaal","Ou Nederlands","Notule-taal"],"A"]
+["Wat wys woorde soos 'destroy' en 'druglord'?",["Streekstaal en sosiale konteks","Formele hoftaal","Ou Nederlands","Notule-taal"],"A"]
 ]),
 
 task("G10-AFR-TASK-022","Hoofstuk 12: Sinsleer",
@@ -447,9 +447,9 @@ task("G10-AFR-TASK-022","Hoofstuk 12: Sinsleer",
 [
 ["Wat gebeur gewoonlik met woordorde in 'n bysin?",["Dit het omgekeerde woordorde","Dit bly altyd dieselfde","Dit het geen werkwoord","Dit begin net met hoofletter"],"A"],
 ["Watter woord kan 'n bysin inlei?",["omdat","sjokolade","vinnig","mooi"],"A"],
-["Wat is die bysin in "Die meisie wat daar sit, eet sjokolade"?",["wat daar sit","Die meisie","eet sjokolade","sjokolade"],"A"],
+["Wat is die bysin in 'Die meisie wat daar sit, eet sjokolade'?",["wat daar sit","Die meisie","eet sjokolade","sjokolade"],"A"],
 ["Wat is die hoofsin in daardie sin?",["Die meisie eet sjokolade","wat daar sit","daar sit","Die meisie wat"],"A"],
-["Watter soort bysin is "wat daar sit"?",["Byvoeglike bysin","Bywoordelike bysin","Gesegdesin","Bevelsin"],"A"],
+["Watter soort bysin is 'wat daar sit'?",["Byvoeglike bysin","Bywoordelike bysin","Gesegdesin","Bevelsin"],"A"],
 ["Watter bysin brei die gesegde uit?",["Bywoordelike bysin","Byvoeglike bysin","Onderwerpsin","Voorwerpsin"],"A"],
 ["Watter een is bywoordelik van tyd?",["sodra hulle honger word","omdat sy honger is","wat daar sit","wat sjokolade eet"],"A"],
 ["Wat is 'n veelvoudige sin?",["Minstens twee hoofsinne verbind met en/maar/want","Net een woord","Sonder werkwoord","Altyd met omdat"],"A"],
@@ -521,19 +521,19 @@ task("G10-AFR-TASK-027","Hoofstuk 13: Direkte/indirekte rede, lydende vorm en on
 "Direkte rede gee iemand se presiese woorde met aanhalingstekens. Indirekte rede vertel dit oor. Bedrywende vorm: Die taxi-man ry 'n nuwe roete. Lydende vorm: 'n Nuwe roete word deur die taxi-man gery. Ontkenning gebruik dikwels nie ... nie.",
 [
 ["Waarom gebruik ons aanhalingstekens?",["Om presiese woorde in direkte rede te wys","Om 'n bysin te wys","Om 'n woord te verklein","Om lydende vorm te maak"],"A"],
-["Watter sin is direkte rede?",["Die minister sê: "Uitlatings is onaanvaarbaar."","Die minister sê dat dit onaanvaarbaar is.","Die minister gesê dit is onaanvaarbaar.","Die minister sê dit is onaanvaarbaar"],"A"],
-["Watter sin is indirekte rede?",["Die minister sê dat hulle nie sal ophou staak nie.",""Ons sal nie ophou staak nie," sê die minister.","Die minister sê: "Ons sal nie ophou staak nie."","Stop die taxi!"],"A"],
+["Watter sin is direkte rede?",["Die minister sê: 'Uitlatings is onaanvaarbaar.'","Die minister sê dat dit onaanvaarbaar is.","Die minister gesê dit is onaanvaarbaar.","Die minister sê dit is onaanvaarbaar"],"A"],
+["Watter sin is indirekte rede?",["Die minister sê dat hulle nie sal ophou staak nie.","'Ons sal nie ophou staak nie,' sê die minister.","Die minister sê: 'Ons sal nie ophou staak nie.'","Stop die taxi!"],"A"],
 ["Wat gebeur met aanhalingstekens in indirekte rede?",["Dit word gewoonlik weggelaat","Dit word verdubbel","Dit word vraagtekens","Dit staan voor onderwerp"],"A"],
 ["Watter sin is bedrywende vorm?",["Die taxi-man ry 'n nuwe roete.","'n Nuwe roete word deur die taxi-man gery.","'n Nuwe roete is gery.","Daar word gery."],"A"],
-["Wat is die lydende vorm van "Die taxi-man ry 'n nuwe roete"?",["'n Nuwe roete word deur die taxi-man gery.","Die taxi-man word deur 'n roete gery.","'n Roete ry die taxi-man.","Die taxi-man het gery."],"A"],
+["Wat is die lydende vorm van 'Die taxi-man ry 'n nuwe roete'?",["'n Nuwe roete word deur die taxi-man gery.","Die taxi-man word deur 'n roete gery.","'n Roete ry die taxi-man.","Die taxi-man het gery."],"A"],
 ["Wat gebeur met onderwerp en voorwerp wanneer jy na lydende vorm verander?",["Hulle ruil plekke","Hulle verdwyn","Hulle word bywoorde","Hulle word vraagsinne"],"A"],
-["Wat is die ontkennende vorm van "Die taxi stop by die skool"?",["Die taxi stop nie by die skool nie.","Die taxi nie stop by die skool.","Nie die taxi stop.","Die taxi stop geen."],"A"],
+["Wat is die ontkennende vorm van 'Die taxi stop by die skool'?",["Die taxi stop nie by die skool nie.","Die taxi nie stop by die skool.","Nie die taxi stop.","Die taxi stop geen."],"A"],
 ["Watter sin is verlede tyd in lydende vorm?",["'n Nuwe roete is deur die taxi-man gery.","Die taxi-man ry 'n nuwe roete.","'n Nuwe roete word gery.","'n Nuwe roete sal gery word."],"A"],
 ["Watter sin is toekomende tyd?",["Die taxi-man sal 'n nuwe roete ry.","Die taxi-man ry 'n nuwe roete.","Die taxi-man het gery.","Die taxi-man ry nie."],"A"]
 ]),
 
 task("G10-AFR-TASK-028","Hoofstuk 14: Luister evaluerend",
-"Die luisterteks is 'n resensie oor die boek "Charlize - Ek leef my droom" deur Chris Karsten. Die resensie is deur J.B. Roux geskryf. Die resensent sê die boek is deeglik, eerlik, interessant en meestal positief, maar noem ook klein foute en herhaling.",
+"Die luisterteks is 'n resensie oor die boek 'Charlize - Ek leef my droom' deur Chris Karsten. Die resensie is deur J.B. Roux geskryf. Die resensent sê die boek is deeglik, eerlik, interessant en meestal positief, maar noem ook klein foute en herhaling.",
 [
 ["Wat is die titel van die boek?",["Charlize - Ek leef my droom","Drome en deja vu","Taxi's en toeters","Stop die tèksie"],"A"],
 ["Wie het die boek geskryf?",["Chris Karsten","J.B. Roux","Gerda Theron","Charlize Theron"],"A"],
@@ -550,10 +550,10 @@ task("G10-AFR-TASK-028","Hoofstuk 14: Luister evaluerend",
 task("G10-AFR-TASK-029","Hoofstuk 14: Evalueer 'n artikel en maak gevolgtrekkings",
 "'n Artikel oor drome verduidelik dat drome verband kan hou met realiteit, emosies en moeilike tye. Leerders moet gevolgtrekkings maak, vergelyk, kontrasteer en hul antwoorde motiveer.",
 [
-["Wat beteken "in 'n droomwêreld leef"?",["Nie op realiteit fokus nie","Altyd realisties dink","Nooit slaap nie","'n Resensie skryf"],"A"],
+["Wat beteken 'in 'n droomwêreld leef'?",["Nie op realiteit fokus nie","Altyd realisties dink","Nooit slaap nie","'n Resensie skryf"],"A"],
 ["Wat kan drome help doen?",["Emosies verwerk","Taxi's bestuur","Notule skryf","Opsomming tel"],"A"],
 ["Wat beteken dat drome deel van iemand se wêreld is?",["Drome hou verband met ervaring of werklikheid","Sy droom nooit","Sy ignoreer alles","Sy skryf net gedigte"],"A"],
-["Watter gevolgtrekking pas by "drome help deur moeilike tye"?",["Drome kan troos of hoop gee","Drome is altyd gevaarlik","Drome is net grappies","Drome het geen betekenis"],"A"],
+["Watter gevolgtrekking pas by 'drome help deur moeilike tye'?",["Drome kan troos of hoop gee","Drome is altyd gevaarlik","Drome is net grappies","Drome het geen betekenis"],"A"],
 ["Wat beteken evalueer?",["Beoordeel en mening met redes ondersteun","Woord vir woord oorskryf","Net titel lees","Spelling ignoreer"],"A"],
 ["Wat beteken vergelyk?",["Ooreenkomste soek","Net verskille soek","Ontkenning maak","Opstel redigeer"],"A"],
 ["Wat beteken kontrasteer?",["Verskille wys","Alles dieselfde maak","Boek verkoop","Woord verklein"],"A"],
@@ -563,7 +563,7 @@ task("G10-AFR-TASK-029","Hoofstuk 14: Evalueer 'n artikel en maak gevolgtrekking
 ]),
 
 task("G10-AFR-TASK-030","Hoofstuk 14: Evalueer 'n resensie",
-"'n Resensie oor "Droomvangers" bespreek 'n jeugroman. 'n Goeie resensie gee titel, tipe teks, kort inhoud, positiewe/negatiewe kommentaar en 'n gemotiveerde oordeel.",
+"'n Resensie oor 'Droomvangers' bespreek 'n jeugroman. 'n Goeie resensie gee titel, tipe teks, kort inhoud, positiewe/negatiewe kommentaar en 'n gemotiveerde oordeel.",
 [
 ["Wat is 'n resensie?",["'n Teks wat 'n boek, film of werk bespreek en beoordeel","'n Notule","'n 70-woord opsomming","'n Lydende vorm"],"A"],
 ["Wat is die titel van die boek in die voorbeeld?",["Droomvangers","Drome en deja vu","Taxi's en toeters","Charlize - Ek leef my droom"],"A"],
@@ -573,7 +573,7 @@ task("G10-AFR-TASK-030","Hoofstuk 14: Evalueer 'n resensie",
 ["Wat is lekker leesstyl?",["Maklik en aangenaam om te lees","Net oor kos","Geen paragrawe","Net vir onderwysers"],"A"],
 ["Waarom motiveer jy jou mening?",["Sodat leser verstaan hoekom jy so oordeel","Sodat jy minder skryf","Sodat titel weg is","Sodat resensie geen waarde het nie"],"A"],
 ["Watter woord is positief?",["genotvol","vervelig","swak","teleurstellend"],"A"],
-["Wat beteken "Hy reik na die sterre" figuurlik?",["Hy mik hoog of probeer groot dinge bereik","Hy klim letterlik op","Hy skryf oor planete","Hy slaap buite"],"A"],
+["Wat beteken 'Hy reik na die sterre' figuurlik?",["Hy mik hoog of probeer groot dinge bereik","Hy klim letterlik op","Hy skryf oor planete","Hy slaap buite"],"A"],
 ["Wat bevat 'n goeie resensie?",["Titel, kort inhoud, beoordeling en gemotiveerde mening","Net pryslys","Net direkte rede","Net opsomming sonder opinie"],"A"]
 ]),
 
@@ -612,8 +612,8 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
 [
 ["Wat is 'n sinoniem?",["Woord met dieselfde of amper dieselfde betekenis","Woord met teenoorgestelde betekenis","Woord wat net klink dieselfde","Verkeerde spelling"],"A"],
 ["Wat is 'n antoniem?",["Woord met teenoorgestelde betekenis","Woord met dieselfde betekenis","Woord net in drama","Woord sonder betekenis"],"A"],
-["Kies die woord wat by "dikwels" pas.",["gereeld","altyd","nooit","vinnig"],"A"],
-["Wat beteken "sy het kop gestamp"?",["Sy het deursettingsvermoë getoon","Sy het letterlik haar kop gestamp","Sy het gaan slaap","Sy het gegroet"],"A"],
+["Kies die woord wat by 'dikwels' pas.",["gereeld","altyd","nooit","vinnig"],"A"],
+["Wat beteken 'sy het kop gestamp'?",["Sy het deursettingsvermoë getoon","Sy het letterlik haar kop gestamp","Sy het gaan slaap","Sy het gegroet"],"A"],
 ["Watter woord pas by iemand met 'n groot dunk van homself?",["verwaand","nederig","vriendelik","stil"],"A"],
 ["Watter paar is 'n teenstelling?",["pessimis en optimis","emigrant en immigrant","lekade en resensie","kamera en droom"],"A"],
 ["Wat beteken ooreenstemming?",["Gelykheid of akkoord","Verskil","Konflik","Verwarring"],"A"],
@@ -847,7 +847,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
         ]
       },
       {
-        "ctx": "A learner says, "All teenagers are careless and never listen."",
+        "ctx": "A learner says, 'All teenagers are careless and never listen.'",
         "stem": "Why is this unfair?",
         "correct": "It generalises about a whole group without evidence",
         "wrongs": [
@@ -926,7 +926,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
         ]
       },
       {
-        "ctx": "A learner writes, "Girls should receive equal education because it improves families, careers and communities."",
+        "ctx": "A learner writes, 'Girls should receive equal education because it improves families, careers and communities.'",
         "stem": "Why is this justified?",
         "correct": "It gives a viewpoint and supports it with reasons",
         "wrongs": [
@@ -1006,7 +1006,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
         ]
       },
       {
-        "ctx": "The statement says, "All boys are rough and all girls are quiet."",
+        "ctx": "The statement says, 'All boys are rough and all girls are quiet.'",
         "stem": "Why is this a stereotype?",
         "correct": "It makes a fixed unfair claim about whole groups",
         "wrongs": [
@@ -1016,7 +1016,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
         ]
       },
       {
-        "ctx": "A fair statement says, "Some learners enjoy sport, while others prefer music, reading or technology."",
+        "ctx": "A fair statement says, 'Some learners enjoy sport, while others prefer music, reading or technology.'",
         "stem": "Why is it fairer?",
         "correct": "It allows for individual differences",
         "wrongs": [
@@ -1046,7 +1046,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
         ]
       },
       {
-        "ctx": "A complaint says only, "This is bad." It gives no details.",
+        "ctx": "A complaint says only, 'This is bad.' It gives no details.",
         "stem": "Why is it weak?",
         "correct": "It lacks clear reasons and evidence",
         "wrongs": [
@@ -1474,7 +1474,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
       },
       {
         "ctx": "Dust lifted from the road and settled on the dry grass like grey powder.",
-        "stem": "Why is this stronger than "The road was dusty"?",
+        "stem": "Why is this stronger than 'The road was dusty'?",
         "correct": "It uses specific visual detail and comparison",
         "wrongs": [
           "It removes description",
@@ -2182,7 +2182,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
     "items": [
       {
         "ctx": "The message is unfair because it blames one person and ignores the other side.",
-        "stem": "Why is this stronger than "I don't like it"?",
+        "stem": "Why is this stronger than 'I don't like it'?",
         "correct": "It gives a reason to justify the opinion",
         "wrongs": [
           "It avoids explanation",
@@ -2860,7 +2860,7 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
       },
       {
         "ctx": "My hands shook as the shadow moved across the wall.",
-        "stem": "Why is it stronger than "I was scared"?",
+        "stem": "Why is it stronger than 'I was scared'?",
         "correct": "It shows fear through action and imagery",
         "wrongs": [
           "It gives fewer details",
@@ -2973,5 +2973,10253 @@ task("G10-AFR-TASK-033","Hoofstuk 14: Woordeskat",
   console.log("English FAL Term 3 loaded:", dailyTasks.length, "daily tasks,", all.length, "daily questions, 2 papers");
 })();
 // === ENGLISH FAL TERM 3 BUILD END ===
+
+
+
+
+// === BESIGHEIDSTUDIES TERM 3 FULL BANK START ===
+(function(){
+  window.EDU_SUBJECT_BANKS = window.EDU_SUBJECT_BANKS || {};
+  window.EDU_SUBJECT_BANKS["G10-BST"] = {
+  "subject": "Business Studies / Besigheidstudies",
+  "name": "Besigheidstudies",
+  "title": "Besigheidstudies Kwartaal 3",
+  "pass": 40,
+  "tasks": [
+    {
+      "code": "G10-BST-TASK-001",
+      "title": "Kreatiewe denke en nuwe idees",
+      "questions": [
+        {
+          "ctx": "'n Leerder moet met papier, gom en kleurkryt 'n prototipe maak en daarna soveel moontlik kopiee binne 'n kort tyd maak.",
+          "stem": "Watter vaardigheid word die sterkste geoefen?",
+          "correct": "Kreatiewe denke onder tydsdruk",
+          "wrong": [
+            "Gehaltebeheer van finansiele state",
+            "Formele kontraksluiting",
+            "Fisiese liggingontleding"
+          ],
+          "explain": "Kreatiewe denke onder tydsdruk",
+          "options": [
+            "Kreatiewe denke onder tydsdruk",
+            "Gehaltebeheer van finansiele state",
+            "Formele kontraksluiting",
+            "Fisiese liggingontleding"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder moet met papier, gom en kleurkryt 'n prototipe maak en daarna soveel moontlik kopiee binne 'n kort tyd maak.\n\nWatter vaardigheid word die sterkste geoefen?",
+          "explanation": "Kreatiewe denke onder tydsdruk"
+        },
+        {
+          "ctx": "'n Entrepreneur sien dat klante lank in 'n ry wag en toets 'n nuwe betaalstelsel in plaas daarvan om die ou manier te hou.",
+          "stem": "Watter begrip word die beste gewys?",
+          "correct": "Uit die boks dink om 'n probleem op te los",
+          "wrong": [
+            "Om 'n probleem te ignoreer",
+            "Om slegs 'n huurooreenkoms te teken",
+            "Om 'n produk voetstoots te verkoop"
+          ],
+          "explain": "Uit die boks dink om 'n probleem op te los",
+          "options": [
+            "Om 'n probleem te ignoreer",
+            "Uit die boks dink om 'n probleem op te los",
+            "Om slegs 'n huurooreenkoms te teken",
+            "Om 'n produk voetstoots te verkoop"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Entrepreneur sien dat klante lank in 'n ry wag en toets 'n nuwe betaalstelsel in plaas daarvan om die ou manier te hou.\n\nWatter begrip word die beste gewys?",
+          "explanation": "Uit die boks dink om 'n probleem op te los"
+        },
+        {
+          "ctx": "Leerders bring probleme klas toe en deel dit sonder vrees dat ander sal lag.",
+          "stem": "Hoekom is hierdie klasomgewing belangrik vir kreatiwiteit?",
+          "correct": "Dit laat leerders idees vrylik deel en ontwikkel",
+          "wrong": [
+            "Dit keer dat iemand nuwe idees voorstel",
+            "Dit vervang alle navorsing met memorisering",
+            "Dit maak probleemoplossing onnodig"
+          ],
+          "explain": "Dit laat leerders idees vrylik deel en ontwikkel",
+          "options": [
+            "Dit keer dat iemand nuwe idees voorstel",
+            "Dit vervang alle navorsing met memorisering",
+            "Dit laat leerders idees vrylik deel en ontwikkel",
+            "Dit maak probleemoplossing onnodig"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLeerders bring probleme klas toe en deel dit sonder vrees dat ander sal lag.\n\nHoekom is hierdie klasomgewing belangrik vir kreatiwiteit?",
+          "explanation": "Dit laat leerders idees vrylik deel en ontwikkel"
+        },
+        {
+          "ctx": "'n Besigheid wil 'n nuwe diens ontwerp wat nog nie in die dorp beskikbaar is nie.",
+          "stem": "Watter soort denke help die besigheid die meeste?",
+          "correct": "Kreatiewe denke",
+          "wrong": [
+            "Blote roetinewerk",
+            "Kredietterugbetaling",
+            "Arbeidswetgewing alleen"
+          ],
+          "explain": "Kreatiewe denke",
+          "options": [
+            "Blote roetinewerk",
+            "Kredietterugbetaling",
+            "Arbeidswetgewing alleen",
+            "Kreatiewe denke"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid wil 'n nuwe diens ontwerp wat nog nie in die dorp beskikbaar is nie.\n\nWatter soort denke help die besigheid die meeste?",
+          "explanation": "Kreatiewe denke"
+        },
+        {
+          "ctx": "'n Groep vra baie vrae, skryf al hul idees neer en is nie bang om foute te maak nie.",
+          "stem": "Watter gedrag pas die beste by kreatiwiteit?",
+          "correct": "Breed dink en idees toets",
+          "wrong": [
+            "Net een bekende antwoord aanvaar",
+            "Alle idees dadelik verwerp",
+            "Slegs die goedkoopste perseel kies"
+          ],
+          "explain": "Breed dink en idees toets",
+          "options": [
+            "Net een bekende antwoord aanvaar",
+            "Breed dink en idees toets",
+            "Alle idees dadelik verwerp",
+            "Slegs die goedkoopste perseel kies"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Groep vra baie vrae, skryf al hul idees neer en is nie bang om foute te maak nie.\n\nWatter gedrag pas die beste by kreatiwiteit?",
+          "explanation": "Breed dink en idees toets"
+        },
+        {
+          "ctx": "'n Volwassene verwerp elke nuwe voorstel omdat hy bang is om verkeerd te wees.",
+          "stem": "Watter probleem kan dit vir kreatiewe denke veroorsaak?",
+          "correct": "Dit kan nuwe idees en eksperimentering beperk",
+          "wrong": [
+            "Dit verbeter altyd innovasie",
+            "Dit maak marknavorsing onnodig",
+            "Dit bewys dat die idee winsgewend is"
+          ],
+          "explain": "Dit kan nuwe idees en eksperimentering beperk",
+          "options": [
+            "Dit kan nuwe idees en eksperimentering beperk",
+            "Dit verbeter altyd innovasie",
+            "Dit maak marknavorsing onnodig",
+            "Dit bewys dat die idee winsgewend is"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Volwassene verwerp elke nuwe voorstel omdat hy bang is om verkeerd te wees.\n\nWatter probleem kan dit vir kreatiewe denke veroorsaak?",
+          "explanation": "Dit kan nuwe idees en eksperimentering beperk"
+        },
+        {
+          "ctx": "'n Besigheid skep 'n nuwe produk deur te kyk na wat klante se lewe makliker kan maak.",
+          "stem": "Hoe kan kreatiewe idees 'n besigheid help?",
+          "correct": "Dit kan groei en nuwe geleenthede skep",
+          "wrong": [
+            "Dit maak klante se behoeftes onbelangrik",
+            "Dit keer dat die onderneming verkoop",
+            "Dit vervang alle werknemers"
+          ],
+          "explain": "Dit kan groei en nuwe geleenthede skep",
+          "options": [
+            "Dit maak klante se behoeftes onbelangrik",
+            "Dit keer dat die onderneming verkoop",
+            "Dit vervang alle werknemers",
+            "Dit kan groei en nuwe geleenthede skep"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid skep 'n nuwe produk deur te kyk na wat klante se lewe makliker kan maak.\n\nHoe kan kreatiewe idees 'n besigheid help?",
+          "explanation": "Dit kan groei en nuwe geleenthede skep"
+        },
+        {
+          "ctx": "'n Leerling vra: 'Watter ander manier kan ons gebruik om dieselfde probleem op te los?'",
+          "stem": "Watter stap ondersteun kreatiewe probleemoplossing?",
+          "correct": "Vrae vra om alternatiewe te kry",
+          "wrong": [
+            "Die eerste antwoord altyd aanvaar",
+            "Geen hulpbronne oorweeg nie",
+            "Slegs die prys verhoog"
+          ],
+          "explain": "Vrae vra om alternatiewe te kry",
+          "options": [
+            "Die eerste antwoord altyd aanvaar",
+            "Geen hulpbronne oorweeg nie",
+            "Vrae vra om alternatiewe te kry",
+            "Slegs die prys verhoog"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Leerling vra: 'Watter ander manier kan ons gebruik om dieselfde probleem op te los?'\n\nWatter stap ondersteun kreatiewe probleemoplossing?",
+          "explanation": "Vrae vra om alternatiewe te kry"
+        },
+        {
+          "ctx": "'n Entrepreneur gebruik herwinbare materiaal om 'n goedkoop voorbeeldproduk te bou.",
+          "stem": "Wat is die doel van 'n prototipe?",
+          "correct": "Om 'n idee prakties te toets en te verbeter",
+          "wrong": [
+            "Om die finale belastingstaat te vervang",
+            "Om alle mededingers wettig te sluit",
+            "Om 'n werknemer se verlof te bereken"
+          ],
+          "explain": "Om 'n idee prakties te toets en te verbeter",
+          "options": [
+            "Om 'n idee prakties te toets en te verbeter",
+            "Om die finale belastingstaat te vervang",
+            "Om alle mededingers wettig te sluit",
+            "Om 'n werknemer se verlof te bereken"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Entrepreneur gebruik herwinbare materiaal om 'n goedkoop voorbeeldproduk te bou.\n\nWat is die doel van 'n prototipe?",
+          "explanation": "Om 'n idee prakties te toets en te verbeter"
+        },
+        {
+          "ctx": "'n Besigheid wil werklike probleme in die gemeenskap oplos, nie net mooi idees neerskryf nie.",
+          "stem": "Wat moet die besigheid doen?",
+          "correct": "Idees prakties toets teen die probleem",
+          "wrong": [
+            "Net 'n slagspreuk ontwerp",
+            "Alle data ignoreer",
+            "Slegs 'n logo opstel"
+          ],
+          "explain": "Idees prakties toets teen die probleem",
+          "options": [
+            "Net 'n slagspreuk ontwerp",
+            "Idees prakties toets teen die probleem",
+            "Alle data ignoreer",
+            "Slegs 'n logo opstel"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid wil werklike probleme in die gemeenskap oplos, nie net mooi idees neerskryf nie.\n\nWat moet die besigheid doen?",
+          "explanation": "Idees prakties toets teen die probleem"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-002",
+      "title": "Probleme oplos met tegnieke",
+      "questions": [
+        {
+          "ctx": "'n Dorp is deur 'n vloed afgesny. Mense het kos, water, skuiling en medisyne nodig.",
+          "stem": "Watter vaardigheid gebruik 'n groep wat praktiese oplossings voorstel?",
+          "correct": "Probleemoplossing in 'n krisis",
+          "wrong": [
+            "Bemarkingsamestelling alleen",
+            "Kontrakparafering",
+            "Balansstaatopstelling"
+          ],
+          "explain": "Probleemoplossing in 'n krisis",
+          "options": [
+            "Bemarkingsamestelling alleen",
+            "Probleemoplossing in 'n krisis",
+            "Kontrakparafering",
+            "Balansstaatopstelling"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Dorp is deur 'n vloed afgesny. Mense het kos, water, skuiling en medisyne nodig.\n\nWatter vaardigheid gebruik 'n groep wat praktiese oplossings voorstel?",
+          "explanation": "Probleemoplossing in 'n krisis"
+        },
+        {
+          "ctx": "Leerders moet eers die ware probleem bepaal voordat hulle oplossings voorstel.",
+          "stem": "Watter stap kom eerste in probleemoplossing?",
+          "correct": "Identifiseer die probleem",
+          "wrong": [
+            "Evalueer die finale oplossing",
+            "Betaal die lening terug",
+            "Ontwerp die logo"
+          ],
+          "explain": "Identifiseer die probleem",
+          "options": [
+            "Evalueer die finale oplossing",
+            "Betaal die lening terug",
+            "Identifiseer die probleem",
+            "Ontwerp die logo"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLeerders moet eers die ware probleem bepaal voordat hulle oplossings voorstel.\n\nWatter stap kom eerste in probleemoplossing?",
+          "explanation": "Identifiseer die probleem"
+        },
+        {
+          "ctx": "'n Skool begin later omdat openbare vervoer nie by die aanvangstyd pas nie.",
+          "stem": "Watter kombinasie is korrek?",
+          "correct": "Probleem: vervoertye pas nie; oplossing: begin later",
+          "wrong": [
+            "Probleem: te min advertensies; oplossing: koop meubels",
+            "Probleem: voetstoots; oplossing: skryf 'n indeks",
+            "Probleem: te veel water; oplossing: verhoog lone"
+          ],
+          "explain": "Probleem: vervoertye pas nie; oplossing: begin later",
+          "options": [
+            "Probleem: te min advertensies; oplossing: koop meubels",
+            "Probleem: voetstoots; oplossing: skryf 'n indeks",
+            "Probleem: te veel water; oplossing: verhoog lone",
+            "Probleem: vervoertye pas nie; oplossing: begin later"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Skool begin later omdat openbare vervoer nie by die aanvangstyd pas nie.\n\nWatter kombinasie is korrek?",
+          "explanation": "Probleem: vervoertye pas nie; oplossing: begin later"
+        },
+        {
+          "ctx": "Openbare vervoer is onbetroubaar en leerders kom gereeld laat.",
+          "stem": "Watter oplossing pas die beste by die probleem?",
+          "correct": "Reel skoolbusse of ander betroubare vervoer",
+          "wrong": [
+            "Verhoog die prys van kos",
+            "Skryf 'n dienskontrak met klante",
+            "Gebruik 'n sektorgrafiek"
+          ],
+          "explain": "Reel skoolbusse of ander betroubare vervoer",
+          "options": [
+            "Verhoog die prys van kos",
+            "Reel skoolbusse of ander betroubare vervoer",
+            "Skryf 'n dienskontrak met klante",
+            "Gebruik 'n sektorgrafiek"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nOpenbare vervoer is onbetroubaar en leerders kom gereeld laat.\n\nWatter oplossing pas die beste by die probleem?",
+          "explanation": "Reel skoolbusse of ander betroubare vervoer"
+        },
+        {
+          "ctx": "Baie leerders bly ver en moet verskeie aansluitings neem om by die skool te kom.",
+          "stem": "Watter oplossing kan die probleem direk aanspreek?",
+          "correct": "'n Koshuis vir leerders wat ver bly",
+          "wrong": [
+            "'n Nuwe slagspreuk vir die skool",
+            "'n Korttermynversekering vir voorraad",
+            "'n Staafgrafiek van verkope"
+          ],
+          "explain": "'n Koshuis vir leerders wat ver bly",
+          "options": [
+            "'n Koshuis vir leerders wat ver bly",
+            "'n Nuwe slagspreuk vir die skool",
+            "'n Korttermynversekering vir voorraad",
+            "'n Staafgrafiek van verkope"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nBaie leerders bly ver en moet verskeie aansluitings neem om by die skool te kom.\n\nWatter oplossing kan die probleem direk aanspreek?",
+          "explanation": "'n Koshuis vir leerders wat ver bly"
+        },
+        {
+          "ctx": "'n Groep gebruik SCAMPER om 'n bestaande produk te verbeter.",
+          "stem": "Wat is die hoofdoel van SCAMPER?",
+          "correct": "Om nuwe of beter produkte deur sistematiese idees te skep",
+          "wrong": [
+            "Om net banklenings te bereken",
+            "Om werknemers se verlof te bepaal",
+            "Om die verhuurder te identifiseer"
+          ],
+          "explain": "Om nuwe of beter produkte deur sistematiese idees te skep",
+          "options": [
+            "Om net banklenings te bereken",
+            "Om werknemers se verlof te bepaal",
+            "Om die verhuurder te identifiseer",
+            "Om nuwe of beter produkte deur sistematiese idees te skep"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Groep gebruik SCAMPER om 'n bestaande produk te verbeter.\n\nWat is die hoofdoel van SCAMPER?",
+          "explanation": "Om nuwe of beter produkte deur sistematiese idees te skep"
+        },
+        {
+          "ctx": "'n Leerling neem die idee van 'n yskas en dink aan die teenoorgestelde: 'n houer wat hitte binne hou.",
+          "stem": "Watter metode word gebruik?",
+          "correct": "Konsepmanipulasie deur 'n bekende idee om te keer",
+          "wrong": [
+            "SWOT se bedreiging-afdeling",
+            "Indeksopstelling",
+            "Kredietwet-afkoeling"
+          ],
+          "explain": "Konsepmanipulasie deur 'n bekende idee om te keer",
+          "options": [
+            "SWOT se bedreiging-afdeling",
+            "Indeksopstelling",
+            "Konsepmanipulasie deur 'n bekende idee om te keer",
+            "Kredietwet-afkoeling"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Leerling neem die idee van 'n yskas en dink aan die teenoorgestelde: 'n houer wat hitte binne hou.\n\nWatter metode word gebruik?",
+          "explanation": "Konsepmanipulasie deur 'n bekende idee om te keer"
+        },
+        {
+          "ctx": "'n Groep aanvaar net idees wat prakties uitvoerbaar is.",
+          "stem": "Watter beginsel pas hier?",
+          "correct": "Idees moet kreatief maar uitvoerbaar wees",
+          "wrong": [
+            "Alle idees is altyd winsgewend",
+            "Net emosionele idees tel",
+            "Slegs die duurste idee is reg"
+          ],
+          "explain": "Idees moet kreatief maar uitvoerbaar wees",
+          "options": [
+            "Idees moet kreatief maar uitvoerbaar wees",
+            "Alle idees is altyd winsgewend",
+            "Net emosionele idees tel",
+            "Slegs die duurste idee is reg"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Groep aanvaar net idees wat prakties uitvoerbaar is.\n\nWatter beginsel pas hier?",
+          "explanation": "Idees moet kreatief maar uitvoerbaar wees"
+        },
+        {
+          "ctx": "'n Probleem word in kleiner dele opgebreek voordat oplossings gesoek word.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help om dele raak te sien wat makliker opgelos kan word",
+          "wrong": [
+            "Dit maak die probleem groter",
+            "Dit vervang alle besluitneming",
+            "Dit verwyder die behoefte aan klante"
+          ],
+          "explain": "Dit help om dele raak te sien wat makliker opgelos kan word",
+          "options": [
+            "Dit maak die probleem groter",
+            "Dit help om dele raak te sien wat makliker opgelos kan word",
+            "Dit vervang alle besluitneming",
+            "Dit verwyder die behoefte aan klante"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Probleem word in kleiner dele opgebreek voordat oplossings gesoek word.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help om dele raak te sien wat makliker opgelos kan word"
+        },
+        {
+          "ctx": "'n Groep dink eers aan feite, risiko's, emosies, voordele en nuwe idees voordat hulle besluit.",
+          "stem": "Watter tegniek word waarskynlik gebruik?",
+          "correct": "Die ses denkhoede",
+          "wrong": [
+            "Voetstoots-verkope",
+            "Balansstaatvergelyking",
+            "Huurkooppaaiemente"
+          ],
+          "explain": "Die ses denkhoede",
+          "options": [
+            "Die ses denkhoede",
+            "Voetstoots-verkope",
+            "Balansstaatvergelyking",
+            "Huurkooppaaiemente"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Groep dink eers aan feite, risiko's, emosies, voordele en nuwe idees voordat hulle besluit.\n\nWatter tegniek word waarskynlik gebruik?",
+          "explanation": "Die ses denkhoede"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-003",
+      "title": "Probleemoplossingsproses en denkhoede",
+      "questions": [
+        {
+          "ctx": "'n Winkel se verkope daal. Die eienaar bestudeer verkoopsverslae en klante-terugvoering.",
+          "stem": "Watter besigheidsaksie word gedoen?",
+          "correct": "Gehaltebeheer deur inligting te monitor",
+          "wrong": [
+            "Dienskontrak met werknemers",
+            "Huurkoop van toerusting",
+            "Ontwerp van 'n dekblad"
+          ],
+          "explain": "Gehaltebeheer deur inligting te monitor",
+          "options": [
+            "Dienskontrak met werknemers",
+            "Huurkoop van toerusting",
+            "Gehaltebeheer deur inligting te monitor",
+            "Ontwerp van 'n dekblad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Winkel se verkope daal. Die eienaar bestudeer verkoopsverslae en klante-terugvoering.\n\nWatter besigheidsaksie word gedoen?",
+          "explanation": "Gehaltebeheer deur inligting te monitor"
+        },
+        {
+          "ctx": "'n Besigheid identifiseer 'n probleem, definieer dit, formuleer 'n strategie, ken hulpbronne toe, implementeer, monitor en evalueer.",
+          "stem": "Wat word beskryf?",
+          "correct": "Die probleemoplossingsproses",
+          "wrong": [
+            "Die afkoelingstydperk",
+            "Die bemarkingsamestelling alleen",
+            "Die huurder se regte"
+          ],
+          "explain": "Die probleemoplossingsproses",
+          "options": [
+            "Die afkoelingstydperk",
+            "Die bemarkingsamestelling alleen",
+            "Die huurder se regte",
+            "Die probleemoplossingsproses"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid identifiseer 'n probleem, definieer dit, formuleer 'n strategie, ken hulpbronne toe, implementeer, monitor en evalueer.\n\nWat word beskryf?",
+          "explanation": "Die probleemoplossingsproses"
+        },
+        {
+          "ctx": "'n Plan is uitgevoer, maar die besigheid kyk daarna of die oplossing gewerk het.",
+          "stem": "Watter stap is dit?",
+          "correct": "Evalueer die probleemoplossing",
+          "wrong": [
+            "Identifiseer die produknaam",
+            "Bepaal die dekbladkleur",
+            "Teken as getuie"
+          ],
+          "explain": "Evalueer die probleemoplossing",
+          "options": [
+            "Identifiseer die produknaam",
+            "Evalueer die probleemoplossing",
+            "Bepaal die dekbladkleur",
+            "Teken as getuie"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Plan is uitgevoer, maar die besigheid kyk daarna of die oplossing gewerk het.\n\nWatter stap is dit?",
+          "explanation": "Evalueer die probleemoplossing"
+        },
+        {
+          "ctx": "'n Besigheid wil gesonder kos by 'n snoepwinkel verkoop. Gesondheid ondersteun die verandering, maar leerders wat pasteie verkies werk daarteen.",
+          "stem": "Watter tegniek pas hier?",
+          "correct": "Dryfkragontleding",
+          "wrong": [
+            "Nasionale Kredietwet",
+            "Spreidingsdiagram",
+            "Verkoopsvooruitskouing"
+          ],
+          "explain": "Dryfkragontleding",
+          "options": [
+            "Dryfkragontleding",
+            "Nasionale Kredietwet",
+            "Spreidingsdiagram",
+            "Verkoopsvooruitskouing"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid wil gesonder kos by 'n snoepwinkel verkoop. Gesondheid ondersteun die verandering, maar leerders wat pasteie verkies werk daarteen.\n\nWatter tegniek pas hier?",
+          "explanation": "Dryfkragontleding"
+        },
+        {
+          "ctx": "In dryfkragontleding word kragte wat verandering help en kragte wat dit teenstaan gelys.",
+          "stem": "Wat is die kragte teen verandering?",
+          "correct": "Remkragte",
+          "wrong": [
+            "Dryfkragte",
+            "Bates",
+            "Geleenthede"
+          ],
+          "explain": "Remkragte",
+          "options": [
+            "Dryfkragte",
+            "Bates",
+            "Geleenthede",
+            "Remkragte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nIn dryfkragontleding word kragte wat verandering help en kragte wat dit teenstaan gelys.\n\nWat is die kragte teen verandering?",
+          "explanation": "Remkragte"
+        },
+        {
+          "ctx": "Lede skryf idees anoniem neer, idees word op 'n blaaibord geplaas en die groep stem daaroor.",
+          "stem": "Watter tegniek word beskryf?",
+          "correct": "Nominale Groeptegniek",
+          "wrong": [
+            "SCAMPER",
+            "Voetstoots",
+            "Kontantbegroting"
+          ],
+          "explain": "Nominale Groeptegniek",
+          "options": [
+            "SCAMPER",
+            "Voetstoots",
+            "Nominale Groeptegniek",
+            "Kontantbegroting"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLede skryf idees anoniem neer, idees word op 'n blaaibord geplaas en die groep stem daaroor.\n\nWatter tegniek word beskryf?",
+          "explanation": "Nominale Groeptegniek"
+        },
+        {
+          "ctx": "'n Leerder se rol in 'n groep is om net feite en data te noem.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Wit hoed",
+          "wrong": [
+            "Rooi hoed",
+            "Groen hoed",
+            "Blou hoed"
+          ],
+          "explain": "Wit hoed",
+          "options": [
+            "Wit hoed",
+            "Rooi hoed",
+            "Groen hoed",
+            "Blou hoed"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder se rol in 'n groep is om net feite en data te noem.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Wit hoed"
+        },
+        {
+          "ctx": "'n Leerder se rol is om nuwe idees te genereer en kreatief te dink.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Groen hoed",
+          "wrong": [
+            "Wit hoed",
+            "Pers hoed",
+            "Geel hoed"
+          ],
+          "explain": "Groen hoed",
+          "options": [
+            "Wit hoed",
+            "Groen hoed",
+            "Pers hoed",
+            "Geel hoed"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder se rol is om nuwe idees te genereer en kreatief te dink.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Groen hoed"
+        },
+        {
+          "ctx": "'n Leerder wys risiko's en kritiese probleme in 'n plan uit.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Pers hoed",
+          "wrong": [
+            "Geel hoed",
+            "Wit hoed",
+            "Rooi hoed"
+          ],
+          "explain": "Pers hoed",
+          "options": [
+            "Pers hoed",
+            "Geel hoed",
+            "Wit hoed",
+            "Rooi hoed"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder wys risiko's en kritiese probleme in 'n plan uit.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Pers hoed"
+        },
+        {
+          "ctx": "'n Leerder beheer die proses, hou by die reels en sorg dat die groep fokus.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Blou hoed",
+          "wrong": [
+            "Groen hoed",
+            "Geel hoed",
+            "Rooi hoed"
+          ],
+          "explain": "Blou hoed",
+          "options": [
+            "Groen hoed",
+            "Blou hoed",
+            "Geel hoed",
+            "Rooi hoed"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder beheer die proses, hou by die reels en sorg dat die groep fokus.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Blou hoed"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-004",
+      "title": "Besigheidsgeleenthede en marknavorsing",
+      "questions": [
+        {
+          "ctx": "Thabo wil 'n kosstalletjie oopmaak en vra eers leerders wat hulle koop en hoeveel hulle sal betaal.",
+          "stem": "Watter aksie gebruik hy?",
+          "correct": "Marknavorsing",
+          "wrong": [
+            "Huurkoop",
+            "Kraamverlof",
+            "Parafering"
+          ],
+          "explain": "Marknavorsing",
+          "options": [
+            "Huurkoop",
+            "Kraamverlof",
+            "Parafering",
+            "Marknavorsing"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nThabo wil 'n kosstalletjie oopmaak en vra eers leerders wat hulle koop en hoeveel hulle sal betaal.\n\nWatter aksie gebruik hy?",
+          "explanation": "Marknavorsing"
+        },
+        {
+          "ctx": "'n Persoon koop 'n bestaande winkel sonder om te kyk of klante nog die produkte wil he.",
+          "stem": "Watter fout maak hy?",
+          "correct": "Hy ondersoek nie die markbehoefte voor die besluit nie",
+          "wrong": [
+            "Hy gebruik te veel SWOT",
+            "Hy bereken bruto wins te akkuraat",
+            "Hy kies te veel bates"
+          ],
+          "explain": "Hy ondersoek nie die markbehoefte voor die besluit nie",
+          "options": [
+            "Hy gebruik te veel SWOT",
+            "Hy ondersoek nie die markbehoefte voor die besluit nie",
+            "Hy bereken bruto wins te akkuraat",
+            "Hy kies te veel bates"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Persoon koop 'n bestaande winkel sonder om te kyk of klante nog die produkte wil he.\n\nWatter fout maak hy?",
+          "explanation": "Hy ondersoek nie die markbehoefte voor die besluit nie"
+        },
+        {
+          "ctx": "'n Besigheidsidee klink goed, maar niemand in die area wil daarvoor betaal nie.",
+          "stem": "Wat wys dit?",
+          "correct": "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie",
+          "wrong": [
+            "Elke idee is outomaties winsgewend",
+            "Marknavorsing is altyd onnodig",
+            "Slegs verpakking bepaal sukses"
+          ],
+          "explain": "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie",
+          "options": [
+            "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie",
+            "Elke idee is outomaties winsgewend",
+            "Marknavorsing is altyd onnodig",
+            "Slegs verpakking bepaal sukses"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheidsidee klink goed, maar niemand in die area wil daarvoor betaal nie.\n\nWat wys dit?",
+          "explanation": "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie"
+        },
+        {
+          "ctx": "In 'n resessie koop mense steeds basiese kos, maar minder luukse lekkernye.",
+          "stem": "Watter stelling is korrek?",
+          "correct": "Mense sny dikwels begeertes voor behoeftes",
+          "wrong": [
+            "Behoeftes en begeertes is dieselfde",
+            "Luukse goed word altyd eerste gekoop",
+            "Navorsing tel nie in 'n resessie nie"
+          ],
+          "explain": "Mense sny dikwels begeertes voor behoeftes",
+          "options": [
+            "Behoeftes en begeertes is dieselfde",
+            "Luukse goed word altyd eerste gekoop",
+            "Navorsing tel nie in 'n resessie nie",
+            "Mense sny dikwels begeertes voor behoeftes"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nIn 'n resessie koop mense steeds basiese kos, maar minder luukse lekkernye.\n\nWatter stelling is korrek?",
+          "explanation": "Mense sny dikwels begeertes voor behoeftes"
+        },
+        {
+          "ctx": "'n Entrepreneur ondersoek of mense melkprodukte in 'n koue dorp sal koop.",
+          "stem": "Wat toets hy?",
+          "correct": "Of daar 'n werklike markbehoefte bestaan",
+          "wrong": [
+            "Of 'n huurkontrak geparafeer is",
+            "Of 'n logo helder genoeg is",
+            "Of werknemers verlof kry"
+          ],
+          "explain": "Of daar 'n werklike markbehoefte bestaan",
+          "options": [
+            "Of 'n huurkontrak geparafeer is",
+            "Of 'n logo helder genoeg is",
+            "Of daar 'n werklike markbehoefte bestaan",
+            "Of werknemers verlof kry"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Entrepreneur ondersoek of mense melkprodukte in 'n koue dorp sal koop.\n\nWat toets hy?",
+          "explanation": "Of daar 'n werklike markbehoefte bestaan"
+        },
+        {
+          "ctx": "'n Leerder gebruik koerantartikels, tydskrifte en die internet om 'n mark te verstaan.",
+          "stem": "Watter soort hulpbronne gebruik sy?",
+          "correct": "Navorsingshulpbronne",
+          "wrong": [
+            "Kontrakpartye",
+            "Slegs bates",
+            "Loonaftrekkings"
+          ],
+          "explain": "Navorsingshulpbronne",
+          "options": [
+            "Navorsingshulpbronne",
+            "Kontrakpartye",
+            "Slegs bates",
+            "Loonaftrekkings"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder gebruik koerantartikels, tydskrifte en die internet om 'n mark te verstaan.\n\nWatter soort hulpbronne gebruik sy?",
+          "explanation": "Navorsingshulpbronne"
+        },
+        {
+          "ctx": "'n SWOT-analise wys interne sterk/swak punte en eksterne geleenthede/bedreigings.",
+          "stem": "Waarvoor help dit by 'n nuwe idee?",
+          "correct": "Om lewensvatbaarheid beter te beoordeel",
+          "wrong": [
+            "Om alle risiko's te verwyder",
+            "Om kliÃ«nte irrelevant te maak",
+            "Om belasting nooit te betaal nie"
+          ],
+          "explain": "Om lewensvatbaarheid beter te beoordeel",
+          "options": [
+            "Om alle risiko's te verwyder",
+            "Om lewensvatbaarheid beter te beoordeel",
+            "Om kliÃ«nte irrelevant te maak",
+            "Om belasting nooit te betaal nie"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n SWOT-analise wys interne sterk/swak punte en eksterne geleenthede/bedreigings.\n\nWaarvoor help dit by 'n nuwe idee?",
+          "explanation": "Om lewensvatbaarheid beter te beoordeel"
+        },
+        {
+          "ctx": "'n Klant wil 'n produk he, maar is nie bereid om daarvoor te betaal nie.",
+          "stem": "Wat moet die entrepreneur verstaan?",
+          "correct": "Vraag en betalingsbereidheid moet getoets word",
+          "wrong": [
+            "Slegs die kleur van die produk is belangrik",
+            "Die klant is outomaties teikenmark",
+            "Geen prysnavorsing is nodig nie"
+          ],
+          "explain": "Vraag en betalingsbereidheid moet getoets word",
+          "options": [
+            "Vraag en betalingsbereidheid moet getoets word",
+            "Slegs die kleur van die produk is belangrik",
+            "Die klant is outomaties teikenmark",
+            "Geen prysnavorsing is nodig nie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Klant wil 'n produk he, maar is nie bereid om daarvoor te betaal nie.\n\nWat moet die entrepreneur verstaan?",
+          "explanation": "Vraag en betalingsbereidheid moet getoets word"
+        },
+        {
+          "ctx": "'n Leerder verwar mikro-omgewing met mark- en makro-omgewing.",
+          "stem": "Watter hulpmiddel kan help om faktore te orden?",
+          "correct": "SWOT-analise",
+          "wrong": [
+            "Voetstoots-klousule",
+            "Kennisgewing van beÃ«indiging",
+            "Sluitingsaldo"
+          ],
+          "explain": "SWOT-analise",
+          "options": [
+            "Voetstoots-klousule",
+            "SWOT-analise",
+            "Kennisgewing van beÃ«indiging",
+            "Sluitingsaldo"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder verwar mikro-omgewing met mark- en makro-omgewing.\n\nWatter hulpmiddel kan help om faktore te orden?",
+          "explanation": "SWOT-analise"
+        },
+        {
+          "ctx": "'n Navorsingsinstrument word ontwerp om klante se behoeftes en begeertes te meet.",
+          "stem": "Wat is 'n voorbeeld hiervan?",
+          "correct": "'n Vraelys",
+          "wrong": [
+            "'n Huurkoopooreenkoms",
+            "'n Jaarlikse verlofvorm",
+            "'n Adviesraad"
+          ],
+          "explain": "'n Vraelys",
+          "options": [
+            "'n Huurkoopooreenkoms",
+            "'n Jaarlikse verlofvorm",
+            "'n Vraelys",
+            "'n Adviesraad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Navorsingsinstrument word ontwerp om klante se behoeftes en begeertes te meet.\n\nWat is 'n voorbeeld hiervan?",
+          "explanation": "'n Vraelys"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-005",
+      "title": "SWOT en navorsingsinstrumente",
+      "questions": [
+        {
+          "ctx": "'n Besigheid het genoeg toerusting en opgeleide werknemers.",
+          "stem": "Waar pas dit in 'n SWOT-analise?",
+          "correct": "Sterk punte",
+          "wrong": [
+            "Swak punte",
+            "Bedreigings",
+            "Geleenthede"
+          ],
+          "explain": "Sterk punte",
+          "options": [
+            "Sterk punte",
+            "Swak punte",
+            "Bedreigings",
+            "Geleenthede"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid het genoeg toerusting en opgeleide werknemers.\n\nWaar pas dit in 'n SWOT-analise?",
+          "explanation": "Sterk punte"
+        },
+        {
+          "ctx": "'n Besigheid se naam is onbekend en die werknemers is onprofessioneel.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Swak punte",
+          "wrong": [
+            "Sterk punte",
+            "Geleenthede",
+            "Kontantinvloei"
+          ],
+          "explain": "Swak punte",
+          "options": [
+            "Sterk punte",
+            "Swak punte",
+            "Geleenthede",
+            "Kontantinvloei"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid se naam is onbekend en die werknemers is onprofessioneel.\n\nWaar pas dit in SWOT?",
+          "explanation": "Swak punte"
+        },
+        {
+          "ctx": "'n Nuwe tegnologie maak dit goedkoper om die produk te vervaardig.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Geleentheid",
+          "wrong": [
+            "Swak punt",
+            "Bedreiging",
+            "Bate"
+          ],
+          "explain": "Geleentheid",
+          "options": [
+            "Swak punt",
+            "Bedreiging",
+            "Geleentheid",
+            "Bate"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Nuwe tegnologie maak dit goedkoper om die produk te vervaardig.\n\nWaar pas dit in SWOT?",
+          "explanation": "Geleentheid"
+        },
+        {
+          "ctx": "'n Nuwe mededinger open langs jou besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Bedreiging",
+          "wrong": [
+            "Sterk punt",
+            "Geleentheid",
+            "Eienaarsbelang"
+          ],
+          "explain": "Bedreiging",
+          "options": [
+            "Sterk punt",
+            "Geleentheid",
+            "Eienaarsbelang",
+            "Bedreiging"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Nuwe mededinger open langs jou besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Bedreiging"
+        },
+        {
+          "ctx": "'n Vraelys vra: 'Wat sal jy betaal?', 'Hoe gereeld koop jy?', en 'Waar koop jy tans?'",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit versamel inligting oor prys, vraag en koopgedrag",
+          "wrong": [
+            "Dit vervang alle finansiele data",
+            "Dit bewys dat geen mededingers bestaan nie",
+            "Dit is 'n huurkontrak"
+          ],
+          "explain": "Dit versamel inligting oor prys, vraag en koopgedrag",
+          "options": [
+            "Dit vervang alle finansiele data",
+            "Dit versamel inligting oor prys, vraag en koopgedrag",
+            "Dit bewys dat geen mededingers bestaan nie",
+            "Dit is 'n huurkontrak"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Vraelys vra: 'Wat sal jy betaal?', 'Hoe gereeld koop jy?', en 'Waar koop jy tans?'\n\nHoekom is dit nuttig?",
+          "explanation": "Dit versamel inligting oor prys, vraag en koopgedrag"
+        },
+        {
+          "ctx": "'n Leerder vra toestemming voor 'n onderhoud en verduidelik die doel van die navorsing.",
+          "stem": "Watter beginsel word gevolg?",
+          "correct": "Etiese en verantwoordelike navorsing",
+          "wrong": [
+            "Onwettige aftrekking",
+            "Foetstoots koop",
+            "Onbeplande bemarking"
+          ],
+          "explain": "Etiese en verantwoordelike navorsing",
+          "options": [
+            "Etiese en verantwoordelike navorsing",
+            "Onwettige aftrekking",
+            "Foetstoots koop",
+            "Onbeplande bemarking"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder vra toestemming voor 'n onderhoud en verduidelik die doel van die navorsing.\n\nWatter beginsel word gevolg?",
+          "explanation": "Etiese en verantwoordelike navorsing"
+        },
+        {
+          "ctx": "Data wat jy self by klante insamel deur vraelyste of onderhoude is...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Primere data",
+          "wrong": [
+            "Sekondere data",
+            "Eienaarsbelang",
+            "Bedryfsuitgawe"
+          ],
+          "explain": "Primere data",
+          "options": [
+            "Sekondere data",
+            "Eienaarsbelang",
+            "Bedryfsuitgawe",
+            "Primere data"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nData wat jy self by klante insamel deur vraelyste of onderhoude is...\n\nKies die korrekte term.",
+          "explanation": "Primere data"
+        },
+        {
+          "ctx": "Inligting wat reeds deur iemand anders nagevors en gepubliseer is, is...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Sekondere data",
+          "wrong": [
+            "Primere data",
+            "Bruto wins",
+            "Huurkoop"
+          ],
+          "explain": "Sekondere data",
+          "options": [
+            "Primere data",
+            "Bruto wins",
+            "Sekondere data",
+            "Huurkoop"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nInligting wat reeds deur iemand anders nagevors en gepubliseer is, is...\n\nKies die korrekte term.",
+          "explanation": "Sekondere data"
+        },
+        {
+          "ctx": "'n Leerder wil weet wie die teikenmark is, wie die mededingers is en watter verskaffers beskikbaar is.",
+          "stem": "Waarom doen sy navorsing?",
+          "correct": "Om die besigheidsgeleentheid beter te beoordeel",
+          "wrong": [
+            "Om alle wetgewing te vermy",
+            "Om net 'n prent by te voeg",
+            "Om banklening as wins te wys"
+          ],
+          "explain": "Om die besigheidsgeleentheid beter te beoordeel",
+          "options": [
+            "Om die besigheidsgeleentheid beter te beoordeel",
+            "Om alle wetgewing te vermy",
+            "Om net 'n prent by te voeg",
+            "Om banklening as wins te wys"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder wil weet wie die teikenmark is, wie die mededingers is en watter verskaffers beskikbaar is.\n\nWaarom doen sy navorsing?",
+          "explanation": "Om die besigheidsgeleentheid beter te beoordeel"
+        },
+        {
+          "ctx": "'n Goeie vraelys bevat verskillende vraagsoorte en minstens 10 respondente.",
+          "stem": "Hoekom is dit beter?",
+          "correct": "Dit gee meer betroubare en bruikbare inligting",
+          "wrong": [
+            "Dit maak antwoorde minder relevant",
+            "Dit vermy alle klantinligting",
+            "Dit is net vir kontrakte bedoel"
+          ],
+          "explain": "Dit gee meer betroubare en bruikbare inligting",
+          "options": [
+            "Dit maak antwoorde minder relevant",
+            "Dit gee meer betroubare en bruikbare inligting",
+            "Dit vermy alle klantinligting",
+            "Dit is net vir kontrakte bedoel"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Goeie vraelys bevat verskillende vraagsoorte en minstens 10 respondente.\n\nHoekom is dit beter?",
+          "explanation": "Dit gee meer betroubare en bruikbare inligting"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-006",
+      "title": "Besigheidsligging: basiese faktore",
+      "questions": [
+        {
+          "ctx": "'n Klerewinkel kies 'n perseel naby 'n skool en taxi-roete omdat baie klante daar verby beweeg.",
+          "stem": "Watter liggingsfaktor is die belangrikste?",
+          "correct": "Toegang tot die teikenmark",
+          "wrong": [
+            "Arbeidswetgewing alleen",
+            "Voetstoots-verkope",
+            "Uitvoerende opsomming"
+          ],
+          "explain": "Toegang tot die teikenmark",
+          "options": [
+            "Arbeidswetgewing alleen",
+            "Toegang tot die teikenmark",
+            "Voetstoots-verkope",
+            "Uitvoerende opsomming"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Klerewinkel kies 'n perseel naby 'n skool en taxi-roete omdat baie klante daar verby beweeg.\n\nWatter liggingsfaktor is die belangrikste?",
+          "explanation": "Toegang tot die teikenmark"
+        },
+        {
+          "ctx": "'n Fabriek benodig baie opgeleide werkers en ondersoek of daar genoeg mense met die regte vaardighede in die area is.",
+          "stem": "Watter faktor word ondersoek?",
+          "correct": "Arbeidsmark",
+          "wrong": [
+            "Teikenmark",
+            "Logo-ontwerp",
+            "Kredietwet"
+          ],
+          "explain": "Arbeidsmark",
+          "options": [
+            "Teikenmark",
+            "Logo-ontwerp",
+            "Arbeidsmark",
+            "Kredietwet"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Fabriek benodig baie opgeleide werkers en ondersoek of daar genoeg mense met die regte vaardighede in die area is.\n\nWatter faktor word ondersoek?",
+          "explanation": "Arbeidsmark"
+        },
+        {
+          "ctx": "Leerders verwar arbeidsmark en teikenmark.",
+          "stem": "Watter verduideliking is korrek?",
+          "correct": "Arbeidsmark is werkers; teikenmark is klante",
+          "wrong": [
+            "Arbeidsmark is klante; teikenmark is banklenings",
+            "Albei beteken verskaffers",
+            "Albei beteken net mededingers"
+          ],
+          "explain": "Arbeidsmark is werkers; teikenmark is klante",
+          "options": [
+            "Arbeidsmark is klante; teikenmark is banklenings",
+            "Albei beteken verskaffers",
+            "Albei beteken net mededingers",
+            "Arbeidsmark is werkers; teikenmark is klante"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nLeerders verwar arbeidsmark en teikenmark.\n\nWatter verduideliking is korrek?",
+          "explanation": "Arbeidsmark is werkers; teikenmark is klante"
+        },
+        {
+          "ctx": "'n Besigheid moet naby water, elektrisiteit en paaie wees.",
+          "stem": "Watter liggingsfaktor is dit?",
+          "correct": "Infrastruktuur",
+          "wrong": [
+            "Kraamverlof",
+            "Bemarkingsamestelling",
+            "Rooi denkhoed"
+          ],
+          "explain": "Infrastruktuur",
+          "options": [
+            "Kraamverlof",
+            "Infrastruktuur",
+            "Bemarkingsamestelling",
+            "Rooi denkhoed"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid moet naby water, elektrisiteit en paaie wees.\n\nWatter liggingsfaktor is dit?",
+          "explanation": "Infrastruktuur"
+        },
+        {
+          "ctx": "'n Bakkery se oonde benodig driefase-elektrisiteit.",
+          "stem": "Wat moet die eienaar ondersoek voor ligging gekies word?",
+          "correct": "Of die perseel geskikte elektrisiteit het",
+          "wrong": [
+            "Of die kliÃ«nte alle kontrakte teken",
+            "Of 'n sektorgrafiek mooi lyk",
+            "Of die werknemer 'n logo kan teken"
+          ],
+          "explain": "Of die perseel geskikte elektrisiteit het",
+          "options": [
+            "Of die perseel geskikte elektrisiteit het",
+            "Of die kliÃ«nte alle kontrakte teken",
+            "Of 'n sektorgrafiek mooi lyk",
+            "Of die werknemer 'n logo kan teken"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Bakkery se oonde benodig driefase-elektrisiteit.\n\nWat moet die eienaar ondersoek voor ligging gekies word?",
+          "explanation": "Of die perseel geskikte elektrisiteit het"
+        },
+        {
+          "ctx": "'n Winkel wil oopmaak in 'n gebied met baie misdaad en swak straatligte.",
+          "stem": "Watter faktor moet oorweeg word?",
+          "correct": "Misdaad en veiligheid",
+          "wrong": [
+            "Verpakking se kleur",
+            "Uitvoerende opsomming",
+            "SMART se meetbaarheid"
+          ],
+          "explain": "Misdaad en veiligheid",
+          "options": [
+            "Verpakking se kleur",
+            "Uitvoerende opsomming",
+            "SMART se meetbaarheid",
+            "Misdaad en veiligheid"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Winkel wil oopmaak in 'n gebied met baie misdaad en swak straatligte.\n\nWatter faktor moet oorweeg word?",
+          "explanation": "Misdaad en veiligheid"
+        },
+        {
+          "ctx": "'n Fabriek wil naby sy grondstofverskaffer wees om vervoerkoste te verlaag.",
+          "stem": "Watter faktor word gebruik?",
+          "correct": "Nabyheid aan grondstowwe en verskaffers",
+          "wrong": [
+            "Demografie alleen",
+            "Getuies by kontrakte",
+            "Advertensie-uitleg"
+          ],
+          "explain": "Nabyheid aan grondstowwe en verskaffers",
+          "options": [
+            "Demografie alleen",
+            "Getuies by kontrakte",
+            "Nabyheid aan grondstowwe en verskaffers",
+            "Advertensie-uitleg"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Fabriek wil naby sy grondstofverskaffer wees om vervoerkoste te verlaag.\n\nWatter faktor word gebruik?",
+          "explanation": "Nabyheid aan grondstowwe en verskaffers"
+        },
+        {
+          "ctx": "'n Munisipaliteit bied laer water- en elektrisiteitstariewe aan as 'n fabriek daar open.",
+          "stem": "Watter konsep word gewys?",
+          "correct": "Konsessies of plaaslike aansporings",
+          "wrong": [
+            "Kollektiewe bedinging",
+            "Tekstuur in advertensies",
+            "Leningsterugbetaling"
+          ],
+          "explain": "Konsessies of plaaslike aansporings",
+          "options": [
+            "Konsessies of plaaslike aansporings",
+            "Kollektiewe bedinging",
+            "Tekstuur in advertensies",
+            "Leningsterugbetaling"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Munisipaliteit bied laer water- en elektrisiteitstariewe aan as 'n fabriek daar open.\n\nWatter konsep word gewys?",
+          "explanation": "Konsessies of plaaslike aansporings"
+        },
+        {
+          "ctx": "'n Toerismebesigheid wil naby hotelle, besienswaardighede en 'n lughawe wees.",
+          "stem": "Watter ligging pas die beste?",
+          "correct": "Naby toeriste en vervoerpunte",
+          "wrong": [
+            "Ver van alle paaie en klante",
+            "Slegs in 'n geslote fabriek",
+            "In 'n gebied sonder dienslewering"
+          ],
+          "explain": "Naby toeriste en vervoerpunte",
+          "options": [
+            "Ver van alle paaie en klante",
+            "Naby toeriste en vervoerpunte",
+            "Slegs in 'n geslote fabriek",
+            "In 'n gebied sonder dienslewering"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Toerismebesigheid wil naby hotelle, besienswaardighede en 'n lughawe wees.\n\nWatter ligging pas die beste?",
+          "explanation": "Naby toeriste en vervoerpunte"
+        },
+        {
+          "ctx": "'n Landbou-onderneming kies 'n plek wat nie te ver van hoofpaaie af is nie.",
+          "stem": "Hoekom is dit belangrik?",
+          "correct": "Produkte en insette kan makliker vervoer word",
+          "wrong": [
+            "Dit verander alle behoeftes in begeertes",
+            "Dit maak mededinging onmoontlik",
+            "Dit vervang finansiÃ«le ontleding"
+          ],
+          "explain": "Produkte en insette kan makliker vervoer word",
+          "options": [
+            "Produkte en insette kan makliker vervoer word",
+            "Dit verander alle behoeftes in begeertes",
+            "Dit maak mededinging onmoontlik",
+            "Dit vervang finansiÃ«le ontleding"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Landbou-onderneming kies 'n plek wat nie te ver van hoofpaaie af is nie.\n\nHoekom is dit belangrik?",
+          "explanation": "Produkte en insette kan makliker vervoer word"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-007",
+      "title": "Ligging: fabrieke, vervoer en infrastruktuur",
+      "questions": [
+        {
+          "ctx": "'n Fabriek naby sy munisipale klante betaal minder om klaarprodukte af te lewer.",
+          "stem": "Watter voordeel het die ligging?",
+          "correct": "Laer vervoerkoste",
+          "wrong": [
+            "HoÃ«r huurkooppaaiemente",
+            "Geen infrastruktuur nodig nie",
+            "Minder marknavorsing"
+          ],
+          "explain": "Laer vervoerkoste",
+          "options": [
+            "HoÃ«r huurkooppaaiemente",
+            "Geen infrastruktuur nodig nie",
+            "Laer vervoerkoste",
+            "Minder marknavorsing"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Fabriek naby sy munisipale klante betaal minder om klaarprodukte af te lewer.\n\nWatter voordeel het die ligging?",
+          "explanation": "Laer vervoerkoste"
+        },
+        {
+          "ctx": "Brandstofpryse styg vinnig.",
+          "stem": "Hoekom raak dit ligging?",
+          "correct": "Vervoer oor lang afstande word duurder",
+          "wrong": [
+            "Bemarkingskleur word minder belangrik",
+            "Werknemers kry outomaties meer verlof",
+            "Alle produkte word bates"
+          ],
+          "explain": "Vervoer oor lang afstande word duurder",
+          "options": [
+            "Bemarkingskleur word minder belangrik",
+            "Werknemers kry outomaties meer verlof",
+            "Alle produkte word bates",
+            "Vervoer oor lang afstande word duurder"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nBrandstofpryse styg vinnig.\n\nHoekom raak dit ligging?",
+          "explanation": "Vervoer oor lang afstande word duurder"
+        },
+        {
+          "ctx": "'n Fabriek gebruik groot masjiene en baie water.",
+          "stem": "Watter faktor moet sterk oorweeg word?",
+          "correct": "Betroubare elektrisiteit en watervoorsiening",
+          "wrong": [
+            "Huurder se naam",
+            "Sektordiagram",
+            "Afkoelingstydperk"
+          ],
+          "explain": "Betroubare elektrisiteit en watervoorsiening",
+          "options": [
+            "Huurder se naam",
+            "Betroubare elektrisiteit en watervoorsiening",
+            "Sektordiagram",
+            "Afkoelingstydperk"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Fabriek gebruik groot masjiene en baie water.\n\nWatter faktor moet sterk oorweeg word?",
+          "explanation": "Betroubare elektrisiteit en watervoorsiening"
+        },
+        {
+          "ctx": "Kragonderbrekings stop produksie en kragopwekkers kos ekstra geld.",
+          "stem": "Watter risiko word beskryf?",
+          "correct": "Onbetroubare infrastruktuur verhoog koste",
+          "wrong": [
+            "Swak parafering",
+            "Goeie mededinging",
+            "Verhoogde eienaarsbelang"
+          ],
+          "explain": "Onbetroubare infrastruktuur verhoog koste",
+          "options": [
+            "Onbetroubare infrastruktuur verhoog koste",
+            "Swak parafering",
+            "Goeie mededinging",
+            "Verhoogde eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nKragonderbrekings stop produksie en kragopwekkers kos ekstra geld.\n\nWatter risiko word beskryf?",
+          "explanation": "Onbetroubare infrastruktuur verhoog koste"
+        },
+        {
+          "ctx": "'n Arbeidsintensiewe onderneming het baie werkers nodig.",
+          "stem": "Wat beteken arbeidsintensief?",
+          "correct": "Die besigheid gebruik baie arbeid in sy werking",
+          "wrong": [
+            "Die besigheid gebruik geen werknemers nie",
+            "Die besigheid verkoop net krediet",
+            "Die besigheid het net 'n dekblad"
+          ],
+          "explain": "Die besigheid gebruik baie arbeid in sy werking",
+          "options": [
+            "Die besigheid gebruik geen werknemers nie",
+            "Die besigheid verkoop net krediet",
+            "Die besigheid het net 'n dekblad",
+            "Die besigheid gebruik baie arbeid in sy werking"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Arbeidsintensiewe onderneming het baie werkers nodig.\n\nWat beteken arbeidsintensief?",
+          "explanation": "Die besigheid gebruik baie arbeid in sy werking"
+        },
+        {
+          "ctx": "'n Stad het baie opgeleide en onopgeleide werkers beskikbaar.",
+          "stem": "Waarom is dit aantreklik vir 'n fabriek?",
+          "correct": "Die arbeidsmark kan in personeelkbehoeftes voorsien",
+          "wrong": [
+            "Die markontleding word onnodig",
+            "Die fabriek hoef nie bates te koop nie",
+            "Alle lone word nul"
+          ],
+          "explain": "Die arbeidsmark kan in personeelkbehoeftes voorsien",
+          "options": [
+            "Die markontleding word onnodig",
+            "Die fabriek hoef nie bates te koop nie",
+            "Die arbeidsmark kan in personeelkbehoeftes voorsien",
+            "Alle lone word nul"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Stad het baie opgeleide en onopgeleide werkers beskikbaar.\n\nWaarom is dit aantreklik vir 'n fabriek?",
+          "explanation": "Die arbeidsmark kan in personeelkbehoeftes voorsien"
+        },
+        {
+          "ctx": "'n Goeie werker weier 'n pos omdat daar geen betroubare openbare vervoer na die fabriek is nie.",
+          "stem": "Watter faktor benadeel die besigheid?",
+          "correct": "Werknemersvervoer",
+          "wrong": [
+            "Produkverpakking",
+            "Kredietterugbetaling",
+            "Uitvoerende opsomming"
+          ],
+          "explain": "Werknemersvervoer",
+          "options": [
+            "Werknemersvervoer",
+            "Produkverpakking",
+            "Kredietterugbetaling",
+            "Uitvoerende opsomming"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Goeie werker weier 'n pos omdat daar geen betroubare openbare vervoer na die fabriek is nie.\n\nWatter faktor benadeel die besigheid?",
+          "explanation": "Werknemersvervoer"
+        },
+        {
+          "ctx": "'n Fabriek naby Durban bedien hoofsaaklik die Durban-mark.",
+          "stem": "Wat is die voordeel?",
+          "correct": "Klaarprodukte hoef nie ver vervoer te word nie",
+          "wrong": [
+            "Die teikenmark verdwyn",
+            "Alle mededinging word onwettig",
+            "Bates word laste"
+          ],
+          "explain": "Klaarprodukte hoef nie ver vervoer te word nie",
+          "options": [
+            "Die teikenmark verdwyn",
+            "Klaarprodukte hoef nie ver vervoer te word nie",
+            "Alle mededinging word onwettig",
+            "Bates word laste"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Fabriek naby Durban bedien hoofsaaklik die Durban-mark.\n\nWat is die voordeel?",
+          "explanation": "Klaarprodukte hoef nie ver vervoer te word nie"
+        },
+        {
+          "ctx": "'n Besigheid moet billike salarisse, voordele en goeie werksomstandighede bied om goeie werkers te lok.",
+          "stem": "Watter faktor word beklemtoon?",
+          "correct": "Arbeidsmark en werknemersbehoud",
+          "wrong": [
+            "Slegs kleurkontras",
+            "Voetstoots verkoop",
+            "Sektorgrafiek"
+          ],
+          "explain": "Arbeidsmark en werknemersbehoud",
+          "options": [
+            "Arbeidsmark en werknemersbehoud",
+            "Slegs kleurkontras",
+            "Voetstoots verkoop",
+            "Sektorgrafiek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid moet billike salarisse, voordele en goeie werksomstandighede bied om goeie werkers te lok.\n\nWatter faktor word beklemtoon?",
+          "explanation": "Arbeidsmark en werknemersbehoud"
+        },
+        {
+          "ctx": "Gauteng, Durban-Pinetown, Port Elizabeth-Uitenhage en die Wes-Kaap is voorbeelde van groot fabrieksgebiede.",
+          "stem": "Waarom kom fabrieke dikwels daar voor?",
+          "correct": "Daar is beter toegang tot markte, vervoer en infrastruktuur",
+          "wrong": [
+            "Daar is geen mededingers nie",
+            "Daar is geen arbeidswette nie",
+            "Daar is geen behoefte aan grondstowwe nie"
+          ],
+          "explain": "Daar is beter toegang tot markte, vervoer en infrastruktuur",
+          "options": [
+            "Daar is geen mededingers nie",
+            "Daar is beter toegang tot markte, vervoer en infrastruktuur",
+            "Daar is geen arbeidswette nie",
+            "Daar is geen behoefte aan grondstowwe nie"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nGauteng, Durban-Pinetown, Port Elizabeth-Uitenhage en die Wes-Kaap is voorbeelde van groot fabrieksgebiede.\n\nWaarom kom fabrieke dikwels daar voor?",
+          "explanation": "Daar is beter toegang tot markte, vervoer en infrastruktuur"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-008",
+      "title": "Ligging: regulasies, mededinging en arbeidswetgewing",
+      "questions": [
+        {
+          "ctx": "'n Afvalmaatskappy word beboet omdat afval onwettig gestoor is.",
+          "stem": "Watter liggingfaktor word beklemtoon?",
+          "correct": "Omgewingsregulasies en afvalbeheer",
+          "wrong": [
+            "Uitvoerende opsomming",
+            "Dienskontrak alleen",
+            "SMART-doelwit"
+          ],
+          "explain": "Omgewingsregulasies en afvalbeheer",
+          "options": [
+            "Uitvoerende opsomming",
+            "Dienskontrak alleen",
+            "SMART-doelwit",
+            "Omgewingsregulasies en afvalbeheer"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Afvalmaatskappy word beboet omdat afval onwettig gestoor is.\n\nWatter liggingfaktor word beklemtoon?",
+          "explanation": "Omgewingsregulasies en afvalbeheer"
+        },
+        {
+          "ctx": "'n Fabriek se aktiwiteite kan besoedeling veroorsaak.",
+          "stem": "Wat moet die eienaar voor vestiging ondersoek?",
+          "correct": "Omgewingsimpak en wetlike vereistes",
+          "wrong": [
+            "Net die naam van die besigheid",
+            "Slegs slagspreuk",
+            "Getuies se handtekeninge"
+          ],
+          "explain": "Omgewingsimpak en wetlike vereistes",
+          "options": [
+            "Net die naam van die besigheid",
+            "Omgewingsimpak en wetlike vereistes",
+            "Slegs slagspreuk",
+            "Getuies se handtekeninge"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Fabriek se aktiwiteite kan besoedeling veroorsaak.\n\nWat moet die eienaar voor vestiging ondersoek?",
+          "explanation": "Omgewingsimpak en wetlike vereistes"
+        },
+        {
+          "ctx": "Daar is reeds verskeie fabrieke wat dieselfde produk in die area vervaardig.",
+          "stem": "Watter faktor moet die onderneming ondersoek?",
+          "correct": "Mededinging",
+          "wrong": [
+            "Kraamverlof",
+            "Batewaardasie",
+            "Indeksblad"
+          ],
+          "explain": "Mededinging",
+          "options": [
+            "Mededinging",
+            "Kraamverlof",
+            "Batewaardasie",
+            "Indeksblad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDaar is reeds verskeie fabrieke wat dieselfde produk in die area vervaardig.\n\nWatter faktor moet die onderneming ondersoek?",
+          "explanation": "Mededinging"
+        },
+        {
+          "ctx": "'n Besigheid reageer op baie mededingers deur beter gehalte en waarde te bied.",
+          "stem": "Watter strategie gebruik dit?",
+          "correct": "Differensiasie deur waarde en gehalte",
+          "wrong": [
+            "Alle pryse sonder rede verhoog",
+            "Alle klante ignoreer",
+            "Geen marknavorsing doen"
+          ],
+          "explain": "Differensiasie deur waarde en gehalte",
+          "options": [
+            "Alle pryse sonder rede verhoog",
+            "Alle klante ignoreer",
+            "Geen marknavorsing doen",
+            "Differensiasie deur waarde en gehalte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid reageer op baie mededingers deur beter gehalte en waarde te bied.\n\nWatter strategie gebruik dit?",
+          "explanation": "Differensiasie deur waarde en gehalte"
+        },
+        {
+          "ctx": "'n Gebied het hoe misdaad, daarom moet die besigheid meer aan sekuriteit en versekering bestee.",
+          "stem": "Wat is die gevolg van misdaad?",
+          "correct": "HoÃ«r bedryfskoste",
+          "wrong": [
+            "Laer behoefte aan personeel",
+            "Geen kontantuitvloei",
+            "Meer gratis elektrisiteit"
+          ],
+          "explain": "HoÃ«r bedryfskoste",
+          "options": [
+            "Laer behoefte aan personeel",
+            "Geen kontantuitvloei",
+            "HoÃ«r bedryfskoste",
+            "Meer gratis elektrisiteit"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Gebied het hoe misdaad, daarom moet die besigheid meer aan sekuriteit en versekering bestee.\n\nWat is die gevolg van misdaad?",
+          "explanation": "HoÃ«r bedryfskoste"
+        },
+        {
+          "ctx": "'n Werkgewer wil werknemers baie lang skofte laat werk om koste te spaar.",
+          "stem": "Watter faktor moet hy oorweeg?",
+          "correct": "Werksure en arbeidswetgewing",
+          "wrong": [
+            "Produknaam en logo alleen",
+            "Kredietafkoeling",
+            "Sektorverhouding"
+          ],
+          "explain": "Werksure en arbeidswetgewing",
+          "options": [
+            "Werksure en arbeidswetgewing",
+            "Produknaam en logo alleen",
+            "Kredietafkoeling",
+            "Sektorverhouding"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Werkgewer wil werknemers baie lang skofte laat werk om koste te spaar.\n\nWatter faktor moet hy oorweeg?",
+          "explanation": "Werksure en arbeidswetgewing"
+        },
+        {
+          "ctx": "'n Besigheid moet weet hoeveel verlof, siekteverlof en kraamverlof werknemers mag kry.",
+          "stem": "Watter wetlike gebied raak dit?",
+          "correct": "Basiese diensvoorwaardes",
+          "wrong": [
+            "Slegs marknavorsing",
+            "Voetstoots-klousule",
+            "Vervoerdiagram"
+          ],
+          "explain": "Basiese diensvoorwaardes",
+          "options": [
+            "Slegs marknavorsing",
+            "Basiese diensvoorwaardes",
+            "Voetstoots-klousule",
+            "Vervoerdiagram"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid moet weet hoeveel verlof, siekteverlof en kraamverlof werknemers mag kry.\n\nWatter wetlike gebied raak dit?",
+          "explanation": "Basiese diensvoorwaardes"
+        },
+        {
+          "ctx": "'n Groot onderneming met meer as 50 werknemers moet regstellende aksie-planne ontwikkel.",
+          "stem": "Watter wet hou hiermee verband?",
+          "correct": "Wet op Gelyke Indiensneming",
+          "wrong": [
+            "Wet op Huurbehuising",
+            "Nasionale Kredietwet",
+            "Wet op Korttermynversekering"
+          ],
+          "explain": "Wet op Gelyke Indiensneming",
+          "options": [
+            "Wet op Gelyke Indiensneming",
+            "Wet op Huurbehuising",
+            "Nasionale Kredietwet",
+            "Wet op Korttermynversekering"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Groot onderneming met meer as 50 werknemers moet regstellende aksie-planne ontwikkel.\n\nWatter wet hou hiermee verband?",
+          "explanation": "Wet op Gelyke Indiensneming"
+        },
+        {
+          "ctx": "Werkers en werkgewers gebruik vakbonde en kollektiewe bedinging om arbeidskwessies te hanteer.",
+          "stem": "Watter wet is die naaste hieraan?",
+          "correct": "Wet op Arbeidsverhoudinge",
+          "wrong": [
+            "Wet op Verbruikersbeskerming",
+            "Wet op Langtermynversekering",
+            "Wet op Huurbehuising"
+          ],
+          "explain": "Wet op Arbeidsverhoudinge",
+          "options": [
+            "Wet op Verbruikersbeskerming",
+            "Wet op Arbeidsverhoudinge",
+            "Wet op Langtermynversekering",
+            "Wet op Huurbehuising"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nWerkers en werkgewers gebruik vakbonde en kollektiewe bedinging om arbeidskwessies te hanteer.\n\nWatter wet is die naaste hieraan?",
+          "explanation": "Wet op Arbeidsverhoudinge"
+        },
+        {
+          "ctx": "'n Werkgewer wil geld van 'n werknemer se salaris aftrek sonder toestemming of wettige rede.",
+          "stem": "Watter beginsel geld?",
+          "correct": "Aftrekkings moet wettig en toegelaat wees",
+          "wrong": [
+            "Enige aftrekking is altyd toegelaat",
+            "Aftrekkings geld net vir klante",
+            "Aftrekkings is altyd 'n bate"
+          ],
+          "explain": "Aftrekkings moet wettig en toegelaat wees",
+          "options": [
+            "Enige aftrekking is altyd toegelaat",
+            "Aftrekkings geld net vir klante",
+            "Aftrekkings moet wettig en toegelaat wees",
+            "Aftrekkings is altyd 'n bate"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Werkgewer wil geld van 'n werknemer se salaris aftrek sonder toestemming of wettige rede.\n\nWatter beginsel geld?",
+          "explanation": "Aftrekkings moet wettig en toegelaat wees"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-009",
+      "title": "Kontrakte: beginsels en begrippe",
+      "questions": [
+        {
+          "ctx": "Twee partye stem skriftelik saam oor prys, afleweringsdatum en betaling.",
+          "stem": "Wat word gevorm?",
+          "correct": "'n Kontrak",
+          "wrong": [
+            "'n Staafgrafiek",
+            "'n SWOT-bedreiging",
+            "'n Markleemte"
+          ],
+          "explain": "'n Kontrak",
+          "options": [
+            "'n Kontrak",
+            "'n Staafgrafiek",
+            "'n SWOT-bedreiging",
+            "'n Markleemte"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nTwee partye stem skriftelik saam oor prys, afleweringsdatum en betaling.\n\nWat word gevorm?",
+          "explanation": "'n Kontrak"
+        },
+        {
+          "ctx": "'n Kontrak mag nie teen statutÃªre of gemenereg wees nie.",
+          "stem": "Watter vereiste word beskryf?",
+          "correct": "Geldigheid",
+          "wrong": [
+            "Tekstuur",
+            "Spreidingsdiagram",
+            "Bemarkbaarheid"
+          ],
+          "explain": "Geldigheid",
+          "options": [
+            "Tekstuur",
+            "Geldigheid",
+            "Spreidingsdiagram",
+            "Bemarkbaarheid"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Kontrak mag nie teen statutÃªre of gemenereg wees nie.\n\nWatter vereiste word beskryf?",
+          "explanation": "Geldigheid"
+        },
+        {
+          "ctx": "'n Kontrak moet aan wetlike of party-vereistes voldoen.",
+          "stem": "Watter begrip pas?",
+          "correct": "Formaliteit",
+          "wrong": [
+            "Bruto wins",
+            "Gelykbreek",
+            "Mededingersreaksie"
+          ],
+          "explain": "Formaliteit",
+          "options": [
+            "Bruto wins",
+            "Gelykbreek",
+            "Formaliteit",
+            "Mededingersreaksie"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Kontrak moet aan wetlike of party-vereistes voldoen.\n\nWatter begrip pas?",
+          "explanation": "Formaliteit"
+        },
+        {
+          "ctx": "'n Getuie teken om te bevestig dat die regte persoon die kontrak geteken het.",
+          "stem": "Wat doen die getuie?",
+          "correct": "Bevestig die ondertekening deur die regte persone",
+          "wrong": [
+            "Gaan altyd elke inhoudelike klousule na",
+            "Betaal die koper se skuld",
+            "Verander die kontrak se prys"
+          ],
+          "explain": "Bevestig die ondertekening deur die regte persone",
+          "options": [
+            "Gaan altyd elke inhoudelike klousule na",
+            "Betaal die koper se skuld",
+            "Verander die kontrak se prys",
+            "Bevestig die ondertekening deur die regte persone"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Getuie teken om te bevestig dat die regte persoon die kontrak geteken het.\n\nWat doen die getuie?",
+          "explanation": "Bevestig die ondertekening deur die regte persone"
+        },
+        {
+          "ctx": "'n Tweedehandse item word verkoop 'soos dit is'.",
+          "stem": "Watter term pas?",
+          "correct": "Voetstoots",
+          "wrong": [
+            "Kollektiewe bedinging",
+            "Bemarkingsamestelling",
+            "Kontantbegroting"
+          ],
+          "explain": "Voetstoots",
+          "options": [
+            "Kollektiewe bedinging",
+            "Voetstoots",
+            "Bemarkingsamestelling",
+            "Kontantbegroting"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Tweedehandse item word verkoop 'soos dit is'.\n\nWatter term pas?",
+          "explanation": "Voetstoots"
+        },
+        {
+          "ctx": "'n Kontrak se elke bladsy word geparafeer.",
+          "stem": "Hoekom word dit gedoen?",
+          "correct": "Om te wys dat alle bladsye deel van die ooreenkoms is",
+          "wrong": [
+            "Om verkope te verhoog",
+            "Om werknemers te werf",
+            "Om mededingers te meet"
+          ],
+          "explain": "Om te wys dat alle bladsye deel van die ooreenkoms is",
+          "options": [
+            "Om te wys dat alle bladsye deel van die ooreenkoms is",
+            "Om verkope te verhoog",
+            "Om werknemers te werf",
+            "Om mededingers te meet"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kontrak se elke bladsy word geparafeer.\n\nHoekom word dit gedoen?",
+          "explanation": "Om te wys dat alle bladsye deel van die ooreenkoms is"
+        },
+        {
+          "ctx": "'n Besigheid teken 'n kontrak sonder om die fyn druk te lees en kry later ekstra koste.",
+          "stem": "Wat is die belangrikste les?",
+          "correct": "Lees alle voorwaardes deeglik voor ondertekening",
+          "wrong": [
+            "Kontrakte hoef nie gelees te word nie",
+            "Getuies betaal altyd ekstra koste",
+            "Voetstoots kanselleer elke kontrak"
+          ],
+          "explain": "Lees alle voorwaardes deeglik voor ondertekening",
+          "options": [
+            "Kontrakte hoef nie gelees te word nie",
+            "Getuies betaal altyd ekstra koste",
+            "Voetstoots kanselleer elke kontrak",
+            "Lees alle voorwaardes deeglik voor ondertekening"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid teken 'n kontrak sonder om die fyn druk te lees en kry later ekstra koste.\n\nWat is die belangrikste les?",
+          "explanation": "Lees alle voorwaardes deeglik voor ondertekening"
+        },
+        {
+          "ctx": "Kontrakte hou verband met die regsraamwerk en makro-omgewing.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Besighede moet wetlike gevolge verstaan",
+          "wrong": [
+            "Regte en pligte is nooit bindend nie",
+            "Wetgewing raak net produkkleur",
+            "Alle kontrakte is mondeling"
+          ],
+          "explain": "Besighede moet wetlike gevolge verstaan",
+          "options": [
+            "Regte en pligte is nooit bindend nie",
+            "Wetgewing raak net produkkleur",
+            "Besighede moet wetlike gevolge verstaan",
+            "Alle kontrakte is mondeling"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nKontrakte hou verband met die regsraamwerk en makro-omgewing.\n\nWaarom is dit belangrik?",
+          "explanation": "Besighede moet wetlike gevolge verstaan"
+        },
+        {
+          "ctx": "'n Besigheid ondersoek of 'n kontrak aan wetlike vereistes voldoen.",
+          "stem": "Watter vaardigheid word geoefen?",
+          "correct": "Kontrak-evaluering",
+          "wrong": [
+            "Slegs grafiekteken",
+            "Vervoerkoste skatting",
+            "Kreatiewe verpakking"
+          ],
+          "explain": "Kontrak-evaluering",
+          "options": [
+            "Kontrak-evaluering",
+            "Slegs grafiekteken",
+            "Vervoerkoste skatting",
+            "Kreatiewe verpakking"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid ondersoek of 'n kontrak aan wetlike vereistes voldoen.\n\nWatter vaardigheid word geoefen?",
+          "explanation": "Kontrak-evaluering"
+        },
+        {
+          "ctx": "'n Koper koop 'n voetstoots-item en kla later oor 'n sigbare fout wat hy aanvaar het.",
+          "stem": "Wat is die risiko vir die koper?",
+          "correct": "Hy het die item soos dit is aanvaar",
+          "wrong": [
+            "Die verkoper moet altyd 'n nuwe item gee",
+            "Die koop word outomaties 'n banklening",
+            "Die getuie word die eienaar"
+          ],
+          "explain": "Hy het die item soos dit is aanvaar",
+          "options": [
+            "Die verkoper moet altyd 'n nuwe item gee",
+            "Hy het die item soos dit is aanvaar",
+            "Die koop word outomaties 'n banklening",
+            "Die getuie word die eienaar"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Koper koop 'n voetstoots-item en kla later oor 'n sigbare fout wat hy aanvaar het.\n\nWat is die risiko vir die koper?",
+          "explanation": "Hy het die item soos dit is aanvaar"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-010",
+      "title": "Soorte kontrakte in besigheid",
+      "questions": [
+        {
+          "ctx": "Pen en Papier betaal maandeliks om winkelruimte in 'n winkelsentrum te gebruik.",
+          "stem": "Watter kontrak is dit?",
+          "correct": "Huurooreenkoms",
+          "wrong": [
+            "Dienskontrak",
+            "Korttermynversekering",
+            "Marknavorsingsvraelys"
+          ],
+          "explain": "Huurooreenkoms",
+          "options": [
+            "Dienskontrak",
+            "Huurooreenkoms",
+            "Korttermynversekering",
+            "Marknavorsingsvraelys"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nPen en Papier betaal maandeliks om winkelruimte in 'n winkelsentrum te gebruik.\n\nWatter kontrak is dit?",
+          "explanation": "Huurooreenkoms"
+        },
+        {
+          "ctx": "By 'n huurooreenkoms gebruik die huurder die eiendom maar word nie eienaar nie.",
+          "stem": "Wie is die huurder?",
+          "correct": "Die party wat die eiendom huur en gebruik",
+          "wrong": [
+            "Die party wat die eiendom besit en verhuur",
+            "Die bank wat die lening gee",
+            "Die getuie wat teken"
+          ],
+          "explain": "Die party wat die eiendom huur en gebruik",
+          "options": [
+            "Die party wat die eiendom besit en verhuur",
+            "Die bank wat die lening gee",
+            "Die party wat die eiendom huur en gebruik",
+            "Die getuie wat teken"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nBy 'n huurooreenkoms gebruik die huurder die eiendom maar word nie eienaar nie.\n\nWie is die huurder?",
+          "explanation": "Die party wat die eiendom huur en gebruik"
+        },
+        {
+          "ctx": "Vyf permanente werknemers stem in om spesifieke werk te doen en die besigheid betaal hulle.",
+          "stem": "Watter kontrak is dit?",
+          "correct": "Dienskontrakte",
+          "wrong": [
+            "Huurkoop",
+            "Sektorgrafiek",
+            "Verbruikersvraelys"
+          ],
+          "explain": "Dienskontrakte",
+          "options": [
+            "Huurkoop",
+            "Sektorgrafiek",
+            "Verbruikersvraelys",
+            "Dienskontrakte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nVyf permanente werknemers stem in om spesifieke werk te doen en die besigheid betaal hulle.\n\nWatter kontrak is dit?",
+          "explanation": "Dienskontrakte"
+        },
+        {
+          "ctx": "'n Besigheid betaal 'n deposito en daarna maandelikse paaiemente vir 'n voertuig. Die verkoper bly eienaar tot volle betaling.",
+          "stem": "Watter ooreenkoms is dit?",
+          "correct": "Huurkoopooreenkoms",
+          "wrong": [
+            "Huurooreenkoms vir perseel",
+            "Verzekering teen diefstal",
+            "Bemarkingsplan"
+          ],
+          "explain": "Huurkoopooreenkoms",
+          "options": [
+            "Huurooreenkoms vir perseel",
+            "Huurkoopooreenkoms",
+            "Verzekering teen diefstal",
+            "Bemarkingsplan"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid betaal 'n deposito en daarna maandelikse paaiemente vir 'n voertuig. Die verkoper bly eienaar tot volle betaling.\n\nWatter ooreenkoms is dit?",
+          "explanation": "Huurkoopooreenkoms"
+        },
+        {
+          "ctx": "As Pen en Papier nie die huurkooppaaiemente betaal nie, kan die verkoper die voertuig terugneem.",
+          "stem": "Watter regsimplikasie word gewys?",
+          "correct": "Wanbetaling kan tot terugneming van die bate lei",
+          "wrong": [
+            "Die koper kry die bate gratis",
+            "Die verkoper verloor alle regte",
+            "Die kontrak word 'n SWOT-analise"
+          ],
+          "explain": "Wanbetaling kan tot terugneming van die bate lei",
+          "options": [
+            "Wanbetaling kan tot terugneming van die bate lei",
+            "Die koper kry die bate gratis",
+            "Die verkoper verloor alle regte",
+            "Die kontrak word 'n SWOT-analise"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nAs Pen en Papier nie die huurkooppaaiemente betaal nie, kan die verkoper die voertuig terugneem.\n\nWatter regsimplikasie word gewys?",
+          "explanation": "Wanbetaling kan tot terugneming van die bate lei"
+        },
+        {
+          "ctx": "'n Winkel betaal premies sodat diefstal of skade aan voorraad gedek kan word.",
+          "stem": "Watter kontrak is dit?",
+          "correct": "Korttermynversekering",
+          "wrong": [
+            "Dienskontrak",
+            "Nasionale Kredietwet se afkoeling",
+            "Vervoerdiens alleen"
+          ],
+          "explain": "Korttermynversekering",
+          "options": [
+            "Dienskontrak",
+            "Nasionale Kredietwet se afkoeling",
+            "Vervoerdiens alleen",
+            "Korttermynversekering"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Winkel betaal premies sodat diefstal of skade aan voorraad gedek kan word.\n\nWatter kontrak is dit?",
+          "explanation": "Korttermynversekering"
+        },
+        {
+          "ctx": "'n Besigheid huur kleurkopieerders omdat dit nie genoeg kontant het om dit te koop nie.",
+          "stem": "Hoekom kan huur nuttig wees?",
+          "correct": "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe",
+          "wrong": [
+            "Dit maak die verhuurder die werknemer",
+            "Dit verwyder alle maandelikse koste",
+            "Dit verander die produk in 'n behoefte"
+          ],
+          "explain": "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe",
+          "options": [
+            "Dit maak die verhuurder die werknemer",
+            "Dit verwyder alle maandelikse koste",
+            "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe",
+            "Dit verander die produk in 'n behoefte"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheid huur kleurkopieerders omdat dit nie genoeg kontant het om dit te koop nie.\n\nHoekom kan huur nuttig wees?",
+          "explanation": "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe"
+        },
+        {
+          "ctx": "Linda neem 'n banklening van R60 000 en betaal oor 36 maande terug.",
+          "stem": "Watter ooreenkoms word die beste gewys?",
+          "correct": "Lenings- of kredietooreenkoms",
+          "wrong": [
+            "Sektordiagram",
+            "Personeelbeleid",
+            "Plek in bemarking"
+          ],
+          "explain": "Lenings- of kredietooreenkoms",
+          "options": [
+            "Lenings- of kredietooreenkoms",
+            "Sektordiagram",
+            "Personeelbeleid",
+            "Plek in bemarking"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda neem 'n banklening van R60 000 en betaal oor 36 maande terug.\n\nWatter ooreenkoms word die beste gewys?",
+          "explanation": "Lenings- of kredietooreenkoms"
+        },
+        {
+          "ctx": "Linda koop gereeld seep, wasmiddel en kafeteria-voorraad aan.",
+          "stem": "Watter soort besigheidsooreenkoms kan sy nodig hÃª?",
+          "correct": "Verskafferkontrak",
+          "wrong": [
+            "Kraamverlof",
+            "Visieverklaring",
+            "Grafiekas"
+          ],
+          "explain": "Verskafferkontrak",
+          "options": [
+            "Kraamverlof",
+            "Verskafferkontrak",
+            "Visieverklaring",
+            "Grafiekas"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nLinda koop gereeld seep, wasmiddel en kafeteria-voorraad aan.\n\nWatter soort besigheidsooreenkoms kan sy nodig hÃª?",
+          "explanation": "Verskafferkontrak"
+        },
+        {
+          "ctx": "Linda het masjiene wat kan breek en diens benodig.",
+          "stem": "Watter kontrak kan haar help?",
+          "correct": "Onderhoudskontrak",
+          "wrong": [
+            "Afkoelingstydperk",
+            "Teikenmarkkontrak",
+            "Dekbladkontrak"
+          ],
+          "explain": "Onderhoudskontrak",
+          "options": [
+            "Onderhoudskontrak",
+            "Afkoelingstydperk",
+            "Teikenmarkkontrak",
+            "Dekbladkontrak"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda het masjiene wat kan breek en diens benodig.\n\nWatter kontrak kan haar help?",
+          "explanation": "Onderhoudskontrak"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-011",
+      "title": "Kredietwet en regsimplikasies",
+      "questions": [
+        {
+          "ctx": "'n Verbruiker koop 'n duur item op krediet en wil binne 5 besigheidsdae kanselleer.",
+          "stem": "Watter wet beskerm hom?",
+          "correct": "Nasionale Kredietwet",
+          "wrong": [
+            "Wet op Gelyke Indiensneming",
+            "Wet op Arbeidsverhoudinge",
+            "Wet op Basiese Diensvoorwaardes"
+          ],
+          "explain": "Nasionale Kredietwet",
+          "options": [
+            "Wet op Gelyke Indiensneming",
+            "Wet op Arbeidsverhoudinge",
+            "Nasionale Kredietwet",
+            "Wet op Basiese Diensvoorwaardes"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Verbruiker koop 'n duur item op krediet en wil binne 5 besigheidsdae kanselleer.\n\nWatter wet beskerm hom?",
+          "explanation": "Nasionale Kredietwet"
+        },
+        {
+          "ctx": "'n Koper gee skriftelike kennis aan die kredietverskaffer om 'n kredietkontrak te kanselleer.",
+          "stem": "Watter vereiste word nagekom?",
+          "correct": "Kansellasie moet skriftelik gekommunikeer word",
+          "wrong": [
+            "Kansellasie moet mondelings by 'n vriend gebeur",
+            "Kansellasie gebeur net deur 'n logo",
+            "Kansellasie is nooit moontlik nie"
+          ],
+          "explain": "Kansellasie moet skriftelik gekommunikeer word",
+          "options": [
+            "Kansellasie moet mondelings by 'n vriend gebeur",
+            "Kansellasie gebeur net deur 'n logo",
+            "Kansellasie is nooit moontlik nie",
+            "Kansellasie moet skriftelik gekommunikeer word"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Koper gee skriftelike kennis aan die kredietverskaffer om 'n kredietkontrak te kanselleer.\n\nWatter vereiste word nagekom?",
+          "explanation": "Kansellasie moet skriftelik gekommunikeer word"
+        },
+        {
+          "ctx": "'n Item wat op krediet gekoop is, moet teruggegee word in die oorspronklike verpakking.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Die bate moet in geskikte toestand terugbesorg word",
+          "wrong": [
+            "Die winkel moet die item vernietig",
+            "Die koper word outomaties verhuurder",
+            "Die bank word die teikenmark"
+          ],
+          "explain": "Die bate moet in geskikte toestand terugbesorg word",
+          "options": [
+            "Die winkel moet die item vernietig",
+            "Die bate moet in geskikte toestand terugbesorg word",
+            "Die koper word outomaties verhuurder",
+            "Die bank word die teikenmark"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Item wat op krediet gekoop is, moet teruggegee word in die oorspronklike verpakking.\n\nWaarom is dit belangrik?",
+          "explanation": "Die bate moet in geskikte toestand terugbesorg word"
+        },
+        {
+          "ctx": "'n Kredietverskaffer ontvang geldige kennis en die item terug.",
+          "stem": "Binne hoe lank moet die verbruiker volgens die nota terugbetaal word?",
+          "correct": "Binne 7 dae",
+          "wrong": [
+            "Binne 36 maande",
+            "Na 12 jaar",
+            "Slegs einde van kwartaal"
+          ],
+          "explain": "Binne 7 dae",
+          "options": [
+            "Binne 7 dae",
+            "Binne 36 maande",
+            "Na 12 jaar",
+            "Slegs einde van kwartaal"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kredietverskaffer ontvang geldige kennis en die item terug.\n\nBinne hoe lank moet die verbruiker volgens die nota terugbetaal word?",
+          "explanation": "Binne 7 dae"
+        },
+        {
+          "ctx": "'n Besigheid teken kontrakte met werknemers, verskaffers en 'n verhuurder.",
+          "stem": "Waarom moet die eienaar regsimplikasies verstaan?",
+          "correct": "Elke kontrak skep regte en verpligtinge",
+          "wrong": [
+            "Kontrakte is nooit bindend nie",
+            "Regte bestaan net in advertensies",
+            "Verpligtinge geld net vir klante"
+          ],
+          "explain": "Elke kontrak skep regte en verpligtinge",
+          "options": [
+            "Kontrakte is nooit bindend nie",
+            "Regte bestaan net in advertensies",
+            "Verpligtinge geld net vir klante",
+            "Elke kontrak skep regte en verpligtinge"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid teken kontrakte met werknemers, verskaffers en 'n verhuurder.\n\nWaarom moet die eienaar regsimplikasies verstaan?",
+          "explanation": "Elke kontrak skep regte en verpligtinge"
+        },
+        {
+          "ctx": "'n Werknemer moet spesifieke werk doen en die werkgewer moet salaris betaal.",
+          "stem": "Watter regsimplikasie is korrek?",
+          "correct": "Albei partye het verpligtinge in die dienskontrak",
+          "wrong": [
+            "Net die werknemer het pligte",
+            "Net die klant het pligte",
+            "Geen party hoef iets te doen nie"
+          ],
+          "explain": "Albei partye het verpligtinge in die dienskontrak",
+          "options": [
+            "Net die werknemer het pligte",
+            "Net die klant het pligte",
+            "Albei partye het verpligtinge in die dienskontrak",
+            "Geen party hoef iets te doen nie"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Werknemer moet spesifieke werk doen en die werkgewer moet salaris betaal.\n\nWatter regsimplikasie is korrek?",
+          "explanation": "Albei partye het verpligtinge in die dienskontrak"
+        },
+        {
+          "ctx": "'n Huurder betaal nie huurgeld soos ooreengekom nie.",
+          "stem": "Wat kan die regsgevolg wees?",
+          "correct": "Die verhuurder kan stappe neem volgens die huurooreenkoms",
+          "wrong": [
+            "Die huurder word outomaties eienaar",
+            "Die kontrak word 'n grafiek",
+            "Die huur word altyd nul"
+          ],
+          "explain": "Die verhuurder kan stappe neem volgens die huurooreenkoms",
+          "options": [
+            "Die verhuurder kan stappe neem volgens die huurooreenkoms",
+            "Die huurder word outomaties eienaar",
+            "Die kontrak word 'n grafiek",
+            "Die huur word altyd nul"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Huurder betaal nie huurgeld soos ooreengekom nie.\n\nWat kan die regsgevolg wees?",
+          "explanation": "Die verhuurder kan stappe neem volgens die huurooreenkoms"
+        },
+        {
+          "ctx": "'n Versekerde besigheid betaal nie premies nie.",
+          "stem": "Wat kan gebeur?",
+          "correct": "Die versekeraar kan moontlik nie verliese dek nie",
+          "wrong": [
+            "Die polis betaal altyd uit",
+            "Die premie word 'n bate",
+            "Die klant kry gratis voorraad"
+          ],
+          "explain": "Die versekeraar kan moontlik nie verliese dek nie",
+          "options": [
+            "Die polis betaal altyd uit",
+            "Die versekeraar kan moontlik nie verliese dek nie",
+            "Die premie word 'n bate",
+            "Die klant kry gratis voorraad"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Versekerde besigheid betaal nie premies nie.\n\nWat kan gebeur?",
+          "explanation": "Die versekeraar kan moontlik nie verliese dek nie"
+        },
+        {
+          "ctx": "'n Besigheid wil alle kontrakte net mondelings hou, al is daar groot finansiÃ«le risiko's.",
+          "stem": "Wat is die risiko?",
+          "correct": "Dit kan later moeilik wees om voorwaardes te bewys",
+          "wrong": [
+            "Mondelinge kontrakte is altyd sterker",
+            "Bewyse is nooit nodig nie",
+            "Skriftelike kontrakte is onwettig"
+          ],
+          "explain": "Dit kan later moeilik wees om voorwaardes te bewys",
+          "options": [
+            "Dit kan later moeilik wees om voorwaardes te bewys",
+            "Mondelinge kontrakte is altyd sterker",
+            "Bewyse is nooit nodig nie",
+            "Skriftelike kontrakte is onwettig"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid wil alle kontrakte net mondelings hou, al is daar groot finansiÃ«le risiko's.\n\nWat is die risiko?",
+          "explanation": "Dit kan later moeilik wees om voorwaardes te bewys"
+        },
+        {
+          "ctx": "'n Kontrak se fyn druk bevat ekstra fooie en kansellasievoorwaardes.",
+          "stem": "Wat moet 'n besigheid doen?",
+          "correct": "Die fyn druk lees en verstaan voor ondertekening",
+          "wrong": [
+            "Net die titel lees",
+            "Die fyn druk weggooi",
+            "Slegs die logo vergelyk"
+          ],
+          "explain": "Die fyn druk lees en verstaan voor ondertekening",
+          "options": [
+            "Net die titel lees",
+            "Die fyn druk lees en verstaan voor ondertekening",
+            "Die fyn druk weggooi",
+            "Slegs die logo vergelyk"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Kontrak se fyn druk bevat ekstra fooie en kansellasievoorwaardes.\n\nWat moet 'n besigheid doen?",
+          "explanation": "Die fyn druk lees en verstaan voor ondertekening"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-012",
+      "title": "Aanbiedings: voorbereiding en probleme",
+      "questions": [
+        {
+          "ctx": "'n Leerder praat duidelik, wys 'n eenvoudige grafiek en gebruik net die belangrikste punte.",
+          "stem": "Watter eienskap het die aanbieding?",
+          "correct": "Akkuraat en bondig",
+          "wrong": [
+            "Verward en irrelevant",
+            "Slegs mondeling sonder struktuur",
+            "Onleesbaar en te lank"
+          ],
+          "explain": "Akkuraat en bondig",
+          "options": [
+            "Verward en irrelevant",
+            "Slegs mondeling sonder struktuur",
+            "Onleesbaar en te lank",
+            "Akkuraat en bondig"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Leerder praat duidelik, wys 'n eenvoudige grafiek en gebruik net die belangrikste punte.\n\nWatter eienskap het die aanbieding?",
+          "explanation": "Akkuraat en bondig"
+        },
+        {
+          "ctx": "'n Spreker weet nie wat sy boodskap is of wie die gehoor is nie.",
+          "stem": "Wat is die grootste voorbereidingsfout?",
+          "correct": "Die doel en gehoor is nie duidelik bepaal nie",
+          "wrong": [
+            "Die spreker het te veel kontant",
+            "Die spreker het die indeks reg",
+            "Die spreker het te min kontrakte"
+          ],
+          "explain": "Die doel en gehoor is nie duidelik bepaal nie",
+          "options": [
+            "Die spreker het te veel kontant",
+            "Die doel en gehoor is nie duidelik bepaal nie",
+            "Die spreker het die indeks reg",
+            "Die spreker het te min kontrakte"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Spreker weet nie wat sy boodskap is of wie die gehoor is nie.\n\nWat is die grootste voorbereidingsfout?",
+          "explanation": "Die doel en gehoor is nie duidelik bepaal nie"
+        },
+        {
+          "ctx": "'n PowerPoint-aanbieding misluk tydens 'n kragonderbreking en daar is geen notas nie.",
+          "stem": "Wat ontbreek?",
+          "correct": "'n Rugsteunplan",
+          "wrong": [
+            "'n Huurkoopooreenkoms",
+            "'n Afkoelingstydperk",
+            "'n SWOT-bedreiging"
+          ],
+          "explain": "'n Rugsteunplan",
+          "options": [
+            "'n Rugsteunplan",
+            "'n Huurkoopooreenkoms",
+            "'n Afkoelingstydperk",
+            "'n SWOT-bedreiging"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n PowerPoint-aanbieding misluk tydens 'n kragonderbreking en daar is geen notas nie.\n\nWat ontbreek?",
+          "explanation": "'n Rugsteunplan"
+        },
+        {
+          "ctx": "'n Spreker skryf hoofpunte op 'n blaaibord wanneer tegnologie faal.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel",
+          "wrong": [
+            "Dit kanselleer die hele projek",
+            "Dit vervang alle feite",
+            "Dit maak die gehoor siek"
+          ],
+          "explain": "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel",
+          "options": [
+            "Dit kanselleer die hele projek",
+            "Dit vervang alle feite",
+            "Dit maak die gehoor siek",
+            "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Spreker skryf hoofpunte op 'n blaaibord wanneer tegnologie faal.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel"
+        },
+        {
+          "ctx": "'n Verlengkoord is te kort en mense kan daaroor struikel.",
+          "stem": "Watter aspek word beklemtoon?",
+          "correct": "Veiligheid en tegniese voorbereiding",
+          "wrong": [
+            "Kraamverlof",
+            "Markseisoene",
+            "Voetstoots"
+          ],
+          "explain": "Veiligheid en tegniese voorbereiding",
+          "options": [
+            "Kraamverlof",
+            "Markseisoene",
+            "Veiligheid en tegniese voorbereiding",
+            "Voetstoots"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Verlengkoord is te kort en mense kan daaroor struikel.\n\nWatter aspek word beklemtoon?",
+          "explanation": "Veiligheid en tegniese voorbereiding"
+        },
+        {
+          "ctx": "Die gehoor weet dat die spreker se syfers verkeerd is.",
+          "stem": "Wat verloor die spreker?",
+          "correct": "Geloofwaardigheid",
+          "wrong": [
+            "Huurregte",
+            "Kredietafkoeling",
+            "Eienaarsbelang"
+          ],
+          "explain": "Geloofwaardigheid",
+          "options": [
+            "Geloofwaardigheid",
+            "Huurregte",
+            "Kredietafkoeling",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDie gehoor weet dat die spreker se syfers verkeerd is.\n\nWat verloor die spreker?",
+          "explanation": "Geloofwaardigheid"
+        },
+        {
+          "ctx": "'n Leerder gebruik visuele hulpmiddels om die gehoor se belangstelling te prikkel.",
+          "stem": "Wat word verbeter?",
+          "correct": "Die impak en verstaanbaarheid van die aanbieding",
+          "wrong": [
+            "Die wettigheid van 'n huurkontrak",
+            "Die hoogte van banklening",
+            "Die aantal werknemersverlofdae"
+          ],
+          "explain": "Die impak en verstaanbaarheid van die aanbieding",
+          "options": [
+            "Die wettigheid van 'n huurkontrak",
+            "Die impak en verstaanbaarheid van die aanbieding",
+            "Die hoogte van banklening",
+            "Die aantal werknemersverlofdae"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder gebruik visuele hulpmiddels om die gehoor se belangstelling te prikkel.\n\nWat word verbeter?",
+          "explanation": "Die impak en verstaanbaarheid van die aanbieding"
+        },
+        {
+          "ctx": "'n Besigheidsaanbieding moet verbaal en nie-verbaal sterk wees.",
+          "stem": "Wat is 'n nie-verbale element?",
+          "correct": "Grafieke, skyfies of liggaamstaal",
+          "wrong": [
+            "Slegs salarisbetalings",
+            "Slegs banklenings",
+            "Slegs huurkontrakte"
+          ],
+          "explain": "Grafieke, skyfies of liggaamstaal",
+          "options": [
+            "Grafieke, skyfies of liggaamstaal",
+            "Slegs salarisbetalings",
+            "Slegs banklenings",
+            "Slegs huurkontrakte"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheidsaanbieding moet verbaal en nie-verbaal sterk wees.\n\nWat is 'n nie-verbale element?",
+          "explanation": "Grafieke, skyfies of liggaamstaal"
+        },
+        {
+          "ctx": "'n Aanbieder praat vir 30 minute oor onbelangrike besonderhede.",
+          "stem": "Watter beginsel word oortree?",
+          "correct": "Bondigheid en relevansie",
+          "wrong": [
+            "Kollektiewe bedinging",
+            "Voetstootsverkoop",
+            "Balansstaatvergelyking"
+          ],
+          "explain": "Bondigheid en relevansie",
+          "options": [
+            "Kollektiewe bedinging",
+            "Bondigheid en relevansie",
+            "Voetstootsverkoop",
+            "Balansstaatvergelyking"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Aanbieder praat vir 30 minute oor onbelangrike besonderhede.\n\nWatter beginsel word oortree?",
+          "explanation": "Bondigheid en relevansie"
+        },
+        {
+          "ctx": "Leerders oefen eers in klein groepies voordat hulle voor die klas praat.",
+          "stem": "Watter vaardigheid word ontwikkel?",
+          "correct": "Aanbiedingsvaardigheid en selfvertroue",
+          "wrong": [
+            "Aftrekkings uit salaris",
+            "Vervoerkoste berekening",
+            "Huurkoopregte"
+          ],
+          "explain": "Aanbiedingsvaardigheid en selfvertroue",
+          "options": [
+            "Aftrekkings uit salaris",
+            "Vervoerkoste berekening",
+            "Aanbiedingsvaardigheid en selfvertroue",
+            "Huurkoopregte"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLeerders oefen eers in klein groepies voordat hulle voor die klas praat.\n\nWatter vaardigheid word ontwikkel?",
+          "explanation": "Aanbiedingsvaardigheid en selfvertroue"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-013",
+      "title": "Oudiovisuele hulpmiddels en grafieke",
+      "questions": [
+        {
+          "ctx": "'n Besigheid wil verkope oor ses maande wys.",
+          "stem": "Watter grafiek is die beste om verandering oor tyd te toon?",
+          "correct": "Lyngrafiek",
+          "wrong": [
+            "Sektorgrafiek",
+            "Huurooreenkoms",
+            "SWOT-matriks"
+          ],
+          "explain": "Lyngrafiek",
+          "options": [
+            "Lyngrafiek",
+            "Sektorgrafiek",
+            "Huurooreenkoms",
+            "SWOT-matriks"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid wil verkope oor ses maande wys.\n\nWatter grafiek is die beste om verandering oor tyd te toon?",
+          "explanation": "Lyngrafiek"
+        },
+        {
+          "ctx": "'n Leerder wil verkope per provinsie vergelyk.",
+          "stem": "Watter grafiek pas die beste?",
+          "correct": "Staafgrafiek",
+          "wrong": [
+            "Nasionale Kredietwet",
+            "Voetstoots-klousule",
+            "Dienskontrak"
+          ],
+          "explain": "Staafgrafiek",
+          "options": [
+            "Nasionale Kredietwet",
+            "Staafgrafiek",
+            "Voetstoots-klousule",
+            "Dienskontrak"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder wil verkope per provinsie vergelyk.\n\nWatter grafiek pas die beste?",
+          "explanation": "Staafgrafiek"
+        },
+        {
+          "ctx": "'n Aanbieder wil wys watter deel elke produk tot totale verkope bydra.",
+          "stem": "Watter grafiek pas?",
+          "correct": "Sektorgrafiek",
+          "wrong": [
+            "Lyngrafiek vir tyd",
+            "Huurkoopstaat",
+            "Indeksblad"
+          ],
+          "explain": "Sektorgrafiek",
+          "options": [
+            "Lyngrafiek vir tyd",
+            "Huurkoopstaat",
+            "Sektorgrafiek",
+            "Indeksblad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Aanbieder wil wys watter deel elke produk tot totale verkope bydra.\n\nWatter grafiek pas?",
+          "explanation": "Sektorgrafiek"
+        },
+        {
+          "ctx": "'n Entrepreneur wys 'n model van sy nuwe produk aan beleggers.",
+          "stem": "Watter hulpmiddel word gebruik?",
+          "correct": "Model van die ontwerp",
+          "wrong": [
+            "Arbeidsmarklys",
+            "Kredietkennisgewing",
+            "Siekteverlofstaat"
+          ],
+          "explain": "Model van die ontwerp",
+          "options": [
+            "Arbeidsmarklys",
+            "Kredietkennisgewing",
+            "Siekteverlofstaat",
+            "Model van die ontwerp"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Entrepreneur wys 'n model van sy nuwe produk aan beleggers.\n\nWatter hulpmiddel word gebruik?",
+          "explanation": "Model van die ontwerp"
+        },
+        {
+          "ctx": "'n Leerder gebruik kaarte en foto's om die ligging van 'n besigheid te verduidelik.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help die gehoor die plek visueel verstaan",
+          "wrong": [
+            "Dit vervang alle finansies",
+            "Dit maak kontrakte ongeldig",
+            "Dit bewys wins sonder data"
+          ],
+          "explain": "Dit help die gehoor die plek visueel verstaan",
+          "options": [
+            "Dit vervang alle finansies",
+            "Dit help die gehoor die plek visueel verstaan",
+            "Dit maak kontrakte ongeldig",
+            "Dit bewys wins sonder data"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder gebruik kaarte en foto's om die ligging van 'n besigheid te verduidelik.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help die gehoor die plek visueel verstaan"
+        },
+        {
+          "ctx": "'n Proses word met stappe en pyle gewys.",
+          "stem": "Watter hulpmiddel pas die beste?",
+          "correct": "Vloeidiagram",
+          "wrong": [
+            "Versekeringspolis",
+            "Kraamverlofvorm",
+            "Huurkoopooreenkoms"
+          ],
+          "explain": "Vloeidiagram",
+          "options": [
+            "Vloeidiagram",
+            "Versekeringspolis",
+            "Kraamverlofvorm",
+            "Huurkoopooreenkoms"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Proses word met stappe en pyle gewys.\n\nWatter hulpmiddel pas die beste?",
+          "explanation": "Vloeidiagram"
+        },
+        {
+          "ctx": "'n Grafiek wys los datapunte om 'n verband tussen twee veranderlikes te toon.",
+          "stem": "Watter soort grafiek is dit?",
+          "correct": "Spreidingsdiagram",
+          "wrong": [
+            "Sektorgrafiek",
+            "Inhoudsopgawe",
+            "Bemarkingsplan"
+          ],
+          "explain": "Spreidingsdiagram",
+          "options": [
+            "Sektorgrafiek",
+            "Inhoudsopgawe",
+            "Bemarkingsplan",
+            "Spreidingsdiagram"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Grafiek wys los datapunte om 'n verband tussen twee veranderlikes te toon.\n\nWatter soort grafiek is dit?",
+          "explanation": "Spreidingsdiagram"
+        },
+        {
+          "ctx": "'n Histogram word gebruik vir gegroepeerde data.",
+          "stem": "Wat onderskei dit van 'n gewone staafgrafiek?",
+          "correct": "Dit wys frekwensies of groepe data",
+          "wrong": [
+            "Dit is altyd 'n kontrak",
+            "Dit wys net logo's",
+            "Dit kan nie data voorstel nie"
+          ],
+          "explain": "Dit wys frekwensies of groepe data",
+          "options": [
+            "Dit is altyd 'n kontrak",
+            "Dit wys net logo's",
+            "Dit wys frekwensies of groepe data",
+            "Dit kan nie data voorstel nie"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Histogram word gebruik vir gegroepeerde data.\n\nWat onderskei dit van 'n gewone staafgrafiek?",
+          "explanation": "Dit wys frekwensies of groepe data"
+        },
+        {
+          "ctx": "'n Aanbieder kies 'n grafiek wat nie by die data pas nie.",
+          "stem": "Wat kan gebeur?",
+          "correct": "Die boodskap kan verkeerd of onduidelik oorkom",
+          "wrong": [
+            "Die data word outomaties korrek",
+            "Die gehoor verstaan altyd beter",
+            "Die grafiek word 'n bate"
+          ],
+          "explain": "Die boodskap kan verkeerd of onduidelik oorkom",
+          "options": [
+            "Die boodskap kan verkeerd of onduidelik oorkom",
+            "Die data word outomaties korrek",
+            "Die gehoor verstaan altyd beter",
+            "Die grafiek word 'n bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Aanbieder kies 'n grafiek wat nie by die data pas nie.\n\nWat kan gebeur?",
+          "explanation": "Die boodskap kan verkeerd of onduidelik oorkom"
+        },
+        {
+          "ctx": "Skyfies, kaarte, plakkate, video's en grafieke is voorbeelde van...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Oudiovisuele hulpmiddels",
+          "wrong": [
+            "Kontrakpartye",
+            "Leningsterugbetalings",
+            "Slegs bates"
+          ],
+          "explain": "Oudiovisuele hulpmiddels",
+          "options": [
+            "Kontrakpartye",
+            "Oudiovisuele hulpmiddels",
+            "Leningsterugbetalings",
+            "Slegs bates"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nSkyfies, kaarte, plakkate, video's en grafieke is voorbeelde van...\n\nKies die korrekte term.",
+          "explanation": "Oudiovisuele hulpmiddels"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-014",
+      "title": "Besigheidsplan en SMART-doelwitte",
+      "questions": [
+        {
+          "ctx": "'n Dokument beskryf 'n entrepreneur se idee, markprobleem, oplossing, bemarking, mededingers en finansies.",
+          "stem": "Wat is dit?",
+          "correct": "Besigheidsplan",
+          "wrong": [
+            "Dienskontrak",
+            "Vervoerroete",
+            "Siekteverlofstaat"
+          ],
+          "explain": "Besigheidsplan",
+          "options": [
+            "Dienskontrak",
+            "Besigheidsplan",
+            "Vervoerroete",
+            "Siekteverlofstaat"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Dokument beskryf 'n entrepreneur se idee, markprobleem, oplossing, bemarking, mededingers en finansies.\n\nWat is dit?",
+          "explanation": "Besigheidsplan"
+        },
+        {
+          "ctx": "'n Besigheidsplan moet prakties uitgevoer kan word.",
+          "stem": "Watter eienskap word vereis?",
+          "correct": "Implementeerbaarheid",
+          "wrong": [
+            "Vaagheid",
+            "Onmeetbaarheid",
+            "Onwettigheid"
+          ],
+          "explain": "Implementeerbaarheid",
+          "options": [
+            "Vaagheid",
+            "Onmeetbaarheid",
+            "Implementeerbaarheid",
+            "Onwettigheid"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan moet prakties uitgevoer kan word.\n\nWatter eienskap word vereis?",
+          "explanation": "Implementeerbaarheid"
+        },
+        {
+          "ctx": "'n Plan sluit 'n teikenmark in.",
+          "stem": "Hoekom is dit belangrik?",
+          "correct": "Die besigheid moet weet wie die klante is",
+          "wrong": [
+            "Die besigheid hoef dan nie te bemark nie",
+            "Klante word dan onnodig",
+            "Alle produkte word gratis"
+          ],
+          "explain": "Die besigheid moet weet wie die klante is",
+          "options": [
+            "Die besigheid hoef dan nie te bemark nie",
+            "Klante word dan onnodig",
+            "Alle produkte word gratis",
+            "Die besigheid moet weet wie die klante is"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Plan sluit 'n teikenmark in.\n\nHoekom is dit belangrik?",
+          "explanation": "Die besigheid moet weet wie die klante is"
+        },
+        {
+          "ctx": "'n Leerder bereken koste, verkoopprys en moontlike wins.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "FinansiÃ«le ontleding",
+          "wrong": [
+            "Voetstoots-klousule",
+            "Klimaatfaktor",
+            "Getuieverklaring"
+          ],
+          "explain": "FinansiÃ«le ontleding",
+          "options": [
+            "Voetstoots-klousule",
+            "FinansiÃ«le ontleding",
+            "Klimaatfaktor",
+            "Getuieverklaring"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder bereken koste, verkoopprys en moontlike wins.\n\nWatter deel van die plan is dit?",
+          "explanation": "FinansiÃ«le ontleding"
+        },
+        {
+          "ctx": "'n Doelwit sÃª presies wat bereik moet word, deur wie en teen wanneer.",
+          "stem": "Watter SMART-element word veral gewys?",
+          "correct": "Spesifiek",
+          "wrong": [
+            "Bedreiging",
+            "Huurkoop",
+            "Bate"
+          ],
+          "explain": "Spesifiek",
+          "options": [
+            "Spesifiek",
+            "Bedreiging",
+            "Huurkoop",
+            "Bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Doelwit sÃª presies wat bereik moet word, deur wie en teen wanneer.\n\nWatter SMART-element word veral gewys?",
+          "explanation": "Spesifiek"
+        },
+        {
+          "ctx": "'n Doelwit kan met getalle of duidelike bewyse gemeet word.",
+          "stem": "Watter SMART-element is dit?",
+          "correct": "Meetbaar",
+          "wrong": [
+            "Personeel",
+            "Makro",
+            "Verhuurder"
+          ],
+          "explain": "Meetbaar",
+          "options": [
+            "Personeel",
+            "Makro",
+            "Verhuurder",
+            "Meetbaar"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Doelwit kan met getalle of duidelike bewyse gemeet word.\n\nWatter SMART-element is dit?",
+          "explanation": "Meetbaar"
+        },
+        {
+          "ctx": "'n Span aanvaar 'n doelwit en stem saam dat hulle die hulpbronne het om dit te bereik.",
+          "stem": "Watter SMART-element pas?",
+          "correct": "Almal moet instem",
+          "wrong": [
+            "Sektorgrafiek",
+            "Huurder",
+            "Gelykbreek"
+          ],
+          "explain": "Almal moet instem",
+          "options": [
+            "Sektorgrafiek",
+            "Huurder",
+            "Almal moet instem",
+            "Gelykbreek"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Span aanvaar 'n doelwit en stem saam dat hulle die hulpbronne het om dit te bereik.\n\nWatter SMART-element pas?",
+          "explanation": "Almal moet instem"
+        },
+        {
+          "ctx": "'n Doelwit pas by die besigheid se langtermynplan en kan realisties bereik word.",
+          "stem": "Watter SMART-element is dit?",
+          "correct": "Realisties en relevant",
+          "wrong": [
+            "Slegs meetbaar",
+            "Foetstoots",
+            "Korttermynversekering"
+          ],
+          "explain": "Realisties en relevant",
+          "options": [
+            "Realisties en relevant",
+            "Slegs meetbaar",
+            "Foetstoots",
+            "Korttermynversekering"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Doelwit pas by die besigheid se langtermynplan en kan realisties bereik word.\n\nWatter SMART-element is dit?",
+          "explanation": "Realisties en relevant"
+        },
+        {
+          "ctx": "'n Doelwit het 'n begin- en einddatum.",
+          "stem": "Watter SMART-element word gewys?",
+          "correct": "Tydsgebaseer",
+          "wrong": [
+            "Swak punt",
+            "Arbeidsmark",
+            "Kredietverskaffer"
+          ],
+          "explain": "Tydsgebaseer",
+          "options": [
+            "Swak punt",
+            "Tydsgebaseer",
+            "Arbeidsmark",
+            "Kredietverskaffer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Doelwit het 'n begin- en einddatum.\n\nWatter SMART-element word gewys?",
+          "explanation": "Tydsgebaseer"
+        },
+        {
+          "ctx": "Die doelwit 'Ek wil baie geld hÃª' is swak.",
+          "stem": "Hoekom?",
+          "correct": "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie",
+          "wrong": [
+            "Dit het te veel presiese datums",
+            "Dit bevat 'n volledige aksieplan",
+            "Dit is reeds 'n balansstaat"
+          ],
+          "explain": "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie",
+          "options": [
+            "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie",
+            "Dit het te veel presiese datums",
+            "Dit bevat 'n volledige aksieplan",
+            "Dit is reeds 'n balansstaat"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDie doelwit 'Ek wil baie geld hÃª' is swak.\n\nHoekom?",
+          "explanation": "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-015",
+      "title": "SWOT in die besigheidsplan",
+      "questions": [
+        {
+          "ctx": "'n Bekende handelsnaam, goeie ligging en hardwerkende werknemers is binne die besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Sterk punte",
+          "wrong": [
+            "Bedreigings",
+            "Geleenthede",
+            "Kontantuitvloei"
+          ],
+          "explain": "Sterk punte",
+          "options": [
+            "Bedreigings",
+            "Geleenthede",
+            "Sterk punte",
+            "Kontantuitvloei"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Bekende handelsnaam, goeie ligging en hardwerkende werknemers is binne die besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Sterk punte"
+        },
+        {
+          "ctx": "Te min toerusting, onprofessionele werknemers en swak voorraadbeheer is binne die besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Swak punte",
+          "wrong": [
+            "Sterk punte",
+            "Geleenthede",
+            "Bates"
+          ],
+          "explain": "Swak punte",
+          "options": [
+            "Sterk punte",
+            "Geleenthede",
+            "Bates",
+            "Swak punte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nTe min toerusting, onprofessionele werknemers en swak voorraadbeheer is binne die besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Swak punte"
+        },
+        {
+          "ctx": "Verbeterde tegnologie en groeiende vraag na 'n produk is buite die besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Geleenthede",
+          "wrong": [
+            "Swak punte",
+            "Interne laste",
+            "Dienskontrakte"
+          ],
+          "explain": "Geleenthede",
+          "options": [
+            "Swak punte",
+            "Geleenthede",
+            "Interne laste",
+            "Dienskontrakte"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nVerbeterde tegnologie en groeiende vraag na 'n produk is buite die besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Geleenthede"
+        },
+        {
+          "ctx": "Mededingers brei uit en 'n nuwe winkel trek klante weg.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Bedreigings",
+          "wrong": [
+            "Sterk punte",
+            "Produkvoordele",
+            "Eienaarsbelang"
+          ],
+          "explain": "Bedreigings",
+          "options": [
+            "Bedreigings",
+            "Sterk punte",
+            "Produkvoordele",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nMededingers brei uit en 'n nuwe winkel trek klante weg.\n\nWaar pas dit in SWOT?",
+          "explanation": "Bedreigings"
+        },
+        {
+          "ctx": "'n SWOT-analise moet relevant wees tot die spesifieke besigheid.",
+          "stem": "Hoekom?",
+          "correct": "Anders help dit nie met die regte besluit nie",
+          "wrong": [
+            "Enige algemene lys is altyd genoeg",
+            "Dit moet net prentjies bevat",
+            "SWOT gaan net oor kontrakte"
+          ],
+          "explain": "Anders help dit nie met die regte besluit nie",
+          "options": [
+            "Enige algemene lys is altyd genoeg",
+            "Dit moet net prentjies bevat",
+            "SWOT gaan net oor kontrakte",
+            "Anders help dit nie met die regte besluit nie"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n SWOT-analise moet relevant wees tot die spesifieke besigheid.\n\nHoekom?",
+          "explanation": "Anders help dit nie met die regte besluit nie"
+        },
+        {
+          "ctx": "'n Besigheid het 'n nuwe reeks dienste wat klante lok.",
+          "stem": "Waar pas dit?",
+          "correct": "Sterk punt",
+          "wrong": [
+            "Bedreiging",
+            "Lening",
+            "Afkoeling"
+          ],
+          "explain": "Sterk punt",
+          "options": [
+            "Bedreiging",
+            "Lening",
+            "Sterk punt",
+            "Afkoeling"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheid het 'n nuwe reeks dienste wat klante lok.\n\nWaar pas dit?",
+          "explanation": "Sterk punt"
+        },
+        {
+          "ctx": "'n Ekonomiese afswaai laat mense minder koop.",
+          "stem": "Waar pas dit?",
+          "correct": "Bedreiging",
+          "wrong": [
+            "Sterk punt",
+            "Swak punt binne die besigheid",
+            "Dekblad"
+          ],
+          "explain": "Bedreiging",
+          "options": [
+            "Bedreiging",
+            "Sterk punt",
+            "Swak punt binne die besigheid",
+            "Dekblad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Ekonomiese afswaai laat mense minder koop.\n\nWaar pas dit?",
+          "explanation": "Bedreiging"
+        },
+        {
+          "ctx": "Mededingers se swak diens gee jou besigheid 'n kans om beter diens te bied.",
+          "stem": "Waar pas dit?",
+          "correct": "Geleentheid",
+          "wrong": [
+            "Swak punt",
+            "Las",
+            "Kraamverlof"
+          ],
+          "explain": "Geleentheid",
+          "options": [
+            "Swak punt",
+            "Geleentheid",
+            "Las",
+            "Kraamverlof"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nMededingers se swak diens gee jou besigheid 'n kans om beter diens te bied.\n\nWaar pas dit?",
+          "explanation": "Geleentheid"
+        },
+        {
+          "ctx": "'n Te hoÃ« verkoopprys maak jou produk minder aantreklik vir klante.",
+          "stem": "Waar pas dit?",
+          "correct": "Swak punt",
+          "wrong": [
+            "Geleentheid",
+            "Sterk punt",
+            "Bate"
+          ],
+          "explain": "Swak punt",
+          "options": [
+            "Swak punt",
+            "Geleentheid",
+            "Sterk punt",
+            "Bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Te hoÃ« verkoopprys maak jou produk minder aantreklik vir klante.\n\nWaar pas dit?",
+          "explanation": "Swak punt"
+        },
+        {
+          "ctx": "'n SWOT-analise help die entrepreneur om te besluit watter idee die werkbaarste is.",
+          "stem": "Wat is die waarde daarvan?",
+          "correct": "Dit vergelyk positiewe en negatiewe faktore",
+          "wrong": [
+            "Dit waarborg wins",
+            "Dit kanselleer alle mededinging",
+            "Dit vervang alle finansiÃ«le state"
+          ],
+          "explain": "Dit vergelyk positiewe en negatiewe faktore",
+          "options": [
+            "Dit waarborg wins",
+            "Dit vergelyk positiewe en negatiewe faktore",
+            "Dit kanselleer alle mededinging",
+            "Dit vervang alle finansiÃ«le state"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n SWOT-analise help die entrepreneur om te besluit watter idee die werkbaarste is.\n\nWat is die waarde daarvan?",
+          "explanation": "Dit vergelyk positiewe en negatiewe faktore"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-016",
+      "title": "Dekblad, opsomming, produk en advertensie",
+      "questions": [
+        {
+          "ctx": "'n Dekblad wys die besigheid se naam, logo, eienaars se name en datum.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "Dekblad",
+          "wrong": [
+            "Balansstaat",
+            "Huurkontrak",
+            "Mededingersreaksie"
+          ],
+          "explain": "Dekblad",
+          "options": [
+            "Balansstaat",
+            "Huurkontrak",
+            "Mededingersreaksie",
+            "Dekblad"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Dekblad wys die besigheid se naam, logo, eienaars se name en datum.\n\nWatter deel van die plan is dit?",
+          "explanation": "Dekblad"
+        },
+        {
+          "ctx": "'n Inhoudsopgawe bevat hoofdele en bladsynommers.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help die leser om dele maklik te vind",
+          "wrong": [
+            "Dit bereken bruto wins",
+            "Dit vervang die uitvoerende opsomming",
+            "Dit is 'n versekeringspolis"
+          ],
+          "explain": "Dit help die leser om dele maklik te vind",
+          "options": [
+            "Dit bereken bruto wins",
+            "Dit help die leser om dele maklik te vind",
+            "Dit vervang die uitvoerende opsomming",
+            "Dit is 'n versekeringspolis"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Inhoudsopgawe bevat hoofdele en bladsynommers.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help die leser om dele maklik te vind"
+        },
+        {
+          "ctx": "'n Kort inleiding som die besigheidsidee, ligging, produk en kapitaalbehoefte op.",
+          "stem": "Watter deel is dit?",
+          "correct": "Uitvoerende opsomming",
+          "wrong": [
+            "Kraamverlofvorm",
+            "Staafgrafiek",
+            "Huurkoopklousule"
+          ],
+          "explain": "Uitvoerende opsomming",
+          "options": [
+            "Uitvoerende opsomming",
+            "Kraamverlofvorm",
+            "Staafgrafiek",
+            "Huurkoopklousule"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kort inleiding som die besigheidsidee, ligging, produk en kapitaalbehoefte op.\n\nWatter deel is dit?",
+          "explanation": "Uitvoerende opsomming"
+        },
+        {
+          "ctx": "'n Besigheidsplan beskryf wat die produk is en watter voordeel dit vir klante het.",
+          "stem": "Watter verskil is belangrik?",
+          "correct": "Kenmerk teenoor voordeel",
+          "wrong": [
+            "Huurder teenoor verhuurder",
+            "Lening teenoor premie",
+            "Salaris teenoor verlof"
+          ],
+          "explain": "Kenmerk teenoor voordeel",
+          "options": [
+            "Huurder teenoor verhuurder",
+            "Lening teenoor premie",
+            "Salaris teenoor verlof",
+            "Kenmerk teenoor voordeel"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheidsplan beskryf wat die produk is en watter voordeel dit vir klante het.\n\nWatter verskil is belangrik?",
+          "explanation": "Kenmerk teenoor voordeel"
+        },
+        {
+          "ctx": "'n Produk se verpakking pas by die produk en trek die oog.",
+          "stem": "Waarom is dit goed?",
+          "correct": "Dit wek verbruikersbelangstelling",
+          "wrong": [
+            "Dit maak finansies onnodig",
+            "Dit vervang alle klante",
+            "Dit maak die produk 'n las"
+          ],
+          "explain": "Dit wek verbruikersbelangstelling",
+          "options": [
+            "Dit maak finansies onnodig",
+            "Dit vervang alle klante",
+            "Dit wek verbruikersbelangstelling",
+            "Dit maak die produk 'n las"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Produk se verpakking pas by die produk en trek die oog.\n\nWaarom is dit goed?",
+          "explanation": "Dit wek verbruikersbelangstelling"
+        },
+        {
+          "ctx": "'n Logo is uniek, maklik om te lees en pas by die produk.",
+          "stem": "Watter rubriekkriterium word gewys?",
+          "correct": "Kreatiwiteit en oorspronklikheid van logo",
+          "wrong": [
+            "Arbeidswetgewing",
+            "Leningsterugbetaling",
+            "Misdaadstatistiek"
+          ],
+          "explain": "Kreatiwiteit en oorspronklikheid van logo",
+          "options": [
+            "Kreatiwiteit en oorspronklikheid van logo",
+            "Arbeidswetgewing",
+            "Leningsterugbetaling",
+            "Misdaadstatistiek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Logo is uniek, maklik om te lees en pas by die produk.\n\nWatter rubriekkriterium word gewys?",
+          "explanation": "Kreatiwiteit en oorspronklikheid van logo"
+        },
+        {
+          "ctx": "'n Slagspreuk is kort, treffend en ondersteun die besigheid se idee.",
+          "stem": "Wat is die doel?",
+          "correct": "Om die kernboodskap maklik te onthou",
+          "wrong": [
+            "Om die balansstaat te balanseer",
+            "Om werknemers te straf",
+            "Om huur te kanselleer"
+          ],
+          "explain": "Om die kernboodskap maklik te onthou",
+          "options": [
+            "Om die balansstaat te balanseer",
+            "Om die kernboodskap maklik te onthou",
+            "Om werknemers te straf",
+            "Om huur te kanselleer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Slagspreuk is kort, treffend en ondersteun die besigheid se idee.\n\nWat is die doel?",
+          "explanation": "Om die kernboodskap maklik te onthou"
+        },
+        {
+          "ctx": "'n Advertensie trek aandag, skep begeerte en oortuig klante om te koop.",
+          "stem": "Watter aktiwiteit word beskryf?",
+          "correct": "Ontwerp van 'n advertensie",
+          "wrong": [
+            "Opstel van 'n dienskontrak",
+            "Ontleding van siekteverlof",
+            "Berekening van eienaarsbelang"
+          ],
+          "explain": "Ontwerp van 'n advertensie",
+          "options": [
+            "Ontwerp van 'n advertensie",
+            "Opstel van 'n dienskontrak",
+            "Ontleding van siekteverlof",
+            "Berekening van eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Advertensie trek aandag, skep begeerte en oortuig klante om te koop.\n\nWatter aktiwiteit word beskryf?",
+          "explanation": "Ontwerp van 'n advertensie"
+        },
+        {
+          "ctx": "Die gekose media vir 'n advertensie moet by die produk en teikenmark pas.",
+          "stem": "Hoekom?",
+          "correct": "Die boodskap moet die regte mense bereik",
+          "wrong": [
+            "Alle media kos dieselfde",
+            "Teikenmark is irrelevant",
+            "Die produk word dan 'n bate"
+          ],
+          "explain": "Die boodskap moet die regte mense bereik",
+          "options": [
+            "Alle media kos dieselfde",
+            "Die boodskap moet die regte mense bereik",
+            "Teikenmark is irrelevant",
+            "Die produk word dan 'n bate"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nDie gekose media vir 'n advertensie moet by die produk en teikenmark pas.\n\nHoekom?",
+          "explanation": "Die boodskap moet die regte mense bereik"
+        },
+        {
+          "ctx": "'n Advertensie wys geen rede waarom klante moet koop nie.",
+          "stem": "Watter rubriekpunt is swak?",
+          "correct": "Oortuig die klant om te koop",
+          "wrong": [
+            "Kraamverlof",
+            "Bates plus laste",
+            "NGT-stemming"
+          ],
+          "explain": "Oortuig die klant om te koop",
+          "options": [
+            "Kraamverlof",
+            "Bates plus laste",
+            "Oortuig die klant om te koop",
+            "NGT-stemming"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Advertensie wys geen rede waarom klante moet koop nie.\n\nWatter rubriekpunt is swak?",
+          "explanation": "Oortuig die klant om te koop"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-017",
+      "title": "Bemarkingsamestelling en mededingers",
+      "questions": [
+        {
+          "ctx": "'n Besigheid beskryf sy produk, verpakking en handelsmerk.",
+          "stem": "Watter deel van bemarkingsamestelling is dit?",
+          "correct": "Produk",
+          "wrong": [
+            "Prys",
+            "Plek",
+            "Proses"
+          ],
+          "explain": "Produk",
+          "options": [
+            "Produk",
+            "Prys",
+            "Plek",
+            "Proses"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid beskryf sy produk, verpakking en handelsmerk.\n\nWatter deel van bemarkingsamestelling is dit?",
+          "explanation": "Produk"
+        },
+        {
+          "ctx": "'n Entrepreneur bereken kosprys, winsmarge en verkoopprys.",
+          "stem": "Watter deel word gebruik?",
+          "correct": "Prys",
+          "wrong": [
+            "Personeel",
+            "Fisiese omgewing",
+            "Bedreiging"
+          ],
+          "explain": "Prys",
+          "options": [
+            "Personeel",
+            "Prys",
+            "Fisiese omgewing",
+            "Bedreiging"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Entrepreneur bereken kosprys, winsmarge en verkoopprys.\n\nWatter deel word gebruik?",
+          "explanation": "Prys"
+        },
+        {
+          "ctx": "'n Besigheid beplan advertensies, media, koste en webteenwoordigheid.",
+          "stem": "Watter deel is dit?",
+          "correct": "Promosie",
+          "wrong": [
+            "Laste",
+            "Verhuurder",
+            "Balansstaat"
+          ],
+          "explain": "Promosie",
+          "options": [
+            "Laste",
+            "Verhuurder",
+            "Promosie",
+            "Balansstaat"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheid beplan advertensies, media, koste en webteenwoordigheid.\n\nWatter deel is dit?",
+          "explanation": "Promosie"
+        },
+        {
+          "ctx": "'n Koffiewinkel kies 'n ligging met genoeg voetverkeer en billike huur.",
+          "stem": "Watter deel is dit?",
+          "correct": "Plek",
+          "wrong": [
+            "Produk",
+            "Kraamverlof",
+            "Kredietwet"
+          ],
+          "explain": "Plek",
+          "options": [
+            "Produk",
+            "Kraamverlof",
+            "Kredietwet",
+            "Plek"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Koffiewinkel kies 'n ligging met genoeg voetverkeer en billike huur.\n\nWatter deel is dit?",
+          "explanation": "Plek"
+        },
+        {
+          "ctx": "'n Besigheid beskryf hoe dit die regte werknemers gaan werf en beleid insluit.",
+          "stem": "Watter deel is dit?",
+          "correct": "Personeel",
+          "wrong": [
+            "Sektordiagram",
+            "Foetstoots",
+            "Verkoopsvooruitskouing"
+          ],
+          "explain": "Personeel",
+          "options": [
+            "Sektordiagram",
+            "Personeel",
+            "Foetstoots",
+            "Verkoopsvooruitskouing"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid beskryf hoe dit die regte werknemers gaan werf en beleid insluit.\n\nWatter deel is dit?",
+          "explanation": "Personeel"
+        },
+        {
+          "ctx": "'n Restaurant beskryf presies hoe klante bestel, betaal en bedien word.",
+          "stem": "Watter deel is dit?",
+          "correct": "Proses",
+          "wrong": [
+            "Promosie",
+            "Gehaltebeheer alleen",
+            "Huurkoop"
+          ],
+          "explain": "Proses",
+          "options": [
+            "Proses",
+            "Promosie",
+            "Gehaltebeheer alleen",
+            "Huurkoop"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Restaurant beskryf presies hoe klante bestel, betaal en bedien word.\n\nWatter deel is dit?",
+          "explanation": "Proses"
+        },
+        {
+          "ctx": "'n Winkeluitleg, skoon omgewing en fisiese bewys van kwaliteit laat klante vertrou.",
+          "stem": "Watter deel word beskryf?",
+          "correct": "Fisiese omgewing",
+          "wrong": [
+            "Mededingersreaksie",
+            "Siekteverlof",
+            "Prys"
+          ],
+          "explain": "Fisiese omgewing",
+          "options": [
+            "Mededingersreaksie",
+            "Siekteverlof",
+            "Prys",
+            "Fisiese omgewing"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Winkeluitleg, skoon omgewing en fisiese bewys van kwaliteit laat klante vertrou.\n\nWatter deel word beskryf?",
+          "explanation": "Fisiese omgewing"
+        },
+        {
+          "ctx": "'n Nuwe onderneming ondersoek sy grootste mededingers en hul markaandeel.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "Ontleding van mededingers",
+          "wrong": [
+            "Dekblad",
+            "Afkoelingstydperk",
+            "Huurderregte"
+          ],
+          "explain": "Ontleding van mededingers",
+          "options": [
+            "Dekblad",
+            "Afkoelingstydperk",
+            "Ontleding van mededingers",
+            "Huurderregte"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Nuwe onderneming ondersoek sy grootste mededingers en hul markaandeel.\n\nWatter deel van die plan is dit?",
+          "explanation": "Ontleding van mededingers"
+        },
+        {
+          "ctx": "HoÃ« kapitaalkoste en streng regulasies maak dit moeilik vir nuwe ondernemings om 'n mark te betree.",
+          "stem": "Wat word dit genoem?",
+          "correct": "Hindernisse tot binnetreding",
+          "wrong": [
+            "SMART-tydsgebaseer",
+            "Voetstoots",
+            "Korting op voorraad"
+          ],
+          "explain": "Hindernisse tot binnetreding",
+          "options": [
+            "Hindernisse tot binnetreding",
+            "SMART-tydsgebaseer",
+            "Voetstoots",
+            "Korting op voorraad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nHoÃ« kapitaalkoste en streng regulasies maak dit moeilik vir nuwe ondernemings om 'n mark te betree.\n\nWat word dit genoem?",
+          "explanation": "Hindernisse tot binnetreding"
+        },
+        {
+          "ctx": "'n Besigheid voorspel hoe mededingers sal reageer as dit oopmaak.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help om strategiee voor te berei",
+          "wrong": [
+            "Dit waarborg geen risiko",
+            "Dit vervang kliÃ«nte",
+            "Dit maak pryse irrelevant"
+          ],
+          "explain": "Dit help om strategiee voor te berei",
+          "options": [
+            "Dit waarborg geen risiko",
+            "Dit help om strategiee voor te berei",
+            "Dit vervang kliÃ«nte",
+            "Dit maak pryse irrelevant"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid voorspel hoe mededingers sal reageer as dit oopmaak.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help om strategiee voor te berei"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-018",
+      "title": "FinansiÃ«le ontleding: inkomstestaat",
+      "questions": [
+        {
+          "ctx": "Verkope is R570 000 en koste van verkope is R285 000.",
+          "stem": "Hoe word bruto wins bereken?",
+          "correct": "Verkope minus koste van verkope",
+          "wrong": [
+            "Verkope plus huur",
+            "Lening minus kapitaal",
+            "Salarisse plus advertensies"
+          ],
+          "explain": "Verkope minus koste van verkope",
+          "options": [
+            "Verkope plus huur",
+            "Verkope minus koste van verkope",
+            "Lening minus kapitaal",
+            "Salarisse plus advertensies"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nVerkope is R570 000 en koste van verkope is R285 000.\n\nHoe word bruto wins bereken?",
+          "explanation": "Verkope minus koste van verkope"
+        },
+        {
+          "ctx": "Winnie se Skoene het verkope van R570 000 en bruto wins van R285 000.",
+          "stem": "Wat was die koste van verkope?",
+          "correct": "R285 000",
+          "wrong": [
+            "R126 000",
+            "R159 000",
+            "R376 000"
+          ],
+          "explain": "R285 000",
+          "options": [
+            "R126 000",
+            "R159 000",
+            "R285 000",
+            "R376 000"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nWinnie se Skoene het verkope van R570 000 en bruto wins van R285 000.\n\nWat was die koste van verkope?",
+          "explanation": "R285 000"
+        },
+        {
+          "ctx": "Bruto wins is R285 000 en bedryfsuitgawes is R159 000.",
+          "stem": "Wat is netto wins?",
+          "correct": "R126 000",
+          "wrong": [
+            "R444 000",
+            "R159 000",
+            "R570 000"
+          ],
+          "explain": "R126 000",
+          "options": [
+            "R444 000",
+            "R159 000",
+            "R570 000",
+            "R126 000"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nBruto wins is R285 000 en bedryfsuitgawes is R159 000.\n\nWat is netto wins?",
+          "explanation": "R126 000"
+        },
+        {
+          "ctx": "Huur, salarisse, water en elektrisiteit, telefoon en advertensies word afgetrek na bruto wins.",
+          "stem": "Wat is dit?",
+          "correct": "Bedryfsuitgawes",
+          "wrong": [
+            "Bates",
+            "Kapitaal",
+            "Verkope"
+          ],
+          "explain": "Bedryfsuitgawes",
+          "options": [
+            "Bates",
+            "Bedryfsuitgawes",
+            "Kapitaal",
+            "Verkope"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nHuur, salarisse, water en elektrisiteit, telefoon en advertensies word afgetrek na bruto wins.\n\nWat is dit?",
+          "explanation": "Bedryfsuitgawes"
+        },
+        {
+          "ctx": "Leningsterugbetaling word nie in die inkomstestaat as uitgawe ingesluit nie.",
+          "stem": "Hoekom?",
+          "correct": "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie",
+          "wrong": [
+            "Dit is verkope",
+            "Dit is bruto wins",
+            "Dit is voorraad"
+          ],
+          "explain": "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie",
+          "options": [
+            "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie",
+            "Dit is verkope",
+            "Dit is bruto wins",
+            "Dit is voorraad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLeningsterugbetaling word nie in die inkomstestaat as uitgawe ingesluit nie.\n\nHoekom?",
+          "explanation": "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie"
+        },
+        {
+          "ctx": "'n Inkomstestaat wys inkomste, uitgawes en wins vir 'n tydperk.",
+          "stem": "Watter vraag help dit beantwoord?",
+          "correct": "Het die besigheid wins of verlies gemaak?",
+          "wrong": [
+            "Wie is die verhuurder?",
+            "Watter hoed is groen?",
+            "Waar is die logo?"
+          ],
+          "explain": "Het die besigheid wins of verlies gemaak?",
+          "options": [
+            "Wie is die verhuurder?",
+            "Watter hoed is groen?",
+            "Waar is die logo?",
+            "Het die besigheid wins of verlies gemaak?"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Inkomstestaat wys inkomste, uitgawes en wins vir 'n tydperk.\n\nWatter vraag help dit beantwoord?",
+          "explanation": "Het die besigheid wins of verlies gemaak?"
+        },
+        {
+          "ctx": "Salarisse van R8 000 per maand vir 12 maande word as R96 000 gewys.",
+          "stem": "Watter berekening is gebruik?",
+          "correct": "Maandelikse bedrag vermenigvuldig met 12",
+          "wrong": [
+            "Bedrag gedeel deur 12",
+            "Verkope minus bates",
+            "Kapitaal plus lening"
+          ],
+          "explain": "Maandelikse bedrag vermenigvuldig met 12",
+          "options": [
+            "Bedrag gedeel deur 12",
+            "Verkope minus bates",
+            "Maandelikse bedrag vermenigvuldig met 12",
+            "Kapitaal plus lening"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nSalarisse van R8 000 per maand vir 12 maande word as R96 000 gewys.\n\nWatter berekening is gebruik?",
+          "explanation": "Maandelikse bedrag vermenigvuldig met 12"
+        },
+        {
+          "ctx": "Advertensies van R200 per maand word vir 12 maande bereken.",
+          "stem": "Wat is die jaarbedrag?",
+          "correct": "R2 400",
+          "wrong": [
+            "R200",
+            "R12 000",
+            "R24 000"
+          ],
+          "explain": "R2 400",
+          "options": [
+            "R2 400",
+            "R200",
+            "R12 000",
+            "R24 000"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nAdvertensies van R200 per maand word vir 12 maande bereken.\n\nWat is die jaarbedrag?",
+          "explanation": "R2 400"
+        },
+        {
+          "ctx": "'n Besigheid moet realistiese finansiÃ«le syfers gebruik.",
+          "stem": "Hoekom?",
+          "correct": "Om die plan betroubaar en haalbaar te maak",
+          "wrong": [
+            "Om die bank te mislei",
+            "Om uitgawes weg te steek",
+            "Om mededingers te ignoreer"
+          ],
+          "explain": "Om die plan betroubaar en haalbaar te maak",
+          "options": [
+            "Om die bank te mislei",
+            "Om die plan betroubaar en haalbaar te maak",
+            "Om uitgawes weg te steek",
+            "Om mededingers te ignoreer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid moet realistiese finansiÃ«le syfers gebruik.\n\nHoekom?",
+          "explanation": "Om die plan betroubaar en haalbaar te maak"
+        },
+        {
+          "ctx": "Verkoopsvooruitskouing noem produk, prys en aantal eenhede wat verkoop gaan word.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Dit help om verwagte inkomste te bereken",
+          "wrong": [
+            "Dit wys wie die huurder is",
+            "Dit bereken kraamverlof",
+            "Dit vervang alle marknavorsing"
+          ],
+          "explain": "Dit help om verwagte inkomste te bereken",
+          "options": [
+            "Dit help om verwagte inkomste te bereken",
+            "Dit wys wie die huurder is",
+            "Dit bereken kraamverlof",
+            "Dit vervang alle marknavorsing"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nVerkoopsvooruitskouing noem produk, prys en aantal eenhede wat verkoop gaan word.\n\nWaarom is dit belangrik?",
+          "explanation": "Dit help om verwagte inkomste te bereken"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-019",
+      "title": "Balansstaat en kontantbegroting",
+      "questions": [
+        {
+          "ctx": "Rekenaar, meubels en kontant word in die balansstaat gelys.",
+          "stem": "Wat is dit?",
+          "correct": "Bates",
+          "wrong": [
+            "Laste",
+            "Bedreigings",
+            "Uitgawes"
+          ],
+          "explain": "Bates",
+          "options": [
+            "Laste",
+            "Bedreigings",
+            "Bates",
+            "Uitgawes"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nRekenaar, meubels en kontant word in die balansstaat gelys.\n\nWat is dit?",
+          "explanation": "Bates"
+        },
+        {
+          "ctx": "'n Banklening van R200 000 word in die balansstaat gewys.",
+          "stem": "Wat is dit?",
+          "correct": "Las",
+          "wrong": [
+            "Bate",
+            "Bruto wins",
+            "Geleentheid"
+          ],
+          "explain": "Las",
+          "options": [
+            "Bate",
+            "Bruto wins",
+            "Geleentheid",
+            "Las"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Banklening van R200 000 word in die balansstaat gewys.\n\nWat is dit?",
+          "explanation": "Las"
+        },
+        {
+          "ctx": "Totale bates is R376 000. Eienaarsbelang is R176 000 en laste is R200 000.",
+          "stem": "Watter beginsel geld?",
+          "correct": "Bates = Eienaarsbelang + Laste",
+          "wrong": [
+            "Verkope = Huur + Salarisse",
+            "Wins = Banklening + Logo",
+            "Kontant = Slegs meubels"
+          ],
+          "explain": "Bates = Eienaarsbelang + Laste",
+          "options": [
+            "Verkope = Huur + Salarisse",
+            "Bates = Eienaarsbelang + Laste",
+            "Wins = Banklening + Logo",
+            "Kontant = Slegs meubels"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nTotale bates is R376 000. Eienaarsbelang is R176 000 en laste is R200 000.\n\nWatter beginsel geld?",
+          "explanation": "Bates = Eienaarsbelang + Laste"
+        },
+        {
+          "ctx": "Eie kapitaal van R50 000 en netto wins van R126 000 vorm saam R176 000.",
+          "stem": "Wat word bereken?",
+          "correct": "Eienaarsbelang",
+          "wrong": [
+            "Koste van verkope",
+            "Bedryfsuitgawes",
+            "Mededinging"
+          ],
+          "explain": "Eienaarsbelang",
+          "options": [
+            "Eienaarsbelang",
+            "Koste van verkope",
+            "Bedryfsuitgawes",
+            "Mededinging"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nEie kapitaal van R50 000 en netto wins van R126 000 vorm saam R176 000.\n\nWat word bereken?",
+          "explanation": "Eienaarsbelang"
+        },
+        {
+          "ctx": "'n Kontantbegroting wys kontantinvloei en kontantuitvloei per maand.",
+          "stem": "Waarvoor help dit?",
+          "correct": "Om te sien of genoeg kontant beskikbaar sal wees",
+          "wrong": [
+            "Om huurders te identifiseer",
+            "Om SMART-doelwitte te skryf",
+            "Om getuies te kies"
+          ],
+          "explain": "Om te sien of genoeg kontant beskikbaar sal wees",
+          "options": [
+            "Om huurders te identifiseer",
+            "Om SMART-doelwitte te skryf",
+            "Om getuies te kies",
+            "Om te sien of genoeg kontant beskikbaar sal wees"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Kontantbegroting wys kontantinvloei en kontantuitvloei per maand.\n\nWaarvoor help dit?",
+          "explanation": "Om te sien of genoeg kontant beskikbaar sal wees"
+        },
+        {
+          "ctx": "Verkope, lening en kapitaal van eienaar is voorbeelde van...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Kontantinvloei",
+          "wrong": [
+            "Kontantuitvloei",
+            "Swak punte",
+            "Huurkoop"
+          ],
+          "explain": "Kontantinvloei",
+          "options": [
+            "Kontantuitvloei",
+            "Swak punte",
+            "Kontantinvloei",
+            "Huurkoop"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nVerkope, lening en kapitaal van eienaar is voorbeelde van...\n\nKies die korrekte term.",
+          "explanation": "Kontantinvloei"
+        },
+        {
+          "ctx": "Huur, salarisse en leningsterugbetaling in die kontantbegroting is...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Kontantuitvloei",
+          "wrong": [
+            "Kontantinvloei",
+            "Geleenthede",
+            "Eienaarsbelang"
+          ],
+          "explain": "Kontantuitvloei",
+          "options": [
+            "Kontantuitvloei",
+            "Kontantinvloei",
+            "Geleenthede",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nHuur, salarisse en leningsterugbetaling in die kontantbegroting is...\n\nKies die korrekte term.",
+          "explanation": "Kontantuitvloei"
+        },
+        {
+          "ctx": "Januarie se sluitingsaldo word Februarie se beginsaldo.",
+          "stem": "Watter beginsel word gebruik?",
+          "correct": "Kontantsaldo word maand tot maand oorgedra",
+          "wrong": [
+            "Elke maand begin altyd by nul",
+            "Saldo's word nooit gebruik nie",
+            "Sluitingsaldo is altyd verkope"
+          ],
+          "explain": "Kontantsaldo word maand tot maand oorgedra",
+          "options": [
+            "Elke maand begin altyd by nul",
+            "Kontantsaldo word maand tot maand oorgedra",
+            "Saldo's word nooit gebruik nie",
+            "Sluitingsaldo is altyd verkope"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nJanuarie se sluitingsaldo word Februarie se beginsaldo.\n\nWatter beginsel word gebruik?",
+          "explanation": "Kontantsaldo word maand tot maand oorgedra"
+        },
+        {
+          "ctx": "'n Maand se ontvangstes is groter as betalings.",
+          "stem": "Wat het die besigheid?",
+          "correct": "Surplus",
+          "wrong": [
+            "Tekort",
+            "Wanbetaling",
+            "Huurder"
+          ],
+          "explain": "Surplus",
+          "options": [
+            "Surplus",
+            "Tekort",
+            "Wanbetaling",
+            "Huurder"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Maand se ontvangstes is groter as betalings.\n\nWat het die besigheid?",
+          "explanation": "Surplus"
+        },
+        {
+          "ctx": "'n Maand se betalings is groter as ontvangstes.",
+          "stem": "Wat het die besigheid?",
+          "correct": "Tekort",
+          "wrong": [
+            "Surplus",
+            "Sterk punt",
+            "Bemarkingsplek"
+          ],
+          "explain": "Tekort",
+          "options": [
+            "Surplus",
+            "Tekort",
+            "Sterk punt",
+            "Bemarkingsplek"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Maand se betalings is groter as ontvangstes.\n\nWat het die besigheid?",
+          "explanation": "Tekort"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-020",
+      "title": "Finale besigheidsplan-kontrolelys",
+      "questions": [
+        {
+          "ctx": "'n Finale besigheidsplan moet 'n professionele dekblad, indeks en uitvoerende opsomming bevat.",
+          "stem": "Wat is die doel van die kontrolelys?",
+          "correct": "Om seker te maak geen belangrike deel word uitgelaat nie",
+          "wrong": [
+            "Om alle finansies weg te laat",
+            "Om net die logo te merk",
+            "Om kontrakte te kanselleer"
+          ],
+          "explain": "Om seker te maak geen belangrike deel word uitgelaat nie",
+          "options": [
+            "Om alle finansies weg te laat",
+            "Om net die logo te merk",
+            "Om kontrakte te kanselleer",
+            "Om seker te maak geen belangrike deel word uitgelaat nie"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Finale besigheidsplan moet 'n professionele dekblad, indeks en uitvoerende opsomming bevat.\n\nWat is die doel van die kontrolelys?",
+          "explanation": "Om seker te maak geen belangrike deel word uitgelaat nie"
+        },
+        {
+          "ctx": "'n Besigheidsbeskrywing sluit visie, missie, doelwitte, struktuur en regsvereistes in.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "Beskrywing van die besigheid",
+          "wrong": [
+            "Kontantbegroting alleen",
+            "Vervoerkoste",
+            "Kraamverlof"
+          ],
+          "explain": "Beskrywing van die besigheid",
+          "options": [
+            "Kontantbegroting alleen",
+            "Beskrywing van die besigheid",
+            "Vervoerkoste",
+            "Kraamverlof"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheidsbeskrywing sluit visie, missie, doelwitte, struktuur en regsvereistes in.\n\nWatter deel van die plan is dit?",
+          "explanation": "Beskrywing van die besigheid"
+        },
+        {
+          "ctx": "'n Besigheid vra R100 000 en verduidelik waarvoor die geld gebruik gaan word.",
+          "stem": "Watter deel is dit?",
+          "correct": "Lenings- of beleggingsvoorstel",
+          "wrong": [
+            "Dekblad",
+            "Sektorgrafiek",
+            "Voetstoots"
+          ],
+          "explain": "Lenings- of beleggingsvoorstel",
+          "options": [
+            "Lenings- of beleggingsvoorstel",
+            "Dekblad",
+            "Sektorgrafiek",
+            "Voetstoots"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid vra R100 000 en verduidelik waarvoor die geld gebruik gaan word.\n\nWatter deel is dit?",
+          "explanation": "Lenings- of beleggingsvoorstel"
+        },
+        {
+          "ctx": "'n Plan beskryf hoe werknemers, die gemeenskap en 'n organisasie sal baat.",
+          "stem": "Watter deel is dit?",
+          "correct": "Plan vir sosiale verantwoordelikheid",
+          "wrong": [
+            "Bruto wins",
+            "Huurkoop",
+            "Mededingersbedreiging"
+          ],
+          "explain": "Plan vir sosiale verantwoordelikheid",
+          "options": [
+            "Bruto wins",
+            "Huurkoop",
+            "Mededingersbedreiging",
+            "Plan vir sosiale verantwoordelikheid"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Plan beskryf hoe werknemers, die gemeenskap en 'n organisasie sal baat.\n\nWatter deel is dit?",
+          "explanation": "Plan vir sosiale verantwoordelikheid"
+        },
+        {
+          "ctx": "'n Besigheidsplan noem die bestuurspan se ondervinding, opleiding en pligte.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Dit wys dat die span die onderneming kan bestuur",
+          "wrong": [
+            "Dit verwyder alle uitgawes",
+            "Dit vervang die teikenmark",
+            "Dit maak kontrakte onwettig"
+          ],
+          "explain": "Dit wys dat die span die onderneming kan bestuur",
+          "options": [
+            "Dit verwyder alle uitgawes",
+            "Dit vervang die teikenmark",
+            "Dit wys dat die span die onderneming kan bestuur",
+            "Dit maak kontrakte onwettig"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan noem die bestuurspan se ondervinding, opleiding en pligte.\n\nWaarom is dit belangrik?",
+          "explanation": "Dit wys dat die span die onderneming kan bestuur"
+        },
+        {
+          "ctx": "'n ReÃ«l in die rubriek sÃª navorsing moet goed gedoen wees en aan standaarde voldoen.",
+          "stem": "Wat word beoordeel?",
+          "correct": "Kwaliteit van navorsing",
+          "wrong": [
+            "Kleur van die vloer",
+            "Huurder se naam",
+            "Aantal vakansiedae"
+          ],
+          "explain": "Kwaliteit van navorsing",
+          "options": [
+            "Kwaliteit van navorsing",
+            "Kleur van die vloer",
+            "Huurder se naam",
+            "Aantal vakansiedae"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n ReÃ«l in die rubriek sÃª navorsing moet goed gedoen wees en aan standaarde voldoen.\n\nWat word beoordeel?",
+          "explanation": "Kwaliteit van navorsing"
+        },
+        {
+          "ctx": "'n Professionele plan moet geen tikfoute hÃª nie en korrekte grammatika gebruik.",
+          "stem": "Watter aspek is dit?",
+          "correct": "Meganika en formaat",
+          "wrong": [
+            "SWOT-bedreiging",
+            "Vervoerdiens",
+            "Siekteverlof"
+          ],
+          "explain": "Meganika en formaat",
+          "options": [
+            "SWOT-bedreiging",
+            "Meganika en formaat",
+            "Vervoerdiens",
+            "Siekteverlof"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Professionele plan moet geen tikfoute hÃª nie en korrekte grammatika gebruik.\n\nWatter aspek is dit?",
+          "explanation": "Meganika en formaat"
+        },
+        {
+          "ctx": "'n Plan gebruik Times New Roman 12 pt, dubbelspasiÃ«ring en 2,5 cm kantlyne.",
+          "stem": "Wat word gevolg?",
+          "correct": "Formaatvereistes",
+          "wrong": [
+            "Afkoelingstydperk",
+            "Kredietskedule",
+            "Mededingersreaksie"
+          ],
+          "explain": "Formaatvereistes",
+          "options": [
+            "Formaatvereistes",
+            "Afkoelingstydperk",
+            "Kredietskedule",
+            "Mededingersreaksie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Plan gebruik Times New Roman 12 pt, dubbelspasiÃ«ring en 2,5 cm kantlyne.\n\nWat word gevolg?",
+          "explanation": "Formaatvereistes"
+        },
+        {
+          "ctx": "'n Plan is volledig, maar die finansiÃ«le syfers is onrealisties hoog sonder bewyse.",
+          "stem": "Watter deel moet verbeter?",
+          "correct": "FinansiÃ«le ontleding",
+          "wrong": [
+            "Dekblad se logo",
+            "Huurder se adres",
+            "Getuie se handtekening"
+          ],
+          "explain": "FinansiÃ«le ontleding",
+          "options": [
+            "Dekblad se logo",
+            "FinansiÃ«le ontleding",
+            "Huurder se adres",
+            "Getuie se handtekening"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Plan is volledig, maar die finansiÃ«le syfers is onrealisties hoog sonder bewyse.\n\nWatter deel moet verbeter?",
+          "explanation": "FinansiÃ«le ontleding"
+        },
+        {
+          "ctx": "'n Besigheidsplan moet konserwatief, maar haalbaar wees.",
+          "stem": "Wat beteken dit?",
+          "correct": "Voorspellings moet realisties en redelik wees",
+          "wrong": [
+            "Voorspellings moet altyd oordrewe wees",
+            "Geen data is nodig nie",
+            "Alle uitgawes moet weggesteek word"
+          ],
+          "explain": "Voorspellings moet realisties en redelik wees",
+          "options": [
+            "Voorspellings moet altyd oordrewe wees",
+            "Geen data is nodig nie",
+            "Voorspellings moet realisties en redelik wees",
+            "Alle uitgawes moet weggesteek word"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan moet konserwatief, maar haalbaar wees.\n\nWat beteken dit?",
+          "explanation": "Voorspellings moet realisties en redelik wees"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-021",
+      "title": "FAT-styl hersiening: kort vrae",
+      "questions": [
+        {
+          "ctx": "'n Probleemoplossingstegniek waar kenners onafhanklik menings gee totdat 'n besluit geneem word.",
+          "stem": "Watter tegniek is dit?",
+          "correct": "Delphi-tegniek",
+          "wrong": [
+            "Dryfkragontleding",
+            "SCAMPER",
+            "Nominale groeptegniek"
+          ],
+          "explain": "Delphi-tegniek",
+          "options": [
+            "Delphi-tegniek",
+            "Dryfkragontleding",
+            "SCAMPER",
+            "Nominale groeptegniek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Probleemoplossingstegniek waar kenners onafhanklik menings gee totdat 'n besluit geneem word.\n\nWatter tegniek is dit?",
+          "explanation": "Delphi-tegniek"
+        },
+        {
+          "ctx": "Goedere wat gebruik word om ander produkte te vervaardig.",
+          "stem": "Watter soort goedere is dit?",
+          "correct": "Nywerheidsgoedere",
+          "wrong": [
+            "Verbruikersgoedere",
+            "Geriefsgoedere",
+            "Spesialiteitsgoedere"
+          ],
+          "explain": "Nywerheidsgoedere",
+          "options": [
+            "Verbruikersgoedere",
+            "Nywerheidsgoedere",
+            "Geriefsgoedere",
+            "Spesialiteitsgoedere"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nGoedere wat gebruik word om ander produkte te vervaardig.\n\nWatter soort goedere is dit?",
+          "explanation": "Nywerheidsgoedere"
+        },
+        {
+          "ctx": "'n Grafiek met los datapunte om 'n verband tussen veranderlikes te toon.",
+          "stem": "Watter diagram is dit?",
+          "correct": "Spreidingsdiagram",
+          "wrong": [
+            "Lyngrafiek",
+            "Sektorgrafiek",
+            "Staafgrafiek"
+          ],
+          "explain": "Spreidingsdiagram",
+          "options": [
+            "Lyngrafiek",
+            "Sektorgrafiek",
+            "Spreidingsdiagram",
+            "Staafgrafiek"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Grafiek met los datapunte om 'n verband tussen veranderlikes te toon.\n\nWatter diagram is dit?",
+          "explanation": "Spreidingsdiagram"
+        },
+        {
+          "ctx": "'n Huurooreenkoms vind plaas tussen...",
+          "stem": "Kies die korrekte partye.",
+          "correct": "'n Verhuurder en 'n huurder",
+          "wrong": [
+            "'n Verkoper en 'n koper",
+            "'n Werkgewer en 'n werknemer",
+            "'n Verbruiker en 'n versekeraar"
+          ],
+          "explain": "'n Verhuurder en 'n huurder",
+          "options": [
+            "'n Verkoper en 'n koper",
+            "'n Werkgewer en 'n werknemer",
+            "'n Verbruiker en 'n versekeraar",
+            "'n Verhuurder en 'n huurder"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Huurooreenkoms vind plaas tussen...\n\nKies die korrekte partye.",
+          "explanation": "'n Verhuurder en 'n huurder"
+        },
+        {
+          "ctx": "Watter faktor hoef nie normaalweg oorweeg te word wanneer 'n besigheidsligging gekies word nie?",
+          "stem": "Kies die beste antwoord.",
+          "correct": "Soort eienaarskap",
+          "wrong": [
+            "Klimaat",
+            "Eiendomsbelasting en tariewe",
+            "Mededingers"
+          ],
+          "explain": "Soort eienaarskap",
+          "options": [
+            "Klimaat",
+            "Soort eienaarskap",
+            "Eiendomsbelasting en tariewe",
+            "Mededingers"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nWatter faktor hoef nie normaalweg oorweeg te word wanneer 'n besigheidsligging gekies word nie?\n\nKies die beste antwoord.",
+          "explanation": "Soort eienaarskap"
+        },
+        {
+          "ctx": "Die stelsel wat gebruik word om die besigheid te help om doelwitte te bereik.",
+          "stem": "Watter term pas?",
+          "correct": "Proses",
+          "wrong": [
+            "Visie",
+            "Infrastruktuur",
+            "Geriefsgoedere"
+          ],
+          "explain": "Proses",
+          "options": [
+            "Proses",
+            "Visie",
+            "Infrastruktuur",
+            "Geriefsgoedere"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDie stelsel wat gebruik word om die besigheid te help om doelwitte te bereik.\n\nWatter term pas?",
+          "explanation": "Proses"
+        },
+        {
+          "ctx": "Die vereistes van 'n goeie advertensie word soms opgesom as...",
+          "stem": "Watter term pas?",
+          "correct": "ABBO",
+          "wrong": [
+            "SWOT",
+            "SMART",
+            "MVDO"
+          ],
+          "explain": "ABBO",
+          "options": [
+            "SWOT",
+            "SMART",
+            "MVDO",
+            "ABBO"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nDie vereistes van 'n goeie advertensie word soms opgesom as...\n\nWatter term pas?",
+          "explanation": "ABBO"
+        },
+        {
+          "ctx": "'n Grafiek wat prestasie oor tyd aandui.",
+          "stem": "Watter grafiek is dit?",
+          "correct": "Lyngrafiek",
+          "wrong": [
+            "Spreidingsdiagram",
+            "Sektorgrafiek",
+            "Histogram"
+          ],
+          "explain": "Lyngrafiek",
+          "options": [
+            "Spreidingsdiagram",
+            "Sektorgrafiek",
+            "Lyngrafiek",
+            "Histogram"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Grafiek wat prestasie oor tyd aandui.\n\nWatter grafiek is dit?",
+          "explanation": "Lyngrafiek"
+        },
+        {
+          "ctx": "Basiese fasiliteite soos krag, water en paaie.",
+          "stem": "Watter term pas?",
+          "correct": "Infrastruktuur",
+          "wrong": [
+            "Promosie",
+            "Proses",
+            "Eienaarsbelang"
+          ],
+          "explain": "Infrastruktuur",
+          "options": [
+            "Infrastruktuur",
+            "Promosie",
+            "Proses",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nBasiese fasiliteite soos krag, water en paaie.\n\nWatter term pas?",
+          "explanation": "Infrastruktuur"
+        },
+        {
+          "ctx": "'n Duur verbruikersitem waaroor die koper lank besluit, soos 'n motor.",
+          "stem": "Watter soort goed is dit?",
+          "correct": "Spesialiteitsgoedere",
+          "wrong": [
+            "Geriefsgoedere",
+            "Nywerheidsgoedere",
+            "Verbruikersnavorsing"
+          ],
+          "explain": "Spesialiteitsgoedere",
+          "options": [
+            "Geriefsgoedere",
+            "Spesialiteitsgoedere",
+            "Nywerheidsgoedere",
+            "Verbruikersnavorsing"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Duur verbruikersitem waaroor die koper lank besluit, soos 'n motor.\n\nWatter soort goed is dit?",
+          "explanation": "Spesialiteitsgoedere"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-022",
+      "title": "FAT-styl scenario: Pumza se kitskosbesigheid",
+      "questions": [
+        {
+          "ctx": "Pumza het reeds 'n draairoomysmasjien.",
+          "stem": "Waar pas dit in haar SWOT?",
+          "correct": "Sterk punt",
+          "wrong": [
+            "Swak punt",
+            "Bedreiging",
+            "Bemarkingskoste"
+          ],
+          "explain": "Sterk punt",
+          "options": [
+            "Swak punt",
+            "Sterk punt",
+            "Bedreiging",
+            "Bemarkingskoste"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nPumza het reeds 'n draairoomysmasjien.\n\nWaar pas dit in haar SWOT?",
+          "explanation": "Sterk punt"
+        },
+        {
+          "ctx": "Pumza bied dalk dieselfde kos as ander besighede in die area aan.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Swak punt",
+          "wrong": [
+            "Sterk punt",
+            "Kapitaal",
+            "Dekblad"
+          ],
+          "explain": "Swak punt",
+          "options": [
+            "Sterk punt",
+            "Kapitaal",
+            "Swak punt",
+            "Dekblad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nPumza bied dalk dieselfde kos as ander besighede in die area aan.\n\nWaar pas dit in SWOT?",
+          "explanation": "Swak punt"
+        },
+        {
+          "ctx": "Baie mense beweeg daagliks by die taxi-staanplek verby.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Geleentheid",
+          "wrong": [
+            "Bedreiging",
+            "Swak punt",
+            "Las"
+          ],
+          "explain": "Geleentheid",
+          "options": [
+            "Bedreiging",
+            "Swak punt",
+            "Las",
+            "Geleentheid"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nBaie mense beweeg daagliks by die taxi-staanplek verby.\n\nWaar pas dit in SWOT?",
+          "explanation": "Geleentheid"
+        },
+        {
+          "ctx": "KFC, Chicken Licken en King Pie is reeds naby.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Bedreiging",
+          "wrong": [
+            "Sterk punt",
+            "Bate",
+            "Inhoudsopgawe"
+          ],
+          "explain": "Bedreiging",
+          "options": [
+            "Sterk punt",
+            "Bedreiging",
+            "Bate",
+            "Inhoudsopgawe"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nKFC, Chicken Licken en King Pie is reeds naby.\n\nWaar pas dit in SWOT?",
+          "explanation": "Bedreiging"
+        },
+        {
+          "ctx": "Pumza het nie genoeg geld om te begin nie.",
+          "stem": "Waar kan sy fondse kry?",
+          "correct": "Banklening of vennote",
+          "wrong": [
+            "Slegs uit 'n slagspreuk",
+            "Deur alle koste te ignoreer",
+            "Deur geen plan op te stel nie"
+          ],
+          "explain": "Banklening of vennote",
+          "options": [
+            "Banklening of vennote",
+            "Slegs uit 'n slagspreuk",
+            "Deur alle koste te ignoreer",
+            "Deur geen plan op te stel nie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nPumza het nie genoeg geld om te begin nie.\n\nWaar kan sy fondse kry?",
+          "explanation": "Banklening of vennote"
+        },
+        {
+          "ctx": "Pumza se draairoomysmasjien behoort aan haar en kan in die besigheid gebruik word.",
+          "stem": "Wat is dit?",
+          "correct": "Bate",
+          "wrong": [
+            "Las",
+            "Bedryfsuitgawe",
+            "Bedreiging"
+          ],
+          "explain": "Bate",
+          "options": [
+            "Las",
+            "Bedryfsuitgawe",
+            "Bedreiging",
+            "Bate"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nPumza se draairoomysmasjien behoort aan haar en kan in die besigheid gebruik word.\n\nWat is dit?",
+          "explanation": "Bate"
+        },
+        {
+          "ctx": "Pumza kan 'n diens gebruik om voorraad by haar besigheid af te lewer.",
+          "stem": "Watter ondersteuningsdiens is dit?",
+          "correct": "Vervoer",
+          "wrong": [
+            "Kraamverlof",
+            "Sektorgrafiek",
+            "Tekstuur"
+          ],
+          "explain": "Vervoer",
+          "options": [
+            "Kraamverlof",
+            "Sektorgrafiek",
+            "Vervoer",
+            "Tekstuur"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nPumza kan 'n diens gebruik om voorraad by haar besigheid af te lewer.\n\nWatter ondersteuningsdiens is dit?",
+          "explanation": "Vervoer"
+        },
+        {
+          "ctx": "Pumza verseker haar toerusting teen diefstal of skade.",
+          "stem": "Watter ondersteuningsdiens gebruik sy?",
+          "correct": "Versekering",
+          "wrong": [
+            "SCAMPER",
+            "Indeks",
+            "Gelykbreek"
+          ],
+          "explain": "Versekering",
+          "options": [
+            "Versekering",
+            "SCAMPER",
+            "Indeks",
+            "Gelykbreek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nPumza verseker haar toerusting teen diefstal of skade.\n\nWatter ondersteuningsdiens gebruik sy?",
+          "explanation": "Versekering"
+        },
+        {
+          "ctx": "Marknavorsing wys 177 mense verkies melkskommels en 74 verkies gaskoeldranke.",
+          "stem": "Watter produk is volgens die data die gewildste?",
+          "correct": "Melkskommels",
+          "wrong": [
+            "Gaskoeldranke",
+            "Biefburger",
+            "Draairoomys"
+          ],
+          "explain": "Melkskommels",
+          "options": [
+            "Gaskoeldranke",
+            "Melkskommels",
+            "Biefburger",
+            "Draairoomys"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nMarknavorsing wys 177 mense verkies melkskommels en 74 verkies gaskoeldranke.\n\nWatter produk is volgens die data die gewildste?",
+          "explanation": "Melkskommels"
+        },
+        {
+          "ctx": "Pumza gebruik die marknavorsingsdata om voorraad te bestel.",
+          "stem": "Hoe help dit haar?",
+          "correct": "Sy kan te veel of te min voorraad vermy",
+          "wrong": [
+            "Sy hoef nie meer pryse te bepaal nie",
+            "Sy kan alle klante ignoreer",
+            "Sy hoef nie mededingers te ken nie"
+          ],
+          "explain": "Sy kan te veel of te min voorraad vermy",
+          "options": [
+            "Sy kan te veel of te min voorraad vermy",
+            "Sy hoef nie meer pryse te bepaal nie",
+            "Sy kan alle klante ignoreer",
+            "Sy hoef nie mededingers te ken nie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nPumza gebruik die marknavorsingsdata om voorraad te bestel.\n\nHoe help dit haar?",
+          "explanation": "Sy kan te veel of te min voorraad vermy"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-023",
+      "title": "FAT-styl scenario: Linda se kitswassery",
+      "questions": [
+        {
+          "ctx": "Linda neem 'n banklening van R60 000 vir masjiene en toerusting.",
+          "stem": "Watter kontrak pas die beste?",
+          "correct": "Lenings- of kredietooreenkoms",
+          "wrong": [
+            "Dienskontrak",
+            "Sektorgrafiek",
+            "Marknavorsingsvraelys"
+          ],
+          "explain": "Lenings- of kredietooreenkoms",
+          "options": [
+            "Dienskontrak",
+            "Sektorgrafiek",
+            "Lenings- of kredietooreenkoms",
+            "Marknavorsingsvraelys"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLinda neem 'n banklening van R60 000 vir masjiene en toerusting.\n\nWatter kontrak pas die beste?",
+          "explanation": "Lenings- of kredietooreenkoms"
+        },
+        {
+          "ctx": "Linda gebruik 'n perseel vir haar kitswassery en moet maandeliks huur betaal.",
+          "stem": "Watter kontrak is waarskynlik nodig?",
+          "correct": "Huurooreenkoms",
+          "wrong": [
+            "Huurkoop vir werknemers",
+            "SWOT-analise",
+            "SMART-doelwit"
+          ],
+          "explain": "Huurooreenkoms",
+          "options": [
+            "Huurkoop vir werknemers",
+            "SWOT-analise",
+            "SMART-doelwit",
+            "Huurooreenkoms"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nLinda gebruik 'n perseel vir haar kitswassery en moet maandeliks huur betaal.\n\nWatter kontrak is waarskynlik nodig?",
+          "explanation": "Huurooreenkoms"
+        },
+        {
+          "ctx": "Linda het vyf werknemers wat haar help.",
+          "stem": "Watter kontrakte moet sy waarskynlik hÃª?",
+          "correct": "Dienskontrakte",
+          "wrong": [
+            "Kredietkaartstate",
+            "Sektorgrafieke",
+            "Produkverpakking"
+          ],
+          "explain": "Dienskontrakte",
+          "options": [
+            "Kredietkaartstate",
+            "Dienskontrakte",
+            "Sektorgrafieke",
+            "Produkverpakking"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nLinda het vyf werknemers wat haar help.\n\nWatter kontrakte moet sy waarskynlik hÃª?",
+          "explanation": "Dienskontrakte"
+        },
+        {
+          "ctx": "Linda koop wasmasjiene of toerusting met paaiemente oor tyd.",
+          "stem": "Watter ooreenkoms kan betrokke wees?",
+          "correct": "Huurkoopooreenkoms",
+          "wrong": [
+            "Bemarkingsplek",
+            "Visieverklaring",
+            "Histogram"
+          ],
+          "explain": "Huurkoopooreenkoms",
+          "options": [
+            "Huurkoopooreenkoms",
+            "Bemarkingsplek",
+            "Visieverklaring",
+            "Histogram"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda koop wasmasjiene of toerusting met paaiemente oor tyd.\n\nWatter ooreenkoms kan betrokke wees?",
+          "explanation": "Huurkoopooreenkoms"
+        },
+        {
+          "ctx": "Linda wil haar masjiene teen skade of diefstal beskerm.",
+          "stem": "Watter kontrak is nuttig?",
+          "correct": "Versekeringskontrak",
+          "wrong": [
+            "Dienskontrak met klante",
+            "Indeksblad",
+            "Kredietafkoeling alleen"
+          ],
+          "explain": "Versekeringskontrak",
+          "options": [
+            "Dienskontrak met klante",
+            "Indeksblad",
+            "Kredietafkoeling alleen",
+            "Versekeringskontrak"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nLinda wil haar masjiene teen skade of diefstal beskerm.\n\nWatter kontrak is nuttig?",
+          "explanation": "Versekeringskontrak"
+        },
+        {
+          "ctx": "Linda koop gereeld seep en wasmiddels by verskaffers.",
+          "stem": "Watter kontrak of ooreenkoms kan nodig wees?",
+          "correct": "Verskafferkontrak",
+          "wrong": [
+            "Kraamverlofkontrak",
+            "Lyngrafiek",
+            "Rooi denkhoed"
+          ],
+          "explain": "Verskafferkontrak",
+          "options": [
+            "Kraamverlofkontrak",
+            "Lyngrafiek",
+            "Verskafferkontrak",
+            "Rooi denkhoed"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLinda koop gereeld seep en wasmiddels by verskaffers.\n\nWatter kontrak of ooreenkoms kan nodig wees?",
+          "explanation": "Verskafferkontrak"
+        },
+        {
+          "ctx": "Linda voeg 'n afleweringsdiens vir voltooide wasgoed by.",
+          "stem": "Watter aspek moet sy oorweeg?",
+          "correct": "Diensvoorwaardes en moontlike vervoerooreenkomste",
+          "wrong": [
+            "Slegs die kleur van haar logo",
+            "Geen kostes nie",
+            "Voetstoots van wasgoed"
+          ],
+          "explain": "Diensvoorwaardes en moontlike vervoerooreenkomste",
+          "options": [
+            "Diensvoorwaardes en moontlike vervoerooreenkomste",
+            "Slegs die kleur van haar logo",
+            "Geen kostes nie",
+            "Voetstoots van wasgoed"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda voeg 'n afleweringsdiens vir voltooide wasgoed by.\n\nWatter aspek moet sy oorweeg?",
+          "explanation": "Diensvoorwaardes en moontlike vervoerooreenkomste"
+        },
+        {
+          "ctx": "Linda moet haar huurgeld einde van elke maand betaal.",
+          "stem": "Watter regsimplikasie is korrek?",
+          "correct": "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom",
+          "wrong": [
+            "Sy kan huur altyd ignoreer",
+            "Die verhuurder word haar werknemer",
+            "Die huur word outomaties wins"
+          ],
+          "explain": "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom",
+          "options": [
+            "Sy kan huur altyd ignoreer",
+            "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom",
+            "Die verhuurder word haar werknemer",
+            "Die huur word outomaties wins"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nLinda moet haar huurgeld einde van elke maand betaal.\n\nWatter regsimplikasie is korrek?",
+          "explanation": "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom"
+        },
+        {
+          "ctx": "Linda se werknemers het regte rondom werksure, betaling en diensvoorwaardes.",
+          "stem": "Watter soort regsimplikasie is dit?",
+          "correct": "Arbeidswetlike verpligtinge in dienskontrakte",
+          "wrong": [
+            "Slegs grafiekkeuse",
+            "Produkvoordeel",
+            "Geografiese ligging alleen"
+          ],
+          "explain": "Arbeidswetlike verpligtinge in dienskontrakte",
+          "options": [
+            "Arbeidswetlike verpligtinge in dienskontrakte",
+            "Slegs grafiekkeuse",
+            "Produkvoordeel",
+            "Geografiese ligging alleen"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda se werknemers het regte rondom werksure, betaling en diensvoorwaardes.\n\nWatter soort regsimplikasie is dit?",
+          "explanation": "Arbeidswetlike verpligtinge in dienskontrakte"
+        },
+        {
+          "ctx": "Die langvraag vra om soorte kontrakte en regsimplikasies te bespreek.",
+          "stem": "Wat moet 'n goeie antwoord doen?",
+          "correct": "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal",
+          "wrong": [
+            "Net een woord skryf",
+            "Slegs die logo beskryf",
+            "Alle finansies ignoreer"
+          ],
+          "explain": "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal",
+          "options": [
+            "Net een woord skryf",
+            "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal",
+            "Slegs die logo beskryf",
+            "Alle finansies ignoreer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nDie langvraag vra om soorte kontrakte en regsimplikasies te bespreek.\n\nWat moet 'n goeie antwoord doen?",
+          "explanation": "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-TASK-024",
+      "title": "Gemengde eindhersiening",
+      "questions": [
+        {
+          "ctx": "'n Besigheid wil weet of sy idee 'n ware behoefte bevredig en of klante sal betaal.",
+          "stem": "Watter proses is nodig?",
+          "correct": "Marknavorsing",
+          "wrong": [
+            "Voetstoots",
+            "Parafering",
+            "Siekteverlof"
+          ],
+          "explain": "Marknavorsing",
+          "options": [
+            "Voetstoots",
+            "Parafering",
+            "Siekteverlof",
+            "Marknavorsing"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid wil weet of sy idee 'n ware behoefte bevredig en of klante sal betaal.\n\nWatter proses is nodig?",
+          "explanation": "Marknavorsing"
+        },
+        {
+          "ctx": "'n Besigheid kies 'n ligging naby klante, paaie en water/electriciteit.",
+          "stem": "Watter faktore word gekombineer?",
+          "correct": "Teikenmark, vervoer en infrastruktuur",
+          "wrong": [
+            "Dekblad, indeks en getuies",
+            "Kraamverlof en afkoeling",
+            "Logo, slagspreuk en bank"
+          ],
+          "explain": "Teikenmark, vervoer en infrastruktuur",
+          "options": [
+            "Dekblad, indeks en getuies",
+            "Teikenmark, vervoer en infrastruktuur",
+            "Kraamverlof en afkoeling",
+            "Logo, slagspreuk en bank"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid kies 'n ligging naby klante, paaie en water/electriciteit.\n\nWatter faktore word gekombineer?",
+          "explanation": "Teikenmark, vervoer en infrastruktuur"
+        },
+        {
+          "ctx": "'n Kontrak word deur al die partye onderteken en elke bladsy word geparafeer.",
+          "stem": "Wat word versterk?",
+          "correct": "Bewys en formele aanvaarding van die kontrak",
+          "wrong": [
+            "Klantbevrediging",
+            "Hindernisse tot binnetreding",
+            "Kontantsaldo"
+          ],
+          "explain": "Bewys en formele aanvaarding van die kontrak",
+          "options": [
+            "Bewys en formele aanvaarding van die kontrak",
+            "Klantbevrediging",
+            "Hindernisse tot binnetreding",
+            "Kontantsaldo"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kontrak word deur al die partye onderteken en elke bladsy word geparafeer.\n\nWat word versterk?",
+          "explanation": "Bewys en formele aanvaarding van die kontrak"
+        },
+        {
+          "ctx": "'n Aanbieding gebruik 'n staafgrafiek om provinsies se verkope te vergelyk.",
+          "stem": "Hoekom is die keuse gepas?",
+          "correct": "Staafgrafieke vergelyk groepe data",
+          "wrong": [
+            "Staafgrafieke wys net kontrakte",
+            "Staafgrafieke kanselleer data",
+            "Staafgrafieke is net vir krediete"
+          ],
+          "explain": "Staafgrafieke vergelyk groepe data",
+          "options": [
+            "Staafgrafieke wys net kontrakte",
+            "Staafgrafieke kanselleer data",
+            "Staafgrafieke is net vir krediete",
+            "Staafgrafieke vergelyk groepe data"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Aanbieding gebruik 'n staafgrafiek om provinsies se verkope te vergelyk.\n\nHoekom is die keuse gepas?",
+          "explanation": "Staafgrafieke vergelyk groepe data"
+        },
+        {
+          "ctx": "'n Besigheidsplan bevat SWOT, markontleding, bemarkingsplan en finansiÃ«le ontleding.",
+          "stem": "Wat wys dit?",
+          "correct": "Die plan dek kernkomponente vir besluitneming",
+          "wrong": [
+            "Die plan bestaan net uit 'n prent",
+            "Die plan het geen navorsing nodig nie",
+            "Die plan is 'n dienskontrak"
+          ],
+          "explain": "Die plan dek kernkomponente vir besluitneming",
+          "options": [
+            "Die plan bestaan net uit 'n prent",
+            "Die plan het geen navorsing nodig nie",
+            "Die plan dek kernkomponente vir besluitneming",
+            "Die plan is 'n dienskontrak"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan bevat SWOT, markontleding, bemarkingsplan en finansiÃ«le ontleding.\n\nWat wys dit?",
+          "explanation": "Die plan dek kernkomponente vir besluitneming"
+        },
+        {
+          "ctx": "'n Doelwit sÃª: 'Teen 30 Junie sal ons 100 kosblikke verkoop teen R25 elk.'",
+          "stem": "Watter SMART-elemente is duidelik?",
+          "correct": "Spesifiek, meetbaar en tydsgebaseer",
+          "wrong": [
+            "Slegs emosioneel",
+            "Onmeetbaar en vaag",
+            "Net 'n bedreiging"
+          ],
+          "explain": "Spesifiek, meetbaar en tydsgebaseer",
+          "options": [
+            "Spesifiek, meetbaar en tydsgebaseer",
+            "Slegs emosioneel",
+            "Onmeetbaar en vaag",
+            "Net 'n bedreiging"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Doelwit sÃª: 'Teen 30 Junie sal ons 100 kosblikke verkoop teen R25 elk.'\n\nWatter SMART-elemente is duidelik?",
+          "explanation": "Spesifiek, meetbaar en tydsgebaseer"
+        },
+        {
+          "ctx": "'n Besigheid vra 'n belegger vir geld en verduidelik die doel, terugbetaling en implementeringsrooster.",
+          "stem": "Watter deel is dit?",
+          "correct": "Lenings- of beleggingsvoorstel",
+          "wrong": [
+            "Kontrakgetuie",
+            "Arbeidsmark",
+            "Grafieklegende"
+          ],
+          "explain": "Lenings- of beleggingsvoorstel",
+          "options": [
+            "Kontrakgetuie",
+            "Lenings- of beleggingsvoorstel",
+            "Arbeidsmark",
+            "Grafieklegende"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid vra 'n belegger vir geld en verduidelik die doel, terugbetaling en implementeringsrooster.\n\nWatter deel is dit?",
+          "explanation": "Lenings- of beleggingsvoorstel"
+        },
+        {
+          "ctx": "'n Besigheid stel 'n advertensie op wat aandag trek, begeerte skep en optrede kry.",
+          "stem": "Watter beginsel pas?",
+          "correct": "ABBO-vereistes van 'n goeie advertensie",
+          "wrong": [
+            "MVDO van interne omgewing",
+            "WVF-aftrekking",
+            "Lening as bate"
+          ],
+          "explain": "ABBO-vereistes van 'n goeie advertensie",
+          "options": [
+            "ABBO-vereistes van 'n goeie advertensie",
+            "MVDO van interne omgewing",
+            "WVF-aftrekking",
+            "Lening as bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid stel 'n advertensie op wat aandag trek, begeerte skep en optrede kry.\n\nWatter beginsel pas?",
+          "explanation": "ABBO-vereistes van 'n goeie advertensie"
+        },
+        {
+          "ctx": "'n Entrepreneur ondersoek mededingers se markaandeel en verwagte reaksies.",
+          "stem": "Watter ontleding word gedoen?",
+          "correct": "Mededingersontleding",
+          "wrong": [
+            "Kraamverlofberekening",
+            "Siekteverlofstaat",
+            "Voetstootskontrak"
+          ],
+          "explain": "Mededingersontleding",
+          "options": [
+            "Kraamverlofberekening",
+            "Mededingersontleding",
+            "Siekteverlofstaat",
+            "Voetstootskontrak"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Entrepreneur ondersoek mededingers se markaandeel en verwagte reaksies.\n\nWatter ontleding word gedoen?",
+          "explanation": "Mededingersontleding"
+        },
+        {
+          "ctx": "'n Kontantbegroting wys 'n tekort in Maart.",
+          "stem": "Wat moet die besigheid oorweeg?",
+          "correct": "Hoe om genoeg kontant beskikbaar te hou",
+          "wrong": [
+            "Om alle ontvangstes te ignoreer",
+            "Om die tekort as wins te wys",
+            "Om die balansstaat weg te laat"
+          ],
+          "explain": "Hoe om genoeg kontant beskikbaar te hou",
+          "options": [
+            "Om alle ontvangstes te ignoreer",
+            "Om die tekort as wins te wys",
+            "Hoe om genoeg kontant beskikbaar te hou",
+            "Om die balansstaat weg te laat"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Kontantbegroting wys 'n tekort in Maart.\n\nWat moet die besigheid oorweeg?",
+          "explanation": "Hoe om genoeg kontant beskikbaar te hou"
+        }
+      ]
+    },
+    {
+      "code": "G10-BST-FINAL",
+      "title": "Besigheidstudies Kwartaal 3 Finale Oefentoets",
+      "questions": [
+        {
+          "ctx": "'n Leerder moet met papier, gom en kleurkryt 'n prototipe maak en daarna soveel moontlik kopiee binne 'n kort tyd maak.",
+          "stem": "Watter vaardigheid word die sterkste geoefen?",
+          "correct": "Kreatiewe denke onder tydsdruk",
+          "wrong": [
+            "Gehaltebeheer van finansiele state",
+            "Formele kontraksluiting",
+            "Fisiese liggingontleding"
+          ],
+          "explain": "Kreatiewe denke onder tydsdruk",
+          "options": [
+            "Kreatiewe denke onder tydsdruk",
+            "Gehaltebeheer van finansiele state",
+            "Formele kontraksluiting",
+            "Fisiese liggingontleding"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder moet met papier, gom en kleurkryt 'n prototipe maak en daarna soveel moontlik kopiee binne 'n kort tyd maak.\n\nWatter vaardigheid word die sterkste geoefen?",
+          "explanation": "Kreatiewe denke onder tydsdruk"
+        },
+        {
+          "ctx": "'n Entrepreneur sien dat klante lank in 'n ry wag en toets 'n nuwe betaalstelsel in plaas daarvan om die ou manier te hou.",
+          "stem": "Watter begrip word die beste gewys?",
+          "correct": "Uit die boks dink om 'n probleem op te los",
+          "wrong": [
+            "Om 'n probleem te ignoreer",
+            "Om slegs 'n huurooreenkoms te teken",
+            "Om 'n produk voetstoots te verkoop"
+          ],
+          "explain": "Uit die boks dink om 'n probleem op te los",
+          "options": [
+            "Om 'n probleem te ignoreer",
+            "Uit die boks dink om 'n probleem op te los",
+            "Om slegs 'n huurooreenkoms te teken",
+            "Om 'n produk voetstoots te verkoop"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Entrepreneur sien dat klante lank in 'n ry wag en toets 'n nuwe betaalstelsel in plaas daarvan om die ou manier te hou.\n\nWatter begrip word die beste gewys?",
+          "explanation": "Uit die boks dink om 'n probleem op te los"
+        },
+        {
+          "ctx": "Leerders bring probleme klas toe en deel dit sonder vrees dat ander sal lag.",
+          "stem": "Hoekom is hierdie klasomgewing belangrik vir kreatiwiteit?",
+          "correct": "Dit laat leerders idees vrylik deel en ontwikkel",
+          "wrong": [
+            "Dit keer dat iemand nuwe idees voorstel",
+            "Dit vervang alle navorsing met memorisering",
+            "Dit maak probleemoplossing onnodig"
+          ],
+          "explain": "Dit laat leerders idees vrylik deel en ontwikkel",
+          "options": [
+            "Dit keer dat iemand nuwe idees voorstel",
+            "Dit vervang alle navorsing met memorisering",
+            "Dit laat leerders idees vrylik deel en ontwikkel",
+            "Dit maak probleemoplossing onnodig"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLeerders bring probleme klas toe en deel dit sonder vrees dat ander sal lag.\n\nHoekom is hierdie klasomgewing belangrik vir kreatiwiteit?",
+          "explanation": "Dit laat leerders idees vrylik deel en ontwikkel"
+        },
+        {
+          "ctx": "'n Besigheid wil 'n nuwe diens ontwerp wat nog nie in die dorp beskikbaar is nie.",
+          "stem": "Watter soort denke help die besigheid die meeste?",
+          "correct": "Kreatiewe denke",
+          "wrong": [
+            "Blote roetinewerk",
+            "Kredietterugbetaling",
+            "Arbeidswetgewing alleen"
+          ],
+          "explain": "Kreatiewe denke",
+          "options": [
+            "Blote roetinewerk",
+            "Kredietterugbetaling",
+            "Arbeidswetgewing alleen",
+            "Kreatiewe denke"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid wil 'n nuwe diens ontwerp wat nog nie in die dorp beskikbaar is nie.\n\nWatter soort denke help die besigheid die meeste?",
+          "explanation": "Kreatiewe denke"
+        },
+        {
+          "ctx": "'n Groep vra baie vrae, skryf al hul idees neer en is nie bang om foute te maak nie.",
+          "stem": "Watter gedrag pas die beste by kreatiwiteit?",
+          "correct": "Breed dink en idees toets",
+          "wrong": [
+            "Net een bekende antwoord aanvaar",
+            "Alle idees dadelik verwerp",
+            "Slegs die goedkoopste perseel kies"
+          ],
+          "explain": "Breed dink en idees toets",
+          "options": [
+            "Net een bekende antwoord aanvaar",
+            "Breed dink en idees toets",
+            "Alle idees dadelik verwerp",
+            "Slegs die goedkoopste perseel kies"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Groep vra baie vrae, skryf al hul idees neer en is nie bang om foute te maak nie.\n\nWatter gedrag pas die beste by kreatiwiteit?",
+          "explanation": "Breed dink en idees toets"
+        },
+        {
+          "ctx": "'n Volwassene verwerp elke nuwe voorstel omdat hy bang is om verkeerd te wees.",
+          "stem": "Watter probleem kan dit vir kreatiewe denke veroorsaak?",
+          "correct": "Dit kan nuwe idees en eksperimentering beperk",
+          "wrong": [
+            "Dit verbeter altyd innovasie",
+            "Dit maak marknavorsing onnodig",
+            "Dit bewys dat die idee winsgewend is"
+          ],
+          "explain": "Dit kan nuwe idees en eksperimentering beperk",
+          "options": [
+            "Dit kan nuwe idees en eksperimentering beperk",
+            "Dit verbeter altyd innovasie",
+            "Dit maak marknavorsing onnodig",
+            "Dit bewys dat die idee winsgewend is"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Volwassene verwerp elke nuwe voorstel omdat hy bang is om verkeerd te wees.\n\nWatter probleem kan dit vir kreatiewe denke veroorsaak?",
+          "explanation": "Dit kan nuwe idees en eksperimentering beperk"
+        },
+        {
+          "ctx": "'n Besigheid skep 'n nuwe produk deur te kyk na wat klante se lewe makliker kan maak.",
+          "stem": "Hoe kan kreatiewe idees 'n besigheid help?",
+          "correct": "Dit kan groei en nuwe geleenthede skep",
+          "wrong": [
+            "Dit maak klante se behoeftes onbelangrik",
+            "Dit keer dat die onderneming verkoop",
+            "Dit vervang alle werknemers"
+          ],
+          "explain": "Dit kan groei en nuwe geleenthede skep",
+          "options": [
+            "Dit maak klante se behoeftes onbelangrik",
+            "Dit keer dat die onderneming verkoop",
+            "Dit vervang alle werknemers",
+            "Dit kan groei en nuwe geleenthede skep"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid skep 'n nuwe produk deur te kyk na wat klante se lewe makliker kan maak.\n\nHoe kan kreatiewe idees 'n besigheid help?",
+          "explanation": "Dit kan groei en nuwe geleenthede skep"
+        },
+        {
+          "ctx": "'n Leerling vra: 'Watter ander manier kan ons gebruik om dieselfde probleem op te los?'",
+          "stem": "Watter stap ondersteun kreatiewe probleemoplossing?",
+          "correct": "Vrae vra om alternatiewe te kry",
+          "wrong": [
+            "Die eerste antwoord altyd aanvaar",
+            "Geen hulpbronne oorweeg nie",
+            "Slegs die prys verhoog"
+          ],
+          "explain": "Vrae vra om alternatiewe te kry",
+          "options": [
+            "Die eerste antwoord altyd aanvaar",
+            "Geen hulpbronne oorweeg nie",
+            "Vrae vra om alternatiewe te kry",
+            "Slegs die prys verhoog"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Leerling vra: 'Watter ander manier kan ons gebruik om dieselfde probleem op te los?'\n\nWatter stap ondersteun kreatiewe probleemoplossing?",
+          "explanation": "Vrae vra om alternatiewe te kry"
+        },
+        {
+          "ctx": "'n Entrepreneur gebruik herwinbare materiaal om 'n goedkoop voorbeeldproduk te bou.",
+          "stem": "Wat is die doel van 'n prototipe?",
+          "correct": "Om 'n idee prakties te toets en te verbeter",
+          "wrong": [
+            "Om die finale belastingstaat te vervang",
+            "Om alle mededingers wettig te sluit",
+            "Om 'n werknemer se verlof te bereken"
+          ],
+          "explain": "Om 'n idee prakties te toets en te verbeter",
+          "options": [
+            "Om 'n idee prakties te toets en te verbeter",
+            "Om die finale belastingstaat te vervang",
+            "Om alle mededingers wettig te sluit",
+            "Om 'n werknemer se verlof te bereken"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Entrepreneur gebruik herwinbare materiaal om 'n goedkoop voorbeeldproduk te bou.\n\nWat is die doel van 'n prototipe?",
+          "explanation": "Om 'n idee prakties te toets en te verbeter"
+        },
+        {
+          "ctx": "'n Besigheid wil werklike probleme in die gemeenskap oplos, nie net mooi idees neerskryf nie.",
+          "stem": "Wat moet die besigheid doen?",
+          "correct": "Idees prakties toets teen die probleem",
+          "wrong": [
+            "Net 'n slagspreuk ontwerp",
+            "Alle data ignoreer",
+            "Slegs 'n logo opstel"
+          ],
+          "explain": "Idees prakties toets teen die probleem",
+          "options": [
+            "Net 'n slagspreuk ontwerp",
+            "Idees prakties toets teen die probleem",
+            "Alle data ignoreer",
+            "Slegs 'n logo opstel"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid wil werklike probleme in die gemeenskap oplos, nie net mooi idees neerskryf nie.\n\nWat moet die besigheid doen?",
+          "explanation": "Idees prakties toets teen die probleem"
+        },
+        {
+          "ctx": "'n Dorp is deur 'n vloed afgesny. Mense het kos, water, skuiling en medisyne nodig.",
+          "stem": "Watter vaardigheid gebruik 'n groep wat praktiese oplossings voorstel?",
+          "correct": "Probleemoplossing in 'n krisis",
+          "wrong": [
+            "Bemarkingsamestelling alleen",
+            "Kontrakparafering",
+            "Balansstaatopstelling"
+          ],
+          "explain": "Probleemoplossing in 'n krisis",
+          "options": [
+            "Bemarkingsamestelling alleen",
+            "Probleemoplossing in 'n krisis",
+            "Kontrakparafering",
+            "Balansstaatopstelling"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Dorp is deur 'n vloed afgesny. Mense het kos, water, skuiling en medisyne nodig.\n\nWatter vaardigheid gebruik 'n groep wat praktiese oplossings voorstel?",
+          "explanation": "Probleemoplossing in 'n krisis"
+        },
+        {
+          "ctx": "Leerders moet eers die ware probleem bepaal voordat hulle oplossings voorstel.",
+          "stem": "Watter stap kom eerste in probleemoplossing?",
+          "correct": "Identifiseer die probleem",
+          "wrong": [
+            "Evalueer die finale oplossing",
+            "Betaal die lening terug",
+            "Ontwerp die logo"
+          ],
+          "explain": "Identifiseer die probleem",
+          "options": [
+            "Evalueer die finale oplossing",
+            "Betaal die lening terug",
+            "Identifiseer die probleem",
+            "Ontwerp die logo"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLeerders moet eers die ware probleem bepaal voordat hulle oplossings voorstel.\n\nWatter stap kom eerste in probleemoplossing?",
+          "explanation": "Identifiseer die probleem"
+        },
+        {
+          "ctx": "'n Skool begin later omdat openbare vervoer nie by die aanvangstyd pas nie.",
+          "stem": "Watter kombinasie is korrek?",
+          "correct": "Probleem: vervoertye pas nie; oplossing: begin later",
+          "wrong": [
+            "Probleem: te min advertensies; oplossing: koop meubels",
+            "Probleem: voetstoots; oplossing: skryf 'n indeks",
+            "Probleem: te veel water; oplossing: verhoog lone"
+          ],
+          "explain": "Probleem: vervoertye pas nie; oplossing: begin later",
+          "options": [
+            "Probleem: te min advertensies; oplossing: koop meubels",
+            "Probleem: voetstoots; oplossing: skryf 'n indeks",
+            "Probleem: te veel water; oplossing: verhoog lone",
+            "Probleem: vervoertye pas nie; oplossing: begin later"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Skool begin later omdat openbare vervoer nie by die aanvangstyd pas nie.\n\nWatter kombinasie is korrek?",
+          "explanation": "Probleem: vervoertye pas nie; oplossing: begin later"
+        },
+        {
+          "ctx": "Openbare vervoer is onbetroubaar en leerders kom gereeld laat.",
+          "stem": "Watter oplossing pas die beste by die probleem?",
+          "correct": "Reel skoolbusse of ander betroubare vervoer",
+          "wrong": [
+            "Verhoog die prys van kos",
+            "Skryf 'n dienskontrak met klante",
+            "Gebruik 'n sektorgrafiek"
+          ],
+          "explain": "Reel skoolbusse of ander betroubare vervoer",
+          "options": [
+            "Verhoog die prys van kos",
+            "Reel skoolbusse of ander betroubare vervoer",
+            "Skryf 'n dienskontrak met klante",
+            "Gebruik 'n sektorgrafiek"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nOpenbare vervoer is onbetroubaar en leerders kom gereeld laat.\n\nWatter oplossing pas die beste by die probleem?",
+          "explanation": "Reel skoolbusse of ander betroubare vervoer"
+        },
+        {
+          "ctx": "Baie leerders bly ver en moet verskeie aansluitings neem om by die skool te kom.",
+          "stem": "Watter oplossing kan die probleem direk aanspreek?",
+          "correct": "'n Koshuis vir leerders wat ver bly",
+          "wrong": [
+            "'n Nuwe slagspreuk vir die skool",
+            "'n Korttermynversekering vir voorraad",
+            "'n Staafgrafiek van verkope"
+          ],
+          "explain": "'n Koshuis vir leerders wat ver bly",
+          "options": [
+            "'n Koshuis vir leerders wat ver bly",
+            "'n Nuwe slagspreuk vir die skool",
+            "'n Korttermynversekering vir voorraad",
+            "'n Staafgrafiek van verkope"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nBaie leerders bly ver en moet verskeie aansluitings neem om by die skool te kom.\n\nWatter oplossing kan die probleem direk aanspreek?",
+          "explanation": "'n Koshuis vir leerders wat ver bly"
+        },
+        {
+          "ctx": "'n Groep gebruik SCAMPER om 'n bestaande produk te verbeter.",
+          "stem": "Wat is die hoofdoel van SCAMPER?",
+          "correct": "Om nuwe of beter produkte deur sistematiese idees te skep",
+          "wrong": [
+            "Om net banklenings te bereken",
+            "Om werknemers se verlof te bepaal",
+            "Om die verhuurder te identifiseer"
+          ],
+          "explain": "Om nuwe of beter produkte deur sistematiese idees te skep",
+          "options": [
+            "Om net banklenings te bereken",
+            "Om werknemers se verlof te bepaal",
+            "Om die verhuurder te identifiseer",
+            "Om nuwe of beter produkte deur sistematiese idees te skep"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Groep gebruik SCAMPER om 'n bestaande produk te verbeter.\n\nWat is die hoofdoel van SCAMPER?",
+          "explanation": "Om nuwe of beter produkte deur sistematiese idees te skep"
+        },
+        {
+          "ctx": "'n Leerling neem die idee van 'n yskas en dink aan die teenoorgestelde: 'n houer wat hitte binne hou.",
+          "stem": "Watter metode word gebruik?",
+          "correct": "Konsepmanipulasie deur 'n bekende idee om te keer",
+          "wrong": [
+            "SWOT se bedreiging-afdeling",
+            "Indeksopstelling",
+            "Kredietwet-afkoeling"
+          ],
+          "explain": "Konsepmanipulasie deur 'n bekende idee om te keer",
+          "options": [
+            "SWOT se bedreiging-afdeling",
+            "Indeksopstelling",
+            "Konsepmanipulasie deur 'n bekende idee om te keer",
+            "Kredietwet-afkoeling"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Leerling neem die idee van 'n yskas en dink aan die teenoorgestelde: 'n houer wat hitte binne hou.\n\nWatter metode word gebruik?",
+          "explanation": "Konsepmanipulasie deur 'n bekende idee om te keer"
+        },
+        {
+          "ctx": "'n Groep aanvaar net idees wat prakties uitvoerbaar is.",
+          "stem": "Watter beginsel pas hier?",
+          "correct": "Idees moet kreatief maar uitvoerbaar wees",
+          "wrong": [
+            "Alle idees is altyd winsgewend",
+            "Net emosionele idees tel",
+            "Slegs die duurste idee is reg"
+          ],
+          "explain": "Idees moet kreatief maar uitvoerbaar wees",
+          "options": [
+            "Idees moet kreatief maar uitvoerbaar wees",
+            "Alle idees is altyd winsgewend",
+            "Net emosionele idees tel",
+            "Slegs die duurste idee is reg"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Groep aanvaar net idees wat prakties uitvoerbaar is.\n\nWatter beginsel pas hier?",
+          "explanation": "Idees moet kreatief maar uitvoerbaar wees"
+        },
+        {
+          "ctx": "'n Probleem word in kleiner dele opgebreek voordat oplossings gesoek word.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help om dele raak te sien wat makliker opgelos kan word",
+          "wrong": [
+            "Dit maak die probleem groter",
+            "Dit vervang alle besluitneming",
+            "Dit verwyder die behoefte aan klante"
+          ],
+          "explain": "Dit help om dele raak te sien wat makliker opgelos kan word",
+          "options": [
+            "Dit maak die probleem groter",
+            "Dit help om dele raak te sien wat makliker opgelos kan word",
+            "Dit vervang alle besluitneming",
+            "Dit verwyder die behoefte aan klante"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Probleem word in kleiner dele opgebreek voordat oplossings gesoek word.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help om dele raak te sien wat makliker opgelos kan word"
+        },
+        {
+          "ctx": "'n Groep dink eers aan feite, risiko's, emosies, voordele en nuwe idees voordat hulle besluit.",
+          "stem": "Watter tegniek word waarskynlik gebruik?",
+          "correct": "Die ses denkhoede",
+          "wrong": [
+            "Voetstoots-verkope",
+            "Balansstaatvergelyking",
+            "Huurkooppaaiemente"
+          ],
+          "explain": "Die ses denkhoede",
+          "options": [
+            "Die ses denkhoede",
+            "Voetstoots-verkope",
+            "Balansstaatvergelyking",
+            "Huurkooppaaiemente"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Groep dink eers aan feite, risiko's, emosies, voordele en nuwe idees voordat hulle besluit.\n\nWatter tegniek word waarskynlik gebruik?",
+          "explanation": "Die ses denkhoede"
+        },
+        {
+          "ctx": "'n Winkel se verkope daal. Die eienaar bestudeer verkoopsverslae en klante-terugvoering.",
+          "stem": "Watter besigheidsaksie word gedoen?",
+          "correct": "Gehaltebeheer deur inligting te monitor",
+          "wrong": [
+            "Dienskontrak met werknemers",
+            "Huurkoop van toerusting",
+            "Ontwerp van 'n dekblad"
+          ],
+          "explain": "Gehaltebeheer deur inligting te monitor",
+          "options": [
+            "Dienskontrak met werknemers",
+            "Huurkoop van toerusting",
+            "Gehaltebeheer deur inligting te monitor",
+            "Ontwerp van 'n dekblad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Winkel se verkope daal. Die eienaar bestudeer verkoopsverslae en klante-terugvoering.\n\nWatter besigheidsaksie word gedoen?",
+          "explanation": "Gehaltebeheer deur inligting te monitor"
+        },
+        {
+          "ctx": "'n Besigheid identifiseer 'n probleem, definieer dit, formuleer 'n strategie, ken hulpbronne toe, implementeer, monitor en evalueer.",
+          "stem": "Wat word beskryf?",
+          "correct": "Die probleemoplossingsproses",
+          "wrong": [
+            "Die afkoelingstydperk",
+            "Die bemarkingsamestelling alleen",
+            "Die huurder se regte"
+          ],
+          "explain": "Die probleemoplossingsproses",
+          "options": [
+            "Die afkoelingstydperk",
+            "Die bemarkingsamestelling alleen",
+            "Die huurder se regte",
+            "Die probleemoplossingsproses"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid identifiseer 'n probleem, definieer dit, formuleer 'n strategie, ken hulpbronne toe, implementeer, monitor en evalueer.\n\nWat word beskryf?",
+          "explanation": "Die probleemoplossingsproses"
+        },
+        {
+          "ctx": "'n Plan is uitgevoer, maar die besigheid kyk daarna of die oplossing gewerk het.",
+          "stem": "Watter stap is dit?",
+          "correct": "Evalueer die probleemoplossing",
+          "wrong": [
+            "Identifiseer die produknaam",
+            "Bepaal die dekbladkleur",
+            "Teken as getuie"
+          ],
+          "explain": "Evalueer die probleemoplossing",
+          "options": [
+            "Identifiseer die produknaam",
+            "Evalueer die probleemoplossing",
+            "Bepaal die dekbladkleur",
+            "Teken as getuie"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Plan is uitgevoer, maar die besigheid kyk daarna of die oplossing gewerk het.\n\nWatter stap is dit?",
+          "explanation": "Evalueer die probleemoplossing"
+        },
+        {
+          "ctx": "'n Besigheid wil gesonder kos by 'n snoepwinkel verkoop. Gesondheid ondersteun die verandering, maar leerders wat pasteie verkies werk daarteen.",
+          "stem": "Watter tegniek pas hier?",
+          "correct": "Dryfkragontleding",
+          "wrong": [
+            "Nasionale Kredietwet",
+            "Spreidingsdiagram",
+            "Verkoopsvooruitskouing"
+          ],
+          "explain": "Dryfkragontleding",
+          "options": [
+            "Dryfkragontleding",
+            "Nasionale Kredietwet",
+            "Spreidingsdiagram",
+            "Verkoopsvooruitskouing"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid wil gesonder kos by 'n snoepwinkel verkoop. Gesondheid ondersteun die verandering, maar leerders wat pasteie verkies werk daarteen.\n\nWatter tegniek pas hier?",
+          "explanation": "Dryfkragontleding"
+        },
+        {
+          "ctx": "In dryfkragontleding word kragte wat verandering help en kragte wat dit teenstaan gelys.",
+          "stem": "Wat is die kragte teen verandering?",
+          "correct": "Remkragte",
+          "wrong": [
+            "Dryfkragte",
+            "Bates",
+            "Geleenthede"
+          ],
+          "explain": "Remkragte",
+          "options": [
+            "Dryfkragte",
+            "Bates",
+            "Geleenthede",
+            "Remkragte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nIn dryfkragontleding word kragte wat verandering help en kragte wat dit teenstaan gelys.\n\nWat is die kragte teen verandering?",
+          "explanation": "Remkragte"
+        },
+        {
+          "ctx": "Lede skryf idees anoniem neer, idees word op 'n blaaibord geplaas en die groep stem daaroor.",
+          "stem": "Watter tegniek word beskryf?",
+          "correct": "Nominale Groeptegniek",
+          "wrong": [
+            "SCAMPER",
+            "Voetstoots",
+            "Kontantbegroting"
+          ],
+          "explain": "Nominale Groeptegniek",
+          "options": [
+            "SCAMPER",
+            "Voetstoots",
+            "Nominale Groeptegniek",
+            "Kontantbegroting"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLede skryf idees anoniem neer, idees word op 'n blaaibord geplaas en die groep stem daaroor.\n\nWatter tegniek word beskryf?",
+          "explanation": "Nominale Groeptegniek"
+        },
+        {
+          "ctx": "'n Leerder se rol in 'n groep is om net feite en data te noem.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Wit hoed",
+          "wrong": [
+            "Rooi hoed",
+            "Groen hoed",
+            "Blou hoed"
+          ],
+          "explain": "Wit hoed",
+          "options": [
+            "Wit hoed",
+            "Rooi hoed",
+            "Groen hoed",
+            "Blou hoed"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder se rol in 'n groep is om net feite en data te noem.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Wit hoed"
+        },
+        {
+          "ctx": "'n Leerder se rol is om nuwe idees te genereer en kreatief te dink.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Groen hoed",
+          "wrong": [
+            "Wit hoed",
+            "Pers hoed",
+            "Geel hoed"
+          ],
+          "explain": "Groen hoed",
+          "options": [
+            "Wit hoed",
+            "Groen hoed",
+            "Pers hoed",
+            "Geel hoed"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder se rol is om nuwe idees te genereer en kreatief te dink.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Groen hoed"
+        },
+        {
+          "ctx": "'n Leerder wys risiko's en kritiese probleme in 'n plan uit.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Pers hoed",
+          "wrong": [
+            "Geel hoed",
+            "Wit hoed",
+            "Rooi hoed"
+          ],
+          "explain": "Pers hoed",
+          "options": [
+            "Pers hoed",
+            "Geel hoed",
+            "Wit hoed",
+            "Rooi hoed"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder wys risiko's en kritiese probleme in 'n plan uit.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Pers hoed"
+        },
+        {
+          "ctx": "'n Leerder beheer die proses, hou by die reels en sorg dat die groep fokus.",
+          "stem": "Watter denkhoed pas die beste?",
+          "correct": "Blou hoed",
+          "wrong": [
+            "Groen hoed",
+            "Geel hoed",
+            "Rooi hoed"
+          ],
+          "explain": "Blou hoed",
+          "options": [
+            "Groen hoed",
+            "Blou hoed",
+            "Geel hoed",
+            "Rooi hoed"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder beheer die proses, hou by die reels en sorg dat die groep fokus.\n\nWatter denkhoed pas die beste?",
+          "explanation": "Blou hoed"
+        },
+        {
+          "ctx": "Thabo wil 'n kosstalletjie oopmaak en vra eers leerders wat hulle koop en hoeveel hulle sal betaal.",
+          "stem": "Watter aksie gebruik hy?",
+          "correct": "Marknavorsing",
+          "wrong": [
+            "Huurkoop",
+            "Kraamverlof",
+            "Parafering"
+          ],
+          "explain": "Marknavorsing",
+          "options": [
+            "Huurkoop",
+            "Kraamverlof",
+            "Parafering",
+            "Marknavorsing"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nThabo wil 'n kosstalletjie oopmaak en vra eers leerders wat hulle koop en hoeveel hulle sal betaal.\n\nWatter aksie gebruik hy?",
+          "explanation": "Marknavorsing"
+        },
+        {
+          "ctx": "'n Persoon koop 'n bestaande winkel sonder om te kyk of klante nog die produkte wil he.",
+          "stem": "Watter fout maak hy?",
+          "correct": "Hy ondersoek nie die markbehoefte voor die besluit nie",
+          "wrong": [
+            "Hy gebruik te veel SWOT",
+            "Hy bereken bruto wins te akkuraat",
+            "Hy kies te veel bates"
+          ],
+          "explain": "Hy ondersoek nie die markbehoefte voor die besluit nie",
+          "options": [
+            "Hy gebruik te veel SWOT",
+            "Hy ondersoek nie die markbehoefte voor die besluit nie",
+            "Hy bereken bruto wins te akkuraat",
+            "Hy kies te veel bates"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Persoon koop 'n bestaande winkel sonder om te kyk of klante nog die produkte wil he.\n\nWatter fout maak hy?",
+          "explanation": "Hy ondersoek nie die markbehoefte voor die besluit nie"
+        },
+        {
+          "ctx": "'n Besigheidsidee klink goed, maar niemand in die area wil daarvoor betaal nie.",
+          "stem": "Wat wys dit?",
+          "correct": "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie",
+          "wrong": [
+            "Elke idee is outomaties winsgewend",
+            "Marknavorsing is altyd onnodig",
+            "Slegs verpakking bepaal sukses"
+          ],
+          "explain": "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie",
+          "options": [
+            "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie",
+            "Elke idee is outomaties winsgewend",
+            "Marknavorsing is altyd onnodig",
+            "Slegs verpakking bepaal sukses"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheidsidee klink goed, maar niemand in die area wil daarvoor betaal nie.\n\nWat wys dit?",
+          "explanation": "'n Idee is nie noodwendig 'n lewensvatbare geleentheid nie"
+        },
+        {
+          "ctx": "In 'n resessie koop mense steeds basiese kos, maar minder luukse lekkernye.",
+          "stem": "Watter stelling is korrek?",
+          "correct": "Mense sny dikwels begeertes voor behoeftes",
+          "wrong": [
+            "Behoeftes en begeertes is dieselfde",
+            "Luukse goed word altyd eerste gekoop",
+            "Navorsing tel nie in 'n resessie nie"
+          ],
+          "explain": "Mense sny dikwels begeertes voor behoeftes",
+          "options": [
+            "Behoeftes en begeertes is dieselfde",
+            "Luukse goed word altyd eerste gekoop",
+            "Navorsing tel nie in 'n resessie nie",
+            "Mense sny dikwels begeertes voor behoeftes"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nIn 'n resessie koop mense steeds basiese kos, maar minder luukse lekkernye.\n\nWatter stelling is korrek?",
+          "explanation": "Mense sny dikwels begeertes voor behoeftes"
+        },
+        {
+          "ctx": "'n Entrepreneur ondersoek of mense melkprodukte in 'n koue dorp sal koop.",
+          "stem": "Wat toets hy?",
+          "correct": "Of daar 'n werklike markbehoefte bestaan",
+          "wrong": [
+            "Of 'n huurkontrak geparafeer is",
+            "Of 'n logo helder genoeg is",
+            "Of werknemers verlof kry"
+          ],
+          "explain": "Of daar 'n werklike markbehoefte bestaan",
+          "options": [
+            "Of 'n huurkontrak geparafeer is",
+            "Of 'n logo helder genoeg is",
+            "Of daar 'n werklike markbehoefte bestaan",
+            "Of werknemers verlof kry"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Entrepreneur ondersoek of mense melkprodukte in 'n koue dorp sal koop.\n\nWat toets hy?",
+          "explanation": "Of daar 'n werklike markbehoefte bestaan"
+        },
+        {
+          "ctx": "'n Leerder gebruik koerantartikels, tydskrifte en die internet om 'n mark te verstaan.",
+          "stem": "Watter soort hulpbronne gebruik sy?",
+          "correct": "Navorsingshulpbronne",
+          "wrong": [
+            "Kontrakpartye",
+            "Slegs bates",
+            "Loonaftrekkings"
+          ],
+          "explain": "Navorsingshulpbronne",
+          "options": [
+            "Navorsingshulpbronne",
+            "Kontrakpartye",
+            "Slegs bates",
+            "Loonaftrekkings"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder gebruik koerantartikels, tydskrifte en die internet om 'n mark te verstaan.\n\nWatter soort hulpbronne gebruik sy?",
+          "explanation": "Navorsingshulpbronne"
+        },
+        {
+          "ctx": "'n SWOT-analise wys interne sterk/swak punte en eksterne geleenthede/bedreigings.",
+          "stem": "Waarvoor help dit by 'n nuwe idee?",
+          "correct": "Om lewensvatbaarheid beter te beoordeel",
+          "wrong": [
+            "Om alle risiko's te verwyder",
+            "Om kliÃ«nte irrelevant te maak",
+            "Om belasting nooit te betaal nie"
+          ],
+          "explain": "Om lewensvatbaarheid beter te beoordeel",
+          "options": [
+            "Om alle risiko's te verwyder",
+            "Om lewensvatbaarheid beter te beoordeel",
+            "Om kliÃ«nte irrelevant te maak",
+            "Om belasting nooit te betaal nie"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n SWOT-analise wys interne sterk/swak punte en eksterne geleenthede/bedreigings.\n\nWaarvoor help dit by 'n nuwe idee?",
+          "explanation": "Om lewensvatbaarheid beter te beoordeel"
+        },
+        {
+          "ctx": "'n Klant wil 'n produk he, maar is nie bereid om daarvoor te betaal nie.",
+          "stem": "Wat moet die entrepreneur verstaan?",
+          "correct": "Vraag en betalingsbereidheid moet getoets word",
+          "wrong": [
+            "Slegs die kleur van die produk is belangrik",
+            "Die klant is outomaties teikenmark",
+            "Geen prysnavorsing is nodig nie"
+          ],
+          "explain": "Vraag en betalingsbereidheid moet getoets word",
+          "options": [
+            "Vraag en betalingsbereidheid moet getoets word",
+            "Slegs die kleur van die produk is belangrik",
+            "Die klant is outomaties teikenmark",
+            "Geen prysnavorsing is nodig nie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Klant wil 'n produk he, maar is nie bereid om daarvoor te betaal nie.\n\nWat moet die entrepreneur verstaan?",
+          "explanation": "Vraag en betalingsbereidheid moet getoets word"
+        },
+        {
+          "ctx": "'n Leerder verwar mikro-omgewing met mark- en makro-omgewing.",
+          "stem": "Watter hulpmiddel kan help om faktore te orden?",
+          "correct": "SWOT-analise",
+          "wrong": [
+            "Voetstoots-klousule",
+            "Kennisgewing van beÃ«indiging",
+            "Sluitingsaldo"
+          ],
+          "explain": "SWOT-analise",
+          "options": [
+            "Voetstoots-klousule",
+            "SWOT-analise",
+            "Kennisgewing van beÃ«indiging",
+            "Sluitingsaldo"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder verwar mikro-omgewing met mark- en makro-omgewing.\n\nWatter hulpmiddel kan help om faktore te orden?",
+          "explanation": "SWOT-analise"
+        },
+        {
+          "ctx": "'n Navorsingsinstrument word ontwerp om klante se behoeftes en begeertes te meet.",
+          "stem": "Wat is 'n voorbeeld hiervan?",
+          "correct": "'n Vraelys",
+          "wrong": [
+            "'n Huurkoopooreenkoms",
+            "'n Jaarlikse verlofvorm",
+            "'n Adviesraad"
+          ],
+          "explain": "'n Vraelys",
+          "options": [
+            "'n Huurkoopooreenkoms",
+            "'n Jaarlikse verlofvorm",
+            "'n Vraelys",
+            "'n Adviesraad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Navorsingsinstrument word ontwerp om klante se behoeftes en begeertes te meet.\n\nWat is 'n voorbeeld hiervan?",
+          "explanation": "'n Vraelys"
+        },
+        {
+          "ctx": "'n Besigheid het genoeg toerusting en opgeleide werknemers.",
+          "stem": "Waar pas dit in 'n SWOT-analise?",
+          "correct": "Sterk punte",
+          "wrong": [
+            "Swak punte",
+            "Bedreigings",
+            "Geleenthede"
+          ],
+          "explain": "Sterk punte",
+          "options": [
+            "Sterk punte",
+            "Swak punte",
+            "Bedreigings",
+            "Geleenthede"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid het genoeg toerusting en opgeleide werknemers.\n\nWaar pas dit in 'n SWOT-analise?",
+          "explanation": "Sterk punte"
+        },
+        {
+          "ctx": "'n Besigheid se naam is onbekend en die werknemers is onprofessioneel.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Swak punte",
+          "wrong": [
+            "Sterk punte",
+            "Geleenthede",
+            "Kontantinvloei"
+          ],
+          "explain": "Swak punte",
+          "options": [
+            "Sterk punte",
+            "Swak punte",
+            "Geleenthede",
+            "Kontantinvloei"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid se naam is onbekend en die werknemers is onprofessioneel.\n\nWaar pas dit in SWOT?",
+          "explanation": "Swak punte"
+        },
+        {
+          "ctx": "'n Nuwe tegnologie maak dit goedkoper om die produk te vervaardig.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Geleentheid",
+          "wrong": [
+            "Swak punt",
+            "Bedreiging",
+            "Bate"
+          ],
+          "explain": "Geleentheid",
+          "options": [
+            "Swak punt",
+            "Bedreiging",
+            "Geleentheid",
+            "Bate"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Nuwe tegnologie maak dit goedkoper om die produk te vervaardig.\n\nWaar pas dit in SWOT?",
+          "explanation": "Geleentheid"
+        },
+        {
+          "ctx": "'n Nuwe mededinger open langs jou besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Bedreiging",
+          "wrong": [
+            "Sterk punt",
+            "Geleentheid",
+            "Eienaarsbelang"
+          ],
+          "explain": "Bedreiging",
+          "options": [
+            "Sterk punt",
+            "Geleentheid",
+            "Eienaarsbelang",
+            "Bedreiging"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Nuwe mededinger open langs jou besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Bedreiging"
+        },
+        {
+          "ctx": "'n Vraelys vra: 'Wat sal jy betaal?', 'Hoe gereeld koop jy?', en 'Waar koop jy tans?'",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit versamel inligting oor prys, vraag en koopgedrag",
+          "wrong": [
+            "Dit vervang alle finansiele data",
+            "Dit bewys dat geen mededingers bestaan nie",
+            "Dit is 'n huurkontrak"
+          ],
+          "explain": "Dit versamel inligting oor prys, vraag en koopgedrag",
+          "options": [
+            "Dit vervang alle finansiele data",
+            "Dit versamel inligting oor prys, vraag en koopgedrag",
+            "Dit bewys dat geen mededingers bestaan nie",
+            "Dit is 'n huurkontrak"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Vraelys vra: 'Wat sal jy betaal?', 'Hoe gereeld koop jy?', en 'Waar koop jy tans?'\n\nHoekom is dit nuttig?",
+          "explanation": "Dit versamel inligting oor prys, vraag en koopgedrag"
+        },
+        {
+          "ctx": "'n Leerder vra toestemming voor 'n onderhoud en verduidelik die doel van die navorsing.",
+          "stem": "Watter beginsel word gevolg?",
+          "correct": "Etiese en verantwoordelike navorsing",
+          "wrong": [
+            "Onwettige aftrekking",
+            "Foetstoots koop",
+            "Onbeplande bemarking"
+          ],
+          "explain": "Etiese en verantwoordelike navorsing",
+          "options": [
+            "Etiese en verantwoordelike navorsing",
+            "Onwettige aftrekking",
+            "Foetstoots koop",
+            "Onbeplande bemarking"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder vra toestemming voor 'n onderhoud en verduidelik die doel van die navorsing.\n\nWatter beginsel word gevolg?",
+          "explanation": "Etiese en verantwoordelike navorsing"
+        },
+        {
+          "ctx": "Data wat jy self by klante insamel deur vraelyste of onderhoude is...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Primere data",
+          "wrong": [
+            "Sekondere data",
+            "Eienaarsbelang",
+            "Bedryfsuitgawe"
+          ],
+          "explain": "Primere data",
+          "options": [
+            "Sekondere data",
+            "Eienaarsbelang",
+            "Bedryfsuitgawe",
+            "Primere data"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nData wat jy self by klante insamel deur vraelyste of onderhoude is...\n\nKies die korrekte term.",
+          "explanation": "Primere data"
+        },
+        {
+          "ctx": "Inligting wat reeds deur iemand anders nagevors en gepubliseer is, is...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Sekondere data",
+          "wrong": [
+            "Primere data",
+            "Bruto wins",
+            "Huurkoop"
+          ],
+          "explain": "Sekondere data",
+          "options": [
+            "Primere data",
+            "Bruto wins",
+            "Sekondere data",
+            "Huurkoop"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nInligting wat reeds deur iemand anders nagevors en gepubliseer is, is...\n\nKies die korrekte term.",
+          "explanation": "Sekondere data"
+        },
+        {
+          "ctx": "'n Leerder wil weet wie die teikenmark is, wie die mededingers is en watter verskaffers beskikbaar is.",
+          "stem": "Waarom doen sy navorsing?",
+          "correct": "Om die besigheidsgeleentheid beter te beoordeel",
+          "wrong": [
+            "Om alle wetgewing te vermy",
+            "Om net 'n prent by te voeg",
+            "Om banklening as wins te wys"
+          ],
+          "explain": "Om die besigheidsgeleentheid beter te beoordeel",
+          "options": [
+            "Om die besigheidsgeleentheid beter te beoordeel",
+            "Om alle wetgewing te vermy",
+            "Om net 'n prent by te voeg",
+            "Om banklening as wins te wys"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Leerder wil weet wie die teikenmark is, wie die mededingers is en watter verskaffers beskikbaar is.\n\nWaarom doen sy navorsing?",
+          "explanation": "Om die besigheidsgeleentheid beter te beoordeel"
+        },
+        {
+          "ctx": "'n Goeie vraelys bevat verskillende vraagsoorte en minstens 10 respondente.",
+          "stem": "Hoekom is dit beter?",
+          "correct": "Dit gee meer betroubare en bruikbare inligting",
+          "wrong": [
+            "Dit maak antwoorde minder relevant",
+            "Dit vermy alle klantinligting",
+            "Dit is net vir kontrakte bedoel"
+          ],
+          "explain": "Dit gee meer betroubare en bruikbare inligting",
+          "options": [
+            "Dit maak antwoorde minder relevant",
+            "Dit gee meer betroubare en bruikbare inligting",
+            "Dit vermy alle klantinligting",
+            "Dit is net vir kontrakte bedoel"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Goeie vraelys bevat verskillende vraagsoorte en minstens 10 respondente.\n\nHoekom is dit beter?",
+          "explanation": "Dit gee meer betroubare en bruikbare inligting"
+        },
+        {
+          "ctx": "'n Klerewinkel kies 'n perseel naby 'n skool en taxi-roete omdat baie klante daar verby beweeg.",
+          "stem": "Watter liggingsfaktor is die belangrikste?",
+          "correct": "Toegang tot die teikenmark",
+          "wrong": [
+            "Arbeidswetgewing alleen",
+            "Voetstoots-verkope",
+            "Uitvoerende opsomming"
+          ],
+          "explain": "Toegang tot die teikenmark",
+          "options": [
+            "Arbeidswetgewing alleen",
+            "Toegang tot die teikenmark",
+            "Voetstoots-verkope",
+            "Uitvoerende opsomming"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Klerewinkel kies 'n perseel naby 'n skool en taxi-roete omdat baie klante daar verby beweeg.\n\nWatter liggingsfaktor is die belangrikste?",
+          "explanation": "Toegang tot die teikenmark"
+        },
+        {
+          "ctx": "'n Fabriek benodig baie opgeleide werkers en ondersoek of daar genoeg mense met die regte vaardighede in die area is.",
+          "stem": "Watter faktor word ondersoek?",
+          "correct": "Arbeidsmark",
+          "wrong": [
+            "Teikenmark",
+            "Logo-ontwerp",
+            "Kredietwet"
+          ],
+          "explain": "Arbeidsmark",
+          "options": [
+            "Teikenmark",
+            "Logo-ontwerp",
+            "Arbeidsmark",
+            "Kredietwet"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Fabriek benodig baie opgeleide werkers en ondersoek of daar genoeg mense met die regte vaardighede in die area is.\n\nWatter faktor word ondersoek?",
+          "explanation": "Arbeidsmark"
+        },
+        {
+          "ctx": "Leerders verwar arbeidsmark en teikenmark.",
+          "stem": "Watter verduideliking is korrek?",
+          "correct": "Arbeidsmark is werkers; teikenmark is klante",
+          "wrong": [
+            "Arbeidsmark is klante; teikenmark is banklenings",
+            "Albei beteken verskaffers",
+            "Albei beteken net mededingers"
+          ],
+          "explain": "Arbeidsmark is werkers; teikenmark is klante",
+          "options": [
+            "Arbeidsmark is klante; teikenmark is banklenings",
+            "Albei beteken verskaffers",
+            "Albei beteken net mededingers",
+            "Arbeidsmark is werkers; teikenmark is klante"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nLeerders verwar arbeidsmark en teikenmark.\n\nWatter verduideliking is korrek?",
+          "explanation": "Arbeidsmark is werkers; teikenmark is klante"
+        },
+        {
+          "ctx": "'n Besigheid moet naby water, elektrisiteit en paaie wees.",
+          "stem": "Watter liggingsfaktor is dit?",
+          "correct": "Infrastruktuur",
+          "wrong": [
+            "Kraamverlof",
+            "Bemarkingsamestelling",
+            "Rooi denkhoed"
+          ],
+          "explain": "Infrastruktuur",
+          "options": [
+            "Kraamverlof",
+            "Infrastruktuur",
+            "Bemarkingsamestelling",
+            "Rooi denkhoed"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid moet naby water, elektrisiteit en paaie wees.\n\nWatter liggingsfaktor is dit?",
+          "explanation": "Infrastruktuur"
+        },
+        {
+          "ctx": "'n Bakkery se oonde benodig driefase-elektrisiteit.",
+          "stem": "Wat moet die eienaar ondersoek voor ligging gekies word?",
+          "correct": "Of die perseel geskikte elektrisiteit het",
+          "wrong": [
+            "Of die kliÃ«nte alle kontrakte teken",
+            "Of 'n sektorgrafiek mooi lyk",
+            "Of die werknemer 'n logo kan teken"
+          ],
+          "explain": "Of die perseel geskikte elektrisiteit het",
+          "options": [
+            "Of die perseel geskikte elektrisiteit het",
+            "Of die kliÃ«nte alle kontrakte teken",
+            "Of 'n sektorgrafiek mooi lyk",
+            "Of die werknemer 'n logo kan teken"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Bakkery se oonde benodig driefase-elektrisiteit.\n\nWat moet die eienaar ondersoek voor ligging gekies word?",
+          "explanation": "Of die perseel geskikte elektrisiteit het"
+        },
+        {
+          "ctx": "'n Winkel wil oopmaak in 'n gebied met baie misdaad en swak straatligte.",
+          "stem": "Watter faktor moet oorweeg word?",
+          "correct": "Misdaad en veiligheid",
+          "wrong": [
+            "Verpakking se kleur",
+            "Uitvoerende opsomming",
+            "SMART se meetbaarheid"
+          ],
+          "explain": "Misdaad en veiligheid",
+          "options": [
+            "Verpakking se kleur",
+            "Uitvoerende opsomming",
+            "SMART se meetbaarheid",
+            "Misdaad en veiligheid"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Winkel wil oopmaak in 'n gebied met baie misdaad en swak straatligte.\n\nWatter faktor moet oorweeg word?",
+          "explanation": "Misdaad en veiligheid"
+        },
+        {
+          "ctx": "'n Fabriek wil naby sy grondstofverskaffer wees om vervoerkoste te verlaag.",
+          "stem": "Watter faktor word gebruik?",
+          "correct": "Nabyheid aan grondstowwe en verskaffers",
+          "wrong": [
+            "Demografie alleen",
+            "Getuies by kontrakte",
+            "Advertensie-uitleg"
+          ],
+          "explain": "Nabyheid aan grondstowwe en verskaffers",
+          "options": [
+            "Demografie alleen",
+            "Getuies by kontrakte",
+            "Nabyheid aan grondstowwe en verskaffers",
+            "Advertensie-uitleg"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Fabriek wil naby sy grondstofverskaffer wees om vervoerkoste te verlaag.\n\nWatter faktor word gebruik?",
+          "explanation": "Nabyheid aan grondstowwe en verskaffers"
+        },
+        {
+          "ctx": "'n Munisipaliteit bied laer water- en elektrisiteitstariewe aan as 'n fabriek daar open.",
+          "stem": "Watter konsep word gewys?",
+          "correct": "Konsessies of plaaslike aansporings",
+          "wrong": [
+            "Kollektiewe bedinging",
+            "Tekstuur in advertensies",
+            "Leningsterugbetaling"
+          ],
+          "explain": "Konsessies of plaaslike aansporings",
+          "options": [
+            "Konsessies of plaaslike aansporings",
+            "Kollektiewe bedinging",
+            "Tekstuur in advertensies",
+            "Leningsterugbetaling"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Munisipaliteit bied laer water- en elektrisiteitstariewe aan as 'n fabriek daar open.\n\nWatter konsep word gewys?",
+          "explanation": "Konsessies of plaaslike aansporings"
+        },
+        {
+          "ctx": "'n Toerismebesigheid wil naby hotelle, besienswaardighede en 'n lughawe wees.",
+          "stem": "Watter ligging pas die beste?",
+          "correct": "Naby toeriste en vervoerpunte",
+          "wrong": [
+            "Ver van alle paaie en klante",
+            "Slegs in 'n geslote fabriek",
+            "In 'n gebied sonder dienslewering"
+          ],
+          "explain": "Naby toeriste en vervoerpunte",
+          "options": [
+            "Ver van alle paaie en klante",
+            "Naby toeriste en vervoerpunte",
+            "Slegs in 'n geslote fabriek",
+            "In 'n gebied sonder dienslewering"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Toerismebesigheid wil naby hotelle, besienswaardighede en 'n lughawe wees.\n\nWatter ligging pas die beste?",
+          "explanation": "Naby toeriste en vervoerpunte"
+        },
+        {
+          "ctx": "'n Landbou-onderneming kies 'n plek wat nie te ver van hoofpaaie af is nie.",
+          "stem": "Hoekom is dit belangrik?",
+          "correct": "Produkte en insette kan makliker vervoer word",
+          "wrong": [
+            "Dit verander alle behoeftes in begeertes",
+            "Dit maak mededinging onmoontlik",
+            "Dit vervang finansiÃ«le ontleding"
+          ],
+          "explain": "Produkte en insette kan makliker vervoer word",
+          "options": [
+            "Produkte en insette kan makliker vervoer word",
+            "Dit verander alle behoeftes in begeertes",
+            "Dit maak mededinging onmoontlik",
+            "Dit vervang finansiÃ«le ontleding"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Landbou-onderneming kies 'n plek wat nie te ver van hoofpaaie af is nie.\n\nHoekom is dit belangrik?",
+          "explanation": "Produkte en insette kan makliker vervoer word"
+        },
+        {
+          "ctx": "'n Fabriek naby sy munisipale klante betaal minder om klaarprodukte af te lewer.",
+          "stem": "Watter voordeel het die ligging?",
+          "correct": "Laer vervoerkoste",
+          "wrong": [
+            "HoÃ«r huurkooppaaiemente",
+            "Geen infrastruktuur nodig nie",
+            "Minder marknavorsing"
+          ],
+          "explain": "Laer vervoerkoste",
+          "options": [
+            "HoÃ«r huurkooppaaiemente",
+            "Geen infrastruktuur nodig nie",
+            "Laer vervoerkoste",
+            "Minder marknavorsing"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Fabriek naby sy munisipale klante betaal minder om klaarprodukte af te lewer.\n\nWatter voordeel het die ligging?",
+          "explanation": "Laer vervoerkoste"
+        },
+        {
+          "ctx": "Brandstofpryse styg vinnig.",
+          "stem": "Hoekom raak dit ligging?",
+          "correct": "Vervoer oor lang afstande word duurder",
+          "wrong": [
+            "Bemarkingskleur word minder belangrik",
+            "Werknemers kry outomaties meer verlof",
+            "Alle produkte word bates"
+          ],
+          "explain": "Vervoer oor lang afstande word duurder",
+          "options": [
+            "Bemarkingskleur word minder belangrik",
+            "Werknemers kry outomaties meer verlof",
+            "Alle produkte word bates",
+            "Vervoer oor lang afstande word duurder"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nBrandstofpryse styg vinnig.\n\nHoekom raak dit ligging?",
+          "explanation": "Vervoer oor lang afstande word duurder"
+        },
+        {
+          "ctx": "'n Fabriek gebruik groot masjiene en baie water.",
+          "stem": "Watter faktor moet sterk oorweeg word?",
+          "correct": "Betroubare elektrisiteit en watervoorsiening",
+          "wrong": [
+            "Huurder se naam",
+            "Sektordiagram",
+            "Afkoelingstydperk"
+          ],
+          "explain": "Betroubare elektrisiteit en watervoorsiening",
+          "options": [
+            "Huurder se naam",
+            "Betroubare elektrisiteit en watervoorsiening",
+            "Sektordiagram",
+            "Afkoelingstydperk"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Fabriek gebruik groot masjiene en baie water.\n\nWatter faktor moet sterk oorweeg word?",
+          "explanation": "Betroubare elektrisiteit en watervoorsiening"
+        },
+        {
+          "ctx": "Kragonderbrekings stop produksie en kragopwekkers kos ekstra geld.",
+          "stem": "Watter risiko word beskryf?",
+          "correct": "Onbetroubare infrastruktuur verhoog koste",
+          "wrong": [
+            "Swak parafering",
+            "Goeie mededinging",
+            "Verhoogde eienaarsbelang"
+          ],
+          "explain": "Onbetroubare infrastruktuur verhoog koste",
+          "options": [
+            "Onbetroubare infrastruktuur verhoog koste",
+            "Swak parafering",
+            "Goeie mededinging",
+            "Verhoogde eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nKragonderbrekings stop produksie en kragopwekkers kos ekstra geld.\n\nWatter risiko word beskryf?",
+          "explanation": "Onbetroubare infrastruktuur verhoog koste"
+        },
+        {
+          "ctx": "'n Arbeidsintensiewe onderneming het baie werkers nodig.",
+          "stem": "Wat beteken arbeidsintensief?",
+          "correct": "Die besigheid gebruik baie arbeid in sy werking",
+          "wrong": [
+            "Die besigheid gebruik geen werknemers nie",
+            "Die besigheid verkoop net krediet",
+            "Die besigheid het net 'n dekblad"
+          ],
+          "explain": "Die besigheid gebruik baie arbeid in sy werking",
+          "options": [
+            "Die besigheid gebruik geen werknemers nie",
+            "Die besigheid verkoop net krediet",
+            "Die besigheid het net 'n dekblad",
+            "Die besigheid gebruik baie arbeid in sy werking"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Arbeidsintensiewe onderneming het baie werkers nodig.\n\nWat beteken arbeidsintensief?",
+          "explanation": "Die besigheid gebruik baie arbeid in sy werking"
+        },
+        {
+          "ctx": "'n Stad het baie opgeleide en onopgeleide werkers beskikbaar.",
+          "stem": "Waarom is dit aantreklik vir 'n fabriek?",
+          "correct": "Die arbeidsmark kan in personeelkbehoeftes voorsien",
+          "wrong": [
+            "Die markontleding word onnodig",
+            "Die fabriek hoef nie bates te koop nie",
+            "Alle lone word nul"
+          ],
+          "explain": "Die arbeidsmark kan in personeelkbehoeftes voorsien",
+          "options": [
+            "Die markontleding word onnodig",
+            "Die fabriek hoef nie bates te koop nie",
+            "Die arbeidsmark kan in personeelkbehoeftes voorsien",
+            "Alle lone word nul"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Stad het baie opgeleide en onopgeleide werkers beskikbaar.\n\nWaarom is dit aantreklik vir 'n fabriek?",
+          "explanation": "Die arbeidsmark kan in personeelkbehoeftes voorsien"
+        },
+        {
+          "ctx": "'n Goeie werker weier 'n pos omdat daar geen betroubare openbare vervoer na die fabriek is nie.",
+          "stem": "Watter faktor benadeel die besigheid?",
+          "correct": "Werknemersvervoer",
+          "wrong": [
+            "Produkverpakking",
+            "Kredietterugbetaling",
+            "Uitvoerende opsomming"
+          ],
+          "explain": "Werknemersvervoer",
+          "options": [
+            "Werknemersvervoer",
+            "Produkverpakking",
+            "Kredietterugbetaling",
+            "Uitvoerende opsomming"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Goeie werker weier 'n pos omdat daar geen betroubare openbare vervoer na die fabriek is nie.\n\nWatter faktor benadeel die besigheid?",
+          "explanation": "Werknemersvervoer"
+        },
+        {
+          "ctx": "'n Fabriek naby Durban bedien hoofsaaklik die Durban-mark.",
+          "stem": "Wat is die voordeel?",
+          "correct": "Klaarprodukte hoef nie ver vervoer te word nie",
+          "wrong": [
+            "Die teikenmark verdwyn",
+            "Alle mededinging word onwettig",
+            "Bates word laste"
+          ],
+          "explain": "Klaarprodukte hoef nie ver vervoer te word nie",
+          "options": [
+            "Die teikenmark verdwyn",
+            "Klaarprodukte hoef nie ver vervoer te word nie",
+            "Alle mededinging word onwettig",
+            "Bates word laste"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Fabriek naby Durban bedien hoofsaaklik die Durban-mark.\n\nWat is die voordeel?",
+          "explanation": "Klaarprodukte hoef nie ver vervoer te word nie"
+        },
+        {
+          "ctx": "'n Besigheid moet billike salarisse, voordele en goeie werksomstandighede bied om goeie werkers te lok.",
+          "stem": "Watter faktor word beklemtoon?",
+          "correct": "Arbeidsmark en werknemersbehoud",
+          "wrong": [
+            "Slegs kleurkontras",
+            "Voetstoots verkoop",
+            "Sektorgrafiek"
+          ],
+          "explain": "Arbeidsmark en werknemersbehoud",
+          "options": [
+            "Arbeidsmark en werknemersbehoud",
+            "Slegs kleurkontras",
+            "Voetstoots verkoop",
+            "Sektorgrafiek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid moet billike salarisse, voordele en goeie werksomstandighede bied om goeie werkers te lok.\n\nWatter faktor word beklemtoon?",
+          "explanation": "Arbeidsmark en werknemersbehoud"
+        },
+        {
+          "ctx": "Gauteng, Durban-Pinetown, Port Elizabeth-Uitenhage en die Wes-Kaap is voorbeelde van groot fabrieksgebiede.",
+          "stem": "Waarom kom fabrieke dikwels daar voor?",
+          "correct": "Daar is beter toegang tot markte, vervoer en infrastruktuur",
+          "wrong": [
+            "Daar is geen mededingers nie",
+            "Daar is geen arbeidswette nie",
+            "Daar is geen behoefte aan grondstowwe nie"
+          ],
+          "explain": "Daar is beter toegang tot markte, vervoer en infrastruktuur",
+          "options": [
+            "Daar is geen mededingers nie",
+            "Daar is beter toegang tot markte, vervoer en infrastruktuur",
+            "Daar is geen arbeidswette nie",
+            "Daar is geen behoefte aan grondstowwe nie"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nGauteng, Durban-Pinetown, Port Elizabeth-Uitenhage en die Wes-Kaap is voorbeelde van groot fabrieksgebiede.\n\nWaarom kom fabrieke dikwels daar voor?",
+          "explanation": "Daar is beter toegang tot markte, vervoer en infrastruktuur"
+        },
+        {
+          "ctx": "'n Afvalmaatskappy word beboet omdat afval onwettig gestoor is.",
+          "stem": "Watter liggingfaktor word beklemtoon?",
+          "correct": "Omgewingsregulasies en afvalbeheer",
+          "wrong": [
+            "Uitvoerende opsomming",
+            "Dienskontrak alleen",
+            "SMART-doelwit"
+          ],
+          "explain": "Omgewingsregulasies en afvalbeheer",
+          "options": [
+            "Uitvoerende opsomming",
+            "Dienskontrak alleen",
+            "SMART-doelwit",
+            "Omgewingsregulasies en afvalbeheer"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Afvalmaatskappy word beboet omdat afval onwettig gestoor is.\n\nWatter liggingfaktor word beklemtoon?",
+          "explanation": "Omgewingsregulasies en afvalbeheer"
+        },
+        {
+          "ctx": "'n Fabriek se aktiwiteite kan besoedeling veroorsaak.",
+          "stem": "Wat moet die eienaar voor vestiging ondersoek?",
+          "correct": "Omgewingsimpak en wetlike vereistes",
+          "wrong": [
+            "Net die naam van die besigheid",
+            "Slegs slagspreuk",
+            "Getuies se handtekeninge"
+          ],
+          "explain": "Omgewingsimpak en wetlike vereistes",
+          "options": [
+            "Net die naam van die besigheid",
+            "Omgewingsimpak en wetlike vereistes",
+            "Slegs slagspreuk",
+            "Getuies se handtekeninge"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Fabriek se aktiwiteite kan besoedeling veroorsaak.\n\nWat moet die eienaar voor vestiging ondersoek?",
+          "explanation": "Omgewingsimpak en wetlike vereistes"
+        },
+        {
+          "ctx": "Daar is reeds verskeie fabrieke wat dieselfde produk in die area vervaardig.",
+          "stem": "Watter faktor moet die onderneming ondersoek?",
+          "correct": "Mededinging",
+          "wrong": [
+            "Kraamverlof",
+            "Batewaardasie",
+            "Indeksblad"
+          ],
+          "explain": "Mededinging",
+          "options": [
+            "Mededinging",
+            "Kraamverlof",
+            "Batewaardasie",
+            "Indeksblad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDaar is reeds verskeie fabrieke wat dieselfde produk in die area vervaardig.\n\nWatter faktor moet die onderneming ondersoek?",
+          "explanation": "Mededinging"
+        },
+        {
+          "ctx": "'n Besigheid reageer op baie mededingers deur beter gehalte en waarde te bied.",
+          "stem": "Watter strategie gebruik dit?",
+          "correct": "Differensiasie deur waarde en gehalte",
+          "wrong": [
+            "Alle pryse sonder rede verhoog",
+            "Alle klante ignoreer",
+            "Geen marknavorsing doen"
+          ],
+          "explain": "Differensiasie deur waarde en gehalte",
+          "options": [
+            "Alle pryse sonder rede verhoog",
+            "Alle klante ignoreer",
+            "Geen marknavorsing doen",
+            "Differensiasie deur waarde en gehalte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid reageer op baie mededingers deur beter gehalte en waarde te bied.\n\nWatter strategie gebruik dit?",
+          "explanation": "Differensiasie deur waarde en gehalte"
+        },
+        {
+          "ctx": "'n Gebied het hoe misdaad, daarom moet die besigheid meer aan sekuriteit en versekering bestee.",
+          "stem": "Wat is die gevolg van misdaad?",
+          "correct": "HoÃ«r bedryfskoste",
+          "wrong": [
+            "Laer behoefte aan personeel",
+            "Geen kontantuitvloei",
+            "Meer gratis elektrisiteit"
+          ],
+          "explain": "HoÃ«r bedryfskoste",
+          "options": [
+            "Laer behoefte aan personeel",
+            "Geen kontantuitvloei",
+            "HoÃ«r bedryfskoste",
+            "Meer gratis elektrisiteit"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Gebied het hoe misdaad, daarom moet die besigheid meer aan sekuriteit en versekering bestee.\n\nWat is die gevolg van misdaad?",
+          "explanation": "HoÃ«r bedryfskoste"
+        },
+        {
+          "ctx": "'n Werkgewer wil werknemers baie lang skofte laat werk om koste te spaar.",
+          "stem": "Watter faktor moet hy oorweeg?",
+          "correct": "Werksure en arbeidswetgewing",
+          "wrong": [
+            "Produknaam en logo alleen",
+            "Kredietafkoeling",
+            "Sektorverhouding"
+          ],
+          "explain": "Werksure en arbeidswetgewing",
+          "options": [
+            "Werksure en arbeidswetgewing",
+            "Produknaam en logo alleen",
+            "Kredietafkoeling",
+            "Sektorverhouding"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Werkgewer wil werknemers baie lang skofte laat werk om koste te spaar.\n\nWatter faktor moet hy oorweeg?",
+          "explanation": "Werksure en arbeidswetgewing"
+        },
+        {
+          "ctx": "'n Besigheid moet weet hoeveel verlof, siekteverlof en kraamverlof werknemers mag kry.",
+          "stem": "Watter wetlike gebied raak dit?",
+          "correct": "Basiese diensvoorwaardes",
+          "wrong": [
+            "Slegs marknavorsing",
+            "Voetstoots-klousule",
+            "Vervoerdiagram"
+          ],
+          "explain": "Basiese diensvoorwaardes",
+          "options": [
+            "Slegs marknavorsing",
+            "Basiese diensvoorwaardes",
+            "Voetstoots-klousule",
+            "Vervoerdiagram"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid moet weet hoeveel verlof, siekteverlof en kraamverlof werknemers mag kry.\n\nWatter wetlike gebied raak dit?",
+          "explanation": "Basiese diensvoorwaardes"
+        },
+        {
+          "ctx": "'n Groot onderneming met meer as 50 werknemers moet regstellende aksie-planne ontwikkel.",
+          "stem": "Watter wet hou hiermee verband?",
+          "correct": "Wet op Gelyke Indiensneming",
+          "wrong": [
+            "Wet op Huurbehuising",
+            "Nasionale Kredietwet",
+            "Wet op Korttermynversekering"
+          ],
+          "explain": "Wet op Gelyke Indiensneming",
+          "options": [
+            "Wet op Gelyke Indiensneming",
+            "Wet op Huurbehuising",
+            "Nasionale Kredietwet",
+            "Wet op Korttermynversekering"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Groot onderneming met meer as 50 werknemers moet regstellende aksie-planne ontwikkel.\n\nWatter wet hou hiermee verband?",
+          "explanation": "Wet op Gelyke Indiensneming"
+        },
+        {
+          "ctx": "Werkers en werkgewers gebruik vakbonde en kollektiewe bedinging om arbeidskwessies te hanteer.",
+          "stem": "Watter wet is die naaste hieraan?",
+          "correct": "Wet op Arbeidsverhoudinge",
+          "wrong": [
+            "Wet op Verbruikersbeskerming",
+            "Wet op Langtermynversekering",
+            "Wet op Huurbehuising"
+          ],
+          "explain": "Wet op Arbeidsverhoudinge",
+          "options": [
+            "Wet op Verbruikersbeskerming",
+            "Wet op Arbeidsverhoudinge",
+            "Wet op Langtermynversekering",
+            "Wet op Huurbehuising"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nWerkers en werkgewers gebruik vakbonde en kollektiewe bedinging om arbeidskwessies te hanteer.\n\nWatter wet is die naaste hieraan?",
+          "explanation": "Wet op Arbeidsverhoudinge"
+        },
+        {
+          "ctx": "'n Werkgewer wil geld van 'n werknemer se salaris aftrek sonder toestemming of wettige rede.",
+          "stem": "Watter beginsel geld?",
+          "correct": "Aftrekkings moet wettig en toegelaat wees",
+          "wrong": [
+            "Enige aftrekking is altyd toegelaat",
+            "Aftrekkings geld net vir klante",
+            "Aftrekkings is altyd 'n bate"
+          ],
+          "explain": "Aftrekkings moet wettig en toegelaat wees",
+          "options": [
+            "Enige aftrekking is altyd toegelaat",
+            "Aftrekkings geld net vir klante",
+            "Aftrekkings moet wettig en toegelaat wees",
+            "Aftrekkings is altyd 'n bate"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Werkgewer wil geld van 'n werknemer se salaris aftrek sonder toestemming of wettige rede.\n\nWatter beginsel geld?",
+          "explanation": "Aftrekkings moet wettig en toegelaat wees"
+        },
+        {
+          "ctx": "Twee partye stem skriftelik saam oor prys, afleweringsdatum en betaling.",
+          "stem": "Wat word gevorm?",
+          "correct": "'n Kontrak",
+          "wrong": [
+            "'n Staafgrafiek",
+            "'n SWOT-bedreiging",
+            "'n Markleemte"
+          ],
+          "explain": "'n Kontrak",
+          "options": [
+            "'n Kontrak",
+            "'n Staafgrafiek",
+            "'n SWOT-bedreiging",
+            "'n Markleemte"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nTwee partye stem skriftelik saam oor prys, afleweringsdatum en betaling.\n\nWat word gevorm?",
+          "explanation": "'n Kontrak"
+        },
+        {
+          "ctx": "'n Kontrak mag nie teen statutÃªre of gemenereg wees nie.",
+          "stem": "Watter vereiste word beskryf?",
+          "correct": "Geldigheid",
+          "wrong": [
+            "Tekstuur",
+            "Spreidingsdiagram",
+            "Bemarkbaarheid"
+          ],
+          "explain": "Geldigheid",
+          "options": [
+            "Tekstuur",
+            "Geldigheid",
+            "Spreidingsdiagram",
+            "Bemarkbaarheid"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Kontrak mag nie teen statutÃªre of gemenereg wees nie.\n\nWatter vereiste word beskryf?",
+          "explanation": "Geldigheid"
+        },
+        {
+          "ctx": "'n Kontrak moet aan wetlike of party-vereistes voldoen.",
+          "stem": "Watter begrip pas?",
+          "correct": "Formaliteit",
+          "wrong": [
+            "Bruto wins",
+            "Gelykbreek",
+            "Mededingersreaksie"
+          ],
+          "explain": "Formaliteit",
+          "options": [
+            "Bruto wins",
+            "Gelykbreek",
+            "Formaliteit",
+            "Mededingersreaksie"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Kontrak moet aan wetlike of party-vereistes voldoen.\n\nWatter begrip pas?",
+          "explanation": "Formaliteit"
+        },
+        {
+          "ctx": "'n Getuie teken om te bevestig dat die regte persoon die kontrak geteken het.",
+          "stem": "Wat doen die getuie?",
+          "correct": "Bevestig die ondertekening deur die regte persone",
+          "wrong": [
+            "Gaan altyd elke inhoudelike klousule na",
+            "Betaal die koper se skuld",
+            "Verander die kontrak se prys"
+          ],
+          "explain": "Bevestig die ondertekening deur die regte persone",
+          "options": [
+            "Gaan altyd elke inhoudelike klousule na",
+            "Betaal die koper se skuld",
+            "Verander die kontrak se prys",
+            "Bevestig die ondertekening deur die regte persone"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Getuie teken om te bevestig dat die regte persoon die kontrak geteken het.\n\nWat doen die getuie?",
+          "explanation": "Bevestig die ondertekening deur die regte persone"
+        },
+        {
+          "ctx": "'n Tweedehandse item word verkoop 'soos dit is'.",
+          "stem": "Watter term pas?",
+          "correct": "Voetstoots",
+          "wrong": [
+            "Kollektiewe bedinging",
+            "Bemarkingsamestelling",
+            "Kontantbegroting"
+          ],
+          "explain": "Voetstoots",
+          "options": [
+            "Kollektiewe bedinging",
+            "Voetstoots",
+            "Bemarkingsamestelling",
+            "Kontantbegroting"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Tweedehandse item word verkoop 'soos dit is'.\n\nWatter term pas?",
+          "explanation": "Voetstoots"
+        },
+        {
+          "ctx": "'n Kontrak se elke bladsy word geparafeer.",
+          "stem": "Hoekom word dit gedoen?",
+          "correct": "Om te wys dat alle bladsye deel van die ooreenkoms is",
+          "wrong": [
+            "Om verkope te verhoog",
+            "Om werknemers te werf",
+            "Om mededingers te meet"
+          ],
+          "explain": "Om te wys dat alle bladsye deel van die ooreenkoms is",
+          "options": [
+            "Om te wys dat alle bladsye deel van die ooreenkoms is",
+            "Om verkope te verhoog",
+            "Om werknemers te werf",
+            "Om mededingers te meet"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kontrak se elke bladsy word geparafeer.\n\nHoekom word dit gedoen?",
+          "explanation": "Om te wys dat alle bladsye deel van die ooreenkoms is"
+        },
+        {
+          "ctx": "'n Besigheid teken 'n kontrak sonder om die fyn druk te lees en kry later ekstra koste.",
+          "stem": "Wat is die belangrikste les?",
+          "correct": "Lees alle voorwaardes deeglik voor ondertekening",
+          "wrong": [
+            "Kontrakte hoef nie gelees te word nie",
+            "Getuies betaal altyd ekstra koste",
+            "Voetstoots kanselleer elke kontrak"
+          ],
+          "explain": "Lees alle voorwaardes deeglik voor ondertekening",
+          "options": [
+            "Kontrakte hoef nie gelees te word nie",
+            "Getuies betaal altyd ekstra koste",
+            "Voetstoots kanselleer elke kontrak",
+            "Lees alle voorwaardes deeglik voor ondertekening"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid teken 'n kontrak sonder om die fyn druk te lees en kry later ekstra koste.\n\nWat is die belangrikste les?",
+          "explanation": "Lees alle voorwaardes deeglik voor ondertekening"
+        },
+        {
+          "ctx": "Kontrakte hou verband met die regsraamwerk en makro-omgewing.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Besighede moet wetlike gevolge verstaan",
+          "wrong": [
+            "Regte en pligte is nooit bindend nie",
+            "Wetgewing raak net produkkleur",
+            "Alle kontrakte is mondeling"
+          ],
+          "explain": "Besighede moet wetlike gevolge verstaan",
+          "options": [
+            "Regte en pligte is nooit bindend nie",
+            "Wetgewing raak net produkkleur",
+            "Besighede moet wetlike gevolge verstaan",
+            "Alle kontrakte is mondeling"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nKontrakte hou verband met die regsraamwerk en makro-omgewing.\n\nWaarom is dit belangrik?",
+          "explanation": "Besighede moet wetlike gevolge verstaan"
+        },
+        {
+          "ctx": "'n Besigheid ondersoek of 'n kontrak aan wetlike vereistes voldoen.",
+          "stem": "Watter vaardigheid word geoefen?",
+          "correct": "Kontrak-evaluering",
+          "wrong": [
+            "Slegs grafiekteken",
+            "Vervoerkoste skatting",
+            "Kreatiewe verpakking"
+          ],
+          "explain": "Kontrak-evaluering",
+          "options": [
+            "Kontrak-evaluering",
+            "Slegs grafiekteken",
+            "Vervoerkoste skatting",
+            "Kreatiewe verpakking"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid ondersoek of 'n kontrak aan wetlike vereistes voldoen.\n\nWatter vaardigheid word geoefen?",
+          "explanation": "Kontrak-evaluering"
+        },
+        {
+          "ctx": "'n Koper koop 'n voetstoots-item en kla later oor 'n sigbare fout wat hy aanvaar het.",
+          "stem": "Wat is die risiko vir die koper?",
+          "correct": "Hy het die item soos dit is aanvaar",
+          "wrong": [
+            "Die verkoper moet altyd 'n nuwe item gee",
+            "Die koop word outomaties 'n banklening",
+            "Die getuie word die eienaar"
+          ],
+          "explain": "Hy het die item soos dit is aanvaar",
+          "options": [
+            "Die verkoper moet altyd 'n nuwe item gee",
+            "Hy het die item soos dit is aanvaar",
+            "Die koop word outomaties 'n banklening",
+            "Die getuie word die eienaar"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Koper koop 'n voetstoots-item en kla later oor 'n sigbare fout wat hy aanvaar het.\n\nWat is die risiko vir die koper?",
+          "explanation": "Hy het die item soos dit is aanvaar"
+        },
+        {
+          "ctx": "Pen en Papier betaal maandeliks om winkelruimte in 'n winkelsentrum te gebruik.",
+          "stem": "Watter kontrak is dit?",
+          "correct": "Huurooreenkoms",
+          "wrong": [
+            "Dienskontrak",
+            "Korttermynversekering",
+            "Marknavorsingsvraelys"
+          ],
+          "explain": "Huurooreenkoms",
+          "options": [
+            "Dienskontrak",
+            "Huurooreenkoms",
+            "Korttermynversekering",
+            "Marknavorsingsvraelys"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nPen en Papier betaal maandeliks om winkelruimte in 'n winkelsentrum te gebruik.\n\nWatter kontrak is dit?",
+          "explanation": "Huurooreenkoms"
+        },
+        {
+          "ctx": "By 'n huurooreenkoms gebruik die huurder die eiendom maar word nie eienaar nie.",
+          "stem": "Wie is die huurder?",
+          "correct": "Die party wat die eiendom huur en gebruik",
+          "wrong": [
+            "Die party wat die eiendom besit en verhuur",
+            "Die bank wat die lening gee",
+            "Die getuie wat teken"
+          ],
+          "explain": "Die party wat die eiendom huur en gebruik",
+          "options": [
+            "Die party wat die eiendom besit en verhuur",
+            "Die bank wat die lening gee",
+            "Die party wat die eiendom huur en gebruik",
+            "Die getuie wat teken"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nBy 'n huurooreenkoms gebruik die huurder die eiendom maar word nie eienaar nie.\n\nWie is die huurder?",
+          "explanation": "Die party wat die eiendom huur en gebruik"
+        },
+        {
+          "ctx": "Vyf permanente werknemers stem in om spesifieke werk te doen en die besigheid betaal hulle.",
+          "stem": "Watter kontrak is dit?",
+          "correct": "Dienskontrakte",
+          "wrong": [
+            "Huurkoop",
+            "Sektorgrafiek",
+            "Verbruikersvraelys"
+          ],
+          "explain": "Dienskontrakte",
+          "options": [
+            "Huurkoop",
+            "Sektorgrafiek",
+            "Verbruikersvraelys",
+            "Dienskontrakte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nVyf permanente werknemers stem in om spesifieke werk te doen en die besigheid betaal hulle.\n\nWatter kontrak is dit?",
+          "explanation": "Dienskontrakte"
+        },
+        {
+          "ctx": "'n Besigheid betaal 'n deposito en daarna maandelikse paaiemente vir 'n voertuig. Die verkoper bly eienaar tot volle betaling.",
+          "stem": "Watter ooreenkoms is dit?",
+          "correct": "Huurkoopooreenkoms",
+          "wrong": [
+            "Huurooreenkoms vir perseel",
+            "Verzekering teen diefstal",
+            "Bemarkingsplan"
+          ],
+          "explain": "Huurkoopooreenkoms",
+          "options": [
+            "Huurooreenkoms vir perseel",
+            "Huurkoopooreenkoms",
+            "Verzekering teen diefstal",
+            "Bemarkingsplan"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid betaal 'n deposito en daarna maandelikse paaiemente vir 'n voertuig. Die verkoper bly eienaar tot volle betaling.\n\nWatter ooreenkoms is dit?",
+          "explanation": "Huurkoopooreenkoms"
+        },
+        {
+          "ctx": "As Pen en Papier nie die huurkooppaaiemente betaal nie, kan die verkoper die voertuig terugneem.",
+          "stem": "Watter regsimplikasie word gewys?",
+          "correct": "Wanbetaling kan tot terugneming van die bate lei",
+          "wrong": [
+            "Die koper kry die bate gratis",
+            "Die verkoper verloor alle regte",
+            "Die kontrak word 'n SWOT-analise"
+          ],
+          "explain": "Wanbetaling kan tot terugneming van die bate lei",
+          "options": [
+            "Wanbetaling kan tot terugneming van die bate lei",
+            "Die koper kry die bate gratis",
+            "Die verkoper verloor alle regte",
+            "Die kontrak word 'n SWOT-analise"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nAs Pen en Papier nie die huurkooppaaiemente betaal nie, kan die verkoper die voertuig terugneem.\n\nWatter regsimplikasie word gewys?",
+          "explanation": "Wanbetaling kan tot terugneming van die bate lei"
+        },
+        {
+          "ctx": "'n Winkel betaal premies sodat diefstal of skade aan voorraad gedek kan word.",
+          "stem": "Watter kontrak is dit?",
+          "correct": "Korttermynversekering",
+          "wrong": [
+            "Dienskontrak",
+            "Nasionale Kredietwet se afkoeling",
+            "Vervoerdiens alleen"
+          ],
+          "explain": "Korttermynversekering",
+          "options": [
+            "Dienskontrak",
+            "Nasionale Kredietwet se afkoeling",
+            "Vervoerdiens alleen",
+            "Korttermynversekering"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Winkel betaal premies sodat diefstal of skade aan voorraad gedek kan word.\n\nWatter kontrak is dit?",
+          "explanation": "Korttermynversekering"
+        },
+        {
+          "ctx": "'n Besigheid huur kleurkopieerders omdat dit nie genoeg kontant het om dit te koop nie.",
+          "stem": "Hoekom kan huur nuttig wees?",
+          "correct": "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe",
+          "wrong": [
+            "Dit maak die verhuurder die werknemer",
+            "Dit verwyder alle maandelikse koste",
+            "Dit verander die produk in 'n behoefte"
+          ],
+          "explain": "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe",
+          "options": [
+            "Dit maak die verhuurder die werknemer",
+            "Dit verwyder alle maandelikse koste",
+            "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe",
+            "Dit verander die produk in 'n behoefte"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheid huur kleurkopieerders omdat dit nie genoeg kontant het om dit te koop nie.\n\nHoekom kan huur nuttig wees?",
+          "explanation": "Dit laat die besigheid toerusting gebruik sonder groot kapitaaluitgawe"
+        },
+        {
+          "ctx": "Linda neem 'n banklening van R60 000 en betaal oor 36 maande terug.",
+          "stem": "Watter ooreenkoms word die beste gewys?",
+          "correct": "Lenings- of kredietooreenkoms",
+          "wrong": [
+            "Sektordiagram",
+            "Personeelbeleid",
+            "Plek in bemarking"
+          ],
+          "explain": "Lenings- of kredietooreenkoms",
+          "options": [
+            "Lenings- of kredietooreenkoms",
+            "Sektordiagram",
+            "Personeelbeleid",
+            "Plek in bemarking"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda neem 'n banklening van R60 000 en betaal oor 36 maande terug.\n\nWatter ooreenkoms word die beste gewys?",
+          "explanation": "Lenings- of kredietooreenkoms"
+        },
+        {
+          "ctx": "Linda koop gereeld seep, wasmiddel en kafeteria-voorraad aan.",
+          "stem": "Watter soort besigheidsooreenkoms kan sy nodig hÃª?",
+          "correct": "Verskafferkontrak",
+          "wrong": [
+            "Kraamverlof",
+            "Visieverklaring",
+            "Grafiekas"
+          ],
+          "explain": "Verskafferkontrak",
+          "options": [
+            "Kraamverlof",
+            "Verskafferkontrak",
+            "Visieverklaring",
+            "Grafiekas"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nLinda koop gereeld seep, wasmiddel en kafeteria-voorraad aan.\n\nWatter soort besigheidsooreenkoms kan sy nodig hÃª?",
+          "explanation": "Verskafferkontrak"
+        },
+        {
+          "ctx": "Linda het masjiene wat kan breek en diens benodig.",
+          "stem": "Watter kontrak kan haar help?",
+          "correct": "Onderhoudskontrak",
+          "wrong": [
+            "Afkoelingstydperk",
+            "Teikenmarkkontrak",
+            "Dekbladkontrak"
+          ],
+          "explain": "Onderhoudskontrak",
+          "options": [
+            "Onderhoudskontrak",
+            "Afkoelingstydperk",
+            "Teikenmarkkontrak",
+            "Dekbladkontrak"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda het masjiene wat kan breek en diens benodig.\n\nWatter kontrak kan haar help?",
+          "explanation": "Onderhoudskontrak"
+        },
+        {
+          "ctx": "'n Verbruiker koop 'n duur item op krediet en wil binne 5 besigheidsdae kanselleer.",
+          "stem": "Watter wet beskerm hom?",
+          "correct": "Nasionale Kredietwet",
+          "wrong": [
+            "Wet op Gelyke Indiensneming",
+            "Wet op Arbeidsverhoudinge",
+            "Wet op Basiese Diensvoorwaardes"
+          ],
+          "explain": "Nasionale Kredietwet",
+          "options": [
+            "Wet op Gelyke Indiensneming",
+            "Wet op Arbeidsverhoudinge",
+            "Nasionale Kredietwet",
+            "Wet op Basiese Diensvoorwaardes"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Verbruiker koop 'n duur item op krediet en wil binne 5 besigheidsdae kanselleer.\n\nWatter wet beskerm hom?",
+          "explanation": "Nasionale Kredietwet"
+        },
+        {
+          "ctx": "'n Koper gee skriftelike kennis aan die kredietverskaffer om 'n kredietkontrak te kanselleer.",
+          "stem": "Watter vereiste word nagekom?",
+          "correct": "Kansellasie moet skriftelik gekommunikeer word",
+          "wrong": [
+            "Kansellasie moet mondelings by 'n vriend gebeur",
+            "Kansellasie gebeur net deur 'n logo",
+            "Kansellasie is nooit moontlik nie"
+          ],
+          "explain": "Kansellasie moet skriftelik gekommunikeer word",
+          "options": [
+            "Kansellasie moet mondelings by 'n vriend gebeur",
+            "Kansellasie gebeur net deur 'n logo",
+            "Kansellasie is nooit moontlik nie",
+            "Kansellasie moet skriftelik gekommunikeer word"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Koper gee skriftelike kennis aan die kredietverskaffer om 'n kredietkontrak te kanselleer.\n\nWatter vereiste word nagekom?",
+          "explanation": "Kansellasie moet skriftelik gekommunikeer word"
+        },
+        {
+          "ctx": "'n Item wat op krediet gekoop is, moet teruggegee word in die oorspronklike verpakking.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Die bate moet in geskikte toestand terugbesorg word",
+          "wrong": [
+            "Die winkel moet die item vernietig",
+            "Die koper word outomaties verhuurder",
+            "Die bank word die teikenmark"
+          ],
+          "explain": "Die bate moet in geskikte toestand terugbesorg word",
+          "options": [
+            "Die winkel moet die item vernietig",
+            "Die bate moet in geskikte toestand terugbesorg word",
+            "Die koper word outomaties verhuurder",
+            "Die bank word die teikenmark"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Item wat op krediet gekoop is, moet teruggegee word in die oorspronklike verpakking.\n\nWaarom is dit belangrik?",
+          "explanation": "Die bate moet in geskikte toestand terugbesorg word"
+        },
+        {
+          "ctx": "'n Kredietverskaffer ontvang geldige kennis en die item terug.",
+          "stem": "Binne hoe lank moet die verbruiker volgens die nota terugbetaal word?",
+          "correct": "Binne 7 dae",
+          "wrong": [
+            "Binne 36 maande",
+            "Na 12 jaar",
+            "Slegs einde van kwartaal"
+          ],
+          "explain": "Binne 7 dae",
+          "options": [
+            "Binne 7 dae",
+            "Binne 36 maande",
+            "Na 12 jaar",
+            "Slegs einde van kwartaal"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kredietverskaffer ontvang geldige kennis en die item terug.\n\nBinne hoe lank moet die verbruiker volgens die nota terugbetaal word?",
+          "explanation": "Binne 7 dae"
+        },
+        {
+          "ctx": "'n Besigheid teken kontrakte met werknemers, verskaffers en 'n verhuurder.",
+          "stem": "Waarom moet die eienaar regsimplikasies verstaan?",
+          "correct": "Elke kontrak skep regte en verpligtinge",
+          "wrong": [
+            "Kontrakte is nooit bindend nie",
+            "Regte bestaan net in advertensies",
+            "Verpligtinge geld net vir klante"
+          ],
+          "explain": "Elke kontrak skep regte en verpligtinge",
+          "options": [
+            "Kontrakte is nooit bindend nie",
+            "Regte bestaan net in advertensies",
+            "Verpligtinge geld net vir klante",
+            "Elke kontrak skep regte en verpligtinge"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid teken kontrakte met werknemers, verskaffers en 'n verhuurder.\n\nWaarom moet die eienaar regsimplikasies verstaan?",
+          "explanation": "Elke kontrak skep regte en verpligtinge"
+        },
+        {
+          "ctx": "'n Werknemer moet spesifieke werk doen en die werkgewer moet salaris betaal.",
+          "stem": "Watter regsimplikasie is korrek?",
+          "correct": "Albei partye het verpligtinge in die dienskontrak",
+          "wrong": [
+            "Net die werknemer het pligte",
+            "Net die klant het pligte",
+            "Geen party hoef iets te doen nie"
+          ],
+          "explain": "Albei partye het verpligtinge in die dienskontrak",
+          "options": [
+            "Net die werknemer het pligte",
+            "Net die klant het pligte",
+            "Albei partye het verpligtinge in die dienskontrak",
+            "Geen party hoef iets te doen nie"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Werknemer moet spesifieke werk doen en die werkgewer moet salaris betaal.\n\nWatter regsimplikasie is korrek?",
+          "explanation": "Albei partye het verpligtinge in die dienskontrak"
+        },
+        {
+          "ctx": "'n Huurder betaal nie huurgeld soos ooreengekom nie.",
+          "stem": "Wat kan die regsgevolg wees?",
+          "correct": "Die verhuurder kan stappe neem volgens die huurooreenkoms",
+          "wrong": [
+            "Die huurder word outomaties eienaar",
+            "Die kontrak word 'n grafiek",
+            "Die huur word altyd nul"
+          ],
+          "explain": "Die verhuurder kan stappe neem volgens die huurooreenkoms",
+          "options": [
+            "Die verhuurder kan stappe neem volgens die huurooreenkoms",
+            "Die huurder word outomaties eienaar",
+            "Die kontrak word 'n grafiek",
+            "Die huur word altyd nul"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Huurder betaal nie huurgeld soos ooreengekom nie.\n\nWat kan die regsgevolg wees?",
+          "explanation": "Die verhuurder kan stappe neem volgens die huurooreenkoms"
+        },
+        {
+          "ctx": "'n Versekerde besigheid betaal nie premies nie.",
+          "stem": "Wat kan gebeur?",
+          "correct": "Die versekeraar kan moontlik nie verliese dek nie",
+          "wrong": [
+            "Die polis betaal altyd uit",
+            "Die premie word 'n bate",
+            "Die klant kry gratis voorraad"
+          ],
+          "explain": "Die versekeraar kan moontlik nie verliese dek nie",
+          "options": [
+            "Die polis betaal altyd uit",
+            "Die versekeraar kan moontlik nie verliese dek nie",
+            "Die premie word 'n bate",
+            "Die klant kry gratis voorraad"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Versekerde besigheid betaal nie premies nie.\n\nWat kan gebeur?",
+          "explanation": "Die versekeraar kan moontlik nie verliese dek nie"
+        },
+        {
+          "ctx": "'n Besigheid wil alle kontrakte net mondelings hou, al is daar groot finansiÃ«le risiko's.",
+          "stem": "Wat is die risiko?",
+          "correct": "Dit kan later moeilik wees om voorwaardes te bewys",
+          "wrong": [
+            "Mondelinge kontrakte is altyd sterker",
+            "Bewyse is nooit nodig nie",
+            "Skriftelike kontrakte is onwettig"
+          ],
+          "explain": "Dit kan later moeilik wees om voorwaardes te bewys",
+          "options": [
+            "Dit kan later moeilik wees om voorwaardes te bewys",
+            "Mondelinge kontrakte is altyd sterker",
+            "Bewyse is nooit nodig nie",
+            "Skriftelike kontrakte is onwettig"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid wil alle kontrakte net mondelings hou, al is daar groot finansiÃ«le risiko's.\n\nWat is die risiko?",
+          "explanation": "Dit kan later moeilik wees om voorwaardes te bewys"
+        },
+        {
+          "ctx": "'n Kontrak se fyn druk bevat ekstra fooie en kansellasievoorwaardes.",
+          "stem": "Wat moet 'n besigheid doen?",
+          "correct": "Die fyn druk lees en verstaan voor ondertekening",
+          "wrong": [
+            "Net die titel lees",
+            "Die fyn druk weggooi",
+            "Slegs die logo vergelyk"
+          ],
+          "explain": "Die fyn druk lees en verstaan voor ondertekening",
+          "options": [
+            "Net die titel lees",
+            "Die fyn druk lees en verstaan voor ondertekening",
+            "Die fyn druk weggooi",
+            "Slegs die logo vergelyk"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Kontrak se fyn druk bevat ekstra fooie en kansellasievoorwaardes.\n\nWat moet 'n besigheid doen?",
+          "explanation": "Die fyn druk lees en verstaan voor ondertekening"
+        },
+        {
+          "ctx": "'n Leerder praat duidelik, wys 'n eenvoudige grafiek en gebruik net die belangrikste punte.",
+          "stem": "Watter eienskap het die aanbieding?",
+          "correct": "Akkuraat en bondig",
+          "wrong": [
+            "Verward en irrelevant",
+            "Slegs mondeling sonder struktuur",
+            "Onleesbaar en te lank"
+          ],
+          "explain": "Akkuraat en bondig",
+          "options": [
+            "Verward en irrelevant",
+            "Slegs mondeling sonder struktuur",
+            "Onleesbaar en te lank",
+            "Akkuraat en bondig"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Leerder praat duidelik, wys 'n eenvoudige grafiek en gebruik net die belangrikste punte.\n\nWatter eienskap het die aanbieding?",
+          "explanation": "Akkuraat en bondig"
+        },
+        {
+          "ctx": "'n Spreker weet nie wat sy boodskap is of wie die gehoor is nie.",
+          "stem": "Wat is die grootste voorbereidingsfout?",
+          "correct": "Die doel en gehoor is nie duidelik bepaal nie",
+          "wrong": [
+            "Die spreker het te veel kontant",
+            "Die spreker het die indeks reg",
+            "Die spreker het te min kontrakte"
+          ],
+          "explain": "Die doel en gehoor is nie duidelik bepaal nie",
+          "options": [
+            "Die spreker het te veel kontant",
+            "Die doel en gehoor is nie duidelik bepaal nie",
+            "Die spreker het die indeks reg",
+            "Die spreker het te min kontrakte"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Spreker weet nie wat sy boodskap is of wie die gehoor is nie.\n\nWat is die grootste voorbereidingsfout?",
+          "explanation": "Die doel en gehoor is nie duidelik bepaal nie"
+        },
+        {
+          "ctx": "'n PowerPoint-aanbieding misluk tydens 'n kragonderbreking en daar is geen notas nie.",
+          "stem": "Wat ontbreek?",
+          "correct": "'n Rugsteunplan",
+          "wrong": [
+            "'n Huurkoopooreenkoms",
+            "'n Afkoelingstydperk",
+            "'n SWOT-bedreiging"
+          ],
+          "explain": "'n Rugsteunplan",
+          "options": [
+            "'n Rugsteunplan",
+            "'n Huurkoopooreenkoms",
+            "'n Afkoelingstydperk",
+            "'n SWOT-bedreiging"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n PowerPoint-aanbieding misluk tydens 'n kragonderbreking en daar is geen notas nie.\n\nWat ontbreek?",
+          "explanation": "'n Rugsteunplan"
+        },
+        {
+          "ctx": "'n Spreker skryf hoofpunte op 'n blaaibord wanneer tegnologie faal.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel",
+          "wrong": [
+            "Dit kanselleer die hele projek",
+            "Dit vervang alle feite",
+            "Dit maak die gehoor siek"
+          ],
+          "explain": "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel",
+          "options": [
+            "Dit kanselleer die hele projek",
+            "Dit vervang alle feite",
+            "Dit maak die gehoor siek",
+            "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Spreker skryf hoofpunte op 'n blaaibord wanneer tegnologie faal.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit hou die aanbieding aan die gang met 'n eenvoudige hulpmiddel"
+        },
+        {
+          "ctx": "'n Verlengkoord is te kort en mense kan daaroor struikel.",
+          "stem": "Watter aspek word beklemtoon?",
+          "correct": "Veiligheid en tegniese voorbereiding",
+          "wrong": [
+            "Kraamverlof",
+            "Markseisoene",
+            "Voetstoots"
+          ],
+          "explain": "Veiligheid en tegniese voorbereiding",
+          "options": [
+            "Kraamverlof",
+            "Markseisoene",
+            "Veiligheid en tegniese voorbereiding",
+            "Voetstoots"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Verlengkoord is te kort en mense kan daaroor struikel.\n\nWatter aspek word beklemtoon?",
+          "explanation": "Veiligheid en tegniese voorbereiding"
+        },
+        {
+          "ctx": "Die gehoor weet dat die spreker se syfers verkeerd is.",
+          "stem": "Wat verloor die spreker?",
+          "correct": "Geloofwaardigheid",
+          "wrong": [
+            "Huurregte",
+            "Kredietafkoeling",
+            "Eienaarsbelang"
+          ],
+          "explain": "Geloofwaardigheid",
+          "options": [
+            "Geloofwaardigheid",
+            "Huurregte",
+            "Kredietafkoeling",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDie gehoor weet dat die spreker se syfers verkeerd is.\n\nWat verloor die spreker?",
+          "explanation": "Geloofwaardigheid"
+        },
+        {
+          "ctx": "'n Leerder gebruik visuele hulpmiddels om die gehoor se belangstelling te prikkel.",
+          "stem": "Wat word verbeter?",
+          "correct": "Die impak en verstaanbaarheid van die aanbieding",
+          "wrong": [
+            "Die wettigheid van 'n huurkontrak",
+            "Die hoogte van banklening",
+            "Die aantal werknemersverlofdae"
+          ],
+          "explain": "Die impak en verstaanbaarheid van die aanbieding",
+          "options": [
+            "Die wettigheid van 'n huurkontrak",
+            "Die impak en verstaanbaarheid van die aanbieding",
+            "Die hoogte van banklening",
+            "Die aantal werknemersverlofdae"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder gebruik visuele hulpmiddels om die gehoor se belangstelling te prikkel.\n\nWat word verbeter?",
+          "explanation": "Die impak en verstaanbaarheid van die aanbieding"
+        },
+        {
+          "ctx": "'n Besigheidsaanbieding moet verbaal en nie-verbaal sterk wees.",
+          "stem": "Wat is 'n nie-verbale element?",
+          "correct": "Grafieke, skyfies of liggaamstaal",
+          "wrong": [
+            "Slegs salarisbetalings",
+            "Slegs banklenings",
+            "Slegs huurkontrakte"
+          ],
+          "explain": "Grafieke, skyfies of liggaamstaal",
+          "options": [
+            "Grafieke, skyfies of liggaamstaal",
+            "Slegs salarisbetalings",
+            "Slegs banklenings",
+            "Slegs huurkontrakte"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheidsaanbieding moet verbaal en nie-verbaal sterk wees.\n\nWat is 'n nie-verbale element?",
+          "explanation": "Grafieke, skyfies of liggaamstaal"
+        },
+        {
+          "ctx": "'n Aanbieder praat vir 30 minute oor onbelangrike besonderhede.",
+          "stem": "Watter beginsel word oortree?",
+          "correct": "Bondigheid en relevansie",
+          "wrong": [
+            "Kollektiewe bedinging",
+            "Voetstootsverkoop",
+            "Balansstaatvergelyking"
+          ],
+          "explain": "Bondigheid en relevansie",
+          "options": [
+            "Kollektiewe bedinging",
+            "Bondigheid en relevansie",
+            "Voetstootsverkoop",
+            "Balansstaatvergelyking"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Aanbieder praat vir 30 minute oor onbelangrike besonderhede.\n\nWatter beginsel word oortree?",
+          "explanation": "Bondigheid en relevansie"
+        },
+        {
+          "ctx": "Leerders oefen eers in klein groepies voordat hulle voor die klas praat.",
+          "stem": "Watter vaardigheid word ontwikkel?",
+          "correct": "Aanbiedingsvaardigheid en selfvertroue",
+          "wrong": [
+            "Aftrekkings uit salaris",
+            "Vervoerkoste berekening",
+            "Huurkoopregte"
+          ],
+          "explain": "Aanbiedingsvaardigheid en selfvertroue",
+          "options": [
+            "Aftrekkings uit salaris",
+            "Vervoerkoste berekening",
+            "Aanbiedingsvaardigheid en selfvertroue",
+            "Huurkoopregte"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLeerders oefen eers in klein groepies voordat hulle voor die klas praat.\n\nWatter vaardigheid word ontwikkel?",
+          "explanation": "Aanbiedingsvaardigheid en selfvertroue"
+        },
+        {
+          "ctx": "'n Besigheid wil verkope oor ses maande wys.",
+          "stem": "Watter grafiek is die beste om verandering oor tyd te toon?",
+          "correct": "Lyngrafiek",
+          "wrong": [
+            "Sektorgrafiek",
+            "Huurooreenkoms",
+            "SWOT-matriks"
+          ],
+          "explain": "Lyngrafiek",
+          "options": [
+            "Lyngrafiek",
+            "Sektorgrafiek",
+            "Huurooreenkoms",
+            "SWOT-matriks"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid wil verkope oor ses maande wys.\n\nWatter grafiek is die beste om verandering oor tyd te toon?",
+          "explanation": "Lyngrafiek"
+        },
+        {
+          "ctx": "'n Leerder wil verkope per provinsie vergelyk.",
+          "stem": "Watter grafiek pas die beste?",
+          "correct": "Staafgrafiek",
+          "wrong": [
+            "Nasionale Kredietwet",
+            "Voetstoots-klousule",
+            "Dienskontrak"
+          ],
+          "explain": "Staafgrafiek",
+          "options": [
+            "Nasionale Kredietwet",
+            "Staafgrafiek",
+            "Voetstoots-klousule",
+            "Dienskontrak"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder wil verkope per provinsie vergelyk.\n\nWatter grafiek pas die beste?",
+          "explanation": "Staafgrafiek"
+        },
+        {
+          "ctx": "'n Aanbieder wil wys watter deel elke produk tot totale verkope bydra.",
+          "stem": "Watter grafiek pas?",
+          "correct": "Sektorgrafiek",
+          "wrong": [
+            "Lyngrafiek vir tyd",
+            "Huurkoopstaat",
+            "Indeksblad"
+          ],
+          "explain": "Sektorgrafiek",
+          "options": [
+            "Lyngrafiek vir tyd",
+            "Huurkoopstaat",
+            "Sektorgrafiek",
+            "Indeksblad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Aanbieder wil wys watter deel elke produk tot totale verkope bydra.\n\nWatter grafiek pas?",
+          "explanation": "Sektorgrafiek"
+        },
+        {
+          "ctx": "'n Entrepreneur wys 'n model van sy nuwe produk aan beleggers.",
+          "stem": "Watter hulpmiddel word gebruik?",
+          "correct": "Model van die ontwerp",
+          "wrong": [
+            "Arbeidsmarklys",
+            "Kredietkennisgewing",
+            "Siekteverlofstaat"
+          ],
+          "explain": "Model van die ontwerp",
+          "options": [
+            "Arbeidsmarklys",
+            "Kredietkennisgewing",
+            "Siekteverlofstaat",
+            "Model van die ontwerp"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Entrepreneur wys 'n model van sy nuwe produk aan beleggers.\n\nWatter hulpmiddel word gebruik?",
+          "explanation": "Model van die ontwerp"
+        },
+        {
+          "ctx": "'n Leerder gebruik kaarte en foto's om die ligging van 'n besigheid te verduidelik.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help die gehoor die plek visueel verstaan",
+          "wrong": [
+            "Dit vervang alle finansies",
+            "Dit maak kontrakte ongeldig",
+            "Dit bewys wins sonder data"
+          ],
+          "explain": "Dit help die gehoor die plek visueel verstaan",
+          "options": [
+            "Dit vervang alle finansies",
+            "Dit help die gehoor die plek visueel verstaan",
+            "Dit maak kontrakte ongeldig",
+            "Dit bewys wins sonder data"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder gebruik kaarte en foto's om die ligging van 'n besigheid te verduidelik.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help die gehoor die plek visueel verstaan"
+        },
+        {
+          "ctx": "'n Proses word met stappe en pyle gewys.",
+          "stem": "Watter hulpmiddel pas die beste?",
+          "correct": "Vloeidiagram",
+          "wrong": [
+            "Versekeringspolis",
+            "Kraamverlofvorm",
+            "Huurkoopooreenkoms"
+          ],
+          "explain": "Vloeidiagram",
+          "options": [
+            "Vloeidiagram",
+            "Versekeringspolis",
+            "Kraamverlofvorm",
+            "Huurkoopooreenkoms"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Proses word met stappe en pyle gewys.\n\nWatter hulpmiddel pas die beste?",
+          "explanation": "Vloeidiagram"
+        },
+        {
+          "ctx": "'n Grafiek wys los datapunte om 'n verband tussen twee veranderlikes te toon.",
+          "stem": "Watter soort grafiek is dit?",
+          "correct": "Spreidingsdiagram",
+          "wrong": [
+            "Sektorgrafiek",
+            "Inhoudsopgawe",
+            "Bemarkingsplan"
+          ],
+          "explain": "Spreidingsdiagram",
+          "options": [
+            "Sektorgrafiek",
+            "Inhoudsopgawe",
+            "Bemarkingsplan",
+            "Spreidingsdiagram"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Grafiek wys los datapunte om 'n verband tussen twee veranderlikes te toon.\n\nWatter soort grafiek is dit?",
+          "explanation": "Spreidingsdiagram"
+        },
+        {
+          "ctx": "'n Histogram word gebruik vir gegroepeerde data.",
+          "stem": "Wat onderskei dit van 'n gewone staafgrafiek?",
+          "correct": "Dit wys frekwensies of groepe data",
+          "wrong": [
+            "Dit is altyd 'n kontrak",
+            "Dit wys net logo's",
+            "Dit kan nie data voorstel nie"
+          ],
+          "explain": "Dit wys frekwensies of groepe data",
+          "options": [
+            "Dit is altyd 'n kontrak",
+            "Dit wys net logo's",
+            "Dit wys frekwensies of groepe data",
+            "Dit kan nie data voorstel nie"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Histogram word gebruik vir gegroepeerde data.\n\nWat onderskei dit van 'n gewone staafgrafiek?",
+          "explanation": "Dit wys frekwensies of groepe data"
+        },
+        {
+          "ctx": "'n Aanbieder kies 'n grafiek wat nie by die data pas nie.",
+          "stem": "Wat kan gebeur?",
+          "correct": "Die boodskap kan verkeerd of onduidelik oorkom",
+          "wrong": [
+            "Die data word outomaties korrek",
+            "Die gehoor verstaan altyd beter",
+            "Die grafiek word 'n bate"
+          ],
+          "explain": "Die boodskap kan verkeerd of onduidelik oorkom",
+          "options": [
+            "Die boodskap kan verkeerd of onduidelik oorkom",
+            "Die data word outomaties korrek",
+            "Die gehoor verstaan altyd beter",
+            "Die grafiek word 'n bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Aanbieder kies 'n grafiek wat nie by die data pas nie.\n\nWat kan gebeur?",
+          "explanation": "Die boodskap kan verkeerd of onduidelik oorkom"
+        },
+        {
+          "ctx": "Skyfies, kaarte, plakkate, video's en grafieke is voorbeelde van...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Oudiovisuele hulpmiddels",
+          "wrong": [
+            "Kontrakpartye",
+            "Leningsterugbetalings",
+            "Slegs bates"
+          ],
+          "explain": "Oudiovisuele hulpmiddels",
+          "options": [
+            "Kontrakpartye",
+            "Oudiovisuele hulpmiddels",
+            "Leningsterugbetalings",
+            "Slegs bates"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nSkyfies, kaarte, plakkate, video's en grafieke is voorbeelde van...\n\nKies die korrekte term.",
+          "explanation": "Oudiovisuele hulpmiddels"
+        },
+        {
+          "ctx": "'n Dokument beskryf 'n entrepreneur se idee, markprobleem, oplossing, bemarking, mededingers en finansies.",
+          "stem": "Wat is dit?",
+          "correct": "Besigheidsplan",
+          "wrong": [
+            "Dienskontrak",
+            "Vervoerroete",
+            "Siekteverlofstaat"
+          ],
+          "explain": "Besigheidsplan",
+          "options": [
+            "Dienskontrak",
+            "Besigheidsplan",
+            "Vervoerroete",
+            "Siekteverlofstaat"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Dokument beskryf 'n entrepreneur se idee, markprobleem, oplossing, bemarking, mededingers en finansies.\n\nWat is dit?",
+          "explanation": "Besigheidsplan"
+        },
+        {
+          "ctx": "'n Besigheidsplan moet prakties uitgevoer kan word.",
+          "stem": "Watter eienskap word vereis?",
+          "correct": "Implementeerbaarheid",
+          "wrong": [
+            "Vaagheid",
+            "Onmeetbaarheid",
+            "Onwettigheid"
+          ],
+          "explain": "Implementeerbaarheid",
+          "options": [
+            "Vaagheid",
+            "Onmeetbaarheid",
+            "Implementeerbaarheid",
+            "Onwettigheid"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan moet prakties uitgevoer kan word.\n\nWatter eienskap word vereis?",
+          "explanation": "Implementeerbaarheid"
+        },
+        {
+          "ctx": "'n Plan sluit 'n teikenmark in.",
+          "stem": "Hoekom is dit belangrik?",
+          "correct": "Die besigheid moet weet wie die klante is",
+          "wrong": [
+            "Die besigheid hoef dan nie te bemark nie",
+            "Klante word dan onnodig",
+            "Alle produkte word gratis"
+          ],
+          "explain": "Die besigheid moet weet wie die klante is",
+          "options": [
+            "Die besigheid hoef dan nie te bemark nie",
+            "Klante word dan onnodig",
+            "Alle produkte word gratis",
+            "Die besigheid moet weet wie die klante is"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Plan sluit 'n teikenmark in.\n\nHoekom is dit belangrik?",
+          "explanation": "Die besigheid moet weet wie die klante is"
+        },
+        {
+          "ctx": "'n Leerder bereken koste, verkoopprys en moontlike wins.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "FinansiÃ«le ontleding",
+          "wrong": [
+            "Voetstoots-klousule",
+            "Klimaatfaktor",
+            "Getuieverklaring"
+          ],
+          "explain": "FinansiÃ«le ontleding",
+          "options": [
+            "Voetstoots-klousule",
+            "FinansiÃ«le ontleding",
+            "Klimaatfaktor",
+            "Getuieverklaring"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Leerder bereken koste, verkoopprys en moontlike wins.\n\nWatter deel van die plan is dit?",
+          "explanation": "FinansiÃ«le ontleding"
+        },
+        {
+          "ctx": "'n Doelwit sÃª presies wat bereik moet word, deur wie en teen wanneer.",
+          "stem": "Watter SMART-element word veral gewys?",
+          "correct": "Spesifiek",
+          "wrong": [
+            "Bedreiging",
+            "Huurkoop",
+            "Bate"
+          ],
+          "explain": "Spesifiek",
+          "options": [
+            "Spesifiek",
+            "Bedreiging",
+            "Huurkoop",
+            "Bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Doelwit sÃª presies wat bereik moet word, deur wie en teen wanneer.\n\nWatter SMART-element word veral gewys?",
+          "explanation": "Spesifiek"
+        },
+        {
+          "ctx": "'n Doelwit kan met getalle of duidelike bewyse gemeet word.",
+          "stem": "Watter SMART-element is dit?",
+          "correct": "Meetbaar",
+          "wrong": [
+            "Personeel",
+            "Makro",
+            "Verhuurder"
+          ],
+          "explain": "Meetbaar",
+          "options": [
+            "Personeel",
+            "Makro",
+            "Verhuurder",
+            "Meetbaar"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Doelwit kan met getalle of duidelike bewyse gemeet word.\n\nWatter SMART-element is dit?",
+          "explanation": "Meetbaar"
+        },
+        {
+          "ctx": "'n Span aanvaar 'n doelwit en stem saam dat hulle die hulpbronne het om dit te bereik.",
+          "stem": "Watter SMART-element pas?",
+          "correct": "Almal moet instem",
+          "wrong": [
+            "Sektorgrafiek",
+            "Huurder",
+            "Gelykbreek"
+          ],
+          "explain": "Almal moet instem",
+          "options": [
+            "Sektorgrafiek",
+            "Huurder",
+            "Almal moet instem",
+            "Gelykbreek"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Span aanvaar 'n doelwit en stem saam dat hulle die hulpbronne het om dit te bereik.\n\nWatter SMART-element pas?",
+          "explanation": "Almal moet instem"
+        },
+        {
+          "ctx": "'n Doelwit pas by die besigheid se langtermynplan en kan realisties bereik word.",
+          "stem": "Watter SMART-element is dit?",
+          "correct": "Realisties en relevant",
+          "wrong": [
+            "Slegs meetbaar",
+            "Foetstoots",
+            "Korttermynversekering"
+          ],
+          "explain": "Realisties en relevant",
+          "options": [
+            "Realisties en relevant",
+            "Slegs meetbaar",
+            "Foetstoots",
+            "Korttermynversekering"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Doelwit pas by die besigheid se langtermynplan en kan realisties bereik word.\n\nWatter SMART-element is dit?",
+          "explanation": "Realisties en relevant"
+        },
+        {
+          "ctx": "'n Doelwit het 'n begin- en einddatum.",
+          "stem": "Watter SMART-element word gewys?",
+          "correct": "Tydsgebaseer",
+          "wrong": [
+            "Swak punt",
+            "Arbeidsmark",
+            "Kredietverskaffer"
+          ],
+          "explain": "Tydsgebaseer",
+          "options": [
+            "Swak punt",
+            "Tydsgebaseer",
+            "Arbeidsmark",
+            "Kredietverskaffer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Doelwit het 'n begin- en einddatum.\n\nWatter SMART-element word gewys?",
+          "explanation": "Tydsgebaseer"
+        },
+        {
+          "ctx": "Die doelwit 'Ek wil baie geld hÃª' is swak.",
+          "stem": "Hoekom?",
+          "correct": "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie",
+          "wrong": [
+            "Dit het te veel presiese datums",
+            "Dit bevat 'n volledige aksieplan",
+            "Dit is reeds 'n balansstaat"
+          ],
+          "explain": "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie",
+          "options": [
+            "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie",
+            "Dit het te veel presiese datums",
+            "Dit bevat 'n volledige aksieplan",
+            "Dit is reeds 'n balansstaat"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDie doelwit 'Ek wil baie geld hÃª' is swak.\n\nHoekom?",
+          "explanation": "Dit is te vaag, nie meetbaar nie en het geen tydraamwerk nie"
+        },
+        {
+          "ctx": "'n Bekende handelsnaam, goeie ligging en hardwerkende werknemers is binne die besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Sterk punte",
+          "wrong": [
+            "Bedreigings",
+            "Geleenthede",
+            "Kontantuitvloei"
+          ],
+          "explain": "Sterk punte",
+          "options": [
+            "Bedreigings",
+            "Geleenthede",
+            "Sterk punte",
+            "Kontantuitvloei"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Bekende handelsnaam, goeie ligging en hardwerkende werknemers is binne die besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Sterk punte"
+        },
+        {
+          "ctx": "Te min toerusting, onprofessionele werknemers en swak voorraadbeheer is binne die besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Swak punte",
+          "wrong": [
+            "Sterk punte",
+            "Geleenthede",
+            "Bates"
+          ],
+          "explain": "Swak punte",
+          "options": [
+            "Sterk punte",
+            "Geleenthede",
+            "Bates",
+            "Swak punte"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nTe min toerusting, onprofessionele werknemers en swak voorraadbeheer is binne die besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Swak punte"
+        },
+        {
+          "ctx": "Verbeterde tegnologie en groeiende vraag na 'n produk is buite die besigheid.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Geleenthede",
+          "wrong": [
+            "Swak punte",
+            "Interne laste",
+            "Dienskontrakte"
+          ],
+          "explain": "Geleenthede",
+          "options": [
+            "Swak punte",
+            "Geleenthede",
+            "Interne laste",
+            "Dienskontrakte"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nVerbeterde tegnologie en groeiende vraag na 'n produk is buite die besigheid.\n\nWaar pas dit in SWOT?",
+          "explanation": "Geleenthede"
+        },
+        {
+          "ctx": "Mededingers brei uit en 'n nuwe winkel trek klante weg.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Bedreigings",
+          "wrong": [
+            "Sterk punte",
+            "Produkvoordele",
+            "Eienaarsbelang"
+          ],
+          "explain": "Bedreigings",
+          "options": [
+            "Bedreigings",
+            "Sterk punte",
+            "Produkvoordele",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nMededingers brei uit en 'n nuwe winkel trek klante weg.\n\nWaar pas dit in SWOT?",
+          "explanation": "Bedreigings"
+        },
+        {
+          "ctx": "'n SWOT-analise moet relevant wees tot die spesifieke besigheid.",
+          "stem": "Hoekom?",
+          "correct": "Anders help dit nie met die regte besluit nie",
+          "wrong": [
+            "Enige algemene lys is altyd genoeg",
+            "Dit moet net prentjies bevat",
+            "SWOT gaan net oor kontrakte"
+          ],
+          "explain": "Anders help dit nie met die regte besluit nie",
+          "options": [
+            "Enige algemene lys is altyd genoeg",
+            "Dit moet net prentjies bevat",
+            "SWOT gaan net oor kontrakte",
+            "Anders help dit nie met die regte besluit nie"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n SWOT-analise moet relevant wees tot die spesifieke besigheid.\n\nHoekom?",
+          "explanation": "Anders help dit nie met die regte besluit nie"
+        },
+        {
+          "ctx": "'n Besigheid het 'n nuwe reeks dienste wat klante lok.",
+          "stem": "Waar pas dit?",
+          "correct": "Sterk punt",
+          "wrong": [
+            "Bedreiging",
+            "Lening",
+            "Afkoeling"
+          ],
+          "explain": "Sterk punt",
+          "options": [
+            "Bedreiging",
+            "Lening",
+            "Sterk punt",
+            "Afkoeling"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheid het 'n nuwe reeks dienste wat klante lok.\n\nWaar pas dit?",
+          "explanation": "Sterk punt"
+        },
+        {
+          "ctx": "'n Ekonomiese afswaai laat mense minder koop.",
+          "stem": "Waar pas dit?",
+          "correct": "Bedreiging",
+          "wrong": [
+            "Sterk punt",
+            "Swak punt binne die besigheid",
+            "Dekblad"
+          ],
+          "explain": "Bedreiging",
+          "options": [
+            "Bedreiging",
+            "Sterk punt",
+            "Swak punt binne die besigheid",
+            "Dekblad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Ekonomiese afswaai laat mense minder koop.\n\nWaar pas dit?",
+          "explanation": "Bedreiging"
+        },
+        {
+          "ctx": "Mededingers se swak diens gee jou besigheid 'n kans om beter diens te bied.",
+          "stem": "Waar pas dit?",
+          "correct": "Geleentheid",
+          "wrong": [
+            "Swak punt",
+            "Las",
+            "Kraamverlof"
+          ],
+          "explain": "Geleentheid",
+          "options": [
+            "Swak punt",
+            "Geleentheid",
+            "Las",
+            "Kraamverlof"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nMededingers se swak diens gee jou besigheid 'n kans om beter diens te bied.\n\nWaar pas dit?",
+          "explanation": "Geleentheid"
+        },
+        {
+          "ctx": "'n Te hoÃ« verkoopprys maak jou produk minder aantreklik vir klante.",
+          "stem": "Waar pas dit?",
+          "correct": "Swak punt",
+          "wrong": [
+            "Geleentheid",
+            "Sterk punt",
+            "Bate"
+          ],
+          "explain": "Swak punt",
+          "options": [
+            "Swak punt",
+            "Geleentheid",
+            "Sterk punt",
+            "Bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Te hoÃ« verkoopprys maak jou produk minder aantreklik vir klante.\n\nWaar pas dit?",
+          "explanation": "Swak punt"
+        },
+        {
+          "ctx": "'n SWOT-analise help die entrepreneur om te besluit watter idee die werkbaarste is.",
+          "stem": "Wat is die waarde daarvan?",
+          "correct": "Dit vergelyk positiewe en negatiewe faktore",
+          "wrong": [
+            "Dit waarborg wins",
+            "Dit kanselleer alle mededinging",
+            "Dit vervang alle finansiÃ«le state"
+          ],
+          "explain": "Dit vergelyk positiewe en negatiewe faktore",
+          "options": [
+            "Dit waarborg wins",
+            "Dit vergelyk positiewe en negatiewe faktore",
+            "Dit kanselleer alle mededinging",
+            "Dit vervang alle finansiÃ«le state"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n SWOT-analise help die entrepreneur om te besluit watter idee die werkbaarste is.\n\nWat is die waarde daarvan?",
+          "explanation": "Dit vergelyk positiewe en negatiewe faktore"
+        },
+        {
+          "ctx": "'n Dekblad wys die besigheid se naam, logo, eienaars se name en datum.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "Dekblad",
+          "wrong": [
+            "Balansstaat",
+            "Huurkontrak",
+            "Mededingersreaksie"
+          ],
+          "explain": "Dekblad",
+          "options": [
+            "Balansstaat",
+            "Huurkontrak",
+            "Mededingersreaksie",
+            "Dekblad"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Dekblad wys die besigheid se naam, logo, eienaars se name en datum.\n\nWatter deel van die plan is dit?",
+          "explanation": "Dekblad"
+        },
+        {
+          "ctx": "'n Inhoudsopgawe bevat hoofdele en bladsynommers.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help die leser om dele maklik te vind",
+          "wrong": [
+            "Dit bereken bruto wins",
+            "Dit vervang die uitvoerende opsomming",
+            "Dit is 'n versekeringspolis"
+          ],
+          "explain": "Dit help die leser om dele maklik te vind",
+          "options": [
+            "Dit bereken bruto wins",
+            "Dit help die leser om dele maklik te vind",
+            "Dit vervang die uitvoerende opsomming",
+            "Dit is 'n versekeringspolis"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Inhoudsopgawe bevat hoofdele en bladsynommers.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help die leser om dele maklik te vind"
+        },
+        {
+          "ctx": "'n Kort inleiding som die besigheidsidee, ligging, produk en kapitaalbehoefte op.",
+          "stem": "Watter deel is dit?",
+          "correct": "Uitvoerende opsomming",
+          "wrong": [
+            "Kraamverlofvorm",
+            "Staafgrafiek",
+            "Huurkoopklousule"
+          ],
+          "explain": "Uitvoerende opsomming",
+          "options": [
+            "Uitvoerende opsomming",
+            "Kraamverlofvorm",
+            "Staafgrafiek",
+            "Huurkoopklousule"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kort inleiding som die besigheidsidee, ligging, produk en kapitaalbehoefte op.\n\nWatter deel is dit?",
+          "explanation": "Uitvoerende opsomming"
+        },
+        {
+          "ctx": "'n Besigheidsplan beskryf wat die produk is en watter voordeel dit vir klante het.",
+          "stem": "Watter verskil is belangrik?",
+          "correct": "Kenmerk teenoor voordeel",
+          "wrong": [
+            "Huurder teenoor verhuurder",
+            "Lening teenoor premie",
+            "Salaris teenoor verlof"
+          ],
+          "explain": "Kenmerk teenoor voordeel",
+          "options": [
+            "Huurder teenoor verhuurder",
+            "Lening teenoor premie",
+            "Salaris teenoor verlof",
+            "Kenmerk teenoor voordeel"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheidsplan beskryf wat die produk is en watter voordeel dit vir klante het.\n\nWatter verskil is belangrik?",
+          "explanation": "Kenmerk teenoor voordeel"
+        },
+        {
+          "ctx": "'n Produk se verpakking pas by die produk en trek die oog.",
+          "stem": "Waarom is dit goed?",
+          "correct": "Dit wek verbruikersbelangstelling",
+          "wrong": [
+            "Dit maak finansies onnodig",
+            "Dit vervang alle klante",
+            "Dit maak die produk 'n las"
+          ],
+          "explain": "Dit wek verbruikersbelangstelling",
+          "options": [
+            "Dit maak finansies onnodig",
+            "Dit vervang alle klante",
+            "Dit wek verbruikersbelangstelling",
+            "Dit maak die produk 'n las"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Produk se verpakking pas by die produk en trek die oog.\n\nWaarom is dit goed?",
+          "explanation": "Dit wek verbruikersbelangstelling"
+        },
+        {
+          "ctx": "'n Logo is uniek, maklik om te lees en pas by die produk.",
+          "stem": "Watter rubriekkriterium word gewys?",
+          "correct": "Kreatiwiteit en oorspronklikheid van logo",
+          "wrong": [
+            "Arbeidswetgewing",
+            "Leningsterugbetaling",
+            "Misdaadstatistiek"
+          ],
+          "explain": "Kreatiwiteit en oorspronklikheid van logo",
+          "options": [
+            "Kreatiwiteit en oorspronklikheid van logo",
+            "Arbeidswetgewing",
+            "Leningsterugbetaling",
+            "Misdaadstatistiek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Logo is uniek, maklik om te lees en pas by die produk.\n\nWatter rubriekkriterium word gewys?",
+          "explanation": "Kreatiwiteit en oorspronklikheid van logo"
+        },
+        {
+          "ctx": "'n Slagspreuk is kort, treffend en ondersteun die besigheid se idee.",
+          "stem": "Wat is die doel?",
+          "correct": "Om die kernboodskap maklik te onthou",
+          "wrong": [
+            "Om die balansstaat te balanseer",
+            "Om werknemers te straf",
+            "Om huur te kanselleer"
+          ],
+          "explain": "Om die kernboodskap maklik te onthou",
+          "options": [
+            "Om die balansstaat te balanseer",
+            "Om die kernboodskap maklik te onthou",
+            "Om werknemers te straf",
+            "Om huur te kanselleer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Slagspreuk is kort, treffend en ondersteun die besigheid se idee.\n\nWat is die doel?",
+          "explanation": "Om die kernboodskap maklik te onthou"
+        },
+        {
+          "ctx": "'n Advertensie trek aandag, skep begeerte en oortuig klante om te koop.",
+          "stem": "Watter aktiwiteit word beskryf?",
+          "correct": "Ontwerp van 'n advertensie",
+          "wrong": [
+            "Opstel van 'n dienskontrak",
+            "Ontleding van siekteverlof",
+            "Berekening van eienaarsbelang"
+          ],
+          "explain": "Ontwerp van 'n advertensie",
+          "options": [
+            "Ontwerp van 'n advertensie",
+            "Opstel van 'n dienskontrak",
+            "Ontleding van siekteverlof",
+            "Berekening van eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Advertensie trek aandag, skep begeerte en oortuig klante om te koop.\n\nWatter aktiwiteit word beskryf?",
+          "explanation": "Ontwerp van 'n advertensie"
+        },
+        {
+          "ctx": "Die gekose media vir 'n advertensie moet by die produk en teikenmark pas.",
+          "stem": "Hoekom?",
+          "correct": "Die boodskap moet die regte mense bereik",
+          "wrong": [
+            "Alle media kos dieselfde",
+            "Teikenmark is irrelevant",
+            "Die produk word dan 'n bate"
+          ],
+          "explain": "Die boodskap moet die regte mense bereik",
+          "options": [
+            "Alle media kos dieselfde",
+            "Die boodskap moet die regte mense bereik",
+            "Teikenmark is irrelevant",
+            "Die produk word dan 'n bate"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nDie gekose media vir 'n advertensie moet by die produk en teikenmark pas.\n\nHoekom?",
+          "explanation": "Die boodskap moet die regte mense bereik"
+        },
+        {
+          "ctx": "'n Advertensie wys geen rede waarom klante moet koop nie.",
+          "stem": "Watter rubriekpunt is swak?",
+          "correct": "Oortuig die klant om te koop",
+          "wrong": [
+            "Kraamverlof",
+            "Bates plus laste",
+            "NGT-stemming"
+          ],
+          "explain": "Oortuig die klant om te koop",
+          "options": [
+            "Kraamverlof",
+            "Bates plus laste",
+            "Oortuig die klant om te koop",
+            "NGT-stemming"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Advertensie wys geen rede waarom klante moet koop nie.\n\nWatter rubriekpunt is swak?",
+          "explanation": "Oortuig die klant om te koop"
+        },
+        {
+          "ctx": "'n Besigheid beskryf sy produk, verpakking en handelsmerk.",
+          "stem": "Watter deel van bemarkingsamestelling is dit?",
+          "correct": "Produk",
+          "wrong": [
+            "Prys",
+            "Plek",
+            "Proses"
+          ],
+          "explain": "Produk",
+          "options": [
+            "Produk",
+            "Prys",
+            "Plek",
+            "Proses"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid beskryf sy produk, verpakking en handelsmerk.\n\nWatter deel van bemarkingsamestelling is dit?",
+          "explanation": "Produk"
+        },
+        {
+          "ctx": "'n Entrepreneur bereken kosprys, winsmarge en verkoopprys.",
+          "stem": "Watter deel word gebruik?",
+          "correct": "Prys",
+          "wrong": [
+            "Personeel",
+            "Fisiese omgewing",
+            "Bedreiging"
+          ],
+          "explain": "Prys",
+          "options": [
+            "Personeel",
+            "Prys",
+            "Fisiese omgewing",
+            "Bedreiging"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Entrepreneur bereken kosprys, winsmarge en verkoopprys.\n\nWatter deel word gebruik?",
+          "explanation": "Prys"
+        },
+        {
+          "ctx": "'n Besigheid beplan advertensies, media, koste en webteenwoordigheid.",
+          "stem": "Watter deel is dit?",
+          "correct": "Promosie",
+          "wrong": [
+            "Laste",
+            "Verhuurder",
+            "Balansstaat"
+          ],
+          "explain": "Promosie",
+          "options": [
+            "Laste",
+            "Verhuurder",
+            "Promosie",
+            "Balansstaat"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheid beplan advertensies, media, koste en webteenwoordigheid.\n\nWatter deel is dit?",
+          "explanation": "Promosie"
+        },
+        {
+          "ctx": "'n Koffiewinkel kies 'n ligging met genoeg voetverkeer en billike huur.",
+          "stem": "Watter deel is dit?",
+          "correct": "Plek",
+          "wrong": [
+            "Produk",
+            "Kraamverlof",
+            "Kredietwet"
+          ],
+          "explain": "Plek",
+          "options": [
+            "Produk",
+            "Kraamverlof",
+            "Kredietwet",
+            "Plek"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Koffiewinkel kies 'n ligging met genoeg voetverkeer en billike huur.\n\nWatter deel is dit?",
+          "explanation": "Plek"
+        },
+        {
+          "ctx": "'n Besigheid beskryf hoe dit die regte werknemers gaan werf en beleid insluit.",
+          "stem": "Watter deel is dit?",
+          "correct": "Personeel",
+          "wrong": [
+            "Sektordiagram",
+            "Foetstoots",
+            "Verkoopsvooruitskouing"
+          ],
+          "explain": "Personeel",
+          "options": [
+            "Sektordiagram",
+            "Personeel",
+            "Foetstoots",
+            "Verkoopsvooruitskouing"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid beskryf hoe dit die regte werknemers gaan werf en beleid insluit.\n\nWatter deel is dit?",
+          "explanation": "Personeel"
+        },
+        {
+          "ctx": "'n Restaurant beskryf presies hoe klante bestel, betaal en bedien word.",
+          "stem": "Watter deel is dit?",
+          "correct": "Proses",
+          "wrong": [
+            "Promosie",
+            "Gehaltebeheer alleen",
+            "Huurkoop"
+          ],
+          "explain": "Proses",
+          "options": [
+            "Proses",
+            "Promosie",
+            "Gehaltebeheer alleen",
+            "Huurkoop"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Restaurant beskryf presies hoe klante bestel, betaal en bedien word.\n\nWatter deel is dit?",
+          "explanation": "Proses"
+        },
+        {
+          "ctx": "'n Winkeluitleg, skoon omgewing en fisiese bewys van kwaliteit laat klante vertrou.",
+          "stem": "Watter deel word beskryf?",
+          "correct": "Fisiese omgewing",
+          "wrong": [
+            "Mededingersreaksie",
+            "Siekteverlof",
+            "Prys"
+          ],
+          "explain": "Fisiese omgewing",
+          "options": [
+            "Mededingersreaksie",
+            "Siekteverlof",
+            "Prys",
+            "Fisiese omgewing"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Winkeluitleg, skoon omgewing en fisiese bewys van kwaliteit laat klante vertrou.\n\nWatter deel word beskryf?",
+          "explanation": "Fisiese omgewing"
+        },
+        {
+          "ctx": "'n Nuwe onderneming ondersoek sy grootste mededingers en hul markaandeel.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "Ontleding van mededingers",
+          "wrong": [
+            "Dekblad",
+            "Afkoelingstydperk",
+            "Huurderregte"
+          ],
+          "explain": "Ontleding van mededingers",
+          "options": [
+            "Dekblad",
+            "Afkoelingstydperk",
+            "Ontleding van mededingers",
+            "Huurderregte"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Nuwe onderneming ondersoek sy grootste mededingers en hul markaandeel.\n\nWatter deel van die plan is dit?",
+          "explanation": "Ontleding van mededingers"
+        },
+        {
+          "ctx": "HoÃ« kapitaalkoste en streng regulasies maak dit moeilik vir nuwe ondernemings om 'n mark te betree.",
+          "stem": "Wat word dit genoem?",
+          "correct": "Hindernisse tot binnetreding",
+          "wrong": [
+            "SMART-tydsgebaseer",
+            "Voetstoots",
+            "Korting op voorraad"
+          ],
+          "explain": "Hindernisse tot binnetreding",
+          "options": [
+            "Hindernisse tot binnetreding",
+            "SMART-tydsgebaseer",
+            "Voetstoots",
+            "Korting op voorraad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nHoÃ« kapitaalkoste en streng regulasies maak dit moeilik vir nuwe ondernemings om 'n mark te betree.\n\nWat word dit genoem?",
+          "explanation": "Hindernisse tot binnetreding"
+        },
+        {
+          "ctx": "'n Besigheid voorspel hoe mededingers sal reageer as dit oopmaak.",
+          "stem": "Hoekom is dit nuttig?",
+          "correct": "Dit help om strategiee voor te berei",
+          "wrong": [
+            "Dit waarborg geen risiko",
+            "Dit vervang kliÃ«nte",
+            "Dit maak pryse irrelevant"
+          ],
+          "explain": "Dit help om strategiee voor te berei",
+          "options": [
+            "Dit waarborg geen risiko",
+            "Dit help om strategiee voor te berei",
+            "Dit vervang kliÃ«nte",
+            "Dit maak pryse irrelevant"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid voorspel hoe mededingers sal reageer as dit oopmaak.\n\nHoekom is dit nuttig?",
+          "explanation": "Dit help om strategiee voor te berei"
+        },
+        {
+          "ctx": "Verkope is R570 000 en koste van verkope is R285 000.",
+          "stem": "Hoe word bruto wins bereken?",
+          "correct": "Verkope minus koste van verkope",
+          "wrong": [
+            "Verkope plus huur",
+            "Lening minus kapitaal",
+            "Salarisse plus advertensies"
+          ],
+          "explain": "Verkope minus koste van verkope",
+          "options": [
+            "Verkope plus huur",
+            "Verkope minus koste van verkope",
+            "Lening minus kapitaal",
+            "Salarisse plus advertensies"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nVerkope is R570 000 en koste van verkope is R285 000.\n\nHoe word bruto wins bereken?",
+          "explanation": "Verkope minus koste van verkope"
+        },
+        {
+          "ctx": "Winnie se Skoene het verkope van R570 000 en bruto wins van R285 000.",
+          "stem": "Wat was die koste van verkope?",
+          "correct": "R285 000",
+          "wrong": [
+            "R126 000",
+            "R159 000",
+            "R376 000"
+          ],
+          "explain": "R285 000",
+          "options": [
+            "R126 000",
+            "R159 000",
+            "R285 000",
+            "R376 000"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nWinnie se Skoene het verkope van R570 000 en bruto wins van R285 000.\n\nWat was die koste van verkope?",
+          "explanation": "R285 000"
+        },
+        {
+          "ctx": "Bruto wins is R285 000 en bedryfsuitgawes is R159 000.",
+          "stem": "Wat is netto wins?",
+          "correct": "R126 000",
+          "wrong": [
+            "R444 000",
+            "R159 000",
+            "R570 000"
+          ],
+          "explain": "R126 000",
+          "options": [
+            "R444 000",
+            "R159 000",
+            "R570 000",
+            "R126 000"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nBruto wins is R285 000 en bedryfsuitgawes is R159 000.\n\nWat is netto wins?",
+          "explanation": "R126 000"
+        },
+        {
+          "ctx": "Huur, salarisse, water en elektrisiteit, telefoon en advertensies word afgetrek na bruto wins.",
+          "stem": "Wat is dit?",
+          "correct": "Bedryfsuitgawes",
+          "wrong": [
+            "Bates",
+            "Kapitaal",
+            "Verkope"
+          ],
+          "explain": "Bedryfsuitgawes",
+          "options": [
+            "Bates",
+            "Bedryfsuitgawes",
+            "Kapitaal",
+            "Verkope"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nHuur, salarisse, water en elektrisiteit, telefoon en advertensies word afgetrek na bruto wins.\n\nWat is dit?",
+          "explanation": "Bedryfsuitgawes"
+        },
+        {
+          "ctx": "Leningsterugbetaling word nie in die inkomstestaat as uitgawe ingesluit nie.",
+          "stem": "Hoekom?",
+          "correct": "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie",
+          "wrong": [
+            "Dit is verkope",
+            "Dit is bruto wins",
+            "Dit is voorraad"
+          ],
+          "explain": "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie",
+          "options": [
+            "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie",
+            "Dit is verkope",
+            "Dit is bruto wins",
+            "Dit is voorraad"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLeningsterugbetaling word nie in die inkomstestaat as uitgawe ingesluit nie.\n\nHoekom?",
+          "explanation": "Dit is 'n kontantuitvloei, maar nie 'n gewone bedryfsuitgawe nie"
+        },
+        {
+          "ctx": "'n Inkomstestaat wys inkomste, uitgawes en wins vir 'n tydperk.",
+          "stem": "Watter vraag help dit beantwoord?",
+          "correct": "Het die besigheid wins of verlies gemaak?",
+          "wrong": [
+            "Wie is die verhuurder?",
+            "Watter hoed is groen?",
+            "Waar is die logo?"
+          ],
+          "explain": "Het die besigheid wins of verlies gemaak?",
+          "options": [
+            "Wie is die verhuurder?",
+            "Watter hoed is groen?",
+            "Waar is die logo?",
+            "Het die besigheid wins of verlies gemaak?"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Inkomstestaat wys inkomste, uitgawes en wins vir 'n tydperk.\n\nWatter vraag help dit beantwoord?",
+          "explanation": "Het die besigheid wins of verlies gemaak?"
+        },
+        {
+          "ctx": "Salarisse van R8 000 per maand vir 12 maande word as R96 000 gewys.",
+          "stem": "Watter berekening is gebruik?",
+          "correct": "Maandelikse bedrag vermenigvuldig met 12",
+          "wrong": [
+            "Bedrag gedeel deur 12",
+            "Verkope minus bates",
+            "Kapitaal plus lening"
+          ],
+          "explain": "Maandelikse bedrag vermenigvuldig met 12",
+          "options": [
+            "Bedrag gedeel deur 12",
+            "Verkope minus bates",
+            "Maandelikse bedrag vermenigvuldig met 12",
+            "Kapitaal plus lening"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nSalarisse van R8 000 per maand vir 12 maande word as R96 000 gewys.\n\nWatter berekening is gebruik?",
+          "explanation": "Maandelikse bedrag vermenigvuldig met 12"
+        },
+        {
+          "ctx": "Advertensies van R200 per maand word vir 12 maande bereken.",
+          "stem": "Wat is die jaarbedrag?",
+          "correct": "R2 400",
+          "wrong": [
+            "R200",
+            "R12 000",
+            "R24 000"
+          ],
+          "explain": "R2 400",
+          "options": [
+            "R2 400",
+            "R200",
+            "R12 000",
+            "R24 000"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nAdvertensies van R200 per maand word vir 12 maande bereken.\n\nWat is die jaarbedrag?",
+          "explanation": "R2 400"
+        },
+        {
+          "ctx": "'n Besigheid moet realistiese finansiÃ«le syfers gebruik.",
+          "stem": "Hoekom?",
+          "correct": "Om die plan betroubaar en haalbaar te maak",
+          "wrong": [
+            "Om die bank te mislei",
+            "Om uitgawes weg te steek",
+            "Om mededingers te ignoreer"
+          ],
+          "explain": "Om die plan betroubaar en haalbaar te maak",
+          "options": [
+            "Om die bank te mislei",
+            "Om die plan betroubaar en haalbaar te maak",
+            "Om uitgawes weg te steek",
+            "Om mededingers te ignoreer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid moet realistiese finansiÃ«le syfers gebruik.\n\nHoekom?",
+          "explanation": "Om die plan betroubaar en haalbaar te maak"
+        },
+        {
+          "ctx": "Verkoopsvooruitskouing noem produk, prys en aantal eenhede wat verkoop gaan word.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Dit help om verwagte inkomste te bereken",
+          "wrong": [
+            "Dit wys wie die huurder is",
+            "Dit bereken kraamverlof",
+            "Dit vervang alle marknavorsing"
+          ],
+          "explain": "Dit help om verwagte inkomste te bereken",
+          "options": [
+            "Dit help om verwagte inkomste te bereken",
+            "Dit wys wie die huurder is",
+            "Dit bereken kraamverlof",
+            "Dit vervang alle marknavorsing"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nVerkoopsvooruitskouing noem produk, prys en aantal eenhede wat verkoop gaan word.\n\nWaarom is dit belangrik?",
+          "explanation": "Dit help om verwagte inkomste te bereken"
+        },
+        {
+          "ctx": "Rekenaar, meubels en kontant word in die balansstaat gelys.",
+          "stem": "Wat is dit?",
+          "correct": "Bates",
+          "wrong": [
+            "Laste",
+            "Bedreigings",
+            "Uitgawes"
+          ],
+          "explain": "Bates",
+          "options": [
+            "Laste",
+            "Bedreigings",
+            "Bates",
+            "Uitgawes"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nRekenaar, meubels en kontant word in die balansstaat gelys.\n\nWat is dit?",
+          "explanation": "Bates"
+        },
+        {
+          "ctx": "'n Banklening van R200 000 word in die balansstaat gewys.",
+          "stem": "Wat is dit?",
+          "correct": "Las",
+          "wrong": [
+            "Bate",
+            "Bruto wins",
+            "Geleentheid"
+          ],
+          "explain": "Las",
+          "options": [
+            "Bate",
+            "Bruto wins",
+            "Geleentheid",
+            "Las"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Banklening van R200 000 word in die balansstaat gewys.\n\nWat is dit?",
+          "explanation": "Las"
+        },
+        {
+          "ctx": "Totale bates is R376 000. Eienaarsbelang is R176 000 en laste is R200 000.",
+          "stem": "Watter beginsel geld?",
+          "correct": "Bates = Eienaarsbelang + Laste",
+          "wrong": [
+            "Verkope = Huur + Salarisse",
+            "Wins = Banklening + Logo",
+            "Kontant = Slegs meubels"
+          ],
+          "explain": "Bates = Eienaarsbelang + Laste",
+          "options": [
+            "Verkope = Huur + Salarisse",
+            "Bates = Eienaarsbelang + Laste",
+            "Wins = Banklening + Logo",
+            "Kontant = Slegs meubels"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nTotale bates is R376 000. Eienaarsbelang is R176 000 en laste is R200 000.\n\nWatter beginsel geld?",
+          "explanation": "Bates = Eienaarsbelang + Laste"
+        },
+        {
+          "ctx": "Eie kapitaal van R50 000 en netto wins van R126 000 vorm saam R176 000.",
+          "stem": "Wat word bereken?",
+          "correct": "Eienaarsbelang",
+          "wrong": [
+            "Koste van verkope",
+            "Bedryfsuitgawes",
+            "Mededinging"
+          ],
+          "explain": "Eienaarsbelang",
+          "options": [
+            "Eienaarsbelang",
+            "Koste van verkope",
+            "Bedryfsuitgawes",
+            "Mededinging"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nEie kapitaal van R50 000 en netto wins van R126 000 vorm saam R176 000.\n\nWat word bereken?",
+          "explanation": "Eienaarsbelang"
+        },
+        {
+          "ctx": "'n Kontantbegroting wys kontantinvloei en kontantuitvloei per maand.",
+          "stem": "Waarvoor help dit?",
+          "correct": "Om te sien of genoeg kontant beskikbaar sal wees",
+          "wrong": [
+            "Om huurders te identifiseer",
+            "Om SMART-doelwitte te skryf",
+            "Om getuies te kies"
+          ],
+          "explain": "Om te sien of genoeg kontant beskikbaar sal wees",
+          "options": [
+            "Om huurders te identifiseer",
+            "Om SMART-doelwitte te skryf",
+            "Om getuies te kies",
+            "Om te sien of genoeg kontant beskikbaar sal wees"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Kontantbegroting wys kontantinvloei en kontantuitvloei per maand.\n\nWaarvoor help dit?",
+          "explanation": "Om te sien of genoeg kontant beskikbaar sal wees"
+        },
+        {
+          "ctx": "Verkope, lening en kapitaal van eienaar is voorbeelde van...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Kontantinvloei",
+          "wrong": [
+            "Kontantuitvloei",
+            "Swak punte",
+            "Huurkoop"
+          ],
+          "explain": "Kontantinvloei",
+          "options": [
+            "Kontantuitvloei",
+            "Swak punte",
+            "Kontantinvloei",
+            "Huurkoop"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nVerkope, lening en kapitaal van eienaar is voorbeelde van...\n\nKies die korrekte term.",
+          "explanation": "Kontantinvloei"
+        },
+        {
+          "ctx": "Huur, salarisse en leningsterugbetaling in die kontantbegroting is...",
+          "stem": "Kies die korrekte term.",
+          "correct": "Kontantuitvloei",
+          "wrong": [
+            "Kontantinvloei",
+            "Geleenthede",
+            "Eienaarsbelang"
+          ],
+          "explain": "Kontantuitvloei",
+          "options": [
+            "Kontantuitvloei",
+            "Kontantinvloei",
+            "Geleenthede",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nHuur, salarisse en leningsterugbetaling in die kontantbegroting is...\n\nKies die korrekte term.",
+          "explanation": "Kontantuitvloei"
+        },
+        {
+          "ctx": "Januarie se sluitingsaldo word Februarie se beginsaldo.",
+          "stem": "Watter beginsel word gebruik?",
+          "correct": "Kontantsaldo word maand tot maand oorgedra",
+          "wrong": [
+            "Elke maand begin altyd by nul",
+            "Saldo's word nooit gebruik nie",
+            "Sluitingsaldo is altyd verkope"
+          ],
+          "explain": "Kontantsaldo word maand tot maand oorgedra",
+          "options": [
+            "Elke maand begin altyd by nul",
+            "Kontantsaldo word maand tot maand oorgedra",
+            "Saldo's word nooit gebruik nie",
+            "Sluitingsaldo is altyd verkope"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nJanuarie se sluitingsaldo word Februarie se beginsaldo.\n\nWatter beginsel word gebruik?",
+          "explanation": "Kontantsaldo word maand tot maand oorgedra"
+        },
+        {
+          "ctx": "'n Maand se ontvangstes is groter as betalings.",
+          "stem": "Wat het die besigheid?",
+          "correct": "Surplus",
+          "wrong": [
+            "Tekort",
+            "Wanbetaling",
+            "Huurder"
+          ],
+          "explain": "Surplus",
+          "options": [
+            "Surplus",
+            "Tekort",
+            "Wanbetaling",
+            "Huurder"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Maand se ontvangstes is groter as betalings.\n\nWat het die besigheid?",
+          "explanation": "Surplus"
+        },
+        {
+          "ctx": "'n Maand se betalings is groter as ontvangstes.",
+          "stem": "Wat het die besigheid?",
+          "correct": "Tekort",
+          "wrong": [
+            "Surplus",
+            "Sterk punt",
+            "Bemarkingsplek"
+          ],
+          "explain": "Tekort",
+          "options": [
+            "Surplus",
+            "Tekort",
+            "Sterk punt",
+            "Bemarkingsplek"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Maand se betalings is groter as ontvangstes.\n\nWat het die besigheid?",
+          "explanation": "Tekort"
+        },
+        {
+          "ctx": "'n Finale besigheidsplan moet 'n professionele dekblad, indeks en uitvoerende opsomming bevat.",
+          "stem": "Wat is die doel van die kontrolelys?",
+          "correct": "Om seker te maak geen belangrike deel word uitgelaat nie",
+          "wrong": [
+            "Om alle finansies weg te laat",
+            "Om net die logo te merk",
+            "Om kontrakte te kanselleer"
+          ],
+          "explain": "Om seker te maak geen belangrike deel word uitgelaat nie",
+          "options": [
+            "Om alle finansies weg te laat",
+            "Om net die logo te merk",
+            "Om kontrakte te kanselleer",
+            "Om seker te maak geen belangrike deel word uitgelaat nie"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Finale besigheidsplan moet 'n professionele dekblad, indeks en uitvoerende opsomming bevat.\n\nWat is die doel van die kontrolelys?",
+          "explanation": "Om seker te maak geen belangrike deel word uitgelaat nie"
+        },
+        {
+          "ctx": "'n Besigheidsbeskrywing sluit visie, missie, doelwitte, struktuur en regsvereistes in.",
+          "stem": "Watter deel van die plan is dit?",
+          "correct": "Beskrywing van die besigheid",
+          "wrong": [
+            "Kontantbegroting alleen",
+            "Vervoerkoste",
+            "Kraamverlof"
+          ],
+          "explain": "Beskrywing van die besigheid",
+          "options": [
+            "Kontantbegroting alleen",
+            "Beskrywing van die besigheid",
+            "Vervoerkoste",
+            "Kraamverlof"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheidsbeskrywing sluit visie, missie, doelwitte, struktuur en regsvereistes in.\n\nWatter deel van die plan is dit?",
+          "explanation": "Beskrywing van die besigheid"
+        },
+        {
+          "ctx": "'n Besigheid vra R100 000 en verduidelik waarvoor die geld gebruik gaan word.",
+          "stem": "Watter deel is dit?",
+          "correct": "Lenings- of beleggingsvoorstel",
+          "wrong": [
+            "Dekblad",
+            "Sektorgrafiek",
+            "Voetstoots"
+          ],
+          "explain": "Lenings- of beleggingsvoorstel",
+          "options": [
+            "Lenings- of beleggingsvoorstel",
+            "Dekblad",
+            "Sektorgrafiek",
+            "Voetstoots"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid vra R100 000 en verduidelik waarvoor die geld gebruik gaan word.\n\nWatter deel is dit?",
+          "explanation": "Lenings- of beleggingsvoorstel"
+        },
+        {
+          "ctx": "'n Plan beskryf hoe werknemers, die gemeenskap en 'n organisasie sal baat.",
+          "stem": "Watter deel is dit?",
+          "correct": "Plan vir sosiale verantwoordelikheid",
+          "wrong": [
+            "Bruto wins",
+            "Huurkoop",
+            "Mededingersbedreiging"
+          ],
+          "explain": "Plan vir sosiale verantwoordelikheid",
+          "options": [
+            "Bruto wins",
+            "Huurkoop",
+            "Mededingersbedreiging",
+            "Plan vir sosiale verantwoordelikheid"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Plan beskryf hoe werknemers, die gemeenskap en 'n organisasie sal baat.\n\nWatter deel is dit?",
+          "explanation": "Plan vir sosiale verantwoordelikheid"
+        },
+        {
+          "ctx": "'n Besigheidsplan noem die bestuurspan se ondervinding, opleiding en pligte.",
+          "stem": "Waarom is dit belangrik?",
+          "correct": "Dit wys dat die span die onderneming kan bestuur",
+          "wrong": [
+            "Dit verwyder alle uitgawes",
+            "Dit vervang die teikenmark",
+            "Dit maak kontrakte onwettig"
+          ],
+          "explain": "Dit wys dat die span die onderneming kan bestuur",
+          "options": [
+            "Dit verwyder alle uitgawes",
+            "Dit vervang die teikenmark",
+            "Dit wys dat die span die onderneming kan bestuur",
+            "Dit maak kontrakte onwettig"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan noem die bestuurspan se ondervinding, opleiding en pligte.\n\nWaarom is dit belangrik?",
+          "explanation": "Dit wys dat die span die onderneming kan bestuur"
+        },
+        {
+          "ctx": "'n ReÃ«l in die rubriek sÃª navorsing moet goed gedoen wees en aan standaarde voldoen.",
+          "stem": "Wat word beoordeel?",
+          "correct": "Kwaliteit van navorsing",
+          "wrong": [
+            "Kleur van die vloer",
+            "Huurder se naam",
+            "Aantal vakansiedae"
+          ],
+          "explain": "Kwaliteit van navorsing",
+          "options": [
+            "Kwaliteit van navorsing",
+            "Kleur van die vloer",
+            "Huurder se naam",
+            "Aantal vakansiedae"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n ReÃ«l in die rubriek sÃª navorsing moet goed gedoen wees en aan standaarde voldoen.\n\nWat word beoordeel?",
+          "explanation": "Kwaliteit van navorsing"
+        },
+        {
+          "ctx": "'n Professionele plan moet geen tikfoute hÃª nie en korrekte grammatika gebruik.",
+          "stem": "Watter aspek is dit?",
+          "correct": "Meganika en formaat",
+          "wrong": [
+            "SWOT-bedreiging",
+            "Vervoerdiens",
+            "Siekteverlof"
+          ],
+          "explain": "Meganika en formaat",
+          "options": [
+            "SWOT-bedreiging",
+            "Meganika en formaat",
+            "Vervoerdiens",
+            "Siekteverlof"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Professionele plan moet geen tikfoute hÃª nie en korrekte grammatika gebruik.\n\nWatter aspek is dit?",
+          "explanation": "Meganika en formaat"
+        },
+        {
+          "ctx": "'n Plan gebruik Times New Roman 12 pt, dubbelspasiÃ«ring en 2,5 cm kantlyne.",
+          "stem": "Wat word gevolg?",
+          "correct": "Formaatvereistes",
+          "wrong": [
+            "Afkoelingstydperk",
+            "Kredietskedule",
+            "Mededingersreaksie"
+          ],
+          "explain": "Formaatvereistes",
+          "options": [
+            "Formaatvereistes",
+            "Afkoelingstydperk",
+            "Kredietskedule",
+            "Mededingersreaksie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Plan gebruik Times New Roman 12 pt, dubbelspasiÃ«ring en 2,5 cm kantlyne.\n\nWat word gevolg?",
+          "explanation": "Formaatvereistes"
+        },
+        {
+          "ctx": "'n Plan is volledig, maar die finansiÃ«le syfers is onrealisties hoog sonder bewyse.",
+          "stem": "Watter deel moet verbeter?",
+          "correct": "FinansiÃ«le ontleding",
+          "wrong": [
+            "Dekblad se logo",
+            "Huurder se adres",
+            "Getuie se handtekening"
+          ],
+          "explain": "FinansiÃ«le ontleding",
+          "options": [
+            "Dekblad se logo",
+            "FinansiÃ«le ontleding",
+            "Huurder se adres",
+            "Getuie se handtekening"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Plan is volledig, maar die finansiÃ«le syfers is onrealisties hoog sonder bewyse.\n\nWatter deel moet verbeter?",
+          "explanation": "FinansiÃ«le ontleding"
+        },
+        {
+          "ctx": "'n Besigheidsplan moet konserwatief, maar haalbaar wees.",
+          "stem": "Wat beteken dit?",
+          "correct": "Voorspellings moet realisties en redelik wees",
+          "wrong": [
+            "Voorspellings moet altyd oordrewe wees",
+            "Geen data is nodig nie",
+            "Alle uitgawes moet weggesteek word"
+          ],
+          "explain": "Voorspellings moet realisties en redelik wees",
+          "options": [
+            "Voorspellings moet altyd oordrewe wees",
+            "Geen data is nodig nie",
+            "Voorspellings moet realisties en redelik wees",
+            "Alle uitgawes moet weggesteek word"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan moet konserwatief, maar haalbaar wees.\n\nWat beteken dit?",
+          "explanation": "Voorspellings moet realisties en redelik wees"
+        },
+        {
+          "ctx": "'n Probleemoplossingstegniek waar kenners onafhanklik menings gee totdat 'n besluit geneem word.",
+          "stem": "Watter tegniek is dit?",
+          "correct": "Delphi-tegniek",
+          "wrong": [
+            "Dryfkragontleding",
+            "SCAMPER",
+            "Nominale groeptegniek"
+          ],
+          "explain": "Delphi-tegniek",
+          "options": [
+            "Delphi-tegniek",
+            "Dryfkragontleding",
+            "SCAMPER",
+            "Nominale groeptegniek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Probleemoplossingstegniek waar kenners onafhanklik menings gee totdat 'n besluit geneem word.\n\nWatter tegniek is dit?",
+          "explanation": "Delphi-tegniek"
+        },
+        {
+          "ctx": "Goedere wat gebruik word om ander produkte te vervaardig.",
+          "stem": "Watter soort goedere is dit?",
+          "correct": "Nywerheidsgoedere",
+          "wrong": [
+            "Verbruikersgoedere",
+            "Geriefsgoedere",
+            "Spesialiteitsgoedere"
+          ],
+          "explain": "Nywerheidsgoedere",
+          "options": [
+            "Verbruikersgoedere",
+            "Nywerheidsgoedere",
+            "Geriefsgoedere",
+            "Spesialiteitsgoedere"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nGoedere wat gebruik word om ander produkte te vervaardig.\n\nWatter soort goedere is dit?",
+          "explanation": "Nywerheidsgoedere"
+        },
+        {
+          "ctx": "'n Grafiek met los datapunte om 'n verband tussen veranderlikes te toon.",
+          "stem": "Watter diagram is dit?",
+          "correct": "Spreidingsdiagram",
+          "wrong": [
+            "Lyngrafiek",
+            "Sektorgrafiek",
+            "Staafgrafiek"
+          ],
+          "explain": "Spreidingsdiagram",
+          "options": [
+            "Lyngrafiek",
+            "Sektorgrafiek",
+            "Spreidingsdiagram",
+            "Staafgrafiek"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Grafiek met los datapunte om 'n verband tussen veranderlikes te toon.\n\nWatter diagram is dit?",
+          "explanation": "Spreidingsdiagram"
+        },
+        {
+          "ctx": "'n Huurooreenkoms vind plaas tussen...",
+          "stem": "Kies die korrekte partye.",
+          "correct": "'n Verhuurder en 'n huurder",
+          "wrong": [
+            "'n Verkoper en 'n koper",
+            "'n Werkgewer en 'n werknemer",
+            "'n Verbruiker en 'n versekeraar"
+          ],
+          "explain": "'n Verhuurder en 'n huurder",
+          "options": [
+            "'n Verkoper en 'n koper",
+            "'n Werkgewer en 'n werknemer",
+            "'n Verbruiker en 'n versekeraar",
+            "'n Verhuurder en 'n huurder"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Huurooreenkoms vind plaas tussen...\n\nKies die korrekte partye.",
+          "explanation": "'n Verhuurder en 'n huurder"
+        },
+        {
+          "ctx": "Watter faktor hoef nie normaalweg oorweeg te word wanneer 'n besigheidsligging gekies word nie?",
+          "stem": "Kies die beste antwoord.",
+          "correct": "Soort eienaarskap",
+          "wrong": [
+            "Klimaat",
+            "Eiendomsbelasting en tariewe",
+            "Mededingers"
+          ],
+          "explain": "Soort eienaarskap",
+          "options": [
+            "Klimaat",
+            "Soort eienaarskap",
+            "Eiendomsbelasting en tariewe",
+            "Mededingers"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nWatter faktor hoef nie normaalweg oorweeg te word wanneer 'n besigheidsligging gekies word nie?\n\nKies die beste antwoord.",
+          "explanation": "Soort eienaarskap"
+        },
+        {
+          "ctx": "Die stelsel wat gebruik word om die besigheid te help om doelwitte te bereik.",
+          "stem": "Watter term pas?",
+          "correct": "Proses",
+          "wrong": [
+            "Visie",
+            "Infrastruktuur",
+            "Geriefsgoedere"
+          ],
+          "explain": "Proses",
+          "options": [
+            "Proses",
+            "Visie",
+            "Infrastruktuur",
+            "Geriefsgoedere"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nDie stelsel wat gebruik word om die besigheid te help om doelwitte te bereik.\n\nWatter term pas?",
+          "explanation": "Proses"
+        },
+        {
+          "ctx": "Die vereistes van 'n goeie advertensie word soms opgesom as...",
+          "stem": "Watter term pas?",
+          "correct": "ABBO",
+          "wrong": [
+            "SWOT",
+            "SMART",
+            "MVDO"
+          ],
+          "explain": "ABBO",
+          "options": [
+            "SWOT",
+            "SMART",
+            "MVDO",
+            "ABBO"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nDie vereistes van 'n goeie advertensie word soms opgesom as...\n\nWatter term pas?",
+          "explanation": "ABBO"
+        },
+        {
+          "ctx": "'n Grafiek wat prestasie oor tyd aandui.",
+          "stem": "Watter grafiek is dit?",
+          "correct": "Lyngrafiek",
+          "wrong": [
+            "Spreidingsdiagram",
+            "Sektorgrafiek",
+            "Histogram"
+          ],
+          "explain": "Lyngrafiek",
+          "options": [
+            "Spreidingsdiagram",
+            "Sektorgrafiek",
+            "Lyngrafiek",
+            "Histogram"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Grafiek wat prestasie oor tyd aandui.\n\nWatter grafiek is dit?",
+          "explanation": "Lyngrafiek"
+        },
+        {
+          "ctx": "Basiese fasiliteite soos krag, water en paaie.",
+          "stem": "Watter term pas?",
+          "correct": "Infrastruktuur",
+          "wrong": [
+            "Promosie",
+            "Proses",
+            "Eienaarsbelang"
+          ],
+          "explain": "Infrastruktuur",
+          "options": [
+            "Infrastruktuur",
+            "Promosie",
+            "Proses",
+            "Eienaarsbelang"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nBasiese fasiliteite soos krag, water en paaie.\n\nWatter term pas?",
+          "explanation": "Infrastruktuur"
+        },
+        {
+          "ctx": "'n Duur verbruikersitem waaroor die koper lank besluit, soos 'n motor.",
+          "stem": "Watter soort goed is dit?",
+          "correct": "Spesialiteitsgoedere",
+          "wrong": [
+            "Geriefsgoedere",
+            "Nywerheidsgoedere",
+            "Verbruikersnavorsing"
+          ],
+          "explain": "Spesialiteitsgoedere",
+          "options": [
+            "Geriefsgoedere",
+            "Spesialiteitsgoedere",
+            "Nywerheidsgoedere",
+            "Verbruikersnavorsing"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Duur verbruikersitem waaroor die koper lank besluit, soos 'n motor.\n\nWatter soort goed is dit?",
+          "explanation": "Spesialiteitsgoedere"
+        },
+        {
+          "ctx": "Pumza het reeds 'n draairoomysmasjien.",
+          "stem": "Waar pas dit in haar SWOT?",
+          "correct": "Sterk punt",
+          "wrong": [
+            "Swak punt",
+            "Bedreiging",
+            "Bemarkingskoste"
+          ],
+          "explain": "Sterk punt",
+          "options": [
+            "Swak punt",
+            "Sterk punt",
+            "Bedreiging",
+            "Bemarkingskoste"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nPumza het reeds 'n draairoomysmasjien.\n\nWaar pas dit in haar SWOT?",
+          "explanation": "Sterk punt"
+        },
+        {
+          "ctx": "Pumza bied dalk dieselfde kos as ander besighede in die area aan.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Swak punt",
+          "wrong": [
+            "Sterk punt",
+            "Kapitaal",
+            "Dekblad"
+          ],
+          "explain": "Swak punt",
+          "options": [
+            "Sterk punt",
+            "Kapitaal",
+            "Swak punt",
+            "Dekblad"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nPumza bied dalk dieselfde kos as ander besighede in die area aan.\n\nWaar pas dit in SWOT?",
+          "explanation": "Swak punt"
+        },
+        {
+          "ctx": "Baie mense beweeg daagliks by die taxi-staanplek verby.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Geleentheid",
+          "wrong": [
+            "Bedreiging",
+            "Swak punt",
+            "Las"
+          ],
+          "explain": "Geleentheid",
+          "options": [
+            "Bedreiging",
+            "Swak punt",
+            "Las",
+            "Geleentheid"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nBaie mense beweeg daagliks by die taxi-staanplek verby.\n\nWaar pas dit in SWOT?",
+          "explanation": "Geleentheid"
+        },
+        {
+          "ctx": "KFC, Chicken Licken en King Pie is reeds naby.",
+          "stem": "Waar pas dit in SWOT?",
+          "correct": "Bedreiging",
+          "wrong": [
+            "Sterk punt",
+            "Bate",
+            "Inhoudsopgawe"
+          ],
+          "explain": "Bedreiging",
+          "options": [
+            "Sterk punt",
+            "Bedreiging",
+            "Bate",
+            "Inhoudsopgawe"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nKFC, Chicken Licken en King Pie is reeds naby.\n\nWaar pas dit in SWOT?",
+          "explanation": "Bedreiging"
+        },
+        {
+          "ctx": "Pumza het nie genoeg geld om te begin nie.",
+          "stem": "Waar kan sy fondse kry?",
+          "correct": "Banklening of vennote",
+          "wrong": [
+            "Slegs uit 'n slagspreuk",
+            "Deur alle koste te ignoreer",
+            "Deur geen plan op te stel nie"
+          ],
+          "explain": "Banklening of vennote",
+          "options": [
+            "Banklening of vennote",
+            "Slegs uit 'n slagspreuk",
+            "Deur alle koste te ignoreer",
+            "Deur geen plan op te stel nie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nPumza het nie genoeg geld om te begin nie.\n\nWaar kan sy fondse kry?",
+          "explanation": "Banklening of vennote"
+        },
+        {
+          "ctx": "Pumza se draairoomysmasjien behoort aan haar en kan in die besigheid gebruik word.",
+          "stem": "Wat is dit?",
+          "correct": "Bate",
+          "wrong": [
+            "Las",
+            "Bedryfsuitgawe",
+            "Bedreiging"
+          ],
+          "explain": "Bate",
+          "options": [
+            "Las",
+            "Bedryfsuitgawe",
+            "Bedreiging",
+            "Bate"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nPumza se draairoomysmasjien behoort aan haar en kan in die besigheid gebruik word.\n\nWat is dit?",
+          "explanation": "Bate"
+        },
+        {
+          "ctx": "Pumza kan 'n diens gebruik om voorraad by haar besigheid af te lewer.",
+          "stem": "Watter ondersteuningsdiens is dit?",
+          "correct": "Vervoer",
+          "wrong": [
+            "Kraamverlof",
+            "Sektorgrafiek",
+            "Tekstuur"
+          ],
+          "explain": "Vervoer",
+          "options": [
+            "Kraamverlof",
+            "Sektorgrafiek",
+            "Vervoer",
+            "Tekstuur"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nPumza kan 'n diens gebruik om voorraad by haar besigheid af te lewer.\n\nWatter ondersteuningsdiens is dit?",
+          "explanation": "Vervoer"
+        },
+        {
+          "ctx": "Pumza verseker haar toerusting teen diefstal of skade.",
+          "stem": "Watter ondersteuningsdiens gebruik sy?",
+          "correct": "Versekering",
+          "wrong": [
+            "SCAMPER",
+            "Indeks",
+            "Gelykbreek"
+          ],
+          "explain": "Versekering",
+          "options": [
+            "Versekering",
+            "SCAMPER",
+            "Indeks",
+            "Gelykbreek"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nPumza verseker haar toerusting teen diefstal of skade.\n\nWatter ondersteuningsdiens gebruik sy?",
+          "explanation": "Versekering"
+        },
+        {
+          "ctx": "Marknavorsing wys 177 mense verkies melkskommels en 74 verkies gaskoeldranke.",
+          "stem": "Watter produk is volgens die data die gewildste?",
+          "correct": "Melkskommels",
+          "wrong": [
+            "Gaskoeldranke",
+            "Biefburger",
+            "Draairoomys"
+          ],
+          "explain": "Melkskommels",
+          "options": [
+            "Gaskoeldranke",
+            "Melkskommels",
+            "Biefburger",
+            "Draairoomys"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nMarknavorsing wys 177 mense verkies melkskommels en 74 verkies gaskoeldranke.\n\nWatter produk is volgens die data die gewildste?",
+          "explanation": "Melkskommels"
+        },
+        {
+          "ctx": "Pumza gebruik die marknavorsingsdata om voorraad te bestel.",
+          "stem": "Hoe help dit haar?",
+          "correct": "Sy kan te veel of te min voorraad vermy",
+          "wrong": [
+            "Sy hoef nie meer pryse te bepaal nie",
+            "Sy kan alle klante ignoreer",
+            "Sy hoef nie mededingers te ken nie"
+          ],
+          "explain": "Sy kan te veel of te min voorraad vermy",
+          "options": [
+            "Sy kan te veel of te min voorraad vermy",
+            "Sy hoef nie meer pryse te bepaal nie",
+            "Sy kan alle klante ignoreer",
+            "Sy hoef nie mededingers te ken nie"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nPumza gebruik die marknavorsingsdata om voorraad te bestel.\n\nHoe help dit haar?",
+          "explanation": "Sy kan te veel of te min voorraad vermy"
+        },
+        {
+          "ctx": "Linda neem 'n banklening van R60 000 vir masjiene en toerusting.",
+          "stem": "Watter kontrak pas die beste?",
+          "correct": "Lenings- of kredietooreenkoms",
+          "wrong": [
+            "Dienskontrak",
+            "Sektorgrafiek",
+            "Marknavorsingsvraelys"
+          ],
+          "explain": "Lenings- of kredietooreenkoms",
+          "options": [
+            "Dienskontrak",
+            "Sektorgrafiek",
+            "Lenings- of kredietooreenkoms",
+            "Marknavorsingsvraelys"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLinda neem 'n banklening van R60 000 vir masjiene en toerusting.\n\nWatter kontrak pas die beste?",
+          "explanation": "Lenings- of kredietooreenkoms"
+        },
+        {
+          "ctx": "Linda gebruik 'n perseel vir haar kitswassery en moet maandeliks huur betaal.",
+          "stem": "Watter kontrak is waarskynlik nodig?",
+          "correct": "Huurooreenkoms",
+          "wrong": [
+            "Huurkoop vir werknemers",
+            "SWOT-analise",
+            "SMART-doelwit"
+          ],
+          "explain": "Huurooreenkoms",
+          "options": [
+            "Huurkoop vir werknemers",
+            "SWOT-analise",
+            "SMART-doelwit",
+            "Huurooreenkoms"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nLinda gebruik 'n perseel vir haar kitswassery en moet maandeliks huur betaal.\n\nWatter kontrak is waarskynlik nodig?",
+          "explanation": "Huurooreenkoms"
+        },
+        {
+          "ctx": "Linda het vyf werknemers wat haar help.",
+          "stem": "Watter kontrakte moet sy waarskynlik hÃª?",
+          "correct": "Dienskontrakte",
+          "wrong": [
+            "Kredietkaartstate",
+            "Sektorgrafieke",
+            "Produkverpakking"
+          ],
+          "explain": "Dienskontrakte",
+          "options": [
+            "Kredietkaartstate",
+            "Dienskontrakte",
+            "Sektorgrafieke",
+            "Produkverpakking"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nLinda het vyf werknemers wat haar help.\n\nWatter kontrakte moet sy waarskynlik hÃª?",
+          "explanation": "Dienskontrakte"
+        },
+        {
+          "ctx": "Linda koop wasmasjiene of toerusting met paaiemente oor tyd.",
+          "stem": "Watter ooreenkoms kan betrokke wees?",
+          "correct": "Huurkoopooreenkoms",
+          "wrong": [
+            "Bemarkingsplek",
+            "Visieverklaring",
+            "Histogram"
+          ],
+          "explain": "Huurkoopooreenkoms",
+          "options": [
+            "Huurkoopooreenkoms",
+            "Bemarkingsplek",
+            "Visieverklaring",
+            "Histogram"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda koop wasmasjiene of toerusting met paaiemente oor tyd.\n\nWatter ooreenkoms kan betrokke wees?",
+          "explanation": "Huurkoopooreenkoms"
+        },
+        {
+          "ctx": "Linda wil haar masjiene teen skade of diefstal beskerm.",
+          "stem": "Watter kontrak is nuttig?",
+          "correct": "Versekeringskontrak",
+          "wrong": [
+            "Dienskontrak met klante",
+            "Indeksblad",
+            "Kredietafkoeling alleen"
+          ],
+          "explain": "Versekeringskontrak",
+          "options": [
+            "Dienskontrak met klante",
+            "Indeksblad",
+            "Kredietafkoeling alleen",
+            "Versekeringskontrak"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\nLinda wil haar masjiene teen skade of diefstal beskerm.\n\nWatter kontrak is nuttig?",
+          "explanation": "Versekeringskontrak"
+        },
+        {
+          "ctx": "Linda koop gereeld seep en wasmiddels by verskaffers.",
+          "stem": "Watter kontrak of ooreenkoms kan nodig wees?",
+          "correct": "Verskafferkontrak",
+          "wrong": [
+            "Kraamverlofkontrak",
+            "Lyngrafiek",
+            "Rooi denkhoed"
+          ],
+          "explain": "Verskafferkontrak",
+          "options": [
+            "Kraamverlofkontrak",
+            "Lyngrafiek",
+            "Verskafferkontrak",
+            "Rooi denkhoed"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\nLinda koop gereeld seep en wasmiddels by verskaffers.\n\nWatter kontrak of ooreenkoms kan nodig wees?",
+          "explanation": "Verskafferkontrak"
+        },
+        {
+          "ctx": "Linda voeg 'n afleweringsdiens vir voltooide wasgoed by.",
+          "stem": "Watter aspek moet sy oorweeg?",
+          "correct": "Diensvoorwaardes en moontlike vervoerooreenkomste",
+          "wrong": [
+            "Slegs die kleur van haar logo",
+            "Geen kostes nie",
+            "Voetstoots van wasgoed"
+          ],
+          "explain": "Diensvoorwaardes en moontlike vervoerooreenkomste",
+          "options": [
+            "Diensvoorwaardes en moontlike vervoerooreenkomste",
+            "Slegs die kleur van haar logo",
+            "Geen kostes nie",
+            "Voetstoots van wasgoed"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda voeg 'n afleweringsdiens vir voltooide wasgoed by.\n\nWatter aspek moet sy oorweeg?",
+          "explanation": "Diensvoorwaardes en moontlike vervoerooreenkomste"
+        },
+        {
+          "ctx": "Linda moet haar huurgeld einde van elke maand betaal.",
+          "stem": "Watter regsimplikasie is korrek?",
+          "correct": "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom",
+          "wrong": [
+            "Sy kan huur altyd ignoreer",
+            "Die verhuurder word haar werknemer",
+            "Die huur word outomaties wins"
+          ],
+          "explain": "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom",
+          "options": [
+            "Sy kan huur altyd ignoreer",
+            "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom",
+            "Die verhuurder word haar werknemer",
+            "Die huur word outomaties wins"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nLinda moet haar huurgeld einde van elke maand betaal.\n\nWatter regsimplikasie is korrek?",
+          "explanation": "Sy moet die huurooreenkoms se betalingsvoorwaardes nakom"
+        },
+        {
+          "ctx": "Linda se werknemers het regte rondom werksure, betaling en diensvoorwaardes.",
+          "stem": "Watter soort regsimplikasie is dit?",
+          "correct": "Arbeidswetlike verpligtinge in dienskontrakte",
+          "wrong": [
+            "Slegs grafiekkeuse",
+            "Produkvoordeel",
+            "Geografiese ligging alleen"
+          ],
+          "explain": "Arbeidswetlike verpligtinge in dienskontrakte",
+          "options": [
+            "Arbeidswetlike verpligtinge in dienskontrakte",
+            "Slegs grafiekkeuse",
+            "Produkvoordeel",
+            "Geografiese ligging alleen"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\nLinda se werknemers het regte rondom werksure, betaling en diensvoorwaardes.\n\nWatter soort regsimplikasie is dit?",
+          "explanation": "Arbeidswetlike verpligtinge in dienskontrakte"
+        },
+        {
+          "ctx": "Die langvraag vra om soorte kontrakte en regsimplikasies te bespreek.",
+          "stem": "Wat moet 'n goeie antwoord doen?",
+          "correct": "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal",
+          "wrong": [
+            "Net een woord skryf",
+            "Slegs die logo beskryf",
+            "Alle finansies ignoreer"
+          ],
+          "explain": "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal",
+          "options": [
+            "Net een woord skryf",
+            "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal",
+            "Slegs die logo beskryf",
+            "Alle finansies ignoreer"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\nDie langvraag vra om soorte kontrakte en regsimplikasies te bespreek.\n\nWat moet 'n goeie antwoord doen?",
+          "explanation": "Kontrakte identifiseer en verduidelik hoe dit Linda se regte en pligte bepaal"
+        },
+        {
+          "ctx": "'n Besigheid wil weet of sy idee 'n ware behoefte bevredig en of klante sal betaal.",
+          "stem": "Watter proses is nodig?",
+          "correct": "Marknavorsing",
+          "wrong": [
+            "Voetstoots",
+            "Parafering",
+            "Siekteverlof"
+          ],
+          "explain": "Marknavorsing",
+          "options": [
+            "Voetstoots",
+            "Parafering",
+            "Siekteverlof",
+            "Marknavorsing"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Besigheid wil weet of sy idee 'n ware behoefte bevredig en of klante sal betaal.\n\nWatter proses is nodig?",
+          "explanation": "Marknavorsing"
+        },
+        {
+          "ctx": "'n Besigheid kies 'n ligging naby klante, paaie en water/electriciteit.",
+          "stem": "Watter faktore word gekombineer?",
+          "correct": "Teikenmark, vervoer en infrastruktuur",
+          "wrong": [
+            "Dekblad, indeks en getuies",
+            "Kraamverlof en afkoeling",
+            "Logo, slagspreuk en bank"
+          ],
+          "explain": "Teikenmark, vervoer en infrastruktuur",
+          "options": [
+            "Dekblad, indeks en getuies",
+            "Teikenmark, vervoer en infrastruktuur",
+            "Kraamverlof en afkoeling",
+            "Logo, slagspreuk en bank"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid kies 'n ligging naby klante, paaie en water/electriciteit.\n\nWatter faktore word gekombineer?",
+          "explanation": "Teikenmark, vervoer en infrastruktuur"
+        },
+        {
+          "ctx": "'n Kontrak word deur al die partye onderteken en elke bladsy word geparafeer.",
+          "stem": "Wat word versterk?",
+          "correct": "Bewys en formele aanvaarding van die kontrak",
+          "wrong": [
+            "Klantbevrediging",
+            "Hindernisse tot binnetreding",
+            "Kontantsaldo"
+          ],
+          "explain": "Bewys en formele aanvaarding van die kontrak",
+          "options": [
+            "Bewys en formele aanvaarding van die kontrak",
+            "Klantbevrediging",
+            "Hindernisse tot binnetreding",
+            "Kontantsaldo"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Kontrak word deur al die partye onderteken en elke bladsy word geparafeer.\n\nWat word versterk?",
+          "explanation": "Bewys en formele aanvaarding van die kontrak"
+        },
+        {
+          "ctx": "'n Aanbieding gebruik 'n staafgrafiek om provinsies se verkope te vergelyk.",
+          "stem": "Hoekom is die keuse gepas?",
+          "correct": "Staafgrafieke vergelyk groepe data",
+          "wrong": [
+            "Staafgrafieke wys net kontrakte",
+            "Staafgrafieke kanselleer data",
+            "Staafgrafieke is net vir krediete"
+          ],
+          "explain": "Staafgrafieke vergelyk groepe data",
+          "options": [
+            "Staafgrafieke wys net kontrakte",
+            "Staafgrafieke kanselleer data",
+            "Staafgrafieke is net vir krediete",
+            "Staafgrafieke vergelyk groepe data"
+          ],
+          "answer": "D",
+          "ans": "D",
+          "q": "Lees die scenario:\n'n Aanbieding gebruik 'n staafgrafiek om provinsies se verkope te vergelyk.\n\nHoekom is die keuse gepas?",
+          "explanation": "Staafgrafieke vergelyk groepe data"
+        },
+        {
+          "ctx": "'n Besigheidsplan bevat SWOT, markontleding, bemarkingsplan en finansiÃ«le ontleding.",
+          "stem": "Wat wys dit?",
+          "correct": "Die plan dek kernkomponente vir besluitneming",
+          "wrong": [
+            "Die plan bestaan net uit 'n prent",
+            "Die plan het geen navorsing nodig nie",
+            "Die plan is 'n dienskontrak"
+          ],
+          "explain": "Die plan dek kernkomponente vir besluitneming",
+          "options": [
+            "Die plan bestaan net uit 'n prent",
+            "Die plan het geen navorsing nodig nie",
+            "Die plan dek kernkomponente vir besluitneming",
+            "Die plan is 'n dienskontrak"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Besigheidsplan bevat SWOT, markontleding, bemarkingsplan en finansiÃ«le ontleding.\n\nWat wys dit?",
+          "explanation": "Die plan dek kernkomponente vir besluitneming"
+        },
+        {
+          "ctx": "'n Doelwit sÃª: 'Teen 30 Junie sal ons 100 kosblikke verkoop teen R25 elk.'",
+          "stem": "Watter SMART-elemente is duidelik?",
+          "correct": "Spesifiek, meetbaar en tydsgebaseer",
+          "wrong": [
+            "Slegs emosioneel",
+            "Onmeetbaar en vaag",
+            "Net 'n bedreiging"
+          ],
+          "explain": "Spesifiek, meetbaar en tydsgebaseer",
+          "options": [
+            "Spesifiek, meetbaar en tydsgebaseer",
+            "Slegs emosioneel",
+            "Onmeetbaar en vaag",
+            "Net 'n bedreiging"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Doelwit sÃª: 'Teen 30 Junie sal ons 100 kosblikke verkoop teen R25 elk.'\n\nWatter SMART-elemente is duidelik?",
+          "explanation": "Spesifiek, meetbaar en tydsgebaseer"
+        },
+        {
+          "ctx": "'n Besigheid vra 'n belegger vir geld en verduidelik die doel, terugbetaling en implementeringsrooster.",
+          "stem": "Watter deel is dit?",
+          "correct": "Lenings- of beleggingsvoorstel",
+          "wrong": [
+            "Kontrakgetuie",
+            "Arbeidsmark",
+            "Grafieklegende"
+          ],
+          "explain": "Lenings- of beleggingsvoorstel",
+          "options": [
+            "Kontrakgetuie",
+            "Lenings- of beleggingsvoorstel",
+            "Arbeidsmark",
+            "Grafieklegende"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Besigheid vra 'n belegger vir geld en verduidelik die doel, terugbetaling en implementeringsrooster.\n\nWatter deel is dit?",
+          "explanation": "Lenings- of beleggingsvoorstel"
+        },
+        {
+          "ctx": "'n Besigheid stel 'n advertensie op wat aandag trek, begeerte skep en optrede kry.",
+          "stem": "Watter beginsel pas?",
+          "correct": "ABBO-vereistes van 'n goeie advertensie",
+          "wrong": [
+            "MVDO van interne omgewing",
+            "WVF-aftrekking",
+            "Lening as bate"
+          ],
+          "explain": "ABBO-vereistes van 'n goeie advertensie",
+          "options": [
+            "ABBO-vereistes van 'n goeie advertensie",
+            "MVDO van interne omgewing",
+            "WVF-aftrekking",
+            "Lening as bate"
+          ],
+          "answer": "A",
+          "ans": "A",
+          "q": "Lees die scenario:\n'n Besigheid stel 'n advertensie op wat aandag trek, begeerte skep en optrede kry.\n\nWatter beginsel pas?",
+          "explanation": "ABBO-vereistes van 'n goeie advertensie"
+        },
+        {
+          "ctx": "'n Entrepreneur ondersoek mededingers se markaandeel en verwagte reaksies.",
+          "stem": "Watter ontleding word gedoen?",
+          "correct": "Mededingersontleding",
+          "wrong": [
+            "Kraamverlofberekening",
+            "Siekteverlofstaat",
+            "Voetstootskontrak"
+          ],
+          "explain": "Mededingersontleding",
+          "options": [
+            "Kraamverlofberekening",
+            "Mededingersontleding",
+            "Siekteverlofstaat",
+            "Voetstootskontrak"
+          ],
+          "answer": "B",
+          "ans": "B",
+          "q": "Lees die scenario:\n'n Entrepreneur ondersoek mededingers se markaandeel en verwagte reaksies.\n\nWatter ontleding word gedoen?",
+          "explanation": "Mededingersontleding"
+        },
+        {
+          "ctx": "'n Kontantbegroting wys 'n tekort in Maart.",
+          "stem": "Wat moet die besigheid oorweeg?",
+          "correct": "Hoe om genoeg kontant beskikbaar te hou",
+          "wrong": [
+            "Om alle ontvangstes te ignoreer",
+            "Om die tekort as wins te wys",
+            "Om die balansstaat weg te laat"
+          ],
+          "explain": "Hoe om genoeg kontant beskikbaar te hou",
+          "options": [
+            "Om alle ontvangstes te ignoreer",
+            "Om die tekort as wins te wys",
+            "Hoe om genoeg kontant beskikbaar te hou",
+            "Om die balansstaat weg te laat"
+          ],
+          "answer": "C",
+          "ans": "C",
+          "q": "Lees die scenario:\n'n Kontantbegroting wys 'n tekort in Maart.\n\nWat moet die besigheid oorweeg?",
+          "explanation": "Hoe om genoeg kontant beskikbaar te hou"
+        }
+      ]
+    }
+  ]
+};
+  console.log("Besigheidstudies Kwartaal 3 loaded: " + (window.EDU_SUBJECT_BANKS["G10-BST"].tasks.filter(t => /^G10-BST-TASK-\d{3}$/.test(t.code)).length) + " tasks, " + (window.EDU_SUBJECT_BANKS["G10-BST"].tasks.filter(t => /^G10-BST-TASK-\d{3}$/.test(t.code)).reduce((a,t)=>a+(t.questions||[]).length,0)) + " daily questions, final " + ((window.EDU_SUBJECT_BANKS["G10-BST"].tasks.find(t=>t.code==="G10-BST-FINAL")||{}).questions||[]).length);
+})();
+// === BESIGHEIDSTUDIES TERM 3 FULL BANK END ===
 
 
